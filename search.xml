@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Deepin 开机后进入 BusyBox</title>
+    <url>/Deepin-%E5%BC%80%E6%9C%BA%E5%90%8E%E8%BF%9B%E5%85%A5-BusyBox/</url>
+    <content><![CDATA[<h2 id="状况"><a class="header-anchor" href="#状况">¶</a>状况</h2>
+<p>今天 Deepin 开机显示完 Deepin 的图标之后就进入了 BusyBox。进入 recovery mode 提示：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Failure: File system check of the root filesystem failed.</span><br><span class="line">The root filesystem on /dev/sdb3 requires a manual fsck.</span><br><span class="line">BusyBox v?.? built-in shell (ash)</span><br><span class="line">Enter 'help' for a list of built-in commands.</span><br><span class="line"></span><br><span class="line">(initramfs) _</span><br></pre></td></tr></table></figure>
+<h2 id="修复"><a class="header-anchor" href="#修复">¶</a>修复</h2>
+<p>用 <code>fsck</code> 修复：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(initramfs) fsck &#x2F;dev&#x2F;sdb3</span><br></pre></td></tr></table></figure>
+<p>接着会提示各种错误，按 <code>y</code> 或者回车就好了。</p>
+<h2 id="原因"><a class="header-anchor" href="#原因">¶</a>原因</h2>
+<p><a href="https://bbs.deepin.org/forum.php?mod=viewthread&amp;tid=155259" target="_blank" rel="noopener">这里</a> 说是因为强制关机，但是我记得昨天是正常关机的，只不过没有把应用都关掉。</p>
+]]></content>
+      <tags>
+        <tag>Deepin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019 | 写在年关岁末</title>
+    <url>/2019/</url>
+    <content><![CDATA[<p>第一次写这种文章。在除夕发布，并不是因为一时兴起，也非构思很久，只是学业繁忙，只有在假期中间，才有心情和时间将一年来的思绪付诸文字。</p>
+<blockquote>
+<p>这才知道我的全部努力<br>
+不过完成了普通的生活。</p>
+</blockquote>
+<p>——穆旦<a href="https://bedtimepoem.com/?p=7221" target="_blank" rel="noopener">《冥想》</a></p>
+<p>即将过去的一年，大概可以说是一生中改变最大的一年。</p>
+<h2 id="学业"><a class="header-anchor" href="#学业">¶</a>学业</h2>
+<h3 id="山重水复"><a class="header-anchor" href="#山重水复">¶</a>山重水复</h3>
+<p>高二的下半学期紧张地开始。三月份中有江苏省最后一届「小高考」。虽然政策有所变化，但为了防止学测成绩被高校用作录取的依据，复习的要求还是十分紧的。那几个星期，早读常常用来死磕化学式，体育课会拿着地理政治的讲义独自站在校园无人的一隅。但这些尝试最后似乎都徒劳无功，到了考试的时候化学的大题目一如既往地看不懂，政治明知要求背诵的句子依旧只能记得几句。只好带着疑惑、不解和糟糕的心情，进入了接下来的生活。</p>
+<h3 id="新的转机"><a class="header-anchor" href="#新的转机">¶</a>新的转机</h3>
+<p>在友人的建议下，去了市里的医院。先是一所综合性的，但最后也只是「心理咨询」；随后到精神专科医院，开了SSRIs。刚开始服用的时候副作用很大，但效果也很显著。呼吸到多年以来不曾有过的新鲜平和的空气，生活还是有很大改善的。但是，随着药效的减弱，渐渐觉得还应该有 <em>其他的因素</em>：ADD。</p>
+<h3 id="柳暗花明"><a class="header-anchor" href="#柳暗花明">¶</a>柳暗花明</h3>
+<p>之后就到了北京的安定医院。本以为确诊无望，但跟医生说了「分心」的情况，做了量表，最后大概是如愿以偿地拿到了治疗多动症的药物。因为是精神类药物，还得按月去拿，最后只得在京东上购买替代品。<br>
+分班考试靠着一学年的稳定的分数进入了同学科中最好的一个班。<br>
+鼓起勇气报名参加了运动会，长跑之后瘫在草坪上，有一种前所未有的喜悦。然后只记得同学把我搀扶回去时的温暖。<br>
+虽然能够减轻一时的杂念，药物的副作用还是很大的。并不是说身体上的那种疼痛，而是精神上一定的依赖性，还有恶心的感觉，即使心里深知今后不可能一辈子都依赖在这些东西上。<br>
+但是长久以来一直困扰我的疑惑终于能解决，明白了自身的长处（？）和短处后，能够直面恐惧的根源，这样的变化还是很不错的。就像知乎上一位答主所说的吧：</p>
+<blockquote>
+<p>接受不好的可能性和残酷的现实，明白很多梦想都会落空，很多奋斗注定白费，很多努力永远没有结果，很多能力你没有就是没有。<br>
+但还是把能做的都做了吧。</p>
+</blockquote>
+<h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
+<p>背了点日语。可惜散步的时候听力是懵的，最后果然因为听力没有过。<br>
+没写什么有技术含量的代码。只是做了几个无聊的 Telegram 机器人，还有自用的小工具。<br>
+也没读几本书，不过电影、剧貌似看了不少。大部分时间还是耗费在了网上。<br>
+暑假在华北玩了一圈。<br>
+啊啊，最重要的是养了一只猫。当初在各种昵称中拿捏不定，最后还是让 ta 像《我是猫》中的那只猫一样，「名前はまだ無い」。猫最近喜欢和我安静地呆在空调房中。不由得想起买回来只有两个月大的时候的纯真的眼神。如今已经长长、长胖了许多。<br>
+今年听的最多的歌是《春愁》、改编的<a href="http://music.163.com/song/432430716/" target="_blank" rel="noopener">《巴赫平均律》</a>。</p>
+<h2 id="成长"><a class="header-anchor" href="#成长">¶</a>成长</h2>
+<p>虽然说是变化最大的一年，但是这些变化很难说是我自己通过努力促成的。<br>
+与 2018 时相比，大概最为不同的是价值观的改变。与那时盲目羡慕别人的生活相比，能够清晰地辨明那其实并不是我真正想要的，会在看到别人与我的不同之处后一笑置之。虽然说人各有志，但是也难免不将别人的美好生活内化为自己的追求，只是在更加了解自己后，会更加坚定地朝着既定的目标努力。</p>
+<h2 id="未完待续"><a class="header-anchor" href="#未完待续">¶</a>未完待续</h2>
+<p>上次春节的时候，在江边的渡口和家人游玩，期间和🌸聊着天。流感的奇怪氛围中，今年心情一样复杂不同于往年。不知道一年后走过的自己，借用黑塞的话说——<br>
+将会以怎样惊异的目光回顾 ta 走过的曲折复杂、摇摆不定的生活途径，会如何对此事的自己投以鼓励的、责备的、同情的、快乐的微笑！</p>
+]]></content>
+      <tags>
+        <tag>年终总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Python 爬取作业答案</title>
+    <url>/%E7%94%A8%20Python%20%E7%88%AC%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/</url>
+    <content><![CDATA[<p>上高中以来，学校一直订了一份「报纸」当作业用，叫《学英语》。最近做题时发现报纸与时俱进，多了几个二维码，分别是微信公众号还有「<strong>扫一扫　查答案</strong>」。</p>
+<h1>目标网站</h1>
+<p>通过二维码扫描出来的结果是上一期的答案。网页的地址长这样：</p>
+<p><img src="https://i.loli.net/2020/01/05/REI1PtKLQ78iWpC.png" alt="url.png"></p>
+<p>简直不要太直白。</p>
+<p>首先在网站逛了一圈，PC 版风格看起来仍然是很老旧的那种；网站首页是有专门的答案分区，但是点进来的答案很少。显然，我所需要的答案没有文章列表，必须要经过扫描二维码拿到。</p>
+<p>然后便是尝试改地址：稍稍增减 id 参数，可以看到最近发的文章：<img src="https://i.loli.net/2019/12/31/B5dGa6IQcK2AqSP.png" alt="image.png"></p>
+<p>发现只有几期的答案是连在一起的，其余的有很多这家报社的其他产品的内容。这些答案的排布也并不是那么有规律，比如下一个 id 的是上上期的答案。那么，只需要爬取附近的每个页面，然后把符合要求的找出来就行了。</p>
+<h1>开发环境</h1>
+<p>Google 提供了免费的 <a href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter Notebook</a> 环境—— Colab，无需配置，开箱即用。<a href="https://colab.research.google.com/notebook#create=true&amp;language=python3" target="_blank" rel="noopener">进入</a> 后创建一个新的 PYTHON3 笔记本。</p>
+<p>或者，你也可以下载 <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">ANACONDA</a> 并安装。接着执行命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install pipenv</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> pipenv shell</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter notebook</span></span><br></pre></td></tr></table></figure>
+<p>这之后默认浏览器会打开本地的 Jupyter Notebook。</p>
+<p>我们需要安装  requests_html 做爬虫。</p>
+<blockquote>
+<p>requests-html 是基于现有的框架 PyQuery、Requests、lxml、beautifulsoup4 等库进行了二次封装，作者将 Requests 设计的简单强大的优点带到了该项目中。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install requests_html</span><br></pre></td></tr></table></figure>
+<p>Jupyter Notebook 中，以 <code>!</code> 开头的行会被解释成命令。</p>
+<h1>爬取和解析</h1>
+<p>这种 CMS 一般都没什么反爬措施，连 X5 浏览器 UA 都不需要伪造。所有网页的标题都是相同的，所以爬取每个页面内的标题就好。</p>
+<p><img src="https://i.loli.net/2019/12/31/qGlMH5vSUkXWRsm.png" alt="image.png"><br>
+Chrome 内右键目标元素，点「检查」，右键 Elements 中高亮的颜色，复制选择器。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#dummybodyid &gt; div.contentbox &gt; h3</span><br></pre></td></tr></table></figure>
+<p>对下面的答案图片如法炮制，它们的选择器分别是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(1) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(2) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(3) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(4) &gt; img</span><br></pre></td></tr></table></figure>
+<p><em>页面最后一般会有 doc 文档可以下载，但是最近没有了。</em></p>
+<p>然后便是遍历每个页面了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#39;34210&#39;: &#39;19-20上高三江苏第9期A版参考答案&#39;, &#39;34211&#39;: &#39;19-20上高三江苏第8期A版参考答案&#39;, &#39;34212&#39;: &#39;19-20上八年级★云南第10期听力录音&#39;, &#39;34213&#39;: &#39;19-20上八年级邵阳第10期听力录音&#39;, &#39;34214&#39;: &quot;悦听悦读 The world&#39;s first artificial moon&quot;, &#39;34215&#39;: &#39;悦听悦读Superheroes from Asia&#39;, &#39;34216&#39;: &#39;19-20上八年级广东第10期听力录音&#39;, &#39;34217&#39;: &#39;19-20上外研八年级嘉兴第9期听力录音&#39;, &#39;34218&#39;: &#39;19-20上外研八年级嘉兴第10期听力录音&#39;, &#39;34219&#39;: &#39;19-20上外研八年级嘉兴第11期听力录音&#39;, &#39;34220&#39;: &#39;19-20上外研八年级嘉兴第12期听力录音&#39;, &#39;34221&#39;: &#39;19-20上八年级★赤峰第1期听力录音&#39;, </span><br><span class="line">…,（省略一部分）</span><br><span class="line">&#39;34966&#39;: &#39;19-20上九年级宁波期末检测一本通综合测评（五）听力录音&#39;, &#39;34967&#39;: &#39;悦听悦读Real-life Dora&#39;, &#39;34968&#39;: &#39;19-20上高三江苏第14期A版参考答案&#39;, &#39;34969&#39;: &#39;19-20上高三江苏（N）第15期听力录音&#39;, &#39;34970&#39;: &#39;19-20上高三江苏（N）第14期B1-B4版参考答案&#39;, &#39;34971&#39;: &#39;19-20上高一第24期A4版听力练习录音&#39;, &#39;34972&#39;: &#39;19-20上高三江苏第15期A版参考答案&#39;, &#39;34973&#39;: &#39;19-20上高三江苏（N）第16期听力录音&#39;, &#39;34974&#39;: &#39;19-20上高三江苏（N）第15期B1-B4版参考答案&#39;, &#39;34975&#39;: &#39;Jane and Sara want to go skating（I）&#39;, &#39;34976&#39;: &#39;Jane and Sara want to go skating（II）&#39;, &#39;34977&#39;: &#39;19-20上八年级（J）第17期听力录音&#39;, &#39;34978&#39;: &#39;19-20上八年级（J）第18期听力录音&#39;, &#39;34979&#39;: &#39;19-20上八年级（J）第19期听力录音&#39;, &#39;34980&#39;: &#39;19-20上八年级（J）第20期听力录音&#39;, &#39;34981&#39;: &#39;悦听悦读 An ancient Chinese story&#39;, &#39;34982&#39;: &#39;悦听悦读 Empty-City Strategy&#39;, &#39;34983&#39;: &#39;悦听悦读Hearing loss, a major problem for teenagers&#39;, &#39;34984&#39;: &#39;悦听悦读FOLLOW ME: Hearing loss, a major problem for teenagers&#39;, &#39;34985&#39;: &#39;故事乐园 The ice cream&#39;, &#39;34986&#39;: &quot;故事乐园 It&#39;s Mr Green&quot;, &#39;34987&#39;: &#39;悦听悦读A special fashion show&#39;, &#39;34988&#39;: &#39;悦听悦读Two cute girls&#39;, &#39;34989&#39;: &#39;19-20上八年级曲靖第15期听力录音&#39;, &#39;34990&#39;: &#39;19-20上七年级★福建第15期听力录音&#39;, &#39;34991&#39;: &#39;悦听悦读 Max Einstein: The Genius Experiment&#39;, &#39;34992&#39;: &#39;19-20上九年级（XJ）第9期听力录音&#39;, &#39;34993&#39;: &#39;19-20上九年级（XJ）第10期听力录音&#39;, &#39;34994&#39;: &#39;19-20上九年级（XJ）第11期听力录音&#39;, &#39;34995&#39;: &#39;19-20上九年级（XJ）第12期听力录音&#39;, &#39;34996&#39;: &#39;19-20上七年级★福建第16期听力录音&#39;, &#39;34997&#39;: &#39;Bill and Kitty&#39;, &#39;34998&#39;: &#39;19-20上八年级曲靖第16期听力录音&#39;, &#39;34999&#39;: &#39;悦听悦读Flying car&#39;&#125;</span><br></pre></td></tr></table></figure>
+<h1>Demo</h1>
+<p><a href="https://github.com/OverflowCat/LearningEnglish/" target="_blank" rel="noopener">learningEnglishFetch.py</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Re: 从零开始的部落格生活</title>
+    <url>/hello-world/</url>
+    <content><![CDATA[<blockquote>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+</blockquote>
+<h2 id="你好，世界！"><a class="header-anchor" href="#你好，世界！">¶</a>你好，世界！</h2>
+<p>两年前的时候用 Wordpress 陆续搭过几个博客，然而却并没有写多少文章；随后 VPS 到期，这事也就不了了之。现在在这里暂且再搭一个，也不想去瞎折腾了。</p>
+]]></content>
+  </entry>
+</search>
