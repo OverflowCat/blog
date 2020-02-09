@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用 PIN Code 完成 Twitter OAuth 验证</title>
+    <url>/PIN_Based_Twitter_OAuth/</url>
+    <content><![CDATA[<p>我的 Twitter App 是用其他账号申请的。申请完后，Twitter Developers 给出的是申请账号的 <code>𝚊𝚌𝚌𝚎𝚜𝚜_𝚝𝚘𝚔𝚎𝚗</code>、<code>𝚊𝚌𝚌𝚎𝚜𝚜_𝚝𝚘𝚔𝚎𝚗_𝚜𝚎𝚌𝚛𝚎𝚝</code>。想要授权其他账号登录，需要进行 OAuth 验证。<br>
+应用信息处，会强制要求填写 callback URL，授权完后会跳转到那里。但是，对于其他不是网页的情况下，可以要求用户填写 PIN Code。</p>
+<h2 id="文档"><a class="header-anchor" href="#文档">¶</a>文档</h2>
+<p>查 Twitter 的官方文档中，关于 <a href="https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a/pin-based-oauth" target="_blank" rel="noopener">PIN-based authorization</a>，写道：</p>
+<blockquote>
+<p>The PIN-based OAuth flow is a version of the 3-legged OAuth process and is intended for applications that cannot access or embed a web browser to redirect the user after authorization. Examples of such applications would be command-line applications, embedded systems, game consoles, and certain types of mobile apps.<br>
+PIN-based OAuth flow is initiated by an app in the <code>request_token</code> with the <code>oauth_callback</code> set to <code>oob</code>. The term <code>oob</code> means* <strong>o</strong>ut-<strong>o</strong>f-<strong>b</strong>and OAuth*.  The user still visits Twitter to login or authorize the app, but they will not be automatically redirected to the application upon approving access. Instead, they will see a numerical PIN code, with instructions to return to the application and enter this value.<br>
+Please note: The callback_url within the Twitter app settings is still required, even when using PIN-based auth.</p>
+</blockquote>
+<p>即，在验证过程中，POST 时的 <code>callback_url</code> 的内容填写 <code>oob</code> 就好了。这样，Twitter 就会忽视应用信息填写的 callback URL。</p>
+<h2 id="示例"><a class="header-anchor" href="#示例">¶</a>示例</h2>
+<p>我们使用 tweepy 这个 Python 模块来完成演示。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install tweepy</span><br><span class="line">T1=<span class="string">'sb7J2cWuINfuv8mwrsHLo6GjoaOh'</span></span><br><span class="line">T2=<span class="string">'sb7J2cWuINfuv8mwrsHLo6GjoaOh'</span></span><br><span class="line"><span class="comment"># 填写你自己的 API Key</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tweepy</span><br><span class="line">auth = tweepy.OAuthHandler(T1, T2, <span class="string">"oob"</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    redirect_url = auth.get_authorization_url()</span><br><span class="line"><span class="keyword">except</span> tweepy.TweepError:</span><br><span class="line">    print(<span class="string">'Error! Failed to get request token.'</span>)</span><br><span class="line">print(redirect_url)</span><br></pre></td></tr></table></figure>
+<p>点开这个 <code>redirect_url</code> 进行验证。<br>
+<img src="/images/pasted-1.png" alt="upload successful"></p>
+<p>登录后，就会显示 PIN Code。<br>
+<img src="/Screenshots/pincode.png" alt="PIN Code"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Deepin 开机后进入 BusyBox</title>
     <url>/Deepin-%E5%BC%80%E6%9C%BA%E5%90%8E%E8%BF%9B%E5%85%A5-BusyBox/</url>
     <content><![CDATA[<h2 id="状况"><a class="header-anchor" href="#状况">¶</a>状况</h2>
