@@ -103,3 +103,14 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# RSS
+feed:
+  enable: true
+  limit: 20
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss.xml
