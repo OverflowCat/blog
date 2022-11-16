@@ -2,6 +2,7 @@
 title: 熟词生义
 date: 2020-10-23 00:02:59
 tags: 英语
+categories: 题隙碎笔
 ---
 
 今天做听力的时候，有第四道题的对话是一个人在广告上看到了修车的广告，到这里来修车。选项问这是什么地方：_a_ _parking_ _lot_, _a_ _factory_ or _a_ <em>garage</em>。正确答案是 garage，因为有一项意思是汽车修理间。
