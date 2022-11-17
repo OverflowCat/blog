@@ -114,3 +114,13 @@ feed:
   path:
     - atom.xml
     - rss.xml
+
+sitemap:
+  path: 
+    - sitemap.xml
+    - sitemap.txt
+  #template:
+  #template_txt:
+  rel: true
+  tags: true
+  categories: true
