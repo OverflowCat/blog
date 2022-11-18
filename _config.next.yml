@@ -24,7 +24,7 @@ minify: true
 custom_file_path:
   head: source/_data/head.swig
   #header: source/_data/header.swig
-  #sidebar: source/_data/sidebar.swig
+  sidebar: source/_data/sidebar.swig
   #postMeta: source/_data/post-meta.swig
   #postBodyEnd: source/_data/post-body-end.swig
   #footer: source/_data/footer.swig
@@ -85,10 +85,10 @@ footer:
 # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
 creative_commons:
-  license: by-nc-sa
-  sidebar: false
+  license: by-nc
+  sidebar: true
   post: false
-  language:
+  language: deed.zh
 
 # ---------------------------------------------------------------
 # Scheme Settings
@@ -114,7 +114,7 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   "主页 / Home": ./ || fa fa-home
-  "关于 / About": ./about/ || fa fa-user
+  "关于 / About": ./About/ || fa fa-user
   "友链 / Friends": ./friends/ || fa fa-link
   # 标签: tags/ || fa fa-tags
   # 类别: categories/ || fa fa-th
@@ -165,7 +165,7 @@ avatar:
   # If true, the avatar will be dispalyed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.
-  rotated: false
+  rotated: true
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
@@ -208,7 +208,7 @@ links:
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: true
+  number: false
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
@@ -242,7 +242,7 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
+    enable: false
     another_day: true
   categories: true
 
@@ -251,7 +251,7 @@ post_meta:
 symbols_count_time:
   separated_meta: true
   item_text_post: true
-  item_text_total: false
+  item_text_total: true
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false

@@ -1,6 +1,6 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "xinshijiededamen-blog",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "build": "hexo generate",
