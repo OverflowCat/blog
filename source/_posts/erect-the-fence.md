@@ -3,6 +3,7 @@ title: Graham 扫描法求凸包
 date: 2022-11-19 22:58:41
 tags: 力扣每日挑战
 categories: 算法题解
+mathjax: true
 ---
 
 ## 题目
