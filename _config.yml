@@ -4,12 +4,12 @@
 
 # Site
 title: 新世界的大门
-subtitle: ''
+subtitle: '猫猫的博客'
 description: ''
 keywords: blog
 author: 'ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫'
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
