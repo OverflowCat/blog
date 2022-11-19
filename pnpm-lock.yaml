@@ -10,6 +10,7 @@ specifiers:
   hexo-generator-tag: ^2.0.0
   hexo-renderer-ejs: ^2.0.0
   hexo-renderer-marked: ^6.0.0
+  hexo-renderer-pandoc: ^0.3.1
   hexo-renderer-stylus: ^2.1.0
   hexo-server: ^3.0.0
   hexo-theme-landscape: ^0.0.3
@@ -25,6 +26,7 @@ dependencies:
   hexo-generator-tag: 2.0.0
   hexo-renderer-ejs: 2.0.0
   hexo-renderer-marked: 6.0.0
+  hexo-renderer-pandoc: 0.3.1
   hexo-renderer-stylus: 2.1.0
   hexo-server: 3.0.0
   hexo-theme-landscape: 0.0.3
@@ -712,6 +714,10 @@ packages:
       - canvas
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /hexo-renderer-pandoc/0.3.1:
+    resolution: {integrity: sha512-ZTUzLkJHFA6OCzk37xR9PWYydLwuv4qV7iJMe5p88gxiIo3d1M/dOwsIXEra/olcA/y9UKw57qASCby1NseNsw==}
     dev: false
 
   /hexo-renderer-stylus/2.1.0:

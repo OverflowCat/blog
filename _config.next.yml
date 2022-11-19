@@ -114,14 +114,14 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   "主页 / Home": ./ || fa fa-home
-  "关于 / About": ./About/ || fa fa-user
+  "归档 / Archive": ./archives/ || fa fa-archive
   "友链 / Friends": ./friends/ || fa fa-link
+  "关于 / About": ./About/ || fa fa-user
   # 标签: tags/ || fa fa-tags
   # 类别: categories/ || fa fa-th
-  "归档 / Archive": ./archives/ || fa fa-archive
-  "订阅 / RSS": ./rss.xml || fa fa-rss
+  "订阅 / RSS": ./atom.xml || fa fa-rss
   #schedule: schedule/ || fa fa-calendar
-  #sitemap: sitemap.xml || fa fa-sitemap
+  "站点地图 / Sitemap": ./sitemap.xml || fa fa-sitemap
   #commonweal: 404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
@@ -382,13 +382,13 @@ bookmark:
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
   # If manual, only save it by clicking the bookmark-icon.
-  save: auto
+  save: manual
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
-  title: Follow me on GitHub
+  enable: true
+  permalink: https://github.com/OverflowCat/blog
+  title: 在 GitHub 上查看源码
 
 # ---------------------------------------------------------------
 # Font Settings
@@ -495,7 +495,7 @@ math:
 
   # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
   mathjax:
-    enable: false
+    enable: true
     # See: https://mhchem.github.io/MathJax-mhchem/
     mhchem: false
 
