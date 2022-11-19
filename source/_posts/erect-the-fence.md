@@ -170,6 +170,35 @@ impl Solution {
             .collect()
     }
 }
+
+// 以下是测试部分
+struct Solution;
+fn main() {
+    let res: HashSet<Vec<i32>> = HashSet::from_iter(
+        Solution::outer_trees(vec![vec![1, 1], vec![2, 2],
+        vec![2, 0], vec![2, 4], vec![3, 3], vec![4, 2]]).into_iter(),
+    );
+    assert_eq!(
+        res,
+        HashSet::from_iter(
+            vec![vec![1, 1], vec![2, 0], vec![4, 2],
+            vec![3, 3], vec![2, 4]].into_iter()
+        )
+    );
+
+    let res: HashSet<Vec<i32>> = HashSet::from_iter(Solution::outer_trees(vec![
+        vec![3, 0], vec![4, 0], vec![5, 0], vec![6, 1], vec![7, 2], vec![7, 3],
+        vec![7, 4], vec![6, 5], vec![5, 5], vec![4, 5], vec![3, 5], vec![2, 5],
+        vec![1, 4], vec![1, 3], vec![1, 2], vec![2, 1], vec![4, 2], vec![0, 3]
+    ]));
+    assert_eq!(
+        res, HashSet::from_iter(
+            vec![vec![4, 5], vec![2, 5], vec![6, 1], vec![3, 5], vec![2, 1],
+            vec![1, 4], vec![1, 2], vec![7, 4], vec![7, 3], vec![7, 2], vec![3, 0],
+            vec![0, 3], vec![5, 0], vec![5, 5], vec![4, 0], vec![6, 5]].into_iter()
+        )
+    );
+}
 ```
 
 以上．🌲
