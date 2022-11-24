@@ -117,6 +117,7 @@ impl Solution {
         let mut trees: Vec<Tree> = trees
             .into_iter()
             .map(|t| Tree(t[0] - init.0, t[1] - init.1))
+            // 这里以左下角的点为 (0, 0)
             .collect();
         trees.sort_by(
             |a, b| match { 0.cmp(&Self::cross_product(a.0, a.1, b.0, b.1)) } {

@@ -23,7 +23,7 @@ minify: true
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
 custom_file_path:
   head: source/_data/head.swig
-  #header: source/_data/header.swig
+  header: source/_data/header.swig
   sidebar: source/_data/sidebar.swig
   #postMeta: source/_data/post-meta.swig
   #postBodyEnd: source/_data/post-body-end.swig
