@@ -5,7 +5,7 @@ tags: 蓝桥杯
 categories: 算法题解
 ---
 
-> 2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第—。
+> 2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第一。
 > 
 > 这是事实，无法否认，但开发者们还是蜂拥而来。这语言总会给你一丝希望，vite 也好，next 也罢，但如此近，仿佛触手可及，让人奋不顾身。
 > 
@@ -52,7 +52,7 @@ diff --git 凭空消失的TA/index.html
 > 
 > (This is my pitch to Netflix for an upcoming movie)
 
-Credit: [@TheJackForge](https://twitter.com/thejackforge/status/1560637007742701570)
+Credit: [TheJackForge](https://twitter.com/thejackforge/status/1560637007742701570)
 
 In case you still do not know how to center `div`s horizontally & vertically, refer to [11 Ways to Center Div or Text in Div in CSS](https://blog.hubspot.com/website/center-div-css) or [CSS-水平居中、垂直居中、水平垂直居中](https://segmentfault.com/a/1190000014116655).
 
@@ -205,8 +205,6 @@ function mPrompt() {
 > └── js
 >     ├── axios.min.js
 >     └── echarts.min.js
-> 
-> 
 > ```
 > 
 > 其中：
