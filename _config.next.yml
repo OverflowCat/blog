@@ -345,7 +345,7 @@ mobile_layout_economy: false
 android_chrome_color: "#222"
 
 # Custom Logo (Do not support scheme Mist)
-custom_logo: //telegra.ph/file/85c16ef5c1a211d447a88.png
+custom_logo: //raw.githubusercontent.com/OverflowCat/blog/6a18f725e82243e0e8e78933499dbac79509f7f8/itsukushima-shrine.webp
 
 codeblock:
   # Code Highlight theme
@@ -982,3 +982,9 @@ vendors:
 css: css
 js: js
 images: images
+
+# <%- open_graph({twitter_card: 'summary_large_image'}) %>
+open_graph:
+  options:
+    twitter_card: summary_large_image
+    twitter_image: https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png
