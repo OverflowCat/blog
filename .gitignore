@@ -8,3 +8,5 @@ public/
 _multiconfig.yml
 themes
 templates/*
+*.svg
+

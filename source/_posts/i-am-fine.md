@@ -6,11 +6,12 @@ tags:
 - 汉语
 - 翻译
 categories: 咬文嚼字
+cover: //telegra.ph/file/00734577b158cb8de66da.jpg
 ---
 
 <u>胡桃沢 · サタニキア · マクドウェル</u>在频道「心惊报」上 [投稿](https://t.me/c/1501598444/166331)：
 
-![duolingo-question](http://telegra.ph/file/00734577b158cb8de66da.jpg)
+![多邻国题目截图](//telegra.ph/file/00734577b158cb8de66da.jpg)
 
 虽然多邻国的「通过中文学…」的课程中，句子翻译接受的答案数量与英文课程相比来说少得可怜，但是<span lang="ja">「はい、元気です」</span>这一句话在给定的词汇下，的确只能翻译成「是的，我很好」而不是「是，我好<i>的[sic]</i>很」。首先，在形容词後应该用「得 + 副词」修饰程度，而非「的」。粤语没有这个问题，因为「<ruby>的<rt>dik1</rt></ruby>」「<ruby>得<rt>dak1</rt></ruby>」「<ruby>地<rt>dei6</rt></ruby>」三个字的发音不同。其次，原句中没有出现程度，在这一句式中，「很」並不表示程度。比如 [这篇文章](https://cn.linkedin.com/pulse/%E5%9C%A8%E7%BE%8E%E5%9B%BD%E6%95%99%E4%B8%AD%E6%96%87%E5%BE%88%E5%AD%97%E5%9C%A8-%E5%BE%88%E5%BD%A2%E5%AE%B9%E8%AF%8D%E5%8F%A5%E4%B8%AD%E7%9A%84%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%95%99%E5%B0%B1%E5%AD%97%E7%9A%84%E6%83%B3%E6%B3%95-thomas-wong-wong) 中就提到：
 

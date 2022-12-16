@@ -168,11 +168,16 @@ date: 2022-11-24 19:15:00
   a {
     border-bottom: none !important;
   }
+
+  .prevent-select {
+    -webkit-user-select: none; /* Safari */
+    user-select: none; /* Standard syntax */
+  }
 </style>
 
 <body>
   <main class="ast6">
-    <h1 class="ast6">猫猫的<span class="text-gradient ast6">朋友们</span></h1>
+    <h1 class="ast6 prevent-select">猫猫的<span class="text-gradient ast6">朋友们</span></h1>
     <p class="instructions ast6">可爱喵！以下友链按添加的时间顺序排列。</p>
     <ul role="list" class="link-card-grid ast6">
       <li class="link-card ast">
@@ -267,6 +272,22 @@ date: 2022-11-24 19:15:00
         </a>
       </li>
 
+      <li class="link-card ast">
+        <a href="https://cynosura.one/" class="ast">
+          <div class="grid-container ast">
+            <div class="title ast">
+              <h2 class="ast">楓々</h2>
+            </div>
+            <img class="avatar ast" src="//cynosura.one/img/avatar.webp">
+            <div class="link ast">
+              <p id="link" class="ast"><code class="ast">cynosura.one</code></p>
+            </div>
+            <blockquote class="quote ast">
+              熊熊
+            </blockquote>
+          </div>
+        </a>
+      </li>
     </ul>
   </main>
 

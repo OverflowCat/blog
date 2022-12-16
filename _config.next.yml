@@ -987,4 +987,10 @@ images: images
 open_graph:
   options:
     twitter_card: summary_large_image
-    twitter_image: https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png
+    #twitter_image: page.cover
+    twitter_id: lazy_static
+    #twitter_site: <twitter:site>
+    #twitter_image: <twitter:image>
+    #google_plus: <g+:profile_link>
+    #fb_admins: <fb:admin_id>
+    #fb_app_id: <fb:app_id>
