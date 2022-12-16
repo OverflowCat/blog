@@ -51,7 +51,7 @@ NexT.motion.middleWares = {
       });
     }
 
-    pushToSequence('header.header');
+    pushToSequence('.column');
     CONFIG.scheme === 'Mist' && getMistLineSettings('.logo-line');
     CONFIG.scheme === 'Muse' && pushToSequence('.custom-logo-image');
     pushToSequence('.site-title');
@@ -59,13 +59,16 @@ NexT.motion.middleWares = {
     pushToSequence('.site-subtitle');
     (CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') && pushToSequence('.custom-logo-image');
 
-    document.querySelectorAll('.menu-item').forEach(targets => {
-      sequence.push({
-        targets,
-        complete: () => targets.classList.add('animated', 'fadeInDown'),
-        deltaT  : '-=200'
+    const menuItemTransition = CONFIG.motion.transition.menu_item;
+    if (menuItemTransition) {
+      document.querySelectorAll('.menu-item').forEach(targets => {
+        sequence.push({
+          targets,
+          complete: () => targets.classList.add('animated', menuItemTransition),
+          deltaT  : '-=200'
+        });
       });
-    });
+    }
 
     return sequence;
   },
@@ -104,16 +107,20 @@ NexT.motion.middleWares = {
   },
 
   sidebar: function() {
-    const sidebar = document.querySelector('.sidebar');
+    const sequence = [];
+    const sidebar = document.querySelectorAll('.sidebar-inner');
     const sidebarTransition = CONFIG.motion.transition.sidebar;
     // Only for Pisces | Gemini.
     if (sidebarTransition && (CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini')) {
-      return [{
-        targets : sidebar,
-        complete: () => sidebar.classList.add('animated', sidebarTransition)
-      }];
+      sidebar.forEach(targets => {
+        sequence.push({
+          targets,
+          complete: () => targets.classList.add('animated', sidebarTransition),
+          deltaT  : '-=100'
+        });
+      });
     }
-    return [];
+    return sequence;
   },
 
   footer: function() {

@@ -3,6 +3,7 @@ body {
 }
 .use-motion .menu-item,
 .use-motion .sidebar,
+.use-motion .sidebar-inner,
 .use-motion .post-block,
 .use-motion .pagination,
 .use-motion .comments,
@@ -11,7 +12,7 @@ body {
 .use-motion .collection-header {
   visibility: visible;
 }
-.use-motion header.header,
+.use-motion .column,
 .use-motion .site-brand-container .toggle,
 .use-motion .footer {
   opacity: initial;
@@ -31,4 +32,17 @@ body {
 }
 .sidebar-panel {
   display: block;
+}
+.noscript-warning {
+  background-color: #f55;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 50;
 }

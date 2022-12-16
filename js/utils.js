@@ -275,8 +275,8 @@ NexT.utils = {
       parent = parent.parentNode;
     }
     // Scrolling to center active TOC element if TOC content is taller then viewport.
-    const tocElement = document.querySelector('.sidebar-panel-container');
-    if (!tocElement.parentNode.classList.contains('sidebar-toc-active')) return;
+    const tocElement = document.querySelector(CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini' ? '.sidebar-panel-container' : '.sidebar');
+    if (!document.querySelector('.sidebar-toc-active')) return;
     window.anime({
       targets  : tocElement,
       duration : 200,
@@ -286,7 +286,7 @@ NexT.utils = {
   },
 
   updateSidebarPosition: function() {
-    if (window.innerWidth < 992 || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;
+    if (window.innerWidth < 1200 || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;
     // Expand sidebar on post detail page by default, when post has a toc.
     const hasTOC = document.querySelector('.post-toc');
     let display = CONFIG.page.sidebar;
