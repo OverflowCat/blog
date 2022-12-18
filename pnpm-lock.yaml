@@ -14,7 +14,7 @@ specifiers:
   hexo-renderer-stylus: ^2.1.0
   hexo-server: ^3.0.0
   hexo-theme-landscape: ^0.0.3
-  hexo-theme-next: ^8.13.2
+  hexo-theme-next: ^8.14.0
 
 dependencies:
   hexo: 6.3.0
@@ -30,7 +30,7 @@ dependencies:
   hexo-renderer-stylus: 2.1.0
   hexo-server: 3.0.0
   hexo-theme-landscape: 0.0.3
-  hexo-theme-next: 8.13.2
+  hexo-theme-next: 8.14.0
 
 packages:
 
@@ -750,8 +750,8 @@ packages:
     resolution: {integrity: sha512-b0Di+TUVs4ESrNX4ULEh9uQmADpO6kr10rIJ2OGZM8suNQNFKdxn+vJUjnLfKkCPJAfVmS7/S83KCNYe4tpoNw==}
     dev: false
 
-  /hexo-theme-next/8.13.2:
-    resolution: {integrity: sha512-OcR76Kmi2g2426VGla+VV+g0qzTsozSjMcsBcFeaKomv8BiPycMknillGF/R4Od+vAHde8h9uZvlRIA51+4+7A==}
+  /hexo-theme-next/8.14.0:
+    resolution: {integrity: sha512-AJjue2bE5lqaZ4cwBR/vnfy4nvTWr4MEJdbyZr6PAKPlnBbuYozgL1lOZ3SeLt3CUiSynPCrnClmtWvDz2q3iw==}
     dev: false
 
   /hexo-util/2.7.0:
