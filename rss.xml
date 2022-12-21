@@ -9,13 +9,13 @@
     <atom:link href="https://blog.xinshijiededa.men/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>猫猫的博客</description>
-    <pubDate>Sun, 18 Dec 2022 09:44:20 GMT</pubDate>
+    <pubDate>Wed, 21 Dec 2022 12:59:26 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>拉普拉斯变换速查表</title>
-      <link>https://blog.xinshijiededa.men/laplace-transform-cheetsheet/</link>
-      <guid>https://blog.xinshijiededa.men/laplace-transform-cheetsheet/</guid>
+      <link>https://blog.xinshijiededa.men/laplace-transform-cheatsheet/</link>
+      <guid>https://blog.xinshijiededa.men/laplace-transform-cheatsheet/</guid>
       <pubDate>Fri, 16 Dec 2022 14:16:47 GMT</pubDate>
       
         
@@ -38,7 +38,7 @@
       <category domain="https://blog.xinshijiededa.men/tags/%E6%95%B0%E5%AD%A6/">数学</category>
       
       
-      <comments>https://blog.xinshijiededa.men/laplace-transform-cheetsheet/#disqus_thread</comments>
+      <comments>https://blog.xinshijiededa.men/laplace-transform-cheatsheet/#disqus_thread</comments>
       
     </item>
     
