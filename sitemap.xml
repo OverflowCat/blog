@@ -2,42 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.xinshijiededa.men/logical-or-not/</loc>
-    
-    <lastmod>2022-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/study-rooms/</loc>
-    
-    <lastmod>2022-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/tolerance-in-autocad/</loc>
-    
-    <lastmod>2022-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/friends/index.html</loc>
-    
-    <lastmod>2022-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xinshijiededa.men/2019/</loc>
     
     <lastmod>2022-12-25</lastmod>
@@ -146,7 +110,43 @@
   </url>
   
   <url>
+    <loc>https://blog.xinshijiededa.men/logical-or-not/</loc>
+    
+    <lastmod>2022-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/study-rooms/</loc>
+    
+    <lastmod>2022-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/tolerance-in-autocad/</loc>
+    
+    <lastmod>2022-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xinshijiededa.men/About/index.html</loc>
+    
+    <lastmod>2022-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/friends/index.html</loc>
     
     <lastmod>2022-12-25</lastmod>
     
@@ -293,6 +293,13 @@
   
   <url>
     <loc>https://blog.xinshijiededa.men/categories/%E9%A2%98%E9%9A%99%E7%A2%8E%E7%AC%94/</loc>
+    <lastmod>2022-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/categories/%E5%A4%87%E5%BF%98/</loc>
     <lastmod>2022-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
