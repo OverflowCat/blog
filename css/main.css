@@ -2537,6 +2537,7 @@ mjx-container[display='true'] + br {
   max-width: 100%;
   margin: 8px;
   padding: 4px;
+  padding-top: 12px;
 }
 lite-youtube {
   margin: auto;
