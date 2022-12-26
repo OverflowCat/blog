@@ -12,7 +12,7 @@ tags: 歌词
 
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -28,7 +28,7 @@ tags: 歌词
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -84,7 +84,7 @@ tags: 歌词
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -100,7 +100,7 @@ tags: 歌词
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -188,7 +188,7 @@ tags: 歌词
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -214,7 +214,7 @@ tags: 歌词
 
 <div lang="mö">manju-i mafari-i adali</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -230,7 +230,7 @@ tags: 歌词
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -286,7 +286,7 @@ tags: 歌词
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -302,7 +302,7 @@ tags: 歌词
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>
@@ -390,7 +390,7 @@ tags: 歌词
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
 <div lang="ja">満州の　祖先の　ように</div>
-<div lang="zh">像满族祖先一样</div>
+<div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
 <div lang="ja">僕達　一緒に　弓を射よう</div>

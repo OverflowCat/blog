@@ -116,7 +116,7 @@ menu:
   "主页 / Home": ./ || fa fa-home
   "归档 / Archive": ./archives/ || fa fa-archive
   "友链 / Friends": ./friends/ || fa fa-link
-  "关于 / About": ./About/ || fa fa-user
+  "关于 / About": ./about/ || fa fa-user
   # 标签: tags/ || fa fa-tags
   # 类别: categories/ || fa fa-th
   "订阅 / RSS": ./atom.xml || fa fa-rss
