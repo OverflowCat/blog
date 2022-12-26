@@ -23,7 +23,7 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
@@ -39,15 +39,15 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">僕の　小さな　姿　がある</div>
+<div lang="ja">僕の　小さな　姿が　ある</div>
 <div lang="zh">有我渺小的身影</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠣ?</div>
-<div lang="ja">あなたの　弓は　張ったか？</div>
+<div lang="ja">あなたの　弓は　張っているか？</div>
 <div lang="zh">你的弓上弦了吗？</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠣ?</div>
-<div lang="ja">親指　で　搬指　を　掛けているか？</div>
+<div lang="ja">親指　に　搬指　を　掛けているか？</div>
 <div lang="zh">扳指戴在拇指上了吗？</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠣ?</div>
@@ -55,7 +55,7 @@ tags: 歌词
 <div lang="zh">你的箭射出了吗？</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこ　ですか？</div>
+<div lang="ja">囲場は　どこか？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠪᡳ</div>
@@ -63,7 +63,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠪᡳ</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠪᡳ</div>
@@ -71,7 +71,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこ　ですか？</div>
+<div lang="ja">囲場は　どこか？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ</div>
@@ -95,7 +95,7 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
@@ -111,15 +111,15 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">僕の　小さな　姿　がある</div>
+<div lang="ja">僕の　小さな　姿が　ある</div>
 <div lang="zh">有我渺小的身影</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠣ?</div>
-<div lang="ja">あなたの　弓は　張ったか？</div>
+<div lang="ja">あなたの　弓は　張っているか？</div>
 <div lang="zh">你的弓上弦了吗？</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠣ?</div>
-<div lang="ja">親指　で　搬指　を　掛けているか？</div>
+<div lang="ja">親指　に　搬指　を　掛けているか？</div>
 <div lang="zh">扳指戴在拇指上了吗？</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠣ?</div>
@@ -127,7 +127,7 @@ tags: 歌词
 <div lang="zh">你的箭射出了吗？</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᡨᡠᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　あそこ　です</div>
+<div lang="ja">囲場は　あそこ　だ</div>
 <div lang="zh">围场在那里</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠪᡳ</div>
@@ -135,7 +135,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠪᡳ</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠪᡳ</div>
@@ -143,7 +143,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᡨᡠᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　あそこ　です</div>
+<div lang="ja">囲場は　あそこ　だ</div>
 <div lang="zh">围场在那里</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ</div>
@@ -159,7 +159,7 @@ tags: 歌词
 <div lang="zh">你的弓已上弦</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠪᡳ</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠪᡳ</div>
@@ -167,7 +167,7 @@ tags: 歌词
 <div lang="zh">你的箭已射出</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこ　です</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠪᡳ</div>
@@ -175,7 +175,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mnc">ᠰᡳᠮᡥᡠᠨ ᡩᡝ ᡶᡝᡵᡤᡝᡨᡠᠨ ᠪᡝ ᡝᡨᡠᡥᡝᠪᡳ</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠰᡳᡵᡩᠠᠨ ᠪᡝ ᡤᠠᠪᡨᠠᡥᠠᠪᡳ</div>
@@ -183,7 +183,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこ　です</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
@@ -199,11 +199,11 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mnc">ᠰᡳᠨᡳ ᠪᡠᠶᠠ ᠪᡝᠶᡝ ᠪᡳ</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 </div>
@@ -225,7 +225,7 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mö">sini buya beye bi</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
@@ -241,15 +241,15 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mö">mini buya beye bi</div>
-<div lang="ja">僕の　小さな　姿　がある</div>
+<div lang="ja">僕の　小さな　姿が　ある</div>
 <div lang="zh">有我渺小的身影</div>
 <br />
 <div lang="mö">sini beri de uli be tebuheo?</div>
-<div lang="ja">あなたの　弓は　張ったか？</div>
+<div lang="ja">あなたの　弓は　張っているか？</div>
 <div lang="zh">你的弓上弦了吗？</div>
 <br />
 <div lang="mö">simhun de fergetun be etuheo?</div>
-<div lang="ja">親指　で　搬指　を　掛けているか？</div>
+<div lang="ja">親指　に　搬指　を　掛けているか？</div>
 <div lang="zh">扳指戴在拇指上了吗？</div>
 <br />
 <div lang="mö">sini sirdan be gabtahao?</div>
@@ -257,7 +257,7 @@ tags: 歌词
 <div lang="zh">你的箭射出了吗？</div>
 <br />
 <div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこ　ですか？</div>
+<div lang="ja">囲場は　どこか？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">mini beri de uli be tebuhebi</div>
@@ -265,7 +265,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mö">simhun de fergetun be etuhebi</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mö">mini sirdan be gabtahabi</div>
@@ -273,7 +273,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこ　ですか？</div>
+<div lang="ja">囲場は　どこか？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">muse sasa gabtacina gabtacina</div>
@@ -297,7 +297,7 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mö">sini buya beye bi</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
@@ -313,15 +313,15 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mö">mini buya beye bi</div>
-<div lang="ja">僕の　小さな　姿　がある</div>
+<div lang="ja">僕の　小さな　姿が　ある</div>
 <div lang="zh">有我渺小的身影</div>
 <br />
 <div lang="mö">sini beri de uli be tebuheo?</div>
-<div lang="ja">あなたの　弓は　張ったか？</div>
+<div lang="ja">あなたの　弓は　張っているか？</div>
 <div lang="zh">你的弓上弦了吗？</div>
 <br />
 <div lang="mö">simhun de fergetun be etuheo?</div>
-<div lang="ja">親指　で　搬指　を　掛けているか？</div>
+<div lang="ja">親指　に　搬指　を　掛けているか？</div>
 <div lang="zh">扳指戴在拇指上了吗？</div>
 <br />
 <div lang="mö">sini sirdan be gabtahao?</div>
@@ -329,7 +329,7 @@ tags: 歌词
 <div lang="zh">你的箭射出了吗？</div>
 <br />
 <div lang="mö">hoihan tuba de bini</div>
-<div lang="ja">囲場は　あそこ　です</div>
+<div lang="ja">囲場は　あそこ　だ</div>
 <div lang="zh">围场在那里</div>
 <br />
 <div lang="mö">mini beri de uli be tebuhebi</div>
@@ -337,7 +337,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mö">simhun de fergetun be etuhebi</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mö">mini sirdan be gabtahabi</div>
@@ -345,7 +345,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mö">hoihan tuba de bini</div>
-<div lang="ja">囲場は　あそこ　です</div>
+<div lang="ja">囲場は　あそこ　だ</div>
 <div lang="zh">围场在那里</div>
 <br />
 <div lang="mö">muse sasa gabtacina gabtacina</div>
@@ -361,7 +361,7 @@ tags: 歌词
 <div lang="zh">你的弓已上弦</div>
 <br />
 <div lang="mö">simhun de fergetun be etuhebi</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mö">sini sirdan be gabtahabi</div>
@@ -369,7 +369,7 @@ tags: 歌词
 <div lang="zh">你的箭已射出</div>
 <br />
 <div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこ　です</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">mini beri de uli be tebuhebi</div>
@@ -377,7 +377,7 @@ tags: 歌词
 <div lang="zh">我的弓已上弦</div>
 <br />
 <div lang="mö">simhun de fergetun be etuhebi</div>
-<div lang="ja">親指　で　搬指　を　掛けている</div>
+<div lang="ja">親指　に　搬指　を　掛けている</div>
 <div lang="zh">扳指已戴在拇指</div>
 <br />
 <div lang="mö">mini sirdan be gabtahabi</div>
@@ -385,7 +385,7 @@ tags: 歌词
 <div lang="zh">我的箭已射出</div>
 <br />
 <div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこ　です</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
@@ -401,11 +401,11 @@ tags: 歌词
 <div lang="zh">在浮躁的人世间</div>
 <br />
 <div lang="mö">sini buya beye bi</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mö">sini buya beye bi</div>
-<div lang="ja">あなたの　小さな　姿　がある</div>
+<div lang="ja">あなたの　小さな　姿が　ある</div>
 <div lang="zh">有你渺小的身影</div>
 <br />
 <style>
