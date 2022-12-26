@@ -2524,3 +2524,20 @@ mjx-container[display='true'] + br {
     padding: 10px 12px;
   }
 }
+[lang="mnc"] {
+  font-family: "Noto Sans Mongolian", "Mongolian Baiti";
+}
+[lang="mö"] {
+  font-family: monospace;
+  font-size: 120%;
+}
+.mnc-area {
+  writing-mode: vertical-lr;
+  overflow-x: scroll;
+  max-width: 100%;
+  margin: 8px;
+  padding: 4px;
+}
+lite-youtube {
+  margin: auto;
+}
