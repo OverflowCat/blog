@@ -54,8 +54,8 @@ tags: 歌词
 <div lang="ja">あなたの　矢　を　放ったか？</div>
 <div lang="zh">你的箭射出了吗？</div>
 <br />
-<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこか？</div>
+<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ?</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᡳᠨᡳ ᠪᡝᡵᡳ ᡩᡝ ᡠᠯᡳ ᠪᡝ ᡨᡝᠪᡠᡥᡝᠪᡳ</div>
@@ -70,8 +70,8 @@ tags: 歌词
 <div lang="ja">僕の　矢　を　放った</div>
 <div lang="zh">我的箭已射出</div>
 <br />
-<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
-<div lang="ja">囲場は　どこか？</div>
+<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ?</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ ᡤᠠᠪᡨᠠᠴᡳᠨᠠ</div>
@@ -166,7 +166,7 @@ tags: 歌词
 <div lang="ja">あなたの　矢　を　放った</div>
 <div lang="zh">你的箭已射出</div>
 <br />
-<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
+<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ?</div>
 <div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
@@ -182,7 +182,7 @@ tags: 歌词
 <div lang="ja">僕の　矢　を　放った</div>
 <div lang="zh">我的箭已射出</div>
 <br />
-<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ</div>
+<div lang="mnc">ᡥᠣᡳᡥᠠᠨ ᠶᠠ ᠪᠠ ᡩᡝ ᠪᡳᠨᡳ?</div>
 <div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
@@ -256,8 +256,8 @@ tags: 歌词
 <div lang="ja">あなたの　矢　を　放ったか？</div>
 <div lang="zh">你的箭射出了吗？</div>
 <br />
-<div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこか？</div>
+<div lang="mö">hoihan ya ba de bini?</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">mini beri de uli be tebuhebi</div>
@@ -272,8 +272,8 @@ tags: 歌词
 <div lang="ja">僕の　矢　を　放った</div>
 <div lang="zh">我的箭已射出</div>
 <br />
-<div lang="mö">hoihan ya ba de bini</div>
-<div lang="ja">囲場は　どこか？</div>
+<div lang="mö">hoihan ya ba de bini?</div>
+<div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">muse sasa gabtacina gabtacina</div>
@@ -368,7 +368,7 @@ tags: 歌词
 <div lang="ja">あなたの　矢　を　放った</div>
 <div lang="zh">你的箭已射出</div>
 <br />
-<div lang="mö">hoihan ya ba de bini</div>
+<div lang="mö">hoihan ya ba de bini?</div>
 <div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
@@ -384,7 +384,7 @@ tags: 歌词
 <div lang="ja">僕の　矢　を　放った</div>
 <div lang="zh">我的箭已射出</div>
 <br />
-<div lang="mö">hoihan ya ba de bini</div>
+<div lang="mö">hoihan ya ba de bini?</div>
 <div lang="ja">囲場は　どこ？</div>
 <div lang="zh">围场在哪里呢？</div>
 <br />
