@@ -132,16 +132,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -181,6 +181,93 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/download-files-in-devtools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/download-files-in-devtools/" class="post-title-link" itemprop="url">下载 Chrome 开发者工具「网络」面板中的文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-26 13:47:52" itemprop="dateCreated datePublished" datetime="2022-12-26T13:47:52+08:00">2022-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A1%B5%E9%9D%A2%E4%BB%94%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" itemprop="url" rel="index"><span itemprop="name">页面仔的自我修养</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Chrome 开发者工具的「网络」面板可以查看所有的网络请求。<code>fetch</code> 发送的请求不会出现在「源代码」面板中，只能通过「网络」里下载。讨厌的是，Chrome 没有提供在列表内直接下载对应的响应的功能，双击对应的请求仍然只会在新标签页重新发送请求，而不是下载已抓取的资源。若远程服务器上的资源已失效，则无法成功下载。虽然可以直接通过「响应」查看内容，但若请求是 binary，则可能包含非法的 Unicode 位点，无法通过复制粘贴将内容正确地保存到本地。</p>
+<p>此时，可以通过右键任意一请求，点选菜单最下方「以 HAR 格式保存所有内容」或点击如下所示的下载按钮保存 HAR。</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/209518112-363973c9-ccca-412c-889c-05f6b530bf01.png" alt="" /><figcaption>保存 HAR</figcaption>
+</figure>
+<p>HAR 实质是 JSON。通过文本编辑器打开下载的 HAR 文件，依据「标头」-「响应标头」中的 <code>Content-Length</code> 查找到对应的请求内容，即可在 <code>content &gt; text</code> 中看到 Base64 编码的 response 内容。</p>
+<p><img src="https://user-images.githubusercontent.com/20166026/209519101-4785d3ec-3d06-476f-849e-1afb31384a18.png" /></p>
+<p>此时我们可以安心地将内容复制出来，解码即可。推荐使用命令行工具。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> codecs <span class="keyword">import</span> <span class="built_in">open</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;b64.txt&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = base64.b64decode(f.read())</span><br><span class="line"><span class="built_in">print</span>(content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;out.txt&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(content)</span><br></pre></td></tr></table></figure>
+<p>注意若用 Python 处理，写入文件的内容不一定是合法字符串，故 <code>open</code> 的参数需要为 <code>wb</code>，否则会有 <code>TypeError: write() argument must be str, not bytes</code>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -514,6 +601,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/%E9%A1%B5%E9%9D%A2%E4%BB%94%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" itemprop="url" rel="index"><span itemprop="name">页面仔的自我修养</span></a>
         </span>
     </span>
 
@@ -1383,98 +1474,6 @@ GET
 <p>数学老师常说，《考纲》「要求考生克服紧张情绪，以平和的心态参加考试，合理支配考试时间，以实事求是的科学态度解答试题，树立战胜困难的信心，体现锲而不舍的精神」。就好像你深知你练习的内容可能跟高考毫无关联，深知你高考的时候该错的还是会错，深知你要用你那并不娴熟的逻辑推理去做那并没有什么逻辑道理的题，但是你依然满怀信心地参加考试一样。📝</p>
 <hr />
 <p>2021 年 5 月 7 日 9 时于纯纯写作。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/study-rooms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/study-rooms/" class="post-title-link" itemprop="url">自习室</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-13 22:50:52" itemprop="dateCreated datePublished" datetime="2021-03-13T22:50:52+08:00">2021-03-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%A2%98%E9%9A%99%E7%A2%8E%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">题隙碎笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>昨天早上偶然听到一个人谈论他在付费自习室的体验。</p>
-<p>自习室有单独的包间，价格 40 元每小时，然而因为使用的人太少了，租用时间长后就会有巨大优惠。在普通的位置上，有隔着隔板面对面的位置。他对面的人是有些 abnormal，没有按规矩每天离开时把自己的物品拿走，总是穿着人大附中的校服，在桌上贴了个写着「700」（注：指高考分数）的纸张，并且读《红楼梦》。</p>
-<p>这才想起コロナ涌现伊始的那段时间，扬州市图书馆关门大吉。之后的几月是限流，每日数百人，最多同时进入若干人。因为很早就取消了借书不还的期限，所以还书并不是一件需要着急的事，更何况二层图书馆门外还有自动还书机，限流似乎是合情合理的事。于是图书馆学习无望。即使到了北京来，大部分图书馆还是要预约。コロナ！！把多少人的生活！！！都毁了！？！？！？我不得而知。</p>
-<hr />
-<p><strong>在自习室学习有效吗？</strong><a target="_blank" rel="noopener" href="https://telegra.ph/%E8%80%83%E7%A0%94%E4%B8%AD%E5%B9%B4%E4%BA%BA%E8%B5%B0%E8%BF%9B%E4%BB%98%E8%B4%B9%E8%87%AA%E4%B9%A0%E5%AE%A4-01-09">《考研中年人，走进付费自习室》</a>中提及的理由是家里太吵不适合学习之类的。换个环境的确有用，但是一切都是稍近益狎，久了注意力依然会减弱。不过花钱应该会效率很高；可是我看了看支付宝口碑上的价格，除了一开始的几个小时 1 元优惠，即便是包日也是很贵的，纵然值得，想必破费的感觉也不好受。</p>
-<p>文章里面还有提到有特色的暗室自习室：</p>
-<p><img src="https://legra.ph/file/d632a46875e58fa1c3361.jpg" /></p>
-<p>我搜了搜，大概长这样？</p>
-<blockquote>
-<p>这家自习室主打暗室自习，突出一个「暗」字。一推开门，就跟钻进黑暗隧道差不多。只在有人学习的地方会亮起一盏黄色的灯，像是隧道尽头的亮光。 这一点亮光隐喻着「希望」。</p>
-</blockquote>
-<p>虽然听起来奇出怪样，但是作为 ADHD，确实常有在夜已央时在暗淡的黄色护眼灯光下体会到 <a target="_blank" rel="noopener" href="https://www.reddit.com/r/ADHD/comments/c4gytt/adhd_at_night_random_bursts_of_energy_or_focus/?utm_source=amp&amp;utm_medium=&amp;utm_content=post_title&amp;ampcid=1*1jn0zn6*cid*YW1wLWhac251bldPMlpVc19VNUl5djJEMFE.">random bursts of energy or focus for no reason（r/ADHD）</a> 而一门心思做题上瘾的时候。</p>
-<p>于是更加怀念且贪恋起扬州的好。偌大的图书馆高峰时也不会坐得特别满；二十几个城市书房遍布于风景优美的人口众多处。<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/%E6%98%8E%E6%9C%88%E6%B9%96">明月湖（维基百科）</a>畔便有两个，一个是商城附近，人较多；另一个紧邻图书馆，以俟闭馆后的读者。常常周末在那里写作业，即使周末时间紧迫也会赶过去。学校旁边是风景区，那边的城市书房在二楼（？），房间挺高，装饰也好看，只是不愿见到我们学校的学生和无所事事的家长。📝</p>
-<hr />
-<p>2021 年 3 月 13 日晚于 Notion，页面标题是「自习室」。</p>
 
       
     </div>
