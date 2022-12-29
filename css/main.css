@@ -2539,6 +2539,19 @@ mjx-container[display='true'] + br {
   padding: 4px;
   padding-top: 12px;
 }
+.yoko {
+  text-combine-upright: all;
+}
 lite-youtube {
   margin: auto;
+}
+.dead {
+  display: inline;
+  border: 1.5px solid #000;
+  color: #000;
+  min-height: 1em;
+  padding: 1px 1px;
+}
+.dead.inverted {
+  filter: invert(100%);
 }
