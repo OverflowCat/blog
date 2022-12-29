@@ -1,7 +1,7 @@
 ---
 title: 下载 Chrome 开发者工具「网络」面板中的文件
 date: 2022-12-26 13:47:52
-category: 页面仔的自我修养
+categories: 页面仔的自我修养
 tags: Chrome
 ---
 

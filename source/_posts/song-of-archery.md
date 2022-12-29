@@ -11,7 +11,7 @@ tags: 歌词
 <div class="mnc-area">
 
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
@@ -27,7 +27,7 @@ tags: 歌词
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
@@ -83,7 +83,7 @@ tags: 歌词
 <div lang="zh">咱们一起射箭吧、射箭吧</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
@@ -99,7 +99,7 @@ tags: 歌词
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
@@ -187,7 +187,7 @@ tags: 歌词
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mnc">ᠮᠠᠨᠵᡠᡳ ᠮᠠᡶᠠᡵᡳᡳ ᠠᡩᠠᠯᡳ</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mnc">ᠮᡠᠰᡝ ᠰᠠᠰᠠ ᡤᠠᠪᡨᠠᠮᠪᡳ</div>
@@ -213,7 +213,7 @@ tags: 歌词
 ## 穆麟德转写
 
 <div lang="mö">manju-i mafari-i adali</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
@@ -229,7 +229,7 @@ tags: 歌词
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
@@ -285,7 +285,7 @@ tags: 歌词
 <div lang="zh">咱们一起射箭吧、射箭吧</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
@@ -301,7 +301,7 @@ tags: 歌词
 <div lang="zh">有你渺小的身影</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>
@@ -389,7 +389,7 @@ tags: 歌词
 <div lang="zh">围场在哪里呢？</div>
 <br />
 <div lang="mö">manju-i mafari-i adali</div>
-<div lang="ja">満州の　祖先の　ように</div>
+<div lang="ja">満洲の　祖先の　ように</div>
 <div lang="zh">像满洲的先民们一样</div>
 <br />
 <div lang="mö">muse sasa gabtambi</div>

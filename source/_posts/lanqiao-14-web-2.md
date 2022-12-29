@@ -66,10 +66,10 @@ In case you still do not know how to center `div`s horizontally & vertically, re
 .avatar,
 .card {
   position: absolute;
-  left: θ;
-  top: θ;
+  left: 0;
+  top: 0;
   bottom: 0;
-  right: θ;
+  right: 0;
   margin: auto;
 }
 
