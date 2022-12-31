@@ -2546,12 +2546,8 @@ lite-youtube {
   margin: auto;
 }
 .dead {
-  display: inline;
-  border: 1.5px solid #000;
-  color: #000;
+  border: 1.5px solid;
+  filter: grayscale(1) contrast(999);
   min-height: 1em;
   padding: 1px 1px;
-}
-.dead.inverted {
-  filter: invert(100%);
 }
