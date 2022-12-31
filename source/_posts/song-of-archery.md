@@ -406,7 +406,7 @@ tags: 歌词
 <br />
 <div lang="mö">sini buya beye bi</div>
 <div lang="ja">あなたの　小さな　姿が　ある</div>
-<div lang="zh">有你渺小的身影</div>
+<div lang="zh">有你渺小的身影🏹</div>
 <br />
 <style>
     br {
