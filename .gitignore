@@ -8,3 +8,4 @@ _multiconfig.yml
 themes
 templates/*
 *.svg
+new-blog/*

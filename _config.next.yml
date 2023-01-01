@@ -812,7 +812,7 @@ mermaid:
 # For more information: http://velocityjs.org
 motion:
   enable: true
-  async: false
+  async: true
   transition:
     # Transition variants:
     # fadeIn | flipXIn | flipYIn | flipBounceXIn | flipBounceYIn
@@ -823,7 +823,7 @@ motion:
     # perspectiveUpIn | perspectiveDownIn | perspectiveLeftIn | perspectiveRightIn
     post_block: fadeIn
     post_header: slideDownIn
-    post_body: swoopIn
+    post_body: expandIn
     coll_header: slideLeftIn
     # Only for Pisces | Gemini.
     sidebar: perspectiveLeftIn
