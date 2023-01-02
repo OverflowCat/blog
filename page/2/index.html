@@ -133,12 +133,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -182,6 +182,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/geometric-properties-of-cross-sections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/geometric-properties-of-cross-sections/" class="post-title-link" itemprop="url">截面的几何性质</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-19 16:59:30" itemprop="dateCreated datePublished" datetime="2022-11-19T16:59:30+08:00">2022-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9D%90%E6%96%99%E5%8A%9B%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">材料力学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="静距和形心">静距和形心</h2>
+<h3 id="定义">定义</h3>
+<p><span class="math inline">\(S_z\)</span> 表示截面到 <span class="math inline">\(z\)</span> 轴的静距， <span class="math inline">\(y_C\)</span> 表示形心的 <span class="math inline">\(y\)</span> 轴坐标．</p>
+<p>静距的量纲为长度的 3 次方．</p>
+<p>截面对某个轴线的静距是微元面积与其到该轴线距离的乘积的积分，即</p>
+<p><span class="math display">\[S_y=\int\limits_{A} z\mathrm d A\]</span></p>
+<p><span class="math display">\[S_z=\int\limits_{A} y\mathrm d A\]</span></p>
+<h3 id="定理">定理</h3>
+<p>由<strong>合力矩定理</strong>可得</p>
+<p><span class="math display">\[z_C=\frac{S_y}{A}, y_C=\frac{S_z}{A}.\]</span></p>
+<p>故我们有</p>
+<p><span class="math display">\[S_y=z_CA, S_z=y_CA.\]</span></p>
+<p>如果我们选择的<strong>坐标轴</strong>穿过了形心，则其称作<strong>形心轴</strong>．此时 <span class="math inline">\(z_C\)</span> 或 <span class="math inline">\(y_C\)</span> 为 <span class="math inline">\(0\)</span> ．又 <span class="math inline">\(A\)</span> 不为 <span class="math inline">\(0\)</span> ，所以 <span class="math inline">\(S_y\)</span> 或 <span class="math inline">\(S_z\)</span> 为 <span class="math inline">\(0\)</span>．即有定理：<strong>若坐标轴是形心轴，则截面对其静矩为 <span class="math inline">\(0\)</span></strong>．其逆命题也成立．</p>
+<h3 id="计算">计算</h3>
+<p>若界面形状由多个基本图形组成，则形心坐标为各图形静距之和与各图形面积之和的比值．</p>
+<p>实际计算中，可以记住基本图形的公式，无需通过积分求．</p>
+<h4 id="矩形的静距">矩形的静距</h4>
+<p>矩形的静距为长、宽、矩形形心到轴距离三者的乘积：</p>
+<p><span class="math display">\[S_z=bh\cdot\frac 1 2 h=\frac 1 2 bh^2.\]</span></p>
+<h2 id="惯性矩">惯性矩</h2>
+<h3 id="定义-1">定义</h3>
+<p>惯性矩的量纲为长度的 4 次方．</p>
+<p>截面对某个轴线的惯性矩是微元面积与其到该轴线距离 2 次方乘积的积分，即</p>
+<p><span class="math display">\[I_{z}=\int\limits_{A} y^{2} \mathrm{~d} A\]</span></p>
+<p><span class="math display">\[I_{y}=\int\limits_{A} z^{2} \mathrm{~d} A\]</span></p>
+<h3 id="计算-1">计算</h3>
+<h4 id="矩形的惯性矩">矩形的惯性矩</h4>
+<p>对 <span class="math inline">\(z\)</span> 轴</p>
+<p><span class="math display">\[I_z=\frac{bh^3}{3}\]</span></p>
+<p>其中， <span class="math inline">\(b\)</span> 为宽， <span class="math inline">\(h\)</span> 为高．</p>
+<p>对形心轴</p>
+<p><span class="math display">\[I_z=\frac{bh^3}{12}\]</span></p>
+<h4 id="圆的惯性矩">圆的惯性矩</h4>
+<p>对形心轴</p>
+<p><span class="math display">\[I_z = \frac{\pi D^4}{64}\]</span></p>
+<h4 id="圆环的惯性矩">圆环的惯性矩</h4>
+<p><span class="math display">\[I_z = \frac{\pi D^4(1-{\frac d D}^4)}{64}\]</span></p>
+<p>其中， <span class="math inline">\(d\)</span> 为内环直径， <span class="math inline">\(D\)</span> 为外环直径．</p>
+<h4 id="三角形的惯性矩">三角形的惯性矩</h4>
+<p><span class="math display">\[I_z = \frac{bh^3}{36}\]</span></p>
+<p>其中， <span class="math inline">\(b\)</span> 为底边长， <span class="math inline">\(h\)</span> 为高．</p>
+<h3 id="定理-1">定理</h3>
+<p>由<strong>平行轴定理</strong>，对<strong>转动惯量</strong>，我们有</p>
+<p><span class="math display">\[I_{z&#39;}=I_C+Md^2\]</span></p>
+<p>其中， <span class="math inline">\(M\)</span> 为刚体质量．</p>
+<p>对惯性矩，我们也有</p>
+<p><span class="math display">\[I_z = I_x + Ad^2\]</span></p>
+<h2 id="极惯性矩">极惯性矩</h2>
+<h3 id="定义-2">定义</h3>
+<p>截面对于一个轴的<strong>极惯性矩</strong>，又称<strong>截面二次极矩</strong>，是截面上微元面积与其到坐标原点距离 2 次方乘积的积分，即</p>
+<p><span class="math display">\[I_p = \int\limits_A\rho^2\mathrm d A\]</span></p>
+<p>其中， <span class="math inline">\(\rho\)</span> 为微元距轴的距离．</p>
+<p>有</p>
+<p><span class="math display">\[I_p = \int\limits_A\rho^2\mathrm d A=\int\limits_A(z^2+y^2)\mathrm d A=I_y+I_z.\]</span></p>
+<p>以上．🪵</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1018,7 +1150,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
