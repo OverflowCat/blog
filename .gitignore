@@ -8,3 +8,4 @@ _multiconfig.yml
 themes
 *.svg
 pnpm-lock.yaml
+public/*
