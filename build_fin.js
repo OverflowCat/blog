@@ -18,7 +18,9 @@ async function main() {
         const new_path = p.replace(/^public_astro/, "public");
         if (fs.existsSync(new_path))
             fs.rmSync(new_path);
-        fs.renameSync(p, new_path);
+        if (new_path.endsWith('.svg')) continue;
+        console.log(p);
+        fs.cpSync(p, new_path);
     }
 }
 
