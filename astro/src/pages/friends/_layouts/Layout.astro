@@ -3,22 +3,21 @@ export interface Props {
   title: string;
 }
 
+import Page from "@templates/zh/Page.astro";
+
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title} | 新世界的大门</title>
-  </head>
-  <body>
-    <slot />
-  </body>
-</html>
+<Page title="友链" bar_index={2}>
+  <slot />
+</Page>
+
+<style>
+  * {
+    margin: auto;
+  }
+</style>
+
 <style is:global>
   :root {
     --accent: 124, 58, 237;

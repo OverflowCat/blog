@@ -6,6 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
@@ -22,6 +23,7 @@ const { title } = Astro.props;
 <style>
   body {
     margin: 8px;
+    text-align: center;
   }
 
   /* Modern CSS Reset: https://piccalil.li/blog/a-modern-css-reset/ */
@@ -98,5 +100,12 @@ const { title } = Astro.props;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+</style>
+
+<style is:global>
+  :root {
+    --body-bg-color: #eee;
+    --accent-color: rgb(155, 61, 149);
   }
 </style>

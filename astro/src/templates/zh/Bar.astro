@@ -2,6 +2,9 @@
 export interface Props {
   index?: number;
 }
+
+import Logo from "@components/Logo.astro";
+
 const items = [
   ["主页", "Home", "/"],
   ["归档", "Archive", "/archive"],
@@ -12,7 +15,10 @@ const items = [
 const { index } = Astro.props;
 ---
 
-<ol>
+<div class="center" id="logo">
+  <Logo />
+</div>
+<ol class="center">
   {
     items.map((item, i) => (
       <li>
@@ -34,11 +40,28 @@ const { index } = Astro.props;
 </ol>
 
 <style>
-  ol {
+  * {
+    user-select: none;
+  }
+  .center {
     text-align: center;
     place-items: center center;
+  }
+  #logo {
+    padding: 4px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      202deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(0, 0, 0, 1) 20%,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(255, 255, 255, 1) 95%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+  ol {
     font-size: 18px;
-    user-select: none;
   }
   li {
     display: inline-block;
@@ -66,7 +89,7 @@ const { index } = Astro.props;
     left: 0;
   }
   a::before {
-    background-color: #54b3d6;
+    background-color: var(--accent-color);
     height: 2px;
     bottom: 0;
     transform-origin: 100% 50%;
@@ -80,7 +103,7 @@ const { index } = Astro.props;
     transform-origin: 100% 50%;
     transform: translate3d(200%, 0, 0);
     transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-    color: #54b3d6;
+    color: var(--accent-color);
   }
   a:hover::before {
     transform-origin: 0% 50%;
