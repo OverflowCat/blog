@@ -1,0 +1,94 @@
+---
+import Layout from "./_layouts/Layout.astro";
+import Card from "./_components/Card.astro";
+import Color from "./_components/Color.astro";
+import Stroke from "./_components/Stroke.astro";
+---
+
+<!-- 2022-11-24 19:15:00 -->
+<Layout title="猫猫的朋友">
+  <h1>猫猫的<span class="text-gradient">朋友们</span></h1>
+  <p class="info">可爱喵！以下友链按添加的时间顺序排列。</p>
+  <ul role="list" class="link-card-grid">
+    <Card
+      link="blog.hongdou.dev"
+      title="红豆的猫窝"
+      avatar="//telegra.ph/file/2d55a0dadc16a08c3f652.png"
+    >
+      <del>
+        <Color color="rgb(245, 169, 184)">粉</Color><Color
+          color="rgb(91, 206, 250)"
+        >
+          蓝
+        </Color><Stroke><Color color="#FFF">白</Color></Stroke></del
+      ><Color color="red">红</Color>豆豆
+    </Card>
+    <Card
+      link="bersella-ai.cc"
+      title="Bersella AI"
+      avatar="//bersella-ai.cc/uploads/avatar.png"
+    >
+      My memories & dreams
+    </Card>
+
+    <Card
+      link="rkm.mx"
+      title="Rikumi"
+      avatar="//avatars.githubusercontent.com/u/5051300?v=4"
+    >
+      我的米米！！！
+    </Card>
+    <Card
+      link="ray-eldath.me"
+      title="Ray Eldath"
+      avatar="//telegra.ph/file/e2aca16b28236a5d3d456.png"
+    >
+      寒寒！
+    </Card>
+    <Card
+      link="lemonhx.moe"
+      title="LemonHX"
+      avatar="//avatars.githubusercontent.com/u/35558393?v=4"
+    >
+      柠檬🍋
+    </Card>
+    <Card
+      link="cynosura.one"
+      title="楓々"
+      avatar="//cynosura.one/img/avatar.webp"
+    >
+      熊熊
+    </Card>
+  </ul>
+</Layout>
+<style>
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .info {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .info strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

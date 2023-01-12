@@ -1,0 +1,15 @@
+---
+export interface Props {
+  color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<span><slot /></span>
+
+<style define:vars={{color}}>
+    span {
+        color: var(--color);
+    }
+</style>

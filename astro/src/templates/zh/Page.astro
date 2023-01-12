@@ -1,0 +1,27 @@
+---
+export interface Props {
+  title: string;
+  bar_index: number;
+}
+
+const { title, bar_index } = Astro.props;
+import Base from "./Base.astro";
+import Bar from "./Bar.astro";
+import Logo from "@components/Logo.astro";
+---
+
+<Base title={title + " | 新世界的大门"}>
+  <Bar index={bar_index} />
+  <main>
+    <slot />
+  </main>
+</Base>
+
+<style>
+  main {
+    max-width: 1200px;
+    padding: 16px;
+    margin: 8px auto;
+    text-align: center;
+  }
+</style>

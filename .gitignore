@@ -6,6 +6,7 @@ node_modules/
 .deploy*/
 _multiconfig.yml
 themes
-templates/*
 *.svg
-new-blog/*
+pnpm-lock.yaml
+public/*
+public_astro/*

@@ -3,7 +3,7 @@ name: Pages
 on:
   push:
     branches:
-      - src  # default branch
+      - src # default branch
 
 jobs:
   pages:
@@ -29,7 +29,15 @@ jobs:
         run: sudo apt-get install -y pandoc
       - name: Install Dependencies
         run: npm install
-      - name: Build
+      - name: Build Astro
+        run: |
+          cd astro
+          npm install pnpm -g
+          pnpm install
+          pnpm build
+          cd ..
+          node build_fin.js
+      - name: Build Hexo
         run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
