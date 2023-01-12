@@ -1,0 +1,36 @@
+---
+export async function getStaticPaths() {
+  const files = await Astro.glob("../posts/**");
+  let pwd = process.cwd().replaceAll("\\", "/");
+  if (!pwd.endsWith("/")) pwd += "/";
+  const post_dir = pwd + "src/posts/";
+  const prefix_length = post_dir.length;
+  const slugs = files
+    .map((x) => x?.file?.slice(prefix_length) ?? "")
+    .filter((x) => x !== undefined && x !== "");
+  const remove_extension = (x) => x.replace(/\.[a-zA-Z0-9]+$/, "");
+  console.log(slugs);
+  return slugs.map((x) => {
+    const no_ext = remove_extension(x);
+    return {
+      params: {
+        slug: no_ext.endsWith("/index")
+          ? no_ext.replace(/\/index$/, "")
+          : no_ext,
+      },
+      props: {
+        path: x,
+      },
+    };
+  });
+}
+
+import BlogPost from "/src/layouts/BlogPost.astro";
+
+const { slug } = Astro.params;
+const { path } = Astro.props;
+const Page = await import("../src/posts/" + path);
+const { Content } = Page;
+---
+
+<Content />

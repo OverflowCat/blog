@@ -1,0 +1,24 @@
+{
+  "name": "@example/blog",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.14.0",
+    "@astrojs/rss": "^2.0.0",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/svelte": "^1.0.2",
+    "astro": "^1.8.0",
+    "rehype-katex": "^6.0.2",
+    "remark-math": "^5.1.1",
+    "sanitize-html": "^2.8.1",
+    "svelte": "^3.46.4"
+  }
+}

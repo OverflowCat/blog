@@ -1,0 +1,18 @@
+---
+export interface Props {
+  webm: string;
+  height?: string;
+  width?: string;
+}
+
+const { webm, height, width } = Astro.props;
+---
+
+<video playsinline autoplay muted loop height={height} width={width}>
+  {webm && <source src={webm} type="video/webm" />}
+</video>
+<style>
+  video {
+    object-fit: fill;
+  }
+</style>

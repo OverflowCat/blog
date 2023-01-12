@@ -1,0 +1,14 @@
+---
+---
+
+<script is:inline type="module">
+  import cursoreffects from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+  new cursoreffects.emojiCursor({
+    emoji: ["🔥", "🐬", "🦆"],
+    element: document.querySelector("div.cursor-effect"),
+  });
+</script>
+
+<div class="cursor-effect">
+  <slot />
+</div>

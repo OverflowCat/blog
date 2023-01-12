@@ -1,0 +1,109 @@
+---
+export interface Props {
+  index?: number;
+}
+const items = [
+  ["主页", "Home", "/"],
+  ["归档", "Archive", "/archive"],
+  ["友链", "Friends", "/friends"],
+  ["订阅", "RSS", "/rss.xml"],
+  ["关于", "About", "/about"],
+];
+const { index } = Astro.props;
+---
+
+<ol>
+  {
+    items.map((item, i) => (
+      <li>
+        <a
+          href={item[2]}
+          data-replace={index === i ? "本页" : item[0]}
+          class={index === i ? "current" : ""}
+        >
+          <span>
+            &nbsp;
+            <span>{item[0]}</span>
+            <span lang="en">/ {item[1]}</span>
+            &nbsp;
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  ol {
+    text-align: center;
+    place-items: center center;
+    font-size: 18px;
+    user-select: none;
+  }
+  li {
+    display: inline-block;
+    text-align: center;
+    margin-left: 0.72em;
+    margin-right: 0.72em;
+    font-weight: 700;
+  }
+  a {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
+  a.current {
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    color: #000000;
+  }
+  a::before,
+  a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+  }
+  a::before {
+    background-color: #54b3d6;
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  a::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: #54b3d6;
+  }
+  a:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+  a:hover::after {
+    transform: translate3d(0, 0, 0);
+  }
+  a span {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  a:hover span {
+    transform: translate3d(-200%, 0, 0);
+  }
+  a {
+    text-decoration: none;
+    color: #434343;
+  }
+
+  @media only screen and (max-width: 800px) {
+    span[lang="en"] {
+      display: none;
+    }
+  }
+</style>

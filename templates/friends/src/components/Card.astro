@@ -1,0 +1,122 @@
+---
+export interface Props {
+  title: string;
+  link: string;
+  avatar: string;
+}
+
+const { link, title, avatar } = Astro.props;
+const href = "https://" + link;
+---
+
+<li class="link-card">
+  <a href={href}>
+    <div class="grid-container">
+      <div class="title"><h2 set:html={title} /></div>
+      <img class="avatar" src={avatar} />
+      <div class="link"><p id="link"><code>{link}</code></p></div>
+      <blockquote class="quote">
+        <slot />
+      </blockquote>
+    </div>
+  </a>
+</li>
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 2.5px;
+    background-color: white;
+    background-image: var(--accent-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .link-card > a {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.3rem;
+    border-radius: 0.35rem;
+    color: #111;
+    background-color: white;
+    opacity: 0.8;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #444;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent));
+  }
+  img.avatar {
+    height: 54px;
+    width: 54px;
+    border-radius: 50%;
+    border: solid #44444466 1px;
+  }
+  .title {
+    grid-area: title;
+  }
+
+  .avatar {
+    grid-area: avatar;
+  }
+
+  .quote {
+    grid-area: quote;
+    text-align: left;
+    margin: 0.5rem;
+    background: #f9f9f9;
+    border-left: 8px solid #ccc;
+    margin: 1em 6px;
+    line-height: 1.8em;
+    padding: 0.2em 6px;
+    /* quotes: "\201C""\201D""\2018""\2019"; */
+  }
+
+  .link {
+    grid-area: link;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      "title title title title avatar"
+      "link  link  link  link  avatar"
+      "quote quote quote quote quote"
+      "quote quote quote quote quote"
+      "quote quote quote quote quote";
+    gap: 0.35rem;
+    padding: 0.1rem;
+    justify-content: space-between;
+  }
+
+  code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+</style>
+
+<style is:raw>
+  a {
+    border-bottom: none !important;
+  }
+</style>
