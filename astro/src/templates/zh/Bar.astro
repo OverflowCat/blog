@@ -7,7 +7,7 @@ import Logo from "@components/Logo.astro";
 
 const items = [
   ["主页", "Home", "/"],
-  ["归档", "Archive", "/archive"],
+  ["归档", "Archive", "/archives"],
   ["友链", "Friends", "/friends"],
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
@@ -124,7 +124,7 @@ const { index } = Astro.props;
     color: #434343;
   }
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 900px) {
     span[lang="en"] {
       display: none;
     }

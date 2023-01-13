@@ -26,7 +26,7 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
-code_dir: downloads/code
+code_dir: code
 i18n_dir: :lang
 skip_render:
 
@@ -68,6 +68,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  页面仔的自我修养: frontend
+  年终总结: year-wrapped
 tag_map:
 
 # Metadata elements
@@ -116,7 +118,7 @@ feed:
     - rss.xml
 
 sitemap:
-  path: 
+  path:
     - sitemap.xml
     - sitemap.txt
   #template:

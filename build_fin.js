@@ -18,8 +18,10 @@ async function main() {
         const new_path = p.replace(/^public_astro/, "public");
         if (fs.existsSync(new_path))
             fs.rmSync(new_path);
-        if (new_path.endsWith('.svg')) continue;
-        console.log(p);
+        if (new_path.endsWith('.svg')) {
+            console.log("\x1B[33m  └─Copy skipped.\x1B[0m");
+            continue;
+        };
         fs.cpSync(p, new_path);
     }
 }
