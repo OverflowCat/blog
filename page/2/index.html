@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -182,6 +182,119 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/erect-the-fence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/erect-the-fence/" class="post-title-link" itemprop="url">Graham 扫描法求凸包</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-19 22:58:41" itemprop="dateCreated datePublished" datetime="2022-11-19T22:58:41+08:00">2022-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目">题目</h2>
+<p>今天的力扣（LCUS）每日挑战是 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/erect-the-fence/">587. 安装栅栏</a>．</p>
+<blockquote>
+<p>在一个二维的花园中，有一些用 <span class="math inline">\((x, y)\)</span> 坐标表示的树．由于安装费用十分昂贵，你的任务是先用最短的绳子围起所有的树．只有当所有的树都被绳子包围时，花园才能围好栅栏．你需要找到正好位于栅栏边界上的树的坐标．</p>
+</blockquote>
+<h2 id="知识点">知识点</h2>
+<p>其实质是求若干点组成的二维 <a target="_blank" rel="noopener" href="https://oi-wiki.org/geometry/convex-hull/">凸包</a>（convex hull）．常用的求法有 Graham 扫描法（<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Graham_scan">Graham's scan</a>）和 Andrew 算法，本文提供了一个由 Rust 实现的 Graham 扫描法．</p>
+<h2 id="思路">思路</h2>
+<p>算法的步骤如下：</p>
+<ol type="1">
+<li>若点个数少于 3 个，则直接返回输入．否则按如下方法求解．</li>
+<li>首先，找出纵坐标最小的点．若有多个，则选横坐标最小的点．以该点建立极坐标系．</li>
+<li>此时，将所有的点按照极角的大小升序排列，若有极角相同的，则再按该点到极点距离升序排列．</li>
+<li>然后维护一个栈．先将排列好的点的前两个入栈，然后对于其后的每一个点 <span class="math inline">\(C\)</span>，记栈中最后一个点为 <span class="math inline">\(B\)</span>，倒数第二个点为 <span class="math inline">\(A\)</span>，若以 <span class="math inline">\(A\)</span> 为圆心，<span class="math inline">\(\overrightarrow{AC}\)</span> 在 <span class="math inline">\(\overrightarrow{AB}\)</span> 顺时针方向，则说明为凹，需要出栈一次，重复上述步骤，直至<span class="math inline">\(\overrightarrow{AC}\)</span> 与 <span class="math inline">\(\overrightarrow{AB}\)</span> 重合，或前者在后者逆时针方向．此时再将 C 点入栈．</li>
+<li>处理完所有的点后，需要再找出不在栈中但在栈的最后一个点与栈的第一个点构成的线段上的点．</li>
+</ol>
+<h2 id="示例">示例</h2>
+<h3 id="输入数据">输入数据</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">4</span>,<span class="number">0</span>],[<span class="number">5</span>,<span class="number">0</span>],[<span class="number">6</span>,<span class="number">1</span>],[<span class="number">7</span>,<span class="number">2</span>],[<span class="number">7</span>,<span class="number">3</span>],[<span class="number">7</span>,<span class="number">4</span>],[<span class="number">6</span>,<span class="number">5</span>],[<span class="number">5</span>,<span class="number">5</span>],[<span class="number">4</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">4</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- - * * * * * -</span><br><span class="line">- * - - - - - *</span><br><span class="line">* * - - - - - *</span><br><span class="line">- * - - * - - *</span><br><span class="line">- - * - - - * -</span><br><span class="line">- - - * * * - -</span><br></pre></td></tr></table></figure>
+<h3 id="预期结果">预期结果</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">4</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">5</span>],[<span class="number">6</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">7</span>,<span class="number">4</span>],[<span class="number">7</span>,<span class="number">3</span>],[<span class="number">7</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">3</span>],[<span class="number">5</span>,<span class="number">0</span>],[<span class="number">5</span>,<span class="number">5</span>],[<span class="number">4</span>,<span class="number">0</span>],[<span class="number">6</span>,<span class="number">5</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- - * * * * * -</span><br><span class="line">- * - - - - - *</span><br><span class="line">* - - - - - - *</span><br><span class="line">- * - - - - - *</span><br><span class="line">- - * - - - * -</span><br><span class="line">- - - * - * - -</span><br></pre></td></tr></table></figure>
+<h3 id="错误结果">错误结果</h3>
+<p>若没有第 5 步，则缺少两点 <span class="math inline">\((1, 2), (2, 1)\)</span> <span class="math inline">\(\small{\mathrm{(0-indexed)}}\)</span>．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">7</span>,<span class="number">3</span>],[<span class="number">5</span>,<span class="number">0</span>],[<span class="number">7</span>,<span class="number">4</span>],[<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">4</span>,<span class="number">0</span>],[<span class="number">5</span>,<span class="number">5</span>],[<span class="number">6</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">6</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">5</span>],[<span class="number">7</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">3</span>],[<span class="number">3</span>,<span class="number">5</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- - * * * * * -</span><br><span class="line">- * - - - - - *</span><br><span class="line">* - - - - - - *</span><br><span class="line">- - - - - - - *</span><br><span class="line">- - - - - - * -</span><br><span class="line">- - - * * * - -</span><br></pre></td></tr></table></figure>
+<h2 id="计算">计算</h2>
+<p>需要用到一些向量的性质．</p>
+<h3 id="判断逆时针">判断逆时针</h3>
+<p>两向量叉积为正，则 <span class="math inline">\(\overrightarrow{AC}\)</span> 在 <span class="math inline">\(\overrightarrow{AB}\)</span> 的逆时针方向．</p>
+<h3 id="判断点在线段上">判断点在线段上</h3>
+<p>记线段为 <span class="math inline">\(AB\)</span>，点为 <span class="math inline">\(P\)</span>，保证 <span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>、<span class="math inline">\(P\)</span> 三点不重合．若 <span class="math inline">\(\overrightarrow{AP}\cdot\overrightarrow{BP} = -|AP|\cdot|BP|\)</span>，则点在线段上．</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::&#123;cmp::Ordering::*, collections::HashSet&#125;;</span><br><span class="line"><span class="meta">#[derive(Copy, Clone, Debug, Hash, Eq, PartialEq)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Tree</span>(<span class="type">i32</span>, <span class="type">i32</span>);</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="meta">#[inline]</span></span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">cross_product</span>(x_1: <span class="type">i32</span>, y_1: <span class="type">i32</span>, x_2: <span class="type">i32</span>, y_2: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">        x_1 * y_2 - x_2 * y_1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">outer_trees</span>(trees: <span class="type">Vec</span>&lt;<span class="type">Vec</span>&lt;<span class="type">i32</span>&gt;&gt;) <span class="punctuation">-&gt;</span> <span class="type">Vec</span>&lt;<span class="type">Vec</span>&lt;<span class="type">i32</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> trees.<span class="title function_ invoke__">len</span>() &lt; <span class="number">3</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> trees;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">init</span> = (<span class="number">114514</span>, <span class="number">114514</span>);</span><br><span class="line">        trees.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">for_each</span>(|t| <span class="keyword">match</span> t[<span class="number">1</span>].<span class="title function_ invoke__">cmp</span>(&amp;init.<span class="number">1</span>) &#123;</span><br><span class="line">            Less =&gt; &#123;</span><br><span class="line">                init = (t[<span class="number">0</span>], t[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            Equal =&gt; &#123;</span><br><span class="line">                init.<span class="number">0</span> = init.<span class="number">0</span>.<span class="title function_ invoke__">min</span>(t[<span class="number">0</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            _ =&gt; &#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// println!(&quot;左下角的点是 &#123;:?&#125;&quot;, init);</span></span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">trees</span>: <span class="type">Vec</span>&lt;Tree&gt; = trees</span><br><span class="line">            .<span class="title function_ invoke__">into_iter</span>()</span><br><span class="line">            .<span class="title function_ invoke__">map</span>(|t| <span class="title function_ invoke__">Tree</span>(t[<span class="number">0</span>] - init.<span class="number">0</span>, t[<span class="number">1</span>] - init.<span class="number">1</span>))</span><br><span class="line">            <span class="comment">// 这里以左下角的点为 (0, 0)</span></span><br><span class="line">            .<span class="title function_ invoke__">collect</span>();</span><br><span class="line">        trees.<span class="title function_ invoke__">sort_by</span>(</span><br><span class="line">            |a, b| <span class="keyword">match</span> &#123; <span class="number">0</span>.<span class="title function_ invoke__">cmp</span>(&amp;<span class="keyword">Self</span>::<span class="title function_ invoke__">cross_product</span>(a.<span class="number">0</span>, a.<span class="number">1</span>, b.<span class="number">0</span>, b.<span class="number">1</span>)) &#125; &#123;</span><br><span class="line">                Equal =&gt; (a.<span class="number">0</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>) + a.<span class="number">1</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>)).<span class="title function_ invoke__">cmp</span>(&amp;(b.<span class="number">0</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>) + b.<span class="number">1</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>))),</span><br><span class="line">                res =&gt; res,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">stack</span> = <span class="type">Vec</span>::<span class="title function_ invoke__">new</span>();</span><br><span class="line">        stack.<span class="title function_ invoke__">push</span>(trees[<span class="number">0</span>]);</span><br><span class="line">        stack.<span class="title function_ invoke__">push</span>(trees[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> <span class="variable">t</span> <span class="keyword">in</span> trees.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">skip</span>(<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">length</span> = stack.<span class="title function_ invoke__">len</span>();</span><br><span class="line">                length &gt; <span class="number">1</span> &amp;&amp; &#123;</span><br><span class="line">                    <span class="keyword">let</span> (a, b) = (stack[stack.<span class="title function_ invoke__">len</span>() - <span class="number">2</span>], stack[stack.<span class="title function_ invoke__">len</span>() - <span class="number">1</span>]);</span><br><span class="line">                    <span class="keyword">let</span> <span class="variable">x_1</span> = t.<span class="number">0</span> - a.<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">let</span> <span class="variable">y_1</span> = t.<span class="number">1</span> - a.<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">let</span> <span class="variable">x_2</span> = b.<span class="number">0</span> - a.<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">let</span> <span class="variable">y_2</span> = b.<span class="number">1</span> - a.<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">Self</span>::<span class="title function_ invoke__">cross_product</span>(x_1, y_1, x_2, y_2) &gt; <span class="number">0</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; &#123;</span><br><span class="line">                stack.<span class="title function_ invoke__">pop</span>().<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            stack.<span class="title function_ invoke__">push</span>(t.<span class="title function_ invoke__">clone</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">trees</span>: HashSet&lt;_&gt; = trees.<span class="title function_ invoke__">into_iter</span>().<span class="title function_ invoke__">collect</span>();</span><br><span class="line">        <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> &amp;stack &#123;</span><br><span class="line">            trees.<span class="title function_ invoke__">remove</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">Tree</span>(p1x, p1y) = stack[stack.<span class="title function_ invoke__">len</span>() - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">Tree</span>(p2x, p2y) = stack[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">extra</span>: <span class="type">Vec</span>&lt;Tree&gt; = trees <span class="comment">// 栈中最后一个点与栈中第一个点构成的线段上的点</span></span><br><span class="line">            .<span class="title function_ invoke__">into_iter</span>()</span><br><span class="line">            .<span class="title function_ invoke__">filter_map</span>(|a| &#123;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">Tree</span>(p_x, p_y) = a;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">vec1</span> = (p_x - p1x, p_y - p1y);</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">vec2</span> = (p_x - p2x, p_y - p2y);</span><br><span class="line">                <span class="title function_ invoke__">if</span> (vec1.<span class="number">0</span> * vec2.<span class="number">0</span> + vec1.<span class="number">1</span> * vec2.<span class="number">1</span>).<span class="title function_ invoke__">pow</span>(<span class="number">2</span>)</span><br><span class="line">                    == (vec1.<span class="number">0</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>) + vec1.<span class="number">1</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>)) * (vec2.<span class="number">0</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>) + vec2.<span class="number">1</span>.<span class="title function_ invoke__">pow</span>(<span class="number">2</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="title function_ invoke__">Some</span>(a)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="literal">None</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_ invoke__">collect</span>();</span><br><span class="line">        stack</span><br><span class="line">            .<span class="title function_ invoke__">into_iter</span>()</span><br><span class="line">            .<span class="title function_ invoke__">chain</span>(extra.<span class="title function_ invoke__">into_iter</span>())</span><br><span class="line">            .<span class="title function_ invoke__">map</span>(|x| <span class="built_in">vec!</span>[x.<span class="number">0</span> + init.<span class="number">0</span>, x.<span class="number">1</span> + init.<span class="number">1</span>])</span><br><span class="line">            .<span class="title function_ invoke__">collect</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是测试部分</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Solution</span>;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">res</span>: HashSet&lt;<span class="type">Vec</span>&lt;<span class="type">i32</span>&gt;&gt; = HashSet::<span class="title function_ invoke__">from_iter</span>(</span><br><span class="line">        Solution::<span class="title function_ invoke__">outer_trees</span>(<span class="built_in">vec!</span>[<span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">1</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">2</span>],</span><br><span class="line">        <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">4</span>], <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">3</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">2</span>]]).<span class="title function_ invoke__">into_iter</span>(),</span><br><span class="line">    );</span><br><span class="line">    <span class="built_in">assert_eq!</span>(</span><br><span class="line">        res,</span><br><span class="line">        HashSet::<span class="title function_ invoke__">from_iter</span>(</span><br><span class="line">            <span class="built_in">vec!</span>[<span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">1</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">2</span>],</span><br><span class="line">            <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">3</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">4</span>]].<span class="title function_ invoke__">into_iter</span>()</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">res</span>: HashSet&lt;<span class="type">Vec</span>&lt;<span class="type">i32</span>&gt;&gt; = HashSet::<span class="title function_ invoke__">from_iter</span>(Solution::<span class="title function_ invoke__">outer_trees</span>(<span class="built_in">vec!</span>[</span><br><span class="line">        <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">5</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">6</span>, <span class="number">1</span>], <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">3</span>],</span><br><span class="line">        <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">4</span>], <span class="built_in">vec!</span>[<span class="number">6</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">5</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">5</span>],</span><br><span class="line">        <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">4</span>], <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">3</span>], <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">1</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[<span class="number">0</span>, <span class="number">3</span>]</span><br><span class="line">    ]));</span><br><span class="line">    <span class="built_in">assert_eq!</span>(</span><br><span class="line">        res, HashSet::<span class="title function_ invoke__">from_iter</span>(</span><br><span class="line">            <span class="built_in">vec!</span>[<span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">6</span>, <span class="number">1</span>], <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">            <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">4</span>], <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">4</span>], <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">3</span>], <span class="built_in">vec!</span>[<span class="number">7</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[<span class="number">3</span>, <span class="number">0</span>],</span><br><span class="line">            <span class="built_in">vec!</span>[<span class="number">0</span>, <span class="number">3</span>], <span class="built_in">vec!</span>[<span class="number">5</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">5</span>, <span class="number">5</span>], <span class="built_in">vec!</span>[<span class="number">4</span>, <span class="number">0</span>], <span class="built_in">vec!</span>[<span class="number">6</span>, <span class="number">5</span>]].<span class="title function_ invoke__">into_iter</span>()</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上．🌲</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1022,81 +1135,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hello-world/" class="post-title-link" itemprop="url">Re: 从零开始的部落格生活</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-31 17:15:30" itemprop="dateCreated datePublished" datetime="2019-07-31T17:15:30+08:00">2019-07-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-</blockquote>
-<h2 id="你好世界">你好，世界！</h2>
-<p>两年前的时候用 Wordpress 陆续搭过几个博客，然而却并没有写多少文章；随后 VPS 到期，这事也就不了了之。现在在这里暂且再搭一个，也不想去瞎折腾了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
