@@ -9,4 +9,4 @@ themes
 *.svg
 pnpm-lock.yaml
 public/*
-public_astro/*
+dist/*

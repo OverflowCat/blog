@@ -13,9 +13,9 @@ async function* walk(dir) {
 
 // Then, use it with a simple async for loop
 async function main() {
-    for await (const p of walk('./public_astro')) {
+    for await (const p of walk('./dist')) {
         console.log(p);
-        const new_path = p.replace(/^public_astro/, "public");
+        const new_path = p.replace(/^dist/, "public");
         if (fs.existsSync(new_path))
             fs.rmSync(new_path);
         if (new_path.endsWith('.svg')) {
