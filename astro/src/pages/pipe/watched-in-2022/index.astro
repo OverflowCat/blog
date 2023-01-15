@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import BangumiCard from "../components/BangumiCard.astro";
+import Layout from "./_layouts/Layout.astro";
+import BangumiCard from "./_components/BangumiCard.astro";
 ---
 
 <Layout title="我的 2022 观影记录">
@@ -75,7 +75,7 @@ import BangumiCard from "../components/BangumiCard.astro";
         }}
       />
       <BangumiCard
-        title_ja='<span style="color:#f0555a;">リ</span>コリス・<span style=color:#00b4aa;">リ</span>コイル'
+        title_ja='<span style="color:#f0555a;">リ</span>コリス・<span style="color:#00b4aa;">リ</span>コイル'
         title_en='<span style="color:#f0555a;">L</span>ycoris <span style="color:#00b4aa;">R</span>ecoil'
         title_zh="莉可莉丝"
         sticker="https://user-images.githubusercontent.com/20166026/210098922-60138d17-9260-4eaa-831d-197c0a056125.webm"
@@ -290,8 +290,8 @@ import BangumiCard from "../components/BangumiCard.astro";
         sticker="https://raw.githubusercontent.com/OverflowCat/blog/36780e77324b2c2d4e3db0f449ba2e68e9255b2f/chinatown.webp"
       />
       <BangumiCard
-        title_zh="<span style='color: red;'><</span><span style='color: red;'>/</span>天蝎<span style='color: red;'>></span>"
-        title_en="<span style='color: red;'><</span><span style='color: red;'>/</span>SCORPION<span style='color: red;'>></span>"
+        title_zh="<span style='color: red;'>＜</span><span style='color: red;'>/</span>天蝎<span style='color: red;'>＞</span>"
+        title_en="<span style='color: red;'>＜</span><span style='color: red;'>/</span>SCORPION<span style='color: red;'>＞</span>"
         sticker="https://upload.wikimedia.org/wikipedia/zh/0/03/Scorpion_intertitle.png"
         episodes={{
           progress: 7.9,
@@ -316,7 +316,7 @@ import BangumiCard from "../components/BangumiCard.astro";
 <style>
   main {
     margin: auto;
-    padding: 1.5rem;
+    padding: 0.25rem;
     max-width: 60ch;
   }
   h1 {
@@ -334,7 +334,7 @@ import BangumiCard from "../components/BangumiCard.astro";
   .link-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr));
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 0;
   }
 </style>

@@ -10,3 +10,7 @@ themes
 pnpm-lock.yaml
 public/*
 dist/*
+source/2022/apple-music.html
+source/2022/apple-music.md
+source/_drafts/*.md
+source/playground/index.md

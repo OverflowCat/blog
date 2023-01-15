@@ -22,7 +22,7 @@ mathjax: true
 
 # 第一章：绪论
 
-渲染 (rendering)是由 3D 场景 (scene)描述生成图像的过程．**基于物理的**（physically based）渲染运用物理学规律对光与物质的相互作用建模．
+**渲染**（rendering）是由 3D **场景**（scene）描述生成图像的过程．**基于物理的**（physically based）渲染运用物理学规律对光与物质的相互作用建模．
 
 长期以来，**实时**（real-time）渲染主要采用**栅格化**（rasterization）或栅格化+**光线追踪**（ray-tracing），而本书中完全采用光线追踪．
 
