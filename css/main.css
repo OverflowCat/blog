@@ -2533,8 +2533,10 @@ mjx-container[display='true'] + br {
     padding: 10px 12px;
   }
 }
-[lang="mnc"] {
+[lang="mnc"],
+.site-author {
   font-family: "Noto Sans Mongolian", "Mongolian Baiti";
+  writing-mode: vertical-lr;
 }
 [lang="mö"] {
   font-family: monospace;
@@ -2547,6 +2549,11 @@ mjx-container[display='true'] + br {
   margin: 8px;
   padding: 4px;
   padding-top: 12px;
+}
+.site-author {
+  margin: auto;
+  vertical-align: center;
+  padding: 8px;
 }
 .yoko {
   text-combine-upright: all;
