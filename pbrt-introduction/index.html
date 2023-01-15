@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="mask-icon" href="//upload.wikimedia.org/wikipedia/commons/d/d2/Twemoji2_26e9.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7CM+PLUS+1+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xinshijiededa.men","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"mac","show_result":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"expandIn","coll_header":"slideLeftIn","sidebar":"perspectiveLeftIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文为《基于物理的渲染：从理论到实现》第三版第一章的笔记．此书通过结合具体的软件（pbrt）代码，讲解光线追踪的实现． 相关资源 本书的 官方网站．你可以在 这里 免费阅读第三版（英文），或者在 这里 免费下载第三版（中文）的 PDF（目前翻译进度到第八章）．你也可以购买清华大学出版社翻译的《物理渲染：从理论到实现（第二版）》纸质书（ISBN 9787302449812），不过价格不菲． pbr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PBRT 笔记：1. 绪论">
+<meta property="og:url" content="https://blog.xinshijiededa.men/pbrt-introduction/index.html">
+<meta property="og:site_name" content="新世界的大门">
+<meta property="og:description" content="本文为《基于物理的渲染：从理论到实现》第三版第一章的笔记．此书通过结合具体的软件（pbrt）代码，讲解光线追踪的实现． 相关资源 本书的 官方网站．你可以在 这里 免费阅读第三版（英文），或者在 这里 免费下载第三版（中文）的 PDF（目前翻译进度到第八章）．你也可以购买清华大学出版社翻译的《物理渲染：从理论到实现（第二版）》纸质书（ISBN 9787302449812），不过价格不菲． pbr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/212490756-206ba1cd-4ef7-4a25-90fe-502279a37ddf.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/212491991-3ba3c837-aa92-41b7-b941-69e49cd64865.svg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/211073342-7fc95879-c72a-470a-ba17-b666a3e687c9.png">
+<meta property="article:published_time" content="2023-01-14T19:33:40.000Z">
+<meta property="article:modified_time" content="2023-01-15T14:55:19.266Z">
+<meta property="article:author" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+<meta property="article:tag" content="光线追踪">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/20166026/212490756-206ba1cd-4ef7-4a25-90fe-502279a37ddf.png">
+<meta name="twitter:creator" content="@lazy_static">
+
+
+<link rel="canonical" href="https://blog.xinshijiededa.men/pbrt-introduction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xinshijiededa.men/pbrt-introduction/","path":"pbrt-introduction/","title":"PBRT 笔记：1. 绪论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PBRT 笔记：1. 绪论 | 新世界的大门</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<style> @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap'); </style>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="新世界的大门" type="application/atom+xml">
+<link rel="alternate" href="/rss.xml" title="新世界的大门" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">新世界的大门</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="//raw.githubusercontent.com/OverflowCat/blog/6a18f725e82243e0e8e78933499dbac79509f7f8/itsukushima-shrine.webp" alt="新世界的大门">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页-/-home"><a href="/./" rel="section"><i class="fa fa-home fa-fw"></i>主页 / Home</a></li><li class="menu-item menu-item-归档-/-archive"><a href="/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档 / Archive</a></li><li class="menu-item menu-item-友链-/-friends"><a href="/./friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链 / Friends</a></li><li class="menu-item menu-item-关于-/-about"><a href="/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于 / About</a></li><li class="menu-item menu-item-订阅-/-rss"><a href="/./atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>订阅 / RSS</a></li><li class="menu-item menu-item-站点地图-/-sitemap"><a href="/./sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图 / Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+<div style="padding: 2px;">
+<img src="https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg" alt="新世界的大門（Logo）" width="164ox">
+</div>
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="nav-text">相关资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA"><span class="nav-text">第一章：绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E5%AD%A6%E7%BC%96%E7%A8%8B"><span class="nav-text">1.1 文学编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BC%E7%9C%9F%E6%B8%B2%E6%9F%93%E5%92%8C%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-text">1.2 逼真渲染和光线追踪算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA"><span class="nav-text">1.2.1 相机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%BA%BF-%E7%89%A9%E4%BD%93%E7%9B%B8%E4%BA%A4"><span class="nav-text">1.2.2 光线-物体相交</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-text">交点信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%A5%E7%82%B9%E7%9A%84%E7%89%B9%E5%AE%9A%E5%B1%9E%E6%80%A7"><span class="nav-text">该点的特定属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E9%80%9F%E7%BB%93%E6%9E%84"><span class="nav-text">加速结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%9A%84%E5%88%86%E5%B8%83"><span class="nav-text">1.2.3 光的分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-text">1.2.4 可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E6%95%A3%E5%B0%84"><span class="nav-text">1.2.5 表面散射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%B4%E6%8E%A5%E5%85%89%E4%BC%A0%E8%BE%93"><span class="nav-text">1.2.6 间接光传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%BA%BF%E4%BC%A0%E6%92%AD"><span class="nav-text">1.2.7 光线传播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%86%84%E7%81%AD%E8%A1%B0%E5%87%8F"><span class="nav-text">熄灭（衰减）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%BC%BA"><span class="nav-text">增强</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pbrt%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-text">1.3 pbrt：系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5"><span class="nav-text">1.3.1 执行阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E8%A1%A8%E7%A4%BA"><span class="nav-text">1.3.2 场景表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%BA%90"><span class="nav-text">光源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1"><span class="nav-text">几何对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%99%A8%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%87%87%E6%A0%B7%E7%A7%AF%E5%88%86%E5%99%A8"><span class="nav-text">1.3.3 积分器接口与采样积分器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%B8%B2%E6%9F%93%E5%BE%AA%E7%8E%AF"><span class="nav-text">1.3.4 主渲染循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#whitted-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E7%A7%AF%E5%88%86%E5%99%A8"><span class="nav-text">1.3.5 Whitted 光线追踪积分器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pbrt-%E7%9A%84%E5%B9%B6%E8%A1%8C%E5%8C%96"><span class="nav-text">1.4 pbrt 的并行化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%92%E6%96%A5"><span class="nav-text">互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-text">原子操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BB%A7%E7%BB%AD%E9%98%85%E8%AF%BB%E6%9C%AC%E4%B9%A6"><span class="nav-text">1.5 如何继续阅读本书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%92%8C%E7%90%86%E8%A7%A3%E4%BB%A3%E7%A0%81"><span class="nav-text">1.6 使用和理解代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%80%E5%8F%B2"><span class="nav-text">1.7 基于物理的渲染简史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-text">1.8 扩展阅读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%92%8C%E8%BF%90%E8%A1%8C"><span class="nav-text">编译和运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-windows-%E4%B8%8A%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8-c-pbrt-v3"><span class="nav-text">在 Windows 上安装和使用 C++ pbrt-v3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-rs_pbrt-%E6%B8%B2%E6%9F%93%E6%96%87%E4%BB%B6"><span class="nav-text">使用 rs_pbrt 渲染文件</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
+      src="https://avatars.githubusercontent.com/u/20166026?v=4">
+  <p class="site-author-name" itemprop="name">ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</p>
+  <div class="site-description" itemprop="description">猫猫的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/OverflowCat" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;OverflowCat" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/OverflowCat" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;OverflowCat" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:overflowcat+blog@gmail.com" title="Mail → mailto:overflowcat+blog@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/lazy_static" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;lazy_static" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mastodon.social/@overflowcat" title="Mastodon → https:&#x2F;&#x2F;mastodon.social&#x2F;@overflowcat" rel="noopener me" target="_blank"><i class="fab fa-mastodon fa-fw"></i>Mastodon</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/overflowcat" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;overflowcat" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc.svg" alt="Creative Commons"></a>
+  </div>
+<a rel="me noopener" style="display: none;" target="_blank" href="https://mastodon.social/@overflowcat">Mastodon</a>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/pbrt-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PBRT 笔记：1. 绪论 | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PBRT 笔记：1. 绪论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-15 03:33:40" itemprop="dateCreated datePublished" datetime="2023-01-15T03:33:40+08:00">2023-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://user-images.githubusercontent.com/20166026/212490756-206ba1cd-4ef7-4a25-90fe-502279a37ddf.png" /></p>
+<p>本文为《基于物理的渲染：从理论到实现》第三版第一章的笔记．此书通过结合具体的软件（pbrt）代码，讲解光线追踪的实现．</p>
+<h1 id="相关资源">相关资源</h1>
+<p>本书的 <a target="_blank" rel="noopener" href="https://www.pbrt.org/">官方网站</a>．你可以在 <a target="_blank" rel="noopener" href="https://www.pbr-book.org/">这里</a> 免费阅读第三版（英文），或者在 <a target="_blank" rel="noopener" href="https://github.com/kanition/pbrtbook">这里</a> 免费下载第三版（中文）的 PDF（目前翻译进度到第八章）．你也可以购买清华大学出版社翻译的《物理渲染：从理论到实现（第二版）》纸质书（ISBN <code>9787302449812</code>），不过价格不菲．</p>
+<p><code>pbrt-v3</code> 是原书作者的 C++ 实现，代码在 <a target="_blank" rel="noopener" href="https://github.com/mmp/pbrt-v3">GitHub</a>．</p>
+<p><code>rs_pbrt</code> 是一个 Rust 的 pbrt-v3 实现，不过目前还有多处待完成，缺少一些功能．不过 Rust 有统一的构建环境和更好的开发体验．你可以看看其 <a target="_blank" rel="noopener" href="https://github.com/wahn/rs_pbrt">GitHub 仓库</a> 和 <a target="_blank" rel="noopener" href="https://www.rs-pbrt.org/">网站</a>．</p>
+<p>本文末尾附有简明的编译和使用教程．</p>
+<h1 id="第一章绪论">第一章：绪论</h1>
+<p>渲染 (rendering)是由 3D 场景 (scene)描述生成图像的过程．<strong>基于物理的</strong>（physically based）渲染运用物理学规律对光与物质的相互作用建模．</p>
+<p>长期以来，<strong>实时</strong>（real-time）渲染主要采用<strong>栅格化</strong>（rasterization）或栅格化+<strong>光线追踪</strong>（ray-tracing），而本书中完全采用光线追踪．</p>
+<h2 id="文学编程">1.1 文学编程</h2>
+<p>讲解书中伪代码的表示方法<strong>文学编程</strong>（literate programming）．</p>
+<p>不认可这种表示方法，即便想法很好——作为教学用的代码不能过长，但是这样代码支离破碎．为了便于理解，应该提供更小更快、能即时查看到效果的教科书．官方的电子版很好，可以展开折叠的代码，而不是在页内跳来跳去．</p>
+<p>Jupyter Notebook 应是一个更好的 literate programming．</p>
+<h2 id="逼真渲染和光线追踪算法">1.2 逼真渲染和光线追踪算法</h2>
+<h3 id="相机">1.2.1 相机</h3>
+<p>针孔相机也可以看作是把胶片平面放置在针孔的前方但距离不变——出于仿真目的，可以将胶片放在<strong>视见体</strong>（viewing volume）位置．视见体、小孔、胶片构成一个双锥体．</p>
+<p>incident light 是「入射光」的意思．</p>
+<h3 id="光线-物体相交">1.2.2 光线-物体相交</h3>
+<h4 id="交点信息">交点信息</h4>
+<p>将射线 <span class="math inline">\(\boldsymbol{r}\)</span> 写成参数形式：</p>
+<p><span class="math display">\[{\boldsymbol r}(t)={\boldsymbol o}+t{\boldsymbol d},\]</span></p>
+<p>其中 <span class="math inline">\({\boldsymbol o}\)</span> 是射线端点， <span class="math inline">\({\boldsymbol d}\)</span> 是其方向向量， <span class="math inline">\(t\)</span> 是定义在 <span class="math inline">\((0,\infty)\)</span> 的参数．</p>
+<p>由隐函数 <span class="math inline">\(F(x,y,z)=0\)</span> 定义曲面．将曲面的隐式方程代入射线方程即可求得交点．如果没有正根，则射线与球面错开了；如果有，则最小正根给出了交点．</p>
+<h4 id="该点的特定属性">该点的特定属性</h4>
+<p>除交点外，光线追踪器还需知道如曲面法线 <span class="math inline">\(\boldsymbol n\)</span> 等额外信息以<strong>着色</strong>（shade）．</p>
+<h4 id="加速结构">加速结构</h4>
+<p><strong>加速结构</strong>（acceleration structure）可使时间复杂度降为 <span class="math inline">\(O(I\log N)\)</span> ，其中 <span class="math inline">\(I\)</span> 是图像像素数目， <span class="math inline">\(N\)</span> 是场景中物体的数量．</p>
+<h3 id="光的分布">1.2.3 光的分布</h3>
+<p>围绕光源的单位球面在单位面积上的功率为 <span class="math inline">\(\displaystyle\frac{\varPhi}{4\mathrm{\pi}}\)</span> ．</p>
+<p>到达半径为 <span class="math inline">\(r\)</span> 的球面上一点的单位面积功率 <span class="math inline">\(\propto\dfrac{1}{r^2}\)</span> ．</p>
+<p>光源若与法线有夹角， <span class="math inline">\(\mathrm dA\)</span> 上积累的功率 <span class="math inline">\(\propto\cos\theta\)</span> ．</p>
+<p>综上所述，单位面积上的<strong>辐射照度</strong>（differential irradiance） <span class="math inline">\(\mathrm{d}E\)</span> 为</p>
+<p><span class="math display">\[\mathrm{d}E=\frac{\varPhi\cos\theta}{4\mathrm{\pi}r^2}.\]</span></p>
+<h3 id="可见性">1.2.4 可见性</h3>
+<p>若有阴影遮挡着色点，光源路径不畅通时不会照亮该点．通过 <strong>阴影射线</strong>（shadow ray）可判断是否可见．方法是 简单构造一条新射线，其端点是表面上的点，方向指向光源，如下图中虚线所示．</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg" alt="" /><figcaption>递归式的光线追踪</figcaption>
+</figure>
+<blockquote>
+<p>图片来源为 闫令琪．<strong><a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">GAMES101: 现代计算机图形学入门</a></strong>．Lecture 13 <a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_13.pdf">光线追踪（基本原理）[pdf]</a></p>
+</blockquote>
+<h3 id="表面散射">1.2.5 表面散射</h3>
+<p>为着色我们还需确定入射光如何<strong>被散射</strong>（scattered）．物体的材质由<strong>双向反射分布函数</strong>（bidirectional reflectance distribution function，<strong>BRDF</strong>）描述．该函数告诉我们从<strong>入射</strong>（incoming）方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm{i}\)</span> 到<strong>出射</strong>（outgoing）方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm o\)</span> 会反射多少能量．</p>
+<p>我们把 <span class="math inline">\(\boldsymbol p\)</span> 处的 BRDF 写作 <span class="math inline">\(f_{\mathrm{r}}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})\)</span> ．</p>
+<h3 id="间接光传输">1.2.6 间接光传输</h3>
+<p>从物体上一点到达相机的光量由物体的发光量（如果它自己就是光源）与反射光量之和决定．它被形式化为<strong>光传输方程</strong>（light transport equation），表示从点 <span class="math inline">\(\boldsymbol p\)</span> 沿方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm{o}\)</span> 的出射辐亮度 <span class="math inline">\(L_{\mathrm{o}}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})\)</span> 等于该点沿该方向的发光亮度加上点 <span class="math inline">\(\boldsymbol p\)</span> 的邻域球面 <span class="math inline">\(S^2\)</span> 所有方向上经 BSDF <span class="math inline">\(f({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})\)</span> 和余弦项调制的入射亮度：</p>
+<p><span class="math display">\[L_{\mathrm o}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})=L_{\mathrm e}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})+\int_{S^2}f({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})L_{\mathrm i}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{i})|\cos{\theta_{\mathrm i} }| \,\mathrm{d}{\boldsymbol \omega}_\mathrm{i}\]</span></p>
+<p>Whitted 算法把积分变为少量方向上的求和，故可以扩展到实现镜面和玻璃外的更多效果．</p>
+<h3 id="光线传播">1.2.7 光线传播</h3>
+<p>在非真空中存在如烟、雾、尘等<strong>介质</strong>（participating media）．</p>
+<h4 id="熄灭衰减">熄灭（衰减）</h4>
+<p>介质可以通过吸收或沿不同方向散射来<strong>熄灭</strong>（extinguish）aka. <strong>衰减</strong>（attenuate）光．</p>
+<p>需要计算射线与交点之间的<strong>透射率</strong>（transmittance） <span class="math inline">\(T\)</span> ．</p>
+<h4 id="增强">增强</h4>
+<p>介质也可以沿路线增强光．在介质发光（例如火焰）或从其他方向把光散射回该射线时可发生该现象．</p>
+<p>可以通过数值计算<strong>体积光传输方程</strong>（volume light transport equation）来寻求该量，该方法还能计算光传输方程求得从表面反射回的光量．</p>
+<h2 id="pbrt系统概述">1.3 pbrt：系统概述</h2>
+<h3 id="执行阶段">1.3.1 执行阶段</h3>
+<p>pbrt 在概念上可分为两个执行阶段．</p>
+<p>首先解析场景描述文件， 最终结果 是 <code>Scene</code> 和 <code>Integrator</code> 的实例，后者实现了渲染前者的算法，被称为积分器主要是计算 1.2.6 节中式的积分．</p>
+<p>然后执行渲染主循环，由 <code>Integrator::Render()</code> 执行．</p>
+<h3 id="场景表示">1.3.2 场景表示</h3>
+<p>程序首先解析命令行参数并 parse 场景描述文件，<code>rs_pbrt</code> 的这部分代码在 <code>rs_pbrt</code> 的 <code>parse_file</code> 中．然后 就创建表示场景中光源和几何图元的对象．这两者都储存在 <code>Scene</code> 对象中．</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Scene</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> lights: <span class="type">Vec</span>&lt;Arc&lt;Light&gt;&gt;,</span><br><span class="line">    <span class="keyword">pub</span> infinite_lights: <span class="type">Vec</span>&lt;Arc&lt;Light&gt;&gt;,</span><br><span class="line">    <span class="keyword">pub</span> aggregate: Arc&lt;Primitive&gt;,</span><br><span class="line">    <span class="keyword">pub</span> world_bound: Bounds3f,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++ 的 <code>shared_ptr</code> 对应的就是 <code>Arc</code>：</p>
+<blockquote>
+<p>A thread-safe reference-counting pointer. 'Arc' stands for 'Atomically Reference Counted'.</p>
+</blockquote>
+<h4 id="光源">光源</h4>
+<p>场景中每个光源都由Light对象表示，指定灯光的形状和发射能量的分布．</p>
+<h4 id="几何对象">几何对象</h4>
+<p>场景中每个几何对象都由Primitive表示，由几何结构 <code>Shape</code> 和外观描述 <code>Material</code> 组成．他们都储存在 Primitive 中： <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">enum</span> <span class="title class_">Primitive</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">Geometric</span>(<span class="type">Box</span>&lt;GeometricPrimitive&gt;),</span><br><span class="line">    <span class="title function_ invoke__">Transformed</span>(<span class="type">Box</span>&lt;TransformedPrimitive&gt;),</span><br><span class="line">    <span class="title function_ invoke__">BVH</span>(<span class="type">Box</span>&lt;BVHAccel&gt;),</span><br><span class="line">    <span class="title function_ invoke__">KdTree</span>(<span class="type">Box</span>&lt;KdTreeAccel&gt;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个聚合体是一种特殊的图元，它自己持有许多对其他图元的引用．聚合体的实现用加速的数据结构存储了所有场景图元，减少对远离给定光线的图元做不必要的光线相交测试量．</p>
+<h3 id="积分器接口与采样积分器">1.3.3 积分器接口与采样积分器</h3>
+<p><strong>积分器</strong>（integrator）用于计算场景照明的一组测量值．<code>Integrator</code> 提供 <code>render()</code> 方法，接收一个 <code>&amp;Scene</code>．其中一种实现是<code>SamplerIntegrator</code>，它是由来自 <code>Sampler</code> 的<strong>样本</strong>（sample）流驱动的，每个样本标识了图像上的一点，用于计算到达该点以构成图像的光量．</p>
+<p>采样器的实现会极大影响系统生成图像的质量．它责选取光线要追踪的图像平面上的点，并且提供 1.2.6 节公式中所需的采样位置．</p>
+<h3 id="主渲染循环">1.3.4 主渲染循环</h3>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212491991-3ba3c837-aa92-41b7-b941-69e49cd64865.svg" alt="" /><figcaption>流程示意图</figcaption>
+</figure>
+<p>为了并行化，图像会被分成图块，每个图块可并行独立处理．pbrt 固定使用 <span class="math inline">\(16 \times 16\)</span> 的图块，这个<strong>粒度</strong>（granularity）对绝大多数图像都适用．</p>
+<p>(C++) <code>Li()</code> 需要为每次辐亮度计算临时分配少量内存，所以我们会用一个 <code>MemoryArena</code> 实例管理内存池以启用比标准库例程更高性能的分配．</p>
+<h3 id="whitted-光线追踪积分器">1.3.5 Whitted 光线追踪积分器</h3>
+<p>Whitted 积分器工作时递归地计算沿反射和折射光线方向的辐亮度．还是刚才这张图：</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg" alt="" /><figcaption>递归式的光线追踪</figcaption>
+</figure>
+<p>对于每个光源，积分器调用方法 <code>Light::sample_li()</code>计算从该光源落到表面上待着色点的辐亮度．</p>
+<h2 id="pbrt-的并行化">1.4 pbrt 的并行化</h2>
+<p>当执行多线程访问共享可改数据时它们必须以某种方式 <strong>同步</strong>（synchronize）其访问，即为<strong>互斥</strong>（mutual exclusion）和<strong>原子操作</strong>（atomic operation）．</p>
+<h3 id="互斥">互斥</h3>
+<p>pbrt 采用 <code>std::mutex</code> 对象实现互斥．至于 C++ 中使用 mutex 的方法，需要声明一个值和一个 mutex，修改值时创建一个 <code>std::lock_guard&lt;std::mutex&gt;</code>，该锁会在 drop 时自动释放．cppreference.com <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/thread/lock_guard#Example">给出了</a> 简明的例子，我将其贴在下方：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> g_i = <span class="number">0</span>;</span><br><span class="line">std::mutex g_i_mutex;  <span class="comment">// protects g_i</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">safe_increment</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="type">const</span> std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(g_i_mutex)</span></span>;</span><br><span class="line">    ++g_i;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in thread #&quot;</span></span><br><span class="line">              &lt;&lt; std::this_thread::<span class="built_in">get_id</span>() &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="comment">// g_i_mutex is automatically released when lock</span></span><br><span class="line">    <span class="comment">// goes out of scope</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in main()\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(safe_increment)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(safe_increment)</span></span>;</span><br><span class="line"></span><br><span class="line">    t1.<span class="built_in">join</span>();</span><br><span class="line">    t2.<span class="built_in">join</span>();</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in main()\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="原子操作">原子操作</h3>
+<p>C++ 中使用 <code>std::atomic</code> 完成原子操作．简单的例子如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::atomic&lt;<span class="type">int</span>&gt; <span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">++x;</span><br></pre></td></tr></table></figure>
+<h2 id="如何继续阅读本书">1.5 如何继续阅读本书</h2>
+<p>前面的铺垫也太长了，还是过于详细了……</p>
+<h2 id="使用和理解代码">1.6 使用和理解代码</h2>
+<p>传递 <code>mullptr</code> 来表示参数不可用或不该用，此时总是使用指针．</p>
+<p>在当下 CPU 架构上最慢的数运算是除法、平方根和三角函数．</p>
+<h2 id="基于物理的渲染简史">1.7 基于物理的渲染简史</h2>
+<blockquote>
+<p>基于物理的蒙特卡罗渲染方法成功用于制作的一大原因是它们最终提高了艺术家们的生产力．通过调整采样次数来快速获取缩略图；采用能量未必守恒的反射模型时反射参数可能需要在每个光照环境下都要调整； 光线追踪计算的阴影质量比栅格化方法好得多．</p>
+</blockquote>
+<h2 id="扩展阅读">1.8 扩展阅读</h2>
+<p>无重要内容．</p>
+<h1 id="编译和运行">编译和运行</h1>
+<p>书中为 <code>pbrt-v3</code> 提供的场景文件在此 <a target="_blank" rel="noopener" href="https://pub-49ca6a23a58a46ef9cf5a5b34413a7ba.r2.dev/pbrt-v3-scenes.tar.gz">3.7 GB tar.gz 文件</a> 中．<code>images</code> 里有渲染好的图像．</p>
+<h3 id="在-windows-上安装和使用-c-pbrt-v3">在 Windows 上安装和使用 C++ <code>pbrt-v3</code></h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scoop install cmake</span><br><span class="line">git clone <span class="literal">--recursive</span> <span class="string">&quot;https://github.com/mmp/pbrt-v3/&quot;</span> <span class="literal">--depth</span>=<span class="number">1</span></span><br><span class="line"><span class="built_in">cd</span> pbrt<span class="literal">-v3</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+<p>若编译成功，则会提示 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">30&gt;spectrum.cpp</span><br><span class="line">30&gt;正在生成代码...</span><br><span class="line">30&gt;pbrt_test.vcxproj -&gt; …\pbrt-v3\build\Release\pbrt_test.exe</span><br><span class="line">30&gt;已完成生成项目“pbrt_test.vcxproj”的操作．</span><br><span class="line">34&gt;------ 已启动生成: 项目: ALL_BUILD, 配置: Release x64 ------</span><br><span class="line">34&gt;Building Custom Rule …/pbrt-v3/CMakeLists.txt</span><br><span class="line">========== “生成”: 34 成功，0 失败，0 更新，0 已跳过 ==========</span><br></pre></td></tr></table></figure></p>
+<p>可以在 <code>build</code> 目录下的 <code>Release</code>（或 <code>Debug</code>）文件夹中找到 <code>pbrt.exe</code>．</p>
+<h3 id="使用-rs_pbrt-渲染文件">使用 <code>rs_pbrt</code> 渲染文件</h3>
+<p>我先 <code>cargo build -r</code> 进行 release build，然后通过 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\code\rs_pbrt\target\release\rs_pbrt.exe <span class="string">&quot;E:\downloads\pbrt-v3-scenes\killeroos\killeroo-simple.pbrt&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>绝对路径使用会报错．其原因是 <code>.pbrt</code> 文件中有 <code>Include</code> 语句，在 <code>Include "geometry/killeroo.pbrt"</code> 时遇到相对路径，拼接的 parent 目录为 <code>env::current_dir()</code>．<code>cd</code> 到 <code>pbrt-v3-scenes/killeroos/</code>，参数填写绝对路径依然会有路径拼接错误．解决方法是填写相对路径．</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">❯ E:\downloads\pbrt-v3-scenes\killeroos&gt; E:\code\rs_pbrt\target\release\rs_pbrt.exe <span class="string">&quot;killeroo-simple.pbrt&quot;</span></span><br><span class="line">pbrt version 0.9.8 (unknown) [Detected 24 cores]</span><br><span class="line">Copyright (c) 2016-2022 Jan Douglas Bert Walter.</span><br><span class="line">Rust code based on C++ code by Matt Pharr, Greg Humphreys, and Wenzel Jakob.</span><br><span class="line">opening file FILE = killeroo-simple.pbrt</span><br><span class="line">Film <span class="string">&quot;image&quot;</span></span><br><span class="line"><span class="string">&quot;string filename&quot;</span> [<span class="string">&quot;killeroo-simple.exr&quot;</span>]</span><br><span class="line"><span class="string">&quot;integer xresolution&quot;</span> [700]</span><br><span class="line"><span class="string">&quot;integer yresolution&quot;</span> [700]</span><br><span class="line">Sampler <span class="string">&quot;sobol&quot;</span></span><br><span class="line"><span class="string">&quot;integer pixelsamples&quot;</span> [64]</span><br><span class="line">Integrator <span class="string">&quot;directlighting&quot;</span></span><br><span class="line">Include <span class="string">&quot;E:\\downloads\\pbrt-v3-scenes\\killeroos\\geometry/killeroo.pbrt&quot;</span></span><br><span class="line">opening file FILE = E:\downloads\pbrt-v3-scenes\killeroos\geometry/killeroo.pbrt</span><br><span class="line">Include <span class="string">&quot;E:\\downloads\\pbrt-v3-scenes\\killeroos\\geometry/killeroo.pbrt&quot;</span></span><br><span class="line">opening file FILE = E:\downloads\pbrt-v3-scenes\killeroos\geometry/killeroo.pbrt</span><br><span class="line">Integrator <span class="string">&quot;directlighting&quot;</span></span><br><span class="line">Rendering with 24 thread(s) ...</span><br><span class="line">1936 / 1936 [======================================================================================================================================] 100.00 % 14.81/s</span><br><span class="line">Writing image <span class="string">&quot;pbrt.png&quot;</span> with bounds Bounds2i &#123; p_min: Point2i &#123; x: 0, y: 0 &#125;, p_max: Point2i &#123; x: 700, y: 700 &#125; &#125; 26.76 % 36.11/s 39s</span><br></pre></td></tr></table></figure>
+<p>渲染的图片在当前工作目录下．</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/211073342-7fc95879-c72a-470a-ba17-b666a3e687c9.png" alt="" /><figcaption>渲染图 pbrt.png</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" rel="tag"># 光线追踪</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/browser-address-bar-2022/" rel="prev" title="我的浏览器地址栏中的 A – Z（2022）">
+                  <i class="fa fa-chevron-left"></i> 我的浏览器地址栏中的 A – Z（2022）
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/OverflowCat/blog" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

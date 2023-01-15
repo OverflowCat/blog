@@ -133,16 +133,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -182,6 +182,205 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/pbrt-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pbrt-introduction/" class="post-title-link" itemprop="url">PBRT 笔记：1. 绪论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-15 03:33:40" itemprop="dateCreated datePublished" datetime="2023-01-15T03:33:40+08:00">2023-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://user-images.githubusercontent.com/20166026/212490756-206ba1cd-4ef7-4a25-90fe-502279a37ddf.png" /></p>
+<p>本文为《基于物理的渲染：从理论到实现》第三版第一章的笔记．此书通过结合具体的软件（pbrt）代码，讲解光线追踪的实现．</p>
+<h1 id="相关资源">相关资源</h1>
+<p>本书的 <a target="_blank" rel="noopener" href="https://www.pbrt.org/">官方网站</a>．你可以在 <a target="_blank" rel="noopener" href="https://www.pbr-book.org/">这里</a> 免费阅读第三版（英文），或者在 <a target="_blank" rel="noopener" href="https://github.com/kanition/pbrtbook">这里</a> 免费下载第三版（中文）的 PDF（目前翻译进度到第八章）．你也可以购买清华大学出版社翻译的《物理渲染：从理论到实现（第二版）》纸质书（ISBN <code>9787302449812</code>），不过价格不菲．</p>
+<p><code>pbrt-v3</code> 是原书作者的 C++ 实现，代码在 <a target="_blank" rel="noopener" href="https://github.com/mmp/pbrt-v3">GitHub</a>．</p>
+<p><code>rs_pbrt</code> 是一个 Rust 的 pbrt-v3 实现，不过目前还有多处待完成，缺少一些功能．不过 Rust 有统一的构建环境和更好的开发体验．你可以看看其 <a target="_blank" rel="noopener" href="https://github.com/wahn/rs_pbrt">GitHub 仓库</a> 和 <a target="_blank" rel="noopener" href="https://www.rs-pbrt.org/">网站</a>．</p>
+<p>本文末尾附有简明的编译和使用教程．</p>
+<h1 id="第一章绪论">第一章：绪论</h1>
+<p>渲染 (rendering)是由 3D 场景 (scene)描述生成图像的过程．<strong>基于物理的</strong>（physically based）渲染运用物理学规律对光与物质的相互作用建模．</p>
+<p>长期以来，<strong>实时</strong>（real-time）渲染主要采用<strong>栅格化</strong>（rasterization）或栅格化+<strong>光线追踪</strong>（ray-tracing），而本书中完全采用光线追踪．</p>
+<h2 id="文学编程">1.1 文学编程</h2>
+<p>讲解书中伪代码的表示方法<strong>文学编程</strong>（literate programming）．</p>
+<p>不认可这种表示方法，即便想法很好——作为教学用的代码不能过长，但是这样代码支离破碎．为了便于理解，应该提供更小更快、能即时查看到效果的教科书．官方的电子版很好，可以展开折叠的代码，而不是在页内跳来跳去．</p>
+<p>Jupyter Notebook 应是一个更好的 literate programming．</p>
+<h2 id="逼真渲染和光线追踪算法">1.2 逼真渲染和光线追踪算法</h2>
+<h3 id="相机">1.2.1 相机</h3>
+<p>针孔相机也可以看作是把胶片平面放置在针孔的前方但距离不变——出于仿真目的，可以将胶片放在<strong>视见体</strong>（viewing volume）位置．视见体、小孔、胶片构成一个双锥体．</p>
+<p>incident light 是「入射光」的意思．</p>
+<h3 id="光线-物体相交">1.2.2 光线-物体相交</h3>
+<h4 id="交点信息">交点信息</h4>
+<p>将射线 <span class="math inline">\(\boldsymbol{r}\)</span> 写成参数形式：</p>
+<p><span class="math display">\[{\boldsymbol r}(t)={\boldsymbol o}+t{\boldsymbol d},\]</span></p>
+<p>其中 <span class="math inline">\({\boldsymbol o}\)</span> 是射线端点， <span class="math inline">\({\boldsymbol d}\)</span> 是其方向向量， <span class="math inline">\(t\)</span> 是定义在 <span class="math inline">\((0,\infty)\)</span> 的参数．</p>
+<p>由隐函数 <span class="math inline">\(F(x,y,z)=0\)</span> 定义曲面．将曲面的隐式方程代入射线方程即可求得交点．如果没有正根，则射线与球面错开了；如果有，则最小正根给出了交点．</p>
+<h4 id="该点的特定属性">该点的特定属性</h4>
+<p>除交点外，光线追踪器还需知道如曲面法线 <span class="math inline">\(\boldsymbol n\)</span> 等额外信息以<strong>着色</strong>（shade）．</p>
+<h4 id="加速结构">加速结构</h4>
+<p><strong>加速结构</strong>（acceleration structure）可使时间复杂度降为 <span class="math inline">\(O(I\log N)\)</span> ，其中 <span class="math inline">\(I\)</span> 是图像像素数目， <span class="math inline">\(N\)</span> 是场景中物体的数量．</p>
+<h3 id="光的分布">1.2.3 光的分布</h3>
+<p>围绕光源的单位球面在单位面积上的功率为 <span class="math inline">\(\displaystyle\frac{\varPhi}{4\mathrm{\pi}}\)</span> ．</p>
+<p>到达半径为 <span class="math inline">\(r\)</span> 的球面上一点的单位面积功率 <span class="math inline">\(\propto\dfrac{1}{r^2}\)</span> ．</p>
+<p>光源若与法线有夹角， <span class="math inline">\(\mathrm dA\)</span> 上积累的功率 <span class="math inline">\(\propto\cos\theta\)</span> ．</p>
+<p>综上所述，单位面积上的<strong>辐射照度</strong>（differential irradiance） <span class="math inline">\(\mathrm{d}E\)</span> 为</p>
+<p><span class="math display">\[\mathrm{d}E=\frac{\varPhi\cos\theta}{4\mathrm{\pi}r^2}.\]</span></p>
+<h3 id="可见性">1.2.4 可见性</h3>
+<p>若有阴影遮挡着色点，光源路径不畅通时不会照亮该点．通过 <strong>阴影射线</strong>（shadow ray）可判断是否可见．方法是 简单构造一条新射线，其端点是表面上的点，方向指向光源，如下图中虚线所示．</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg" alt="" /><figcaption>递归式的光线追踪</figcaption>
+</figure>
+<blockquote>
+<p>图片来源为 闫令琪．<strong><a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">GAMES101: 现代计算机图形学入门</a></strong>．Lecture 13 <a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_13.pdf">光线追踪（基本原理）[pdf]</a></p>
+</blockquote>
+<h3 id="表面散射">1.2.5 表面散射</h3>
+<p>为着色我们还需确定入射光如何<strong>被散射</strong>（scattered）．物体的材质由<strong>双向反射分布函数</strong>（bidirectional reflectance distribution function，<strong>BRDF</strong>）描述．该函数告诉我们从<strong>入射</strong>（incoming）方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm{i}\)</span> 到<strong>出射</strong>（outgoing）方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm o\)</span> 会反射多少能量．</p>
+<p>我们把 <span class="math inline">\(\boldsymbol p\)</span> 处的 BRDF 写作 <span class="math inline">\(f_{\mathrm{r}}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})\)</span> ．</p>
+<h3 id="间接光传输">1.2.6 间接光传输</h3>
+<p>从物体上一点到达相机的光量由物体的发光量（如果它自己就是光源）与反射光量之和决定．它被形式化为<strong>光传输方程</strong>（light transport equation），表示从点 <span class="math inline">\(\boldsymbol p\)</span> 沿方向 <span class="math inline">\({\boldsymbol \omega}_\mathrm{o}\)</span> 的出射辐亮度 <span class="math inline">\(L_{\mathrm{o}}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})\)</span> 等于该点沿该方向的发光亮度加上点 <span class="math inline">\(\boldsymbol p\)</span> 的邻域球面 <span class="math inline">\(S^2\)</span> 所有方向上经 BSDF <span class="math inline">\(f({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})\)</span> 和余弦项调制的入射亮度：</p>
+<p><span class="math display">\[L_{\mathrm o}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})=L_{\mathrm e}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o})+\int_{S^2}f({\boldsymbol p},{\boldsymbol \omega}_\mathrm{o},{\boldsymbol \omega}_\mathrm{i})L_{\mathrm i}({\boldsymbol p},{\boldsymbol \omega}_\mathrm{i})|\cos{\theta_{\mathrm i} }| \,\mathrm{d}{\boldsymbol \omega}_\mathrm{i}\]</span></p>
+<p>Whitted 算法把积分变为少量方向上的求和，故可以扩展到实现镜面和玻璃外的更多效果．</p>
+<h3 id="光线传播">1.2.7 光线传播</h3>
+<p>在非真空中存在如烟、雾、尘等<strong>介质</strong>（participating media）．</p>
+<h4 id="熄灭衰减">熄灭（衰减）</h4>
+<p>介质可以通过吸收或沿不同方向散射来<strong>熄灭</strong>（extinguish）aka. <strong>衰减</strong>（attenuate）光．</p>
+<p>需要计算射线与交点之间的<strong>透射率</strong>（transmittance） <span class="math inline">\(T\)</span> ．</p>
+<h4 id="增强">增强</h4>
+<p>介质也可以沿路线增强光．在介质发光（例如火焰）或从其他方向把光散射回该射线时可发生该现象．</p>
+<p>可以通过数值计算<strong>体积光传输方程</strong>（volume light transport equation）来寻求该量，该方法还能计算光传输方程求得从表面反射回的光量．</p>
+<h2 id="pbrt系统概述">1.3 pbrt：系统概述</h2>
+<h3 id="执行阶段">1.3.1 执行阶段</h3>
+<p>pbrt 在概念上可分为两个执行阶段．</p>
+<p>首先解析场景描述文件， 最终结果 是 <code>Scene</code> 和 <code>Integrator</code> 的实例，后者实现了渲染前者的算法，被称为积分器主要是计算 1.2.6 节中式的积分．</p>
+<p>然后执行渲染主循环，由 <code>Integrator::Render()</code> 执行．</p>
+<h3 id="场景表示">1.3.2 场景表示</h3>
+<p>程序首先解析命令行参数并 parse 场景描述文件，<code>rs_pbrt</code> 的这部分代码在 <code>rs_pbrt</code> 的 <code>parse_file</code> 中．然后 就创建表示场景中光源和几何图元的对象．这两者都储存在 <code>Scene</code> 对象中．</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Scene</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> lights: <span class="type">Vec</span>&lt;Arc&lt;Light&gt;&gt;,</span><br><span class="line">    <span class="keyword">pub</span> infinite_lights: <span class="type">Vec</span>&lt;Arc&lt;Light&gt;&gt;,</span><br><span class="line">    <span class="keyword">pub</span> aggregate: Arc&lt;Primitive&gt;,</span><br><span class="line">    <span class="keyword">pub</span> world_bound: Bounds3f,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++ 的 <code>shared_ptr</code> 对应的就是 <code>Arc</code>：</p>
+<blockquote>
+<p>A thread-safe reference-counting pointer. 'Arc' stands for 'Atomically Reference Counted'.</p>
+</blockquote>
+<h4 id="光源">光源</h4>
+<p>场景中每个光源都由Light对象表示，指定灯光的形状和发射能量的分布．</p>
+<h4 id="几何对象">几何对象</h4>
+<p>场景中每个几何对象都由Primitive表示，由几何结构 <code>Shape</code> 和外观描述 <code>Material</code> 组成．他们都储存在 Primitive 中： <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">enum</span> <span class="title class_">Primitive</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">Geometric</span>(<span class="type">Box</span>&lt;GeometricPrimitive&gt;),</span><br><span class="line">    <span class="title function_ invoke__">Transformed</span>(<span class="type">Box</span>&lt;TransformedPrimitive&gt;),</span><br><span class="line">    <span class="title function_ invoke__">BVH</span>(<span class="type">Box</span>&lt;BVHAccel&gt;),</span><br><span class="line">    <span class="title function_ invoke__">KdTree</span>(<span class="type">Box</span>&lt;KdTreeAccel&gt;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个聚合体是一种特殊的图元，它自己持有许多对其他图元的引用．聚合体的实现用加速的数据结构存储了所有场景图元，减少对远离给定光线的图元做不必要的光线相交测试量．</p>
+<h3 id="积分器接口与采样积分器">1.3.3 积分器接口与采样积分器</h3>
+<p><strong>积分器</strong>（integrator）用于计算场景照明的一组测量值．<code>Integrator</code> 提供 <code>render()</code> 方法，接收一个 <code>&amp;Scene</code>．其中一种实现是<code>SamplerIntegrator</code>，它是由来自 <code>Sampler</code> 的<strong>样本</strong>（sample）流驱动的，每个样本标识了图像上的一点，用于计算到达该点以构成图像的光量．</p>
+<p>采样器的实现会极大影响系统生成图像的质量．它责选取光线要追踪的图像平面上的点，并且提供 1.2.6 节公式中所需的采样位置．</p>
+<h3 id="主渲染循环">1.3.4 主渲染循环</h3>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212491991-3ba3c837-aa92-41b7-b941-69e49cd64865.svg" alt="" /><figcaption>流程示意图</figcaption>
+</figure>
+<p>为了并行化，图像会被分成图块，每个图块可并行独立处理．pbrt 固定使用 <span class="math inline">\(16 \times 16\)</span> 的图块，这个<strong>粒度</strong>（granularity）对绝大多数图像都适用．</p>
+<p>(C++) <code>Li()</code> 需要为每次辐亮度计算临时分配少量内存，所以我们会用一个 <code>MemoryArena</code> 实例管理内存池以启用比标准库例程更高性能的分配．</p>
+<h3 id="whitted-光线追踪积分器">1.3.5 Whitted 光线追踪积分器</h3>
+<p>Whitted 积分器工作时递归地计算沿反射和折射光线方向的辐亮度．还是刚才这张图：</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/212490274-ddae7a7e-2e5c-4088-b337-cff00ea9808d.svg" alt="" /><figcaption>递归式的光线追踪</figcaption>
+</figure>
+<p>对于每个光源，积分器调用方法 <code>Light::sample_li()</code>计算从该光源落到表面上待着色点的辐亮度．</p>
+<h2 id="pbrt-的并行化">1.4 pbrt 的并行化</h2>
+<p>当执行多线程访问共享可改数据时它们必须以某种方式 <strong>同步</strong>（synchronize）其访问，即为<strong>互斥</strong>（mutual exclusion）和<strong>原子操作</strong>（atomic operation）．</p>
+<h3 id="互斥">互斥</h3>
+<p>pbrt 采用 <code>std::mutex</code> 对象实现互斥．至于 C++ 中使用 mutex 的方法，需要声明一个值和一个 mutex，修改值时创建一个 <code>std::lock_guard&lt;std::mutex&gt;</code>，该锁会在 drop 时自动释放．cppreference.com <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/thread/lock_guard#Example">给出了</a> 简明的例子，我将其贴在下方：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> g_i = <span class="number">0</span>;</span><br><span class="line">std::mutex g_i_mutex;  <span class="comment">// protects g_i</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">safe_increment</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="type">const</span> std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(g_i_mutex)</span></span>;</span><br><span class="line">    ++g_i;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in thread #&quot;</span></span><br><span class="line">              &lt;&lt; std::this_thread::<span class="built_in">get_id</span>() &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="comment">// g_i_mutex is automatically released when lock</span></span><br><span class="line">    <span class="comment">// goes out of scope</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in main()\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(safe_increment)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(safe_increment)</span></span>;</span><br><span class="line"></span><br><span class="line">    t1.<span class="built_in">join</span>();</span><br><span class="line">    t2.<span class="built_in">join</span>();</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;g_i: &quot;</span> &lt;&lt; g_i &lt;&lt; <span class="string">&quot;; in main()\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="原子操作">原子操作</h3>
+<p>C++ 中使用 <code>std::atomic</code> 完成原子操作．简单的例子如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::atomic&lt;<span class="type">int</span>&gt; <span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">++x;</span><br></pre></td></tr></table></figure>
+<h2 id="如何继续阅读本书">1.5 如何继续阅读本书</h2>
+<p>前面的铺垫也太长了，还是过于详细了……</p>
+<h2 id="使用和理解代码">1.6 使用和理解代码</h2>
+<p>传递 <code>mullptr</code> 来表示参数不可用或不该用，此时总是使用指针．</p>
+<p>在当下 CPU 架构上最慢的数运算是除法、平方根和三角函数．</p>
+<h2 id="基于物理的渲染简史">1.7 基于物理的渲染简史</h2>
+<blockquote>
+<p>基于物理的蒙特卡罗渲染方法成功用于制作的一大原因是它们最终提高了艺术家们的生产力．通过调整采样次数来快速获取缩略图；采用能量未必守恒的反射模型时反射参数可能需要在每个光照环境下都要调整； 光线追踪计算的阴影质量比栅格化方法好得多．</p>
+</blockquote>
+<h2 id="扩展阅读">1.8 扩展阅读</h2>
+<p>无重要内容．</p>
+<h1 id="编译和运行">编译和运行</h1>
+<p>书中为 <code>pbrt-v3</code> 提供的场景文件在此 <a target="_blank" rel="noopener" href="https://pub-49ca6a23a58a46ef9cf5a5b34413a7ba.r2.dev/pbrt-v3-scenes.tar.gz">3.7 GB tar.gz 文件</a> 中．<code>images</code> 里有渲染好的图像．</p>
+<h3 id="在-windows-上安装和使用-c-pbrt-v3">在 Windows 上安装和使用 C++ <code>pbrt-v3</code></h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scoop install cmake</span><br><span class="line">git clone <span class="literal">--recursive</span> <span class="string">&quot;https://github.com/mmp/pbrt-v3/&quot;</span> <span class="literal">--depth</span>=<span class="number">1</span></span><br><span class="line"><span class="built_in">cd</span> pbrt<span class="literal">-v3</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+<p>若编译成功，则会提示 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">30&gt;spectrum.cpp</span><br><span class="line">30&gt;正在生成代码...</span><br><span class="line">30&gt;pbrt_test.vcxproj -&gt; …\pbrt-v3\build\Release\pbrt_test.exe</span><br><span class="line">30&gt;已完成生成项目“pbrt_test.vcxproj”的操作．</span><br><span class="line">34&gt;------ 已启动生成: 项目: ALL_BUILD, 配置: Release x64 ------</span><br><span class="line">34&gt;Building Custom Rule …/pbrt-v3/CMakeLists.txt</span><br><span class="line">========== “生成”: 34 成功，0 失败，0 更新，0 已跳过 ==========</span><br></pre></td></tr></table></figure></p>
+<p>可以在 <code>build</code> 目录下的 <code>Release</code>（或 <code>Debug</code>）文件夹中找到 <code>pbrt.exe</code>．</p>
+<h3 id="使用-rs_pbrt-渲染文件">使用 <code>rs_pbrt</code> 渲染文件</h3>
+<p>我先 <code>cargo build -r</code> 进行 release build，然后通过 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\code\rs_pbrt\target\release\rs_pbrt.exe <span class="string">&quot;E:\downloads\pbrt-v3-scenes\killeroos\killeroo-simple.pbrt&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>绝对路径使用会报错．其原因是 <code>.pbrt</code> 文件中有 <code>Include</code> 语句，在 <code>Include "geometry/killeroo.pbrt"</code> 时遇到相对路径，拼接的 parent 目录为 <code>env::current_dir()</code>．<code>cd</code> 到 <code>pbrt-v3-scenes/killeroos/</code>，参数填写绝对路径依然会有路径拼接错误．解决方法是填写相对路径．</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">❯ E:\downloads\pbrt-v3-scenes\killeroos&gt; E:\code\rs_pbrt\target\release\rs_pbrt.exe <span class="string">&quot;killeroo-simple.pbrt&quot;</span></span><br><span class="line">pbrt version 0.9.8 (unknown) [Detected 24 cores]</span><br><span class="line">Copyright (c) 2016-2022 Jan Douglas Bert Walter.</span><br><span class="line">Rust code based on C++ code by Matt Pharr, Greg Humphreys, and Wenzel Jakob.</span><br><span class="line">opening file FILE = killeroo-simple.pbrt</span><br><span class="line">Film <span class="string">&quot;image&quot;</span></span><br><span class="line"><span class="string">&quot;string filename&quot;</span> [<span class="string">&quot;killeroo-simple.exr&quot;</span>]</span><br><span class="line"><span class="string">&quot;integer xresolution&quot;</span> [700]</span><br><span class="line"><span class="string">&quot;integer yresolution&quot;</span> [700]</span><br><span class="line">Sampler <span class="string">&quot;sobol&quot;</span></span><br><span class="line"><span class="string">&quot;integer pixelsamples&quot;</span> [64]</span><br><span class="line">Integrator <span class="string">&quot;directlighting&quot;</span></span><br><span class="line">Include <span class="string">&quot;E:\\downloads\\pbrt-v3-scenes\\killeroos\\geometry/killeroo.pbrt&quot;</span></span><br><span class="line">opening file FILE = E:\downloads\pbrt-v3-scenes\killeroos\geometry/killeroo.pbrt</span><br><span class="line">Include <span class="string">&quot;E:\\downloads\\pbrt-v3-scenes\\killeroos\\geometry/killeroo.pbrt&quot;</span></span><br><span class="line">opening file FILE = E:\downloads\pbrt-v3-scenes\killeroos\geometry/killeroo.pbrt</span><br><span class="line">Integrator <span class="string">&quot;directlighting&quot;</span></span><br><span class="line">Rendering with 24 thread(s) ...</span><br><span class="line">1936 / 1936 [======================================================================================================================================] 100.00 % 14.81/s</span><br><span class="line">Writing image <span class="string">&quot;pbrt.png&quot;</span> with bounds Bounds2i &#123; p_min: Point2i &#123; x: 0, y: 0 &#125;, p_max: Point2i &#123; x: 700, y: 700 &#125; &#125; 26.76 % 36.11/s 39s</span><br></pre></td></tr></table></figure>
+<p>渲染的图片在当前工作目录下．</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/20166026/211073342-7fc95879-c72a-470a-ba17-b666a3e687c9.png" alt="" /><figcaption>渲染图 pbrt.png</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3124,123 +3323,6 @@ GET
 <p>相当于在 <code>&#123;id: number, parent_id: number: name, children: self[]&#125;</code> 中找到目标。</p>
 <h3 id="思路-8">思路</h3>
 <p>递归即可。最后这两道标为了「困难」的题目其实就是不会 TLE 的算法题，没啥难度。倒是好久没写 JS 老是类型错误，尤其是前面 <a href="#宝贵的一票">宝贵的一票</a> parent 就没类型了，比较讨厌。📃</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/tolerance-in-autocad/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/tolerance-in-autocad/" class="post-title-link" itemprop="url">如何在 AutoCAD 中标注公差</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-11-24 17:53:08" itemprop="dateCreated datePublished" datetime="2022-11-24T17:53:08+08:00">2022-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%B6%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">制图</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 AutoCAD 2014 中，有两种标注<strong>公差</strong>的方式。</p>
-<h2 id="通过特性窗格">通过「特性」窗格</h2>
-<p>在已有的标注上右键，打开「特性」窗格。</p>
-<figure>
-<img src="http://telegra.ph/file/540a9fe796d6a51b73282.png" alt="" /><figcaption>右键菜单</figcaption>
-</figure>
-<figure>
-<img src="http://telegra.ph/file/d5ae69a9615a1aa6437ff.png" alt="" /><figcaption>公差</figcaption>
-</figure>
-<p>需要将「显示公差」设为「极限偏差」。注意选择精度。</p>
-<p>「公差消去前导零」为「是」会省略小数点前面的 0。</p>
-<figure>
-<img src="http://telegra.ph/file/792b20aa1b988fe7323a6.png" alt="" /><figcaption>开启公差消去前导零</figcaption>
-</figure>
-<p>「公差消去后续零」为「否」会填充 0。</p>
-<figure>
-<img src="http://telegra.ph/file/a646234170dfcf2bd39fd.png" alt="" /><figcaption>关闭公差消去后续零</figcaption>
-</figure>
-<h2 id="通过堆叠">通过「堆叠」</h2>
-<p>输入 <code>符号 值 上偏差/下偏差</code>，然后选中 <code>上偏差/下偏差</code>。</p>
-<p><img src="http://telegra.ph/file/a5e6105150a35e110e1df.png" /></p>
-<p>在选中的文本中有 <code>/</code> 时右键菜单会多出一个「堆叠」的选项。</p>
-<p><img src="http://telegra.ph/file/d844e454c8b91b99c2425.png" /></p>
-<p><img src="http://telegra.ph/file/f1eb111b161668c71d0f3.png" /></p>
-<p>或者，也可以点选 <code>TEXTEDIT</code> 工具栏中的图标。</p>
-<figure>
-<img src="http://telegra.ph/file/b67a8ae0728365868acb6.png" alt="" /><figcaption>图标</figcaption>
-</figure>
-<p>再次右键堆叠后的文字，打开「堆叠特性」。</p>
-<figure>
-<img src="http://telegra.ph/file/c6448eb051d12a373b8fa.png" alt="" /><figcaption>堆叠特性</figcaption>
-</figure>
-<p>「样式」选择「公差」以消除分数线。</p>
-<figure>
-<img src="http://telegra.ph/file/69c1343f4bc77492dc2c8.png" alt="" /><figcaption>堆叠特性</figcaption>
-</figure>
-<p>结果如下。</p>
-<p><img src="http://telegra.ph/file/b763f36b74cbf9bb64f63.png" /></p>
-<p><img src="http://telegra.ph/file/2e5f91739f4a585055e57.png" /></p>
-<p>以上。🅰️</p>
 
       
     </div>

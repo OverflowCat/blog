@@ -133,16 +133,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -182,6 +182,123 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/tolerance-in-autocad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/tolerance-in-autocad/" class="post-title-link" itemprop="url">如何在 AutoCAD 中标注公差</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-24 17:53:08" itemprop="dateCreated datePublished" datetime="2022-11-24T17:53:08+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%88%B6%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">制图</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 AutoCAD 2014 中，有两种标注<strong>公差</strong>的方式。</p>
+<h2 id="通过特性窗格">通过「特性」窗格</h2>
+<p>在已有的标注上右键，打开「特性」窗格。</p>
+<figure>
+<img src="http://telegra.ph/file/540a9fe796d6a51b73282.png" alt="" /><figcaption>右键菜单</figcaption>
+</figure>
+<figure>
+<img src="http://telegra.ph/file/d5ae69a9615a1aa6437ff.png" alt="" /><figcaption>公差</figcaption>
+</figure>
+<p>需要将「显示公差」设为「极限偏差」。注意选择精度。</p>
+<p>「公差消去前导零」为「是」会省略小数点前面的 0。</p>
+<figure>
+<img src="http://telegra.ph/file/792b20aa1b988fe7323a6.png" alt="" /><figcaption>开启公差消去前导零</figcaption>
+</figure>
+<p>「公差消去后续零」为「否」会填充 0。</p>
+<figure>
+<img src="http://telegra.ph/file/a646234170dfcf2bd39fd.png" alt="" /><figcaption>关闭公差消去后续零</figcaption>
+</figure>
+<h2 id="通过堆叠">通过「堆叠」</h2>
+<p>输入 <code>符号 值 上偏差/下偏差</code>，然后选中 <code>上偏差/下偏差</code>。</p>
+<p><img src="http://telegra.ph/file/a5e6105150a35e110e1df.png" /></p>
+<p>在选中的文本中有 <code>/</code> 时右键菜单会多出一个「堆叠」的选项。</p>
+<p><img src="http://telegra.ph/file/d844e454c8b91b99c2425.png" /></p>
+<p><img src="http://telegra.ph/file/f1eb111b161668c71d0f3.png" /></p>
+<p>或者，也可以点选 <code>TEXTEDIT</code> 工具栏中的图标。</p>
+<figure>
+<img src="http://telegra.ph/file/b67a8ae0728365868acb6.png" alt="" /><figcaption>图标</figcaption>
+</figure>
+<p>再次右键堆叠后的文字，打开「堆叠特性」。</p>
+<figure>
+<img src="http://telegra.ph/file/c6448eb051d12a373b8fa.png" alt="" /><figcaption>堆叠特性</figcaption>
+</figure>
+<p>「样式」选择「公差」以消除分数线。</p>
+<figure>
+<img src="http://telegra.ph/file/69c1343f4bc77492dc2c8.png" alt="" /><figcaption>堆叠特性</figcaption>
+</figure>
+<p>结果如下。</p>
+<p><img src="http://telegra.ph/file/b763f36b74cbf9bb64f63.png" /></p>
+<p><img src="http://telegra.ph/file/2e5f91739f4a585055e57.png" /></p>
+<p>以上。🅰️</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1017,106 +1134,6 @@
 <p>之后就到了北京的安定医院。本以为确诊无望，但跟医生说了「分心」的情况，做了量表，最后大概是如愿以偿地拿到了治疗多动症的药物。因为是精神类药物，还得按月去拿，最后只得在京东上购买替代品。 分班考试靠着一学年的稳定的分数进入了同学科中最好的一个班。 鼓起勇气报名参加了运动会，长跑之后瘫在草坪上，有一种前所未有的喜悦。然后只记得同学把我搀扶回去时的温暖。 虽然能够减轻一时的杂念，药物的副作用还是很大的。并不是说身体上的那种疼痛，而是精神上一定的依赖性，还有恶心的感觉，即使心里深知今后不可能一辈子都依赖在这些东西上。 但是长久以来一直困扰我的疑惑终于能解决，明白了自身的长处（？）和短处后，能够直面恐惧的根源，这样的变化还是很不错的。就像知乎上一位答主所说的吧： &gt; 接受不好的可能性和残酷的现实，明白很多梦想都会落空，很多奋斗注定白费，很多努力永远没有结果，很多能力你没有就是没有。 &gt; 但还是把能做的都做了吧。</p>
 <h2 id="生活">生活</h2>
 <p>背了点日语。可惜散步的时候听力是懵的，最后果然因为听力没有过。 没写什么有技术含量的代码。只是做了几个无聊的 Telegram 机器人，还有自用的小工具。 也没读几本书，不过电影、剧貌似看了不少。大部分时间还是耗费在了网上。 暑假在华北玩了一圈。 啊啊，最重要的是养了一只猫。当初在各种昵称中拿捏不定，最后还是让 ta 像《我是猫》中的那只猫一样，「名前はまだ無い」。猫最近喜欢和我安静地呆在空调房中。不由得想起买回来只有两个月大的时候的纯真的眼神。如今已经长长、长胖了许多。 今年听的最多的歌是《春愁》、改编的<a target="_blank" rel="noopener" href="http://music.163.com/song/432430716/">《巴赫平均律》</a>。 ## 成长 虽然说是变化最大的一年，但是这些变化很难说是我自己通过努力促成的。 与 2018 时相比，大概最为不同的是价值观的改变。与那时盲目羡慕别人的生活相比，能够清晰地辨明那其实并不是我真正想要的，会在看到别人与我的不同之处后一笑置之。虽然说人各有志，但是也难免不将别人的美好生活内化为自己的追求，只是在更加了解自己后，会更加坚定地朝着既定的目标努力。 ## 未完待续 上次春节的时候，在江边的渡口和家人游玩，期间和🌸聊着天。流感的奇怪氛围中，今年心情一样复杂不同于往年。不知道一年后走过的自己，借用黑塞的话说—— 将会以怎样惊异的目光回顾 ta 走过的曲折复杂、摇摆不定的生活途径，会如何对此事的自己投以鼓励的、责备的、同情的、快乐的微笑！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/crawl-homework-answers-with-python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/crawl-homework-answers-with-python/" class="post-title-link" itemprop="url">用 Python 爬取作业答案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-01-05 22:58:27" itemprop="dateCreated datePublished" datetime="2020-01-05T22:58:27+08:00">2020-01-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>上高中以来，学校一直订了一份「报纸」当作业用，叫《学英语》。最近做题时发现报纸与时俱进，多了几个二维码，分别是微信公众号还有「<strong>扫一扫　查答案</strong>」。</p>
-<h1 id="目标网站">目标网站</h1>
-<p>通过二维码扫描出来的结果是上一期的答案。网页的地址长这样：</p>
-<figure>
-<img src="https://i.loli.net/2020/01/05/REI1PtKLQ78iWpC.png" alt="" /><figcaption>url.png</figcaption>
-</figure>
-<p>简直不要太直白。</p>
-<p>首先在网站逛了一圈，PC 版风格看起来仍然是很老旧的那种；网站首页是有专门的答案分区，但是点进来的答案很少。显然，我所需要的答案没有文章列表，必须要经过扫描二维码拿到。</p>
-<p>然后便是尝试改地址：稍稍增减 id 参数，可以看到最近发的文章：<img src="https://i.loli.net/2019/12/31/B5dGa6IQcK2AqSP.png" alt="image.png" /></p>
-<p>发现只有几期的答案是连在一起的，其余的有很多这家报社的其他产品的内容。这些答案的排布也并不是那么有规律，比如下一个 id 的是上上期的答案。那么，只需要爬取附近的每个页面，然后把符合要求的找出来就行了。</p>
-<h1 id="开发环境">开发环境</h1>
-<p>Google 提供了免费的 <a target="_blank" rel="noopener" href="https://jupyter.org/">Jupyter Notebook</a> 环境—— Colab，无需配置，开箱即用。<a target="_blank" rel="noopener" href="https://colab.research.google.com/notebook#create=true&amp;language=python3">进入</a> 后创建一个新的 PYTHON3 笔记本。</p>
-<p>或者，你也可以下载 <a target="_blank" rel="noopener" href="https://www.anaconda.com/download/">ANACONDA</a> 并安装。接着执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip install pipenv</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pipenv shell</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">jupyter notebook</span></span><br></pre></td></tr></table></figure>
-<p>这之后默认浏览器会打开本地的 Jupyter Notebook。</p>
-<p>我们需要安装 requests_html 做爬虫。</p>
-<blockquote>
-<p>requests-html 是基于现有的框架 PyQuery、Requests、lxml、beautifulsoup4 等库进行了二次封装，作者将 Requests 设计的简单强大的优点带到了该项目中。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install requests_html </span><br></pre></td></tr></table></figure>
-<p>Jupyter Notebook 中，以 <code>!</code> 开头的行会被解释成命令。</p>
-<h1 id="爬取和解析">爬取和解析</h1>
-<p>这种 CMS 一般都没什么反爬措施，连 X5 浏览器 UA 都不需要伪造。所有网页的标题都是相同的，所以爬取每个页面内的标题就好。</p>
-<p><img src="https://i.loli.net/2019/12/31/qGlMH5vSUkXWRsm.png" alt="image.png" /> Chrome 内右键目标元素，点「检查」，右键 Elements 中高亮的颜色，复制选择器。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#dummybodyid &gt; div.contentbox &gt; h3</span><br></pre></td></tr></table></figure>
-<p>对下面的答案图片如法炮制，它们的选择器分别是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(1) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(2) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(3) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(4) &gt; img</span><br></pre></td></tr></table></figure>
-<p><em>页面最后一般会有 doc 文档可以下载，但是最近没有了。</em></p>
-<p>然后便是遍历每个页面了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;34210&#x27;: &#x27;19-20上高三江苏第9期A版参考答案&#x27;, &#x27;34211&#x27;: &#x27;19-20上高三江苏第8期A版参考答案&#x27;, &#x27;34212&#x27;: &#x27;19-20上八年级★云南第10期听力录音&#x27;, &#x27;34213&#x27;: &#x27;19-20上八年级邵阳第10期听力录音&#x27;, &#x27;34214&#x27;: &quot;悦听悦读 The world&#x27;s first artificial moon&quot;, &#x27;34215&#x27;: &#x27;悦听悦读Superheroes from Asia&#x27;, &#x27;34216&#x27;: &#x27;19-20上八年级广东第10期听力录音&#x27;, &#x27;34217&#x27;: &#x27;19-20上外研八年级嘉兴第9期听力录音&#x27;, &#x27;34218&#x27;: &#x27;19-20上外研八年级嘉兴第10期听力录音&#x27;, &#x27;34219&#x27;: &#x27;19-20上外研八年级嘉兴第11期听力录音&#x27;, &#x27;34220&#x27;: &#x27;19-20上外研八年级嘉兴第12期听力录音&#x27;, &#x27;34221&#x27;: &#x27;19-20上八年级★赤峰第1期听力录音&#x27;, </span><br><span class="line">…,（省略一部分）</span><br><span class="line">&#x27;34966&#x27;: &#x27;19-20上九年级宁波期末检测一本通综合测评（五）听力录音&#x27;, &#x27;34967&#x27;: &#x27;悦听悦读Real-life Dora&#x27;, &#x27;34968&#x27;: &#x27;19-20上高三江苏第14期A版参考答案&#x27;, &#x27;34969&#x27;: &#x27;19-20上高三江苏（N）第15期听力录音&#x27;, &#x27;34970&#x27;: &#x27;19-20上高三江苏（N）第14期B1-B4版参考答案&#x27;, &#x27;34971&#x27;: &#x27;19-20上高一第24期A4版听力练习录音&#x27;, &#x27;34972&#x27;: &#x27;19-20上高三江苏第15期A版参考答案&#x27;, &#x27;34973&#x27;: &#x27;19-20上高三江苏（N）第16期听力录音&#x27;, &#x27;34974&#x27;: &#x27;19-20上高三江苏（N）第15期B1-B4版参考答案&#x27;, &#x27;34975&#x27;: &#x27;Jane and Sara want to go skating（I）&#x27;, &#x27;34976&#x27;: &#x27;Jane and Sara want to go skating（II）&#x27;, &#x27;34977&#x27;: &#x27;19-20上八年级（J）第17期听力录音&#x27;, &#x27;34978&#x27;: &#x27;19-20上八年级（J）第18期听力录音&#x27;, &#x27;34979&#x27;: &#x27;19-20上八年级（J）第19期听力录音&#x27;, &#x27;34980&#x27;: &#x27;19-20上八年级（J）第20期听力录音&#x27;, &#x27;34981&#x27;: &#x27;悦听悦读 An ancient Chinese story&#x27;, &#x27;34982&#x27;: &#x27;悦听悦读 Empty-City Strategy&#x27;, &#x27;34983&#x27;: &#x27;悦听悦读Hearing loss, a major problem for teenagers&#x27;, &#x27;34984&#x27;: &#x27;悦听悦读FOLLOW ME: Hearing loss, a major problem for teenagers&#x27;, &#x27;34985&#x27;: &#x27;故事乐园 The ice cream&#x27;, &#x27;34986&#x27;: &quot;故事乐园 It&#x27;s Mr Green&quot;, &#x27;34987&#x27;: &#x27;悦听悦读A special fashion show&#x27;, &#x27;34988&#x27;: &#x27;悦听悦读Two cute girls&#x27;, &#x27;34989&#x27;: &#x27;19-20上八年级曲靖第15期听力录音&#x27;, &#x27;34990&#x27;: &#x27;19-20上七年级★福建第15期听力录音&#x27;, &#x27;34991&#x27;: &#x27;悦听悦读 Max Einstein: The Genius Experiment&#x27;, &#x27;34992&#x27;: &#x27;19-20上九年级（XJ）第9期听力录音&#x27;, &#x27;34993&#x27;: &#x27;19-20上九年级（XJ）第10期听力录音&#x27;, &#x27;34994&#x27;: &#x27;19-20上九年级（XJ）第11期听力录音&#x27;, &#x27;34995&#x27;: &#x27;19-20上九年级（XJ）第12期听力录音&#x27;, &#x27;34996&#x27;: &#x27;19-20上七年级★福建第16期听力录音&#x27;, &#x27;34997&#x27;: &#x27;Bill and Kitty&#x27;, &#x27;34998&#x27;: &#x27;19-20上八年级曲靖第16期听力录音&#x27;, &#x27;34999&#x27;: &#x27;悦听悦读Flying car&#x27;&#125; </span><br></pre></td></tr></table></figure>
-<h1 id="demo">Demo</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/OverflowCat/LearningEnglish/">learningEnglishFetch.py</a></p>
 
       
     </div>
