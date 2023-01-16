@@ -19,32 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xinshijiededa.men","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"mac","show_result":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"expandIn","coll_header":"slideLeftIn","sidebar":"perspectiveLeftIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="效果   本文测试通过的 Tauri 版本为 1.0 和 1.2。   鼠标穿透 依赖 在 cargo.toml 中添加 1234windows &#x3D; &amp;#123; version &#x3D; &quot;0.43.0&quot;, features &#x3D; [    &quot;Win32_Foundation&quot;,    &quot;Win32_UI_WindowsAndMessaging&amp;quo">
+    <meta name="description" content="在新 VPS 上运行 Python 程序的时候出现了问题：pdm 无法正常 install 或者设置 config，poetry 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子： 12345678910111213141516171819202122232425262728[neko@host temp]$ lsselect.py[neko@host te">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在 Tauri 中实现鼠标穿透和透明窗口">
-<meta property="og:url" content="https://blog.xinshijiededa.men/tauri-transparent-window/index.html">
+<meta property="og:title" content="你不应该使用的 Python 文件名">
+<meta property="og:url" content="https://blog.xinshijiededa.men/python-filenames-you-should-avoid/index.html">
 <meta property="og:site_name" content="新世界的大门">
-<meta property="og:description" content="效果   本文测试通过的 Tauri 版本为 1.0 和 1.2。   鼠标穿透 依赖 在 cargo.toml 中添加 1234windows &#x3D; &amp;#123; version &#x3D; &quot;0.43.0&quot;, features &#x3D; [    &quot;Win32_Foundation&quot;,    &quot;Win32_UI_WindowsAndMessaging&amp;quo">
+<meta property="og:description" content="在新 VPS 上运行 Python 程序的时候出现了问题：pdm 无法正常 install 或者设置 config，poetry 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子： 12345678910111213141516171819202122232425262728[neko@host temp]$ lsselect.py[neko@host te">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/tauri-apps/tauri-docs/335bab9ee7443bc31da1b1e8e26ede47ab25943a/static/img/index/header_light.svg">
-<meta property="article:published_time" content="2022-12-29T13:18:34.000Z">
+<meta property="article:published_time" content="2023-01-16T06:58:08.000Z">
 <meta property="article:modified_time" content="2023-01-16T08:01:31.774Z">
 <meta property="article:author" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-<meta property="article:tag" content="Tauri">
+<meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png">
 <meta name="twitter:creator" content="@lazy_static">
 
 
-<link rel="canonical" href="https://blog.xinshijiededa.men/tauri-transparent-window/">
+<link rel="canonical" href="https://blog.xinshijiededa.men/python-filenames-you-should-avoid/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xinshijiededa.men/tauri-transparent-window/","path":"tauri-transparent-window/","title":"在 Tauri 中实现鼠标穿透和透明窗口"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xinshijiededa.men/python-filenames-you-should-avoid/","path":"python-filenames-you-should-avoid/","title":"你不应该使用的 Python 文件名"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>在 Tauri 中实现鼠标穿透和透明窗口 | 新世界的大门</title>
+<title>你不应该使用的 Python 文件名 | 新世界的大门</title>
   
 
 
@@ -111,7 +108,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -124,7 +121,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E7%A9%BF%E9%80%8F"><span class="nav-text">鼠标穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E7%AA%97%E5%8F%A3"><span class="nav-text">透明窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E8%AE%BE%E7%BD%AE"><span class="nav-text">窗口设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css"><span class="nav-text">CSS</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,7 +194,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/tauri-transparent-window/">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/python-filenames-you-should-avoid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
@@ -211,12 +207,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="在 Tauri 中实现鼠标穿透和透明窗口 | 新世界的大门">
+      <meta itemprop="name" content="你不应该使用的 Python 文件名 | 新世界的大门">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在 Tauri 中实现鼠标穿透和透明窗口
+          你不应该使用的 Python 文件名
         </h1>
 
         <div class="post-meta-container">
@@ -227,7 +223,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-12-29 21:18:34" itemprop="dateCreated datePublished" datetime="2022-12-29T21:18:34+08:00">2022-12-29</time>
+      <time title="创建时间：2023-01-16 14:58:08" itemprop="dateCreated datePublished" datetime="2023-01-16T14:58:08+08:00">2023-01-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -235,7 +231,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/frontend/" itemprop="url" rel="index"><span itemprop="name">页面仔的自我修养</span></a>
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
         </span>
     </span>
 
@@ -249,32 +245,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <figure>
-<img src="https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png" alt="" /><figcaption>效果</figcaption>
-</figure>
-<blockquote>
-<p>本文测试通过的 Tauri 版本为 <code>1.0</code> 和 <code>1.2</code>。</p>
-<p><img src="https://raw.githubusercontent.com/tauri-apps/tauri-docs/335bab9ee7443bc31da1b1e8e26ede47ab25943a/static/img/index/header_light.svg" /></p>
-</blockquote>
-<h2 id="鼠标穿透">鼠标穿透</h2>
-<h3 id="依赖">依赖</h3>
-<p>在 <code>cargo.toml</code> 中添加</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">windows</span> = &#123; version = <span class="string">&quot;0.43.0&quot;</span>, features = [</span><br><span class="line">    <span class="string">&quot;Win32_Foundation&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Win32_UI_WindowsAndMessaging&quot;</span>,</span><br><span class="line">] &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="代码">代码</h3>
-<p>初始化窗口时通过 <code>setup</code> 传闭包拿到 <code>window</code> 进行操作。只支持 Windows。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">tauri::Builder::<span class="title function_ invoke__">default</span>()</span><br><span class="line">    .<span class="title function_ invoke__">setup</span>(|app| &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">window</span> = app.<span class="title function_ invoke__">get_window</span>(<span class="string">&quot;main&quot;</span>).<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">        <span class="meta">#[cfg(windows)]</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">use</span> windows::Win32::Foundation::HWND;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable">hwnd</span> = window.<span class="title function_ invoke__">hwnd</span>().<span class="title function_ invoke__">unwrap</span>().<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable">hwnd</span> = <span class="title function_ invoke__">HWND</span>(hwnd);</span><br><span class="line">            <span class="keyword">unsafe</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">style_ex</span> = <span class="title function_ invoke__">WINDOW_EX_STYLE</span>(<span class="title function_ invoke__">GetWindowLongW</span>(hwnd, GWL_EXSTYLE) <span class="keyword">as</span> <span class="type">u32</span>);</span><br><span class="line">                style_ex |= WS_EX_APPWINDOW <span class="comment">// for taskbar</span></span><br><span class="line">                | WS_EX_COMPOSITED</span><br><span class="line">                | WS_EX_LAYERED</span><br><span class="line">                | WS_EX_TRANSPARENT</span><br><span class="line">                | WS_EX_TOPMOST;</span><br><span class="line">                <span class="keyword">use</span> windows::Win32::UI::WindowsAndMessaging::*;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">nindex</span> = GWL_EXSTYLE;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">_pre_val</span> = <span class="title function_ invoke__">SetWindowLongA</span>(hwnd, nindex, style_ex.<span class="number">0</span> <span class="keyword">as</span> <span class="type">i32</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_ invoke__">invoke_handler</span>(tauri::generate_handler![...])</span><br><span class="line">    .<span class="title function_ invoke__">run</span>(tauri::generate_context!())</span><br><span class="line">    .<span class="title function_ invoke__">expect</span>(<span class="string">&quot;error while running tauri application&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>官方的实现目前<a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tauri/issues/2090">还没有进入</a> tauri，只能先凑合用用。</p>
-<blockquote>
-<p>Hi, since <a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tao/pull/421">tauri-apps/tao#421</a> was merged into <code>tao</code>, can that function be exposed in tauri's api?</p>
-</blockquote>
-<h2 id="透明窗口">透明窗口</h2>
-<h3 id="窗口设置">窗口设置</h3>
-<p>为了实现透明窗口，还需要修改 <code>tauri.config.json</code>。当然，直接修改 window 或者通过 <code>tauri::Builder</code> 应该也是可以的。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;tauri&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    …<span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;fullscreen&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;resizable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;transparent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;alwaysOnTop&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="css">CSS</h3>
-<p>另外，不要忘记修改需要透明的地方的 CSS。如果你使用了 SvelteKit 模板，可以在 <code>+layout.svelte</code> 中添加：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-tag">main</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>以上。🪟</p>
+        <p>在新 VPS 上运行 Python 程序的时候出现了问题：<a target="_blank" rel="noopener" href="https://pdm.fming.dev/latest/"><code>pdm</code></a> 无法正常 install 或者设置 config，<code>poetry</code> 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[neko@host temp]$ <span class="built_in">ls</span></span><br><span class="line">select.py</span><br><span class="line">[neko@host temp]$ <span class="built_in">cat</span> select.py</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello, world!&quot;</span>)</span><br><span class="line">[neko@host temp]$ python</span><br><span class="line">Python 3.10.9 (main, Dec 19 2022, 17:35:49) [GCC 12.2.0] on linux</span><br><span class="line">Type <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> or <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import platform</span><br><span class="line">hello, world!</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/subprocess.py&quot;</span>, line 69, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import msvcrt</span><br><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;msvcrt&#x27;</span></span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/platform.py&quot;</span>, line 119, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import subprocess</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/subprocess.py&quot;</span>, line 76, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import selectors</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/selectors.py&quot;</span>, line 291, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    class SelectSelector(_BaseSelectorImpl):</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/selectors.py&quot;</span>, line 318, <span class="keyword">in</span> SelectSelector</span><br><span class="line">    _select = select.select</span><br><span class="line">AttributeError: module <span class="string">&#x27;select&#x27;</span> has no attribute <span class="string">&#x27;select&#x27;</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>我一 Linux 怎么会需要 <code>msvcrt</code>？一开始以为是 Arch 仓库里的 Python 有问题，或者是 <code>pip</code> 安装的时候在 root 用户操作而破坏了系统，但是重装了几次全部依赖也没有解决。排查许久后，发现只有在我的代码文件夹里进入 REPL <code>import platform</code> 会报错。然后发现项目里用的一个模块的名称叫 <code>select.py</code>。是的，导入 Python 内置的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/index.html">标准库 <i class="fa-brands fa-python"></i></a> 的时候，<strong>标准库内部的 <code>import</code> 也是在当前工作目录下进行的</strong>（！）。</p>
+<p>最末的结论是，你不应该使用以下名称作为 Python 代码的文件/模块名：</p>
+<p><code>abc</code>, <code>aifc</code>, <code>argparse</code>, <code>array</code>, <code>ast</code>, <code>asyncio</code>, <code>atexit</code>, <code>audioop</code>, <code>base64</code>, <code>bdb</code>, <code>binascii</code>, <code>bisect</code>, <code>builtins</code>, <code>bz2</code>, <code>calendar</code>, <code>cgi</code>, <code>cgitb</code>, <code>chunk</code>, <code>cmath</code>, <code>cmd</code>, <code>code</code>, <code>codecs</code>, <code>codeop</code>, <code>collections</code>, <code>colorsys</code>, <code>compileall</code>, <code>concurrent</code>, <code>configparser</code>, <code>contextlib</code>, <code>contextvars</code>, <code>copy</code>, <code>copyreg</code>, <code>csv</code>, <code>ctypes</code>, <code>dataclasses</code>, <code>datetime</code>, <code>dbm</code>, <code>decimal</code>, <code>difflib</code>, <code>dis</code>, <code>doctest</code>, <code>email</code>, <code>ensurepip</code>, <code>enum</code>, <code>errno</code>, <code>faulthandler</code>, <code>filecmp</code>, <code>fileinput</code>, <code>fnmatch</code>, <code>fractions</code>, <code>ftplib</code>, <code>functools</code>, <code>gc</code>, <code>getopt</code>, <code>getpass</code>, <code>gettext</code>, <code>glob</code>, <code>graphlib</code>, <code>gzip</code>, <code>hashlib</code>, <code>heapq</code>, <code>hmac</code>, <code>html</code>, <code>http</code>, <code>imaplib</code>, <code>imghdr</code>, <code>imp</code>, <code>importlib</code>, <code>inspect</code>, <code>io</code>, <code>ipaddress</code>, <code>itertools</code>, <code>json</code>, <code>keyword</code>, <code>linecache</code>, <code>locale</code>, <code>logging</code>, <code>lzma</code>, <code>mailbox</code>, <code>mailcap</code>, <code>marshal</code>, <code>math</code>, <code>mimetypes</code>, <code>mmap</code>, <code>modulefinder</code>, <code>msilib</code>, <code>msvcrt</code>, <code>multiprocessing</code>, <code>netrc</code>, <code>nntplib</code>, <code>numbers</code>, <code>operator</code>, <code>optparse</code>, <code>os</code>, <code>pathlib</code>, <code>pdb</code>, <code>pickle</code>, <code>pickletools</code>, <code>pipes</code>, <code>pkgutil</code>, <code>platform</code>, <code>plistlib</code>, <code>poplib</code>, <code>pprint</code>, <code>profile</code>, <code>py_compile</code>, <code>pyclbr</code>, <code>pydoc</code>, <code>pyexpat</code>, <code>queue</code>, <code>quopri</code>, <code>random</code>, <code>re</code>, <code>reprlib</code>, <code>rlcompleter</code>, <code>runpy</code>, <code>sched</code>, <code>secrets</code>, <code>select</code>, <code>selectors</code>, <code>shelve</code>, <code>shlex</code>, <code>shutil</code>, <code>signal</code>, <code>site</code>, <code>smtplib</code>, <code>sndhdr</code>, <code>socket</code>, <code>socketserver</code>, <code>sqlite3</code>, <code>ssl</code>, <code>stat</code>, <code>statistics</code>, <code>string</code>, <code>stringprep</code>, <code>struct</code>, <code>subprocess</code>, <code>sunau</code>, <code>symtable</code>, <code>sys</code>, <code>sysconfig</code>, <code>tabnanny</code>, <code>tarfile</code>, <code>telnetlib</code>, <code>tempfile</code>, <code>test</code>, <code>textwrap</code>, <code>threading</code>, <code>time</code>, <code>timeit</code>, <code>tkinter</code>, <code>token</code>, <code>tokenize</code>, <code>tomllib</code>, <code>trace</code>, <code>traceback</code>, <code>tracemalloc</code>, <code>turtle</code>, <code>types</code>, <code>typing</code>, <code>unicodedata</code>, <code>unittest</code>, <code>urllib</code>, <code>uu</code>, <code>uuid</code>, <code>venv</code>, <code>warnings</code>, <code>wave</code>, <code>weakref</code>, <code>webbrowser</code>, <code>winreg</code>, <code>winsound</code>, <code>wsgiref</code>, <code>xdrlib</code>, <code>xml</code>, <code>xmlrpc</code>, <code>zipapp</code>, <code>zipfile</code>, <code>zipimport</code>, <code>zlib</code>, <code>zoneinfo</code> 🐍</p>
 
     </div>
 
@@ -283,22 +258,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Tauri/" rel="tag"># Tauri</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/song-of-archery/" rel="prev" title="射箭之歌">
-                  <i class="fa fa-chevron-left"></i> 射箭之歌
+                <a href="/pbrt-introduction/" rel="prev" title="PBRT 笔记：1. 绪论">
+                  <i class="fa fa-chevron-left"></i> PBRT 笔记：1. 绪论
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/watched-in-2022/" rel="next" title="我的 2022 观影记录">
-                  我的 2022 观影记录 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

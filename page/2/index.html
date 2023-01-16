@@ -133,16 +133,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -182,6 +182,312 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/lanqiao-14-web-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/lanqiao-14-web-2/" class="post-title-link" itemprop="url">第十四届蓝桥杯（Web 应用开发）第二次模拟赛题解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-26 22:32:32" itemprop="dateCreated datePublished" datetime="2022-11-26T22:32:32+08:00">2022-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/frontend/" itemprop="url" rel="index"><span itemprop="name">页面仔的自我修养</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第一。</p>
+<p>这是事实，无法否认，但开发者们还是蜂拥而来。这语言总会给你一丝希望，vite 也好，next 也罢，但如此近，仿佛触手可及，让人奋不顾身。</p>
+<p>这里充斥着网页，而我正是那页面仔！</p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png" /></p>
+<blockquote>
+<p>代码请移步至 GitHub <a target="_blank" rel="noopener" href="https://github.com/OverflowCat/lanqiao-14-web">OverflowCat/lanqiao-14-web</a>。</p>
+</blockquote>
+<h2 id="凭空消失的-ta">凭空消失的 TA</h2>
+<h3 id="题目">题目</h3>
+<blockquote>
+<p>初始代码中的 <code>index.html</code> 在浏览器中并没有显示出来表单组件 <code>myform</code>。考生需要认真检查提供的代码，找出表单消失的原因，并修复掉，最终让表单 “重见天日”。</p>
+</blockquote>
+<h3 id="思路">思路</h3>
+<p>这题跟 Vue 2 半毛钱关系没有，单纯是 <code>index.html</code> 中没有引用 Element UI 的 js 😅</p>
+<h3 id="代码">代码</h3>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">diff --git 凭空消失的TA/index.html</span></span><br><span class="line"><span class="meta">@@ -8,6 +8,7 @@</span>  &lt;title&gt;凭空消失的 TA&lt;/title&gt;</span><br><span class="line">  &lt;script src=&quot;./js/vue.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;./js/http-vue-loader.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"><span class="addition">+ &lt;script src=&quot;./element-ui-2.15.10/index.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">  &lt;!-- 引入 element-ui 样式 --&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;./element-ui-2.15.10/index.css&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="用户名片">用户名片</h2>
+<h3 id="思路-1">思路</h3>
+<blockquote>
+<p>The year is 2049...</p>
+<p>All websites use Tailwind, there are only 69 people remaining that know how to write custom CSS.</p>
+<p>These 69 people have to center divs to save the world.</p>
+<p>They are our only hope.</p>
+<p>(This is my pitch to Netflix for an upcoming movie)</p>
+</blockquote>
+<p>Credit: <a target="_blank" rel="noopener" href="https://twitter.com/thejackforge/status/1560637007742701570">TheJackForge</a></p>
+<p>In case you still do not know how to center <code>div</code>s horizontally &amp; vertically, refer to <a target="_blank" rel="noopener" href="https://blog.hubspot.com/website/center-div-css">11 Ways to Center Div or Text in Div in CSS</a> or <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014116655">CSS-水平居中、垂直居中、水平垂直居中</a>.</p>
+<h3 id="代码-1">代码</h3>
+<figure>
+<img src="https://raw.githubusercontent.com/OverflowCat/lanqiao-14-web/master/%E7%94%A8%E6%88%B7%E5%90%8D%E7%89%87/center-divs.webp" alt="" /><figcaption>效果图</figcaption>
+</figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.avatar</span>,</span><br><span class="line"><span class="selector-class">.card</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.user-card</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="芝麻开门">芝麻开门</h2>
+<h3 id="题目-1">题目</h3>
+<blockquote>
+<p>找到 <code>index.js</code> 文件中的 <code>mPrompt</code> 函数，完成函数中的 TODO 部分。</p>
+<ol type="1">
+<li>点击 “点击弹出对话框，输入咒语” 按钮会调用 <code>mPrompt</code> 函数，<code>mPrompt</code> 调用后页面显示对话框。<code>mPrompt</code> 函数必须返回一个 <code>promise</code> 对象。</li>
+<li>在对话框中的输入框中输入文字后，点击确认按钮，对话框消失， <code>promise</code> 返回成功，<code>promise</code> 成功的值为输入的值。</li>
+<li>只有当成功的值为 “芝麻开门” 时门自动打开（已实现）。</li>
+<li>点击取消，对话框消失，<code>promise</code> 返回失败，失败的值为 <code>false</code>。</li>
+<li>对话框的显示隐藏请使用 DOM 节点的添加删除实现。</li>
+</ol>
+</blockquote>
+<h3 id="思路-2">思路</h3>
+<p>本题考察 Promise。在返回的 Promise 中添加 onclick 事件，并在函数中调用 Promise 的参数。</p>
+<h3 id="代码-2">代码</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> incantations = <span class="string">&quot;芝麻开门&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">init</span>(<span class="params">el</span>) &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.wrapper .btn&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">mPrompt</span>()</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res === incantations) &#123;</span><br><span class="line">          <span class="variable language_">document</span></span><br><span class="line">            .<span class="title function_">querySelectorAll</span>(<span class="string">&quot;#door .doors&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">            .<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;door-left&quot;</span>);</span><br><span class="line">          <span class="variable language_">document</span></span><br><span class="line">            .<span class="title function_">querySelectorAll</span>(<span class="string">&quot;#door .doors&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">            .<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;door-right&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 调用函数，开启弹窗，记录输入框的内容，并通过 promise 异步返回输入框中的内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">Promise</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">mPrompt</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 弹窗必须使用以下结构 template 保存的是弹窗的结构字符串，可以先转化为 DOM 再通过 appendChild 方式插入到 body 中</span></span><br><span class="line">  <span class="keyword">const</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">        &lt;div class=&quot;modal&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;message-box&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;message-header&quot;&gt;请输入咒语&lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;message-body&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;input type=&quot;text&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;message-footer&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;button class=&quot;btn btn-small&quot; id=&#x27;cancel&#x27;&gt;取消&lt;/button&gt;</span></span><br><span class="line"><span class="string">                    &lt;button class=&quot;btn btn-small btn-primary&quot; id=&#x27;confirm&#x27;&gt;确定&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    `</span>;</span><br><span class="line">  <span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">  <span class="comment">// TODO：待补充代码</span></span><br><span class="line">  div.<span class="property">innerHTML</span> = template;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(div);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">hide</span> = (<span class="params"></span>) =&gt; div.<span class="title function_">remove</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(</span><br><span class="line">    <span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      div.<span class="title function_">querySelector</span>(<span class="string">&quot;button#cancel&quot;</span>).<span class="property">onclick</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">hide</span>();</span><br><span class="line">        <span class="title function_">reject</span>(<span class="literal">false</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      div.<span class="title function_">querySelector</span>(<span class="string">&quot;button#confirm&quot;</span>).<span class="property">onclick</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(div.<span class="title function_">querySelector</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">hide</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="宝贵的一票">宝贵的一票</h2>
+<h3 id="题目-2">题目</h3>
+<blockquote>
+<p>完成 <code>index.html</code> 文件中的 TODO 部分。 1. 点击添加选项，页面中新增一个选项。选项前文字按照：选项 1，选项 2，选项 3 ...... 顺序排列，当页面中的选项大于 2 个时，选项后面跟随删除按钮（即 x 图标）。带有删除图标的选项 DOM 结构如下： <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">label</span>&gt;</span>选项1<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="comment">&lt;!-- 删除图标 --&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./images/x.svg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure> 2. 点击删除按钮，删除当前选项，并且选项前文字按照：选项 1，选项 2，选项 3 ...... 顺序排列，当选项数量小于等于 2 个时，选项后面无删除按钮。</p>
+</blockquote>
+<h3 id="思路-3">思路</h3>
+<p>这题要求点删除按钮的时候删除的是对应的文本框，并且后面的选项序号需要再次排序。注意如果增加了选项的话，<code>选项1</code> 和 <code>选项2</code> 也是需要删除按钮的。直接 <code>querySelector</code> 改内容就好了，注意 template 的结构。</p>
+<h3 id="代码-3">代码</h3>
+<p>见 <code>./宝贵的一票/index.html</code>。</p>
+<h2 id="粒粒皆辛苦">粒粒皆辛苦</h2>
+<blockquote>
+<p><strong>介绍</strong></p>
+<p>俗话说 “民以食为天”，粮食的收成直接影响着民生问题，通过对农作物产量的统计数据也能分析出诸多实际问题。</p>
+<p>接下来就让我们使用 ECharts 图表，完成 X 市近五年来的农作物产量的统计图吧～</p>
+<p><strong>准备</strong></p>
+<p>本题已经内置了初始代码，打开实验环境，目录结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├── data.json</span><br><span class="line">├── index.html</span><br><span class="line">└── js</span><br><span class="line">    ├── axios.min.js</span><br><span class="line">    └── echarts.min.js</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>index.html</code> 是主页面。</li>
+<li><code>js/echarts.min.js</code> 是 ECharts 文件。</li>
+<li><code>js/axios.min.js</code> 是 axios 文件。</li>
+<li><code>data.json</code> 是对应年份的粮食产量数据，单位为万吨。</li>
+</ul>
+<p>选中 <code>index.html</code> 右键启动 Web Server 服务（Open with Live Server），让项目运行起来。</p>
+<p>接着，打开环境右侧的【Web 服务】，就可以在浏览器中看到如下效果：</p>
+<p><strong>目标</strong></p>
+<p>请完成 <code>index.html</code> 文件中的 TODO 部分。</p>
+<ol type="1">
+<li>完成数据请求（数据来源 <code>./data.json</code>）。</li>
+<li><code>data.json</code> 中的数据中英文对照如下：
+<table>
+<thead>
+<tr>
+<th align="center">
+英文名称
+</th>
+<th align="center">
+中文名称
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">
+wheat
+</td>
+<td align="center">
+小麦
+</td>
+</tr>
+<tr>
+<td align="center">
+soybean
+</td>
+<td align="center">
+大豆
+</td>
+</tr>
+<tr>
+<td align="center">
+potato
+</td>
+<td align="center">
+马铃薯
+</td>
+</tr>
+<tr>
+<td align="center">
+corn
+</td>
+<td align="center">
+玉米
+</td>
+</tr>
+</tbody>
+</table></li>
+<li>在页面的折线图和饼形图中正确显示粮食产量数据。其中折线图为五年数据，饼图只显示 2022 年数据。</li>
+</ol>
+</blockquote>
+<h3 id="思路-4">思路</h3>
+<p>使用 <code>myChart.setOption()</code> 更新数据。EChart 会检测 diff。这个框架可以看一看 <a target="_blank" rel="noopener" href="https://www.runoob.com/echarts/echarts-ajax-data.html">菜鸟教程</a>。</p>
+<h2 id="绝美宋词">绝美宋词</h2>
+<h3 id="题目-3">题目</h3>
+<blockquote>
+<p>请使用 Vue ，完成 <code>index.html</code> 文件中的 TODO 部分。</p>
+<ol type="1">
+<li>完成数据请求（数据来源 <code>./data.json</code>），<code>data.json</code> 是宋词数据，<code>poetry_content</code> 表示词句，<code>title</code> 表示词牌名，<code>author</code> 表示词人。</li>
+<li>在输入框输入关键词时在 <code>ul</code>（<code>class = suggestions</code>）的元素中<strong>实时显示</strong>词牌名、词句、词人中包含关键词的<strong>完整词句（包含词牌名、词人）列表</strong>，当关键词为空或者匹配不到时 <code>ul</code>（<code>class = suggestions</code>）元素的子节点为空。完整词句的 DOM 结构按照如下规定显示：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>词句<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>词牌名 - 词人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">    &gt;</span>常记溪亭日暮，沉醉不知归路。兴尽晚回舟，误入藕花深处。争渡，争渡，惊起一滩鸥鹭&lt;/span</span><br><span class="line">  &gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>如梦令 - 李清照<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>高亮匹配到的所有词句中的关键词。即使用 <code>&lt;span&gt;&lt;/span&gt;</code> 标签包裹所有关键词。</li>
+</ol>
+<p>例：(关键词：雨)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">    &gt;</span>寒蝉凄切，对长亭晚，骤<span class="tag">&lt;<span class="name">span</span>&gt;</span>雨&lt;/span</span><br><span class="line">    &gt;初歇。都门帐饮无绪，方留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去千里烟波，暮霭沉沉楚天阔。多情自古伤离别，更那堪冷落清秋节。今宵酒醒何处，杨柳岸晓风残月。此去经年，应是良辰美景虚设。便纵有千种风情，更与何人说&lt;/span</span><br><span class="line">  &gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>雨<span class="tag">&lt;/<span class="name">span</span>&gt;</span>霖铃 - 柳永<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>：<strong>本题要求的是实时显示，即输入完成的同时显示结果，非失去焦点显示</strong>。</p>
+</blockquote>
+</blockquote>
+<h3 id="思路-5">思路</h3>
+<p>这是我第一次用 Vue。在 Vue 2 中把 <code>&lt;input/&gt;</code> 的 <code>value</code> 绑定到变量并且在 <code>input</code> 更新时调用函数的方法：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">type=&quot;text&quot;</span><br><span class="line">id=&quot;search&quot;</span><br><span class="line">class=&quot;search&quot;</span><br><span class="line">placeholder=&quot;词牌名 词句 词人&quot;</span><br><span class="line"><span class="addition">+ v-model=&quot;query&quot;</span></span><br><span class="line"><span class="addition">+ @input=&quot;handleInput&quot;</span></span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>根据文档，<code>@input</code> 会过滤掉 IME 的 buffer。题目给的效果图好像并没有这个行为，不过也过了，毕竟不知评测机制，并且没人会写带 IME 的 test。</p>
+<h3 id="代码-4">代码</h3>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@@ -14,8 +14,12 @@</span></span><br><span class="line">    &lt;h1 style=&quot;text-align: center&quot;&gt;输入关键字，找一首词&lt;/h1&gt;</span><br><span class="line">    &lt;!-- TODO：待补充代码 --&gt;</span><br><span class="line">    &lt;div class=&quot;search-form&quot;&gt;</span><br><span class="line"><span class="deletion">-     &lt;input type=&quot;text&quot; id=&quot;search&quot; class=&quot;search&quot; placeholder=&quot;词牌名 词句 词人&quot; /&gt;</span></span><br><span class="line"><span class="addition">+     &lt;input type=&quot;text&quot; id=&quot;search&quot; class=&quot;search&quot; placeholder=&quot;词牌名 词句 词人&quot; v-model=&quot;query&quot; @input=&quot;handleInput&quot; /&gt;</span></span><br><span class="line">      &lt;ul class=&quot;suggestions&quot;&gt;</span><br><span class="line"><span class="addition">+       &lt;li v-for=&quot;poem in filtered&quot;&gt;</span></span><br><span class="line"><span class="addition">+         &lt;span class=&quot;poet&quot; v-html=&quot;poem.poetry_content&quot;&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="addition">+         &lt;span class=&quot;title&quot; v-html=&quot;poem.title&quot;&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="addition">+       &lt;/li&gt;</span></span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"><span class="meta">@@ -23,6 +27,40 @@</span></span><br><span class="line">    let vm = new Vue(&#123;</span><br><span class="line">      el: &#x27;#app&#x27;,</span><br><span class="line">      // TODO：待补充代码</span><br><span class="line"><span class="addition">+     data: &#123;</span></span><br><span class="line"><span class="addition">+       query: &#x27;&#x27;,</span></span><br><span class="line"><span class="addition">+       poems: [],</span></span><br><span class="line"><span class="addition">+       filtered: []</span></span><br><span class="line"><span class="addition">+     &#125;,</span></span><br><span class="line"><span class="addition">+     created() &#123;</span></span><br><span class="line"><span class="addition">+       this.queryData()</span></span><br><span class="line"><span class="addition">+     &#125;,</span></span><br><span class="line"><span class="addition">+     methods: &#123;</span></span><br><span class="line"><span class="addition">+       highlight(text) &#123;</span></span><br><span class="line"><span class="addition">+         return `&lt;span class=&quot;highlight&quot;&gt;$&#123;text&#125;&lt;/span&gt;`;</span></span><br><span class="line"><span class="addition">+       &#125;,</span></span><br><span class="line"><span class="addition">+       queryData() &#123;</span></span><br><span class="line"><span class="addition">+         axios.get(&#x27;./data.json&#x27;).then(res =&gt; &#123;</span></span><br><span class="line"><span class="addition">+           this.poems = res.data;</span></span><br><span class="line"><span class="addition">+         &#125;)</span></span><br><span class="line"><span class="addition">+       &#125;,</span></span><br><span class="line"><span class="addition">+       handleInput(e) &#123;</span></span><br><span class="line"><span class="addition">+         if (this.query) this.filterData(this.query);</span></span><br><span class="line"><span class="addition">+         else this.filterData(&quot;哈哈哈没有东西!!&quot;)</span></span><br><span class="line"><span class="addition">+       &#125;,</span></span><br><span class="line"><span class="addition">+       filterData(keyword) &#123;</span></span><br><span class="line"><span class="addition">+         this.filtered = this.poems.filter(</span></span><br><span class="line"><span class="addition">+           x =&gt; x.poetry_content.includes(keyword)</span></span><br><span class="line"><span class="addition">+             || x.author.includes(keyword)</span></span><br><span class="line"><span class="addition">+             || x.title.includes(keyword)</span></span><br><span class="line"><span class="addition">+         ).map(x =&gt; &#123;</span></span><br><span class="line"><span class="addition">+           return &#123;</span></span><br><span class="line"><span class="addition">+             poetry_content: x.poetry_content.replaceAll(keyword, this.highlight(keyword)),</span></span><br><span class="line"><span class="addition">+             title: `$&#123;x.title&#125; - $&#123;x.author&#125;`.replaceAll(keyword, this.highlight(keyword)),</span></span><br><span class="line"><span class="addition">+           &#125;</span></span><br><span class="line"><span class="addition">+         &#125;)</span></span><br><span class="line"><span class="addition">+       &#125;</span></span><br><span class="line"><span class="addition">+     &#125;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="资讯接口">资讯接口</h2>
+<h3 id="题目-4">题目</h3>
+<blockquote>
+<p><strong>介绍</strong></p>
+<p>随着技术的发展，很多前端工程师已经不满足于只做诸如页面布局和交互这些开发工作了，很多人将目光逐渐转向了 “大前端” 范围，其中就包括不需要依赖后端提供接口自己就可以使用 node.js 编写一个后端接口服务。</p>
+<p>下面就让我们也来使用 node.js 完成一个新闻资讯接口吧。</p>
+<p><strong>目标</strong></p>
+<ol type="1">
+<li>通过在 <code>app.js</code> 书写代码，创建一个服务器，使服务在 <strong>8080</strong> 端口运行。</li>
+<li>访问 <code>/news</code> 返回资讯数据，访问其他任意路径均返回<strong>字符串 404</strong> 。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>
+Url
+</th>
+<th>
+请求方式
+</th>
+<th>
+参数
+</th>
+<th>
+响应结果
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+news
+</td>
+<td>
+GET
+</td>
+<td>
+空
+</td>
+<td>
+显示资讯数据
+</td>
+</tr>
+</tbody>
+</table>
+<p>数据需要设置为 <code>utf8</code> 格式，资讯数据格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;channelId&quot;</span>: <span class="string">&quot;5572a108b3cdc86cf39001cd&quot;</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;国内焦点&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;channelId&quot;</span>: <span class="string">&quot;5572a108b3cdc86cf39001ce&quot;</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;国际焦点&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>设置 <code>utf8</code> 格式代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">setHeader</span>(<span class="string">&quot;Content-type&quot;</span>, <span class="string">&quot;text/html;charset=utf8&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>通过 <code>node app.js</code> 运行代码，使服务处于运行状态，点击右侧 【web 服务】，页面上显示访问域名 +'/news' 返回资讯数据。</li>
+</ol>
+</blockquote>
+<h3 id="思路-6">思路</h3>
+<p>使用 <code>http.createServer()</code>。注意一下设置 <code>Content-type</code> 的方式。</p>
+<h3 id="代码-5">代码</h3>
+<p>见对应目录。</p>
+<h2 id="平地起高楼">平地起高楼</h2>
+<h3 id="题目-5">题目</h3>
+<p>相当于把 <code>&#123;id: number, parent_id: number: name&#125;[]</code> 嵌套起来返回 <code>&#123;id: number, parent_id: number: name, children: self[]&#125;</code>。</p>
+<h3 id="思路-7">思路</h3>
+<p>维护一个 <code>pid =&gt; id[]</code> 的 Map，并把原数组转成以 <code>id</code> 为 key 的 Map 即可。</p>
+<h2 id="收快递了">收快递了</h2>
+<h3 id="题目-6">题目</h3>
+<p>相当于在 <code>&#123;id: number, parent_id: number: name, children: self[]&#125;</code> 中找到目标。</p>
+<h3 id="思路-8">思路</h3>
+<p>递归即可。最后这两道标为了「困难」的题目其实就是不会 TLE 的算法题，没啥难度。倒是好久没写 JS 老是类型错误，尤其是前面 <a href="#宝贵的一票">宝贵的一票</a> parent 就没类型了，比较讨厌。📃</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1054,86 +1360,6 @@
 <p>PS: 今天再去机房考试，学校已经 ban 了网络连接。发现进入考试后可以通过极域电子教室的浮动面板调出资源管理器，然后新建 .<strong>rtf</strong> 文件，用写字板打开，按 PrtScr 截图后粘贴用来应付听后转述。📝</p>
 <hr />
 <p>写于 Telegraph，2020 年 10 月 23 日。如果你看不到图片，说明你无法访问 <a target="_blank" rel="noopener" href="https://telegra.ph">telegra.ph</a>。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/2019/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/" class="post-title-link" itemprop="url">2019 | 写在年关岁末</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-01-24 23:44:56" itemprop="dateCreated datePublished" datetime="2020-01-24T23:44:56+08:00">2020-01-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第一次写这种文章。在除夕发布，并不是因为一时兴起，也非构思很久，只是学业繁忙，只有在假期中间，才有心情和时间将一年来的思绪付诸文字。</p>
-<blockquote>
-<p>这才知道我的全部努力 不过完成了普通的生活。</p>
-</blockquote>
-<p>　　　　　　　　——穆旦<a target="_blank" rel="noopener" href="https://bedtimepoem.com/?p=7221">《冥想》</a></p>
-<p>即将过去的一年，大概可以说是一生中改变最大的一年。 ## 学业 ### 山重水复 高二的下半学期紧张地开始。三月份中有江苏省最后一届「小高考」。虽然政策有所变化，但为了防止学测成绩被高校用作录取的依据，复习的要求还是十分紧的。那几个星期，早读常常用来死磕化学式，体育课会拿着地理政治的讲义独自站在校园无人的一隅。但这些尝试最后似乎都徒劳无功，到了考试的时候化学的大题目一如既往地看不懂，政治明知要求背诵的句子依旧只能记得几句。只好带着疑惑、不解和糟糕的心情，进入了接下来的生活。</p>
-<h3 id="新的转机">新的转机</h3>
-<p>在友人的建议下，去了市里的医院。先是一所综合性的，但最后也只是「心理咨询」；随后到精神专科医院，开了SSRIs。刚开始服用的时候副作用很大，但效果也很显著。呼吸到多年以来不曾有过的新鲜平和的空气，生活还是有很大改善的。但是，随着药效的减弱，渐渐觉得还应该有 <em>其他的因素</em>：ADD。</p>
-<h3 id="柳暗花明">柳暗花明</h3>
-<p>之后就到了北京的安定医院。本以为确诊无望，但跟医生说了「分心」的情况，做了量表，最后大概是如愿以偿地拿到了治疗多动症的药物。因为是精神类药物，还得按月去拿，最后只得在京东上购买替代品。 分班考试靠着一学年的稳定的分数进入了同学科中最好的一个班。 鼓起勇气报名参加了运动会，长跑之后瘫在草坪上，有一种前所未有的喜悦。然后只记得同学把我搀扶回去时的温暖。 虽然能够减轻一时的杂念，药物的副作用还是很大的。并不是说身体上的那种疼痛，而是精神上一定的依赖性，还有恶心的感觉，即使心里深知今后不可能一辈子都依赖在这些东西上。 但是长久以来一直困扰我的疑惑终于能解决，明白了自身的长处（？）和短处后，能够直面恐惧的根源，这样的变化还是很不错的。就像知乎上一位答主所说的吧： &gt; 接受不好的可能性和残酷的现实，明白很多梦想都会落空，很多奋斗注定白费，很多努力永远没有结果，很多能力你没有就是没有。 &gt; 但还是把能做的都做了吧。</p>
-<h2 id="生活">生活</h2>
-<p>背了点日语。可惜散步的时候听力是懵的，最后果然因为听力没有过。 没写什么有技术含量的代码。只是做了几个无聊的 Telegram 机器人，还有自用的小工具。 也没读几本书，不过电影、剧貌似看了不少。大部分时间还是耗费在了网上。 暑假在华北玩了一圈。 啊啊，最重要的是养了一只猫。当初在各种昵称中拿捏不定，最后还是让 ta 像《我是猫》中的那只猫一样，「名前はまだ無い」。猫最近喜欢和我安静地呆在空调房中。不由得想起买回来只有两个月大的时候的纯真的眼神。如今已经长长、长胖了许多。 今年听的最多的歌是《春愁》、改编的<a target="_blank" rel="noopener" href="http://music.163.com/song/432430716/">《巴赫平均律》</a>。 ## 成长 虽然说是变化最大的一年，但是这些变化很难说是我自己通过努力促成的。 与 2018 时相比，大概最为不同的是价值观的改变。与那时盲目羡慕别人的生活相比，能够清晰地辨明那其实并不是我真正想要的，会在看到别人与我的不同之处后一笑置之。虽然说人各有志，但是也难免不将别人的美好生活内化为自己的追求，只是在更加了解自己后，会更加坚定地朝着既定的目标努力。 ## 未完待续 上次春节的时候，在江边的渡口和家人游玩，期间和🌸聊着天。流感的奇怪氛围中，今年心情一样复杂不同于往年。不知道一年后走过的自己，借用黑塞的话说—— 将会以怎样惊异的目光回顾 ta 走过的曲折复杂、摇摆不定的生活途径，会如何对此事的自己投以鼓励的、责备的、同情的、快乐的微笑！</p>
 
       
     </div>

@@ -30,9 +30,9 @@
 <meta property="og:image" content="https://i.loli.net/2019/12/31/B5dGa6IQcK2AqSP.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/31/qGlMH5vSUkXWRsm.png">
 <meta property="article:published_time" content="2020-01-05T14:58:27.000Z">
-<meta property="article:modified_time" content="2023-01-15T19:30:20.436Z">
+<meta property="article:modified_time" content="2023-01-16T08:01:31.774Z">
 <meta property="article:author" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://i.loli.net/2020/01/05/REI1PtKLQ78iWpC.png">
 <meta name="twitter:creator" content="@lazy_static">
@@ -140,16 +140,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -230,6 +230,15 @@
 
       <time title="创建时间：2020-01-05 22:58:27" itemprop="dateCreated datePublished" datetime="2020-01-05T22:58:27+08:00">2020-01-05</time>
     </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -260,7 +269,7 @@
 <blockquote>
 <p>requests-html 是基于现有的框架 PyQuery、Requests、lxml、beautifulsoup4 等库进行了二次封装，作者将 Requests 设计的简单强大的优点带到了该项目中。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install requests_html </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install requests_html</span><br></pre></td></tr></table></figure>
 <p>Jupyter Notebook 中，以 <code>!</code> 开头的行会被解释成命令。</p>
 <h1 id="爬取和解析">爬取和解析</h1>
 <p>这种 CMS 一般都没什么反爬措施，连 X5 浏览器 UA 都不需要伪造。所有网页的标题都是相同的，所以爬取每个页面内的标题就好。</p>
@@ -270,7 +279,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(1) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(2) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(3) &gt; img</span><br><span class="line">#dummybodyid &gt; div.contentbox &gt; div &gt; p:nth-child(4) &gt; img</span><br></pre></td></tr></table></figure>
 <p><em>页面最后一般会有 doc 文档可以下载，但是最近没有了。</em></p>
 <p>然后便是遍历每个页面了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;34210&#x27;: &#x27;19-20上高三江苏第9期A版参考答案&#x27;, &#x27;34211&#x27;: &#x27;19-20上高三江苏第8期A版参考答案&#x27;, &#x27;34212&#x27;: &#x27;19-20上八年级★云南第10期听力录音&#x27;, &#x27;34213&#x27;: &#x27;19-20上八年级邵阳第10期听力录音&#x27;, &#x27;34214&#x27;: &quot;悦听悦读 The world&#x27;s first artificial moon&quot;, &#x27;34215&#x27;: &#x27;悦听悦读Superheroes from Asia&#x27;, &#x27;34216&#x27;: &#x27;19-20上八年级广东第10期听力录音&#x27;, &#x27;34217&#x27;: &#x27;19-20上外研八年级嘉兴第9期听力录音&#x27;, &#x27;34218&#x27;: &#x27;19-20上外研八年级嘉兴第10期听力录音&#x27;, &#x27;34219&#x27;: &#x27;19-20上外研八年级嘉兴第11期听力录音&#x27;, &#x27;34220&#x27;: &#x27;19-20上外研八年级嘉兴第12期听力录音&#x27;, &#x27;34221&#x27;: &#x27;19-20上八年级★赤峰第1期听力录音&#x27;, </span><br><span class="line">…,（省略一部分）</span><br><span class="line">&#x27;34966&#x27;: &#x27;19-20上九年级宁波期末检测一本通综合测评（五）听力录音&#x27;, &#x27;34967&#x27;: &#x27;悦听悦读Real-life Dora&#x27;, &#x27;34968&#x27;: &#x27;19-20上高三江苏第14期A版参考答案&#x27;, &#x27;34969&#x27;: &#x27;19-20上高三江苏（N）第15期听力录音&#x27;, &#x27;34970&#x27;: &#x27;19-20上高三江苏（N）第14期B1-B4版参考答案&#x27;, &#x27;34971&#x27;: &#x27;19-20上高一第24期A4版听力练习录音&#x27;, &#x27;34972&#x27;: &#x27;19-20上高三江苏第15期A版参考答案&#x27;, &#x27;34973&#x27;: &#x27;19-20上高三江苏（N）第16期听力录音&#x27;, &#x27;34974&#x27;: &#x27;19-20上高三江苏（N）第15期B1-B4版参考答案&#x27;, &#x27;34975&#x27;: &#x27;Jane and Sara want to go skating（I）&#x27;, &#x27;34976&#x27;: &#x27;Jane and Sara want to go skating（II）&#x27;, &#x27;34977&#x27;: &#x27;19-20上八年级（J）第17期听力录音&#x27;, &#x27;34978&#x27;: &#x27;19-20上八年级（J）第18期听力录音&#x27;, &#x27;34979&#x27;: &#x27;19-20上八年级（J）第19期听力录音&#x27;, &#x27;34980&#x27;: &#x27;19-20上八年级（J）第20期听力录音&#x27;, &#x27;34981&#x27;: &#x27;悦听悦读 An ancient Chinese story&#x27;, &#x27;34982&#x27;: &#x27;悦听悦读 Empty-City Strategy&#x27;, &#x27;34983&#x27;: &#x27;悦听悦读Hearing loss, a major problem for teenagers&#x27;, &#x27;34984&#x27;: &#x27;悦听悦读FOLLOW ME: Hearing loss, a major problem for teenagers&#x27;, &#x27;34985&#x27;: &#x27;故事乐园 The ice cream&#x27;, &#x27;34986&#x27;: &quot;故事乐园 It&#x27;s Mr Green&quot;, &#x27;34987&#x27;: &#x27;悦听悦读A special fashion show&#x27;, &#x27;34988&#x27;: &#x27;悦听悦读Two cute girls&#x27;, &#x27;34989&#x27;: &#x27;19-20上八年级曲靖第15期听力录音&#x27;, &#x27;34990&#x27;: &#x27;19-20上七年级★福建第15期听力录音&#x27;, &#x27;34991&#x27;: &#x27;悦听悦读 Max Einstein: The Genius Experiment&#x27;, &#x27;34992&#x27;: &#x27;19-20上九年级（XJ）第9期听力录音&#x27;, &#x27;34993&#x27;: &#x27;19-20上九年级（XJ）第10期听力录音&#x27;, &#x27;34994&#x27;: &#x27;19-20上九年级（XJ）第11期听力录音&#x27;, &#x27;34995&#x27;: &#x27;19-20上九年级（XJ）第12期听力录音&#x27;, &#x27;34996&#x27;: &#x27;19-20上七年级★福建第16期听力录音&#x27;, &#x27;34997&#x27;: &#x27;Bill and Kitty&#x27;, &#x27;34998&#x27;: &#x27;19-20上八年级曲靖第16期听力录音&#x27;, &#x27;34999&#x27;: &#x27;悦听悦读Flying car&#x27;&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;34210&#x27;: &#x27;19-20上高三江苏第9期A版参考答案&#x27;, &#x27;34211&#x27;: &#x27;19-20上高三江苏第8期A版参考答案&#x27;, &#x27;34212&#x27;: &#x27;19-20上八年级★云南第10期听力录音&#x27;, &#x27;34213&#x27;: &#x27;19-20上八年级邵阳第10期听力录音&#x27;, &#x27;34214&#x27;: &quot;悦听悦读 The world&#x27;s first artificial moon&quot;, &#x27;34215&#x27;: &#x27;悦听悦读Superheroes from Asia&#x27;, &#x27;34216&#x27;: &#x27;19-20上八年级广东第10期听力录音&#x27;, &#x27;34217&#x27;: &#x27;19-20上外研八年级嘉兴第9期听力录音&#x27;, &#x27;34218&#x27;: &#x27;19-20上外研八年级嘉兴第10期听力录音&#x27;, &#x27;34219&#x27;: &#x27;19-20上外研八年级嘉兴第11期听力录音&#x27;, &#x27;34220&#x27;: &#x27;19-20上外研八年级嘉兴第12期听力录音&#x27;, &#x27;34221&#x27;: &#x27;19-20上八年级★赤峰第1期听力录音&#x27;,</span><br><span class="line">…,（省略一部分）</span><br><span class="line">&#x27;34966&#x27;: &#x27;19-20上九年级宁波期末检测一本通综合测评（五）听力录音&#x27;, &#x27;34967&#x27;: &#x27;悦听悦读Real-life Dora&#x27;, &#x27;34968&#x27;: &#x27;19-20上高三江苏第14期A版参考答案&#x27;, &#x27;34969&#x27;: &#x27;19-20上高三江苏（N）第15期听力录音&#x27;, &#x27;34970&#x27;: &#x27;19-20上高三江苏（N）第14期B1-B4版参考答案&#x27;, &#x27;34971&#x27;: &#x27;19-20上高一第24期A4版听力练习录音&#x27;, &#x27;34972&#x27;: &#x27;19-20上高三江苏第15期A版参考答案&#x27;, &#x27;34973&#x27;: &#x27;19-20上高三江苏（N）第16期听力录音&#x27;, &#x27;34974&#x27;: &#x27;19-20上高三江苏（N）第15期B1-B4版参考答案&#x27;, &#x27;34975&#x27;: &#x27;Jane and Sara want to go skating（I）&#x27;, &#x27;34976&#x27;: &#x27;Jane and Sara want to go skating（II）&#x27;, &#x27;34977&#x27;: &#x27;19-20上八年级（J）第17期听力录音&#x27;, &#x27;34978&#x27;: &#x27;19-20上八年级（J）第18期听力录音&#x27;, &#x27;34979&#x27;: &#x27;19-20上八年级（J）第19期听力录音&#x27;, &#x27;34980&#x27;: &#x27;19-20上八年级（J）第20期听力录音&#x27;, &#x27;34981&#x27;: &#x27;悦听悦读 An ancient Chinese story&#x27;, &#x27;34982&#x27;: &#x27;悦听悦读 Empty-City Strategy&#x27;, &#x27;34983&#x27;: &#x27;悦听悦读Hearing loss, a major problem for teenagers&#x27;, &#x27;34984&#x27;: &#x27;悦听悦读FOLLOW ME: Hearing loss, a major problem for teenagers&#x27;, &#x27;34985&#x27;: &#x27;故事乐园 The ice cream&#x27;, &#x27;34986&#x27;: &quot;故事乐园 It&#x27;s Mr Green&quot;, &#x27;34987&#x27;: &#x27;悦听悦读A special fashion show&#x27;, &#x27;34988&#x27;: &#x27;悦听悦读Two cute girls&#x27;, &#x27;34989&#x27;: &#x27;19-20上八年级曲靖第15期听力录音&#x27;, &#x27;34990&#x27;: &#x27;19-20上七年级★福建第15期听力录音&#x27;, &#x27;34991&#x27;: &#x27;悦听悦读 Max Einstein: The Genius Experiment&#x27;, &#x27;34992&#x27;: &#x27;19-20上九年级（XJ）第9期听力录音&#x27;, &#x27;34993&#x27;: &#x27;19-20上九年级（XJ）第10期听力录音&#x27;, &#x27;34994&#x27;: &#x27;19-20上九年级（XJ）第11期听力录音&#x27;, &#x27;34995&#x27;: &#x27;19-20上九年级（XJ）第12期听力录音&#x27;, &#x27;34996&#x27;: &#x27;19-20上七年级★福建第16期听力录音&#x27;, &#x27;34997&#x27;: &#x27;Bill and Kitty&#x27;, &#x27;34998&#x27;: &#x27;19-20上八年级曲靖第16期听力录音&#x27;, &#x27;34999&#x27;: &#x27;悦听悦读Flying car&#x27;&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="demo">Demo</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/OverflowCat/LearningEnglish/">learningEnglishFetch.py</a></p>
 
@@ -281,9 +290,6 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
-          </div>
 
         
 

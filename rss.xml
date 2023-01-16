@@ -9,8 +9,32 @@
     <atom:link href="https://blog.xinshijiededa.men/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>猫猫的博客</description>
-    <pubDate>Sun, 15 Jan 2023 19:30:20 GMT</pubDate>
+    <pubDate>Mon, 16 Jan 2023 08:01:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>你不应该使用的 Python 文件名</title>
+      <link>https://blog.xinshijiededa.men/python-filenames-you-should-avoid/</link>
+      <guid>https://blog.xinshijiededa.men/python-filenames-you-should-avoid/</guid>
+      <pubDate>Mon, 16 Jan 2023 06:58:08 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;在新 VPS 上运行 Python 程序的时候出现了问题：&lt;a href=&quot;https://pdm.fming.dev/latest/&quot;&gt;&lt;code&gt;pdm&lt;/code&gt;&lt;/a&gt; 无法正常 install 或者设置 config，&lt;code&gt;poetry&lt;/code&gt; 可以</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>在新 VPS 上运行 Python 程序的时候出现了问题：<a href="https://pdm.fming.dev/latest/"><code>pdm</code></a> 无法正常 install 或者设置 config，<code>poetry</code> 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[neko@host temp]$ <span class="built_in">ls</span></span><br><span class="line">select.py</span><br><span class="line">[neko@host temp]$ <span class="built_in">cat</span> select.py</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello, world!&quot;</span>)</span><br><span class="line">[neko@host temp]$ python</span><br><span class="line">Python 3.10.9 (main, Dec 19 2022, 17:35:49) [GCC 12.2.0] on linux</span><br><span class="line">Type <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> or <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import platform</span><br><span class="line">hello, world!</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/subprocess.py&quot;</span>, line 69, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import msvcrt</span><br><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;msvcrt&#x27;</span></span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/platform.py&quot;</span>, line 119, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import subprocess</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/subprocess.py&quot;</span>, line 76, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    import selectors</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/selectors.py&quot;</span>, line 291, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    class SelectSelector(_BaseSelectorImpl):</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.10/selectors.py&quot;</span>, line 318, <span class="keyword">in</span> SelectSelector</span><br><span class="line">    _select = select.select</span><br><span class="line">AttributeError: module <span class="string">&#x27;select&#x27;</span> has no attribute <span class="string">&#x27;select&#x27;</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>我一 Linux 怎么会需要 <code>msvcrt</code>？一开始以为是 Arch 仓库里的 Python 有问题，或者是 <code>pip</code> 安装的时候在 root 用户操作而破坏了系统，但是重装了几次全部依赖也没有解决。排查许久后，发现只有在我的代码文件夹里进入 REPL <code>import platform</code> 会报错。然后发现项目里用的一个模块的名称叫 <code>select.py</code>。是的，导入 Python 内置的 <a href="https://docs.python.org/3/library/index.html">标准库 <i class="fa-brands fa-python"></i></a> 的时候，<strong>标准库内部的 <code>import</code> 也是在当前工作目录下进行的</strong>（！）。</p><p>最末的结论是，你不应该使用以下名称作为 Python 代码的文件/模块名：</p><p><code>abc</code>, <code>aifc</code>, <code>argparse</code>, <code>array</code>, <code>ast</code>, <code>asyncio</code>, <code>atexit</code>, <code>audioop</code>, <code>base64</code>, <code>bdb</code>, <code>binascii</code>, <code>bisect</code>, <code>builtins</code>, <code>bz2</code>, <code>calendar</code>, <code>cgi</code>, <code>cgitb</code>, <code>chunk</code>, <code>cmath</code>, <code>cmd</code>, <code>code</code>, <code>codecs</code>, <code>codeop</code>, <code>collections</code>, <code>colorsys</code>, <code>compileall</code>, <code>concurrent</code>, <code>configparser</code>, <code>contextlib</code>, <code>contextvars</code>, <code>copy</code>, <code>copyreg</code>, <code>csv</code>, <code>ctypes</code>, <code>dataclasses</code>, <code>datetime</code>, <code>dbm</code>, <code>decimal</code>, <code>difflib</code>, <code>dis</code>, <code>doctest</code>, <code>email</code>, <code>ensurepip</code>, <code>enum</code>, <code>errno</code>, <code>faulthandler</code>, <code>filecmp</code>, <code>fileinput</code>, <code>fnmatch</code>, <code>fractions</code>, <code>ftplib</code>, <code>functools</code>, <code>gc</code>, <code>getopt</code>, <code>getpass</code>, <code>gettext</code>, <code>glob</code>, <code>graphlib</code>, <code>gzip</code>, <code>hashlib</code>, <code>heapq</code>, <code>hmac</code>, <code>html</code>, <code>http</code>, <code>imaplib</code>, <code>imghdr</code>, <code>imp</code>, <code>importlib</code>, <code>inspect</code>, <code>io</code>, <code>ipaddress</code>, <code>itertools</code>, <code>json</code>, <code>keyword</code>, <code>linecache</code>, <code>locale</code>, <code>logging</code>, <code>lzma</code>, <code>mailbox</code>, <code>mailcap</code>, <code>marshal</code>, <code>math</code>, <code>mimetypes</code>, <code>mmap</code>, <code>modulefinder</code>, <code>msilib</code>, <code>msvcrt</code>, <code>multiprocessing</code>, <code>netrc</code>, <code>nntplib</code>, <code>numbers</code>, <code>operator</code>, <code>optparse</code>, <code>os</code>, <code>pathlib</code>, <code>pdb</code>, <code>pickle</code>, <code>pickletools</code>, <code>pipes</code>, <code>pkgutil</code>, <code>platform</code>, <code>plistlib</code>, <code>poplib</code>, <code>pprint</code>, <code>profile</code>, <code>py_compile</code>, <code>pyclbr</code>, <code>pydoc</code>, <code>pyexpat</code>, <code>queue</code>, <code>quopri</code>, <code>random</code>, <code>re</code>, <code>reprlib</code>, <code>rlcompleter</code>, <code>runpy</code>, <code>sched</code>, <code>secrets</code>, <code>select</code>, <code>selectors</code>, <code>shelve</code>, <code>shlex</code>, <code>shutil</code>, <code>signal</code>, <code>site</code>, <code>smtplib</code>, <code>sndhdr</code>, <code>socket</code>, <code>socketserver</code>, <code>sqlite3</code>, <code>ssl</code>, <code>stat</code>, <code>statistics</code>, <code>string</code>, <code>stringprep</code>, <code>struct</code>, <code>subprocess</code>, <code>sunau</code>, <code>symtable</code>, <code>sys</code>, <code>sysconfig</code>, <code>tabnanny</code>, <code>tarfile</code>, <code>telnetlib</code>, <code>tempfile</code>, <code>test</code>, <code>textwrap</code>, <code>threading</code>, <code>time</code>, <code>timeit</code>, <code>tkinter</code>, <code>token</code>, <code>tokenize</code>, <code>tomllib</code>, <code>trace</code>, <code>traceback</code>, <code>tracemalloc</code>, <code>turtle</code>, <code>types</code>, <code>typing</code>, <code>unicodedata</code>, <code>unittest</code>, <code>urllib</code>, <code>uu</code>, <code>uuid</code>, <code>venv</code>, <code>warnings</code>, <code>wave</code>, <code>weakref</code>, <code>webbrowser</code>, <code>winreg</code>, <code>winsound</code>, <code>wsgiref</code>, <code>xdrlib</code>, <code>xml</code>, <code>xmlrpc</code>, <code>zipapp</code>, <code>zipfile</code>, <code>zipimport</code>, <code>zlib</code>, <code>zoneinfo</code> 🐍</p>]]></content:encoded>
+      
+      
+      <category domain="https://blog.xinshijiededa.men/categories/Python/">Python</category>
+      
+      
+      
+      <comments>https://blog.xinshijiededa.men/python-filenames-you-should-avoid/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>PBRT 笔记：1. 绪论</title>
@@ -539,34 +563,6 @@
       
       
       <comments>https://blog.xinshijiededa.men/garage/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>2019 | 写在年关岁末</title>
-      <link>https://blog.xinshijiededa.men/2019/</link>
-      <guid>https://blog.xinshijiededa.men/2019/</guid>
-      <pubDate>Fri, 24 Jan 2020 15:44:56 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;第一次写这种文章。在除夕发布，并不是因为一时兴起，也非构思很久，只是学业繁忙，只有在假期中间，才有心情和时间将一年来的思绪付诸文字。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这才知道我的全部努力 不过完成了普通的生活。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　　　　　</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>第一次写这种文章。在除夕发布，并不是因为一时兴起，也非构思很久，只是学业繁忙，只有在假期中间，才有心情和时间将一年来的思绪付诸文字。</p><blockquote><p>这才知道我的全部努力 不过完成了普通的生活。</p></blockquote><p>　　　　　　　　——穆旦<a href="https://bedtimepoem.com/?p=7221">《冥想》</a></p><p>即将过去的一年，大概可以说是一生中改变最大的一年。 ## 学业 ### 山重水复 高二的下半学期紧张地开始。三月份中有江苏省最后一届「小高考」。虽然政策有所变化，但为了防止学测成绩被高校用作录取的依据，复习的要求还是十分紧的。那几个星期，早读常常用来死磕化学式，体育课会拿着地理政治的讲义独自站在校园无人的一隅。但这些尝试最后似乎都徒劳无功，到了考试的时候化学的大题目一如既往地看不懂，政治明知要求背诵的句子依旧只能记得几句。只好带着疑惑、不解和糟糕的心情，进入了接下来的生活。</p><h3 id="新的转机">新的转机</h3><p>在友人的建议下，去了市里的医院。先是一所综合性的，但最后也只是「心理咨询」；随后到精神专科医院，开了SSRIs。刚开始服用的时候副作用很大，但效果也很显著。呼吸到多年以来不曾有过的新鲜平和的空气，生活还是有很大改善的。但是，随着药效的减弱，渐渐觉得还应该有 <em>其他的因素</em>：ADD。</p><h3 id="柳暗花明">柳暗花明</h3><p>之后就到了北京的安定医院。本以为确诊无望，但跟医生说了「分心」的情况，做了量表，最后大概是如愿以偿地拿到了治疗多动症的药物。因为是精神类药物，还得按月去拿，最后只得在京东上购买替代品。 分班考试靠着一学年的稳定的分数进入了同学科中最好的一个班。 鼓起勇气报名参加了运动会，长跑之后瘫在草坪上，有一种前所未有的喜悦。然后只记得同学把我搀扶回去时的温暖。 虽然能够减轻一时的杂念，药物的副作用还是很大的。并不是说身体上的那种疼痛，而是精神上一定的依赖性，还有恶心的感觉，即使心里深知今后不可能一辈子都依赖在这些东西上。 但是长久以来一直困扰我的疑惑终于能解决，明白了自身的长处（？）和短处后，能够直面恐惧的根源，这样的变化还是很不错的。就像知乎上一位答主所说的吧： &gt; 接受不好的可能性和残酷的现实，明白很多梦想都会落空，很多奋斗注定白费，很多努力永远没有结果，很多能力你没有就是没有。 &gt; 但还是把能做的都做了吧。</p><h2 id="生活">生活</h2><p>背了点日语。可惜散步的时候听力是懵的，最后果然因为听力没有过。 没写什么有技术含量的代码。只是做了几个无聊的 Telegram 机器人，还有自用的小工具。 也没读几本书，不过电影、剧貌似看了不少。大部分时间还是耗费在了网上。 暑假在华北玩了一圈。 啊啊，最重要的是养了一只猫。当初在各种昵称中拿捏不定，最后还是让 ta 像《我是猫》中的那只猫一样，「名前はまだ無い」。猫最近喜欢和我安静地呆在空调房中。不由得想起买回来只有两个月大的时候的纯真的眼神。如今已经长长、长胖了许多。 今年听的最多的歌是《春愁》、改编的<a href="http://music.163.com/song/432430716/">《巴赫平均律》</a>。 ## 成长 虽然说是变化最大的一年，但是这些变化很难说是我自己通过努力促成的。 与 2018 时相比，大概最为不同的是价值观的改变。与那时盲目羡慕别人的生活相比，能够清晰地辨明那其实并不是我真正想要的，会在看到别人与我的不同之处后一笑置之。虽然说人各有志，但是也难免不将别人的美好生活内化为自己的追求，只是在更加了解自己后，会更加坚定地朝着既定的目标努力。 ## 未完待续 上次春节的时候，在江边的渡口和家人游玩，期间和🌸聊着天。流感的奇怪氛围中，今年心情一样复杂不同于往年。不知道一年后走过的自己，借用黑塞的话说—— 将会以怎样惊异的目光回顾 ta 走过的曲折复杂、摇摆不定的生活途径，会如何对此事的自己投以鼓励的、责备的、同情的、快乐的微笑！</p>]]></content:encoded>
-      
-      
-      
-      <category domain="https://blog.xinshijiededa.men/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</category>
-      
-      
-      <comments>https://blog.xinshijiededa.men/2019/#disqus_thread</comments>
       
     </item>
     
