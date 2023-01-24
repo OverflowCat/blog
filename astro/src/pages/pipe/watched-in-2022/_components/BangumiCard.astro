@@ -1,5 +1,6 @@
 ---
 import VideoSticker from "./VideoSticker.astro";
+import Rating from "./Rating.astro";
 
 interface Episodes {
   lang?: string;
@@ -17,10 +18,20 @@ export interface Props {
   sticker: string;
   episodes?: Episodes;
   ongoing?: boolean;
+  rating: number;
+  review?: string;
 }
 
-const { title_ja, title_en, title_zh, sticker, ongoing, episodes } =
-  Astro.props;
+const {
+  title_ja,
+  title_en,
+  title_zh,
+  sticker,
+  ongoing,
+  episodes,
+  rating,
+  review,
+} = Astro.props;
 ---
 
 <li class="link-card">
@@ -56,7 +67,18 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes } =
         sticker.endsWith(".webm") ? (
           <VideoSticker webm={sticker} width="168px" />
         ) : (
-          <img src={sticker} alt="sticker" width="200px"/>
+          <img src={sticker} alt="sticker" width="200px" />
+        )
+      }
+    </div>
+    <div class="review">
+      <Rating value={rating} /> 分
+      {
+        review && (
+          <>
+            ——
+            <span class="comment">{review}</span>
+          </>
         )
       }
     </div>
@@ -224,6 +246,14 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes } =
 </style>
 
 <style>
+  .review {
+    line-height: 150%;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    padding: 8px;
+    background-color: rgba(200, 200, 200, 0.2);
+    border-radius: 0.5rem;
+  }
   .sticker {
     margin: 8px;
     text-align: center;

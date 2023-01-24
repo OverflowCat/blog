@@ -1,0 +1,24 @@
+---
+export interface Props {
+  value: number;
+}
+
+const { value } = Astro.props;
+---
+
+<b>
+  <span class="int">{Math.trunc(value / 10)}</span><span>.</span><span class="float">{Math.round(value % 10)}</span>
+</b>
+
+<style>
+  span.int {
+    font-size: 180%;
+  }
+  span.float {
+    font-size: 125%;
+  }
+  span {
+    font-size: 140%;
+    font-family: monospace;
+  }
+</style>

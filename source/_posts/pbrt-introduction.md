@@ -261,7 +261,8 @@ cd build
 cmake ..
 ```
 
-若编译成功，则会提示
+若成功，则会有一 `.sln` 文件。用 Visual Studio 打开，构建 `BUILD_ALL`。若编译成功，则会提示
+
 ```
 30>spectrum.cpp
 30>正在生成代码...
