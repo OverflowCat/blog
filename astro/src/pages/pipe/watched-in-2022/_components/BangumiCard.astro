@@ -15,7 +15,7 @@ export interface Props {
   title_ja?: string;
   title_en?: string;
   title_zh?: string;
-  sticker: string;
+  sticker?: string;
   episodes?: Episodes;
   ongoing?: boolean;
   rating: number;
@@ -62,22 +62,24 @@ const {
         )
       }
     </h2>
-    <div class="sticker">
-      {
-        sticker.endsWith(".webm") ? (
-          <VideoSticker webm={sticker} width="168px" />
-        ) : (
-          <img src={sticker} alt="sticker" width="200px" />
-        )
-      }
-    </div>
+    {
+      sticker && (
+        <div class="sticker">
+          {sticker.endsWith(".mp4") || sticker.endsWith(".webm") ? (
+            <VideoSticker src={sticker} width="168px" />
+          ) : (
+            <img src={sticker} alt="sticker" width="200px" />
+          )}
+        </div>
+      )
+    }
     <div class="review">
       <Rating value={rating} /> 分
       {
         review && (
           <>
             ——
-            <span class="comment">{review}</span>
+            <span class="comment" set:html={review} />
           </>
         )
       }
@@ -90,7 +92,10 @@ const {
           </div>
         ) : (
           <div class="episodes">
-            <b>观看进度</b>：{episodes.progress} / {episodes.list}
+            <b>观看进度</b>：
+            {episodes.progress
+              ? `${episodes.progress} / ${episodes.list}`
+              : `已观看，共 ${episodes.list} 集`}
           </div>
         )
       ) : (
