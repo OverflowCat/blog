@@ -1,6 +1,9 @@
 ---
 import Layout from "./_layouts/Layout.astro";
 import BangumiCard from "./_components/BangumiCard.astro";
+import AttributedQuote from "@/components/AttributedQuote.astro";
+import Pn from "@/components/Pn.astro";
+import Wbm from "@/components/Wbm.astro";
 ---
 
 <Layout title="我的 2022 观影记录">
@@ -18,7 +21,6 @@ import BangumiCard from "./_components/BangumiCard.astro";
         title_zh="关于我<u>转生</u>变成<u>史莱姆</u>这档事"
         sticker="https://user-images.githubusercontent.com/20166026/210113710-21b7a83b-4e3f-4f73-822e-9d7ea968e2c7.webm"
         rating={60}
-        review="战斗的剧情有些拖沓。《日记》更好看一些。"
         episodes={{
           progress: true,
           list: [
@@ -75,7 +77,9 @@ import BangumiCard from "./_components/BangumiCard.astro";
             ["48  ", "<ruby><rb>八星魔王</rb><rt>オクタグラム</rt></ruby>"],
           ],
         }}
-      />
+      >
+        战斗的剧情有些拖沓。《日记》更好看一些。
+      </BangumiCard>
       <BangumiCard
         title_ja="転スラ日記　転生したらスライムだった件"
         title_en="Tensura Nikki"
@@ -107,15 +111,15 @@ import BangumiCard from "./_components/BangumiCard.astro";
         sticker="https://user-images.githubusercontent.com/20166026/214769808-4c2e2783-13bd-4ea4-8309-8687acca4d42.mp4"
         rating={76}
         episodes={{ list: 15 }}
-        review="很好的一部电视剧！剧情安排得进度非常好。"
-      />
+      >
+        很好的一部电视剧！剧情安排得进度非常好。
+      </BangumiCard>
       <BangumiCard
         title_ja='<span style="color:#f0555a;">リ</span>コリス・<span style="color:#00b4aa;">リ</span>コイル'
         title_en='<span style="color:#f0555a;">L</span>ycoris <span style="color:#00b4aa;">R</span>ecoil'
         title_zh="莉可莉丝"
         sticker="https://user-images.githubusercontent.com/20166026/210098922-60138d17-9260-4eaa-831d-197c0a056125.webm"
         rating={80}
-        review="音乐不错。叙事比较混乱。"
         episodes={{
           lang: "en",
           list: [
@@ -134,14 +138,15 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "Recoil of Lycoris",
           ],
         }}
-      />
+      >
+        音乐不错。叙事比较混乱。
+      </BangumiCard>
       <BangumiCard
         title_ja="スパイファミリー"
         title_en="SPY×FAMILY"
         title_zh="间谍过家家"
         sticker="https://user-images.githubusercontent.com/20166026/210111874-68d63fa8-5dfe-4117-b479-6ceb3319068c.webm"
         rating={87}
-        review="完成度很高，无论是作画、配音、叙事还是人物塑造都挑不出什么缺点。第二季剧情比第一季更有意思，也不拘泥于一集一个 MISSION 了。第二季的 ED 不错。"
         episodes={{
           list: [
             "オペレーション〈<ruby><rb>梟</rb><rp>（</rp><rt>ストリクス</rt><rp>）</rp></ruby>〉",
@@ -171,14 +176,16 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "<ruby><rb>接敵作戰</rb><rp>（</rp><rt>ファーストコンタクト</rt><rp>）</rp></ruby></span>",
           ],
         }}
-      />
+      >
+        完成度很高，无论是作画、配音、叙事还是人物塑造都挑不出什么缺点。第二季剧情比第一季更有意思，也不拘泥于一集一个
+        MISSION 了。第二季的 ED 不错。
+      </BangumiCard>
       <BangumiCard
         title_ja="メイドインアビス <span style='color:#F5A100;'>烈日の黄金郷</span>"
         title_en="Made In Abyss: The Golden City of the Scorching Sun"
         title_zh="来自深渊：<span style='color:#F5A100;'>烈日的黄金乡</span>"
         sticker="https://user-images.githubusercontent.com/20166026/210112857-d661e2bd-4982-4b69-933a-a805713e6b42.webm"
         rating={88}
-        review="比第一季略差，第一季我可以给到满分。音乐依旧都是神作。"
         episodes={{
           progress: 11.9,
           list: [
@@ -196,14 +203,15 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "黄金",
           ],
         }}
-      />
+      >
+        比第一季略差，第一季我可以给到满分。音乐依旧都是神作。
+      </BangumiCard>
       <BangumiCard
         title_ja="夜は猫といっしょ"
         title_en="Nights with a Cat"
         title_zh="夜夜猫歌"
         sticker="https://user-images.githubusercontent.com/20166026/210170506-abb73c42-c336-4369-aa9e-b21119e3b2fb.webm"
         rating={75}
-        review="不错的泡面番。猫猫好。ED 好。"
         ongoing={true}
         episodes={{
           progress: true,
@@ -238,14 +246,15 @@ import BangumiCard from "./_components/BangumiCard.astro";
             ["第二十八夜", "となりに座るネコ", false],
           ],
         }}
-      />
+      >
+        不错的泡面番。猫猫好。ED 好。
+      </BangumiCard>
       <BangumiCard
         title_ja="サイバーパンク エッジランナーズ"
         title_en="Cyberpunk: Edgerunners"
         title_zh="赛博朋克：边缘行者"
         sticker="https://user-images.githubusercontent.com/20166026/210111496-3e155170-b468-450b-8ebb-aa60ea188f20.webm"
         rating={80}
-        review="情节紧凑，甚至后面进展太快了。对感情的刻画少了点。"
         episodes={{
           list: [
             "期待を背に",
@@ -260,14 +269,15 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "私の月、私の恋",
           ],
         }}
-      />
+      >
+        情节紧凑，甚至后面进展太快了。对感情的刻画少了点。
+      </BangumiCard>
       <BangumiCard
         title_ja="ぼっち・ざ・ろっく!"
         title_en="Bocchi the Rock!"
         title_zh="孤独摇滚！"
         sticker="https://user-images.githubusercontent.com/20166026/210108292-bdc34431-1efc-47fd-add9-b64877ad9a11.webm"
         rating={95}
-        review="非常 dramatic，简直是 meme 制造机，很好。音乐也很好。不过不太喜欢直接插入真实世界的照片作为场景（还有饼）的做法。不给满分的原因是对于乐队外的人的描写比较少，而这对于主角们的刻画也是至关重要的。"
         episodes={{
           list: [
             "転がるぼっち",
@@ -284,13 +294,14 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "君に朝が降る",
           ],
         }}
-        ，
-      />
+      >
+        非常 dramatic，简直是 meme
+        制造机，很好。音乐也很好。不过不太喜欢直接插入真实世界的照片作为场景（还有饼）的做法。不给满分的原因是对于乐队外的人的描写比较少，而这对于主角们的刻画也是至关重要的。
+      </BangumiCard>
       <BangumiCard
         title_ja="Do It Yourself!! -どぅー・いっと・ゆあせるふ-"
         sticker="https://user-images.githubusercontent.com/20166026/210150374-e29c42e8-1c30-4150-a92e-098779d02444.webm"
         rating={81}
-        review="主题很有新意！不足之处在于大部分场景都与科技发展不符；人物说话很啰嗦，比较拖沓，不知道台词是怎么写的，听起来非常别扭。"
         episodes={{
           list: [
             ["Step①", "DIYって、どー・いう・やつ？"],
@@ -310,12 +321,13 @@ import BangumiCard from "./_components/BangumiCard.astro";
             ["Step⑫", "DIYって、どんなときも・いつまでも・ゆうじょう！"],
           ],
         }}
-      />
+      >
+        主题很有新意！不足之处在于大部分场景都与科技发展不符；人物说话很啰嗦，比较拖沓，不知道台词是怎么写的，听起来非常别扭。
+      </BangumiCard>
       <BangumiCard
         title_zh="三体（艺画开天）"
         sticker="https://user-images.githubusercontent.com/20166026/210150710-564cb5cf-5245-42be-8be5-96bac197e8b9.webm"
         rating={30}
-        review="这个是 2022 年看了前 4 集的想法，现在看来还是给多了，至少远不如 WeTV 的电视剧。最明显的是 3D 建模实在是太差了，人的模型表面纹理、次表面反射都没有。<blockquote style='font-size: 120%;'>你已经浪费了金钱，就不要再浪费时间了。</blockquote><p style='text-align: right;'>——刘慈欣对王晋康作品《十字》的私下评价</p>"
         ongoing={true}
         episodes={{
           progress: 4.9,
@@ -328,7 +340,19 @@ import BangumiCard from "./_components/BangumiCard.astro";
             "对面壁者的笑",
           ],
         }}
-      />
+      >
+        这个是 2022 年看了前 4 集的想法，现在看来还是给多了，至少远不如 WeTV
+        的电视剧。最明显的是 3D
+        建模实在是太差了，人的模型表面纹理、次表面反射都没有。因此我的评价是是：
+        <AttributedQuote>
+          你已经浪费了金钱，就不要再浪费时间了。
+          <Fragment slot="attr">
+            <Pn><ruby>刘慈欣<rt>shipship</rt></ruby></Pn>对<Pn>
+              王晋康
+            </Pn>作品<Wbm>十字</Wbm>的私下评价
+          </Fragment>
+        </AttributedQuote>
+      </BangumiCard>
       <BangumiCard
         title_zh="天才基本法"
         title_en="The Heart of Genius"
@@ -343,21 +367,22 @@ import BangumiCard from "./_components/BangumiCard.astro";
         title_ja="唐人街探偵 東京MISSION"
         sticker="https://raw.githubusercontent.com/OverflowCat/blog/36780e77324b2c2d4e3db0f449ba2e68e9255b2f/chinatown.webp"
         rating={50}
-        review="部分任务设计得没啥意思，感觉还没有上一部好。中间有个插入歌不错。"
-      />
+      >
+        部分任务设计得没啥意思，感觉还没有上一部好。中间有个插入歌不错。
+      </BangumiCard>
       <BangumiCard
         title_zh="火星救援"
         title_en="The Martian"
         sticker=""
         rating={65}
-        review="没啥新意。"
-      />
+      >
+        没啥新意。
+      </BangumiCard>
       <BangumiCard
         title_zh="<span style='color: red;'>＜</span><span style='color: red;'>/</span>天蝎<span style='color: red;'>＞</span>"
         title_en="<span style='color: red;'>＜</span><span style='color: red;'>/</span>SCORPION<span style='color: red;'>＞</span>"
         sticker="https://upload.wikimedia.org/wikipedia/zh/0/03/Scorpion_intertitle.png"
         rating={70}
-        review="中规中矩。"
         episodes={{
           progress: 7.9,
           list: [
@@ -373,7 +398,9 @@ import BangumiCard from "./_components/BangumiCard.astro";
             ["S01E10", "Talismans"],
           ],
         }}
-      />
+      >
+        中规中矩的美剧。
+      </BangumiCard>
     </ul>
   </main>
 </Layout>

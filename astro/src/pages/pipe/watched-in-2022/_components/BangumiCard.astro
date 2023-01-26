@@ -22,16 +22,8 @@ export interface Props {
   review?: string;
 }
 
-const {
-  title_ja,
-  title_en,
-  title_zh,
-  sticker,
-  ongoing,
-  episodes,
-  rating,
-  review,
-} = Astro.props;
+const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
+  Astro.props;
 ---
 
 <li class="link-card">
@@ -76,10 +68,12 @@ const {
     <div class="review">
       <Rating value={rating} /> 分
       {
-        review && (
+        Astro.slots["default"] && (
           <>
             ——
-            <span class="comment" set:html={review} />
+            <span class="comment">
+              <slot />
+            </span>
           </>
         )
       }
@@ -151,9 +145,6 @@ const {
         </ol>
       )
     }
-    <div>
-      <slot />
-    </div>
   </div>
 </li>
 

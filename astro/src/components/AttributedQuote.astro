@@ -1,0 +1,29 @@
+---
+---
+
+<div class="atquo">
+  <blockquote>
+    <slot />
+  </blockquote>
+  <p class="attribution">
+    ——<slot name="attr" />
+  </p>
+</div>
+
+<style>
+  blockquote {
+    font-size: 115%;
+
+    grid-area: quote;
+    text-align: left;
+    margin: 0.5rem;
+    background: #f9f9f9;
+    border-left: 8px solid rgb(42, 42, 42);
+    margin: 1em 6px;
+    line-height: 1.6em;
+    padding: 0.2em 6px;
+  }
+  p.attribution {
+    text-align: right;
+  }
+</style>

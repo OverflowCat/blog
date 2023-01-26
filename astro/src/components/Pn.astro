@@ -1,0 +1,17 @@
+---
+// 专名号（Proper Name/None）
+---
+
+<span class="pn outer">
+  <span class="pn inner"> <slot /></span>
+</span>
+
+<style>
+  .pn.inner {
+    margin: 0 -0.24em; /* The width of one space is usually .25em */
+  }
+  .pn.outer {
+    border-bottom: 1px solid;
+    margin: 0 1px;
+  }
+</style>

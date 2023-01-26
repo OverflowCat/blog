@@ -1,0 +1,14 @@
+---
+// Wavy Book Mark
+---
+
+<span class="wavybookmark"><slot /></span>
+
+<style is:global>
+  span.wavybookmark {
+    text-decoration: underline;
+    -moz-text-decoration-style: wavy;
+    text-decoration-style: wavy;
+    padding: 0px calc(0.25em - 2px);
+  }
+</style>
