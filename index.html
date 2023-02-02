@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xinshijiededa.men","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"mac","show_result":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"expandIn","coll_header":"slideLeftIn","sidebar":"perspectiveLeftIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xinshijiededa.men","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"mac","show_result":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"expandIn","coll_header":"slideLeftIn","sidebar":"perspectiveLeftIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="猫猫的博客">
 <meta property="og:type" content="website">
@@ -47,9 +47,7 @@
 
 
 
-  <script async defer data-website-id="" src=""></script>
 
-  <script defer data-domain="" src=""></script>
 <style> @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap'); </style>
 
   <noscript>
@@ -133,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -142,7 +140,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -182,6 +180,77 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/github-actions-secrets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/github-actions-secrets/" class="post-title-link" itemprop="url">如何方便地查看 Github Actions secrets</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-02 20:38:42" itemprop="dateCreated datePublished" datetime="2023-02-02T20:38:42+08:00">2023-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 gitHub 仓库 Settings 页面中设置的 Actions secrets and variables 是只能重新填写的。同时，在 Action 执行的 log 里所有 secrets 都会被星号打码。不过，可以通过创建一个 Action 来方便地查看我们设置的 token。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">View</span> <span class="string">GitHub</span> <span class="string">Actions</span> <span class="string">secrets</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [<span class="string">master</span>]</span><br><span class="line">  <span class="attr">workflow_dispatch:</span></span><br><span class="line">  <span class="comment"># 可以在仓库的 Actions 页面中手动触发</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">github-actions-environment-variables-ubuntu:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Get</span> <span class="string">env</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">env</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Transfer</span> <span class="string">secrets</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">&quot;echo &#x27;Token XXXX: $<span class="template-variable">&#123;&#123;secrets.XXXX&#125;&#125;</span>&#x27; | curl -T - https://ppng.io/自己设定的一段口令&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在你的设备上运行 <code>curl https://ppng.io/自己设定的一段口令</code> 后再运行上述 action 就可以看到啦。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2990,192 +3059,6 @@ sini buya beye bi
 <p>除了双缝干涉，光栅间还会发生单缝衍射，部分明条纹会不见，即为 <strong>缺级</strong>：</p>
 <p><span class="math display">\[k=\dfrac{d}{a}k&#39;,k=1,2,3…\]</span></p>
 <p>第 <span class="math inline">\(\pm k\)</span> 级会发生缺级．</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/laplace-transform-cheatsheet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/laplace-transform-cheatsheet/" class="post-title-link" itemprop="url">拉普拉斯变换速查表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-12-16 22:16:47" itemprop="dateCreated datePublished" datetime="2022-12-16T22:16:47+08:00">2022-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8A%A8%E6%80%81%E5%88%97%E8%A1%A8/" itemprop="url" rel="index"><span itemprop="name">动态列表</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p><i class="fa-solid fa-infinity"></i> 本表是<strong>动态列表</strong>。动态列表是指<strong>未完成的列表</strong>。它也许永远不会被完整地完成。</p>
-</blockquote>
-<p><picture> <source srcset="https://raw.githubusercontent.com/OverflowCat/blog/4571def89a28dea9a549678b2f58be7f3743fe5d/l-on-blackboard.webp" type="image/webp"> <source srcset="https://user-images.githubusercontent.com/20166026/208291325-61a663c7-dac4-4ae6-b41c-b2b0a53905fe.png" type="image/jpeg"> <img src="https://user-images.githubusercontent.com/20166026/208291325-61a663c7-dac4-4ae6-b41c-b2b0a53905fe.png" width="210px" alt="黑板上的字母L。这是一幅AI生成的画作。"> </picture></p>
-<table>
-<thead>
-<tr class="header">
-<th>时域 <span class="math inline">\(f(t)\)</span></th>
-<th>频域 <span class="math inline">\(F(s)=\mathscr L[f(t)]\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math display">\[\delta&#39;(t)\]</span></td>
-<td><span class="math display">\[s\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[\delta(t)\]</span></td>
-<td><span class="math display">\[1\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[u(t)\]</span></td>
-<td><span class="math display">\[\frac 1 s\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[e^{-at}\]</span></td>
-<td><span class="math display">\[\frac 1 {s+a}\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[te^{-at}\]</span></td>
-<td><span class="math display">\[\frac{1}{(s+a)^2}\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[t\]</span></td>
-<td><span class="math display">\[\frac 1 {s^2}\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[\frac{t^2}2\]</span></td>
-<td><span class="math display">\[\frac{1}{s^3}\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[\frac{t^n}{n!}\]</span></td>
-<td><span class="math display">\[\frac{1}{s^{n+1}}\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[\delta(t-t_0)\]</span></td>
-<td><span class="math display">\[e^{-{t_0}s}\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[\cos(\alpha t)\]</span></td>
-<td><span class="math display">\[\frac s {s^2+\alpha^2}\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[\sin(\alpha t)\]</span></td>
-<td><span class="math display">\[\frac \alpha {s^2+\alpha^2}\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[f(a t)\]</span></td>
-<td><span class="math display">\[\frac{1}{\|a\|}f(\frac sa)\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[f(t-a)u(t-a)\]</span></td>
-<td><span class="math display">\[e^{-as} F(s)\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[e^{at} f(t)\]</span></td>
-<td><span class="math display">\[F(s-a)\]</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="微分和积分">微分和积分</h2>
-<table>
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 51%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>时域 <span class="math inline">\(f(t)\)</span></th>
-<th>频域 <span class="math inline">\(F(s)=\mathscr L[f(t)]\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math display">\[\frac{\mathrm df(t)}{\mathrm dt}\]</span></td>
-<td><span class="math display">\[sF(s)-f(0)\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[\frac{\mathrm d^2f(t)}{\mathrm dt^2}\]</span></td>
-<td><span class="math display">\[s^2F(s)-sf(0)-f&#39;(0)\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[\frac{\mathrm d^nf(t)}{\mathrm dt^n}\]</span></td>
-<td><span class="math display">\[s^nF(s)-\sum^n_{k-1}s^{k-1}f^{(n-k)}(0)\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[tf(t)\]</span></td>
-<td><span class="math display">\[-F&#39;(s)\]</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[(-1)^n t^n f(t)\]</span></td>
-<td><span class="math display">\[F^{(n)}(s)\]</span></td>
-</tr>
-<tr class="even">
-<td><span class="math display">\[\frac 1 t f(t)\]</span></td>
-<td><span class="math display">\[\int_s^\infty F(σ)\mathrm dσ\]</span></td>
-</tr>
-</tbody>
-</table>
 
       
     </div>

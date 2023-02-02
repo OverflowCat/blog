@@ -2445,7 +2445,8 @@ mjx-container[display='true'] + br {
 .main-inner .sub-menu,
 .main-inner .post-block,
 .main-inner .tabs-comment,
-.main-inner :not(.tab-pane) > .comments,
+.main-inner > .comments,
+.main-inner .comment-position .comments,
 .main-inner .pagination {
   background: var(--content-bg-color);
   border-radius: initial;
@@ -2467,7 +2468,8 @@ mjx-container[display='true'] + br {
   }
 }
 .main-inner .tabs-comment,
-.main-inner :not(.tab-pane) > .comments,
+.main-inner > .comments,
+.main-inner .comment-position .comments,
 .main-inner .pagination {
   border-radius: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
@@ -2475,14 +2477,16 @@ mjx-container[display='true'] + br {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .main-inner .tabs-comment,
-  .main-inner :not(.tab-pane) > .comments,
+  .main-inner > .comments,
+  .main-inner .comment-position .comments,
   .main-inner .pagination {
     margin-top: 10px;
   }
 }
 @media (max-width: 767px) {
   .main-inner .tabs-comment,
-  .main-inner :not(.tab-pane) > .comments,
+  .main-inner > .comments,
+  .main-inner .comment-position .comments,
   .main-inner .pagination {
     margin-top: 8px;
   }

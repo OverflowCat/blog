@@ -9,8 +9,32 @@
     <atom:link href="https://blog.xinshijiededa.men/rss.xml" rel="self" type="application/rss+xml"/>
     
     <description>猫猫的博客</description>
-    <pubDate>Thu, 26 Jan 2023 14:08:45 GMT</pubDate>
+    <pubDate>Thu, 02 Feb 2023 13:00:16 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>如何方便地查看 Github Actions secrets</title>
+      <link>https://blog.xinshijiededa.men/github-actions-secrets/</link>
+      <guid>https://blog.xinshijiededa.men/github-actions-secrets/</guid>
+      <pubDate>Thu, 02 Feb 2023 12:38:42 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;在 gitHub 仓库 Settings 页面中设置的 Actions secrets and variables 是只能重新填写的。同时，在 Action 执行的 log 里所有 secrets 都会被星号打码。不过，可以通过创建一个 Action 来方便地查看我们设置的</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>在 gitHub 仓库 Settings 页面中设置的 Actions secrets and variables 是只能重新填写的。同时，在 Action 执行的 log 里所有 secrets 都会被星号打码。不过，可以通过创建一个 Action 来方便地查看我们设置的 token。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">View</span> <span class="string">GitHub</span> <span class="string">Actions</span> <span class="string">secrets</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [<span class="string">master</span>]</span><br><span class="line">  <span class="attr">workflow_dispatch:</span></span><br><span class="line">  <span class="comment"># 可以在仓库的 Actions 页面中手动触发</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">github-actions-environment-variables-ubuntu:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Get</span> <span class="string">env</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">env</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Transfer</span> <span class="string">secrets</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">&quot;echo &#x27;Token XXXX: $<span class="template-variable">&#123;&#123;secrets.XXXX&#125;&#125;</span>&#x27; | curl -T - https://ppng.io/自己设定的一段口令&quot;</span></span><br></pre></td></tr></table></figure><p>在你的设备上运行 <code>curl https://ppng.io/自己设定的一段口令</code> 后再运行上述 action 就可以看到啦。</p>]]></content:encoded>
+      
+      
+      
+      <category domain="https://blog.xinshijiededa.men/tags/GitHub/">GitHub</category>
+      
+      
+      <comments>https://blog.xinshijiededa.men/github-actions-secrets/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>你不应该使用的 Python 文件名</title>
@@ -537,32 +561,6 @@
       
       
       <comments>https://blog.xinshijiededa.men/christmas/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>熟词生义</title>
-      <link>https://blog.xinshijiededa.men/garage/</link>
-      <guid>https://blog.xinshijiededa.men/garage/</guid>
-      <pubDate>Thu, 22 Oct 2020 16:02:59 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;今天做听力的时候，有第四道题的对话是一个人在广告上看到了修车的广告，到这里来修车。选项问这是什么地方：&lt;em&gt;a&lt;/em&gt; &lt;em&gt;parking&lt;/em&gt; &lt;em&gt;lot&lt;/em&gt;, &lt;em&gt;a&lt;/em&gt; &lt;em&gt;factory&lt;/em&gt; or &lt;em&gt;a&lt;/em&gt; &lt;e</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>今天做听力的时候，有第四道题的对话是一个人在广告上看到了修车的广告，到这里来修车。选项问这是什么地方：<em>a</em> <em>parking</em> <em>lot</em>, <em>a</em> <em>factory</em> or <em>a</em> <em>garage</em>。正确答案是 garage，因为有一项意思是汽车修理间。</p><p><img src="https://telegra.ph/file/57851e6d307334d61c712.png" /></p><blockquote><p>🔑 [countable] a place where vehicles are repaired and where you can buy a car or buy petrol/gas and oil （兼营汽车销售、修理及加油的）汽车修理厂</p></blockquote><p>考熟词生义总比奇怪题目不知所云要好。</p><p>PS: 今天再去机房考试，学校已经 ban 了网络连接。发现进入考试后可以通过极域电子教室的浮动面板调出资源管理器，然后新建 .<strong>rtf</strong> 文件，用写字板打开，按 PrtScr 截图后粘贴用来应付听后转述。📝</p><hr /><p>写于 Telegraph，2020 年 10 月 23 日。如果你看不到图片，说明你无法访问 <a href="https://telegra.ph">telegra.ph</a>。</p>]]></content:encoded>
-      
-      
-      <category domain="https://blog.xinshijiededa.men/categories/%E9%A2%98%E9%9A%99%E7%A2%8E%E7%AC%94/">题隙碎笔</category>
-      
-      
-      <category domain="https://blog.xinshijiededa.men/tags/%E8%8B%B1%E8%AF%AD/">英语</category>
-      
-      
-      <comments>https://blog.xinshijiededa.men/garage/#disqus_thread</comments>
       
     </item>
     
