@@ -3,9 +3,10 @@ export interface Props {
   title: string;
   link: string;
   avatar: string;
+  desc?: string;
 }
 
-const { link, title, avatar } = Astro.props;
+const { link, title, avatar, desc } = Astro.props;
 const href = "https://" + link;
 ---
 
@@ -15,9 +16,12 @@ const href = "https://" + link;
       <div class="title"><h2 set:html={title} /></div>
       <img class="avatar" src={avatar} />
       <div class="link"><p id="link"><code>{link}</code></p></div>
-      <blockquote class="quote">
-        <slot />
-      </blockquote>
+      <div class="main">
+        {desc && <blockquote class="quote">{desc}</blockquote>}
+        <div class="comment">
+          <slot />
+        </div>
+      </div>
     </div>
   </a>
 </li>
@@ -78,15 +82,21 @@ const href = "https://" + link;
   }
 
   .quote {
-    grid-area: quote;
     text-align: left;
-    margin: 0.5rem;
+    margin: 0rem;
     background: #f9f9f9;
     border-left: 8px solid #ccc;
-    margin: 1em 6px;
-    line-height: 1.8em;
     padding: 0.2em 6px;
     /* quotes: "\201C""\201D""\2018""\2019"; */
+  }
+
+  div.comment {
+  }
+
+  div.main {
+    grid-area: main;
+    line-height: 1.8em;
+    margin: 0.5em 6px;
   }
 
   .link {
@@ -98,9 +108,9 @@ const href = "https://" + link;
     grid-template-areas:
       "title title title title avatar"
       "link  link  link  link  avatar"
-      "quote quote quote quote quote"
-      "quote quote quote quote quote"
-      "quote quote quote quote quote";
+      "main main main main main"
+      "main main main main main"
+      "main main main main main";
     gap: 0.35rem;
     padding: 0.1rem;
     justify-content: space-between;
