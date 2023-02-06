@@ -73,7 +73,45 @@ import Pn from "@/components/Pn.astro";
       desc="迷惘少年的梦想世界"
     />
   </ul>
+  <h1>交换友链</h1>
+  <h2>本站信息</h2>
+  <div style="margin: auto; text-align: center; overflow-y: auto;">
+    <pre
+      style="text-align: left; display: inline-block;">title: 新世界的大门
+href: https://blog.xinshijiededa.men
+avatar: # (多种格式可选)
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.svg
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.png
+  https://avatars.githubusercontent.com/u/20166026?v=4
+desc: 悟已往之不諫，知來者之可追</pre>
+  </div>
+  <h2>你需要提供</h2>
+  <ol role="list" class="link-card-grid">
+    <li>
+      <img
+        src="https://user-images.githubusercontent.com/20166026/217068284-378a620b-0e8a-44d4-b5e6-7d006dc31e13.svg"
+        alt="code"
+      />
+    </li>
+    <li style="font-size: 250%; font-weight: 500; margin: auto; color: #444">
+      which<br />renders as
+    </li>
+    <Card
+      link="blog.xinshijiededa.men"
+      title="新世界的大门"
+      avatar="//raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp"
+      desc="悟已往之不諫，知來者之可追"
+    >
+      不提供 <code>desc</code> 的话，我会帮你写一句的（
+    </Card>
+  </ol>
 </Layout>
+<style is:global>
+  li {
+    list-style: none;
+  }
+</style>
 <style>
   h1 {
     font-size: 3rem;
@@ -100,7 +138,8 @@ import Pn from "@/components/Pn.astro";
   }
   .link-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(34ch, 1fr));
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
     gap: 1rem;
     padding: 0;
   }

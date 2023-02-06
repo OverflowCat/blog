@@ -17,10 +17,20 @@ const href = "https://" + link;
       <img class="avatar" src={avatar} />
       <div class="link"><p id="link"><code>{link}</code></p></div>
       <div class="main">
-        {desc && <blockquote class="quote">{desc}</blockquote>}
-        <div class="comment">
-          <slot />
-        </div>
+        {
+          desc ? (
+            <>
+              <blockquote class="quote">{desc}</blockquote>
+              <div class="comment both">
+                <slot />
+              </div>
+            </>
+          ) : (
+            <div class="comment">
+              <slot />
+            </div>
+          )
+        }
       </div>
     </div>
   </a>
@@ -28,7 +38,6 @@ const href = "https://" + link;
 <style>
   .link-card {
     text-align: left;
-    list-style: none;
     display: flex;
     padding: 2.5px;
     background-color: white;
@@ -90,7 +99,12 @@ const href = "https://" + link;
     /* quotes: "\201C""\201D""\2018""\2019"; */
   }
 
+  div.comment.both {
+    margin-top: 16px;
+  }
+
   div.comment {
+    margin-top: 6px;
   }
 
   div.main {
