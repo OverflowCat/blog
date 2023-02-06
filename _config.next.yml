@@ -632,7 +632,7 @@ gitalk:
   repo: # Repository name to store issues
   client_id: # GitHub Application Client ID
   client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  admin_user: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
