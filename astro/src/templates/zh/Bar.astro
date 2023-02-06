@@ -30,7 +30,9 @@ const { index } = Astro.props;
           <span>
             &nbsp;
             <span>{item[0]}</span>
-            <span lang="en">/ {item[1]}</span>
+            <span class="en" lang="en">
+              / {item[1]}
+            </span>
             &nbsp;
           </span>
         </a>
@@ -40,6 +42,11 @@ const { index } = Astro.props;
 </ol>
 
 <style>
+  @media only screen and (max-width: 800px) {
+    span.en {
+      display: none !important;
+    }
+  }
   * {
     user-select: none;
   }
@@ -122,11 +129,5 @@ const { index } = Astro.props;
   a {
     text-decoration: none;
     color: #434343;
-  }
-
-  @media only screen and (max-width: 700px) {
-    span[lang="en"] {
-      display: none;
-    }
   }
 </style>

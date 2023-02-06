@@ -20,8 +20,8 @@ const href = "https://" + link;
         {
           desc ? (
             <>
-              <blockquote class="quote">{desc}</blockquote>
-              <div class="comment both">
+              <blockquote class="quote" set:html={desc} />
+              <div class="comment-both">
                 <slot />
               </div>
             </>
@@ -99,12 +99,12 @@ const href = "https://" + link;
     /* quotes: "\201C""\201D""\2018""\2019"; */
   }
 
-  div.comment.both {
-    margin-top: 16px;
+  div.comment-both {
+    margin-top: 4px;
   }
 
   div.comment {
-    margin-top: 6px;
+    margin-top: 16px;
   }
 
   div.main {
