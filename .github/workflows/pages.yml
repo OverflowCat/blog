@@ -36,11 +36,11 @@ jobs:
           pnpm install
           pnpm build
           cd ..
-          node build_fin.js
+          node build_1.js
       - name: Build Hexo
         run: npm run build
       - name: Recopy Astro # Hexo 会删 index.html
-        run: node build_fin.js
+        run: node build_2.js
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

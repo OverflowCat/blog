@@ -2,6 +2,6 @@
 cd astro
 pnpm build
 cd ..
-node build_fin.js
+node build_1.js
 pnpm build
-node build_fin.js
+node build_2.js

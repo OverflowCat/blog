@@ -18,7 +18,6 @@ const 覆盖 = (source, dest) => {
 
 // Then, use it with a simple async for loop
 async function main() {
-
     // 第二次运行的时候不用执行这里
     for await (const p of walk('./dist/pipe')) {
         console.log(p);
@@ -34,17 +33,6 @@ async function main() {
             fs.existsSync(new_path) && fs.rmSync(new_path);
             fs.writeFileSync(new_path, frontmatter + "\n\n" + rendered);
         }
-    }
-
-    // 第一次运行的时候不用执行这里
-    for await (const p of walk('./dist')) {
-        console.log(p);
-        const new_path = p.replace(/^dist/, "public");
-        if (new_path.endsWith('.svg')) {
-            console.log("\x1B[33m  └─Copy skipped.\x1B[0m");
-            continue;
-        };
-        覆盖(p, new_path);
     }
 }
 
