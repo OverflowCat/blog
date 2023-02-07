@@ -4,6 +4,7 @@ import Card from "./_components/Card.astro";
 import Color from "./_components/Color.astro";
 import Stroke from "./_components/Stroke.astro";
 import Pn from "@/components/Pn.astro";
+import Footer from "@/templates/zh/Footer.astro";
 ---
 
 <!-- 2022-11-24 19:15:00 -->
@@ -109,12 +110,16 @@ desc: 悟已往之不諫，知來者之可追</pre>
     </Card>
   </ol>
 </Layout>
+
 <style is:global>
   li {
     list-style: none;
   }
 </style>
 <style>
+  img {
+    width: 100%; /* fix overflow (when screen is narrow on mobile) */
+  }
   h1 {
     font-size: 3rem;
     font-weight: 800;
