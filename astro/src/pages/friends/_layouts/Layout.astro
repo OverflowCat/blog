@@ -1,14 +1,15 @@
 ---
 export interface Props {
   title: string;
+  noscript?: boolean;
 }
 
 import Page from "@templates/zh/Page.astro";
 
-const { title } = Astro.props;
+const { title, noscript } = Astro.props;
 ---
 
-<Page title="友链" bar_index={2}>
+<Page title={title} bar_index={2} noscript={noscript}>
   <slot />
 </Page>
 
