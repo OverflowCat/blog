@@ -7,8 +7,8 @@ import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 
 // math
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+// import remarkMath from "remark-math";
+// import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 import compress from "astro-compress";
@@ -23,7 +23,7 @@ export default defineConfig({
     svg: false,
   })],
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex]
+    // remarkPlugins: [remarkMath],
+    // rehypePlugins: [rehypeKatex]
   }
 });

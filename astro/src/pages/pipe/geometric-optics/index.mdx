@@ -1,0 +1,88 @@
+---
+title: 几何光学的基本概念
+date: 2023-03-07 23:29:00
+layout: "@/templates/zh/Blank.astro"
+bar_index: 4
+noscript: true
+---
+
+![](https://user-images.githubusercontent.com/20166026/223477139-a9a5112a-33f0-448b-89bb-0c13d1f0721d.jpg)
+
+import C from "@/components/Cloze.svelte";
+
+几何光学：<C client:load>光线</C> 的概念为基础，用 <C client:load>几何</C> 的方法研究光在介质中的传播规律和光学系统成像特征．
+
+## 光波与光线
+
+光从本质上来就是 <C client:load>电磁波</C>；光的传播实质上是 <C client:load>电磁波的传播</C>．
+
+### 波长
+
+红外线的波长比可见光 <C client:load>长</C>；
+
+紫外线的波长比可见光 <C client:load>短</C>．
+
+光速、频率与波长的关系：
+
+$$\nu=\dfrac c \lambda.$$
+
+（不能写成其他形式）
+
+### 光源和光线
+
+光源（发光体）是 <C client:load>能够辐射光能量</C> 的物体．
+
+光线是 <C client:load>携带能量并带有方向</C> 的几何线．
+
+<C client:load>光线的方向</C> 代表光的传播方向．
+
+<C client:load>光线的传播途径</C> 称为光路．
+
+### 波面
+
+光波向周围传播，在某一时刻，其振动位相相同的各点所构成的 <C client:load>等相位面</C> 称为波阵面，简称波面．可分为 <C client:load>平面波，球面波或任意曲面波</C>．
+
+在各向同性介质中，光沿着波面法线方向传播，所以可以认为 <C client:load>光波波面法线</C> 就是几何光学中的光线．
+
+波前（wavefront）: The surface reached by wave propagation at any time.
+
+## 基本定律
+
+### 光的直线传播定律
+
+在 <C client:load>各向同性的均匀介质</C> 中，光线按直线传播．
+
+### 光线的独立传播定律
+
+光线的独立传播定律不符合 <C client:load>光的干涉现象</C>．
+
+### 光的折射和反射定律
+
+#### 折射定律
+
+折射定律的公式：
+
+$$n'\sin I'=n\sin I.$$
+
+若在此式中令 $n'=-n$， 则有 $I'=-I$，即反射定律．
+
+#### 角的正负
+
+由 <C client:load>光线转向法线</C>， <C client:load>顺</C> 时针方向旋转形成的角度为正，反之为负．
+
+在反射定律中，反射光线和入射光线位于法线的两侧，且反射角与入射角的绝对值相等，符号相反．
+
+#### 全反射现象发生的条件
+
+1. 光线从 <C client:load>光密</C> 介质射向 <C client:load>光疏</C> 介质；
+2. 入射角大于临界角．
+
+### 马吕斯定律
+
+马吕斯定律（Theorem of Malus）是指光线束在各向同性的均匀介质中传播时，始终 <C client:load>保持着与波面的正交性</C>，并且入射波面与出射波面对应点之间的 <C client:load>光程</C> 为定值．
+
+### 费马原理
+
+费马原理（Fermat's principle）是指光是沿着光程为 <C client:load>极值（极大、极小或常量）</C> 的路径传播的．
+
+<C client:load>折/反射定律、费马原理和马吕斯定律</C> 三者中的任意一个，均可以视为几何光学的一个基本定律，而把另外两个作为该基本定律的推论．
