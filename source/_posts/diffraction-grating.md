@@ -1,10 +1,8 @@
 ---
 title: 光栅衍射
 date: 2022-12-26 01:49:21
-tags:
-- 光学
-- 物理
-categories: 备忘
+categories: 光学
+tags: 备忘
 mathjax: true
 ---
 
