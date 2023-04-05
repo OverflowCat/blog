@@ -11,15 +11,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.17.2",
-    "@astrojs/svelte": "^2.0.2",
-    "astro": "^2.0.18",
+    "@astrojs/mdx": "^0.18.2",
+    "@astrojs/svelte": "^2.1.0",
+    "astro": "^2.1.9",
     "astro-compress": "^1.1.35",
-    "svelte": "^3.55.1"
+    "svelte": "^3.58.0"
   },
   "devDependencies": {
+    "rehype-pretty-code": "^0.9.4",
     "rollup": ">=3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "shiki": "^0.14.1",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1"
   }
 }

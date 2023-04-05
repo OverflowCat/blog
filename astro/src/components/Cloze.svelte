@@ -10,18 +10,19 @@
   }
 </script>
 
-<span class="cloze" on:click={toogle} on:keypress={toogle_a11y}>
-  {#if hidden}
-    <span class="mask">[...]</span>
-  {:else}
-    <span class="ans"><slot /></span>
-  {/if}
-</span>
+{#if hidden}<span class="cloze mask" on:click={toogle} on:keypress={toogle_a11y}
+    >[...]</span
+  >{/if}<span
+  class="cloze ans"
+  class:hidden
+  on:click={toogle}
+  on:keypress={toogle_a11y}><slot /></span
+>
 
 <style>
-  /* .hidd {
+  .cloze.hidden {
     display: none;
-  } */
+  }
   .mask {
     user-select: none;
   }

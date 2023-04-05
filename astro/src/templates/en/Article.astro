@@ -1,10 +1,9 @@
 ---
 import Page from "../zh/Page.astro";
-const title = Astro.props.frontmatter.title;
-const noscript = Astro.props.frontmatter.noscript;
+const { title, noscript, bar_index } = Astro.props.frontmatter;
 ---
 
-<Page title={title} noscript={noscript}>
+<Page title={title} noscript={noscript} bar_index={bar_index}>
   <article class="paper" lang="en">
     <slot />
   </article>
