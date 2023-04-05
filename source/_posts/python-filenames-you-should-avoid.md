@@ -37,7 +37,7 @@ AttributeError: module 'select' has no attribute 'select'
 >>>
 ```
 
-我一 Linux 怎么会需要 `msvcrt`？一开始以为是 Arch 仓库里的 Python 有问题，或者是 `pip` 安装的时候在 root 用户操作而破坏了系统，但是重装了几次全部依赖也没有解决。排查许久后，发现只有在我的代码文件夹里进入 REPL `import platform` 会报错。然后发现项目里用的一个模块的名称叫 `select.py`。是的，导入 Python 内置的 <a href="https://docs.python.org/3/library/index.html">标准库 <i class="fa-brands fa-python"></i></a> 的时候，**标准库内部的 `import` 也是在当前工作目录下进行的**（！）。
+我一 Linux 怎么会需要 `msvcrt`？~~一开始以为是 Arch 仓库里的 Python 有问题~~，或者是 `pip` 安装的时候在 root 用户操作而破坏了系统，但是重装了几次全部依赖也没有解决。排查许久后，发现只有在我的代码文件夹里进入 REPL `import platform` 会报错。然后发现项目里用的一个模块的名称叫 `select.py`。是的，导入 Python 内置的 <a href="https://docs.python.org/3/library/index.html">标准库 <i class="fa-brands fa-python"></i></a> 的时候，**标准库内部的 `import` 也是在当前工作目录下进行的**（！）。
 
 最末的结论是，你不应该使用以下名称作为 Python 代码的文件/模块名：
 

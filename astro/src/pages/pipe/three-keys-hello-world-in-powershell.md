@@ -4,7 +4,7 @@ date: 2023-03-30 19:17:00
 layout: "@/templates/zh/Blank.astro"
 ---
 
-> 为什么不试试 M$ 的功率壳呢？截至 2023 年 3 月，PowerShell 在 GitHub 使用量排第 32 名，占比 0.102%。[^3psrank]
+> 为什么不试试 M$ 的功率壳呢？
 
 其实 [这篇文章](https://github.com/InvoluteHell/ThreeKeysProgramming/tree/master/OverflowCat) 在去年暑假就已经写好，不过最近我的 [pull request](https://github.com/InvoluteHell/ThreeKeysProgramming/pull/36) 才被合并，已经快忘掉了。现修缮后发出来。
 
@@ -20,6 +20,8 @@ layout: "@/templates/zh/Blank.astro"
 >6. 所有的依赖条件均需是在本比赛开始前就是已有的；否则请上传，作为文件内容统计的一部分！
 >7. 要求使用平庸的编译/执行命令、测试环境、文件名，除平庸部分外，其余部分也需要符合上述 1, 2 两条的要求
 >8. 静态类型语言的入口函数名，不受 1 中的限制。例如 C 语言的 `int main`, Java 的 `public static void main` 等
+
+截至 2023 年 3 月，PowerShell 在 GitHub 使用量排第 32 名，占比 0.102%，符合要求。[^3psrank]
 
 [^3psrank]: 点击第 5 条规则中的链接查看。
 
@@ -68,7 +70,7 @@ $i=$?+$?;$e=$i+$i;$xi=$x=$e+$i;$xe=""+$x+$x;$xx=""+$x+--$e;$x=(""+$?)[$i];iex "`
 * C 利用了 UB 和不平凡的编译命令
 * PHP 选了 `H`、`e`、`l`，剩下的字符惊为天人，不知道是利用了什么隐式类型转换，看不懂
 
-PowerShell 中无法对 Char 进行加减操作，显式地进行类型转换也需要类似 `[char]65` 至少 4 个字母。[^3key1]所以只能考虑 eval。PowerShell 中的命令名都很长，不过 Invoke-Expression 有别名 `iex`。另外有一个可以执行字符串的操作符 `&`，但是只能是命令名，不能带参数。[^3key2]
+PowerShell 中无法对 Char 进行加减操作，显式地进行类型转换也需要类似 `[char]65` 至少 4 个字母。[^3key1] 所以只能考虑 eval。PowerShell 中的命令名都很长，不过 Invoke-Expression 有别名 `iex`。另外有一个可以执行字符串的操作符 `&`，但是只能是命令名，不能带参数。[^3key2]
 
 [^3key1]: <a href="https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/converting-ascii-and-characters">Converting ASCII and Characters - Power Tips - Power Tips - IDERA Community</a>
 [^3key2]: <a href="https://stackoverflow.com/questions/50018274/why-does-invoke-operator-and-invoke-expression-produce-different-results-for">Why does invoke operator (&amp; and Invoke-Expression produce different results for the same input? - Stack Overflow)</a>
