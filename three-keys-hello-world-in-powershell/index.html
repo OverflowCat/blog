@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
+  <link rel="mask-icon" href="//upload.wikimedia.org/wikipedia/commons/d/d2/Twemoji2_26e9.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7CM+PLUS+1+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xinshijiededa.men","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"mac","show_result":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"expandIn","coll_header":"slideLeftIn","sidebar":"perspectiveLeftIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="为什么不试试 M$ 的功率壳呢？截至 2023 年 3 月，PowerShell 在 GitHub 使用量排第 32 名，占比 0.102%。1    其实 这篇文章 在去年暑假就已经写好，不过最近我的 pull request 才被合并，已经快忘掉了。现修缮后发出来。   规则   三键成码一项编程比赛，要求参赛者仅用三个字母或数字以及任意数量的符号编码输出 Hello, World">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用三个字母和任意符号输出 Hello World">
+<meta property="og:url" content="https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/index.html">
+<meta property="og:site_name" content="新世界的大门">
+<meta property="og:description" content="为什么不试试 M$ 的功率壳呢？截至 2023 年 3 月，PowerShell 在 GitHub 使用量排第 32 名，占比 0.102%。1    其实 这篇文章 在去年暑假就已经写好，不过最近我的 pull request 才被合并，已经快忘掉了。现修缮后发出来。   规则   三键成码一项编程比赛，要求参赛者仅用三个字母或数字以及任意数量的符号编码输出 Hello, World">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/20166026/228802663-72e85b34-f7b6-42d6-b765-09ed31b042ed.png">
+<meta property="article:published_time" content="2023-03-30T10:07:33.000Z">
+<meta property="article:modified_time" content="2023-04-05T15:41:56.427Z">
+<meta property="article:author" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+<meta property="article:tag" content="PowerShell">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/20166026/228802663-72e85b34-f7b6-42d6-b765-09ed31b042ed.png">
+<meta name="twitter:creator" content="@lazy_static">
+
+
+<link rel="canonical" href="https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/","path":"/three-keys-hello-world-in-powershell/","title":"用三个字母和任意符号输出 Hello World"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用三个字母和任意符号输出 Hello World | 新世界的大门</title>
+  
+
+
+
+
+
+
+
+<style> @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap'); </style>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="新世界的大门" type="application/atom+xml">
+<link rel="alternate" href="/rss.xml" title="新世界的大门" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">新世界的大门</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">因此幻想是世界，谁若懂得，谁就会歌唱</p>
+      <img class="custom-logo-image" src="//raw.githubusercontent.com/OverflowCat/blog/6a18f725e82243e0e8e78933499dbac79509f7f8/itsukushima-shrine.webp" alt="新世界的大门">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页-/-home"><a href="/./" rel="section"><i class="fa fa-home fa-fw"></i>主页 / Home</a></li><li class="menu-item menu-item-归档-/-archive"><a href="/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档 / Archive</a></li><li class="menu-item menu-item-友链-/-friends"><a href="/./friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链 / Friends</a></li><li class="menu-item menu-item-关于-/-about"><a href="/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于 / About</a></li><li class="menu-item menu-item-订阅-/-rss"><a href="/./atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>订阅 / RSS</a></li><li class="menu-item menu-item-站点地图-/-sitemap"><a href="/./sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图 / Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+<div style="padding: 2px;">
+<img src="https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg" alt="新世界的大門（Logo）" width="164ox">
+</div>
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-text">
+规则
+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">
+代码
+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">
+环境
+</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text">
+原理
+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AD%97%E6%AF%8D"><span class="nav-text">
+选择字母
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97"><span class="nav-text">
+第一个数字
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0-unicode"><span class="nav-text">
+构造 Unicode
+</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-text">
+转义字符
+</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%80%BC"><span class="nav-text">
+打印值
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8F%AF%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">
+其他可能的方法
+</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnote-label"><span class="nav-text">
+脚注和参考文献
+</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
+      src="https://avatars.githubusercontent.com/u/20166026?v=4">
+  <p class="site-author-name" itemprop="name">ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</p>
+  <div class="site-description" itemprop="description">猫猫的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/OverflowCat" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;OverflowCat" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/OverflowCat" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;OverflowCat" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:overflowcat+blog@gmail.com" title="Mail → mailto:overflowcat+blog@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/lazy_static" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;lazy_static" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mastodon.social/@overflowcat" title="Mastodon → https:&#x2F;&#x2F;mastodon.social&#x2F;@overflowcat" rel="noopener me" target="_blank"><i class="fab fa-mastodon fa-fw"></i>Mastodon</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/overflowcat" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;overflowcat" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc.svg" alt="Creative Commons"></a>
+  </div>
+<a rel="me noopener" style="display: none;" target="_blank" href="https://mastodon.social/@overflowcat">Mastodon</a>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://user-images.githubusercontent.com/20166026/228802663-72e85b34-f7b6-42d6-b765-09ed31b042ed.png" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用三个字母和任意符号输出 Hello World | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用三个字母和任意符号输出 Hello World
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-30 18:07:33" itemprop="dateCreated datePublished" datetime="2023-03-30T18:07:33+08:00">2023-03-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <head>
+<meta charset=utf-8>
+<link href=/_astro/three-keys-hello-world-in-powershell.db3208af.css rel=stylesheet />
+</head>
+<blockquote>
+<p>
+为什么不试试 M$ 的功率壳呢？截至 2023 年 3 月，PowerShell 在 GitHub 使用量排第 32 名，占比 0.102%。<sup><a href=#user-content-fn-3psrank aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3psrank>1</a></sup>
+</p>
+</blockquote>
+<p>
+其实 <a href=https://github.com/InvoluteHell/ThreeKeysProgramming/tree/master/OverflowCat>这篇文章</a> 在去年暑假就已经写好，不过最近我的 <a href=https://github.com/InvoluteHell/ThreeKeysProgramming/pull/36>pull request</a> 才被合并，已经快忘掉了。现修缮后发出来。
+</p>
+<h2 id="规则">
+规则
+</h2>
+<p>
+三键成码一项编程比赛，要求参赛者仅用三个字母或数字以及任意数量的符号编码输出 <code>Hello, World!</code>，并且文件体积最小者获胜。以下是详细规则：
+</p>
+<blockquote>
+<ol>
+<li>
+参赛选手自行挑选三个「字母 / 数字」来编写代码，代码中的「字母 / 数字」<strong>只能且必须</strong> 有这三个（大小写算两个不同的键）
+</li>
+<li>
+除此三个「字母 / 数字」外，额外允许使用普通键盘上的所有 ASCII 符号（例如 <code>&#123;</code>, <code>;</code> 等）
+</li>
+<li>
+该程序运行后输出 <code>Hello, World!</code>, 有且仅有该内容，要求分毫不差，注意大小写和符号
+</li>
+<li>
+上传的所有文件体积最小者获胜！（结果截图、说明文档等的不算）
+</li>
+<li>
+不限编程语言，但禁止使用极小众语言；我们对极小众的定义是：<a href=https://madnight.github.io/githut/#/pull_requests/2022/1>Github 语言统计</a> 上从未出现过的语言
+</li>
+<li>
+所有的依赖条件均需是在本比赛开始前就是已有的；否则请上传，作为文件内容统计的一部分！
+</li>
+<li>
+要求使用平庸的编译/执行命令、测试环境、文件名，除平庸部分外，其余部分也需要符合上述 1, 2 两条的要求
+</li>
+<li>
+静态类型语言的入口函数名，不受 1 中的限制。例如 C 语言的 <code>int main</code>, Java 的 <code>public static void main</code> 等
+</li>
+</ol>
+</blockquote>
+<h2 id="代码">
+代码
+</h2>
+<p>
+选择的 3 个字母：<code>i</code>、<code>e</code>、<code>x</code>。
+</p>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#2f86d2>$i</span><span style=color:#7b30d0>=</span><span style=color:#002339>$?</span><span style=color:#7b30d0>+</span><span style=color:#002339>$?</span></span>
+<span class=line><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$i</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span></span>
+<span class=line><span style=color:#2f86d2>$xi</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span></span>
+<span class=line><span style=color:#2f86d2>$xe</span><span style=color:#7b30d0>=</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span></span>
+<span class=line><span style=color:#2f86d2>$xx</span><span style=color:#7b30d0>=</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>+--</span><span style=color:#2f86d2>$e</span></span>
+<span class=line><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#002339>(</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#002339>$?)[</span><span style=color:#2f86d2>$i</span><span style=color:#002339>]</span></span>
+<span class=line><span style=color:#002339>iex </span><span style=color:#a44185>"</span><span style=color:#174781>`$</span><span style=color:#a44185>ex=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xe</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>;</span><span style=color:#174781>`$</span><span style=color:#a44185>xe=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xx</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>"</span></span>
+<span class=line><span style=color:#2f86d2>$ii</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>+++</span><span style=color:#2f86d2>$i</span></span>
+<span class=line><span style=color:#2f86d2>$ix</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$ii</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span></span>
+<span class=line><span style=color:#2f86d2>$ei</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>*</span><span style=color:#2f86d2>$i</span></span>
+<span class=line><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#a44185>"</span><span style=color:#174781>``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;"</span></span>
+<span class=line><span style=color:#002339>iex </span><span style=color:#a44185>"</span><span style=color:#174781>`$</span><span style=color:#a44185>e=</span><span style=color:#174781>""</span><span style=color:#2f86d2>$x$e$ei</span><span style=color:#a44185>&#125;e</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$ex</span><span style=color:#a44185>&#125;, </span><span style=color:#2f86d2>$x$ii$ix</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$ex</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$ix$i</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$e</span><span style=color:#a44185>&#125;!</span><span style=color:#174781>""</span><span style=color:#a44185>"</span></span>
+<span class=line><span style=color:#2f86d2>$e</span></span></code></pre>
+</div>
+<p>
+压成一行时语句结尾需要有分号。
+</p>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#2f86d2>$i</span><span style=color:#7b30d0>=</span><span style=color:#002339>$?</span><span style=color:#7b30d0>+</span><span style=color:#002339>$?;</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$i</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span><span style=color:#002339>;</span><span style=color:#2f86d2>$xi</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span><span style=color:#002339>;</span><span style=color:#2f86d2>$xe</span><span style=color:#7b30d0>=</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span><span style=color:#002339>;</span><span style=color:#2f86d2>$xx</span><span style=color:#7b30d0>=</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>+--</span><span style=color:#2f86d2>$e</span><span style=color:#002339>;</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#002339>(</span><span style=color:#a44185>""</span><span style=color:#7b30d0>+</span><span style=color:#002339>$?)[</span><span style=color:#2f86d2>$i</span><span style=color:#002339>];iex </span><span style=color:#a44185>"</span><span style=color:#174781>`$</span><span style=color:#a44185>ex=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xe</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>;</span><span style=color:#174781>`$</span><span style=color:#a44185>xe=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xx</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>"</span><span style=color:#002339>;</span><span style=color:#2f86d2>$ii</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>+++</span><span style=color:#2f86d2>$i</span><span style=color:#002339>;</span><span style=color:#2f86d2>$ix</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$ii</span><span style=color:#7b30d0>+</span><span style=color:#2f86d2>$i</span><span style=color:#002339>;</span><span style=color:#2f86d2>$ei</span><span style=color:#7b30d0>=</span><span style=color:#2f86d2>$e</span><span style=color:#7b30d0>*</span><span style=color:#2f86d2>$i</span><span style=color:#002339>;</span><span style=color:#2f86d2>$x</span><span style=color:#7b30d0>=</span><span style=color:#a44185>"</span><span style=color:#174781>``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;"</span><span style=color:#002339>;iex </span><span style=color:#a44185>"</span><span style=color:#174781>`$</span><span style=color:#a44185>e=</span><span style=color:#174781>""</span><span style=color:#2f86d2>$x$e$ei</span><span style=color:#a44185>&#125;e</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$ex</span><span style=color:#a44185>&#125;, </span><span style=color:#2f86d2>$x$ii$ix</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$ex</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$ix$i</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$xe</span><span style=color:#a44185>&#125;</span><span style=color:#2f86d2>$x$xi$e</span><span style=color:#a44185>&#125;!</span><span style=color:#174781>""</span><span style=color:#a44185>"</span><span style=color:#002339>;</span><span style=color:#2f86d2>$e</span></span></code></pre>
+</div>
+<h3 id="环境">
+环境
+</h3>
+<p>
+<strong>PowerShell 7.2.5</strong>，需要自行安装，Windows 自带的版本较旧，没有 Unicode 转义字符。
+</p>
+<p>
+代码可以在终端直接粘贴，或者通过 <code>..ps1</code> 运行。
+</p>
+<h2 id="原理">
+原理
+</h2>
+<h3 id="选择字母">
+选择字母
+</h3>
+<p>
+让我们先来看看其他提交者所用的语言中是怎么做到的：
+</p>
+<ul>
+<li>
+JavaScript 有 <a href=http://www.jsfuck.com/ >JSFuck</a> 这种东西，甚至可以只有符号，自然是不消说的
+</li>
+<li>
+Python 版本中选择了 <code>exec</code>——Python 中的 <code>eval</code> 只能执行单纯的表达式，无法创建变量，而且需要 4 个字母；而 <code>exec</code> 可以执行代码块
+</li>
+<li>
+Bash 用了 <code>tr</code>
+</li>
+<li>
+Ruby 选了 <code>c</code> 和另外两个数字——Ruby 中 <code>&lt;&lt;</code> 是字符串连接运算符，<code>$&gt;</code> 是 <code>stdout</code>，后面用格式化字符串 <code>"%c"</code> 和一个整数数组
+</li>
+<li>
+C 利用了 UB 和不平凡的编译命令
+</li>
+<li>
+PHP 选了 <code>H</code>、<code>e</code>、<code>l</code>，剩下的字符惊为天人，不知道是利用了什么隐式类型转换，看不懂
+</li>
+</ul>
+<p>
+PowerShell 中无法对 Char 进行加减操作，显式地进行类型转换也需要类似 <code>[char]65</code> 至少 4 个字母。<sup><a href=#user-content-fn-3key1 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key1>2</a></sup>所以只能考虑 eval。PowerShell 中的命令名都很长，不过 Invoke-Expression 有别名 <code>iex</code>。另外有一个可以执行字符串的操作符 <code>&amp;</code>，但是只能是命令名，不能带参数。<sup><a href=#user-content-fn-3key2 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key2>3</a></sup>
+</p>
+<h3 id="第一个数字">
+第一个数字
+</h3>
+<p>
+因为不能直接出现数字了，所以需要想办法得到第一个 Int 类型的值。发现数组下标为空字符串 <code>''</code> 时可以得到数组的第一个元素，但是如果想要后面的字母的话，PowerShell 并没有提供 pop 等函数。<sup><a href=#user-content-fn-3key3 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key3>4</a></sup> 数字字面量也都至少需要有 <code>0</code> 出现。所以只能通过其他类型隐式转换出 Int 来。
+</p>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#2f86d2>$i</span><span style=color:#002339> </span><span style=color:#7b30d0>=</span><span style=color:#002339> $? </span><span style=color:#7b30d0>+</span><span style=color:#002339> $?</span></span></code></pre>
+</div>
+<ul>
+<li>
+<code>$?</code> 表示上一条命令的返回值，在初始时和上一条命令没有出错时为 <code>True</code>。<sup><a href=#user-content-fn-3key4 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key4>5</a></sup>
+</li>
+<li>
+PowerShell 中的 <code>==</code> 是 <code>-eq</code>，需要额外的字母。
+</li>
+<li>
+当 Bool 类型转换为整数时，<code>True</code> 是 <code>1</code>，故 <code>$i<code>为</code>2</code>。<sup><a href=#user-content-fn-3key5 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key5>6</a></sup>
+</li>
+</ul>
+<p>
+剩下的大部分操作都是在构造其他数字，代码的长度应该可以再压缩一点。
+</p>
+<h3 id="构造-unicode">
+构造 Unicode
+</h3>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#2f86d2>$x</span><span style=color:#002339> </span><span style=color:#7b30d0>=</span><span style=color:#002339> (</span><span style=color:#a44185>""</span><span style=color:#002339> </span><span style=color:#7b30d0>+</span><span style=color:#002339> $?)[</span><span style=color:#2f86d2>$i</span><span style=color:#002339>]</span></span></code></pre>
+</div>
+<ul>
+<li>
+<code>+</code> 运算符的两个参数类型不一致的时候，会将第二个参数隐式转换为第一个参数的类型。故此处 <code>$e</code> 为 String <code>"True"</code>。
+</li>
+</ul>
+<p>
+至此，我们有了所需的数字和字母 <code>u</code>，可以用 <code>"u&#123;x&#125;"</code> 来生成一切字符了。不过，<code>"Hello World!"</code> 除了可以直接输入的 <code>e</code>、空格和 <code>!</code>，十六进制值中还需要 <code>c</code> 和 <code>f</code>。幸好这两个的编码分别为 <code>63</code> 和 <code>66</code>，没有 a-f 出现。<code>$e</code> 实际上就是：
+</p>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#2f86d2>$e</span><span style=color:#002339> </span><span style=color:#7b30d0>=</span><span style=color:#002339> </span><span style=color:#a44185>"</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;48&#125;e</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;6c&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;6c&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;6f&#125;, </span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;57&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;6f&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;72&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;6c&#125;</span><span style=color:#174781>``</span><span style=color:#a44185>u&#123;64&#125;!"</span><span style=color:#002339>;</span></span></code></pre>
+</div>
+<h4 id="转义字符">
+转义字符
+</h4>
+<div data-rehype-pretty-code-fragment="">
+<pre data-language=powershell data-theme=default><code data-language=powershell data-theme=default><span class=line><span style=color:#002339>iex </span><span style=color:#a44185>"</span><span style=color:#174781>`$</span><span style=color:#a44185>ex=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xe</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>;</span><span style=color:#174781>`$</span><span style=color:#a44185>xe=</span><span style=color:#174781>""``</span><span style=color:#2f86d2>$x</span><span style=color:#a44185>&#123;</span><span style=color:#2f86d2>$xx</span><span style=color:#a44185>&#125;</span><span style=color:#174781>""</span><span style=color:#a44185>"</span></span></code></pre>
+</div>
+<ul>
+<li>
+字符串用双引号的好处是可以直接嵌入变量。如果要 escape 的话，需要在 <code>$</code>、<code>"</code>、<code><code>&lt;/code&gt; 前面加上 &lt;code&gt;</code></code>；<code>"</code> 也可以自身重复两次 <code>""</code> 来 escape。<sup><a href=#user-content-fn-3key6 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key6>7</a></sup>
+</li>
+</ul>
+<h3 id="打印值">
+打印值
+</h3>
+<p>
+PowerShell 默认打印出前一个表达式的值，所以不需要拼凑出 <code>"echo"</code> 再 <code>iex</code> 什么的。
+</p>
+<h3 id="其他可能的方法">
+其他可能的方法
+</h3>
+<ul>
+<li>
+变量赋值时可以直接是命令的输出。比如旧版 PowerShell 可以通过 <code>$ls = ls; $ls[x][x]</code> 拿到 ls 命令表头具体的一个 Char，或许有的命令的输出包含全部所需的字母。但是新版中大部分命令的输出不再是字符串而是对象了，两次下标拿到的仍然和原结果一样。
+</li>
+<li>
+<code>$error</code> 是一个存放了错误信息字符串的数组。<sup><a href=#user-content-fn-3key7 aria-describedby=footnote-label data-footnote-ref="" id=user-content-fnref-3key7>8</a></sup> 不过，错误会直接输出，不符合「该程序运行后输出 Hello, World!, 有且仅有该内容，要求分毫不差」的要求。
+</li>
+</ul>
+<section class="footnotes" data-footnotes>
+<h2 id="footnote-label" class="sr-only">
+脚注和参考文献
+</h2>
+<ol>
+<li id="user-content-fn-3psrank">
+<p>
+点击第 5 条规则中的链接查看。 <a href=#user-content-fnref-3psrank aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key1">
+<p>
+<a href=https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/converting-ascii-and-characters>Converting ASCII and Characters - Power Tips - Power Tips - IDERA Community</a> <a href=#user-content-fnref-3key1 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key2">
+<p>
+<a href=https://stackoverflow.com/questions/50018274/why-does-invoke-operator-and-invoke-expression-produce-different-results-for>Why does invoke operator (&amp; and Invoke-Expression produce different results for the same input? - Stack Overflow)</a> <a href=#user-content-fnref-3key2 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key3">
+<p>
+<a href=https://stackoverflow.com/questions/24754822/powershell-remove-item-0-from-an-array>PowerShell Remove item 0 from an array - Stack Overflow</a> <a href=#user-content-fnref-3key3 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key4">
+<p>
+<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.2#section-1">$? - PowerShell Core - About - Automatic Variables</a> <a href=#user-content-fnref-3key4 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key5">
+<p>
+<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/scripting/lang-spec/chapter-06?view=powershell-7.2#64-conversion-to-integer">Conversion#Conversion to integer</a> <a href=#user-content-fnref-3key5 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key6">
+<p>
+<a href=https://www.rlmueller.net/PowerShellEscape.htm>Escaping in PowerShell</a> <a href=#user-content-fnref-3key6 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+<li id="user-content-fn-3key7">
+<p>
+<a href=https://www.tutorialspoint.com/what-is-use-of-error-variable-in-powershell>What is use of $error variable in PowerShell?</a> <a href=#user-content-fnref-3key7 aria-label=返回内容 class=data-footnote-backref data-footnote-backref="">↩︎</a>
+</p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PowerShell/" rel="tag"># PowerShell</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/geometric-optics/" rel="prev" title="几何光学的基本概念">
+                  <i class="fa fa-chevron-left"></i> 几何光学的基本概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/OverflowCat/blog" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
