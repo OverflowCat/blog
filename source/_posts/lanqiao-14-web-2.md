@@ -2,15 +2,13 @@
 title: 第十四届蓝桥杯（Web 应用开发）第二次模拟赛题解
 date: 2022-11-26 22:32:32
 tags: 蓝桥杯
-categories:
-- 算法题解
-- 页面仔的自我修养
+categories: 页面仔的自我修养
 ---
 
 > 2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第一。
-> 
+>
 > 这是事实，无法否认，但开发者们还是蜂拥而来。这语言总会给你一丝希望，vite 也好，next 也罢，但如此近，仿佛触手可及，让人奋不顾身。
-> 
+>
 > 这里充斥着网页，而我正是那页面仔！
 
 ![](https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png)
@@ -45,13 +43,13 @@ diff --git 凭空消失的TA/index.html
 ### 思路
 
 > The year is 2049...
-> 
+>
 > All websites use Tailwind, there are only 69 people remaining that know how to write custom CSS.
-> 
+>
 > These 69 people have to center divs to save the world.
-> 
+>
 > They are our only hope.
-> 
+>
 > (This is my pitch to Netflix for an upcoming movie)
 
 Credit: [TheJackForge](https://twitter.com/thejackforge/status/1560637007742701570)
@@ -192,15 +190,15 @@ function mPrompt() {
 ## 粒粒皆辛苦
 
 > **介绍**
-> 
+>
 > 俗话说 “民以食为天”，粮食的收成直接影响着民生问题，通过对农作物产量的统计数据也能分析出诸多实际问题。
-> 
+>
 > 接下来就让我们使用 ECharts 图表，完成 X 市近五年来的农作物产量的统计图吧～
-> 
+>
 > **准备**
-> 
+>
 > 本题已经内置了初始代码，打开实验环境，目录结构如下：
-> 
+>
 > ```
 > ├── data.json
 > ├── index.html
@@ -208,22 +206,22 @@ function mPrompt() {
 >     ├── axios.min.js
 >     └── echarts.min.js
 > ```
-> 
+>
 > 其中：
-> 
+>
 > *   `index.html` 是主页面。
 > *   `js/echarts.min.js` 是 ECharts 文件。
 > *   `js/axios.min.js` 是 axios 文件。
 > *   `data.json` 是对应年份的粮食产量数据，单位为万吨。
-> 
+>
 > 选中 `index.html` 右键启动 Web Server 服务（Open with Live Server），让项目运行起来。
-> 
+>
 > 接着，打开环境右侧的【Web 服务】，就可以在浏览器中看到如下效果：
-> 
+>
 > **目标**
-> 
+>
 > 请完成 `index.html` 文件中的 TODO 部分。
-> 
+>
 > 1.  完成数据请求（数据来源 `./data.json`）。
 > 2.  `data.json` 中的数据中英文对照如下：
 > <table><thead><tr><th align="center">英文名称</th><th align="center">中文名称</th></tr></thead><tbody><tr><td align="center">wheat</td><td align="center">小麦</td></tr><tr><td align="center">soybean</td><td align="center">大豆</td></tr><tr><td align="center">potato</td><td align="center">马铃薯</td></tr><tr><td align="center">corn</td><td align="center">玉米</td></tr></tbody></table>
@@ -238,19 +236,19 @@ function mPrompt() {
 ### 题目
 
 > 请使用 Vue ，完成 `index.html` 文件中的 TODO 部分。
-> 
+>
 > 1.  完成数据请求（数据来源 `./data.json`），`data.json` 是宋词数据，`poetry_content` 表示词句，`title` 表示词牌名，`author` 表示词人。
 > 2.  在输入框输入关键词时在 `ul`（`class = suggestions`）的元素中**实时显示**词牌名、词句、词人中包含关键词的**完整词句（包含词牌名、词人）列表**，当关键词为空或者匹配不到时 `ul`（`class = suggestions`）元素的子节点为空。完整词句的 DOM 结构按照如下规定显示：
-> 
+>
 > ```html
 > <li>
 >   <span>词句</span>
 >   <span>词牌名 - 词人</span>
 > </li>
 > ```
-> 
+>
 > 例：
-> 
+>
 > ```html
 > <li>
 >   <span
@@ -259,11 +257,11 @@ function mPrompt() {
 >   <span>如梦令 - 李清照</span>
 > </li>
 > ```
-> 
+>
 > 3.  高亮匹配到的所有词句中的关键词。即使用 `<span></span>` 标签包裹所有关键词。
-> 
+>
 > 例：(关键词：雨)
-> 
+>
 > ```html
 > <li>
 >   <span
@@ -273,7 +271,7 @@ function mPrompt() {
 >   <span><span>雨</span>霖铃 - 柳永</span>
 > </li>
 > ```
-> 
+>
 > > **注意**：**本题要求的是实时显示，即输入完成的同时显示结果，非失去焦点显示**。
 
 ### 思路
@@ -358,20 +356,20 @@ placeholder="词牌名 词句 词人"
 ### 题目
 
 > **介绍**
-> 
+>
 > 随着技术的发展，很多前端工程师已经不满足于只做诸如页面布局和交互这些开发工作了，很多人将目光逐渐转向了 “大前端” 范围，其中就包括不需要依赖后端提供接口自己就可以使用 node.js 编写一个后端接口服务。
-> 
+>
 > 下面就让我们也来使用 node.js 完成一个新闻资讯接口吧。
-> 
+>
 > **目标**
-> 
+>
 > 1.  通过在 `app.js` 书写代码，创建一个服务器，使服务在 **8080** 端口运行。
 > 2.  访问 `/news` 返回资讯数据，访问其他任意路径均返回**字符串 404** 。
-> 
+>
 > <table><thead><tr><th>Url</th><th>请求方式</th><th>参数</th><th>响应结果</th></tr></thead><tbody><tr><td>news</td><td>GET</td><td>空</td><td>显示资讯数据</td></tr></tbody></table>
-> 
+>
 > 数据需要设置为 `utf8` 格式，资讯数据格式如下：
-> 
+>
 > ```javascript
 > [
 >   {
@@ -384,13 +382,13 @@ placeholder="词牌名 词句 词人"
 >   }
 > ]
 > ```
-> 
+>
 > 设置 `utf8` 格式代码:
-> 
+>
 > ```javascript
 > res.setHeader("Content-type", "text/html;charset=utf8");
 > ```
-> 
+>
 > 3.  通过 `node app.js` 运行代码，使服务处于运行状态，点击右侧 【web 服务】，页面上显示访问域名 +'/news' 返回资讯数据。
 
 ### 思路
