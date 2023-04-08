@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/</loc>
+    
+    <lastmod>2023-04-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xinshijiededa.men/watched-in-2022/</loc>
     
     <lastmod>2023-04-08</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://blog.xinshijiededa.men/geometric-optics/</loc>
-    
-    <lastmod>2023-04-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/</loc>
     
     <lastmod>2023-04-08</lastmod>
     
