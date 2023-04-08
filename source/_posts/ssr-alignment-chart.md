@@ -9,9 +9,9 @@ categories: 页面仔的自我修养
 <table class="alignment-chart">
   <thead>
     <tr>
-      <th></th><th class="h">善良<div>一定要用 JS 框架渲染</div></th>
+      <th></th><th class="h">守序<div>一定要用 JS 框架渲染</div></th>
       <th class="h">中立<div>渲染出来的是 HTML 就行</div></th>
-      <th class="h">邪恶<div>渲染出来是图形就行</div></th>
+      <th class="h">混乱<div>渲染出来是图形就行</div></th>
     </tr>
   </thead>
   <tbody>
@@ -67,6 +67,7 @@ categories: 页面仔的自我修养
     </tr>
   </tbody>
 </table>
+<blockquote><i class="fa-sharp fa-solid fa-lightbulb"></i> 此 meme 受<span class="pn outer"><span class="pn inner">梨咕米</span></span>启发而成。</blockquote><p></p>
 <blockquote><i class="fa-solid fa-circle-info"></i> 这篇文章显然是经服务端渲染而呈现在你面前的。</blockquote>
 <style>
   table.alignment-chart{
@@ -97,5 +98,12 @@ categories: 页面仔的自我修养
   td > div.cat {
     font-weight: 600;
     font-size: 120%;
+  }
+  .pn.inner {
+    margin: 0 0em;
+  }
+  .pn.outer {
+    border-bottom: 1px solid;
+    margin: 0 1px;
   }
 </style>
