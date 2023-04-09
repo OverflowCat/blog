@@ -74,6 +74,7 @@ categories: 页面仔的自我修养
     text-align: center;
     width: fit-content;
     margin: auto;
+    min-width: 648px;
   }
   table.alignment-chart img {
     max-width: 120px;
