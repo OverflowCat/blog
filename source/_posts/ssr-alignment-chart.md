@@ -19,7 +19,7 @@ categories: 页面仔的自我修养
       <td class="h">善良</td>
       <td><img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"></td>
       <td><img src="https://www.php.net/images/logos/php-logo.svg"></td>
-      <td><img src="https://telegra.ph/file/91811e24dd2748cb078d3.png"></td>
+      <td><img src="https://user-images.githubusercontent.com/20166026/230817316-92c7c746-0b5d-4307-90af-08bff113787e.png"></td>
     </tr>
     <tr>
       <td>一定要在<br />服务端渲染</td>
