@@ -1,0 +1,108 @@
+---
+type Vocabulary = Record<string, string>;
+
+export interface Props {
+  vocab: Vocabulary;
+  lines: string;
+}
+
+// turn Astro.props.vocab into a map
+const vocab = new Map(
+  Object.entries(Astro.props.vocab).map((x) => {
+    return [
+      x[0].replaceAll("/", ""),
+      {
+        mnc: x[0],
+        ja: x[1],
+      },
+    ];
+  })
+);
+
+let pairs = [];
+{
+  const lines = Astro.props.lines.trim().split("\n");
+  for (let i = 0; i < lines.length; i += 2) {
+    pairs.push([lines[i], lines[i + 1]]);
+  }
+}
+---
+
+{
+  pairs.map(([mnc, zh], line_idx) => {
+    const japanese = mnc
+      .split(/ /)
+      .map((word) => vocab.get(word.replace(/[.?,!]/g, "")));
+    const regex = /(\d)(\D+)/g;
+    const zh_sections = [];
+    let match;
+
+    while ((match = regex.exec(zh))) {
+      zh_sections.push([match[2], parseInt(match[1])]);
+    }
+
+    console.log(zh_sections);
+    // Output: [["把", 6], ["所有的", 1], ["烦恼", 2], ["所有的", 4], ["worries", 5], ["统统都吹散", 6]]
+
+    const get_color = (x: number) => ((x + line_idx) % 6) + 1;
+
+    return (
+      <div class="line">
+        <div lang="mnc">
+          {mnc.split(" ").map((word, idx) => (
+            <span
+              title={japanese[idx]?.ja.replaceAll("/", "")}
+              class={`color-${get_color(idx)}`}
+            >
+              {word.replaceAll("v", "ū")}{" "}
+            </span>
+          ))}
+        </div>
+        <div lang="zh">
+          {zh_sections.map(([word, idx]) => {
+            return (
+              <span
+                class={`color-${get_color((idx as number) - 1)}`}
+                set:text={word + " "}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  })
+}
+
+<style>
+  div.line {
+    text-align: left;
+  }
+  div[lang="mnc"] span:hover {
+    font-weight: bold;
+    cursor: help;
+  }
+  [lang="mnc"] {
+    font-family: "Noto Sans Mono", "Noto Sans Mono CJK SC", monospace;
+  }
+  .color-0 {
+    color: #333;
+  }
+  .color-1 {
+    color: #f73b3b;
+  }
+  .color-2 {
+    color: #468f1f;
+  }
+  .color-3 {
+    color: #bb078b;
+  }
+  .color-4 {
+    color: #0d65a4;
+  }
+  .color-5 {
+    color: #da5807;
+  }
+  .color-6 {
+    color: #e1204d;
+  }
+</style>
