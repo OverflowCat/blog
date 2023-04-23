@@ -26,7 +26,22 @@ let pairs = [];
     pairs.push([lines[i], lines[i + 1]]);
   }
 }
+
+function moelify(str: string) {
+  return str
+    .replaceAll("v", "ū")
+    .replaceAll("iy", "<s>i</s>y")
+    .replaceAll("uw", "<s>u</s>w")
+    .replaceAll("mbi", "m<s>b</s>i");
+}
 ---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  rel="stylesheet"
+/>
 
 {
   pairs.map(([mnc, zh], line_idx) => {
@@ -44,7 +59,7 @@ let pairs = [];
     console.log(zh_sections);
     // Output: [["把", 6], ["所有的", 1], ["烦恼", 2], ["所有的", 4], ["worries", 5], ["统统都吹散", 6]]
 
-    const get_color = (x: number) => ((x + line_idx) % 6) + 1;
+    const get_color = (x: number) => (x == 0 ? 0 : ((x + line_idx) % 6) + 1);
 
     return (
       <div class="line">
@@ -52,18 +67,17 @@ let pairs = [];
           {mnc.split(" ").map((word, idx) => (
             <span
               title={japanese[idx]?.ja.replaceAll("/", "")}
-              class={`color-${get_color(idx)}`}
-            >
-              {word.replaceAll("v", "ū")}{" "}
-            </span>
+              class={`color-${get_color(idx + 1)}`}
+              set:html={moelify(word) + " "}
+            />
           ))}
         </div>
         <div lang="zh">
           {zh_sections.map(([word, idx]) => {
             return (
               <span
-                class={`color-${get_color((idx as number) - 1)}`}
-                set:text={word + " "}
+                class={`color-${get_color(idx as number)}`}
+                set:text={word}
               />
             );
           })}
@@ -82,10 +96,12 @@ let pairs = [];
     cursor: help;
   }
   [lang="mnc"] {
-    font-family: "Noto Sans Mono", "Noto Sans Mono CJK SC", monospace;
+    font-family: "Ubuntu Mono", "Noto Sans Mono", "Noto Sans Mono CJK SC",
+      "Consolas", monospace;
+    font-weight: 400;
   }
   .color-0 {
-    color: #333;
+    color: #3b3b3b;
   }
   .color-1 {
     color: #f73b3b;
