@@ -19,20 +19,37 @@ const vocab = new Map(
   })
 );
 
-let pairs = [];
-{
-  const lines = Astro.props.lines.trim().split("\n");
-  for (let i = 0; i < lines.length; i += 2) {
-    pairs.push([lines[i], lines[i + 1]]);
-  }
-}
-
+let pairs = Astro.props.lines
+  .trim()
+  .split("\n\n")
+  .map((line) => {
+    const lines = line.split("\n").filter((x) => !x.startsWith("//"));
+    if (lines.length != 3) {
+      throw new Error(`Invalid Manchu lines: ${lines}`);
+    }
+    return {
+      mnc: lines[0],
+      ja: lines[1],
+      zh: lines[2],
+    };
+  });
 function moelify(str: string) {
   return str
     .replaceAll("v", "ū")
     .replaceAll("iy", "<s>i</s>y")
     .replaceAll("uw", "<s>u</s>w")
     .replaceAll("mbi", "m<s>b</s>i");
+}
+
+function get_sections(str: string) {
+  const regex = /(\d)(\D+)/g;
+  const sections: [string, number][] = [];
+  let match;
+  while ((match = regex.exec(str))) {
+    sections.push([match[2], parseInt(match[1])]);
+  }
+  return sections;
+  // Output: [["把", 6], ["所有的", 1], ["烦恼", 2], ["所有的", 4], ["worries", 5], ["统统都吹散", 6]]
 }
 ---
 
@@ -44,20 +61,10 @@ function moelify(str: string) {
 />
 
 {
-  pairs.map(([mnc, zh], line_idx) => {
+  pairs.map(({ mnc, ja, zh }, line_idx) => {
     const japanese = mnc
       .split(/ /)
       .map((word) => vocab.get(word.replace(/[.?,!]/g, "")));
-    const regex = /(\d)(\D+)/g;
-    const zh_sections = [];
-    let match;
-
-    while ((match = regex.exec(zh))) {
-      zh_sections.push([match[2], parseInt(match[1])]);
-    }
-
-    console.log(zh_sections);
-    // Output: [["把", 6], ["所有的", 1], ["烦恼", 2], ["所有的", 4], ["worries", 5], ["统统都吹散", 6]]
 
     const get_color = (x: number) => (x == 0 ? 0 : ((x + line_idx) % 6) + 1);
 
@@ -72,8 +79,18 @@ function moelify(str: string) {
             />
           ))}
         </div>
+        <div lang="ja">
+          {get_sections(ja).map(([word, idx]) => {
+            return (
+              <span
+                class={`color-${get_color(idx as number)}`}
+                set:text={word}
+              />
+            );
+          })}
+        </div>
         <div lang="zh">
-          {zh_sections.map(([word, idx]) => {
+          {get_sections(zh).map(([word, idx]) => {
             return (
               <span
                 class={`color-${get_color(idx as number)}`}
