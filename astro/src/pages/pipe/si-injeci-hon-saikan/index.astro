@@ -1,6 +1,8 @@
 ---
-import Article from "@/templates/zh/Article.astro";
+import Article from "@/templates/zh/Blank.astro";
 import ManchuSyntax from "./_components/ManchuSyntax.astro";
+import Bilibili from "@/components/Bilibili.svelte";
+
 const vocabulary = {
   "-i": "の",
   adali: "らしい",
@@ -42,7 +44,8 @@ const vocabulary = {
   "tuwa/na/ki": "見に/行き/たい",
 };
 
-const lines = `
+const parts = [
+  `
 goro ba de tuwanaki
 1遠い2所3に4行きたい
 4想去1远2方0的山川
@@ -72,7 +75,9 @@ sini faitan hon saikan
 sini injere cira tugi adali
 1あなたの2笑3顔0は4雲5のよう
 0白4云0挂在那蓝天，5像1你的2微笑
+`,
 
+  `
 si injeci hon saikan
 1あなた0が2笑うとき0は3とても4美しい
 1你2笑起来3真4好看
@@ -92,17 +97,43 @@ si injeci hon saikan
 juwari elden -i gese
 1夏0の2光3の4ように
 4像1夏天的0阳2光
+`,
 
+  `
 gulhun jalan -i erin forgon
 1全2世界3の4時5間0は
 1整个2世界0全部3的4时5光
 
 nirume saikan
 1美しく2描かれる
-2美得0像1画0卷
-`;
+2美得0像1画0卷`,
+];
 ---
 
-<Article frontmatter={{ title: "你笑起来真好看" }}>
-  <ManchuSyntax vocab={vocabulary} lines={lines} />
+<Article title="你笑起来真好看">
+  <ManchuSyntax
+    manju={true}
+    vocab={vocabulary}
+    lines={parts[0] + parts[1] + parts[2]}
+  />
+  <Bilibili
+    client:load
+    confirm={true}
+    thumbnail="https://user-images.githubusercontent.com/20166026/235231349-0de83eee-d487-4b10-85c3-f7541a2fb340.jpg"
+    av={543714392}
+    bv="1Dv4y1Z7J7"
+  />
+  <hr />
+
+  <ManchuSyntax vocab={vocabulary} lines={parts[0]} />
+  <ManchuSyntax vocab={vocabulary} lines={parts[1]} />
+  <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄇"} />
+  <hr />
+  <ManchuSyntax vocab={vocabulary} lines={parts[1]} />
+  <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄇"} />
+  <hr />
+  <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄂"} />
+  <hr />
+  <h2>注释</h2>
+  injeci: 
 </Article>
