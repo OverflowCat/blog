@@ -1,0 +1,62 @@
+## 注释
+
+### 笑起来真好看
+
+<span lang="moe">injeci</span>: <code>动词-<span lang="moe">ci</span></code> 就是「…起来」。
+- <span lang="moe">donjici</span>	是「听说」，就是「听起来」。
+- <span lang="moe">tuwaci</span> 是「看起来」：<span lang="moe">tuwaci si urui niyalma be yohindarakū.</span> 看起来你总是藐视人。
+
+### 想要做和祈使
+
+<code>动词-<span lang="moe">ki</span></code> 可以表示「想要…」和「请…」的意思。歌词中 <span lang="moe">sini emgi biki</span> 即为「想要和你在一起」；<span lang="moe">tuwanaki</span> 则是「想去看」。
+
+<code>动词-<span lang="moe">kini</span></code> 则表示祈使，即希望（使某人）做。`bikini` 是「听其自便」的意思。
+
+<span lang="moe">okini</span>（`ombi` 成为；足够）除了本身的变形，又常用作「罢了」的意思，如 <code><span lang="moe">uthai … okini</span></code>表示让步，「即使……」；另外还可以表达祝愿之意，比如  <span lang="moe">hacin inenggi sebjen<b>okini</b></span> 为「元宵节快乐」，<span lang="moe">beye katun guigu <b>okini</b></span> 为「祝你身体健康」。
+
+### 来去之间
+
+在动词词根后、时态变化前加上 <span lang="moe">-na/ne/no-</span> 表示「**去**做某事」。
+
+<table>
+    <thead>
+        <tr>
+            <th>词性</th>
+            <th>满语</th>
+            <th>汉语</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">阳性</td>
+            <td><span lang="moe">amga<b>nam</b>bi</span lang="moe"></td>
+            <td>去瞓</td>
+        </tr>
+        <tr>
+            <td><span lang="moe">unca<b>nam</b>bi</span lang="moe"></td>
+            <td>去卖</td>
+        </tr>
+        <tr>
+            <td rowspan="2">中性</td>
+            <td><span lang="moe">hebde<b>nem</b>bi</span lang="moe"></td>
+            <td>去商量</td>
+        </tr>
+        <tr>
+            <td><span lang="moe">fude<b>nem</b>bi</span lang="moe"></td>
+            <td>去送行</td>
+        </tr>
+        <tr>
+            <td rowspan="2">阴性</td>
+            <td><span lang="moe">bošo<b>nom</b>bi</span lang="moe"></td>
+            <td>去催促</td>
+        </tr>
+        <tr>
+            <td><span lang="moe">dorolo<b>nom</b>bi</span lang="moe"></td>
+            <td>去行礼</td>
+        </tr>
+    </tbody>
+</table>
+
+在动词词根后、时态变化前加上 <span lang="moe">-nji-</span> 表示「**来**做某事」。
+
+<table><thead><tr><th>满语</th><th>汉语</th></tr></thead><tbody><tr><td><span lang="moe">ala<b>nji</b>mbi</span lang="moe"></td><td>来告诉</td></tr><tr><td><span lang="moe">uda<b>nji</b>mbi</span lang="moe"></td><td>来买</td></tr><tr><td><span lang="moe">be<b>nji</b>mbi</span lang="moe"></td><td>送来</td></tr><tr><td><span lang="moe">elde<b>nji</b>mbi</span lang="moe"></td><td>光临</td></tr><tr><td><span lang="moe">nukte<b>nji</b>mbi</span lang="moe"></td><td>来游牧</td></tr><tr><td><span lang="moe">šoforo<b>nji</b>mbi</span lang="moe"></td><td>来抓</td></tr><tr><td><span lang="moe">dorolo<b>nji</b>mbi</span lang="moe"></td><td>来行礼</td></tr></tbody></table>

@@ -2,6 +2,7 @@
 import Article from "@/templates/zh/Blank.astro";
 import ManchuSyntax from "./_components/ManchuSyntax.astro";
 import Bilibili from "@/components/Bilibili.svelte";
+import Explanation from "./_components/explanation.md";
 
 const vocabulary = {
   "-i": "の",
@@ -110,21 +111,22 @@ nirume saikan
 ];
 ---
 
+<h2>传统满文</h2>
 <Article title="你笑起来真好看">
   <ManchuSyntax
     manju={true}
     vocab={vocabulary}
     lines={parts[0] + parts[1] + parts[2]}
   />
+  <h2>视频</h2>
   <Bilibili
     client:load
     confirm={true}
-    thumbnail="https://user-images.githubusercontent.com/20166026/235231349-0de83eee-d487-4b10-85c3-f7541a2fb340.jpg"
+    thumbnail="//user-images.githubusercontent.com/20166026/235231349-0de83eee-d487-4b10-85c3-f7541a2fb340.jpg"
     av={543714392}
     bv="1Dv4y1Z7J7"
   />
-  <hr />
-
+  <h2>穆麟德转写</h2>
   <ManchuSyntax vocab={vocabulary} lines={parts[0]} />
   <ManchuSyntax vocab={vocabulary} lines={parts[1]} />
   <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄇"} />
@@ -134,6 +136,5 @@ nirume saikan
   <hr />
   <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄂"} />
   <hr />
-  <h2>注释</h2>
-  injeci: 
+  <Explanation />
 </Article>

@@ -175,12 +175,13 @@ function manjuify(str: string) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Noto Sans Mongolian is injected globally in Hexo -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
   rel="stylesheet"
 />
 
-<div class={manju ? "mnc-area" : "mö-area"}>
+<div class={manju ? "mnc-area" : "moe-area"}>
   {
     pairs.map(({ mnc, ja, zh }, line_idx) => {
       const japanese = mnc
@@ -191,7 +192,7 @@ function manjuify(str: string) {
 
       return (
         <div class="line">
-          <div lang={manju ? "mnc" : "mö"}>
+          <div lang={manju ? "mnc" : "moe"}>
             {mnc.split(" ").map((word, idx) => (
               <span
                 title={japanese[idx]?.ja.replaceAll("/", "")}
@@ -226,6 +227,18 @@ function manjuify(str: string) {
   }
 </div>
 
+<!-- inject global manchu styles -->
+<style is:global>
+  [lang="moe"] {
+    font-family: "Ubuntu Mono", "Noto Sans Mono", "Noto Sans Mono CJK SC",
+      "Consolas", monospace;
+  }
+  [lang="mnc"] {
+    font-family: "Noto Sans Mongolian", "Mongolian Baiti";
+    writing-mode: vertical-lr;
+  }
+</style>
+
 <style>
   div.line {
     text-align: left;
@@ -246,14 +259,6 @@ function manjuify(str: string) {
   div[lang^="m"] span:hover {
     font-weight: bold;
     cursor: help;
-  }
-  [lang="mö"] {
-    font-family: "Ubuntu Mono", "Noto Sans Mono", "Noto Sans Mono CJK SC",
-      "Consolas", monospace;
-  }
-  [lang="mnc"] {
-    font-family: "Noto Sans Mongolian", "Mongolian Baiti";
-    writing-mode: vertical-lr;
   }
   .color-0 {
     color: #3b3b3b;

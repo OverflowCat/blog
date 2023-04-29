@@ -39,10 +39,10 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 favicon:
-  small: //emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png
-  medium: //emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png
-  apple_touch_icon: //emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png
-  safari_pinned_tab: //upload.wikimedia.org/wikipedia/commons/d/d2/Twemoji2_26e9.svg
+  small: //user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png
+  medium: //user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png
+  apple_touch_icon: //user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png
+  safari_pinned_tab: //user-images.githubusercontent.com/20166026/235265124-2bff6d3f-adbd-4e0c-879e-624761ea4ca7.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 

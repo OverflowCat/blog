@@ -30,19 +30,21 @@
   视频 <code>AV{av}</code> / <code>BV{bv}</code>：
   <button on:click={load_vid}>从哔哩哔哩加载</button>
   <a href="https://www.bilibili.com/video/BV{bv}">去哔哩哔哩观看</a>
+  <small
+    >也可以点击视频封面加载视频。注意哔哩哔哩弹幕网可能会收集您的信息，这与本站无关。在阁下进行操作前，网页不会与哔哩哔哩弹幕网建立连接。</small
+  >
 {/if}
 
 <style>
   div.bili {
     max-width: 900px;
     max-height: 700px;
-    min-width: 250px;
-    min-height: 700px;
   }
   img.bili-cover {
     cursor: pointer;
   }
   iframe.bili {
     width: 100%;
+    border: none;
   }
 </style>
