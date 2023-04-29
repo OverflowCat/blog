@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.xinshijiededa.men/geometric-optics/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xinshijiededa.men/si-injeci-hon-saikan/</loc>
     
     <lastmod>2023-04-29</lastmod>
@@ -29,52 +20,16 @@
   </url>
   
   <url>
+    <loc>https://blog.xinshijiededa.men/geometric-optics/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xinshijiededa.men/three-keys-hello-world-in-powershell/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/2019/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/2022/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/browser-address-bar-2022/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/christmas/</loc>
-    
-    <lastmod>2023-04-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xinshijiededa.men/crawl-homework-answers-with-python/</loc>
     
     <lastmod>2023-04-29</lastmod>
     
@@ -246,6 +201,51 @@
   
   <url>
     <loc>https://blog.xinshijiededa.men/tolerance-in-autocad/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/2019/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/2022/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/browser-address-bar-2022/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/christmas/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xinshijiededa.men/crawl-homework-answers-with-python/</loc>
     
     <lastmod>2023-04-29</lastmod>
     
