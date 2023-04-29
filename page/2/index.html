@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="//emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/322/shinto-shrine_26e9-fe0f.png">
-  <link rel="mask-icon" href="//upload.wikimedia.org/wikipedia/commons/d/d2/Twemoji2_26e9.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="//user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="//user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="//user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png">
+  <link rel="mask-icon" href="//user-images.githubusercontent.com/20166026/235265124-2bff6d3f-adbd-4e0c-879e-624761ea4ca7.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -181,6 +181,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/tauri-transparent-window/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
+      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新世界的大门">
+      <meta itemprop="description" content="猫猫的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 新世界的大门">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/tauri-transparent-window/" class="post-title-link" itemprop="url">在 Tauri 中实现鼠标穿透和透明窗口</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-29 21:18:34" itemprop="dateCreated datePublished" datetime="2022-12-29T21:18:34+08:00">2022-12-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/frontend/" itemprop="url" rel="index"><span itemprop="name">页面仔的自我修养</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure>
+<img src="https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png" alt="" /><figcaption>效果</figcaption>
+</figure>
+<blockquote>
+<p>本文测试通过的 Tauri 版本为 <code>1.0</code> 和 <code>1.2</code>。</p>
+<p><img src="https://raw.githubusercontent.com/tauri-apps/tauri-docs/335bab9ee7443bc31da1b1e8e26ede47ab25943a/static/img/index/header_light.svg" /></p>
+</blockquote>
+<h2 id="鼠标穿透">鼠标穿透</h2>
+<h3 id="依赖">依赖</h3>
+<p>在 <code>cargo.toml</code> 中添加</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">windows</span> = &#123; version = <span class="string">&quot;0.43.0&quot;</span>, features = [</span><br><span class="line">    <span class="string">&quot;Win32_Foundation&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Win32_UI_WindowsAndMessaging&quot;</span>,</span><br><span class="line">] &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码">代码</h3>
+<p>初始化窗口时通过 <code>setup</code> 传闭包拿到 <code>window</code> 进行操作。只支持 Windows。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">tauri::Builder::<span class="title function_ invoke__">default</span>()</span><br><span class="line">    .<span class="title function_ invoke__">setup</span>(|app| &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">window</span> = app.<span class="title function_ invoke__">get_window</span>(<span class="string">&quot;main&quot;</span>).<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">        <span class="meta">#[cfg(windows)]</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">use</span> windows::Win32::Foundation::HWND;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable">hwnd</span> = window.<span class="title function_ invoke__">hwnd</span>().<span class="title function_ invoke__">unwrap</span>().<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable">hwnd</span> = <span class="title function_ invoke__">HWND</span>(hwnd);</span><br><span class="line">            <span class="keyword">unsafe</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">style_ex</span> = <span class="title function_ invoke__">WINDOW_EX_STYLE</span>(<span class="title function_ invoke__">GetWindowLongW</span>(hwnd, GWL_EXSTYLE) <span class="keyword">as</span> <span class="type">u32</span>);</span><br><span class="line">                style_ex |= WS_EX_APPWINDOW <span class="comment">// for taskbar</span></span><br><span class="line">                | WS_EX_COMPOSITED</span><br><span class="line">                | WS_EX_LAYERED</span><br><span class="line">                | WS_EX_TRANSPARENT</span><br><span class="line">                | WS_EX_TOPMOST;</span><br><span class="line">                <span class="keyword">use</span> windows::Win32::UI::WindowsAndMessaging::*;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">nindex</span> = GWL_EXSTYLE;</span><br><span class="line">                <span class="keyword">let</span> <span class="variable">_pre_val</span> = <span class="title function_ invoke__">SetWindowLongA</span>(hwnd, nindex, style_ex.<span class="number">0</span> <span class="keyword">as</span> <span class="type">i32</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_ invoke__">invoke_handler</span>(tauri::generate_handler![...])</span><br><span class="line">    .<span class="title function_ invoke__">run</span>(tauri::generate_context!())</span><br><span class="line">    .<span class="title function_ invoke__">expect</span>(<span class="string">&quot;error while running tauri application&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>官方的实现目前<a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tauri/issues/2090">还没有进入</a> tauri，只能先凑合用用。</p>
+<blockquote>
+<p>Hi, since <a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tao/pull/421">tauri-apps/tao#421</a> was merged into <code>tao</code>, can that function be exposed in tauri's api?</p>
+</blockquote>
+<h2 id="透明窗口">透明窗口</h2>
+<h3 id="窗口设置">窗口设置</h3>
+<p>为了实现透明窗口，还需要修改 <code>tauri.config.json</code>。当然，直接修改 window 或者通过 <code>tauri::Builder</code> 应该也是可以的。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;tauri&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    …<span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;fullscreen&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;resizable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;transparent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;alwaysOnTop&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="css">CSS</h3>
+<p>另外，不要忘记修改需要透明的地方的 CSS。如果你使用了 SvelteKit 模板，可以在 <code>+layout.svelte</code> 中添加：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-tag">main</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>以上。🪟</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2363,98 +2466,6 @@ GET
 <p>试拿“两家很和厚”和“两家和厚得很”相比较，则见后者比前者更有力量，这是因为特别着重“很”字，把它升为次系谓语的缘故。</p>
 </blockquote>
 <p>尽管如此，我都不推荐你在多邻国通过中文（简体）学任何非汉语语言。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.xinshijiededa.men/eierlegende-wollmilchsau/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20166026?v=4">
-      <meta itemprop="name" content="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="新世界的大门">
-      <meta itemprop="description" content="猫猫的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 新世界的大门">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/eierlegende-wollmilchsau/" class="post-title-link" itemprop="url">下蛋的毛奶猪</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-08 14:47:27" itemprop="dateCreated datePublished" datetime="2022-10-08T14:47:27+08:00">2022-10-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%92%AC%E6%96%87%E5%9A%BC%E5%AD%97/" itemprop="url" rel="index"><span itemprop="name">咬文嚼字</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>本文译自德国驻美大使馆 2011 年 10 月 28 日的文章：<a target="_blank" rel="noopener" href="https://germanyinusa.com/2011/10/28/word-of-the-week-eierlegende-wollmilchsau/"><em>Word of the Week: Eierlegende Wollmilchsau</em></a>。封面图片：<a target="_blank" rel="noopener" href="https://de.wikipedia.org/wiki/Datei:Wollmilchsau.png">Eierlegende Wollmilchsau, German for "egg-laying wool-milk-sow"</a> by <a target="_blank" rel="noopener" href="https://de.wikipedia.org/wiki/User:Pixelrausch">de:User:Pixelrausch</a>, <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a></p>
-</blockquote>
-<p>想象这样一幅画面：一头猪，浑身长着蓬松的毛，会下蛋，会产奶。这就是本周的关键词——<em>Eierlegende Wollmilchsau</em>，直译为「生蛋的　羊毛－牛奶－母猪」。虽然这种小动物可能听起来有点像自然界的怪胎，但它确是每个农民的梦想——结合了鸡（下蛋）、羊（产毛）、牛（产奶）和猪（做成熏肉）的品质的完美农场动物。它味道鲜美，还可以生产所有的日常必需品：它是一种没有缺点的动物。不消说，这种生物并不存在。</p>
-<p>虽然这样一种可爱、美味又有用的生物可能不存在，但它确实存在于比喻中。其比喻意义是试图做多种工作的工具或人。当然，找到像这样的一个全能的工具或人，几乎和找到神话中的生物一样难。</p>
-<p>是故如今该词语大多被用于描述一些无法实现的理想。这证明德国人不仅具有精巧的讽刺意识，而且比人们认为的更有创造力。一个完美而又讽刺的使用例是，招聘广告上的要求如此之多、如此之泛，以至于没有一个人会满足所有这些要求。</p>
-<p>不过，随着新技术的惊人发展，完全可以想象这个词会有新的含义。过去，最接近这个词的东西是瑞士军刀，但看起来这个词将能出色地形容新一代的智能机。至于手机公司是否乐意他们的产品被描述为「下蛋的毛奶猪」，那就又是另一回事了。🥚</p>
-<hr />
-<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B4%84%E7%BF%B0%C2%B7%E6%A0%BC%E9%AD%AF%E4%BC%AF">John Gruber</a> 在其博客 Daring Fireball 中 <a target="_blank" rel="noopener" href="https://daringfireball.net/linked/2022/10/07/eierlegende-wollmilchsau">引用了这篇文章并评论道</a>：</p>
-<blockquote>
-<p>如果「X」不成功的话，这会是 Elon Musk 的「<a target="_blank" rel="noopener" href="https://daringfireball.net/2022/10/everything">Everything App</a>」的一个良好的暂定名称（译注：原文为 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9A%82%E5%AE%9A%E5%90%8D%E7%A7%B0">working name</a>）。<br />
-<a target="_blank" rel="noopener" href="https://twitter.com/mmackh/status/1578216921291542528">感谢 Maximilian Mackh 提供的链接</a>。（还有感谢德国大使馆将这一「春梦」写成一篇有趣的文章。）</p>
-</blockquote>
-<hr />
-<p>2022 年 10 月 8 日。<a target="_blank" rel="noopener" href="https://ipfs.io/ipfs/Qmbf73dbDuQv4zss9Mf1164kZecqNNKBYx7q9CLstCnxHf/">点此在 IPFS 上查看</a>。</p>
 
       
     </div>
