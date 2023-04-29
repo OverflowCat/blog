@@ -4,8 +4,6 @@ date: 2023-03-30 19:17:00
 layout: "@/templates/zh/Blank.astro"
 ---
 
-> 为什么不试试 M$ 的功率壳呢？
-
 其实 [这篇文章](https://github.com/InvoluteHell/ThreeKeysProgramming/tree/master/OverflowCat) 在去年暑假就已经写好，不过最近我的 [pull request](https://github.com/InvoluteHell/ThreeKeysProgramming/pull/36) 才被合并，已经快忘掉了。现修缮后发出来。
 
 ## 规则

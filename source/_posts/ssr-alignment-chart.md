@@ -2,10 +2,10 @@
 title: 服务端渲染阵营九宫格
 date: 2023-04-09 01:50:00
 photo: https://user-images.githubusercontent.com/20166026/230737062-897858da-a1c4-4fc4-a0a2-cdd59dda3369.png # https://user-images.githubusercontent.com/20166026/230736978-8ee7171a-a6b3-4417-bcf0-729005e23aa8.png
+description: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养
 ---
-<blockquote>你就说是不是渲染吧！</blockquote>
 <table class="alignment-chart">
   <thead>
     <tr>

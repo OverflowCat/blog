@@ -8,15 +8,15 @@
 
 ### 想要做和祈使
 
-<code>动词-<span lang="moe">ki</span></code> 可以表示「想要…」和「请…」的意思。歌词中 <span lang="moe">sini emgi biki</span> 即为「想要和你在一起」；<span lang="moe">tuwanaki</span> 则是「想去看」。
+<code>动词-<span lang="moe">ki</span></code> 可以表示「想要…」和「请…」的意思。歌词中 <span lang="moe">sini emgi biki</span> 即为「想要和你在一起」；<span lang="moe">tuwanaki</span>（<span lang="moe">tuwanambi</span>） 则是「想去看」。
 
 <code>动词-<span lang="moe">kini</span></code> 则表示祈使，即希望（使某人）做。`bikini` 是「听其自便」的意思。
 
-<span lang="moe">okini</span>（`ombi` 成为；足够）除了本身的变形，又常用作「罢了」的意思，如 <code><span lang="moe">uthai … okini</span></code>表示让步，「即使……」；另外还可以表达祝愿之意，比如  <span lang="moe">hacin inenggi sebjen<b>okini</b></span> 为「元宵节快乐」，<span lang="moe">beye katun guigu <b>okini</b></span> 为「祝你身体健康」。
+<span lang="moe">okini</span>（`ombi` 成为；足够）除了本身的变形，又常用作「罢了」的意思，如 <span lang="moe">uthai … okini</span>表示让步，「即使……」；另外还可以表达祝愿之意，比如  <span lang="moe">hacin inenggi sebjen<b>okini</b></span> 为「元宵节快乐」，<span lang="moe">beye katun guigu <b>okini</b></span> 为「祝你身体健康」。
 
 ### 来去之间
 
-在动词词根后、时态变化前加上 <span lang="moe">-na/ne/no-</span> 表示「**去**做某事」。
+在动词词根后、时态变化前加上 <span lang="moe">-na/ne/no-</span> 表示「**去**做某事」。歌词中的 <span lang="moe">tuwanaki</span>「想去看」其实是 <span lang="moe">tuwa- + -na- + -ki</span>，<span lang="moe">tuwambi</span> 就是「看，阅，观察」。
 
 <table>
     <thead>
@@ -29,29 +29,29 @@
     <tbody>
         <tr>
             <td rowspan="2">阳性</td>
-            <td><span lang="moe">amga<b>nam</b>bi</span lang="moe"></td>
+            <td><span lang="moe">amga<b>na</b>mbi</span lang="moe"></td>
             <td>去瞓</td>
         </tr>
         <tr>
-            <td><span lang="moe">unca<b>nam</b>bi</span lang="moe"></td>
+            <td><span lang="moe">unca<b>na</b>mbi</span lang="moe"></td>
             <td>去卖</td>
         </tr>
         <tr>
             <td rowspan="2">中性</td>
-            <td><span lang="moe">hebde<b>nem</b>bi</span lang="moe"></td>
+            <td><span lang="moe">hebde<b>ne</b>mbi</span lang="moe"></td>
             <td>去商量</td>
         </tr>
         <tr>
-            <td><span lang="moe">fude<b>nem</b>bi</span lang="moe"></td>
+            <td><span lang="moe">fude<b>ne</b>mbi</span lang="moe"></td>
             <td>去送行</td>
         </tr>
         <tr>
             <td rowspan="2">阴性</td>
-            <td><span lang="moe">bošo<b>nom</b>bi</span lang="moe"></td>
+            <td><span lang="moe">bošo<b>no</b>mbi</span lang="moe"></td>
             <td>去催促</td>
         </tr>
         <tr>
-            <td><span lang="moe">dorolo<b>nom</b>bi</span lang="moe"></td>
+            <td><span lang="moe">dorolo<b>no</b>mbi</span lang="moe"></td>
             <td>去行礼</td>
         </tr>
     </tbody>
