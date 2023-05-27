@@ -11,17 +11,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.0",
-    "@astrojs/svelte": "^2.1.0",
-    "astro": "^2.3.2",
-    "astro-compress": "^1.1.42",
-    "svelte": "^3.58.0"
+    "@astrojs/mdx": "^0.19.4",
+    "@astrojs/svelte": "^2.2.0",
+    "astro": "^2.5.5",
+    "astro-compress": "^1.1.44",
+    "svelte": "^3.59.1"
   },
   "devDependencies": {
-    "rehype-pretty-code": "^0.9.5",
+    "rehype-pretty-code": "^0.9.6",
     "rollup": ">=3",
     "shiki": "^0.14.2",
     "typescript": "^5.0.4",
-    "vite": "^4.3.3"
+    "vite": "^4.3.9"
   }
 }
