@@ -1,5 +1,6 @@
 ---
 title: 下蛋的毛奶猪
+photo: https://upload.wikimedia.org/wikipedia/commons/a/a7/Wollmilchsau.png
 date: 2022-10-08 14:47:27
 tags:
 - 译文
@@ -21,7 +22,7 @@ categories: 咬文嚼字
 
 [John Gruber](https://zh.wikipedia.org/wiki/%E7%B4%84%E7%BF%B0%C2%B7%E6%A0%BC%E9%AD%AF%E4%BC%AF) 在其博客 Daring Fireball 中 [引用了这篇文章并评论道](https://daringfireball.net/linked/2022/10/07/eierlegende-wollmilchsau)：
 
-> 如果「X」不成功的话，这会是 Elon Musk 的「[Everything App](https://daringfireball.net/2022/10/everything)」的一个良好的暂定名称（译注：原文为 [working name](https://zh.wikipedia.org/wiki/%E6%9A%82%E5%AE%9A%E5%90%8D%E7%A7%B0)）。  
+> 如果「X」不成功的话，这会是 Elon Musk 的「[Everything App](https://daringfireball.net/2022/10/everything)」的一个良好的暂定名称（译注：原文为 [working name](https://zh.wikipedia.org/wiki/%E6%9A%82%E5%AE%9A%E5%90%8D%E7%A7%B0)）。
 > [感谢 Maximilian Mackh 提供的链接](https://twitter.com/mmackh/status/1578216921291542528)。（还有感谢德国大使馆将这一「春梦」写成一篇有趣的文章。）
 
 * * *
