@@ -1,5 +1,6 @@
 ---
 title: 第十四届蓝桥杯（Web 应用开发）第二次模拟赛题解
+photo: https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png
 date: 2022-11-26 22:32:32
 tags: 蓝桥杯
 categories: 页面仔的自我修养
@@ -11,9 +12,7 @@ categories: 页面仔的自我修养
 >
 > 这里充斥着网页，而我正是那页面仔！
 
-![](https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png)
-
-> 代码请移步至 GitHub [OverflowCat/lanqiao-14-web](https://github.com/OverflowCat/lanqiao-14-web)。
+**代码请移步至 GitHub [OverflowCat/lanqiao-14-web](https://github.com/OverflowCat/lanqiao-14-web)。**
 
 ## 凭空消失的 TA
 

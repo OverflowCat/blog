@@ -6,6 +6,8 @@ description: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养
 ---
+
+<blockquote><i class="fa-solid fa-circle-info"></i> 这篇文章显然是经服务端渲染而呈现在你面前的。</blockquote>
 <table class="alignment-chart">
   <thead>
     <tr>
@@ -40,7 +42,7 @@ categories: 页面仔的自我修养
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Open_Broadcaster_Software_Logo.png/2048px-Open_Broadcaster_Software_Logo.png">
       </td>
     </tr>
-    <tr>
+    <td>
       <td>不在直接交互的<br />服务器上渲染也行</td>
       <td><div class="cat">守序中立</div> SSG 是 SSR</td>
       <td><div class="cat">绝对中立</div> CDN 是 SSR</td>
@@ -59,7 +61,7 @@ categories: 页面仔的自我修养
           src="https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/330e6487-af90-43c8-a255-63b3440d0e34/StabilityAi_Logo_White-19.png?format=1500w">
       </td>
     </tr>
-    <tr>
+    <td>
       <td>用户的电脑<br />也是服务端</td>
       <td><div class="cat">守序邪恶</div> Electron 是 SSR</td>
       <td><div class="cat">中立邪恶</div> WASM 是 SSR</td>
@@ -68,7 +70,6 @@ categories: 页面仔的自我修养
   </tbody>
 </table>
 <blockquote><i class="fa-sharp fa-solid fa-lightbulb"></i> 此 meme 受<span class="pn outer"><span class="pn inner">梨咕米</span></span>启发而成。</blockquote><p></p>
-<blockquote><i class="fa-solid fa-circle-info"></i> 这篇文章显然是经服务端渲染而呈现在你面前的。</blockquote>
 <style>
   table.alignment-chart{
     text-align: center;
