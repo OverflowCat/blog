@@ -24,7 +24,7 @@ $$S_z=\int\limits_{A} y\mathrm d A$$
 
 由**合力矩定理**可得
 
-$$z_C=\frac{S_y}{A}, y_C=\frac{S_z}{A}.$$
+$$z_C=\dfrac{S_y}{A}, y_C=\dfrac{S_z}{A}.$$
 
 故我们有
 
@@ -42,7 +42,7 @@ $$S_y=z_CA, S_z=y_CA.$$
 
 矩形的静距为长、宽、矩形形心到轴距离三者的乘积：
 
-$$S_z=bh\cdot\frac 1 2 h=\frac 1 2 bh^2.$$
+$$S_z=bh\cdot\dfrac 1 2 h=\dfrac 1 2 bh^2.$$
 
 ## 惯性矩
 
