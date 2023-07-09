@@ -1,0 +1,51 @@
+---
+export interface Props {
+  href: string;
+  icon: string;
+  rel?: string;
+}
+
+import Icon from "astro-icon";
+
+const { href, icon, rel } = Astro.props;
+---
+
+<a href={href} rel={rel} target="_blank">
+  <span class="icon">
+    <Icon name={icon} />
+  </span>
+  <span class="name">
+    <slot />
+  </span>
+</a>
+
+<style>
+  a {
+    border-bottom: 0px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    max-width: 100%;
+    color: #333333;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+    padding: 6px 4px 6px 4px;
+    font-size: 13px;
+    white-space-collapse: collapse;
+  }
+  a:hover {
+    background-color: #eeeeee;
+  }
+  .icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+  }
+  .icon,
+  .name {
+    vertical-align: middle;
+  }
+</style>
