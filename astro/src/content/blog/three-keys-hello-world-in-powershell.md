@@ -1,7 +1,11 @@
 ---
 title: 三键成码：在 Powershell 中用三个字母和任意符号输出 Hello World
-date: 2023-03-30 19:17:00
-layout: "@/templates/zh/Blank.astro"
+# date: 2023-03-30 19:17:00
+date: 2023-04-05 23:40:00
+photo: https://user-images.githubusercontent.com/20166026/228802663-72e85b34-f7b6-42d6-b765-09ed31b042ed.png
+description: "为什么不试试 M$ 的功率壳呢？"
+tags: ["PowerShell"]
+categories: ["编程"]
 ---
 
 其实 [这篇文章](https://github.com/InvoluteHell/ThreeKeysProgramming/tree/master/OverflowCat) 在去年暑假就已经写好，不过最近我的 [pull request](https://github.com/InvoluteHell/ThreeKeysProgramming/pull/36) 才被合并，已经快忘掉了。现修缮后发出来。
@@ -64,7 +68,7 @@ $i=$?+$?;$e=$i+$i;$xi=$x=$e+$i;$xe=""+$x+$x;$xx=""+$x+--$e;$x=(""+$?)[$i];iex "`
 * JavaScript 有 [JSFuck](http://www.jsfuck.com/) 这种东西，甚至可以只有符号，自然是不消说的
 * Python 版本中选择了 `exec`——Python 中的 `eval` 只能执行单纯的表达式，无法创建变量，而且需要 4 个字母；而 `exec` 可以执行代码块
 * Bash 用了 `tr`
-* Ruby 选了 `c` 和另外两个数字——Ruby 中 <code>&lt;&lt;</code> 是字符串连接运算符，<code>\\&#x24;&gt;</code> 是 `stdout`，后面用格式化字符串 `"%c"` 和一个整数数组
+* Ruby 选了 `c` 和另外两个数字——Ruby 中 `&lt;&lt;` 是字符串连接运算符，`$>` 是 `stdout`，后面用格式化字符串 `"%c"` 和一个整数数组
 * C 利用了 UB 和不平凡的编译命令
 * PHP 选了 `H`、`e`、`l`，剩下的字符惊为天人，不知道是利用了什么隐式类型转换，看不懂
 
@@ -84,13 +88,13 @@ PowerShell 中无法对 Char 进行加减操作，显式地进行类型转换也
 $i = $? + $?
 ```
 
-- <code>\\&#x24;?</code> 表示上一条命令的返回值，在初始时和上一条命令没有出错时为 `True`。[^3key4]
+- `$?` 表示上一条命令的返回值，在初始时和上一条命令没有出错时为 `True`。[^3key4]
 - PowerShell 中的 `==` 是 `-eq`，需要额外的字母。
-- 当 Bool 类型转换为整数时，`True` 是 `1`，故 <code>\\&#x24;i` 为 `2</code>。[^3key5]
+- 当 Bool 类型转换为整数时，`True` 是 `1`，故 `$i` 为 `2`。[^3key5]
 
 剩下的大部分操作都是在构造其他数字，代码的长度应该可以再压缩一点。
 
-[^3key4]: <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.2#section-1">&#x24;? - PowerShell Core - About - Automatic Variables</a>
+[^3key4]: <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.2#section-1">$? - PowerShell Core - About - Automatic Variables</a>
 [^3key5]: <a href="https://docs.microsoft.com/en-us/powershell/scripting/lang-spec/chapter-06?view=powershell-7.2#64-conversion-to-integer">Conversion#Conversion to integer</a>
 
 ### 构造 Unicode
@@ -99,9 +103,9 @@ $i = $? + $?
 $x = ("" + $?)[$i]
 ```
 
-- `+` 运算符的两个参数类型不一致的时候，会将第二个参数隐式转换为第一个参数的类型。故此处 <code>\\&#x24;e</code> 为 String `"True"`。
+- `+` 运算符的两个参数类型不一致的时候，会将第二个参数隐式转换为第一个参数的类型。故此处 `$e` 为 String `"True"`。
 
-至此，我们有了所需的数字和字母 `u`，可以用 `"u{x}"` 来生成一切字符了。不过，`"Hello World!"` 除了可以直接输入的 `e`、空格和 `!`，十六进制值中还需要 `c` 和 `f`。幸好这两个的编码分别为 `63` 和 `66`，没有 a-f 出现。<code>\\&#x24;e</code> 实际上就是：
+至此，我们有了所需的数字和字母 `u`，可以用 `"u{x}"` 来生成一切字符了。不过，`"Hello World!"` 除了可以直接输入的 `e`、空格和 `!`，十六进制值中还需要 `c` 和 `f`。幸好这两个的编码分别为 `63` 和 `66`，没有 a-f 出现。`$e` 实际上就是：
 
 ```powershell
 $e = "``u{48}e``u{6c}``u{6c}``u{6f}, ``u{57}``u{6f}``u{72}``u{6c}``u{64}!";
@@ -113,7 +117,7 @@ $e = "``u{48}e``u{6c}``u{6c}``u{6f}, ``u{57}``u{6f}``u{72}``u{6c}``u{64}!";
 iex "`$ex=""``$x{$xe}"";`$xe=""``$x{$xx}"""
 ```
 
-- 字符串用双引号的好处是可以直接嵌入变量。如果要 escape 的话，需要在 <code>\\&#x24;</code>、`"`、`` ` `` 前面加上 `` ` ``；`"` 也可以自身重复两次 `""` 来 escape。[^3key6]
+- 字符串用双引号的好处是可以直接嵌入变量。如果要 escape 的话，需要在 `$`、`"`、`` ` `` 前面加上 `` ` ``；`"` 也可以自身重复两次 `""` 来 escape。[^3key6]
 
 [^3key6]: <a href="https://www.rlmueller.net/PowerShellEscape.htm">Escaping in PowerShell</a>
 
@@ -123,7 +127,7 @@ PowerShell 默认打印出前一个表达式的值，所以不需要拼凑出 `"
 
 ### 其他可能的方法
 
-- 变量赋值时可以直接是命令的输出。比如旧版 PowerShell 可以通过 <code>\\&#x24;ls = ls; \\&#x24;ls[x][x]</code> 拿到 ls 命令表头具体的一个 Char，或许有的命令的输出包含全部所需的字母。但是新版中大部分命令的输出不再是字符串而是对象了，两次下标拿到的仍然和原结果一样。
-- <code>\\&#x24;error</code> 是一个存放了错误信息字符串的数组。[^3key7] 不过，错误会直接输出，不符合「该程序运行后输出 Hello, World!, 有且仅有该内容，要求分毫不差」的要求。
+- 变量赋值时可以直接是命令的输出。比如旧版 PowerShell 可以通过 `$ls = ls; $ls[x][x]` 拿到 ls 命令表头具体的一个 Char，或许有的命令的输出包含全部所需的字母。但是新版中大部分命令的输出不再是字符串而是对象了，两次下标拿到的仍然和原结果一样。
+- `$error` 是一个存放了错误信息字符串的数组。[^3key7] 不过，错误会直接输出，不符合「该程序运行后输出 Hello, World!, 有且仅有该内容，要求分毫不差」的要求。
 
 [^3key7]: <a href="https://www.tutorialspoint.com/what-is-use-of-error-variable-in-powershell">What is use of $error variable in PowerShell?</a>

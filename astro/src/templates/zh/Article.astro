@@ -1,29 +1,40 @@
 ---
 import Page from "./Page.astro";
-const title = Astro.props.frontmatter.title;
+const title = Astro.props.data.title;
+import Paper from "@/components/Paper.astro";
 ---
 
 <Page title={title}>
-  <article class="paper">
+  <Paper padding={true}>
     <slot />
-  </article>
+  </Paper>
 </Page>
 
 <style>
-  article {
-    text-align: center;
+  a,
+  a:visited {
+    color: #3498db;
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    color: #2980b9;
+  }
+  img {
+    width: 100%;
+    max-width: 600px;
+  }
+</style>
+
+<style is:global>
+  .paper {
+    font-family: "Noto Sans CJK SC";
+    font-size: 18px;
+    text-align: left;
     max-width: 1024px;
     margin: auto;
     padding: 16px;
     line-height: 200%;
-  }
-  .paper {
-    background: var(--content-bg-color);
-    border-radius: initial;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12),
-      0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-      0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-    box-sizing: border-box;
-    /* color: var(--text-color); */
   }
 </style>
