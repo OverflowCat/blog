@@ -13,8 +13,10 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
+const cover = post.data.photo;
 ---
 
 <Article {...post}>
+    { cover && <img src={cover} alt={post.data.title} /> }
     <Content />
 </Article>

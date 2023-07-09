@@ -16,6 +16,8 @@
     "astro": "^2.8.0",
     "astro-compress": "^1.1.49",
     "astro-icon": "^0.8.1",
+    "rehype-katex": "^6.0.3",
+    "remark-math": "^5.1.1",
     "svelte": "^4.0.5"
   },
   "devDependencies": {

@@ -1,12 +1,19 @@
 ---
 export interface Props {
     padding?: boolean;
+    classes?: string[];
 }
 
-const { padding } = Astro.props;
+let { padding, classes } = Astro.props;
+if (classes === undefined) {
+    classes = [];
+}
+if (padding) {
+    classes?.push("padding");
+}
 ---
 
-<div class:list={["paper", { padding }]}>
+<div class:list={["paper"].concat(classes)}>
     <slot />
 </div>
 

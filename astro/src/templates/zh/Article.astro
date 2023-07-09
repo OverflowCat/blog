@@ -4,9 +4,12 @@ const title = Astro.props.data.title;
 import Paper from "@/components/Paper.astro";
 ---
 
+<link rel="stylesheet" href="/prism.css" />
 <Page title={title}>
   <Paper padding={true}>
-    <slot />
+    <article>
+      <slot />
+    </article>
   </Paper>
 </Page>
 
@@ -21,20 +24,28 @@ import Paper from "@/components/Paper.astro";
   a:active {
     color: #2980b9;
   }
-  img {
-    width: 100%;
-    max-width: 600px;
-  }
 </style>
 
 <style is:global>
   .paper {
-    font-family: "Noto Sans CJK SC";
-    font-size: 18px;
-    text-align: left;
     max-width: 1024px;
     margin: auto;
-    padding: 16px;
+  }
+  article {
+    font-family: "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
+      Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
     line-height: 200%;
+    margin: 18px;
+  }
+  /* image in article */
+  article img {
+    max-height: 800px;
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
   }
 </style>
