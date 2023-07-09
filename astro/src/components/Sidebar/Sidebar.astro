@@ -1,0 +1,114 @@
+---
+import Paper from "../Paper.astro";
+import OtherPlatfromItem from "./OtherPlatfromItem.astro";
+---
+
+<aside>
+    <Paper padding={true}>
+        <div
+            class="site-author"
+            itemprop="author"
+            itemtype="http://schema.org/Person"
+        >
+            <img
+                class="site-author-image"
+                itemprop="image"
+                alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
+                src="https://avatars.githubusercontent.com/u/20166026?v=4"
+            />
+            <p class="site-author-name" itemprop="name" lang="mnc">
+                ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫
+            </p>
+            <div class="site-description" itemprop="description">
+                猫猫的博客
+            </div>
+        </div>
+        <div class="other-platforms">
+            <OtherPlatfromItem
+                href="https://github.com/OverflowCat"
+                icon="ri:github-fill"
+            >
+                GitHub
+            </OtherPlatfromItem>
+            <OtherPlatfromItem
+                href="https://t.me/OverflowCat"
+                icon="mdi:telegram"
+            >
+                Telegram
+            </OtherPlatfromItem>
+            <OtherPlatfromItem
+                href="mailto:overflowcat+blog@gmail.com"
+                icon="mdi:email"
+            >
+                Mail
+            </OtherPlatfromItem>
+            <OtherPlatfromItem
+                href="https://twitter.com/lazy_static"
+                icon="mdi:twitter"
+            >
+                Twitter
+            </OtherPlatfromItem>
+            <OtherPlatfromItem
+                href="https://mastodon.social/@overflowcat"
+                icon="mdi:mastodon"
+            >
+                Mastodon
+            </OtherPlatfromItem>
+            <OtherPlatfromItem
+                href="https://instagram.com/overflowcat"
+                icon="ri:instagram-fill"
+            >
+                Instagram
+            </OtherPlatfromItem>
+        </div>
+    </Paper>
+</aside>
+
+<style>
+    aside {
+        width: 100%;
+        max-width: 240px;
+        margin-left: 20px;
+    }
+    .other-platforms {
+        margin: 8px;
+    }
+    .other-platforms {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2px;
+    }
+    .site-author,
+    .site-author-name {
+        text-align: center;
+        font-family: "Noto Sans Mongolian", "Mongolian Baiti";
+        writing-mode: vertical-lr;
+        vertical-align: middle;
+    }
+    .site-author {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .site-author-name {
+        color: #333;
+        font-weight: 700;
+        margin: 0px 10px 0px 12px;
+    }
+    .site-description {
+        color: #555;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    .site-author-image {
+        user-select: none;
+        border: 1px solid #eee;
+        max-width: 120px;
+        padding: 2px;
+        margin: 6px;
+        border-radius: 50%;
+        transition: transform 1s ease-out;
+    }
+    .site-author-image:hover {
+        transform: rotateZ(360deg);
+    }
+</style>
