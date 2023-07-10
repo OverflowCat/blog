@@ -1,0 +1,46 @@
+---
+import { getTagsInfo } from "@/scripts/tags";
+
+function generateRandomColor() {
+    const MAX_RGB_VALUE = 180;
+    const MIN_RGB_VALUE = 50;
+    const [r, g, b] = ["r", "g", "b"].map(
+        () =>
+            Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
+            MIN_RGB_VALUE
+    );
+    return `rgb(${r}, ${g}, ${b})`;
+}
+---
+
+<div class="tag-cloud">
+    {
+        Array.from(getTagsInfo()).map(([k, v]) => (
+            <a
+                href={`/tags/${k}`}
+                style={`font-size: ${
+                    2 * v + 7
+                }px; color: ${generateRandomColor()}`}
+            >
+                {k}
+            </a>
+        ))
+    }
+</div>
+
+<style>
+    .tag-cloud {
+        /* dont stretch aside */
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tag-cloud a {
+        margin: 0.1rem;
+        padding: 0.2rem 0.2rem;
+        border-radius: 0.5rem;
+        background-color: #f4f4f4;
+        color: #333;
+        text-decoration: none;
+    }
+</style>
