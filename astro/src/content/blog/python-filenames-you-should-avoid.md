@@ -1,7 +1,9 @@
 ---
 title: 你不应该使用的 Python 文件名
+description: 最末的结论是，你不应该使用以下名称作为 Python 代码的文件/模块名
 date: 2023-01-16 14:58:08
 categories: Python
+layout: "@/layouts/Default.astro"
 ---
 
 在新 VPS 上运行 Python 程序的时候出现了问题：[`pdm`](https://pdm.fming.dev/latest/) 无法正常 install 或者设置 config，`poetry` 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子：

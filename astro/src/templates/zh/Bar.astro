@@ -1,6 +1,7 @@
 ---
 export interface Props {
   index?: number;
+  transparent?: boolean;
 }
 
 import Logo from "@components/Logo.astro";
@@ -12,11 +13,11 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-const { index } = Astro.props;
+const { index, transparent } = Astro.props;
 ---
 
-<div class="center" id="logo">
-  <Logo />
+<div class:list={["center", {bar: !transparent}]} id="logo">
+  <Logo theme={transparent? "transparent" : "dark"} />
 </div>
 <ol class="center">
   {
@@ -56,6 +57,8 @@ const { index } = Astro.props;
   }
   #logo {
     padding: 4px;
+  }
+  #logo.bar {
     background: rgb(255, 255, 255);
     background: linear-gradient(
       202deg,

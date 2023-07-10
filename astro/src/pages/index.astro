@@ -4,110 +4,91 @@ import Bar from "@templates/zh/Bar.astro";
 import Sidebar from "../components/Sidebar/Sidebar.astro";
 
 import type { CollectionEntry } from "astro:content";
-import { formatPostDate } from "../scripts/date";
 import Paper from "@/components/Paper.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
 import { posts as postsWorkaround } from "@/scripts/collection-workaround";
-import { Icon } from "astro-icon";
 
-const posts = postsWorkaround.sort((a, b) =>
-     b.data.date - a.data.date
+const posts = postsWorkaround.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
-
-function getIconName(post: CollectionEntry<"blog">) {
-  if (post.data.icon) return post.data.icon;
-  const categories = post.data.categories?.toString();
-  if (!categories) {
-    return;
-  }
-  if (categories.includes("满语")) {
-    return "manju";
-  }
-  if (categories.includes("译文")) {
-    return "ph:translate-fill";
-  }
-  if (categories.includes("Selected")) {
-    return "ph:star";
-  }
-}
 
 // console.log(posts);
 ---
 
-<Page title="新世界的大门" bar_index={0}>
-    <main>
-        <Sidebar />
-        <Paper>
-            <section class="contents">
-                <ul>
-                    {posts.map((post) => (
-                        <li>
-                            <div>
-                              <span>
-                                <code>{formatPostDate(post.data.date)}</code>
-                              </span>
-                              <span class="title-icon">
-                                {getIconName(post) && <Icon name={getIconName(post)}></Icon>}
-                              </span>
-                              <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-        </Paper>
-    </main>
+<Page title="新世界的大门" bar={{ index: 0 }}>
+  <main>
+    <Sidebar />
+    <Paper>
+      <section class="contents">
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <ArticleCard post={post} />
+              </li>
+            ))
+          }
+        </ul>
+        <div id="end-info">页面已经到底啦！</div>
+      </section>
+    </Paper>
+  </main>
 </Page>
 
 <style>
-ul {
-  list-style-type: none;
-  padding: unset;
-}
-.title {
-  font-size: 115%;
-  color: #2f2f2f;
-  text-decoration: none;
-}
-.title:visited {
-  color: #383838;
-}
-.title:hover,
-.title:focus,
-.title:active {
-  color: #090909;
-}
-li {
-  margin: 2px;
-}
-main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.contents {
-  max-width: 850px;
-  width: 100%;
-  padding: 0 20px;
-}
-.title-icon {
-  display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: middle;
-}
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  li {
+    margin: 0.5rem 0;
+    border-bottom: 1px solid lightgray;
+    padding: 0.5rem 0;
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .contents {
+    max-width: 850px;
+    width: 100%;
+    padding: 0 20px;
+  }
+  #end-info {
+    text-align: center;
+    color: gray;
+    font-size: 0.8rem;
+    margin: 1rem;
+  }
 </style>
 
 <style is:global>
-    @media (max-width: 800px) {
-        #sidebar {
-            display: none;
-        }
+  @media (max-width: 900px) {
+    main {
+      flex-direction: column-reverse;
     }
-    @media (min-width: 955px) {
-     .contents{
-       min-width: 700px;
-      }
+    aside#sidebar {
+      max-width: 700px !important;
     }
+    aside#sidebar .paper {
+      max-width: 700px !important;
+    }
+  }
+  @media (min-width: 900px) {
+    .contents {
+      min-width: 700px;
+    }
+    main {
+      flex-direction: row;
+    }
+    aside#sidebar {
+      align-self: flex-start;
+      position: sticky;
+      top: 50px;
+    }
+  }
 </style>

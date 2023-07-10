@@ -1,12 +1,14 @@
 ---
 title: 下蛋的毛奶猪
 photo: https://upload.wikimedia.org/wikipedia/commons/a/a7/Wollmilchsau.png
+description: 如果「X」不成功的话，这会是 Elon Musk 的「Everything App」的一个良好的暂定名称。
 date: 2022-10-08 14:47:27
 tags:
 - 德语
 categories:
 - 咬文嚼字
 - 译文
+layout: "@/layouts/Default.astro"
 ---
 
 > 本文译自德国驻美大使馆 2011 年 10 月 28 日的文章：[_Word of the Week: Eierlegende Wollmilchsau_](https://germanyinusa.com/2011/10/28/word-of-the-week-eierlegende-wollmilchsau/)。封面图片：[Eierlegende Wollmilchsau, German for "egg-laying wool-milk-sow"](https://de.wikipedia.org/wiki/Datei:Wollmilchsau.png) by [de:User:Pixelrausch](https://de.wikipedia.org/wiki/User:Pixelrausch), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0)
