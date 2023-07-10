@@ -1,12 +1,20 @@
 ---
+import { getTagsInfo } from "@/scripts/tags";
 export async function getStaticPaths() {
-    return [
-        // { params: { /* required */ }, props: { /* optional */ } },
-        // { params: { ... } },
-        // { params: { ... } },
-        // ...
-    ];
+    const tags = Array.from(getTagsInfo()).map(([tag, _count]) => tag);
+    return tags.map((tag) => ({ params: { slug: tag } }));
+    // [
+    // { params: { /* required */ }, props: { /* optional */ } },
+    // { params: { ... } },
+    // { params: { ... } },
+    // ...
+    // ];
 }
 
 const { slug } = Astro.params;
 ---
+
+<div>
+    haha
+    {slug}
+</div>

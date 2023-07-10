@@ -27,15 +27,25 @@ import "modern-css-reset";
   </body>
 </html>
 
-<style>
-  body {
-    margin: 8px;
-  }
-</style>
-
 <style is:global>
   :root {
     --body-bg-color: #eee;
     --accent-color: rgb(155, 61, 149);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  blockquote {
+    border-left: 4px solid #ddd;
+    color: var(--blockquote-color);
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  blockquote cite::before {
+    content: "-";
+    padding: 0 5px;
   }
 </style>

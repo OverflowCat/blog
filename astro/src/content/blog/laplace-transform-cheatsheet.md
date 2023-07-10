@@ -6,6 +6,7 @@ tags:
 - 积分变换
 - 数学
 mathjax: true
+layout: "@/layouts/Default.astro"
 ---
 > <i class="fa-solid fa-infinity"></i> 本表是**动态列表**。动态列表是指**未完成的列表**。它也许永远不会被完整地完成。
 

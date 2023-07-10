@@ -1,8 +1,12 @@
 ---
 title: 如何在 AutoCAD 中标注公差
+description: 在 AutoCAD 2014 中，有两种标注公差的方式。
 date: 2022-11-24 17:53:08
-tags: AutoCAD
+tags:
+- AutoCAD
+- 公差
 categories: 制图
+layout: "@/layouts/Default.astro"
 ---
 
 在 AutoCAD 2014 中，有两种标注**公差**的方式。

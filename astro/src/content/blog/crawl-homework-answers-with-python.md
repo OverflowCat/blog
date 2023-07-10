@@ -2,11 +2,12 @@
 title: 用 Python 爬取作业答案
 date: 2020-01-05 22:58:27
 categories: Python
+layout: "@/layouts/Default.astro"
 ---
 
 上高中以来，学校一直订了一份「报纸」当作业用，叫《学英语》。最近做题时发现报纸与时俱进，多了几个二维码，分别是微信公众号还有「**扫一扫　查答案**」。
 
-# 目标网站
+## 目标网站
 
 通过二维码扫描出来的结果是上一期的答案。网页的地址长这样：
 
@@ -20,7 +21,7 @@ categories: Python
 
 发现只有几期的答案是连在一起的，其余的有很多这家报社的其他产品的内容。这些答案的排布也并不是那么有规律，比如下一个 id 的是上上期的答案。那么，只需要爬取附近的每个页面，然后把符合要求的找出来就行了。
 
-# 开发环境
+## 开发环境
 
 Google 提供了免费的 [Jupyter Notebook](https://jupyter.org/) 环境—— Colab，无需配置，开箱即用。[进入](https://colab.research.google.com/notebook#create=true&language=python3) 后创建一个新的 PYTHON3 笔记本。
 
@@ -44,7 +45,7 @@ $ jupyter notebook
 
 Jupyter Notebook 中，以 `!` 开头的行会被解释成命令。
 
-# 爬取和解析
+## 爬取和解析
 
 这种 CMS 一般都没什么反爬措施，连 X5 浏览器 UA 都不需要伪造。所有网页的标题都是相同的，所以爬取每个页面内的标题就好。
 
@@ -76,6 +77,6 @@ _页面最后一般会有 doc 文档可以下载，但是最近没有了。_
 '34966': '19-20上九年级宁波期末检测一本通综合测评（五）听力录音', '34967': '悦听悦读Real-life Dora', '34968': '19-20上高三江苏第14期A版参考答案', '34969': '19-20上高三江苏（N）第15期听力录音', '34970': '19-20上高三江苏（N）第14期B1-B4版参考答案', '34971': '19-20上高一第24期A4版听力练习录音', '34972': '19-20上高三江苏第15期A版参考答案', '34973': '19-20上高三江苏（N）第16期听力录音', '34974': '19-20上高三江苏（N）第15期B1-B4版参考答案', '34975': 'Jane and Sara want to go skating（I）', '34976': 'Jane and Sara want to go skating（II）', '34977': '19-20上八年级（J）第17期听力录音', '34978': '19-20上八年级（J）第18期听力录音', '34979': '19-20上八年级（J）第19期听力录音', '34980': '19-20上八年级（J）第20期听力录音', '34981': '悦听悦读 An ancient Chinese story', '34982': '悦听悦读 Empty-City Strategy', '34983': '悦听悦读Hearing loss, a major problem for teenagers', '34984': '悦听悦读FOLLOW ME: Hearing loss, a major problem for teenagers', '34985': '故事乐园 The ice cream', '34986': "故事乐园 It's Mr Green", '34987': '悦听悦读A special fashion show', '34988': '悦听悦读Two cute girls', '34989': '19-20上八年级曲靖第15期听力录音', '34990': '19-20上七年级★福建第15期听力录音', '34991': '悦听悦读 Max Einstein: The Genius Experiment', '34992': '19-20上九年级（XJ）第9期听力录音', '34993': '19-20上九年级（XJ）第10期听力录音', '34994': '19-20上九年级（XJ）第11期听力录音', '34995': '19-20上九年级（XJ）第12期听力录音', '34996': '19-20上七年级★福建第16期听力录音', '34997': 'Bill and Kitty', '34998': '19-20上八年级曲靖第16期听力录音', '34999': '悦听悦读Flying car'}
 ```
 
-# Demo
+## Demo
 
 [learningEnglishFetch.py](https://github.com/OverflowCat/LearningEnglish/)

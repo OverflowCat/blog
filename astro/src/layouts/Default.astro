@@ -1,0 +1,23 @@
+---
+import Paper from "@/components/Paper.astro";
+
+const { frontmatter } = Astro.props;
+const cover = frontmatter.photo;
+
+import "@/styles/article.less";
+---
+
+<Paper padding={true}>
+  {cover && <img src={cover} alt={frontmatter.title} />}
+  {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
+  <article>
+    <slot />
+  </article>
+</Paper>
+
+<style is:global>
+  .paper {
+    max-width: 1024px;
+    margin: auto;
+  }
+</style>

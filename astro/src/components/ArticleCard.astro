@@ -1,0 +1,50 @@
+---
+export interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+import type { CollectionEntry } from "astro:content";
+import { formatPostDate } from "../scripts/date";
+import { Icon } from "astro-icon";
+import { getIconName } from "@/scripts/icons";
+
+const { post } = Astro.props;
+---
+
+<div>
+    <span>
+        <code>{formatPostDate(post.data.date)}</code>
+    </span>
+    <span class="title-icon">
+        {getIconName(post) && <Icon name={getIconName(post)} />}
+    </span>
+    <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
+</div>
+<blockquote>
+    {post.data.description}
+</blockquote>
+
+<style>
+    .title-icon {
+        display: inline-block;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+    }
+    .title {
+        font-size: 115%;
+        color: #2f2f2f;
+        text-decoration: none;
+    }
+    .title:visited {
+        color: #383838;
+    }
+    .title:hover,
+    .title:focus,
+    .title:active {
+        color: #090909;
+    }
+    blockquote {
+        margin: 6px 1rem;
+    }
+</style>

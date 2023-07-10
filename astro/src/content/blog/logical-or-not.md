@@ -1,12 +1,14 @@
 ---
 title: 逻辑和无逻辑
 photo: https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/deadlines-and-adhd.png
+description: 《考纲》「要求考生克服紧张情绪，以平和的心态参加考试，合理支配考试时间，以实事求是的科学态度解答试题，树立战胜困难的信心，体现锲而不舍的精神」。
 date: 2021-05-07 21:29:23
 tags: 考试
 categories:
 - 题隙碎笔
 - Selected
 icon: "clarity:note-line"
+layout: "@/layouts/Default.astro"
 ---
 
 北京高考英语、生物和语文注重考查逻辑。

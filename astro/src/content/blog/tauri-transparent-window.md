@@ -3,12 +3,13 @@ title: 在 Tauri 中实现鼠标穿透和透明窗口
 date: 2022-12-29 21:18:34
 tags: Tauri
 categories: 页面仔的自我修养
+layout: "@/layouts/Default.astro"
 ---
 
 ![效果](https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png)
 
 > 本文测试通过的 Tauri 版本为 `1.0` 和 `1.2`。
-> 
+>
 > ![](https://raw.githubusercontent.com/tauri-apps/tauri-docs/335bab9ee7443bc31da1b1e8e26ede47ab25943a/static/img/index/header_light.svg)
 
 ## 鼠标穿透

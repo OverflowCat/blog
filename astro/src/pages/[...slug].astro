@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import Article from "@/templates/zh/Article.astro";
+import Page from "@/templates/zh/Page.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
@@ -13,11 +13,8 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
-const cover = post.data.photo;
 ---
 
-<Article {...post}>
-    { cover && <img src={cover} alt={post.data.title} /> }
-    <h1>{post.data.title}</h1>
+<Page title={post.data.title} bar={{ transparent: true }}>
     <Content />
-</Article>
+</Page>

@@ -1,7 +1,8 @@
 ---
 title: 我的浏览器地址栏中的 A – Z（2022）
 date: 2023-01-13 15:24:41
-tags:
+tags: 冲浪
+layout: "@/layouts/Default.astro"
 ---
 
 数据截止到 2022 年 12 月 3 日，原记载于 Logseq。写这个是由 [此文章](https://orzfly.com/html/my-browser-address-bar-2021.html) 启发。
