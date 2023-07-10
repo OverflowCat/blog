@@ -1,21 +1,21 @@
 ---
-import Base from "@templates/zh/Base.astro";
+import Page from "@templates/zh/Page.astro";
 import Bar from "@templates/zh/Bar.astro";
 import Sidebar from "../components/Sidebar/Sidebar.astro";
 
 import { getCollection } from "astro:content";
 import { formatPostDate } from "../scripts/date";
 import Paper from "@/components/Paper.astro";
+import { posts as postsWorkaround } from "@/scripts/collection-workaround";
 
-const posts = (
-    await getCollection("blog", (entry) => !entry.slug.includes("_"))
-).sort((a, b) => b.data.date?.valueOf() || 0 - a.data.date?.valueOf() || 0);
+const posts = postsWorkaround.sort((a, b) =>
+     b.data.date - a.data.date
+);
 
 // console.log(posts);
 ---
 
-<Base title="新世界的大门">
-    <Bar index={0} />
+<Page title="新世界的大门" bar_index={0}>
     <main>
         <Sidebar />
         <Paper>
@@ -23,9 +23,9 @@ const posts = (
                 <ul>
                     {posts.map((post) => (
                         <li>
-                            <div class="title">
-                                <span>{formatPostDate(post.data.date)}</span>
-                                <a href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
+                            <div>
+                                <code>{formatPostDate(post.data.date)}</code>
+                                <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
                             </div>
                             <!-- <div class="desc">
                             {post.data.desc || "No description"}
@@ -36,26 +36,31 @@ const posts = (
             </section>
         </Paper>
     </main>
-</Base>
+</Page>
 
 <style>
     ul {
         list-style-type: none;
         padding: unset;
     }
+    li {
+        margin: 2px;
+    }
     main {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 32px;
+        gap: 16px;
     }
     .contents {
-        max-width: 1000px;
+        max-width: 1024px;
         padding: 0 20px;
     }
     .title {
-        font-size: 120%;
+        font-size: 115%;
+        margin-left: 12px;
+        margin-right: 12px;
     }
     a, a:visited {
         color: #353535;
@@ -64,5 +69,13 @@ const posts = (
     a:focus,
     a:active {
         color: #090909;
+    }
+</style>
+
+<style is:global>
+    @media (max-width: 800px) {
+        #sidebar {
+            display: none;
+        }
     }
 </style>

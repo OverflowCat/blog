@@ -2,7 +2,6 @@
 import Article from "@/templates/zh/Blank.astro";
 import ManchuSyntax from "./_components/ManchuSyntax.astro";
 import Bilibili from "@/components/Bilibili.svelte";
-import Explanation from "./_components/_explanation.md";
 
 const vocabulary = {
   "-i": "の",
@@ -136,5 +135,4 @@ nirume saikan
   <hr />
   <ManchuSyntax vocab={vocabulary} lines={parts[2] + " 𝄂"} />
 
-  <Explanation />
 </Article>

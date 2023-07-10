@@ -1,9 +1,11 @@
 ---
 import Paper from "../Paper.astro";
 import OtherPlatfromItem from "./OtherPlatfromItem.astro";
+import TagCloud from "./TagCloud.astro";
+import CatCloud from "./CatCloud.astro";
 ---
 
-<aside>
+<aside id="sidebar">
     <Paper padding={true}>
         <div
             class="site-author"
@@ -62,13 +64,18 @@ import OtherPlatfromItem from "./OtherPlatfromItem.astro";
             </OtherPlatfromItem>
         </div>
     </Paper>
+    <Paper padding={true}>
+        <h3>标签</h3>
+        <TagCloud />
+        <h3>类别</h3>
+        <CatCloud />
+    </Paper>
 </aside>
 
 <style>
-    aside {
+    aside#sidebar {
         width: 100%;
         max-width: 240px;
-        margin-left: 20px;
     }
     .other-platforms {
         margin: 8px;
@@ -112,5 +119,8 @@ import OtherPlatfromItem from "./OtherPlatfromItem.astro";
     }
     .site-author-image:hover {
         transform: rotateZ(360deg);
+    }
+    h3 {
+        text-align: center;
     }
 </style>

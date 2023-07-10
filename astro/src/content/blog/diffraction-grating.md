@@ -6,7 +6,7 @@ tags: 备忘
 mathjax: true
 ---
 
-> <i class="fa-solid fa-arrows-turn-to-dots"></i> **消歧义**：本页面中的**「光栅」**指的是刻有平行等宽、等距狭缝的平面玻璃或金属片，而非「栅格化」．
+> <i class="fa-solid fa-arrows-turn-to-dots"></i> **消歧义**：本页面中的「光栅」指的是刻有平行等宽、等距狭缝的平面玻璃或金属片，而非「栅格化」．
 
 ![衍射条纹](https://upload.wikimedia.org/wikipedia/commons/d/da/Density_plot_of_diffraction_grating.jpg)
 

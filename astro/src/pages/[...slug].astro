@@ -18,5 +18,6 @@ const cover = post.data.photo;
 
 <Article {...post}>
     { cover && <img src={cover} alt={post.data.title} /> }
+    <h1>{post.data.title}</h1>
     <Content />
 </Article>

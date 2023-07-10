@@ -2,7 +2,7 @@
 title: 服务端渲染阵营九宫格
 date: 2023-04-09 01:50:00
 photo: https://user-images.githubusercontent.com/20166026/230737062-897858da-a1c4-4fc4-a0a2-cdd59dda3369.png # https://user-images.githubusercontent.com/20166026/230736978-8ee7171a-a6b3-4417-bcf0-729005e23aa8.png
-description: 你就说是不是渲染吧！
+desc: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养
 ---
@@ -11,7 +11,8 @@ categories: 页面仔的自我修养
 <table class="alignment-chart">
   <thead>
     <tr>
-      <th></th><th class="h">守序<div>一定要用 JS 框架渲染</div></th>
+      <th></th>
+      <th class="h">守序<div>一定要用 JS 框架渲染</div></th>
       <th class="h">中立<div>渲染出来的是 HTML 就行</div></th>
       <th class="h">混乱<div>渲染出来是图形就行</div></th>
     </tr>
@@ -42,7 +43,7 @@ categories: 页面仔的自我修养
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Open_Broadcaster_Software_Logo.png/2048px-Open_Broadcaster_Software_Logo.png">
       </td>
     </tr>
-    <td>
+    <tr>
       <td>不在直接交互的<br />服务器上渲染也行</td>
       <td><div class="cat">守序中立</div> SSG 是 SSR</td>
       <td><div class="cat">绝对中立</div> CDN 是 SSR</td>
@@ -61,7 +62,7 @@ categories: 页面仔的自我修养
           src="https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/330e6487-af90-43c8-a255-63b3440d0e34/StabilityAi_Logo_White-19.png?format=1500w">
       </td>
     </tr>
-    <td>
+    <tr>
       <td>用户的电脑<br />也是服务端</td>
       <td><div class="cat">守序邪恶</div> Electron 是 SSR</td>
       <td><div class="cat">中立邪恶</div> WASM 是 SSR</td>

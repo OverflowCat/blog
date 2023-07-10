@@ -2,9 +2,9 @@
 import Page from "./Page.astro";
 const title = Astro.props.data.title;
 import Paper from "@/components/Paper.astro";
+import "@/styles/article.less";
 ---
 
-<link rel="stylesheet" href="/prism.css" />
 <Page title={title}>
   <Paper padding={true}>
     <article>
@@ -29,23 +29,6 @@ import Paper from "@/components/Paper.astro";
 <style is:global>
   .paper {
     max-width: 1024px;
-    margin: auto;
-  }
-  article {
-    font-family: "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
-      Arial, sans-serif;
-    font-size: 20px;
-    text-align: left;
-    line-height: 200%;
-    margin: 18px;
-  }
-  /* image in article */
-  article img {
-    max-height: 800px;
-    max-width: 800px;
-    width: 100%;
-    height: auto;
-    display: block;
     margin: auto;
   }
 </style>

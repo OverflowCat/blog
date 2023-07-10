@@ -10,14 +10,8 @@
   }
 </script>
 
-{#if hidden}<span class="cloze mask" on:click={toogle} on:keypress={toogle_a11y}
-    >[...]</span
-  >{/if}<span
-  class="cloze ans"
-  class:hidden
-  on:click={toogle}
-  on:keypress={toogle_a11y}><slot /></span
->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+{#if hidden}<span class="cloze mask" on:click={toogle} on:keypress={toogle_a11y}>[...]</span>{/if}<span class="cloze ans" class:hidden on:click={toogle} on:keypress={toogle_a11y}><slot /></span>
 
 <style>
   .cloze.hidden {
