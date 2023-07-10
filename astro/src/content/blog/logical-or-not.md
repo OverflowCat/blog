@@ -1,9 +1,12 @@
 ---
 title: 逻辑和无逻辑
+photo: https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/deadlines-and-adhd.png
 date: 2021-05-07 21:29:23
 tags: 考试
-categories: 题隙碎笔
-photo: https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/deadlines-and-adhd.png
+categories:
+- 题隙碎笔
+- Selected
+icon: "clarity:note-line"
 ---
 
 北京高考英语、生物和语文注重考查逻辑。

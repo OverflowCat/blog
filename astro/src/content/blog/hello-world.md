@@ -1,6 +1,7 @@
 ---
 title: 'Re: 从零开始的部落格生活'
 date: 2019-07-31 17:15:30
+icon: "icon-park:go-start"
 ---
 > Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 

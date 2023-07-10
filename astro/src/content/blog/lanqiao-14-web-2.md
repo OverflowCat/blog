@@ -2,8 +2,12 @@
 title: 第十四届蓝桥杯（Web 应用开发）第二次模拟赛题解
 photo: https://user-images.githubusercontent.com/20166026/204100099-c0ce7ec8-8f95-42b2-b39c-e554180f45a6.png
 date: 2022-11-26 22:32:32
-tags: 蓝桥杯
-categories: 页面仔的自我修养
+tags:
+- 蓝桥杯
+categories:
+- 页面仔的自我修养
+- Selected
+icon: "tabler:building-bridge"
 ---
 
 > 2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第一。

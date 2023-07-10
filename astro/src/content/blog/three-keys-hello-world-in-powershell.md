@@ -4,8 +4,12 @@ title: 三键成码：在 Powershell 中用三个字母和任意符号输出 Hel
 date: 2023-04-05 23:40:00
 photo: https://user-images.githubusercontent.com/20166026/228802663-72e85b34-f7b6-42d6-b765-09ed31b042ed.png
 desc: "为什么不试试 M$ 的功率壳呢？"
-tags: ["PowerShell"]
-categories: ["编程"]
+tags:
+- PowerShell
+categories:
+- 编程
+- Selected
+icon: "codicon:terminal-powershell"
 ---
 
 其实 [这篇文章](https://github.com/InvoluteHell/ThreeKeysProgramming/tree/master/OverflowCat) 在去年暑假就已经写好，不过最近我的 [pull request](https://github.com/InvoluteHell/ThreeKeysProgramming/pull/36) 才被合并，已经快忘掉了。现修缮后发出来。

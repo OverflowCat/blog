@@ -63,6 +63,7 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://blog.xinshijiededa.men/",
   outDir: "../dist/",
   vite: {
     ssr: {
