@@ -3,14 +3,32 @@ import Page from "@templates/zh/Page.astro";
 import Bar from "@templates/zh/Bar.astro";
 import Sidebar from "../components/Sidebar/Sidebar.astro";
 
-import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
 import Paper from "@/components/Paper.astro";
 import { posts as postsWorkaround } from "@/scripts/collection-workaround";
+import { Icon } from "astro-icon";
 
 const posts = postsWorkaround.sort((a, b) =>
      b.data.date - a.data.date
 );
+
+function getIconName(post: CollectionEntry<"blog">) {
+  if (post.data.icon) return post.data.icon;
+  const categories = post.data.categories?.toString();
+  if (!categories) {
+    return;
+  }
+  if (categories.includes("满语")) {
+    return "manju";
+  }
+  if (categories.includes("译文")) {
+    return "ph:translate-fill";
+  }
+  if (categories.includes("Selected")) {
+    return "ph:star";
+  }
+}
 
 // console.log(posts);
 ---
@@ -24,12 +42,14 @@ const posts = postsWorkaround.sort((a, b) =>
                     {posts.map((post) => (
                         <li>
                             <div>
+                              <span>
                                 <code>{formatPostDate(post.data.date)}</code>
-                                <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
+                              </span>
+                              <span class="title-icon">
+                                {getIconName(post) && <Icon name={getIconName(post)}></Icon>}
+                              </span>
+                              <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
                             </div>
-                            <!-- <div class="desc">
-                            {post.data.desc || "No description"}
-                            </div> -->
                         </li>
                     ))}
                 </ul>
@@ -39,37 +59,44 @@ const posts = postsWorkaround.sort((a, b) =>
 </Page>
 
 <style>
-    ul {
-        list-style-type: none;
-        padding: unset;
-    }
-    li {
-        margin: 2px;
-    }
-    main {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-    }
-    .contents {
-        max-width: 1024px;
-        padding: 0 20px;
-    }
-    .title {
-        font-size: 115%;
-        margin-left: 12px;
-        margin-right: 12px;
-    }
-    a, a:visited {
-        color: #353535;
-    }
-    a:hover,
-    a:focus,
-    a:active {
-        color: #090909;
-    }
+ul {
+  list-style-type: none;
+  padding: unset;
+}
+.title {
+  font-size: 115%;
+  color: #2f2f2f;
+  text-decoration: none;
+}
+.title:visited {
+  color: #383838;
+}
+.title:hover,
+.title:focus,
+.title:active {
+  color: #090909;
+}
+li {
+  margin: 2px;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.contents {
+  max-width: 850px;
+  width: 100%;
+  padding: 0 20px;
+}
+.title-icon {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
 </style>
 
 <style is:global>
@@ -77,5 +104,10 @@ const posts = postsWorkaround.sort((a, b) =>
         #sidebar {
             display: none;
         }
+    }
+    @media (min-width: 955px) {
+     .contents{
+       min-width: 700px;
+      }
     }
 </style>
