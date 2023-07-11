@@ -1,6 +1,6 @@
 ---
 import { getCatsInfo } from "@/scripts/tags";
-import Archives from "../archives.astro";
+import ArticleList from "@/components/ArticleList.astro";
 
 export async function getStaticPaths() {
     const categories = Array.from(getCatsInfo()).map(
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 ---
 
-<Archives
+<ArticleList
     type="category"
     name={category}
     simple={false}

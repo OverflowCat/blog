@@ -1,4 +1,0 @@
-h1. How to build
-
-bc. cd astro ; pnpm build ; cd .. ; node build_fin.js ; hexo s
-
