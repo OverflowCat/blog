@@ -9,15 +9,26 @@ export interface Props {
   og?: OpenGraphData;
 }
 
-const { title, bar, noscript, og } = Astro.props;
+let { title, bar, noscript, og } = Astro.props;
+
+title = title + " | 新世界的大门";
+
+if (!og) {
+  og = {
+    title,
+    description: "新世界的大门",
+    url: "https://blog.xinshijiededa.men",
+    type: "website",
+  };
+}
 
 import Base from "./Base.astro";
 import Bar from "./Bar.astro";
 import Footer from "../zh/Footer.astro";
-import { genOg, type OpenGraphData } from "@/scripts/open-graph";
+import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
 ---
 
-<Base title={title + " | 新世界的大门"} metas={og && genOg(og)}>
+<Base title={title} metas={genOpenGraphMetas(og)}>
   <Bar {...bar} />
   <div class="main">
     <slot />

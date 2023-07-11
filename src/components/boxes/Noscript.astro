@@ -1,8 +1,11 @@
-<div>This page has no JavaScript.</div>
+---
+import { Icon } from "astro-icon";
+import "@/styles/icon.less";
+---
 
-<style>
-div {
-    font-size: 80%;
-    color: #414141;
-}
-</style>
+<div>
+    <span class="icon">
+        <Icon name="noscript" />
+    </span>
+    This page has no JavaScript.
+</div>

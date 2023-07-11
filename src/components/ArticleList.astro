@@ -8,6 +8,7 @@ export interface Props {
     type?: "tag" | "category";
     name?: string;
     simple?: boolean;
+    year?: boolean;
     title?: string;
     bar?: {
         index?: number;
@@ -21,6 +22,8 @@ let posts = postsWorkaround.sort(
 
 const { type, name, simple, title, bar } = Astro.props;
 
+const year = Astro.props.year !== false;
+
 if (type && name) {
     posts = posts.filter((post) => {
         if (type === "tag") {
@@ -31,6 +34,17 @@ if (type && name) {
         return false;
     });
 }
+
+let prev_year = 0;
+let _posts = posts.map((post) => {
+    const year = post.data.date.getFullYear();
+    let isAnotherYear = year !== prev_year;
+    if (isAnotherYear) prev_year = year;
+    return {
+        ...post,
+        isAnotherYear,
+    };
+});
 ---
 
 <PageWithSidebar title="新世界的大门" bar={bar}>
@@ -38,14 +52,19 @@ if (type && name) {
     <section class="contents">
         <ul>
             {
-                posts.map((post) => (
-                    <li>
-                        {simple ? (
-                            <SimpleArticleCard post={post} />
-                        ) : (
-                            <ArticleCard post={post} />
+                _posts.map((post) => (
+                    <>
+                        {year && post.isAnotherYear && (
+                            <h2>{post.data.date.getFullYear()}</h2>
                         )}
-                    </li>
+                        <li>
+                            {simple ? (
+                                <SimpleArticleCard post={post} />
+                            ) : (
+                                <ArticleCard post={post} />
+                            )}
+                        </li>
+                    </>
                 ))
             }
         </ul>
@@ -57,6 +76,9 @@ if (type && name) {
     h1 {
         margin: 1rem 0;
         font-size: 1.5rem;
+    }
+    h2 {
+        margin: 1rem 1rem 0.5rem 0.2rem;
     }
     ul {
         list-style-type: none;
