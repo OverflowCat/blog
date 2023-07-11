@@ -1,0 +1,20 @@
+---
+export interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+import type { CollectionEntry } from "astro:content";
+import { formatPostDate } from "../scripts/date";
+import { Icon } from "astro-icon";
+import { getIconName } from "@/scripts/icons";
+import "@/styles/title.less";
+
+const { post } = Astro.props;
+const icon = getIconName(post);
+---
+
+<code class="title-date">{formatPostDate(post.data.date)}</code>
+<span class="title-icon">
+    {icon && <Icon name={icon} />}
+</span>
+<a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>

@@ -1,10 +1,7 @@
 ---
-import Page from "@templates/zh/Page.astro";
-import Sidebar from "../components/Sidebar/Sidebar.astro";
-import Paper from "@/components/Paper.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
 import { posts as postsWorkaround } from "@/scripts/collection-workaround";
-import "modern-css-reset";
+import PageWithSidebar from "@/templates/PageWithSidebar.astro";
 
 const posts = postsWorkaround.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -13,25 +10,20 @@ const posts = postsWorkaround.sort(
 // console.log(posts);
 ---
 
-<Page title="新世界的大门" bar={{ index: 0 }}>
-  <main>
-    <Sidebar />
-    <Paper>
-      <section class="contents">
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <ArticleCard post={post} />
-              </li>
-            ))
-          }
-        </ul>
-        <div id="end-info">页面已经到底啦！</div>
-      </section>
-    </Paper>
-  </main>
-</Page>
+<PageWithSidebar title="新世界的大门" bar={{ index: 0 }}>
+  <section class="contents">
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <ArticleCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+    <div id="end-info">页面已经到底啦！</div>
+  </section>
+</PageWithSidebar>
 
 <style>
   ul {
@@ -44,49 +36,10 @@ const posts = postsWorkaround.sort(
     border-bottom: 1px solid lightgray;
     padding: 0.5rem 0;
   }
-
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
-  .contents {
-    max-width: 850px;
-    width: 100%;
-    padding: 0 20px;
-  }
   #end-info {
     text-align: center;
     color: gray;
     font-size: 0.8rem;
     margin: 1rem;
-  }
-</style>
-
-<style is:global>
-  @media (max-width: 900px) {
-    main {
-      flex-direction: column-reverse;
-    }
-    aside#sidebar {
-      max-width: 700px !important;
-    }
-    aside#sidebar .paper {
-      max-width: 700px !important;
-    }
-  }
-  @media (min-width: 900px) {
-    .contents {
-      min-width: 700px;
-    }
-    main {
-      flex-direction: row;
-    }
-    aside#sidebar {
-      align-self: flex-start;
-      position: sticky;
-      top: 50px;
-    }
   }
 </style>
