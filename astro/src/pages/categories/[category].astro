@@ -13,4 +13,9 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 ---
 
-<Archives type="category" name={category} />
+<Archives
+    type="category"
+    name={category}
+    simple={false}
+    title={`标签：${category}`}
+/>

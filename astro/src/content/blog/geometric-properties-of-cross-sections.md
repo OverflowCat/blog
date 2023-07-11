@@ -5,6 +5,7 @@ tags: 笔记
 categories: 材料力学
 mathjax: true
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 ## 静距和形心

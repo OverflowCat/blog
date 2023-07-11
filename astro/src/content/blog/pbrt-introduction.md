@@ -5,6 +5,7 @@ tags: 光线追踪
 categories: 读书笔记
 mathjax: true
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 ![](https://user-images.githubusercontent.com/20166026/212490756-206ba1cd-4ef7-4a25-90fe-502279a37ddf.png)

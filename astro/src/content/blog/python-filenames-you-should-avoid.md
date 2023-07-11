@@ -5,6 +5,7 @@ date: 2023-01-16 14:58:08
 categories: Python
 icon: "teenyicons:python-outline"
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 在新 VPS 上运行 Python 程序的时候出现了问题：[`pdm`](https://pdm.fming.dev/latest/) 无法正常 install 或者设置 config，`poetry` 可以但是无法正常运行。两者都在获取运行环境的时候发生了同样的错误。以下是一个最小复现例子：

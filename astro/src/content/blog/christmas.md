@@ -5,6 +5,7 @@ description: 应该是自从那年，能在公共场合看到圣诞树已是一�
 tags: 碎碎念
 categories: 题隙碎笔
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 今天是圣诞节。学校门口在一周前就摆了个圣诞树🎄。每层内还另有一棵，挂着所有人写的「新年愿望」。

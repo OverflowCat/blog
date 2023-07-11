@@ -6,6 +6,7 @@ tags: 力扣每日挑战
 categories: 算法题解
 mathjax: true
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 ## 题目

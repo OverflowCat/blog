@@ -8,6 +8,7 @@ tags: 备忘
 mathjax: true
 # icon: microscope-lens
 layout: "@/layouts/Default.astro"
+noscript: false
 ---
 
 ## 光学系统

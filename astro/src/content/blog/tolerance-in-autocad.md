@@ -7,6 +7,7 @@ tags:
 - 公差
 categories: 制图
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 在 AutoCAD 2014 中，有两种标注**公差**的方式。
