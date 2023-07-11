@@ -1,5 +1,6 @@
 ---
 title: 人眼光学系统
+description: 眼睛作为一个光学系统
 photo: https://user-images.githubusercontent.com/20166026/244607878-b6545089-1788-4adc-bcde-c2bdaca67b1b.jpg
 date: 2023-06-09 13:04:03
 categories: 光学

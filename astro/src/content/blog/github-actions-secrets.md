@@ -1,5 +1,6 @@
 ---
 title: 如何方便地查看 Github Actions secrets
+description: 在 GitHub 仓库 Settings 页面中设置的 Actions secrets and variables 是只能重新填写的。同时，在 Action 执行的 log 里所有 secrets 都会被星号打码。不过，可以通过创建一个 Action 来方便地查看我们设置的 token。
 date: 2023-02-02 20:38:42
 tags: GitHub
 layout: "@/layouts/Default.astro"

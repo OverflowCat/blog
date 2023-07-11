@@ -37,8 +37,8 @@ article {
 
   & img {
     max-height: 600px;
-    max-width: 800px;
-    height: augo;
+    max-width: min(800px, 100%);
+    height: auto;
     display: block;
     margin: auto;
   }
@@ -97,6 +97,31 @@ article {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
+  }
+
+  & figure {
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    font-style: italic;
+  }
+
+  & figure img,
+  & figure video {
+    margin: 0 auto 1em;
+    border-radius: 3px;
+  }
+
+  & blockquote {
+    border-left: 4px solid #ddd;
+    color: var(--blockquote-color);
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  & blockquote cite::before {
+    content: "-";
+    padding: 0 5px;
   }
 }
 

@@ -2,6 +2,7 @@
 title: 用 Python 爬取作业答案
 date: 2020-01-05 22:58:27
 categories: Python
+icon: "teenyicons:python-outline"
 layout: "@/layouts/Default.astro"
 ---
 
