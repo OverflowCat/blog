@@ -9,7 +9,7 @@ export interface Props {
     name?: string;
     simple?: boolean;
     year?: boolean;
-    title?: string;
+    title: string;
     bar?: {
         index?: number;
         transparent?: boolean;
@@ -47,8 +47,8 @@ let _posts = posts.map((post) => {
 });
 ---
 
-<PageWithSidebar title="新世界的大门" bar={bar}>
-    {title && <h1>{title}</h1>}
+<PageWithSidebar title={title} bar={bar}>
+    {title && title !== "归档" && <h1>{title}</h1>}
     <section class="contents">
         <ul>
             {

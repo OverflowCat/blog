@@ -5,7 +5,6 @@ import Archives from "../../components/ArticleList.astro";
 export async function getStaticPaths() {
     const tags = Array.from(getTagsInfo()).map(([tag, _count]) => tag);
     const res = tags.map((tag) => ({ params: { tag } }));
-    console.log(res);
     return res;
     // [
     // { params: { /* required */ }, props: { /* optional */ } },

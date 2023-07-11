@@ -11,7 +11,7 @@ export interface Props {
 
 let { title, bar, noscript, og } = Astro.props;
 
-title = title + " | 新世界的大门";
+title = title ? title + " | 新世界的大门" : "新世界的大门";
 
 if (!og) {
   og = {

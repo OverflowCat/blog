@@ -52,8 +52,7 @@ const prettyCodeOptions = {
     }
   },
   onVisitHighlightedLine(node: PrettyCodeNode) {
-    console.log(node);
-    //node.properties.className?.push("highlighted");
+    // node.properties.className?.push("highlighted");
     if (node.properties.className === undefined) node.properties.className = [];
     node.properties.className.push("highlighted");
   },
