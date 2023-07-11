@@ -7,6 +7,7 @@ import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
 import { Icon } from "astro-icon";
 import { getIconName } from "@/scripts/icons";
+import "@/styles/title.less";
 
 const { post } = Astro.props;
 ---
@@ -31,27 +32,6 @@ const { post } = Astro.props;
 </table>
 
 <style>
-    .title-icon {
-        display: inline-block;
-        width: 1.2em;
-        height: 1.2em;
-        vertical-align: middle;
-    }
-    .title {
-        font-size: 115%;
-        color: #2f2f2f;
-        text-decoration: none;
-        font-weight: 600;
-        margin: 2px 4px;
-    }
-    .title:visited {
-        color: #383838;
-    }
-    .title:hover,
-    .title:focus,
-    .title:active {
-        color: #090909;
-    }
     .continue {
         font-size: 90%;
         margin: 0 4px;

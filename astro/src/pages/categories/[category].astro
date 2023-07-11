@@ -1,0 +1,16 @@
+---
+import { getCatsInfo } from "@/scripts/tags";
+import Archives from "../archives.astro";
+
+export async function getStaticPaths() {
+    const categories = Array.from(getCatsInfo()).map(
+        ([category, _count]) => category
+    );
+    const res = categories.map((category) => ({ params: { category } }));
+    return res;
+}
+
+const { category } = Astro.params;
+---
+
+<Archives type="category" name={category} />
