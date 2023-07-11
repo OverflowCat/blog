@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     }));
 }
 type Props = CollectionEntry<"blog">;
-
+import type { PathToSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
 const { Content } = await post.render();
 ---
@@ -19,6 +19,12 @@ const { Content } = await post.render();
     title={post.data.title}
     bar={{ transparent: true }}
     noscript={post.data.noscript}
+    og={{
+        title: post.data.title,
+        description: post.data.description ?? "新世界的大门",
+        image: post.data.photo as PathToSupportedImage,
+        url: `https://blog.xinshijiededa.men/${post.slug}`,
+    }}
 >
     <Content />
 </Page>

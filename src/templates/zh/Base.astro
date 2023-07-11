@@ -1,9 +1,12 @@
 ---
 export interface Props {
   title: string;
+  metas?: {
+    [key: string]: string;
+  };
 }
 
-const { title } = Astro.props;
+const { title, metas } = Astro.props;
 
 // import "modern-css-reset";
 import "@/styles/han.less";
@@ -15,6 +18,12 @@ import "@/styles/han.less";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    {
+      metas &&
+        Object.entries(metas).map(([key, value]) => (
+          <meta name={key} content={value} />
+        ))
+    }
     <title>{title}</title>
     <link
       rel="icon"

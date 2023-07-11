@@ -13,7 +13,7 @@ noscript: true
 
 通过二维码扫描出来的结果是上一期的答案。网页的地址长这样：
 
-![url.png](https://i.loli.net/2020/01/05/REI1PtKLQ78iWpC.png)
+![](./_url.png)
 
 简直不要太直白。
 
