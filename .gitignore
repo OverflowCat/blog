@@ -1,16 +1,21 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
+# build output
+/dist/
+
+/.astro/
+
+# dependencies
 node_modules/
-.deploy*/
-_multiconfig.yml
-themes
-*.svg
-pnpm-lock.yaml
-public/*
-dist/*
-source/2022/apple-music.html
-source/2022/apple-music.md
-source/_drafts/*.md
-source/playground/index.md
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store

@@ -1,1 +1,0 @@
-<a rel="me" style="display: none;" href="https://mastodon.social/@overflowcat">Mastodon</a>
