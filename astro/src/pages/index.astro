@@ -1,12 +1,10 @@
 ---
 import Page from "@templates/zh/Page.astro";
-import Bar from "@templates/zh/Bar.astro";
 import Sidebar from "../components/Sidebar/Sidebar.astro";
-
-import type { CollectionEntry } from "astro:content";
 import Paper from "@/components/Paper.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
 import { posts as postsWorkaround } from "@/scripts/collection-workaround";
+import "modern-css-reset";
 
 const posts = postsWorkaround.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()

@@ -1,7 +1,26 @@
 import rss from "@astrojs/rss";
 import { posts } from "@/scripts/collection-workaround";
+import MarkdownIt from "markdown-it";
+const md = new MarkdownIt();
 
-export function get(context: any) {
+export async function get(context: any) {
+  let items = await Promise.all(
+    posts.map(async (post) => {
+      return {
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: post.data.description,
+        // customData: post.data.customData,
+        // Compute RSS link from post `slug`
+        // This example assumes all posts are rendered as `/blog/[slug]` routes
+        link: `/${post.slug}/`,
+        content: md.render(post.body),
+      };
+    })
+  );
+  items = items.sort((a, b) => {
+    return b.pubDate.valueOf() - a.pubDate.valueOf();
+  });
   return rss({
     // `<title>` field in output xml
     title: "新世界的大门",
@@ -12,16 +31,7 @@ export function get(context: any) {
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.desc,
-      // customData: post.data.customData,
-      // Compute RSS link from post `slug`
-      // This example assumes all posts are rendered as `/blog/[slug]` routes
-      link: `/${post.slug}/`,
-      content: post.body,
-    })),
+    items: items,
     // (optional) inject custom xml
     customData: `<language>zh-cn</language>`,
   });

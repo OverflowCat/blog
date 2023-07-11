@@ -5,7 +5,7 @@ export interface Props {
 
 const { title } = Astro.props;
 
-import "modern-css-reset";
+// import "modern-css-reset";
 ---
 
 <!DOCTYPE html>
@@ -30,22 +30,23 @@ import "modern-css-reset";
 <style is:global>
   :root {
     --body-bg-color: #eee;
-    --accent-color: rgb(155, 61, 149);
+    --accent-color: rgb(0, 0, 0);
+  }
+
+  body {
+    margin: 0px;
+    padding: 0px;
   }
 
   h1 {
     text-align: center;
   }
 
-  blockquote {
-    border-left: 4px solid #ddd;
-    color: var(--blockquote-color);
-    margin: 0;
-    padding: 0 15px;
-  }
-
-  blockquote cite::before {
-    content: "-";
-    padding: 0 5px;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
   }
 </style>

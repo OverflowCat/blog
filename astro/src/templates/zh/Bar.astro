@@ -13,7 +13,9 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-const { index, transparent } = Astro.props;
+let { index, transparent } = Astro.props;
+
+transparent = true;
 ---
 
 <div class:list={["center", {bar: !transparent}]} id="logo">
@@ -56,7 +58,8 @@ const { index, transparent } = Astro.props;
     place-items: center center;
   }
   #logo {
-    padding: 4px;
+    padding: 2px;
+    margin: 1.5rem 0 1.5rem 0;
   }
   #logo.bar {
     background: rgb(255, 255, 255);
@@ -72,12 +75,13 @@ const { index, transparent } = Astro.props;
   }
   ol {
     font-size: 18px;
+    margin: 0.65rem 0 0.65rem 0;
   }
   li {
     display: inline-block;
     text-align: center;
-    margin-left: 0.72em;
-    margin-right: 0.72em;
+    margin-left: 0.64em;
+    margin-right: 0.64em;
     font-weight: 700;
   }
   a {

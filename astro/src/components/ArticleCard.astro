@@ -11,18 +11,24 @@ import { getIconName } from "@/scripts/icons";
 const { post } = Astro.props;
 ---
 
-<div>
-    <span>
-        <code>{formatPostDate(post.data.date)}</code>
-    </span>
-    <span class="title-icon">
-        {getIconName(post) && <Icon name={getIconName(post)} />}
-    </span>
-    <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
-</div>
-<blockquote>
-    {post.data.description}
-</blockquote>
+<table>
+    <tr>
+        <td class="content">
+            <div>
+                <span class="title-icon">
+                    {<Icon name={getIconName(post) || "ph:hash"} />}
+                </span><a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
+                {!post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}
+            </div>
+            <blockquote>
+                {post.data.description}
+                {post.data.description && <a class="continue" href={`/${post.slug}/`}>阅读更多 →</a>}
+                {post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}
+            </blockquote>
+        </td>
+        {post.data.photo && <td class="title-img"><img class="title-img" src={post.data.photo} alt={post.data.title} /></td>}
+    </tr>
+</table>
 
 <style>
     .title-icon {
@@ -35,6 +41,8 @@ const { post } = Astro.props;
         font-size: 115%;
         color: #2f2f2f;
         text-decoration: none;
+        font-weight: 600;
+        margin: 2px 4px;
     }
     .title:visited {
         color: #383838;
@@ -44,7 +52,45 @@ const { post } = Astro.props;
     .title:active {
         color: #090909;
     }
+    .continue {
+        font-size: 90%;
+        margin: 0 4px;
+        color: #6d6d6d;
+        user-select: none;
+        text-decoration: none;
+    }
     blockquote {
-        margin: 6px 1rem;
+        margin: 6px 0 6px 8px;
+        color: #383838;
+        border-left: 4px solid #ddd;
+        color: var(--blockquote-color);
+        padding: 0px 0px 0px 11px;
+    }
+    .title-date {
+        float: right;
+        bottom: 2px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 0px;
+    }
+    td.content {
+        vertical-align: top;
+    }
+    td.title-img {
+        width: 175px;
+    }
+    img.title-img {
+        margin-left: 10px;
+        height: auto;
+        border-radius: 4px;
+    }
+    @media (max-width: 650px) {
+        td.title-img {
+            display: none;
+        }
     }
 </style>

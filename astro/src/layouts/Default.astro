@@ -8,7 +8,7 @@ import "@/styles/article.less";
 ---
 
 <Paper padding={true}>
-  {cover && <img src={cover} alt={frontmatter.title} />}
+  {cover && <img class="cover" src={cover} alt={frontmatter.title} />}
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <article>
     <slot />
@@ -19,5 +19,11 @@ import "@/styles/article.less";
   .paper {
     max-width: 1024px;
     margin: auto;
+  }
+  img.cover {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 4px;
   }
 </style>

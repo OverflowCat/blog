@@ -1,12 +1,15 @@
 ---
 import Page from "../zh/Page.astro";
 const { title, noscript, bar_index } = Astro.props.frontmatter;
+import Paper from "@/components/Paper.astro";
 ---
 
-<Page title={title} noscript={noscript} bar_index={bar_index}>
-  <article class="paper" lang="en">
-    <slot />
-  </article>
+<Page title={title} noscript={noscript} bar={{ index: bar_index }}>
+  <Paper padding>
+    <article lang="en">
+      <slot />
+    </article>
+  </Paper>
 </Page>
 
 <style>
@@ -19,16 +22,6 @@ const { title, noscript, bar_index } = Astro.props.frontmatter;
     padding-left: 32px;
     padding-right: 28px;
     line-height: 200%;
-  }
-  .paper {
-    background: var(--content-bg-color);
-    border-radius: initial;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12),
-      0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-      0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-    box-sizing: border-box;
-    /* color: var(--text-color); */
-    max-height: calc(100vh - 24px);
   }
   footer {
     margin-top: 32px;
