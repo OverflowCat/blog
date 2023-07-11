@@ -10,6 +10,7 @@ categories:
 - Selected
 # icon: "tabler:building-bridge"
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 > 2022 年，我所用的语言被评为全球最烂语言。为什么呢？垃圾框架层出不穷，运行环境千差万别，类型错误数量全网第一。

@@ -4,6 +4,7 @@ date: 2022-12-29 21:18:34
 tags: Tauri
 categories: 页面仔的自我修养
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 ![效果](https://user-images.githubusercontent.com/20166026/209962263-969d24a5-eef3-49d8-b446-98b581bc4296.png)

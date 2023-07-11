@@ -30,12 +30,12 @@
 article {
   font-family: "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
   line-height: 200%;
   margin: 18px;
 
-  & img {
+  img {
     max-height: 600px;
     max-width: min(800px, 100%);
     height: auto;
@@ -43,7 +43,7 @@ article {
     margin: auto;
   }
 
-  & a {
+  a {
     border-bottom: 1px solid #999;
     color: var(--link-color);
     cursor: pointer;
@@ -57,7 +57,7 @@ article {
     }
   }
 
-  & hr {
+  hr {
     background-image: repeating-linear-gradient(-45deg,
         #ddd,
         #ddd 4px,
@@ -68,7 +68,7 @@ article {
     margin: 40px 0;
   }
 
-  & table {
+  table {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 0.875em;
@@ -76,12 +76,12 @@ article {
     width: 100%;
   }
 
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei",
       sans-serif;
     font-weight: bold;
@@ -123,43 +123,49 @@ article {
     content: "-";
     padding: 0 5px;
   }
-}
 
+  dt {
+    font-weight: bold;
+  }
 
-dt {
-  font-weight: bold;
-}
+  dd {
+    margin: 0;
+    padding: 0;
+  }
 
-dd {
-  margin: 0;
-  padding: 0;
-}
+  tbody tr:nth-of-type(odd) {
+    background: var(--table-row-odd-bg-color);
+  }
 
-tbody tr:nth-of-type(odd) {
-  background: var(--table-row-odd-bg-color);
-}
+  tbody tr:hover {
+    background: var(--table-row-hover-bg-color);
+  }
 
-tbody tr:hover {
-  background: var(--table-row-hover-bg-color);
-}
+  caption,
+  th,
+  td {
+    padding: 8px;
+  }
 
-caption,
-th,
-td {
-  padding: 8px;
-}
+  th,
+  td {
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #ddd;
+  }
 
-th,
-td {
-  border: 1px solid #ddd;
-  border-bottom: 3px solid #ddd;
-}
+  th {
+    font-weight: 700;
+    padding-bottom: 10px;
+  }
 
-th {
-  font-weight: 700;
-  padding-bottom: 10px;
-}
+  td {
+    border-bottom-width: 1px;
+  }
 
-td {
-  border-bottom-width: 1px;
+  .dead {
+    border: 1.5px solid;
+    filter: grayscale(1) contrast(999);
+    min-height: 1em;
+    padding: 1px 1px;
+  }
 }

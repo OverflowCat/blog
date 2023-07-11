@@ -9,6 +9,7 @@ categories:
 - 咬文嚼字
 - 译文
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 > 本文译自德国驻美大使馆 2011 年 10 月 28 日的文章：[_Word of the Week: Eierlegende Wollmilchsau_](https://germanyinusa.com/2011/10/28/word-of-the-week-eierlegende-wollmilchsau/)。封面图片：[Eierlegende Wollmilchsau, German for "egg-laying wool-milk-sow"](https://de.wikipedia.org/wiki/Datei:Wollmilchsau.png) by [de:User:Pixelrausch](https://de.wikipedia.org/wiki/User:Pixelrausch), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0)

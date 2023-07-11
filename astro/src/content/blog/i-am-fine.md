@@ -8,6 +8,7 @@ tags:
 categories: 咬文嚼字
 cover: //telegra.ph/file/00734577b158cb8de66da.jpg
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 <u>胡桃沢 · サタニキア · マクドウェル</u>在频道「心惊报」上 [投稿](https://t.me/c/1501598444/166331)：

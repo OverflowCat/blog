@@ -9,6 +9,7 @@ categories:
 - Selected
 icon: "clarity:note-line"
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 北京高考英语、生物和语文注重考查逻辑。

@@ -15,7 +15,7 @@ export interface Props {
 const { title, bar } = Astro.props;
 ---
 
-<Page title={title} bar={bar}>
+<Page title={title} bar={bar} noscript>
     <main>
         <Sidebar />
         <Paper>
@@ -63,6 +63,9 @@ const { title, bar } = Astro.props;
             align-self: flex-start;
             position: sticky;
             top: 50px;
+        }
+        .paper {
+            align-self: start;
         }
     }
 </style>

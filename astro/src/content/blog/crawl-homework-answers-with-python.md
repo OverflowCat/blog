@@ -4,6 +4,7 @@ date: 2020-01-05 22:58:27
 categories: Python
 icon: "teenyicons:python-outline"
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 上高中以来，学校一直订了一份「报纸」当作业用，叫《学英语》。最近做题时发现报纸与时俱进，多了几个二维码，分别是微信公众号还有「**扫一扫　查答案**」。

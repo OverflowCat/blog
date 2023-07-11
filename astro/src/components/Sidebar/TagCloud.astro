@@ -28,19 +28,22 @@ function generateRandomColor() {
     }
 </div>
 
-<style>
+<style lang="less">
     .tag-cloud {
         /* dont stretch aside */
         max-width: 100%;
         display: flex;
         flex-wrap: wrap;
-    }
-    .tag-cloud a {
-        margin: 0.1rem;
-        padding: 0.2rem 0.2rem;
-        border-radius: 0.5rem;
-        background-color: #f4f4f4;
-        color: #333;
-        text-decoration: none;
+        a {
+            margin: 0.1rem;
+            padding: 0.2rem 0.2rem;
+            border-radius: 0.5rem;
+            background-color: #f4f4f4;
+            color: #333;
+            text-decoration: none;
+            &:hover {
+                background-color: #e7e7e7;
+            }
+        }
     }
 </style>

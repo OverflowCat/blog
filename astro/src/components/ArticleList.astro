@@ -1,0 +1,76 @@
+---
+import SimpleArticleCard from "@/components/SimpleArticleCard.astro";
+import { posts as postsWorkaround } from "@/scripts/collection-workaround";
+import PageWithSidebar from "@/templates/PageWithSidebar.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
+
+export interface Props {
+    type?: "tag" | "category";
+    name?: string;
+    simple?: boolean;
+    title?: string;
+    bar?: {
+        index?: number;
+        transparent?: boolean;
+    };
+}
+
+let posts = postsWorkaround.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const { type, name, simple, title, bar } = Astro.props;
+
+if (type && name) {
+    posts = posts.filter((post) => {
+        if (type === "tag") {
+            return post.data.tags?.includes(name);
+        } else if (type === "category") {
+            return post.data.categories?.includes(name);
+        }
+        return false;
+    });
+}
+---
+
+<PageWithSidebar title="新世界的大门" bar={bar}>
+    {title && <h1>{title}</h1>}
+    <section class="contents">
+        <ul>
+            {
+                posts.map((post) => (
+                    <li>
+                        {simple ? (
+                            <SimpleArticleCard post={post} />
+                        ) : (
+                            <ArticleCard post={post} />
+                        )}
+                    </li>
+                ))
+            }
+        </ul>
+        <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
+    </section>
+</PageWithSidebar>
+
+<style>
+    h1 {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+    }
+    ul {
+        list-style-type: none;
+        padding: unset;
+    }
+    li {
+        margin: 0.5rem 0;
+        border-bottom: 1px solid lightgray;
+        padding: 0.5rem 0;
+    }
+    #end-info {
+        text-align: center;
+        color: gray;
+        font-size: 0.8rem;
+        margin: 1rem;
+    }
+</style>

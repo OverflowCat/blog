@@ -5,6 +5,7 @@ description: 这家自习室主打暗室自习，突出一个「暗」字。一�
 tags: 碎碎念
 categories: 题隙碎笔
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 昨天早上偶然听到一个人谈论他在付费自习室的体验。

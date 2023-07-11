@@ -1,12 +1,12 @@
 ---
 import { getTagsInfo } from "@/scripts/tags";
-import Archives from "../archives.astro";
+import Archives from "../../components/ArticleList.astro";
 
 export async function getStaticPaths() {
     const tags = Array.from(getTagsInfo()).map(([tag, _count]) => tag);
     const res = tags.map((tag) => ({ params: { tag } }));
     console.log(res);
-    return res
+    return res;
     // [
     // { params: { /* required */ }, props: { /* optional */ } },
     // { params: { ... } },
@@ -18,4 +18,4 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 ---
 
-<Archives type="tag" name={tag} />
+<Archives type="tag" name={tag} simple={false} title={`标签：${tag}`} />

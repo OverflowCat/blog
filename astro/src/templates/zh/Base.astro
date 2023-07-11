@@ -6,6 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 // import "modern-css-reset";
+import "@/styles/han.less";
 ---
 
 <!DOCTYPE html>
@@ -13,9 +14,17 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
@@ -48,5 +57,10 @@ const { title } = Astro.props;
   h5,
   h6 {
     text-align: left;
+  }
+
+  ::selection {
+    background: rgba(37, 37, 37, 0.85);
+    color: #fff;
   }
 </style>

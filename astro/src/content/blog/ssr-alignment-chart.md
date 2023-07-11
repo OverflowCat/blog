@@ -6,6 +6,7 @@ description: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养
 layout: "@/layouts/Default.astro"
+noscript: true
 ---
 
 <blockquote><i class="fa-solid fa-circle-info"></i> 这篇文章显然是经服务端渲染而呈现在你面前的。</blockquote>

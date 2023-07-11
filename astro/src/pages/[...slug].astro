@@ -15,6 +15,10 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Page title={post.data.title} bar={{ transparent: true }}>
+<Page
+    title={post.data.title}
+    bar={{ transparent: true }}
+    noscript={post.data.noscript}
+>
     <Content />
 </Page>
