@@ -45,7 +45,7 @@ noscript: true
 
 ### Flag
 
-```
+```js
 BUAACTF{W3lc0m3_t0_BUAACTF2023_3NjoY_l-l@ck1ng!}
 ```
 
@@ -119,7 +119,7 @@ case 53:
 
 ### Flag
 
-```jsx
+```js
 BUAACTF{HT5_mota_1s_s0_fun!}
 ```
 
@@ -196,7 +196,7 @@ print("Flag:", decrypted)
 
 ### Flag
 
-```python
+```js
 BUAACTF{BloCk_cIphER_14_Soooooo_EaSY}
 ```
 
@@ -344,7 +344,7 @@ print(r.text.replace("\\n", "\n").replace("\\", ''))
 
 ### Flag
 
-```
+```rs
 flag{RUSt_1S_S0_1NTere4T1NG}
 ```
 
@@ -384,7 +384,7 @@ flag{RUSt_1S_S0_1NTere4T1NG}
 
 ![](./c4Tch3r.png)
 
-手动 revert 后，发现代码中并没有 flag。仔细查看，发现有多张图片没有加载。meta 标签中有两张 Open Graph 预览图，但不是 flag，正文中的才是。
+手动 revert 后，发现代码中并没有 flag。仔细查看，发现有多张图片没有加载。`meta{:html}` 标签中有两张 Open Graph 预览图，但不是 flag，正文中的才是。
 
 ![](./revert.png)
 
@@ -394,7 +394,7 @@ flag{RUSt_1S_S0_1NTere4T1NG}
 
 ### Flag
 
-```
+```js
 BUAACTF{Scr33nsh0T_0N_s0c1@L_M3di4_C4N_I3ak_y0ur_pr1V4cy!}
 ```
 
@@ -410,7 +410,7 @@ BUAACTF{Scr33nsh0T_0N_s0c1@L_M3di4_C4N_I3ak_y0ur_pr1V4cy!}
 
 ### Flag
 
-```
+```js
 BUAACTF{GoOd_Bye~may_1he_f1ag_Be_wi1h_U}
 ```
 
