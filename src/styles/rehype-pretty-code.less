@@ -8,6 +8,7 @@ pre>code {
   background-color: rgba(200, 200, 255, 0.1);
   border-left-color: #60a5fa;
   border-left-width: 3px;
+  margin-left: -3px;
   border-left-style: solid;
 }
 
@@ -31,6 +32,12 @@ div[data-rehype-pretty-code-fragment]:has([data-rehype-pretty-code-title]) {
   div[data-rehype-pretty-code-fragment]:has([data-rehype-pretty-code-title]) {
     padding-top: 2.5rem;
   }
+}
+
+[data-highlighted-chars] {
+  border-radius: 0.2rem;
+  background-color: #52525b12;
+  box-shadow: 0 0 0 2px #52525b2f;
 }
 
 div[data-rehype-pretty-code-title] {

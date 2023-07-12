@@ -6,7 +6,10 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<head><meta charset="utf-8" /></head>
+<head>
+  <meta charset="utf-8" />
+  <meta title={title} />
+</head>
 <slot />
 <style is:global>
   :root {
@@ -19,7 +22,7 @@ const { title } = Astro.props;
     );
   }
   main {
-    font-family: "Noto Sans CJK SC", system-ui, sans-serif;
+    font-family: "Noto Sans SC", "Noto Sans CJK SC", system-ui, sans-serif;
   }
   code,
   .monospace {

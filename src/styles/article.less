@@ -28,7 +28,7 @@
 }
 
 article {
-  font-family: "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
+  font-family: "Noto Sans SC", "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
   font-size: 18px;
   text-align: left;
@@ -54,6 +54,11 @@ article {
     &:hover {
       border-bottom-color: var(--link-hover-color);
       color: var(--link-hover-color);
+    }
+
+    &[target="_blank"]::after {
+      content: ' ↗';
+      font-family: 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', '.LucidaGrandeUI-Bold', 'Lucida Grande', 'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial', 'Menlo', 'Apple Color Emoji', 'AppleColorEmoji';
     }
   }
 
@@ -82,8 +87,9 @@ article {
   h4,
   h5,
   h6 {
-    font-family: "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei",
-      sans-serif;
+    font-family: "Noto Serif SC", "Noto Serif CJK SC",
+      "华文中宋", "STZhongsong", "STSong", "Songti SC", "宋体", "SimSun",
+      "PingFang SC", "Microsoft YaHei", sans-serif;
     font-weight: bold;
     line-height: 1.5;
     margin: 30px 0 15px;

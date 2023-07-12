@@ -7,6 +7,7 @@ tags:
 - 蓝桥杯
 categories:
 - 页面仔的自我修养
+- 题解
 - Selected
 # icon: "tabler:building-bridge"
 layout: "@/layouts/Default.astro"

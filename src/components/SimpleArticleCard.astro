@@ -14,7 +14,7 @@ const icon = getIconName(post);
 ---
 
 <code class="title-date">{formatPostDate(post.data.date)}</code>
-<span class="title-icon">
+<span class="icon title-icon">
     {icon && <Icon name={icon} />}
 </span>
 <a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>

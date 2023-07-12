@@ -16,6 +16,8 @@ import compress from "astro-compress";
 import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
+import rehypeExternalLinks from "rehype-external-links";
+
 import remarkFigureCaption from "@microflash/remark-figure-caption";
 
 type PrettyCodeNodePositionPoint = {
@@ -78,7 +80,17 @@ export default defineConfig({
     },
     remarkPlugins: [remarkMath, remarkFigureCaption],
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions], rehypeKatex],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          rel: [],
+          target: "_blank",
+        },
+      ],
+      [rehypePrettyCode, prettyCodeOptions],
+      rehypeKatex,
+    ],
   },
   integrations: [
     svelte(),

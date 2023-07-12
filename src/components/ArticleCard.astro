@@ -8,6 +8,7 @@ import { formatPostDate } from "../scripts/date";
 import { Icon } from "astro-icon";
 import { getIconName } from "@/scripts/icons";
 import "@/styles/title.less";
+import "@/styles/icon.less";
 
 const { post } = Astro.props;
 ---
@@ -16,7 +17,7 @@ const { post } = Astro.props;
     <tr>
         <td class="content">
             <div>
-                <span class="title-icon">
+                <span class="icon title-icon">
                     {<Icon name={getIconName(post) || "ph:hash"} />}
                 </span><a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
                 {!post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}

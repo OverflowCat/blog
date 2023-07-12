@@ -1,6 +1,8 @@
 ---
 title: 'Re: 从零开始的部落格生活'
 description: 你好，世界！
+categories:
+  - Changelog
 date: 2019-07-31 17:15:30
 icon: "icon-park:go-start"
 layout: "@/layouts/Default.astro"

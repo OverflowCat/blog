@@ -1,7 +1,6 @@
 ---
 title: 我的浏览器地址栏中的 A – Z（2022）
 date: 2023-01-13 15:24:41
-tags: 冲浪
 layout: "@/layouts/Default.astro"
 noscript: true
 ---
