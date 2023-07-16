@@ -35,6 +35,9 @@ dependencies:
   astro-icon:
     specifier: ^0.8.1
     version: 0.8.1
+  bilibili-bv-av-convert:
+    specifier: ^1.0.0
+    version: 1.0.0
   less:
     specifier: ^4.1.3
     version: 4.1.3
@@ -1354,6 +1357,10 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: false
+
+  /bilibili-bv-av-convert@1.0.0:
+    resolution: {integrity: sha512-0jEIVAqLE5xpr2p7kBtGt3koxDZXbBbc5DBfqj+Dl4QljdUaRNZj5lOQOLbvarbdYMuZGpdXF8PL6oWnC9ndmw==}
     dev: false
 
   /binary-extensions@2.2.0:
