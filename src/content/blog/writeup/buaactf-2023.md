@@ -63,7 +63,7 @@ BUAACTF{W3lc0m3_t0_BUAACTF2023_3NjoY_l-l@ck1ng!}
 
 ### 解答
 
-在 events.js 中用 Ctrl + F 搜索 `段` 可以找到分成 3 段的 flag。
+在 events.js 中用 <kbd>Ctrl</kbd> + <kbd>F</kbd> 搜索 `段` 可以找到分成 3 段的 flag。
 
 ![](./mota.png)
 

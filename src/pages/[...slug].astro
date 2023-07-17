@@ -1,34 +1,35 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Page from "@/templates/zh/Page.astro";
+import { posts } from "@/scripts/collection-workaround";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: post,
-    }));
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
 }
+
 type Props = CollectionEntry<"blog">;
 import type { PathToSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
 const { Content } = await post.render();
 let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
-    title = `（译）${title}`;
+  title = `（译）${title}`;
 }
 ---
 
 <Page
-    title={title}
-    bar={{ transparent: true }}
-    noscript={post.data.noscript}
-    og={{
-        title: post.data.title,
-        description: post.data.description ?? "新世界的大门",
-        image: post.data.photo as PathToSupportedImage,
-        url: `https://blog.xinshijiededa.men/${post.slug}`,
-    }}
+  title={title}
+  bar={{ transparent: true }}
+  noscript={post.data.noscript}
+  og={{
+    title: post.data.title,
+    description: post.data.description ?? "新世界的大门",
+    image: post.data.photo as PathToSupportedImage,
+    url: `https://blog.xinshijiededa.men/${post.slug}`,
+  }}
 >
-    <Content />
+  <Content />
 </Page>

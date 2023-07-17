@@ -1,8 +1,19 @@
 ---
 import Paper from "@/components/Paper.astro";
+import { Icon } from "astro-icon";
+import "@/styles/icon.less";
 
 const { frontmatter } = Astro.props;
 const cover = frontmatter.photo;
+
+let cats = frontmatter.categories as string | string[] | undefined;
+if (typeof cats === "string") {
+  cats = [cats];
+}
+let tags = frontmatter.tags as string | string[] | undefined;
+if (typeof tags === "string") {
+  tags = [tags];
+}
 
 import "@/styles/article.less";
 ---
@@ -10,12 +21,46 @@ import "@/styles/article.less";
 <Paper padding={true}>
   {cover && <img class="cover" src={cover} alt={frontmatter.title} />}
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
+  <div class="info">
+    <span class="icon">
+      <Icon name="mdi:date-range" />
+    </span>
+    日期：{new Date(frontmatter.date).toLocaleDateString("zh")}
+    {
+      cats && (
+        <>
+          ｜
+          <span class="icon">
+            <Icon name="mdi:category" />
+          </span>
+          分类：
+          {cats.map((cat) => (
+            <a href={`/categories/${cat}/`}>{cat}</a>
+          ))}
+        </>
+      )
+    }
+    {
+      tags && (
+        <>
+          ｜
+          <span class="icon">
+            <Icon name="mdi:tag" />
+          </span>
+          标签：
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}/`}>{tag}</a>
+          ))}
+        </>
+      )
+    }
+  </div>
   <article>
     <slot />
   </article>
 </Paper>
 
-<style is:global>
+<style is:global lang="less">
   .paper {
     max-width: 1024px;
     margin: auto;
@@ -25,5 +70,22 @@ import "@/styles/article.less";
     height: auto;
     margin: 0;
     border-radius: 4px;
+  }
+  .info {
+    margin: 1rem 0;
+    color: #2e2e2e;
+    font-size: 0.9rem;
+    text-align: center;
+    a {
+      color: #151515;
+      text-decoration: none;
+      padding: 3px 6px;
+      border-radius: 0.5rem;
+      background-color: #f4f4f4;
+      color: #333;
+      &:hover {
+        background-color: #e7e7e7;
+      }
+    }
   }
 </style>

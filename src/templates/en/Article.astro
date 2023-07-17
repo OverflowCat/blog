@@ -14,11 +14,12 @@ import Paper from "@/components/Paper.astro";
 
 <style>
   article {
-    font-family: "Noto Sans", Tahoma, sans-serif;
+    font-family: Tahoma, sans-serif;
     font-size: 120%;
     text-align: left;
-    max-width: 1024px;
+    max-width: 700px;
     margin: auto;
+    line-height: 200%;
     padding-left: 32px;
     padding-right: 28px;
     line-height: 200%;
@@ -26,5 +27,12 @@ import Paper from "@/components/Paper.astro";
   footer {
     margin-top: 32px;
     margin-bottom: 32px;
+  }
+</style>
+
+<style is:global>
+  .paper {
+    max-width: 900px;
+    margin: auto;
   }
 </style>
