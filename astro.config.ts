@@ -75,7 +75,7 @@ export default defineConfig({
   },
   markdown: {
     remarkRehype: {
-      footnoteLabel: "脚注和参考文献",
+      footnoteLabel: "---",
       footnoteBackLabel: "返回内容",
     },
     remarkPlugins: [remarkMath, remarkFigureCaption],

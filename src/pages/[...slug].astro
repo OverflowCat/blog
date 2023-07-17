@@ -13,10 +13,14 @@ type Props = CollectionEntry<"blog">;
 import type { PathToSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
 const { Content } = await post.render();
+let title = post.data.title;
+if (post.data.categories?.includes("译文")) {
+    title = `（译）${title}`;
+}
 ---
 
 <Page
-    title={post.data.title}
+    title={title}
     bar={{ transparent: true }}
     noscript={post.data.noscript}
     og={{

@@ -1,0 +1,68 @@
+---
+const { frontmatter } = Astro.props;
+// const cover = frontmatter.photo;
+
+import "@/styles/tonsky.css";
+import "@/styles/han.less";
+
+import * as cheerio from "cheerio";
+import Languages from "@/components/lang/Languages.astro";
+import { hasChinese } from "@/components/lang/zh";
+
+let $ = cheerio.load(await Astro.slots.render("default"));
+$("li, p, h1, h2, h3, h4, h5, h6, blockquote").each(function () {
+    const text = $(this).text();
+    const lang = hasChinese(text) ? "zh" : "en";
+    $(this).attr("lang", lang);
+});
+const html = $.html();
+---
+
+<div class="page">
+    <!-- {cover && <img src={cover} alt={frontmatter.title} />} -->
+    {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
+    <label for="show-en">Show English</label>
+    <input type="checkbox" id="show-en" />
+    /
+    <Languages
+        src="en"
+        here="zh"
+        langs={{
+            en: "https://tonsky.me/blog/syncthing/",
+            ru: "https://habr.com/ru/company/itelma/blog/550404/",
+        }}
+    />
+    <article class="post" set:html={html} />
+</div>
+
+<style is:global>
+    input#show-en {
+        display: none;
+    }
+
+    label[for="show-en"] {
+        margin: 4px 0 4px 0;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+            background-color: rgba(85, 85, 85, 0.35);
+        }
+        &:active {
+            background-color: rgba(85, 85, 85, 0.5);
+        }
+    }
+
+    article {
+        margin-top: 1em;
+    }
+    article [lang="en"] {
+        display: none;
+    }
+    #show-en:checked {
+        & ~ article {
+            [lang="en"] {
+                display: unset;
+            }
+        }
+    }
+</style>

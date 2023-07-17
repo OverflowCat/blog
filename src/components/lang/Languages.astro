@@ -1,0 +1,35 @@
+---
+import ISO9631 from "iso-639-1";
+
+export interface Props {
+    langs: Record<string, string>;
+    src: keyof (typeof Astro)["props"]["langs"];
+    here: keyof (typeof Astro)["props"]["langs"];
+}
+
+const { langs, src, here } = Astro.props;
+---
+
+<span class="languages">
+    <span>原文：</span>
+    <a href={langs[src]}> {ISO9631.getName(src)}</a><span> / 翻译：</span>
+    {
+        Object.entries(langs).map(
+            ([lang, url]) =>
+                lang !== src &&
+                (lang === here ? (
+                    <span>{ISO9631.getName(lang)} (Here)</span>
+                ) : (
+                    <span>
+                        <a href={url}>{ISO9631.getName(lang)}</a>
+                    </span>
+                ))
+        )
+    }
+    <slot />
+</span>
+<style>
+    .languages {
+        margin-bottom: 1em;
+    }
+</style>
