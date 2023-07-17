@@ -367,32 +367,3 @@ sub {
 .footer > a {
   margin-right: 5px;
 }
-
-.footer > a:hover {
-  color: #000;
-}
-
-.hoverable {
-  object-fit: cover;
-  object-position: center top;
-}
-
-.hoverable.clicked {
-  object-position: center bottom;
-}
-
-@media (hover: hover) {
-  .hoverable.clicked:hover {
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .hoverable:hover {
-    object-position: center bottom;
-  }
-}
-
-.preload::after {
-  content: "";
-  background-image: url(/tonsky/flashlight.png);
-}

@@ -190,6 +190,15 @@ for i, value in reversed(list(enumerate(parts))):
 print("Flag:", decrypted)
 ```
 
+**异或**的这个性质也被用于 RAID5：
+
+> 三块磁盘（两块数据，一个块校验盘）其实就是：
+> ```python
+> c = a ^ b
+> a = c ^ b
+> b = a ^ c
+> ```
+
 ### 截图
 
 ![](./cipher.png)
