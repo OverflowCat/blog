@@ -21,7 +21,7 @@ const html = $.html();
 <div class="page">
   <!-- {cover && <img src={cover} alt={frontmatter.title} />} -->
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
-  <label for="show-en">Show English</label>
+  <label for="show-en" class="btn">Show English</label>
   <input type="checkbox" id="show-en" />
   /
   <Languages
@@ -37,26 +37,23 @@ const html = $.html();
 
 <style is:global lang="less">
   input#show-en {
-    display: none;
+    accent-color: #383838;
   }
 
   label[for="show-en"] {
-    margin: 4px 0 4px 0;
     cursor: pointer;
     user-select: none;
-    &:hover {
-      background-color: rgba(85, 85, 85, 0.35);
-    }
-    &:active {
-      background-color: rgba(85, 85, 85, 0.5);
-    }
   }
-
-  article {
-    margin-top: 1em;
-  }
-  article [lang="en"] {
-    display: none;
+  .page {
+    text-align: center;
+    article {
+      text-align: left;
+      margin-top: 1em;
+      overflow-x: hidden;
+      [lang="en"] {
+        display: none;
+      }
+    }
   }
   #show-en:checked {
     & ~ article {

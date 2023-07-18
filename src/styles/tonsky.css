@@ -23,11 +23,13 @@
 
 @font-face {
   font-family: "mono";
-  src: url("https://tonsky.me/fonts/IBMPlexMono-Text-Latin1.woff") format("woff");
+  src: url("https://tonsky.me/fonts/IBMPlexMono-Text-Latin1.woff")
+    format("woff");
 }
 
 body {
-  font: 20px/32px body, sans-serif;
+  font: 20px/30px body, sans-serif;
+  line-height: 180%;
 }
 
 pre,
@@ -117,7 +119,7 @@ a:hover {
 
 p,
 blockquote {
-  margin: 15px 0;
+  margin: 18px 0;
 }
 
 h2 + p + blockquote {
@@ -175,14 +177,10 @@ figure {
   margin: 2em 0;
 }
 
-img {
-  max-width: 100%;
-}
-
 .fig,
 figure {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   font-style: italic;
 }
@@ -204,6 +202,7 @@ figure > a > img {
   border-radius: 3px;
 }
 
+img,
 figure > video {
   max-width: 100%;
 }
@@ -271,55 +270,19 @@ sub {
   top: 0.5ex;
 }
 
-.about_photo {
-  float: left;
-  width: 100px;
-  height: 160px;
-  margin-left: -150px;
-  margin-top: -10px;
-  background: url("https://tonsky.me/tonsky/photo.png");
-  background-size: 200px;
-}
-
-.about_photo:hover {
-  background-position: 100%;
-}
-
-.about_inner {
-  font-size: 16px;
-  line-height: 24px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 10px 20px;
-  margin: -12px -22px;
-}
-
-.about_inner > p {
-  margin: 0 0 8px;
-}
-
-.btn-subscribe {
+.btn {
   line-height: 20px;
   text-decoration: none;
   background: rgba(0, 0, 0, 0.1);
   border: none;
-  font-size: 12px;
   padding: 0px 7px;
   display: inline-block;
   border-radius: 4px;
   position: relative;
   top: -1px;
-}
-
-.btn-subscribe:hover {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.btn-subscribe > svg {
-  width: 21px;
-  height: 21px;
-  vertical-align: bottom;
-  margin: 0 -2px 0 -5px;
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
 }
 
 .footnote {

@@ -286,7 +286,7 @@ E:\code\rs_pbrt\target\release\rs_pbrt.exe "E:\downloads\pbrt-v3-scenes\killeroo
 
 绝对路径使用会报错．其原因是 `.pbrt` 文件中有 `Include` 语句，在 `Include "geometry/killeroo.pbrt"` 时遇到相对路径，拼接的 parent 目录为 `env::current_dir()`．`cd` 到 `pbrt-v3-scenes/killeroos/`，参数填写绝对路径依然会有路径拼接错误．解决方法是填写相对路径．
 
-``` sh
+```sh
 ❯ E:\downloads\pbrt-v3-scenes\killeroos> E:\code\rs_pbrt\target\release\rs_pbrt.exe "killeroo-simple.pbrt"
 pbrt version 0.9.8 (unknown) [Detected 24 cores]
 Copyright (c) 2016-2022 Jan Douglas Bert Walter.

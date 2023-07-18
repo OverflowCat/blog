@@ -18,6 +18,13 @@ let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
+const metas = post.data.categories?.includes("Tonsky")
+  ? {
+      viewport: "width=640",
+      "theme-color": "hsl(51, 100%, 59%)",
+    }
+  : undefined;
+console.log({ metas });
 ---
 
 <Page
@@ -30,6 +37,7 @@ if (post.data.categories?.includes("译文")) {
     image: post.data.photo as PathToSupportedImage,
     url: `https://blog.xinshijiededa.men/${post.slug}`,
   }}
+  metas={metas}
 >
   <Content />
 </Page>

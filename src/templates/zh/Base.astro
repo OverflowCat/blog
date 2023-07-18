@@ -6,17 +6,22 @@ export interface Props {
   };
 }
 
-const { title, metas } = Astro.props;
+let { title, metas } = Astro.props;
 
+if (!metas?.viewport) {
+  if (!metas) metas = {};
+  metas["viewport"] = "width=device-width, initial-scale=1.0";
+}
+metas["generator"] = Astro.generator;
 // import "modern-css-reset";
 
 import "@fontsource/noto-sans-sc/400.css";
 import "@fontsource/noto-sans-sc/500.css";
 import "@fontsource/noto-sans-sc/700.css";
-import '@fontsource/noto-serif-sc/500.css';
-import '@fontsource/noto-serif-sc/600.css';
-import '@fontsource/noto-serif-sc/700.css';
-import '@fontsource/noto-serif-sc/900.css';
+import "@fontsource/noto-serif-sc/500.css";
+import "@fontsource/noto-serif-sc/600.css";
+import "@fontsource/noto-serif-sc/700.css";
+import "@fontsource/noto-serif-sc/900.css";
 import "@/styles/han.less";
 ---
 
@@ -24,8 +29,6 @@ import "@/styles/han.less";
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     {
       metas &&
         Object.entries(metas).map(([key, value]) => (
@@ -62,6 +65,11 @@ import "@/styles/han.less";
   body {
     margin: 0px;
     padding: 0px;
+  }
+
+  html,
+  body {
+    position: relative;
   }
 
   h1 {
