@@ -79,7 +79,7 @@ noscript: true
     width: 100%;
     margin: auto;
     min-width: 648px;
-    overflow-x: auto;
+    overflow-x: scroll;
   }
   table.alignment-chart img {
     max-width: 120px;

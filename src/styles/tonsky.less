@@ -23,8 +23,7 @@
 
 @font-face {
   font-family: "mono";
-  src: url("https://tonsky.me/fonts/IBMPlexMono-Text-Latin1.woff")
-    format("woff");
+  src: url("https://tonsky.me/fonts/IBMPlexMono-Text-Latin1.woff") format("woff");
 }
 
 body {
@@ -61,39 +60,6 @@ body {
   width: 810px;
 }
 
-.menu {
-  width: 544px;
-  margin: 0 auto 0;
-  padding: 0 0 50px 0;
-  vertical-align: top;
-  display: flex;
-}
-
-.menu > li {
-  list-style: none;
-  margin: 0 1em 0 0;
-  vertical-align: top;
-}
-
-.menu__item,
-a.menu__item {
-  color: rgba(0, 0, 0, 0.3);
-  border-color: transparent;
-  display: inline-block;
-}
-
-.menu__item_selected,
-a.menu__item_selected,
-a.menu__item:hover {
-  color: #000;
-  border-bottom: 2px solid #000;
-}
-
-.menu__item_inside,
-a.menu__item_inside {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-}
-
 .spacer {
   flex-grow: 1;
 }
@@ -122,7 +88,7 @@ blockquote {
   margin: 18px 0;
 }
 
-h2 + p + blockquote {
+h2+p+blockquote {
   margin-bottom: 30px;
   margin-right: 1em;
 }
@@ -160,7 +126,7 @@ h3 {
   font-size: 1.4em;
 }
 
-h2 + h3 {
+h2+h3 {
   margin: -0.75em 0 0.9em;
 }
 
@@ -170,7 +136,7 @@ h2 {
   margin: 1.5em 0 0.75em 0;
 }
 
-p > img,
+p>img,
 .fig,
 figure {
   display: block !important;
@@ -178,14 +144,16 @@ figure {
 }
 
 .fig,
-figure {
+figure,
+figcaption {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   font-style: italic;
 }
 
 @media (min-width: 60px) {
+
   .fig,
   figure {
     width: 600px;
@@ -195,15 +163,15 @@ figure {
 }
 
 .fig img,
-figure > img,
-figure > video,
-figure > a > img {
+figure>img,
+figure>video,
+figure>a>img {
   margin: 0 auto 1em;
   border-radius: 3px;
 }
 
 img,
-figure > video {
+figure>video {
   max-width: 100%;
 }
 
@@ -220,6 +188,7 @@ code {
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 17px;
+  word-break: break-all;
 }
 
 pre {
@@ -233,7 +202,7 @@ pre {
   font-style: normal;
 }
 
-pre > code {
+pre>code {
   background: none;
   padding: 0;
   font-size: inherit;
@@ -245,8 +214,8 @@ ul {
   list-style-type: square;
 }
 
-ul > li,
-ol > li {
+ul>li,
+ol>li {
   margin: 0.5em 0;
 }
 
@@ -280,6 +249,7 @@ sub {
   border-radius: 4px;
   position: relative;
   top: -1px;
+
   &:hover {
     background: rgba(0, 0, 0, 0.2);
   }
@@ -296,7 +266,7 @@ sub {
   margin-top: 5em;
 }
 
-.footnotes > ol {
+.footnotes>ol {
   padding-left: 1em;
 }
 
@@ -323,10 +293,10 @@ sub {
   margin-bottom: 5em;
 }
 
-.footer > .separator {
+.footer>.separator {
   margin: 0 4px;
 }
 
-.footer > a {
+.footer>a {
   margin-right: 5px;
 }

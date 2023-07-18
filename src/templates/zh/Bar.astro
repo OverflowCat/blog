@@ -18,8 +18,8 @@ let { index, transparent } = Astro.props;
 transparent = true;
 ---
 
-<div class:list={["center", {bar: !transparent}]} id="logo">
-  <Logo theme={transparent? "transparent" : "dark"} />
+<div class:list={["center", { bar: !transparent }]} id="logo">
+  <Logo theme={transparent ? "transparent" : "dark"} />
 </div>
 <ol class="center">
   {
@@ -59,7 +59,7 @@ transparent = true;
   }
   #logo {
     padding: 2px;
-    margin: 1.5rem 0 1.5rem 0;
+    margin: 1.5rem auto 1.5rem auto;
   }
   #logo.bar {
     background: rgb(255, 255, 255);
@@ -75,9 +75,9 @@ transparent = true;
   }
   ol {
     font-size: 18px;
-    margin: 0.3rem 0 0.6rem 0;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
+    margin: 0.3rem 0 0.6rem auto;
+    margin-block-start: auto;
+    margin-block-end: auto;
     padding-inline-start: 2px;
     padding-inline-end: 2px;
   }

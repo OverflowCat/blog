@@ -1,7 +1,6 @@
 @import "rehype-pretty-code.less";
 
 :root {
-  --body-bg-color: #eee;
   --content-bg-color: #fff;
   --card-bg-color: #f5f5f5;
   --text-color: #555;
@@ -20,10 +19,6 @@
   --btn-default-hover-bg: #222;
   --btn-default-hover-color: #fff;
   --btn-default-hover-border-color: #222;
-  --highlight-background: #f3f3f3;
-  --highlight-foreground: #444;
-  --highlight-gutter-background: #e1e1e1;
-  --highlight-gutter-foreground: #555;
   color-scheme: light;
 }
 
@@ -34,6 +29,15 @@ article {
   text-align: left;
   line-height: 200%;
   margin: 18px;
+
+  [lang='en'] {
+    font-family: "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica,
+      Arial, sans-serif;
+  }
+
+  [lang='ja'] {
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "MS Meiyo", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
+  }
 
   img {
     max-height: 600px;
@@ -182,4 +186,13 @@ article {
     min-height: 1em;
     padding: 1px 1px;
   }
+
+  img,
+  video {
+    border-radius: 4px;
+  }
+}
+
+lite-youtube {
+  margin: auto;
 }

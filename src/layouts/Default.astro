@@ -4,7 +4,7 @@ import { Icon } from "astro-icon";
 import "@/styles/icon.less";
 
 const { frontmatter } = Astro.props;
-const cover = frontmatter.photo;
+const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
 
 let cats = frontmatter.categories as string | string[] | undefined;
 if (typeof cats === "string") {
@@ -22,14 +22,14 @@ import "@/styles/article.less";
   {cover && <img class="cover" src={cover} alt={frontmatter.title} />}
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <div class="info">
-    <span class="icon">
-      <Icon name="mdi:date-range" />
-    </span>
-    日期：{new Date(frontmatter.date).toLocaleDateString("zh")}
+    <div>
+      <span class="icon">
+        <Icon name="mdi:date-range" />
+      </span>日期：{new Date(frontmatter.date).toLocaleDateString("zh")}
+    </div>
     {
       cats && (
-        <>
-          ｜
+        <div>
           <span class="icon">
             <Icon name="mdi:category" />
           </span>
@@ -37,13 +37,12 @@ import "@/styles/article.less";
           {cats.map((cat) => (
             <a href={`/categories/${cat}/`}>{cat}</a>
           ))}
-        </>
+        </div>
       )
     }
     {
       tags && (
-        <>
-          ｜
+        <div>
           <span class="icon">
             <Icon name="mdi:tag" />
           </span>
@@ -51,7 +50,7 @@ import "@/styles/article.less";
           {tags.map((tag) => (
             <a href={`/tags/${tag}/`}>{tag}</a>
           ))}
-        </>
+        </div>
       )
     }
   </div>
@@ -81,12 +80,16 @@ import "@/styles/article.less";
       color: #151515;
       text-decoration: none;
       padding: 3px 6px;
+      margin: 0 5px;
       border-radius: 0.5rem;
       background-color: #f4f4f4;
       color: #333;
       &:hover {
         background-color: #e7e7e7;
       }
+    }
+    & > div {
+      margin: 0.8rem 0;
     }
   }
 </style>

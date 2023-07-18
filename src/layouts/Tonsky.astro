@@ -2,7 +2,7 @@
 const { frontmatter } = Astro.props;
 // const cover = frontmatter.photo;
 
-import "@/styles/tonsky.css";
+import "@/styles/tonsky.less";
 import "@/styles/han.less";
 
 import * as cheerio from "cheerio";
@@ -49,7 +49,7 @@ const html = $.html();
     article {
       text-align: left;
       margin-top: 1em;
-      overflow-x: hidden;
+      // overflow-x: hidden;
       [lang="en"] {
         display: none;
       }
