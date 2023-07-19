@@ -12,16 +12,18 @@ const theme = Astro.props.theme || "dark";
 const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
 ---
 
-<img
-  width="220px"
+<div>
+  <img
   src={url}
   aria-label="新世界的大門"
   alt="新世界的大门 logo"
-/>
+  />
+</div>
 
 <style>
   img {
     display: block;
     margin: 0 auto;
+    height: 72px;
   }
 </style>

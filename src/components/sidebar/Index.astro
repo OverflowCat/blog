@@ -8,127 +8,131 @@ import "@fontsource/noto-sans-mongolian";
 ---
 
 <aside id="sidebar">
-    <Paper padding={true}>
-        <div
-            class="site-author"
-            itemprop="author"
-            itemtype="http://schema.org/Person"
-        >
-            <img
-                class="site-author-image"
-                itemprop="image"
-                alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
-                src="https://avatars.githubusercontent.com/u/20166026?v=4"
-            />
-            <p class="site-author-name" itemprop="name" lang="mnc">
-                ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫
-            </p>
-            <div class="site-description" itemprop="description">
-                猫猫的博客
-            </div>
-        </div>
-        <div class="other-platforms">
-            <OtherPlatfromItem
-                href="https://github.com/OverflowCat"
-                icon="ri:github-fill"
-            >
-                GitHub
-            </OtherPlatfromItem>
-            <OtherPlatfromItem
-                href="https://t.me/OverflowCat"
-                icon="mdi:telegram"
-            >
-                Telegram
-            </OtherPlatfromItem>
-            <OtherPlatfromItem
-                href="mailto:overflowcat+blog@gmail.com"
-                icon="mdi:email"
-            >
-                Mail
-            </OtherPlatfromItem>
-            <OtherPlatfromItem
-                href="https://twitter.com/lazy_static"
-                icon="mdi:twitter"
-            >
-                Twitter
-            </OtherPlatfromItem>
-            <OtherPlatfromItem
-                href="https://mastodon.social/@overflowcat"
-                icon="mdi:mastodon"
-            >
-                Mastodon
-            </OtherPlatfromItem>
-            <OtherPlatfromItem
-                href="https://instagram.com/overflowcat"
-                icon="ri:instagram-fill"
-            >
-                Instagram
-            </OtherPlatfromItem>
-        </div>
-    </Paper>
-    <Paper padding={true}>
-        <h3>标签</h3>
-        <TagCloud />
-        <h3>分类</h3>
-        <CatCloud />
-    </Paper>
+  <Paper padding={true}>
+    <div
+      class="site-author"
+      itemprop="author"
+      itemtype="http://schema.org/Person"
+    >
+      <div id="site-author-image">
+        <img
+          class="site-author-image"
+          itemprop="image"
+          alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
+          src="https://avatars.githubusercontent.com/u/20166026?v=4"
+        />
+      </div>
+      <p class="site-author-name" itemprop="name" lang="mnc">
+        ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫
+      </p>
+      <div class="site-description" itemprop="description">猫猫的博客</div>
+    </div>
+    <div class="other-platforms">
+      <OtherPlatfromItem
+        href="https://github.com/OverflowCat"
+        icon="ri:github-fill"
+      >
+        GitHub
+      </OtherPlatfromItem>
+      <OtherPlatfromItem href="https://t.me/OverflowCat" icon="mdi:telegram">
+        Telegram
+      </OtherPlatfromItem>
+      <OtherPlatfromItem
+        href="mailto:overflowcat+blog@gmail.com"
+        icon="mdi:email"
+      >
+        Mail
+      </OtherPlatfromItem>
+      <OtherPlatfromItem
+        href="https://twitter.com/lazy_static"
+        icon="mdi:twitter"
+      >
+        Twitter
+      </OtherPlatfromItem>
+      <OtherPlatfromItem
+        href="https://mastodon.social/@overflowcat"
+        icon="mdi:mastodon"
+      >
+        Mastodon
+      </OtherPlatfromItem>
+      <OtherPlatfromItem
+        href="https://instagram.com/overflowcat"
+        icon="ri:instagram-fill"
+      >
+        Instagram
+      </OtherPlatfromItem>
+    </div>
+  </Paper>
+  <Paper padding={true}>
+    <h3>标签</h3>
+    <TagCloud />
+    <h3>分类</h3>
+    <CatCloud />
+  </Paper>
 </aside>
 
 <style>
-    aside#sidebar {
-        width: 100%;
-        max-width: 240px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: stretch;
-        gap: 16px;
-        flex-basis: 0;
-    }
-    .other-platforms {
-        margin: 8px;
-    }
-    .other-platforms {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 2px;
-    }
-    .site-author,
-    .site-author-name {
-        text-align: center;
-        writing-mode: vertical-lr;
-        vertical-align: middle;
-    }
-    .site-author {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .site-author-name {
-        color: #333;
-        font-weight: 700;
-        margin: 0px 10px 0px 12px;
-    }
-    .site-description {
-        color: #555;
-        font-weight: 500;
-        font-size: 0.8rem;
-    }
-    .site-author-image {
-        user-select: none;
-        border: 1px solid #eee;
-        max-width: 120px;
-        padding: 2px;
-        margin: 6px;
-        border-radius: 50%;
-        transition: transform 1s ease-out;
-    }
-    .site-author-image:hover {
-        transform: rotateZ(360deg);
-    }
-    h3 {
-        text-align: center;
-        margin: 0.75rem 0 0.5rem;
-    }
+  aside#sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: stretch;
+    gap: 16px;
+    flex-basis: 0;
+  }
+  .other-platforms {
+    margin: 6px auto;
+    width: 100%;
+  }
+  .other-platforms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2px;
+  }
+  .site-author,
+  .site-author-name {
+    text-align: center;
+    writing-mode: vertical-lr;
+    vertical-align: middle;
+  }
+  .site-author {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 7px;
+  }
+  .site-author-name {
+    color: #333;
+    font-weight: 700;
+    margin: 0px 10px 0px 12px;
+  }
+  .site-description {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .site-author-image {
+    user-select: none;
+    border: 1px solid #eee;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    transition: transform 1s ease-out;
+  }
+  #site-author-image {
+    display: flex;
+    justify-content: center;
+    width: 126px;
+    height: 126px;
+    padding: 6px;
+    margin: 0px;
+  }
+  .site-author-image:hover {
+    transform: rotateZ(360deg);
+  }
+  h3 {
+    text-align: center;
+    margin: 0.75rem 0 0.5rem;
+  }
 </style>

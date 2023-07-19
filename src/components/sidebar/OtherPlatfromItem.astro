@@ -21,20 +21,23 @@ const { href, icon, rel } = Astro.props;
 
 <style>
   a {
+    display: block;
+    width: 105px;
     border-bottom: 0px;
     border-radius: 4px;
     box-sizing: border-box;
     display: inline-block;
-    max-width: 100%;
     color: #333333;
     text-align: center;
     text-decoration: none;
+    /*
     text-overflow: ellipsis;
     text-wrap: nowrap;
     overflow: hidden;
-    padding: 6px 4px 6px 4px;
+    */
+    padding: 5px 2px;
     font-size: 13px;
-    white-space-collapse: collapse;
+    white-space: nowrap;
   }
   a:hover {
     background-color: #eeeeee;
