@@ -30,7 +30,7 @@
     "rehype-external-links": "^2.1.0",
     "rehype-katex": "^6.0.3",
     "remark-math": "^5.1.1",
-    "svelte": "^4.0.5"
+    "svelte": "^4.1.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
