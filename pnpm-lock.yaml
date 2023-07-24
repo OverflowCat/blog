@@ -31,7 +31,7 @@ dependencies:
     version: 1.0.0
   astro:
     specifier: ^2.8.3
-    version: 2.8.3(@types/node@20.4.2)(less@4.1.3)
+    version: 2.8.3(@types/node@20.4.4)(less@4.1.3)
   astro-compress:
     specifier: ^1.1.49
     version: 1.1.49
@@ -71,8 +71,8 @@ devDependencies:
     specifier: ^12.2.3
     version: 12.2.3
   '@types/node':
-    specifier: ^20.4.2
-    version: 20.4.2
+    specifier: ^20.4.4
+    version: 20.4.4
   modern-css-reset:
     specifier: ^1.4.0
     version: 1.4.0
@@ -90,7 +90,7 @@ devDependencies:
     version: 5.1.6
   vite:
     specifier: ^4.4.4
-    version: 4.4.4(@types/node@20.4.2)(less@4.1.3)
+    version: 4.4.4(@types/node@20.4.4)(less@4.1.3)
 
 packages:
 
@@ -107,7 +107,7 @@ packages:
     peerDependencies:
       astro: ^2.0.0
     dependencies:
-      astro: 2.8.3(@types/node@20.4.2)(less@4.1.3)
+      astro: 2.8.3(@types/node@20.4.4)(less@4.1.3)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -144,7 +144,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.8.3(@types/node@20.4.2)(less@4.1.3)
+      astro: 2.8.3(@types/node@20.4.4)(less@4.1.3)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -210,7 +210,7 @@ packages:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.2(svelte@4.0.5)(vite@4.4.4)
-      astro: 2.8.3(@types/node@20.4.2)(less@4.1.3)
+      astro: 2.8.3(@types/node@20.4.4)(less@4.1.3)
       svelte: 4.0.5
       svelte2tsx: 0.6.16(svelte@4.0.5)(typescript@5.1.6)
     transitivePeerDependencies:
@@ -995,7 +995,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.2(svelte@4.0.5)(vite@4.4.4)
       debug: 4.3.4
       svelte: 4.0.5
-      vite: 4.4.4(@types/node@20.4.2)(less@4.1.3)
+      vite: 4.4.4(@types/node@20.4.4)(less@4.1.3)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1014,7 +1014,7 @@ packages:
       magic-string: 0.30.0
       svelte: 4.0.5
       svelte-hmr: 0.15.2(svelte@4.0.5)
-      vite: 4.4.4(@types/node@20.4.2)(less@4.1.3)
+      vite: 4.4.4(@types/node@20.4.4)(less@4.1.3)
       vitefu: 0.2.4(vite@4.4.4)
     transitivePeerDependencies:
       - supports-color
@@ -1142,8 +1142,8 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
-  /@types/node@20.4.2:
-    resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
+  /@types/node@20.4.4:
+    resolution: {integrity: sha512-CukZhumInROvLq3+b5gLev+vgpsIqC2D0deQr/yS1WnxvmYLlJXZpaQrQiseMY+6xusl79E04UjWoqyr+t1/Ew==}
 
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -1286,7 +1286,7 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro@2.8.3(@types/node@20.4.2)(less@4.1.3):
+  /astro@2.8.3(@types/node@20.4.4)(less@4.1.3):
     resolution: {integrity: sha512-UopGl3WubMnl15TWlR6PTCcH54TooZ+JoAloErfoXQtz4PAvmEEqEVc7tHoJ45iC7rhKgzILsvDhqzitBeRihw==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -1347,7 +1347,7 @@ packages:
       typescript: 5.1.6
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.4(@types/node@20.4.2)(less@4.1.3)
+      vite: 4.4.4(@types/node@20.4.4)(less@4.1.3)
       vitefu: 0.2.4(vite@4.4.4)
       which-pm: 2.0.0
       yargs-parser: 21.1.1
@@ -4736,7 +4736,7 @@ packages:
       vfile-message: 3.1.3
     dev: false
 
-  /vite@4.4.4(@types/node@20.4.2)(less@4.1.3):
+  /vite@4.4.4(@types/node@20.4.4)(less@4.1.3):
     resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4764,7 +4764,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.4.2
+      '@types/node': 20.4.4
       esbuild: 0.18.11
       less: 4.1.3
       postcss: 8.4.25
@@ -4780,7 +4780,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.4(@types/node@20.4.2)(less@4.1.3)
+      vite: 4.4.4(@types/node@20.4.4)(less@4.1.3)
     dev: false
 
   /vscode-css-languageservice@6.2.1:
