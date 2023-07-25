@@ -5,7 +5,6 @@ export interface Props {
 
 import CreativeCommons from "./CreativeCommons.astro";
 import PublicDomain from "./PublicDomain.astro";
-import "@/styles/a.less"
 const { name } = Astro.props;
 ---
 
@@ -25,10 +24,13 @@ const { name } = Astro.props;
   }
 </div>
 
-<style>
+<style lang="less">
   .licence {
+    @import "@/styles/a.less";
+
     border: 2px solid #a7a7a7;
     background-color: #f9f9f9;
-    padding: 8px 24px;
+    padding: 6px 18px;
+    line-height: 150%;
   }
 </style>

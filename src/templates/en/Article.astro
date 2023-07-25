@@ -1,7 +1,8 @@
 ---
-import Page from "../zh/Page.astro";
+import Page from "../en/Page.astro";
 const { title, noscript, bar_index } = Astro.props.frontmatter;
 import Paper from "@/components/Paper.astro";
+import "@/styles/a.less"
 ---
 
 <Page title={title} noscript={noscript} bar={{ index: bar_index }}>

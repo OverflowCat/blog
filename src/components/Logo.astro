@@ -14,14 +14,15 @@ const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
 
 <div>
   <img
-  src={url}
-  aria-label="新世界的大門"
-  alt="新世界的大门 logo"
+    id="logo-svg"
+    src={url}
+    aria-label="新世界的大門"
+    alt="新世界的大门 logo"
   />
 </div>
 
-<style>
-  img {
+<style is:inline>
+  img#logo-svg {
     display: block;
     margin: 0 auto;
     height: 72px;

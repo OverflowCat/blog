@@ -2,6 +2,7 @@
 export interface Props {
   index?: number;
   transparent?: boolean;
+  lang: "zh-Hans" | "zh-Hant" | "en";
 }
 
 import Logo from "@components/Logo.astro";
@@ -13,15 +14,22 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-let { index, transparent } = Astro.props;
+let { index, transparent, lang } = Astro.props;
+
+const slogan = {
+  "zh-Hans": "因此幻想是世界，谁若懂得，谁就会歌唱",
+  "zh-Hant": "因此幻想是世界，誰若懂得，誰就會歌唱",
+  en: "So fansy is the world, who knows, maybe they sing",
+}[lang || "zh-Hans"];
 
 transparent = true;
 ---
 
-<div class:list={["center", { bar: !transparent }]} id="logo">
+<div class:list={[{ bar: !transparent }]} id="logo">
   <Logo theme={transparent ? "transparent" : "dark"} />
 </div>
-<ol class="center">
+<div id="slogan" set:text={slogan} />
+<ol>
   {
     items.map((item, i) => (
       <li>
@@ -50,16 +58,27 @@ transparent = true;
       display: none !important;
     }
   }
+  @media only screen and (max-width: 800px) {
+    #slogan {
+      display: none;
+    }
+  }
   * {
     user-select: none;
   }
-  .center {
+  #slogan {
+    margin: 8px 0;
+    color: #3c3c3c;
+  }
+  #logo,
+  #slogan,
+  ol {
     text-align: center;
     place-items: center center;
   }
   #logo {
     padding: 2px;
-    margin: 1rem auto;
+    margin: 1rem auto 0.2rem;
     height: 75px;
   }
   #logo.bar {
