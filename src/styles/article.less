@@ -30,6 +30,8 @@ article {
   line-height: 200%;
   margin: 18px;
 
+  @import "a.less";
+
   [lang='en'] {
     font-family: "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica,
       Arial, sans-serif;
@@ -53,25 +55,6 @@ article {
     height: auto;
     display: block;
     margin: auto;
-  }
-
-  a {
-    border-bottom: 1px solid #999;
-    color: var(--link-color);
-    cursor: pointer;
-    outline: 0;
-    text-decoration: none;
-    overflow-wrap: break-word;
-
-    &:hover {
-      border-bottom-color: var(--link-hover-color);
-      color: var(--link-hover-color);
-    }
-
-    &[target="_blank"]::after {
-      content: ' ↗';
-      font-family: 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', '.LucidaGrandeUI-Bold', 'Lucida Grande', 'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial', 'Menlo', 'Apple Color Emoji', 'AppleColorEmoji';
-    }
   }
 
   hr {

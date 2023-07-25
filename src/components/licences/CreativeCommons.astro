@@ -1,0 +1,27 @@
+---
+export interface Props {
+  by?: boolean;
+  nc?: boolean;
+  sa?: boolean;
+}
+import { Icon } from "astro-icon";
+import "@/styles/icon.less";
+---
+
+<p>
+  <span class="icon">
+    <Icon name="ri:creative-commons-fill" />
+  </span>
+  <span class="icon">
+    <Icon name="mdi:account-arrow-right" />
+  </span>
+  <span class="icon">
+    <Icon name="mdi:currency-usd-off" />
+  </span>
+  本作品采用
+  <b>知识共享署名-非商业性使用 4.0 国际许可协议</b>（<a
+    href="https://creativecommons.org/licenses/by-nc/4.0/legalcode"
+    target="_blank">CC BY-NC 4.0 International</a
+  >） 进行许可。阁下可自由地<b>共享</b>（复制、发行）和<b>演绎</b
+  >（修改、转换或二次创作）本作品，唯须遵守许可协议条款。
+</p>

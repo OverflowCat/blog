@@ -101,9 +101,8 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
                   class="monospace"
                   set:html={ep[0].replaceAll(" ", "&nbsp;")}
                 />
-                {episodes.progress !== true &&
-                episodes.progress !== undefined ? (
-                  i + 1 <= episodes.progress ? (
+                {"number" === typeof episodes.progress ? (
+                  episodes.progress >= i + 1 ? (
                     episodes.progress == i + 1 ? (
                       <span class="watching">在看</span>
                     ) : (
@@ -125,8 +124,8 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
               </li>
             ) : (
               <li class="ep">
-                {episodes.progress !== undefined ? (
-                  i + 1 <= episodes.progress ? (
+                {"number" === typeof episodes.progress ? (
+                  episodes.progress >= i + 1 ? (
                     episodes.progress == i + 1 ? (
                       <span class="watching">在看</span>
                     ) : (
@@ -148,12 +147,12 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
   </div>
 </li>
 
-<style is:global>
+<style lang="less" is:global>
   .link-card:is(:hover, :focus-within) {
     background-position: 0;
-  }
-  .link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--accent));
+    h2 {
+      color: rgb(var(--accent));
+    }
   }
   span.watched {
     background-color: rgb(59, 146, 8);
@@ -201,15 +200,15 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    & > div.container {
+      padding: 1rem 1.3rem;
+      border-radius: 0.35rem;
+      color: #111;
+      background-color: white;
+      opacity: 0.84;
+    }
   }
 
-  .link-card > div.container {
-    padding: 1rem 1.3rem;
-    border-radius: 0.35rem;
-    color: #111;
-    background-color: white;
-    opacity: 0.84;
-  }
   span.status {
     font-size: 90%;
     font-weight: 700;
@@ -219,25 +218,28 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
     border-radius: 4px;
     color: white;
     white-space: nowrap;
+    &.ongoing {
+      background-color: cornflowerblue;
+    }
+    &.concluded {
+      background-color: forestgreen;
+    }
   }
-  span.status.ongoing {
-    background-color: cornflowerblue;
-  }
-  span.status.concluded {
-    background-color: forestgreen;
-  }
-  li.ep:not(.custom) {
-    list-style-type: decimal;
-    padding-right: 2px;
-  }
-  li.ep.custom {
-    list-style: none;
-    margin-left: -20px !important;
-    margin: 0;
-  }
+
   li.ep {
     padding-top: 2px;
     padding-bottom: 2px;
+    content-visibility: auto;
+
+    &:not(.custom) {
+      list-style-type: decimal;
+      padding-right: 2px;
+    }
+    &.custom {
+      list-style: none;
+      margin-left: -20px !important;
+      margin: 0;
+    }
   }
 </style>
 

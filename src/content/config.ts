@@ -17,6 +17,8 @@ const blogCollection = defineCollection({
     hide_title: z.boolean().optional(),
     hide_cover: z.boolean().optional(),
     noscript: z.boolean(),
+    licence: z.string().optional(), // licence? : "CcBySa" | "CcByNc" | "PD" 
+    paper: z.boolean().optional(),
   }),
 });
 

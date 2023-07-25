@@ -1,0 +1,19 @@
+---
+export interface Props {
+  paper: boolean;
+  padding?: boolean;
+  classes?: string[];
+}
+import Paper from "./Paper.astro";
+const { paper, padding, classes } = Astro.props;
+---
+
+{
+  paper ? (
+    <Paper classes={classes} padding={padding}>
+      <slot />
+    </Paper>
+  ) : (
+    <slot />
+  )
+}

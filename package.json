@@ -19,7 +19,7 @@
     "@fontsource/noto-sans-sc": "^5.0.5",
     "@fontsource/noto-serif-sc": "^5.0.5",
     "@microflash/remark-figure-caption": "^1.0.0",
-    "astro": "^2.8.3",
+    "astro": "^2.9.2",
     "astro-compress": "^1.1.49",
     "astro-icon": "^0.8.1",
     "bilibili-bv-av-convert": "^1.0.0",
@@ -30,16 +30,16 @@
     "rehype-external-links": "^2.1.0",
     "rehype-katex": "^6.0.3",
     "remark-math": "^5.1.1",
-    "svelte": "^4.0.5"
+    "svelte": "^4.1.1"
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.4.4",
     "modern-css-reset": "^1.4.0",
     "rehype-pretty-code": "^0.10.0",
     "rollup": "^3.26.3",
     "shiki": "^0.14.3",
     "typescript": "^5.1.6",
-    "vite": "^4.4.4"
+    "vite": "^4.4.7"
   }
 }
