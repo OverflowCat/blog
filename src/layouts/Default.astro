@@ -6,7 +6,7 @@ import LicenceBox from "@/components/licences/LicenceBox.astro";
 
 const { frontmatter } = Astro.props;
 const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
-const licence = frontmatter.licence || "CcByNc";
+const licence = frontmatter.licence;
 
 let cats = frontmatter.categories as string | string[] | undefined;
 if (typeof cats === "string") {

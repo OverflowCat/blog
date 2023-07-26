@@ -1,0 +1,114 @@
+---
+export interface Props {
+  data: any;
+}
+
+const { data } = Astro.props;
+import { cyrb53a } from "@/scripts/hash";
+const hash = cyrb53a(JSON.stringify(data));
+const id = "circuit-" + hash.toString(32);
+---
+
+<!-- TODO: https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements -->
+<div class="digital" id={id}>
+  <div>
+    <button name="start" type="button">▶️</button>
+    <button name="stop" type="button">⏹️</button>
+  </div>
+  <div class="paper"></div>
+  <div>
+    <input name="fixed" type="checkbox" />
+    <button name="json" type="button">Serialize and Reload</button>
+    <input name="layout" type="checkbox" />
+  </div>
+  <div>
+    <button name="ppt_up" type="button">+</button><button name="ppt_down"
+      >-</button
+    ><button name="left">&lt;</button><button name="right">&gt;</button><button
+      name="live">live</button
+    >
+  </div>
+  <div class="monitor"></div>
+  <div class="iopanel"></div>
+</div>
+<script is:inline src="https://tilk.github.io/digitaljs/main.js"></script>
+<script define:vars={{ data, id }}>
+// @ts-nocheck
+const digital = document.querySelector(".digital#" + id);
+let circuit, monitor, monitorview, iopanel, paper;
+const start = digital.querySelector("button[name=start]");
+const stop = digital.querySelector("button[name=stop]");
+const papers = {};
+const fixed = function (fixed) {
+  Object.values(papers).forEach((p) => p.fixed(fixed));
+};
+const loadCircuit = function (json) {
+  circuit = new digitaljs.Circuit(json);
+  monitor = new digitaljs.Monitor(circuit);
+  monitorview = new digitaljs.MonitorView({
+    model: monitor,
+    el: digital.querySelector(".monitor"),
+  });
+  iopanel = new digitaljs.IOPanelView({
+    model: circuit,
+    el: digital.querySelector(".iopanel"),
+  });
+  circuit.on("new:paper", function (paper) {
+    paper.fixed(digital.querySelector("input[name=fixed]").checked);
+    papers[paper.cid] = paper;
+    paper.on("element:pointerdblclick", (cellView) => {
+      window.digitaljsCell = cellView.model;
+      console.info(
+        "You can now access the doubly clicked gate as digitaljsCell in your WebBrowser console!"
+      );
+    });
+  });
+  circuit.on("changeRunning", () => {
+    start.disabled = circuit.running;
+    stop.disabled = !circuit.running;
+  });
+  paper = circuit.displayOn(digital.querySelector(".paper"));
+  fixed(digital.querySelector("input[name=fixed]").checked);
+  circuit.on("remove:paper", (paper) => delete papers[paper.cid]);
+  circuit.start();
+};
+start.addEventListener("click", (e) => circuit.start());
+stop.addEventListener("click", (e) => circuit.stop());
+digital.querySelector("button[name=json]").addEventListener("click", (e) => {
+  monitorview.shutdown();
+  iopanel.shutdown();
+  circuit.stop();
+  const json = circuit.toJSON(
+    digital.querySelector("input[name=layout]").checked
+  );
+  console.log(json);
+  loadCircuit(json);
+});
+digital
+  .querySelector("input[name=fixed]")
+  .addEventListener("change", () =>
+    fixed(digital.querySelector("input[name=fixed]").checked)
+  );
+digital
+  .querySelector("button[name=ppt_up]")
+  .addEventListener("click", (e) => (monitorview.pixelsPerTick *= 2));
+digital
+  .querySelector("button[name=ppt_down]")
+  .addEventListener("click", (e) => {
+    monitorview.pixelsPerTick /= 2;
+  });
+digital.querySelector("button[name=left]").addEventListener("click", (e) => {
+  monitorview.live = false;
+  monitorview.start -= monitorview._width / monitorview.pixelsPerTick / 4;
+});
+digital.querySelector("button[name=right]").addEventListener("click", (e) => {
+  monitorview.live = false;
+  monitorview.start += monitorview._width / monitorview.pixelsPerTick / 4;
+});
+digital
+  .querySelector("button[name=live]")
+  .addEventListener("click", (e) => (monitorview.live = true));
+window.addEventListener("load", function () {
+  loadCircuit(data);
+});
+</script>

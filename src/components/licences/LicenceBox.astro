@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  name: "CcByNc" | "CcBySa" | "PD" | string;
+  name: "CcByNc" | "CcBySa" | "PD" | string | false | undefined;
 }
 
 import CreativeCommons from "./CreativeCommons.astro";
@@ -10,27 +10,29 @@ const { name } = Astro.props;
 
 <div class="licence">
   {
-    name.startsWith("Cc") ? (
-      <CreativeCommons>
+    !!name &&
+      (name.startsWith("Cc") ? (
+        <CreativeCommons>
+          <slot />
+        </CreativeCommons>
+      ) : name === "PD" ? (
+        <PublicDomain>
+          <slot />
+        </PublicDomain>
+      ) : (
         <slot />
-      </CreativeCommons>
-    ) : name === "PD" ? (
-      <PublicDomain>
-        <slot />
-      </PublicDomain>
-    ) : (
-      <slot />
-    )
+      ))
   }
 </div>
 
-<style lang="less">
+<style lang="less" is:global>
   .licence {
-    @import "@/styles/a.less";
-
     border: 2px solid #a7a7a7;
     background-color: #f9f9f9;
     padding: 6px 18px;
     line-height: 150%;
+    p {
+      @import "@/styles/a.less";
+    }
   }
 </style>
