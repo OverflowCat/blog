@@ -8,7 +8,9 @@ import PublicDomain from "./PublicDomain.astro";
 const { name } = Astro.props;
 ---
 
-<div class="licence">
+{
+  !name ? <></> : 
+    <div class="licence">
   {
     !!name &&
       (name.startsWith("Cc") ? (
@@ -24,6 +26,7 @@ const { name } = Astro.props;
       ))
   }
 </div>
+}
 
 <style lang="less" is:global>
   .licence {
