@@ -57,4 +57,7 @@
     width: 100%;
     border: none;
   }
+  small {
+    color: #565656e2;
+  }
 </style>

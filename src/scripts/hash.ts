@@ -19,3 +19,9 @@ export function cyrb53a(str: string, seed = 0) {
     h1 ^= h2 >>> 16; h2 ^= h1 >>> 16;
     return 2097152 * (h2 >>> 0) + (h1 >>> 11);
 };
+
+export function shortUuid(base?: number) {
+    let uuid = crypto.randomUUID().split("-").at(-1)!;
+    if (base) uuid = parseInt(uuid, 16).toString(base);
+    return uuid;
+}

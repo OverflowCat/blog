@@ -4,24 +4,30 @@ export interface Props {
 }
 
 const { data } = Astro.props;
-import { cyrb53a } from "@/scripts/hash";
-const hash = cyrb53a(JSON.stringify(data));
-const id = "circuit-" + hash.toString(32);
+import { shortUuid } from "@/scripts/hash";
+import { Icon } from "astro-icon";
+import "@/styles/icon.less";
+const id = "c-" + shortUuid(32);
 ---
 
 <!-- TODO: https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements -->
 <div class="digital" id={id}>
-  <div>
-    <button name="start" type="button">▶️</button>
-    <button name="stop" type="button">⏹️</button>
+  <div class="controls">
+    <button name="start" type="button" aria-label="Start"
+      ><span class="icon"><Icon name="mdi:play-circle-outline" /></span></button
+    >
+    <button name="stop" type="button" aria-label="Stop"
+      ><span class="icon"><Icon name="mdi:pause-octagon-outline" /></span
+      ></button
+    >
+    <button name="json" type="button" aria-label="Restart"
+      ><span class="icon"><Icon name="mdi:restart" /></span></button
+    >
   </div>
   <div class="paper"></div>
-  <div>
+  <div class="hidden">
     <input name="fixed" type="checkbox" />
-    <button name="json" type="button">Serialize and Reload</button>
     <input name="layout" type="checkbox" />
-  </div>
-  <div>
     <button name="ppt_up" type="button">+</button><button name="ppt_down"
       >-</button
     ><button name="left">&lt;</button><button name="right">&gt;</button><button
@@ -29,9 +35,8 @@ const id = "circuit-" + hash.toString(32);
     >
   </div>
   <div class="monitor"></div>
-  <div class="iopanel"></div>
+  <div class="iopanel hidden"></div>
 </div>
-<script is:inline src="https://tilk.github.io/digitaljs/main.js"></script>
 <script define:vars={{ data, id }}>
 // @ts-nocheck
 const digital = document.querySelector(".digital#" + id);
@@ -112,3 +117,26 @@ window.addEventListener("load", function () {
   loadCircuit(data);
 });
 </script>
+<style lang="less">
+  button {
+    background: none;
+    border: none;
+    border-radius: 2px;
+    padding: 3px 7px;
+    margin: 0;
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .controls > button {
+    font-size: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>

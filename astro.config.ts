@@ -18,6 +18,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 import rehypeExternalLinks from "rehype-external-links";
 
+// @ts-ignore
 import remarkFigureCaption from "@microflash/remark-figure-caption";
 
 type PrettyCodeNodePositionPoint = {

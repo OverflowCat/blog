@@ -9,8 +9,8 @@ const { name } = Astro.props;
 ---
 
 {
-  !name ? <></> : 
-    <div class="licence">
+  name ?  
+    (<div class="licence">
   {
     !!name &&
       (name.startsWith("Cc") ? (
@@ -25,7 +25,8 @@ const { name } = Astro.props;
         <slot />
       ))
   }
-</div>
+</div>)
+:(<></>)
 }
 
 <style lang="less" is:global>

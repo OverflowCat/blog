@@ -40,7 +40,9 @@ import "@/styles/article.less";
           </span>
           分类：
           {cats.map((cat) => (
-            <a href={`/categories/${cat}/`}>{cat}</a>
+            <a class="cat" href={`/categories/${cat}/`}>
+              {cat}
+            </a>
           ))}
         </div>
       )
@@ -53,7 +55,9 @@ import "@/styles/article.less";
           </span>
           标签：
           {tags.map((tag) => (
-            <a href={`/tags/${tag}/`}>{tag}</a>
+            <a class="tag" href={`/tags/${tag}/`}>
+              {tag}
+            </a>
           ))}
         </div>
       )
@@ -82,16 +86,22 @@ import "@/styles/article.less";
     color: #2e2e2e;
     font-size: 0.9rem;
     text-align: center;
-    a {
+    a.tag,
+    a.cat {
       color: #151515;
       text-decoration: none;
+      border: none;
       padding: 3px 6px;
       margin: 0 5px;
       border-radius: 0.5rem;
       background-color: #f4f4f4;
       color: #333;
+      transition: background-color 0.1s;
       &:hover {
         background-color: #e7e7e7;
+      }
+      &:active {
+        background-color: #d9d9d9;
       }
     }
     & > div {
