@@ -17,7 +17,7 @@
     "@astrojs/svelte": "^3.1.0",
     "@fontsource/noto-sans-mongolian": "^5.0.5",
     "@fontsource/noto-sans-sc": "^5.0.5",
-    "@fontsource/noto-serif-sc": "^5.0.5",
+    "@fontsource/noto-serif-sc": "^5.0.6",
     "@microflash/remark-figure-caption": "^1.0.0",
     "astro": "^2.9.6",
     "astro-compress": "^1.1.50",

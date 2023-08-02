@@ -24,8 +24,8 @@ dependencies:
     specifier: ^5.0.5
     version: 5.0.5
   '@fontsource/noto-serif-sc':
-    specifier: ^5.0.5
-    version: 5.0.5
+    specifier: ^5.0.6
+    version: 5.0.6
   '@microflash/remark-figure-caption':
     specifier: ^1.0.0
     version: 1.0.0
@@ -870,8 +870,8 @@ packages:
     resolution: {integrity: sha512-S1Zba4NGeSIG3I6W4nZRG0eKWmL1DMs3pN//RIUzixRiXUjqwHdSIxPF8t7If05xxDA9+EvbKWChEJxQynHKgQ==}
     dev: false
 
-  /@fontsource/noto-serif-sc@5.0.5:
-    resolution: {integrity: sha512-dJZhSzbj9en7U6Dfbvr4FQjH3nLEbgn4aQxA7qmJGcDKYbyykkUHiEj+URmCJ0rmb2j64Enn1MrxLczjgWRl4A==}
+  /@fontsource/noto-serif-sc@5.0.6:
+    resolution: {integrity: sha512-OfzpdBPCiNtfruo+wy4H5zGHBxPYkV/IjFIac3QqZMGDj3PJRQKwJA8is5r9zT1029aPY5eqilEhNqiMLqNSPg==}
     dev: false
 
   /@jridgewell/gen-mapping@0.3.2:
