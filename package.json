@@ -37,7 +37,7 @@
     "@types/node": "^20.4.5",
     "modern-css-reset": "^1.4.0",
     "rehype-pretty-code": "^0.10.0",
-    "rollup": "^3.27.0",
+    "rollup": "^3.27.1",
     "shiki": "^0.14.3",
     "typescript": "^5.1.6",
     "vite": "^4.4.7"
