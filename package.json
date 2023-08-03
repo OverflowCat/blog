@@ -15,7 +15,7 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/svelte": "^3.1.0",
-    "@fontsource/noto-sans-mongolian": "^5.0.5",
+    "@fontsource/noto-sans-mongolian": "^5.0.7",
     "@fontsource/noto-sans-sc": "^5.0.5",
     "@fontsource/noto-serif-sc": "^5.0.5",
     "@microflash/remark-figure-caption": "^1.0.0",

@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(astro@2.9.6)(svelte@4.1.1)(typescript@5.1.6)(vite@4.4.7)
   '@fontsource/noto-sans-mongolian':
-    specifier: ^5.0.5
-    version: 5.0.5
+    specifier: ^5.0.7
+    version: 5.0.7
   '@fontsource/noto-sans-sc':
     specifier: ^5.0.5
     version: 5.0.5
@@ -862,8 +862,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@fontsource/noto-sans-mongolian@5.0.5:
-    resolution: {integrity: sha512-iz00+A7n6t2jK7iWR/PsHo0SNkO00yV6awnG4WFSj16CCMj/AsdzpLRH1yPo4zuH9lV01Cbazd4WXsxaGZ+mBA==}
+  /@fontsource/noto-sans-mongolian@5.0.7:
+    resolution: {integrity: sha512-EV/ztrjV1XLvOPuSFeXyVUzKTEENESahHyTzlZP5OoINxP+YfUdvmL0rztnT/9s9E0srm1CSUFeqV92ymzDxpg==}
     dev: false
 
   /@fontsource/noto-sans-sc@5.0.5:
