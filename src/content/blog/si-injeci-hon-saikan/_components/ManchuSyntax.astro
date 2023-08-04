@@ -7,6 +7,8 @@ export interface Props {
   manju?: boolean;
 }
 
+import "@/styles/manchu.less";
+
 const manju = Astro.props.manju;
 
 // turn Astro.props.vocab into a map
@@ -228,14 +230,10 @@ function manjuify(str: string) {
 </div>
 
 <!-- inject global manchu styles -->
-<style is:global>
+<style is:global is:inline>
   [lang="moe"] {
     font-family: "Ubuntu Mono", "Noto Sans Mono", "Noto Sans Mono CJK SC",
       "Consolas", monospace;
-  }
-  [lang="mnc"] {
-    font-family: "Noto Sans Mongolian", "Mongolian Baiti";
-    writing-mode: vertical-lr;
   }
 </style>
 
