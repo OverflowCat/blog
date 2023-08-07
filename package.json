@@ -20,7 +20,7 @@
     "@fontsource/noto-serif-sc": "^5.0.6",
     "@microflash/remark-figure-caption": "^1.0.0",
     "astro": "^2.10.1",
-    "astro-compress": "^1.1.50",
+    "astro-compress": "^2.0.0",
     "astro-icon": "^0.8.1",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
