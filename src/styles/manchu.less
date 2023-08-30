@@ -10,16 +10,20 @@
 [lang="mnc"] {
   font-family: "Noto Sans Mongolian", "Mongolian Baiti";
   writing-mode: vertical-lr;
-
   // for the f*cking WebKit, where `writing-mode` alone won't work.
   // See https://github.com/w3c/mlreq/issues/39
   text-orientation: sideways;
+
+  &.yoko {
+    text-combine-upright: all;
+  }
+  
+  [lang^="zh"] {
+    writing-mode: sideways-lr;
+    text-orientation: upright;
+  }
 }
 
 [lang="mö"] {
   font-family: monospace;
-}
-
-&.yoko {
-  text-combine-upright: all;
 }
