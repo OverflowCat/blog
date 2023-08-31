@@ -7,22 +7,22 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.1
-    version: 0.4.1(astro@3.0.2)
+    version: 0.4.1(astro@3.0.3)
   '@astrojs/mdx':
     specifier: ^1.0.0
-    version: 1.0.0(astro@3.0.2)
+    version: 1.0.0(astro@3.0.3)
   '@astrojs/rss':
     specifier: ^3.0.0
     version: 3.0.0
   '@astrojs/svelte':
     specifier: ^4.0.0
-    version: 4.0.0(astro@3.0.2)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
+    version: 4.0.0(astro@3.0.3)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
   '@fontsource/noto-sans-mongolian':
     specifier: ^5.0.8
     version: 5.0.8
   '@fontsource/noto-sans-sc':
-    specifier: ^5.0.7
-    version: 5.0.7
+    specifier: ^5.0.10
+    version: 5.0.10
   '@fontsource/noto-serif-sc':
     specifier: ^5.0.7
     version: 5.0.7
@@ -30,8 +30,8 @@ dependencies:
     specifier: ^2.0.2
     version: 2.0.2
   astro:
-    specifier: ^3.0.2
-    version: 3.0.2(@types/node@20.5.7)(less@4.2.0)
+    specifier: ^3.0.3
+    version: 3.0.3(@types/node@20.5.7)(less@4.2.0)
   astro-compress:
     specifier: ^2.0.14
     version: 2.0.14
@@ -62,6 +62,9 @@ dependencies:
   remark-math:
     specifier: ^5.1.1
     version: 5.1.1
+  sharp:
+    specifier: ^0.32.5
+    version: 0.32.5
   svelte:
     specifier: ^4.2.0
     version: 4.2.0
@@ -102,12 +105,12 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.1(astro@3.0.2):
+  /@astro-community/astro-embed-youtube@0.4.1(astro@3.0.3):
     resolution: {integrity: sha512-sS3zp3JpCkQl0yl5iCZSuCcankz0Ownjg0Ju5KdON4BJVZUh2gHySCCvqKpsNWwto2VESKi9v7KHi1/R386FZg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta
     dependencies:
-      astro: 3.0.2(@types/node@20.5.7)(less@4.2.0)
+      astro: 3.0.3(@types/node@20.5.7)(less@4.2.0)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -119,13 +122,13 @@ packages:
     resolution: {integrity: sha512-NQ4ppp1CM0HNkKbJNM4saVSfmUYzGlRalF6wx7F6T/MYHYSWGuojY89/oFTy4t8VlOGUCUijlsVNNeziWaUo5g==}
     dev: false
 
-  /@astrojs/markdown-remark@3.0.0(astro@3.0.2):
+  /@astrojs/markdown-remark@3.0.0(astro@3.0.3):
     resolution: {integrity: sha512-s8I49Je4++ImgYAgwL32HgN8m6we2qz3RtBpN4AjObMODPwDylmzUHZksD8Toy31q/P59ED3MuwphqOGm9l03w==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.0.2(@types/node@20.5.7)(less@4.2.0)
+      astro: 3.0.3(@types/node@20.5.7)(less@4.2.0)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       rehype-raw: 6.1.1
@@ -142,17 +145,17 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@1.0.0(astro@3.0.2):
+  /@astrojs/mdx@1.0.0(astro@3.0.3):
     resolution: {integrity: sha512-Gmeleci8o4X7dST9E85c1+k273zcKW8cSFgZLTwU5K4dC0qHfY/EaDKHWrtzOB2wjZlT1JDRzTJ68LJYGrF2OA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
-      '@astrojs/markdown-remark': 3.0.0(astro@3.0.2)
+      '@astrojs/markdown-remark': 3.0.0(astro@3.0.3)
       '@astrojs/prism': 3.0.0
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.0.2(@types/node@20.5.7)(less@4.2.0)
+      astro: 3.0.3(@types/node@20.5.7)(less@4.2.0)
       es-module-lexer: 1.3.0
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -185,7 +188,7 @@ packages:
       kleur: 4.1.5
     dev: false
 
-  /@astrojs/svelte@4.0.0(astro@3.0.2)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
+  /@astrojs/svelte@4.0.0(astro@3.0.3)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
     resolution: {integrity: sha512-HTn6p2U8GnbiDFxfyaUUCPLGW1P/RAEC0jeg4Zk0IGQd1szSvHwuZst99/k8oRoIytH5eLWSRuiYMI4j5vdA6w==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -193,7 +196,7 @@ packages:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.2.0)(vite@4.4.9)
-      astro: 3.0.2(@types/node@20.5.7)(less@4.2.0)
+      astro: 3.0.3(@types/node@20.5.7)(less@4.2.0)
       svelte: 4.2.0
       svelte2tsx: 0.6.21(svelte@4.2.0)(typescript@5.2.2)
     transitivePeerDependencies:
@@ -823,8 +826,8 @@ packages:
     resolution: {integrity: sha512-Tmouan5F5eW94ZdX91EdEieMjRqbCefzmVxae0mOnYjblA4gXwNCY3L2COQjmrJLC3QSYTHoj6UjtZPid4JvEQ==}
     dev: false
 
-  /@fontsource/noto-sans-sc@5.0.7:
-    resolution: {integrity: sha512-aLE0DpAQtiMFP7ZPKf0uhbmfs1c54uI/tt82T1DW1Q8Z6CnVInd6opjYdvkSMrzIPovce+PdrrxFFY68YtRXcA==}
+  /@fontsource/noto-sans-sc@5.0.10:
+    resolution: {integrity: sha512-+QH+Wgc9hIqkczpwyLriqdORVXYyo+WfLVNc/Nku2QZ2pNyXUgRjsnn+m8iGAYdDeEYZeeXK0A7RdmBapHCdIQ==}
     dev: false
 
   /@fontsource/noto-serif-sc@5.0.7:
@@ -1225,14 +1228,14 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro@3.0.2(@types/node@20.5.7)(less@4.2.0):
-    resolution: {integrity: sha512-7ytwERK1CN7LBA/BgUrA9/ktbn0WDRwvkpxZZkIPlbjp3Ojlp6e12L2ZkNIYyIsGzFqXAZZz58pFwy7KG2Qz5g==}
+  /astro@3.0.3(@types/node@20.5.7)(less@4.2.0):
+    resolution: {integrity: sha512-bugdGn9wIniVFbfyAHYtF9bc9pZpPaEs3gJAnK/XWROxCBAI2UQjR6lQuWM20iCc3snqu7GDgoW2MdzO7WFZZw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.0.1
       '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.0.0(astro@3.0.2)
+      '@astrojs/markdown-remark': 3.0.0(astro@3.0.3)
       '@astrojs/telemetry': 3.0.0
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
@@ -1350,7 +1353,7 @@ packages:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.2.0
+      chalk: 5.3.0
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
@@ -1428,11 +1431,6 @@ packages:
       ansi-styles: 3.2.1
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
-    dev: false
-
-  /chalk@5.2.0:
-    resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: false
 
   /chalk@5.3.0:
@@ -4009,14 +4007,6 @@ packages:
       unified: 10.1.2
     dev: false
 
-  /rehype-stringify@9.0.3:
-    resolution: {integrity: sha512-kWiZ1bgyWlgOxpqD5HnxShKAdXtb2IUljn3hQAhySeak6IOQPPt6DeGnsIh4ixm7yKJWzm8TXFuC/lPfcWHJqw==}
-    dependencies:
-      '@types/hast': 2.3.4
-      hast-util-to-html: 8.0.4
-      unified: 10.1.2
-    dev: false
-
   /rehype-stringify@9.0.4:
     resolution: {integrity: sha512-Uk5xu1YKdqobe5XpSskwPvo1XeHUUucWEQSl8hTrXt5selvca1e8K1EZ37E6YoZ4BT8BCqCdVfQW7OfHfthtVQ==}
     dependencies:
@@ -4030,7 +4020,7 @@ packages:
     dependencies:
       '@types/hast': 2.3.4
       rehype-parse: 8.0.4
-      rehype-stringify: 9.0.3
+      rehype-stringify: 9.0.4
       unified: 10.1.2
     dev: false
 
