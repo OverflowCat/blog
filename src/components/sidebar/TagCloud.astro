@@ -3,8 +3,8 @@ import { getTagsInfo } from "@/scripts/tags";
 import "@/styles/tag-cloud.less";
 
 function generateRandomColor() {
-  const MAX_RGB_VALUE = 180;
-  const MIN_RGB_VALUE = 50;
+  const MAX_RGB_VALUE = 220;
+  const MIN_RGB_VALUE = 70;
   const [r, g, b] = ["r", "g", "b"].map(
     () =>
       Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
@@ -19,7 +19,7 @@ function generateRandomColor() {
     Array.from(getTagsInfo()).map(([k, v]) => (
       <a
         href={`/tags/${k}`}
-        style={`font-size: ${2 * v + 8}px; color: ${generateRandomColor()}`}
+        style={`font-size: ${1.8 * v + 13}px; color: ${generateRandomColor()}`}
       >
         {k}
       </a>

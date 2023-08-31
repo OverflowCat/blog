@@ -3,6 +3,7 @@ import Page from "@templates/zh/Page.astro";
 import Sidebar from "@/components/sidebar/Index.astro";
 import Paper from "@/components/Paper.astro";
 import "modern-css-reset";
+import type { OpenGraphData } from "@/scripts/open-graph";
 
 export interface Props {
   title: string;
@@ -10,12 +11,13 @@ export interface Props {
     index?: number;
     transparent?: boolean;
   };
+  og?: OpenGraphData;
 }
 
-const { title, bar } = Astro.props;
+const { title, bar, og } = Astro.props;
 ---
 
-<Page title={title} bar={bar} noscript>
+<Page title={title} bar={bar} og={og} noscript>
   <main>
     <Sidebar />
     <Paper>

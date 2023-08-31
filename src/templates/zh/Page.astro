@@ -26,6 +26,7 @@ if (!og) {
 const metas = {
   ...genOpenGraphMetas(og),
   ...Astro.props.metas,
+  description: og.description ?? "新世界的大門 Blog",
 };
 
 import Base from "./Base.astro";

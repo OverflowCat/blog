@@ -28,7 +28,11 @@ const { post } = Astro.props;
                 {post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}
             </blockquote>
         </td>
-        {post.data.photo && <td class="title-img"><img class="title-img" src={post.data.photo} alt={post.data.title} /></td>}
+        {post.data.photo && 
+        <td class="title-img">
+            <img class="title-img" src={post.data.photo} alt={post.data.title} />
+        </td>
+        }
     </tr>
 </table>
 

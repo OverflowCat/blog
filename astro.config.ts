@@ -98,11 +98,11 @@ export default defineConfig({
     mdx(),
     compress({
       path: "../dist/", // !!
-      // css: false,
-      // html: false,
+      css: false,
+      html: false,
       img: false,
       js: false,
-      svg: false,
+      svg: true,
     }),
   ],
 });

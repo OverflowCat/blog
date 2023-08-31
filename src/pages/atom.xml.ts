@@ -3,7 +3,7 @@ import { posts } from "@/scripts/collection-workaround";
 import MarkdownIt from "markdown-it";
 const md = new MarkdownIt();
 
-export async function get(context: any) {
+export async function GET(context: any) {
   let items = await Promise.all(
     posts.map(async (post) => {
       return {
