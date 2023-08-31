@@ -14,7 +14,7 @@ const href = "https://" + link;
   <a href={href}>
     <div class="grid-container">
       <div class="title"><h2 set:html={title} /></div>
-      <img class="avatar" src={avatar} />
+      <img class="avatar" loading="lazy" src={avatar} />
       <div class="link"><p id="link"><code>{link}</code></p></div>
       <div class="main">
         {

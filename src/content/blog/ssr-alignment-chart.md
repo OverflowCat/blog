@@ -35,14 +35,16 @@ noscript: true
     <tr>
       <td class="h">中立</td>
       <td>
-        <div><img src="https://miro.medium.com/v2/resize:fit:400/1*-8c5bXmKhpKg8NRnBMu0zQ.gif"></div>
+        <div>
+          <img loading="lazy" src="https://miro.medium.com/v2/resize:fit:400/1*-8c5bXmKhpKg8NRnBMu0zQ.gif">
+        </div>
         <div style="padding-top: 4px;"><img style="background-color: rgb(34, 34, 34);" src="https://pages.github.com/images/logo.svg"></div>
       </td>
       <td>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg">
+        <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg">
       </td>
       <td>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Open_Broadcaster_Software_Logo.png/2048px-Open_Broadcaster_Software_Logo.png">
+        <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Open_Broadcaster_Software_Logo.png/2048px-Open_Broadcaster_Software_Logo.png">
       </td>
     </tr>
     <tr>

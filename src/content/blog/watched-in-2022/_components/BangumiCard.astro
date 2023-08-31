@@ -60,7 +60,7 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
           {sticker.endsWith(".mp4") || sticker.endsWith(".webm") ? (
             <VideoSticker src={sticker} width="168px" />
           ) : (
-            <img src={sticker} alt="sticker" width="200px" />
+            <img src={sticker} alt="sticker" width="200px" loading="lazy" />
           )}
         </div>
       )
@@ -198,7 +198,8 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
     border-radius: 0.5rem;
     background-position: 100%;
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
     & > div.container {
       padding: 1rem 1.3rem;

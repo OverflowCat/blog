@@ -30,7 +30,7 @@ const { post } = Astro.props;
         </td>
         {post.data.photo && 
         <td class="title-img">
-            <img class="title-img" src={post.data.photo} alt={post.data.title} />
+            <img class="title-img" loading="lazy" src={post.data.photo} alt={post.data.title} />
         </td>
         }
     </tr>
