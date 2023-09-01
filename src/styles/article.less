@@ -22,13 +22,32 @@
   color-scheme: light;
 }
 
+h1,
+article > h2,
+article > h3,
+article > h4,
+article > h5,
+article > h6 {
+  font-family: "Noto Serif SC", "Noto Serif CJK SC",
+    "华文中宋", "STZhongsong", "STSong", "Songti SC", "宋体", "SimSun",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: bold;
+  line-height: 140%;
+  margin: 30px 0 15px;
+}
+
 article {
   font-family: "Noto Sans SC", "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
-  line-height: 200%;
-  margin: 18px;
+  line-height: 175%;
+  margin: 14px 7px;
+
+  code {
+    font-size: 94%;
+    word-break: break-all;
+  }
 
   @import "a.less";
 
@@ -76,20 +95,6 @@ article {
     width: 100%;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Noto Serif SC", "Noto Serif CJK SC",
-      "华文中宋", "STZhongsong", "STSong", "Songti SC", "宋体", "SimSun",
-      "PingFang SC", "Microsoft YaHei", sans-serif;
-    font-weight: bold;
-    line-height: 1.5;
-    margin: 30px 0 15px;
-  }
-
   & h3 {
     display: block;
     font-size: 1.17em;
@@ -117,12 +122,14 @@ article {
     border-left: 4px solid #ddd;
     color: var(--blockquote-color);
     margin: 0;
-    padding: 0 15px;
+    padding: 0 8px 0 12px;
+    font-size: 95%;
+    line-height: 160%;
   }
 
   & blockquote cite::before {
     content: "-";
-    padding: 0 5px;
+    padding: 0 4px;
   }
 
   dt {
