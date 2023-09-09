@@ -1,36 +1,40 @@
 ---
 import { getComments } from "@/scripts/comments";
 import Form from "./Form.astro";
+import "@/styles/a.less";
 
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 
 const comments = getComments(slug);
 ---
 
-<h2>评论</h2>
-{
-  comments.length >= 1 && (
-    <section id="comment-list">
-      <ul>
-        {comments.map((comment) => (
-          <li>
-            <h4>
-              {comment.name}
-              <date>{comment.date.toLocaleDateString()}</date>
-            </h4>
-            <p>{comment.message}</p>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
+<div class="comments">
+  <h2>评论</h2>
+  {
+    comments.length >= 1 && (
+      <section id="comment-list">
+        <ul>
+          {comments.map((comment) => (
+            <li>
+              <h4>
+                {comment.name}
+                <date>{comment.date.toLocaleDateString()}</date>
+              </h4>
+              <p>{comment.message}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 
-<Form />
+  <Form />
+</div>
 
 <style lang="less">
   h2 {
-    margin: 0;
+    margin: 1.5rem auto 0;
+    text-align: center;
   }
   #comment-list {
     margin: 1rem 1rem;
