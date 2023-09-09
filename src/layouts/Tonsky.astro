@@ -8,6 +8,7 @@ import "@/styles/han.less";
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import { hasChinese } from "@/components/lang/zh";
+import Comments from "@/components/comments/Comments.astro";
 
 let $ = cheerio.load(await Astro.slots.render("default"));
 $("li, p, h1, h2, h3, h4, h5, h6, blockquote").each(function () {
@@ -23,7 +24,7 @@ const html = $.html();
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <label for="show-en" class="btn">Show English</label>
   <input type="checkbox" id="show-en" />
-  /
+   /
   <Languages
     src="en"
     here="zh"
@@ -33,6 +34,9 @@ const html = $.html();
     }}
   />
   <article class="post" set:html={html} />
+  <br class="no-select" />
+  <br class="no-select" />
+  <Comments />
 </div>
 
 <style is:global lang="less">
@@ -61,5 +65,8 @@ const html = $.html();
         display: unset;
       }
     }
+  }
+  .no-select {
+    user-select: none;
   }
 </style>

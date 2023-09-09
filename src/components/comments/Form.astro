@@ -28,8 +28,7 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
     <textarea
       name="fields[message]"
       id="message"
-      cols="30"
-      rows="10"
+      rows="6"
       placeholder="请洒潘江，各倾陆海云尔……"
       required></textarea>
   </div>
@@ -42,9 +41,38 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
   </div>
 
   <button type="submit" class="form-button">发送</button>
+  <span class="info">
+    评论将在审核后显示，阁下可以在本博客的 Github 仓库的 <a
+      href="https://github.com/OverflowCat/blog/pulls/app%2Foverflowcat"
+      >拉取请求列表</a
+    > 中查看。<br />本表单无 JavaScript，请勿重复提交。
+  </span>
 </form>
 
 <style lang="less">
+  .info {
+    font-size: 14.5px;
+    color: #606060;
+    margin-left: 1rem;
+    br {
+      display: none;
+    }
+  }
+  @media (max-width: 938px) {
+    .info {
+      display: block;
+      br {
+        display: inline;
+      }
+    }
+  }
+
+  @media (max-width: 638px) {
+    .info > br {
+      display: none;
+    }
+  }
+
   .comment-form {
     font-family: Arial, sans-serif;
     font-size: 115%;
@@ -59,7 +87,9 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
+      text-align: left;
       user-select: none;
+      font-size: 17px;
     }
     input,
     textarea {
@@ -77,13 +107,13 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
     }
     textarea {
       resize: vertical;
-      min-height: 200px;
-      max-height: 600px;
+      min-height: 180px;
+      max-height: 500px;
     }
   }
 
   .form-button {
-    background-color: #3498db;
+    background-color: #424242;
     color: #ffffff;
     padding: 10px 15px;
     border: none;
@@ -92,7 +122,7 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
     font-size: 16px;
     transition: background-color 0.3s;
     &:hover {
-      background-color: #2980b9;
+      background-color: #6c6c6c;
     }
   }
 
