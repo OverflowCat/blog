@@ -3,6 +3,7 @@ import Paper from "@/components/FakePaper.astro";
 import { Icon } from "astro-icon";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
+import Comments from "@/components/Comments.astro";
 
 const { frontmatter } = Astro.props;
 const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
@@ -69,6 +70,12 @@ import "@/styles/article.less";
   <LicenceBox name={licence} />
 </Paper>
 
+<section id="comments">
+  <Paper padding={true} paper={true}>
+    <Comments />
+  </Paper>
+</section>
+  
 <style is:global lang="less">
   .paper {
     max-width: 1024px;
@@ -107,5 +114,9 @@ import "@/styles/article.less";
     & > div {
       margin: 0.8rem 0;
     }
+  }
+
+  section#comments {
+    margin: 1rem 0;
   }
 </style>

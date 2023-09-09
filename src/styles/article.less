@@ -39,11 +39,18 @@ article > h6 {
 article {
   font-family: "Noto Sans SC", "Noto Sans CJK SC", "Open Sans", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   text-align: left;
   line-height: 175%;
   margin: 14px 7px;
 
+  @media (min-width: 800px) {
+    padding: 8px 24px;
+  }
+  @media (min-width: 1200px) {
+    padding: 8px 32px;
+  }
+  
   code {
     font-size: 94%;
     word-break: break-all;
@@ -124,7 +131,6 @@ article {
     margin: 0;
     padding: 0 8px 0 12px;
     font-size: 95%;
-    line-height: 160%;
   }
 
   & blockquote cite::before {

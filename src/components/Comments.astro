@@ -1,0 +1,103 @@
+---
+import nameGen from "@/scripts/name-gen";
+let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
+---
+
+<form
+  action="https://qiao.xinshijiededa.men/api/handle/form"
+  method="post"
+  class="comment-form"
+>
+  <div class="form-group">
+    <label for="fields[name]">昵称 *</label>
+    <input type="text" name="fields[name]" placeholder={nameGen()} required />
+  </div>
+
+  <div class="form-group">
+    <label for="fields[email]">Email *</label>
+    <input
+      type="text"
+      name="fields[email]"
+      placeholder="不会公开显示"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="fields[message]">留言 *</label>
+    <textarea
+      name="fields[message]"
+      id="message"
+      cols="30"
+      rows="10"
+      placeholder="请洒潘江，各倾陆海云尔……"
+      required></textarea>
+  </div>
+
+  <div class="form-group hidden">
+    <!-- <label for="options[captcha]">验证码，别勾选我！</label> -->
+    <!-- <input type="checkbox" name="fields[captcha]" /> -->
+    <label for="options[slug]">Slug</label>
+    <input type="text" name="options[slug]" value={slug} />
+  </div>
+
+  <button type="submit" class="form-button">发送</button>
+</form>
+
+<style lang="less">
+  .comment-form {
+    font-family: Arial, sans-serif;
+    font-size: 115%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      user-select: none;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 2px solid #e1e1e1;
+      border-radius: 2px;
+      font-size: 16px;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border: 2px solid #737373;
+      }
+    }
+    textarea {
+      resize: vertical;
+      min-height: 200px;
+      max-height: 600px;
+    }
+  }
+
+  .form-button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  .hidden {
+    display: none;
+    user-select: none;
+  }
+</style>
