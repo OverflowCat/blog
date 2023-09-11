@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.0.8
     version: 5.0.8
   '@fontsource/noto-sans-sc':
-    specifier: ^5.0.10
-    version: 5.0.10
+    specifier: ^5.0.11
+    version: 5.0.11
   '@fontsource/noto-serif-sc':
     specifier: ^5.0.7
     version: 5.0.7
@@ -829,8 +829,8 @@ packages:
     resolution: {integrity: sha512-Tmouan5F5eW94ZdX91EdEieMjRqbCefzmVxae0mOnYjblA4gXwNCY3L2COQjmrJLC3QSYTHoj6UjtZPid4JvEQ==}
     dev: false
 
-  /@fontsource/noto-sans-sc@5.0.10:
-    resolution: {integrity: sha512-+QH+Wgc9hIqkczpwyLriqdORVXYyo+WfLVNc/Nku2QZ2pNyXUgRjsnn+m8iGAYdDeEYZeeXK0A7RdmBapHCdIQ==}
+  /@fontsource/noto-sans-sc@5.0.11:
+    resolution: {integrity: sha512-DDPLXdHTbcGLuUtaS74LM1cJQ8lE3e0isd0ErRU7Hqir+VjVlRFgVxdIiAyRREQ8CZSejgW5gDvfDzK1I5OhAA==}
     dev: false
 
   /@fontsource/noto-serif-sc@5.0.7:
