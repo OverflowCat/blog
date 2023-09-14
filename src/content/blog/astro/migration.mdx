@@ -9,9 +9,9 @@ categories:
 tags:
   - "Astro"
 icon: "simple-icons:astro"
-mathjax: true
+mathjax: false
 layout: "@/layouts/Default.astro"
-noscript: false
+noscript: true
 ---
 
 ## 为什么要迁移
@@ -109,7 +109,7 @@ Astro 文档中说，如果你需要一个 asset 的直链，那还是使用 `pu
 
 [^1]: [Images 🚀 Astro Documentation # Where to store images](https://docs.astro.build/en/guides/images/#src-vs-public)。
 
-我甚至还尝试在 Zod 中使用 `z.union([z.string(), image()])`，但是这样 Typescript 也没有办法正确地进行 type narrowing，类型还是不可用。看来不能两全其美了。
+我甚至还尝试在 Zod 中使用 `z.union([z.string(), image()]){:js}`，但是这样 Typescript 也没有办法正确地进行 type narrowing，类型还是不可用。看来不能两全其美了。
 
 ## RSS 输出
 

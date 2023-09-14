@@ -8,7 +8,7 @@ layout: "@/layouts/Default.astro"
 noscript: true
 ---
 
-今天做听力的时候，有第四道题的对话是一个人在广告上看到了修车的广告，到这里来修车。选项问这是什么地方：_a_ _parking_ _lot_, _a_ _factory_ or _a_ <em>garage</em>。正确答案是 garage，因为有一项意思是汽车修理间。
+今天做听力的时候，有第四道题的对话是一个人在广告上看到了修车的广告，到这里来修车。选项问这是什么地方：<span lang="en">a parking lot, a factory or a <em>garage</em></span>。正确答案是 garage，因为有一项意思是汽车修理间。
 
 ![](https://telegra.ph/file/57851e6d307334d61c712.png)
 
