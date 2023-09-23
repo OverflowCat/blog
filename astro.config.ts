@@ -6,12 +6,12 @@ import svelte from "@astrojs/svelte";
 // https://astro.build/config
 import mdx from "@astrojs/mdx";
 
+// sitemap
+import sitemap from "@astrojs/sitemap";
+
 // math
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-
-// https://astro.build/config
-import compress from "astro-compress";
+import rehypeMathRenderer from "rehype-mathjax";
 
 import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
@@ -68,7 +68,6 @@ const prettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.xinshijiededa.men",
-  outDir: "./dist/",
   vite: {
     ssr: {
       noExternal: ["modern-css-reset"],
@@ -79,9 +78,10 @@ export default defineConfig({
       footnoteLabel: "---",
       footnoteBackLabel: "返回内容",
     },
-    remarkPlugins: [remarkMath, remarkFigureCaption],
     syntaxHighlight: false,
+    remarkPlugins: [remarkMath, remarkFigureCaption],
     rehypePlugins: [
+      rehypeMathRenderer,
       [
         rehypeExternalLinks,
         {
@@ -90,19 +90,11 @@ export default defineConfig({
         },
       ],
       [rehypePrettyCode, prettyCodeOptions],
-      rehypeKatex,
     ],
   },
   integrations: [
     svelte(),
     mdx(),
-    compress({
-      path: "../dist/", // !!
-      css: false,
-      html: false,
-      img: false,
-      js: false,
-      svg: true,
-    }),
+    sitemap(),
   ],
 });
