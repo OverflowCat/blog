@@ -19,7 +19,10 @@ function generateRandomColor() {
     Array.from(getCatsInfo()).map(([k, v]) => (
       <a
         href={`/categories/${k}`}
-        style={`font-size: ${1.8 * v + 13}px; color: ${generateRandomColor()}`}
+        style={`font-size: ${Math.min(
+          21,
+          1.8 * v + 13 - k.length / 3
+        )}px; color: ${generateRandomColor()}`}
       >
         {k}
       </a>

@@ -18,7 +18,11 @@ const comments = getComments(slug);
             <li>
               <h4>
                 {comment.name}
-                <date>{comment.date.toLocaleDateString()}</date>
+                &nbsp;
+                <time
+                  datetime={comment.date}
+                  set:text={comment.date.toLocaleDateString("zh")}
+                />
               </h4>
               <p>{comment.message}</p>
             </li>
@@ -65,7 +69,7 @@ const comments = getComments(slug);
       }
     }
 
-    date {
+    time {
       font-size: 0.8rem;
       color: #666;
     }

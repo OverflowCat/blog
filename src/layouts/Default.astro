@@ -31,7 +31,10 @@ import "@/styles/article.less";
     <div>
       <span class="icon">
         <Icon name="mdi:date-range" />
-      </span>日期：{new Date(frontmatter.date).toLocaleDateString("zh")}
+      </span>日期：<time
+        datetime={frontmatter.date}
+        set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
+      />
     </div>
     {
       cats && (
@@ -75,7 +78,7 @@ import "@/styles/article.less";
     <Comments />
   </Paper>
 </section>
-  
+
 <style is:global lang="less">
   .paper {
     max-width: 1024px;

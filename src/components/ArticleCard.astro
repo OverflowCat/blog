@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    post: CollectionEntry<"blog">;
+  post: CollectionEntry<"blog">;
 }
 
 import type { CollectionEntry } from "astro:content";
@@ -14,68 +14,99 @@ const { post } = Astro.props;
 ---
 
 <table>
-    <tr>
-        <td class="content">
-            <div>
-                <span class="icon title-icon">
-                    {<Icon name={getIconName(post) || "ph:hash"} />}
-                </span><a class="title" href={`/${post.slug}/`}>{post.data.title || "No title"}</a>
-                {!post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}
-            </div>
-            <blockquote>
-                {post.data.description}
-                {post.data.description && <a class="continue" href={`/${post.slug}/`}>阅读更多 →</a>}
-                {post.data.description && <code class="title-date">{formatPostDate(post.data.date)}</code>}
-            </blockquote>
-        </td>
-        {post.data.photo && 
-        <td class="title-img">
-            <img class="title-img" loading="lazy" src={post.data.photo} alt={post.data.title} />
-        </td>
+  <tr>
+    <td class="content">
+      <div>
+        <span class="icon title-icon">
+          {(<Icon name={getIconName(post) || "ph:hash"} />)}
+        </span><a class="title" href={`/${post.slug}/`}
+          >{post.data.title || "No title"}</a
+        >
+        {
+          !post.data.description && (
+            <time
+              class="title-date"
+              datetime={post.data.date?.toISOString() || ""}
+              set:text={formatPostDate(post.data.date)}
+            />
+          )
         }
-    </tr>
+      </div>
+      <blockquote>
+        {post.data.description}
+        {
+          post.data.description && (
+            <a class="continue" href={`/${post.slug}/`}>
+              阅读更多 →
+            </a>
+          )
+        }
+        {
+          post.data.description && (
+            <time
+              class="title-date"
+              datetime={post.data.date?.toISOString() || ""}
+              set:text={formatPostDate(post.data.date)}
+            />
+          )
+        }
+      </blockquote>
+    </td>
+    {
+      post.data.photo && (
+        <td class="title-img">
+          <img
+            class="title-img"
+            loading="lazy"
+            src={post.data.photo}
+            alt={post.data.title}
+          />
+        </td>
+      )
+    }
+  </tr>
 </table>
 
 <style>
-    .continue {
-        font-size: 90%;
-        margin: 0 4px;
-        color: #6d6d6d;
-        user-select: none;
-        text-decoration: none;
-    }
-    blockquote {
-        margin: 6px 0 6px 8px;
-        color: #383838;
-        border-left: 4px solid #ddd;
-        color: var(--blockquote-color);
-        padding: 0px 0px 0px 11px;
-    }
-    .title-date {
-        float: right;
-        bottom: 2px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    td {
-        padding: 0px;
-    }
-    td.content {
-        vertical-align: top;
-    }
+  .continue {
+    font-size: 90%;
+    margin: 0 4px;
+    color: #6d6d6d;
+    user-select: none;
+    text-decoration: none;
+  }
+  blockquote {
+    margin: 6px 0 6px 8px;
+    color: #383838;
+    border-left: 4px solid #ddd;
+    color: var(--blockquote-color);
+    padding: 0px 0px 0px 11px;
+  }
+  .title-date {
+    float: right;
+    bottom: 2px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 0px;
+  }
+  td.content {
+    vertical-align: top;
+  }
+  td.title-img {
+    width: 175px;
+  }
+  img.title-img {
+    margin-left: 10px;
+    height: auto;
+    border-radius: 4px;
+  }
+  @media (max-width: 650px) {
     td.title-img {
-        width: 175px;
+      display: none;
     }
-    img.title-img {
-        margin-left: 10px;
-        height: auto;
-        border-radius: 4px;
-    }
-    @media (max-width: 650px) {
-        td.title-img {
-            display: none;
-        }
-    }
+  }
 </style>

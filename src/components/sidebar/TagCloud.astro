@@ -19,7 +19,10 @@ function generateRandomColor() {
     Array.from(getTagsInfo()).map(([k, v]) => (
       <a
         href={`/tags/${k}`}
-        style={`font-size: ${1.8 * v + 13}px; color: ${generateRandomColor()}`}
+        style={`font-size: ${Math.min(
+          22.5,
+          1.8 * v + 13
+        )}px; color: ${generateRandomColor()}`}
       >
         {k}
       </a>
