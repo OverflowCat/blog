@@ -38,11 +38,12 @@ noscript: true
 .redacted {
     color: #bbb;
     background-color: #555;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
     padding-left: 2px;
     padding-right: 2px;
     user-select: none;
+    -webkit-user-select: none;
     transition: color 0.15s ease-out;
 }
 .redacted:hover {
