@@ -5,14 +5,20 @@ a {
     outline: 0;
     text-decoration: none;
     overflow-wrap: break-word;
-
     &:hover {
         border-bottom-color: var(--link-hover-color);
         color: var(--link-hover-color);
     }
 
     &[target="_blank"]::after {
-        content: ' ↗';
+        content: '↗';
+        padding-left: 2px;
+        padding-right: 2px;
         font-family: 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', '.LucidaGrandeUI-Bold', 'Lucida Grande', 'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial', 'Menlo', 'Apple Color Emoji', 'AppleColorEmoji';
     }
+}
+
+a:has(> img) {
+    border-bottom: 0;
+    color: inherit;
 }
