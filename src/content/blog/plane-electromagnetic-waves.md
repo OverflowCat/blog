@@ -35,9 +35,11 @@ licence: CcByNc
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | 空间周期 aka 波长 $\lambda$                                                   | 时间周期 aka 周期 $T$                                                              |
 | 空间频率 aka 波数 $\tilde\nu = \dfrac{1}{\lambda}$                            | 时间频率 $\nu=\dfrac{1}{T}$                                                        |
-| 空间角频率 aka 波矢的绝对值 <br /> $\color{#b42242}k = \dfrac{2\pi}{\lambda}$ | 时间角频率 aka 角频率<br /> $\color{#126a1e}\omega = 2\pi\gamma = \dfrac{2\pi}{T}$ |
+| 空间角频率 aka 波矢的绝对值 <br /> $\color{#b42242}k = \dfrac{2\pi}{\lambda}$ | 时间角频率 aka 角频率<br /> $\color{#126a1e}\omega = 2\pi\nu = \dfrac{2\pi}{T}$ |
 
-空间与时间量的关系很好理解．比如，空间周期与时间周期之比就是波速 ${\color{#aa34ae}v = \dfrac{\lambda}{T}} = \lambda\nu = \dfrac \omega k$．
+空间与时间量的关系很好理解．比如，**空间周期与时间周期之比就是波速 ${\color{#aa34ae}v = \dfrac{\lambda}{T}} = \lambda\nu = \dfrac \omega k$．**
+
+> ❗ 这个关系很重要．如果你在做题时发现缺少时间或空间的条件，那么不要忘了波速，因为波速通常不会在题目中显式地给出．所以我们要注意题目是否给出了介质折射率，或者所求光线是在真空中传播（光速）．
 
 ## 电场的表达式
 
@@ -84,7 +86,9 @@ $$
 \boldsymbol{A}\cdot \cos \left(\boldsymbol k \cdot \boldsymbol r - \omega t +\varphi_0\right).
 $$
 
-复数形式为：
+### 复数形式
+
+由欧拉公式 $e^{i\theta} = \cos \theta + i\sin \theta$，我们可以将沿任意方向传播的表达式写成复数形式：
 
 $$
 \begin{align*}
@@ -95,7 +99,7 @@ $$
 
 其中 $e^{-i\omega t}$ 为时间相位因子．
 
-展开后其实有虚部，但是由于我们只关心实部，所以虚数项可以忽略．
+注意这个复数形式展开后其实有虚部，但是由于我们只关心实部，所以虚数项可以忽略．
 
 通常写成笛卡尔坐标系下的形式：[^hecht]
 
@@ -146,7 +150,7 @@ $$\boldsymbol k = \boldsymbol E \times \boldsymbol B.$$
 
 ![用 OneNote 画的，比较抽象](/optics/kbe.svg)
 
-做题时，为了判断方向，可以记住 $\boldsymbol E$、$\boldsymbol B$ 和 $\boldsymbol k$ 三者按顺序呈右手螺旋，即
+做题时，为了判断方向，可以记住 $\boldsymbol E$、$\boldsymbol B$ 和 $\boldsymbol k$ 三者**按顺序**呈右手螺旋，即
 
 $$
 \left \{
@@ -162,11 +166,15 @@ $$
 
 ## 光程差和相位差
 
+光线在介质中传播距离 $s$（或写作 $r$、$d$、$x$）为其几何路程．但不同介质的折射率不同，会改变光的传播速度。所以我们需要使用**光程**（optical path length, OPL）来表示光在两点间传播的有效距离．
+
 在均匀介质中，光程是介质折射率 $n$ 与光线在介质中传播距离 $s$ 的乘积，即 $ns$．
 
 $$ Δx=(n−n_0)h $$
 
 在真空中，$Δx = cΔt.$
+
+**光程差**（optical path difference, OPD）则是两束光线的光程之差．
 
 > 光程和光程差的重要在它们确定光的相位，而相位决定了干涉和衍射现象． [^wp-opl]
 
