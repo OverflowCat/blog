@@ -31,7 +31,7 @@
     "rehype-mathjax": "^4.0.3",
     "remark-math": "^5.1.1",
     "sharp": "^0.32.6",
-    "svelte": "^4.2.1",
+    "svelte": "^4.2.2",
     "yaml": "^2.3.2"
   },
   "devDependencies": {
