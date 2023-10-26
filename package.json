@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^13.0.1",
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.8.9",
     "modern-css-reset": "^1.4.0",
     "rehype-pretty-code": "^0.10.1",
     "rollup": "^3.29.2",
