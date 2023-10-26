@@ -35,7 +35,7 @@
     "yaml": "^2.3.3"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.1",
+    "@types/markdown-it": "^13.0.5",
     "@types/node": "^20.6.3",
     "modern-css-reset": "^1.4.0",
     "rehype-pretty-code": "^0.10.1",
