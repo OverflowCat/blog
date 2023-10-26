@@ -16,11 +16,14 @@ metas["generator"] = Astro.generator;
 // import "modern-css-reset";
 
 import "@/styles/han.less";
+
+// import { ViewTransitions } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh">
   <head>
+    <!-- <ViewTransitions fallback="none" /> -->
     <meta charset="utf-8" />
     {
       metas &&
@@ -46,45 +49,44 @@ import "@/styles/han.less";
   </head>
   <body>
     <slot />
+    <style is:global>
+      :root {
+        --body-bg-color: #eee;
+        --accent-color: rgb(0, 0, 0);
+      }
+
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      html,
+      body {
+        position: relative;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        text-align: left;
+      }
+
+      ::selection {
+        background: rgba(37, 37, 37, 0.85);
+        color: #fff;
+      }
+
+      pre,
+      code {
+        font-family: "更纱等距黑体", "Fira Code", "FiraCode NF",
+          "Noto Sans CJK Mono SC", "Source Code Pro", consolas, monospace;
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --body-bg-color: #eee;
-    --accent-color: rgb(0, 0, 0);
-  }
-
-  body {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  html,
-  body {
-    position: relative;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    text-align: left;
-  }
-
-  ::selection {
-    background: rgba(37, 37, 37, 0.85);
-    color: #fff;
-  }
-
-  pre,
-  code {
-    font-family: "更纱等距黑体", "Fira Code", "FiraCode NF",
-      "Noto Sans CJK Mono SC", "Source Code Pro", consolas, monospace;
-  }
-</style>

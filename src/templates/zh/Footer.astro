@@ -1,13 +1,15 @@
 ---
 export interface Props {
   noscript?: boolean;
+  source?: string;
 }
 
 import Noscript from "@/components/boxes/Noscript.astro";
 import { Icon } from "astro-icon";
 import "@/styles/icon.less";
 
-const noscript = Astro.props.noscript;
+const { noscript, source } = Astro.props;
+const githubLink = source ? source : "https://github.com/OverflowCat/blog";
 ---
 
 <footer>
@@ -18,10 +20,19 @@ const noscript = Astro.props.noscript;
     >
   </div>
   <div>
-    Hosted & open sourced on
-    <a href="https://github.com/OverflowCat/blog">
-      <span class="icon"><Icon name="entypo-social:github" /></span>GitHub
-    </a>
+    <a href={githubLink}>
+      {
+        source ? (
+          <>View & edit source code of this page on&nbsp;</>
+        ) : (
+          <>Hosted & open sourced on&nbsp;</>
+        )
+      }
+      <span class="icon">
+        <Icon name="entypo-social:github" />
+      </span>
+       GitHub</a
+    >
   </div>
   <div>
     <span class="icon"><Icon name="door" /></span>

@@ -1,21 +1,25 @@
 .tag-cloud {
-    /* dont stretch aside */
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+  /* dont stretch aside */
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 
-    a {
-        margin: 0.15rem;
-        padding: 0.17rem 0.17rem;
-        display: inline-flex;
-        align-items: center;
-        border-radius: 0.37rem;
-        background-color: #f4f4f4;
-        color: #333;
-        text-decoration: none;
+  a {
+    margin: 0.15rem;
+    padding: 0.17rem 0.17rem;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.37rem;
+    color: #333;
+    text-decoration: none;
 
-        &:hover {
-            background-color: #e7e7e7;
-        }
+    transition: background-color 0.1s ease-in-out;
+    background-color: #f4f4f4;
+    &:hover {
+      background-color: #e7e7e7;
     }
+    &:active {
+      background-color: #dcdcdc;
+    }
+  }
 }

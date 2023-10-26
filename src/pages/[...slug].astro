@@ -31,12 +31,13 @@ const metas = post.data.categories?.includes("Tonsky")
   bar={{ transparent: true }}
   noscript={post.data.noscript}
   og={{
-    title: post.data.title,
+    title,
     description: post.data.description ?? "新世界的大门",
     image: post.data.photo as PathToSupportedImage,
     url: `https://blog.xinshijiededa.men/${post.slug}`,
   }}
   metas={metas}
+  source={`https://github.com/OverflowCat/blog/blob/src/src/content/blog/${post.id}?plain=1`}
 >
   <Content />
 </Page>

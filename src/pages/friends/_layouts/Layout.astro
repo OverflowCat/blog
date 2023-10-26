@@ -9,7 +9,12 @@ import Page from "@templates/zh/Page.astro";
 const { title, noscript } = Astro.props;
 ---
 
-<Page title={title} bar={{ index: 2 }} noscript={noscript}>
+<Page
+  title={title}
+  bar={{ index: 2 }}
+  noscript={noscript}
+  source="https://github.com/OverflowCat/blog/blame/src/src/pages/friends/index.astro"
+>
   <slot />
 </Page>
 

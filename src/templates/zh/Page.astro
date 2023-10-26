@@ -8,9 +8,10 @@ export interface Props {
   };
   og?: OpenGraphData;
   metas?: { [key: string]: string };
+  source?: string; // source code url on GitHub
 }
 
-let { title, bar, noscript, og } = Astro.props;
+let { title, bar, noscript, og, source } = Astro.props;
 
 title = title ? title + " | 新世界的大门" : "新世界的大门";
 
@@ -40,7 +41,7 @@ import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
   <div class="main">
     <slot />
   </div>
-  <Footer noscript={noscript} />
+  <Footer noscript={noscript} source={source} />
 </Base>
 
 <style>

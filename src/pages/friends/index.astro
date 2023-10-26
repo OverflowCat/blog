@@ -4,6 +4,19 @@ import Card from "./_components/Card.astro";
 import Color from "./_components/Color.astro";
 import Stroke from "./_components/Stroke.astro";
 import Pn from "@/components/Pn.astro";
+import { Code } from "astro:components";
+
+const EXAMPLE = `title: 新世界的大门
+href: https://blog.xinshijiededa.men
+avatar: # (多种格式可选)
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.svg
+  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.png
+  https://avatars.githubusercontent.com/u/20166026?v=4
+description: # (多个可选，如果放不下可以用短的)
+  zh-hans: 因此幻想是世界，谁若懂得，谁就会歌唱
+  en: So fansy is the world, who knows, maybe they sing
+  zh-hant: 悟已往之不諫，知來者之可追`;
 ---
 
 <!-- 2022-11-24 19:15:00 -->
@@ -112,23 +125,22 @@ import Pn from "@/components/Pn.astro";
       link="cronfox.2434.me"
       title="CronfoxLabs"
       avatar="//assets.2434.me/img/avatar/avatar-256x-256c.png"
-      desc="何がここまであなたをうごかすの？"
-    >
+      desc='<span lang="ja">何がここまであなたをうごかすの？</span>'
+    />
   </ul>
+
   <h1>交换友链</h1>
   <h2>本站信息</h2>
-  <div style="margin: auto; text-align: center; overflow-y: auto;">
-    <pre
-      style="text-align: left; display: inline-block;">title: 新世界的大门
-href: https://blog.xinshijiededa.men
-avatar: # (多种格式可选)
-  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp
-  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.svg
-  https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.png
-  https://avatars.githubusercontent.com/u/20166026?v=4
-description: # (多个可选，如果放不下可以用短的)
-  因此幻想是世界，谁若懂得，谁就会歌唱
-  悟已往之不諫，知來者之可追</pre>
+  <style is:global>
+    .astro-code {
+      margin: 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  </style>
+  <div style="margin: auto; text-align: left; overflow-y: auto; background-color: transparent; border-radius: 4px;">
+    <Code code={EXAMPLE} lang="yaml" theme="material-theme" />
   </div>
   <h2>你需要提供</h2>
   <ol role="list" class="link-card-grid">
@@ -146,10 +158,10 @@ description: # (多个可选，如果放不下可以用短的)
       link="blog.xinshijiededa.men"
       title="新世界的大门"
       avatar="//raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp"
-      desc="悟已往之不諫，知來者之可追"
+      desc='<span lang="zh-hant">悟已往之不諫，知來者之可追</span>'
     >
       你可以在 <code>desc</code> 中使用 HTML。不提供 <code>desc</code>
-      的话，我会帮你写一句的（
+       的话，我会帮你写一句的（
     </Card>
   </ol>
 </Layout>
