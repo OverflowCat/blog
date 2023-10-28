@@ -20,6 +20,12 @@ dependencies:
   '@astrojs/svelte':
     specifier: ^4.0.3
     version: 4.0.3(astro@3.4.0)(svelte@4.2.2)(typescript@5.2.2)(vite@4.5.0)
+  '@fontsource/ibm-plex-mono':
+    specifier: ^5.0.8
+    version: 5.0.8
+  '@fontsource/ibm-plex-sans':
+    specifier: ^5.0.17
+    version: 5.0.17
   '@fontsource/noto-sans-mongolian':
     specifier: ^5.0.8
     version: 5.0.8
@@ -828,6 +834,14 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource/ibm-plex-mono@5.0.8:
+    resolution: {integrity: sha512-AoR7K2YtlGKy3LApyLYjqjyz0o8XtkRvbB/juMsGSGNayBBAly140ykZls+VxcXjZSLQpp2RyxKo6lYOuHPmUw==}
+    dev: false
+
+  /@fontsource/ibm-plex-sans@5.0.17:
+    resolution: {integrity: sha512-VakeugSZf9MA/bGyMH27Cgwvc0v5lxBlmFKz7xE5ESFprXwMYfttkzRIkPw+B8st90GfsLYrkHOfGcjgdweuRQ==}
+    dev: false
 
   /@fontsource/noto-sans-mongolian@5.0.8:
     resolution: {integrity: sha512-Tmouan5F5eW94ZdX91EdEieMjRqbCefzmVxae0mOnYjblA4gXwNCY3L2COQjmrJLC3QSYTHoj6UjtZPid4JvEQ==}

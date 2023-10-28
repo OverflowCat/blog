@@ -9,6 +9,12 @@ import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
+import "@fontsource/ibm-plex-mono/latin-ext-400.css";
+import "@fontsource/ibm-plex-mono/cyrillic-400.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/latin-600.css";
+import "@fontsource/ibm-plex-sans/latin-400-italic.css";
 
 let $ = cheerio.load(await Astro.slots.render("default"));
 $("li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote").each(
