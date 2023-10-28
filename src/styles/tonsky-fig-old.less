@@ -1,0 +1,27 @@
+p > img,
+.fig,
+figure {
+  display: block !important;
+  margin: var(--gap) 0;
+  max-width: calc(var(--width) + 60px);
+}
+
+.fig,
+figure,
+figcaption {
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-style: italic;
+  max-width: var(--width);
+}
+
+.fig img,
+.fig svg,
+figure > img,
+figure > svg,
+figure > video,
+figure > a > img {
+  margin: 0 auto 1em;
+  border-radius: 3px;
+}

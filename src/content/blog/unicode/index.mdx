@@ -166,7 +166,7 @@ Encoding is what you’ll actually deal with as a programmer.
 
 UTF-8 is a variable-length encoding. A code point might be encoded as a sequence of one to four bytes.
 
-UTF-8 是一种可变长度编码。码位可能被编码为一个到四个字节的序列。
+UTF-8 是一种变长编码。码位可能被编码为一个到四个字节的序列。
 
 This is how it works:
 
@@ -268,73 +268,130 @@ Those who do will eventually meet this bad boy: �
 
 `U+FFFD`, the Replacement Character, is simply another code point in the Unicode table. Apps and libraries can use it when they detect Unicode errors.
 
+`U+FFFD`，<dfn>替换字符</dfn>，只是 Unicode 表中的另一个码位。当应用程序和库检测到 Unicode 错误时，它们可以使用它。
+
 If you cut half of the code point off, there’s not much left to do with the other half, except displaying an error. That’s when � is used.
 
-<Code lang="js" code={`var bytes = "Аналитика".getBytes("UTF-8");
+如果你切掉了码位的一半，那就没有什么其他办法，只能显示错误了。这就是使用 � 的时候。
+
+<Code
+  lang="js"
+  code={`var bytes = "Аналитика".getBytes("UTF-8");
 var partial = Arrays.copyOfRange(bytes, 0, 11);
-new String(partial, "UTF-8"); // => "Анал�"`} />
+new String(partial, "UTF-8"); // => "Анал�"`}
+/>
 
 # Wouldn’t UTF-32 be easier for everything?
 
+# 使用 UTF-32 不会让一切变得更容易吗？
+
 NO.
+
+不会。
 
 UTF-32 is great for operating on code points. Indeed, if every code point is always 4 bytes, then `strlen(s) == sizeof(s) / 4`, `substring(0, 3) == bytes[0, 12]`, etc.
 
+UTF-32 对于操作码位很棒。确实，如果每个码位总是 4 个字节，那么 `strlen(s) == sizeof(s) / 4`，`substring(0, 3) == bytes[0, 12]`，等等。
+
 The problem is, you don’t want to operate on code points. A code point is not a unit of writing; one code point is not always a single character. What you should be iterating on is called “**extended grapheme clusters**”, or graphemes for short.
+
+问题是，你想操作的并非码位。码位不是写作的单位；一个码位不总是一个字符。你应该迭代的是叫做「**<dfn>扩展字位簇</dfn>**（extended grapheme cluster）」的东西，我们在这里简称字位。
 
 A grapheme is a minimally distinctive unit of writing in the context of a particular writing system. `ö` is one grapheme. `é` is one too. And `각`. Basically, grapheme is what the user thinks of as a single character.
 
+一个<dfn>字位</dfn>（grapheme，或译作字素）[^1]是在特定书写系统的上下文中最小的可区分的书写单位。`ö` 是一个字位。`é`、`각` 也是。基本上，字位是用户认为是单个字符的东西。
+
+[^1]: [<dfn>字位</dfn>](https://zh.wikipedia.org/wiki/%E5%AD%97%E4%BD%8D)又称形素、字素，是最小的有意义书写符号单位；此术语是由语音学里的「音位（音素）」类推到文字学的。——译者注
+
 The problem is, in Unicode, some graphemes are encoded with multiple code points!
+
+问题是，在 Unicode 中，一些字位使用多个码位进行编码！
 
 ![](https://tonsky.me/blog/unicode/graphemes@2x.png)
 
 For example, `é` (a single grapheme) is encoded in Unicode as `e` (U+0065 Latin Small Letter E) + `´` (U+0301 Combining Acute Accent). Two code points!
 
+比如说，`é`（一个单独的字位）在 Unicode 中被编码为 `e`（U+0065 拉丁小写字母 E）+ `´`（U+0301 连接重音符）。两个码位！
+
 It can also be more than two:
 
+它也可以是两个以上：
+
 - <code class="emoji">☹️</code> is `U+2639` + `U+FE0F`
+- <code class="emoji">☹️</code> 是 `U+2639` + `U+FE0F`
 - <code class="emoji">👨‍🏭</code> is `U+1F468` + `U+200D` + `U+1F3ED`
-- <code class="emoji">🚵🏻‍♀️</code> is `U+1F6B5` + `U+1F3FB` + `U+200D` + `U+2640` +
-  `U+FE0F`
+- <code class="emoji">👨‍🏭</code> 是 `U+1F468` + `U+200D` + `U+1F3ED`
+- <code class="emoji">🚵🏻‍♀️</code> is `U+1F6B5` + `U+1F3FB` + `U+200D` + `U+2640` + `U+FE0F`
+- <code class="emoji">🚵🏻‍♀️</code> 是 `U+1F6B5` + `U+1F3FB` + `U+200D` + `U+2640` + `U+FE0F`
 - `y̖̠͍̘͇͗̏̽̎͞` is `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
+- `y̖̠͍̘͇͗̏̽̎͞` 是 `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
 
 There’s no limit, as far as I know.
 
+据我所知，没有限制。
+
 Remember, we are talking about code points here. Even in the widest encoding, UTF-32, <code class="emoji">👨‍🏭</code> will still take three 4-byte units to encode. And it still needs to be treated as a single character.
+
+记住，我们在这里谈论的是码位。即使在最宽的编码 UTF-32 中，<code class="emoji">👨‍🏭</code> 仍然需要三个 4 字节单元来编码。它仍然需要被视为一个单独的字符。
 
 If the analogy helps, we can think of the Unicode itself (without any encodings) as being variable-length.
 
-<Loud>
-  An Extended Grapheme Cluster is a sequence of one or more Unicode code points
-  that must be treated as a single, unbreakable character.
-</Loud>
+如果这个类比有帮助的话，我们可以认为 Unicode 本身（没有任何编码）是可变长度的。
+
+<Loud
+en={`An Extended Grapheme Cluster is a sequence of one or more Unicode code points that must be treated as a single, unbreakable character.`}
+>一个扩展字位簇是一个或多个 Unicode 码位的序列，必须被视为一个单独的、不可分割的字符。</Loud>
 
 Therefore, we get all the problems we have with variable-length encodings, but now on code point level: you can’t take only a part of the sequence, it always should be selected, copied, edited, or deleted as a whole.
 
+因此，我们会遇到所有变长编码的问题，但现在是在码位级别上：你不能只取序列的一部分——它总是应该作为一个整体被选择、复制、编辑或删除。
+
 Failure to respect grapheme clusters leads to bugs like this:
 
-error1.png
+不尊重字位簇会导致像这样的错误：
+
+![](https://tonsky.me/blog/unicode/error1.png)
 
 or this:
 
-intellij@2x.mp4
-Just to be clear: this is NOT correct behavior
+或者这样：
+
+<figure>
+<video autoplay muted loop controls>
+  <source src="https://tonsky.me/blog/unicode/intellij@2x.mp4" type="video/mp4" />
+</video>
+<figcaption lang="en">Just to be clear: this is NOT correct behavior</figcaption>
+<figcaption lang="zh">澄清一下，这<em>不是</em>正确的行为</figcaption>
+</figure>
 
 Using UTF-32 instead of UTF-8 will not make your life any easier in regards to extended grapheme clusters. And extended grapheme clusters is what you should care about.
+
+就扩展字位簇而言，用 UTF-32 代替 UTF-8 不会让你的生活变得更容易。而扩展字位簇才是你应该关心的。
 
 <Loud>码位 — 🥱. 字位 — 😍</Loud>
 
 # Is Unicode hard only because of emojis?
 
+# Unicode 之所以难，仅仅是因为表情符号吗？
+
 Not really. Extended Grapheme Clusters are also used for alive, actively used languages. For example:
 
+并不。没有消亡的、活跃使用的语言也使用扩展字位簇。例如：
+
 - `ö` (German) is a single character, but multiple code points (`U+006F U+0308`).
+- `ö` (德语) 是一个单独的字符，但是多个码位（`U+006F U+0308`）。
 - `ą́` (Lithuanian) is `U+00E1 U+0328`.
+- `ą́` (立陶宛语) 是 `U+00E1 U+0328`。
 - `각` (Korean) is `U+1100 U+1161 U+11A8`.
+- `각` (韩语) 是 `U+1100 U+1161 U+11A8`。
 
 So no, it’s not just about emojis.
 
-# What’s "🤦🏼‍♂️".length?
+所以，不，这不仅仅是关于表情符号。
+
+# What’s `"🤦🏼‍♂️".length`?
+
+# `"🤦🏼‍♂️".length` 是什么？
 
 The question is inspired by [this brilliant article](https://hsivonen.fi/string-length/).
 
@@ -344,28 +401,29 @@ Different programming languages will happily give you different answers.
 
 不同的编程语言很乐意给你不同的答案。
 
-Python 3:
+<p lang="mul">Python 3:</p>
 
-<p lang="zh">Python 3:</p>
+<Code
+  lang="py"
+  code='>>> len("🤦🏼‍♂️")
+5'
+/>
 
-```python
->>> len("🤦🏼‍♂️")
-5
-```
+<p lang="mul">JavaScript / Java / C#:</p>
 
-JavaScript / Java / C#:
+<Code
+  lang="csharp"
+  code={`>> "🤦🏼‍♂️".length
+7`}
+/>
 
-```csharp
->> "🤦🏼‍♂️".length
-7
-```
+<p lang="mul">Rust:</p>
 
-Rust:
-
-```rust
-println!("{}", "🤦🏼‍♂️".len());
-// => 17
-```
+<Code
+  lang="rust"
+  code={`println!("{}", "🤦🏼‍♂️".len());
+// => 17`}
+/>
 
 As you can guess, different languages use different internal string representations (UTF-32, UTF-16, UTF-8) and report length in whatever units they store characters in (ints, shorts, bytes).
 
@@ -373,17 +431,19 @@ As you can guess, different languages use different internal string representati
 
 BUT! If you ask any normal person, one that isn’t burdened with computer internals, they’ll give you a straight answer: 1. The length of <code class="emoji">🤦🏼‍♂️</code> string is 1.
 
-<b>但是！</b>
-如果你问任何正常的人，一个不被计算机内部所拖累的人，他们会给你一个直接的答案：1。`🤦🏼‍♂️`字符串的长度是
-1。
+<b>但是！</b>如果你问任何正常的人，一个不被计算机内部所拖累的人，他们会给你一个直接的答案：1。`🤦🏼‍♂️`字符串的长度是 1。
 
 That’s what extended grapheme clusters are all about: what _humans_ perceive as a single character. And in this case, <code class="emoji">🤦🏼‍♂️</code> is undoubtedly a single character.
 
-这就是扩展字位簇的全部内容：人们认为是单个字符。在这种情况下，`🤦🏼‍♂️`无疑是一个单独的字符。
+这就是扩展字位簇存在的意义：人们认为是单个字符。在这种情况下，`🤦🏼‍♂️`无疑是一个单独的字符。
 
 The fact that <code class="emoji">🤦🏼‍♂️</code> consists of 5 code points (`U+1F926 U+1F3FB U+200D U+2642 U+FE0F`) is mere implementation detail. It should not be broken apart, it should not be counted as multiple characters, the text cursor should not be positioned inside it, it shouldn’t be partially selected, etc.
 
+<code class="emoji">🤦🏼‍♂️</code> 包含 5 个码位（`U+1F926 U+1F3FB U+200D U+2642 U+FE0F`）的事实只是实现细节。它不应该被分开，它不应该被计算为多个字符，文本光标不应该被定位在它的内部，它不应该被部分选择，等等。
+
 For all intents and purposes, this is an atomic unit of text. Internally, it could be encoded whatever, but for user-facing API, it should be treated as a whole.
+
+就所有意图和目的而言，这是一个文本的原子单位。在内部，它可以被编码为任何东西，但对于面向用户的 API，它应该被视为一个整体。
 
 The only modern language that gets it right is Swift:
 
@@ -400,8 +460,8 @@ Basically, there are two layers:
 
 1. Internal, computer-oriented. How to copy strings, send them over the network, store on disk, etc. This is where you need encodings like UTF-8. Swift uses UTF-8 internally, but it might as well be UTF-16 or UTF-32. What's important is that you only use it to copy strings as a whole and never to analyze their content.
 1. 内部，面向计算机。如何复制字符串、通过网络发送字符串、存储在磁盘上等。这就是你需要 UTF-8 这样的编码的地方。Swift 在内部使用 UTF-8，但也可以是 UTF-16 或 UTF-32。重要的是，你只使用它来整体复制字符串，而不是分析它们的内容。
-1. External, human-facing API. Character count in UI. Taking first 10 characters to generate preview. Searching in text. Methods like `.count` or `.substring`. Swift gives you _a view_ that pretends the string is a sequence of grapheme clusters. And that view behaves like any human would expect: it gives you 1 for `"🤦🏼‍♂️".count`.
-1. 外部，面向人类的 API。UI 中的字符计数。获取前 10 个字符以生成预览。在文本中搜索。像 `.count` 或 `.substring` 这样的方法。Swift 给你<em>一个视图</em>，假装字符串是一个字位簇序列。这个视图的行为就像任何人所期望的那样：它为 `"🤦🏼‍♂️".count` 给出 1。
+2. External, human-facing API. Character count in UI. Taking first 10 characters to generate preview. Searching in text. Methods like `.count` or `.substring`. Swift gives you _a view_ that pretends the string is a sequence of grapheme clusters. And that view behaves like any human would expect: it gives you 1 for `"🤦🏼‍♂️".count`.
+2. 外部，面向人类的 API。UI 中的字符计数。获取前 10 个字符以生成预览。在文本中搜索。像 `.count` 或 `.substring` 这样的方法。Swift 给你<em>一个视图</em>，假装字符串是一个字位簇序列。这个视图的行为就像任何人所期望的那样：它为 `"🤦🏼‍♂️".count` 给出 1。
 
 I hope more languages adopt this design soon.
 
@@ -429,7 +489,7 @@ It makes no sense and has no semantics, but since it’s the default, programmer
 
 But that’s exactly what you should be doing! Use a proper Unicode library! Yes, for basic stuff like `strlen` or `indexOf` or `substring`!
 
-但这正是你应该做的！使用一个合适的 Unicode 库！是的，对于像 `strlen{:js}` 或 `indexOf{:js}` 或 `substring{:js}` 这样的基本功能！
+但这正是你应该做的！使用一个合适的 Unicode 库！是的，对于像 `strlen` 或 `indexOf` 或 `substring` 这样的基本功能！
 
 For example:
 
@@ -557,7 +617,10 @@ Why does the `ﬁ` ligature even have its own code point? No idea. A lot can hap
 <Loud en="Before comparing strings or searching for a substring, normalize!">
   在比较字符串或搜索子字符串之前，归一化！
 </Loud>
+
 # Unicode is locale-dependent
+
+# Unicode 是基于区域设置的
 
 The Russian name Nikolay is written like this:
 
@@ -583,20 +646,25 @@ Wait a second! How does the computer know when to render Bulgarian-style glyphs 
 
 Short answer: it doesn’t. Unfortunately, Unicode is not a perfect system, and it has many shortcomings. Among them is assigning the same code point to glyphs that are supposed to look differently, like Cyrillic Lowercase K and Bulgarian Lowercase K (both are `U+043A`).
 
-简短的答案：它不知道。不幸的是，Unicode 不是一个完美的系统，它有很多缺点。其中之一是将相同的码位分配给应该看起来不同的字形，比如西里尔小写字母 K 和保加利亚小写字母 K（都是 `U+043A`）。
+简短的答案：它不知道。不幸的是，Unicode 不是一个完美的系统，它有很多缺点。其中之一是将相同的码位分配给应该看起来不同的字形，比如西里尔小写字母 <span lang="ru">K</span> 和保加利亚语小写字母 <span lang="bg">K</span>（都是 `U+043A`）。
 
 From what I understand, Asian people [get it much worse](https://en.wikipedia.org/wiki/Han_unification): many Chinese, Japanese, and Korean logograms that are written very differently get assigned the same code point:
 
-han.png
-U+8FD4 in different locales
+据我所知，亚洲人[遭受的打击更大](https://en.wikipedia.org/wiki/Han_unification)：许多中文、日文和韩文的象形文字被分配了相同的码位：
+
+![不同 locale 中的 `U+8FD4`](https://upload.wikimedia.org/wikipedia/commons/2/23/Source_Han_Sans_Version_Difference.svg)
 
 Unicode motivation is to save code points space (my guess). Information on how to render is supposed to be transferred outside of the string, as locale/language metadata.
 
+Unicode 这么做是出于节省码位空间的动机（我猜的）。渲染信息应该在字符串之外传递，作为区域设置/语言的元数据。
+
 Unfortunately, it fails the original goal of Unicode:
 
-不幸的是，
+不幸的是，它未能实现 Unicode 的原始目标：
 
 > [...] no escape sequence or control code is required to specify any character in any language.
+
+> [...] 不需要转义序列或控制码来指定任何语言中的任何字符。
 
 In practice, dependency on locale brings a lot of problems:
 
@@ -605,6 +673,7 @@ In practice, dependency on locale brings a lot of problems:
 1. Being metadata, locale often gets lost.
 1. 作为元数据，locale 经常丢失。
 1. People are not limited to a single locale. For example, I can read and write English (USA), English (UK), German, and Russian. Which locale should I set my computer to?
+1. 人们不限于单一的 locale。例如，我可以阅读和写作英语（美国）、英语（英国）、德语和俄语。我应该将我的计算机设置为哪个 locale？
 1. It’s hard to mix and match. Like Russian names in Bulgarian text or vice versa. Why not? It’s the internet, people from all cultures hang out here.
 1. There’s no place to specify the locale. Even making the two screenshots above was non-trivial because in most software, there’s no dropdown or text input to change locale.
 1. When needed, it had to be guessed. For example, Twitter tries to guess the locale from the text of the tweet itself (because where else could it get it from?) and sometimes gets it wrong:
@@ -615,6 +684,8 @@ twitter_locale.jpg https://twitter.com/nikitonsky/status/1171115067112398849
 
 Another unfortunate example of locale dependence is the Unicode handling of dotless `i` in the Turkish language.
 
+另一个不幸的例子是 Unicode 处理土耳其语中无点 `i` 的方式。
+
 Unlike English, Turks have two `I` variants: dotted and dotless. Unicode decided to reuse `I` and `i` from ASCII and only add two new code points: `İ` and `ı`.
 
 不同于英国人，土耳其人有两种 `I` 变体：有点的和无点的。Unicode 决定重用 ASCII 中的 `I` 和 `i`，并只添加两个新的码位：`İ` 和 `ı`。
@@ -623,14 +694,14 @@ Unfortunately, that made `toLowerCase`/`toUpperCase` behave differently on the s
 
 不幸的是，这使得 `toLowerCase`/`toUpperCase` 在相同的输入上表现不同：
 
-<Loud lang='js' code='var en_US = Locale.of("en", "US");
+<Code lang='js' code={`var en_US = Locale.of("en", "US");
 var tr = Locale.of("tr");
 
 "I".toLowerCase(en_US); // => "i"
 "I".toLowerCase(tr); // => "ı"
 
 "i".toUpperCase(en_US); // => "I"
-"i".toUpperCase(tr); // => "İ"' />
+"i".toUpperCase(tr); // => "İ"'`} />
 
 So no, you can’t convert string to lowercase without knowing what language that string is written in.
 
@@ -751,7 +822,7 @@ To sum it up:
 - To detect grapheme boundaries, you need Unicode tables.
 - 要检测字素边界，你需要 Unicode 表。
 - Use a Unicode library for everything Unicode, even boring stuff like `strlen`, `indexOf` and `substring`.
-- 对于所有 Unicode 相关的东西，甚至是像 `strlen{:js}`、`indexOf{:js}` 和 `substring{:js}` 这样的无聊的东西，都要使用 Unicode 库。
+- 对于所有 Unicode 相关的东西，甚至是像 `strlen`、`indexOf` 和 `substring` 这样的无聊的东西，都要使用 Unicode 库。
 - Unicode updates every year, and rules sometimes change.
 - Unicode 每年更新一次，规则有时会改变。
 - Unicode strings need to be normalized before they can be compared.
@@ -776,7 +847,11 @@ is a miracle. Send this to your fellow programmers so they can learn about it, t
 
 的事实是一个奇迹。将此发送给你的程序员同伴，让他们也能了解它。
 
-<Loud en="There’s such a thing as plain text, and it’s encoded with UTF-8.">的确有这样一种东西叫做纯文本，<br />并且它使用 UTF-8 进行编码。</Loud>
+<Loud en="There’s such a thing as plain text, and it’s encoded with UTF-8.">
+  的确有这样一种东西叫做纯文本，
+  <br />
+  并且它使用 UTF-8 进行编码。
+</Loud>
 
 Thanks Lev Walkin and my patrons for reading early drafts of this article.
 
