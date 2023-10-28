@@ -1,0 +1,33 @@
+---
+import { Code as Shiki } from "astro:components";
+
+export interface Props {
+  code: string;
+  lang:
+    | "js"
+    | "ts"
+    | "html"
+    | "css"
+    | "astro"
+    | "yaml"
+    | "json"
+    | "rust"
+    | "swift"
+    | "csharp"
+    | "java";
+}
+
+const { code, lang } = Astro.props;
+
+// import YELLOW_DELIGHT from "vendor/themes/modern-make-yellow/modern-make-yellow.json";
+import YELLOW_DELIGHT from "vendor/themes/yellow-delight.json";
+const yellowDelight = {
+  ...YELLOW_DELIGHT,
+  fg: "#000",
+  bg: "var(--gray-bg);",
+  settings: [],
+};
+yellowDelight.colors["editor.background"] = yellowDelight.bg;
+---
+
+<Shiki code={code} lang={lang} theme={yellowDelight} />

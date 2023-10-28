@@ -81,6 +81,8 @@ export default defineConfig({
     syntaxHighlight: false,
     remarkPlugins: [remarkMath, remarkFigureCaption],
     rehypePlugins: [
+      // TODO
+      // @ts-ignore
       rehypeMathRenderer,
       [
         rehypeExternalLinks,
@@ -89,6 +91,7 @@ export default defineConfig({
           target: "_blank",
         },
       ],
+      // @ts-ignore
       [rehypePrettyCode, prettyCodeOptions],
     ],
   },
