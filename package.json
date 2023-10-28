@@ -19,7 +19,7 @@
     "@fontsource/noto-sans-mongolian": "^5.0.8",
     "@microflash/remark-figure-caption": "^2.0.2",
     "arktype": "1.0.25-alpha",
-    "astro": "^3.3.4",
+    "astro": "^3.4.0",
     "astro-icon": "^0.8.1",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
@@ -35,13 +35,13 @@
     "yaml": "^2.3.3"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.1",
-    "@types/node": "^20.6.3",
+    "@types/markdown-it": "^13.0.5",
+    "@types/node": "^20.8.9",
     "modern-css-reset": "^1.4.0",
     "rehype-pretty-code": "^0.10.1",
     "rollup": "^3.29.2",
-    "shiki": "^0.14.4",
+    "shiki": "^0.14.5",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.5.0"
   }
 }
