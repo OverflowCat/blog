@@ -1,0 +1,29 @@
+---
+export interface Props {
+  en: string;
+}
+const { en } = Astro.props;
+---
+
+<p class="loud" lang="mul">
+  <span lang="en">{en}<br /></span>
+  <span lang="zh"><slot /></span>
+</p>
+<style lang="less">
+  .loud {
+    max-width: calc(var(--width) + 60px);
+    font-weight: 600;
+    line-height: 1.25;
+    text-wrap: balance;
+    border: var(--border) solid var(--gray-line);
+    padding: calc(2 * var(--gap));
+    margin: var(--gap) 0;
+    font-size: 1.4em;
+    text-align: center;
+    border-radius: var(--radius);
+
+    & > [lang="en"] {
+      margin-bottom: 1em;
+    }
+  }
+</style>
