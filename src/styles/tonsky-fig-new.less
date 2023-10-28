@@ -1,0 +1,27 @@
+/* FIGURES */
+.content {
+  & > figure {
+    width: unset;
+    max-width: 96vw;
+    margin: var(--gap) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+    & > img,
+    & > video,
+    & > iframe,
+    & > a > img {
+      border-radius: var(--radius);
+    }
+    & > figure > a {
+      border: none;
+    }
+    figcaption {
+      max-width: var(--width);
+      text-align: center;
+      font-size: var(--font-small);
+      font-style: italic;
+    }
+  }
+}

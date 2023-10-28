@@ -298,6 +298,8 @@ body {
 }
 
 pre,
+samp,
+kbd,
 code {
   font-family: "IBM Plex Mono", monospace;
 }
@@ -343,20 +345,24 @@ body {
   flex-direction: column;
   gap: var(--gap);
   align-items: center;
-}
-.content > * {
-  width: 96vw;
-  max-width: var(--width);
-}
+  & > * {
+    width: 96vw;
+    max-width: var(--width);
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important;
-}
-
-a:hover {
-  border-color: currentColor;
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: var(--border) solid var(--gray-line);
+    &:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+    &:active {
+      opacity: 0.5;
+    }
+    transition: color 0.1s, border-color 0.1s, opacity 0.1s;
+  }
 }
 
 h2 + p + blockquote {
@@ -364,15 +370,17 @@ h2 + p + blockquote {
   margin-right: 1em;
 }
 
+/* BLOCKQUOTES */
 blockquote {
-  padding-left: 1em;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-blockquote::before {
-  content: "> ";
-  float: left;
-  margin: 0 0 0 -1em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: var(--gap) 0;
+  padding: 0 0 0 1em;
+  border-left: 2px solid var(--gray-line);
+  &[lang="en"] {
+    font-style: italic;
+  }
 }
 
 .quote-author {
@@ -406,34 +414,6 @@ h2 {
   font-size: 1.8em;
   line-height: 50px;
   margin: 1.5em 0 0.75em 0;
-}
-
-p > img,
-.fig,
-figure {
-  display: block !important;
-  margin: var(--gap) 0;
-  max-width: calc(var(--width) + 60px);
-}
-
-.fig,
-figure,
-figcaption {
-  text-align: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-style: italic;
-  max-width: var(--width);
-}
-
-.fig img,
-.fig svg,
-figure > img,
-figure > svg,
-figure > video,
-figure > a > img {
-  margin: 0 auto 1em;
-  border-radius: 3px;
 }
 
 img,
