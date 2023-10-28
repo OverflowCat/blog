@@ -1,8 +1,15 @@
 ---
 export const partial = true;
+export interface Props {
+	encap: string;
+	zhcap: string;
+}
+const {encap, zhcap} = Astro.props;
 ---
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="500" width="850"
-viewbox="0 0 850 500"
+
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="500" width="850"
+viewBox="0 0 850 500"
 >
 	<title>Roadmap to the Unicode BMP</title>
 	<desc>This chart is a roadmap of character allocation for Unicode plane 0: Basic Multilingual Plane (BMP).  It was created on 2023-10-15 using Unicode 15.1 data.  Characters are categorized more-or-less by the chapters in The Unicode Standard.</desc>
@@ -1286,7 +1293,7 @@ viewbox="0 0 850 500"
 				<text x="553" y="368.25">UTF-16 代理区</text>
 				<text x="528" y="404.5">目前版本为 Unicode 15.1</text>
 			</g>
-			<g systemLanguage="zh-cmn-Hant,zh-Hant,zh-TW" xml:lang="zh-cmn-Hant">
+			<g xml:lang="zh-cmn-Hant">
 				<text x="553" y="27">拉丁文字</text>
 				<text x="553" y="53.25">非拉丁歐洲文字</text>
 				<text x="553" y="79.5">非洲文字</text>
@@ -1303,7 +1310,7 @@ viewbox="0 0 850 500"
 				<text x="553" y="368.25">UTF-16 代理區</text>
 				<text x="528" y="404.5">目前版本為 Unicode 15.1</text>
 			</g>
-			<g xml:lang="en">
+			<g systemLanguage="en,en-US,en-GB,en-UK" xml:lang="en">
 				<text x="553" y="27">Latin script</text>
 				<text x="553" y="53.25">Non-Latin European scripts</text>
 				<text x="553" y="79.5">African scripts</text>
@@ -1325,4 +1332,10 @@ viewbox="0 0 850 500"
 			</g>
 		</switch>
 	</g>
+	<slot />
 </svg>
+<figcaption lang="en" set:html={encap}>
+</figcaption>
+<figcaption lang="zh" set:html={zhcap}>
+</figcaption>
+</figure>

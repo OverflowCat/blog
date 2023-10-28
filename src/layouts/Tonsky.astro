@@ -11,12 +11,15 @@ import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
 
 let $ = cheerio.load(await Astro.slots.render("default"));
-$("li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote").each(function () {
-  if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
-  const text = $(this).text();
-  const lang = hasChinese(text) ? "zh" : "en";
-  $(this).attr("lang", lang);
-});
+$("li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote").each(
+  function () {
+    if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
+    const text = $(this).text();
+    if (!text.trim()) return;
+    const lang = hasChinese(text) ? "zh" : "en";
+    $(this).attr("lang", lang);
+  }
+);
 const html = $.html();
 ---
 

@@ -16,6 +16,9 @@ noscript: true
 import Plane from "./_plane.astro";
 import Loud from "./_loud.astro";
 import Code from "./_code.astro";
+import Img from "./_img.astro";
+
+import "@/styles/tonsky-fig-new.less";
 
 # The Absolute Minimum Every Software Developer Must Know About Unicode in 2023 (Still No Excuses!)
 
@@ -45,7 +48,7 @@ In 2023, it’s no longer a question: with a 98% probability, it’s UTF-8. Fina
 
 在 2023 年，这不再是一个问题：有 98% 的概率是 UTF-8。终于！我们可以再次把头埋在沙子里了！
 
-![](<https://tonsky.me/blog/unicode/![](https://tonsky.me/blog/unicode/https://tonsky.me/blog/unicode/utf8_trend@2x.png)>)
+<Img src="utf8_trend@2x.png" width={1024} height={452} />
 
 The question now becomes: how do we use UTF-8 correctly? Let’s see!
 
@@ -80,7 +83,7 @@ For example:
 
 Unicode refers to these numbers as _code points_.
 
-Unicode 将这些数字称为*码位*。
+Unicode 将这些数字称为*码位*（code points）。
 
 Since everybody in the world agrees on which numbers correspond to which characters, and we all agree to use Unicode, we can read each other’s texts.
 
@@ -104,7 +107,7 @@ Here’s roughly how it looks:
 
 这里是大致的样子：
 
-![](https://tonsky.me/blog/unicode/overview@2x.png)
+<Img src="https://tonsky.me/blog/unicode/overview@2x.png" width={835} height={735} />
 
 Large square == plane == 65,536 characters. Small one == 256 characters. The entire ASCII is half of a small red square in the top left corner.
 
@@ -126,7 +129,11 @@ The Private Use Area is mostly used by icon fonts:
 
 私用区域主要由图标字体使用：
 
-![这难道不优雅吗？这些都是文本！](https://tonsky.me/blog/unicode/nerd_font@2x.png)
+<Img src="https://tonsky.me/blog/unicode/nerd_font@2x.png"
+  width="584"
+  height="268"
+  encap="Isn’t it a beauty? It’s all text!"
+  zhcap="Isn’t it a beauty? It’s all text!" />
 
 # What does `U+1F4A9` mean?
 
@@ -307,7 +314,7 @@ The problem is, in Unicode, some graphemes are encoded with multiple code points
 
 问题是，在 Unicode 中，一些字位使用多个码位进行编码！
 
-![](https://tonsky.me/blog/unicode/graphemes@2x.png)
+<Img src="graphemes@2x.png" width="600" height="340" />
 
 For example, `é` (a single grapheme) is encoded in Unicode as `e` (U+0065 Latin Small Letter E) + `´` (U+0301 Combining Acute Accent). Two code points!
 
@@ -336,7 +343,7 @@ Remember, we are talking about code points here. Even in the widest encoding, UT
 
 If the analogy helps, we can think of the Unicode itself (without any encodings) as being variable-length.
 
-如果这个类比有帮助的话，我们可以认为 Unicode 本身（没有任何编码）是可变长度的。
+如果这个类比有帮助的话，我们可以认为 Unicode 本身（没有任何编码）是变长的。
 
 <Loud
 en={`An Extended Grapheme Cluster is a sequence of one or more Unicode code points that must be treated as a single, unbreakable character.`}
@@ -350,18 +357,18 @@ Failure to respect grapheme clusters leads to bugs like this:
 
 不尊重字位簇会导致像这样的错误：
 
-![](https://tonsky.me/blog/unicode/error1.png)
+<img src="https://tonsky.me/blog/unicode/error1.png" />
 
 or this:
 
 或者这样：
 
 <figure>
-<video autoplay muted loop controls>
+<video autoplay muted loop controls width="600" height="201">
   <source src="https://tonsky.me/blog/unicode/intellij@2x.mp4" type="video/mp4" />
 </video>
 <figcaption lang="en">Just to be clear: this is NOT correct behavior</figcaption>
-<figcaption lang="zh">澄清一下，这<em>不是</em>正确的行为</figcaption>
+<figcaption lang="zh">让我们先说清楚：这<em>不是</em>正确的行为</figcaption>
 </figure>
 
 Using UTF-32 instead of UTF-8 will not make your life any easier in regards to extended grapheme clusters. And extended grapheme clusters is what you should care about.
@@ -449,19 +456,17 @@ The only modern language that gets it right is Swift:
 
 唯一没弄错这件事的现代语言是 Swift：
 
-```swift
-print("🤦🏼‍♂️".count)
-// => 1
-```
+<Code lang="swift" code='print("🤦🏼‍♂️".count)
+// => 1' />
 
 Basically, there are two layers:
 
 基本上，有两层：
 
 1. Internal, computer-oriented. How to copy strings, send them over the network, store on disk, etc. This is where you need encodings like UTF-8. Swift uses UTF-8 internally, but it might as well be UTF-16 or UTF-32. What's important is that you only use it to copy strings as a whole and never to analyze their content.
-1. 内部，面向计算机。如何复制字符串、通过网络发送字符串、存储在磁盘上等。这就是你需要 UTF-8 这样的编码的地方。Swift 在内部使用 UTF-8，但也可以是 UTF-16 或 UTF-32。重要的是，你只使用它来整体复制字符串，而不是分析它们的内容。
+1. 内部，面向计算机的一层。如何复制字符串、通过网络发送字符串、存储在磁盘上等。这就是你需要 UTF-8 这样的编码的地方。Swift 在内部使用 UTF-8，但也可以是 UTF-16 或 UTF-32。重要的是，你只使用它来整体复制字符串，而不是分析它们的内容。
 2. External, human-facing API. Character count in UI. Taking first 10 characters to generate preview. Searching in text. Methods like `.count` or `.substring`. Swift gives you _a view_ that pretends the string is a sequence of grapheme clusters. And that view behaves like any human would expect: it gives you 1 for `"🤦🏼‍♂️".count`.
-2. 外部，面向人类的 API。UI 中的字符计数。获取前 10 个字符以生成预览。在文本中搜索。像 `.count` 或 `.substring` 这样的方法。Swift 给你<em>一个视图</em>，假装字符串是一个字位簇序列。这个视图的行为就像任何人所期望的那样：它为 `"🤦🏼‍♂️".count` 给出 1。
+2. 外部，面向人类的 API 一层。UI 中的字数统计。获取前 10 个字符以生成预览。在文本中搜索。像 `.count` 或 `.substring` 这样的方法。Swift 给你<em>一个视图</em>，假装字符串是一个字位簇序列。这个视图的行为就像任何人所期望的那样：它为 `"🤦🏼‍♂️".count` 给出 1。
 
 I hope more languages adopt this design soon.
 
@@ -472,6 +477,8 @@ Question to the reader: what to you think `"ẇ͓̞͒͟͡ǫ̠̠̉̏͠͡ͅr̬̺͚
 给读者的问题：你认为 `"ẇ͓̞͒͟͡ǫ̠̠̉̏͠͡ͅr̬̺͚̍͛̔͒͢d̠͎̗̳͇͆̋̊͂͐".length` 应该是什么？
 
 # How do I detect extended grapheme clusters then?
+
+# 如何检测扩展字位簇？
 
 Unfortunately, most languages choose the easy way out and let you iterate through strings with 1-2-4-byte chunks, but not with grapheme clusters.
 
@@ -485,7 +492,7 @@ It makes no sense and has no semantics, but since it’s the default, programmer
 
 “I know, I’ll use a library to do strlen()!” — nobody, ever.
 
-“我知道，我会使用一个库来做 strlen()！”——从来，没有人。
+“我知道，我会使用一个库来做 strlen()！”——从来没有人这样想。
 
 But that’s exactly what you should be doing! Use a proper Unicode library! Yes, for basic stuff like `strlen` or `indexOf` or `substring`!
 
@@ -567,16 +574,20 @@ Copy any of these to your JavaScript console:
 
 What do you get? False? You should get false, and it’s not a mistake.
 
-你得到了什么？False？确实是 false，并且这不是一个错误。
+你得到了什么？False？确实是 <samp>false</samp>，并且这不是一个错误。
 
 Remember earlier when I said that `ö` is two code points, `U+006F U+0308`? Basically, Unicode offers more than one way to write characters like `ö` or `Å`. You can:
 
 还记得我之前说过 `ö` 是两个码位，`U+006F U+0308` 吗？基本上，Unicode 提供了多种写法，比如 `ö` 或 `Å`。你可以：
 
 1. Compose `Å` from normal Latin `A` + a combining character,
+1. 从普通拉丁字母 `A` + 一个连接字符组合出 `Å`，
 2. OR there’s also a pre-composed code point `U+00C5` that does that for you.
+2. <em>或者</em>还有一个预组合的码位 `U+00C5` 帮你做了这件事。
 
 They will look the same (`Å` vs `Å`), they should work the same, and for all intents and purposes, they are considered exactly the same. The only difference is the byte representation.
+
+他们将会看起来一样（`Å` vs `Å`），它们应该用起来一样，并且就所有意图和目的而言，它们被认为是完全相同的。唯一的区别是字节表示。
 
 That’s why we need normalization. There are four forms:
 
@@ -598,25 +609,38 @@ For some characters there are also multiple versions of them in Unicode. For exa
 
 These are also replaced during normalization:
 
+这些也在归一化过程中被替换：
+
 ![](https://tonsky.me/blog/unicode/normalization_clones@2x.png)
 
 NFD and NFC are called “canonical normalization”. Another two forms are “compatibility normalization”:
 
+NFD 和 NFC 被称为「规范归一化」。另外两种形式是「兼容归一化」：
+
 **NFKD** tries to explode everything and replaces visual variants with default ones.
 
+**NFKD** 尝试将所有东西分解开来，并用默认的替换视觉变体。
+
 **NFKC** tries to combine everything while replacing visual variants with default ones.
+
+**NFKC** 尝试将所有东西组合起来，同时用默认的替换视觉变体。
 
 ![](https://tonsky.me/blog/unicode/normalization_compat@2x.png)
 
 Visual variants are separate Unicode code points that represent the same character but are supposed to render differently. Like, `①` or `⁹` or `𝕏`. We want to be able to find both `"x"` and `"2"` in a string like `"𝕏²"`, don’t we?
 
-![All of these have their own code points, but they are also all Xs](https://tonsky.me/blog/unicode/x_variants@2x.png)
+<dfn>视觉变体</dfn>是表示相同字符的单独的 Unicode 码位，但是应该呈现不同。比如 `①` 或 `⁹` 或 `𝕏`。我们想要在像 `"𝕏²"` 这样的字符串中找到 `"x"` 和 `"2"`，不是吗？
+
+<Img src="https://tonsky.me/blog/unicode/x_variants@2x.png"
+width="438" height="185" 
+zhcap="所有这些字符都有它们自己的码位，但它们也都是 X"
+encap="All of these have their own code points, but they are also all Xs" />
 
 Why does the `ﬁ` ligature even have its own code point? No idea. A lot can happen in a million characters.
 
-<Loud en="Before comparing strings or searching for a substring, normalize!">
-  在比较字符串或搜索子字符串之前，归一化！
-</Loud>
+为什么连 `ﬁ` 这个连字都有它自己的码位？不知道。在一百万个字符中会发生很多事情。
+
+<Loud en="Before comparing strings or searching for a substring, normalize!">在比较字符串或搜索子字符串之前，归一化！</Loud>
 
 # Unicode is locale-dependent
 
@@ -626,11 +650,11 @@ The Russian name Nikolay is written like this:
 
 俄语名字 Nikolay 的写法如下：
 
-nikolay_ru.png
+![](https://tonsky.me/blog/unicode/nikolay_ru.png)
 
 and encoded in Unicode as `U+041D 0438 043A 043E 043B 0430 0439`.
 
-在 Unicode 中编码为 `U+041D 0438 043A 043E 043B 0430 0439`。
+并且在 Unicode 中编码为 `U+041D 0438 043A 043E 043B 0430 0439`。
 
 The Bulgarian name Nikolay is written:
 
@@ -639,6 +663,8 @@ The Bulgarian name Nikolay is written:
 ![](https://tonsky.me/blog/unicode/nikolay_bg.png)
 
 and encoded in Unicode as `U+041D 0438 043A 043E 043B 0430 0439`. Exactly the same!
+
+并且在 Unicode 中编码为 `U+041D 0438 043A 043E 043B 0430 0439`。完全一样！
 
 Wait a second! How does the computer know when to render Bulgarian-style glyphs and when to use Russian ones?
 
@@ -652,11 +678,11 @@ From what I understand, Asian people [get it much worse](https://en.wikipedia.or
 
 据我所知，亚洲人[遭受的打击更大](https://en.wikipedia.org/wiki/Han_unification)：许多中文、日文和韩文的象形文字被分配了相同的码位：
 
-![不同 locale 中的 `U+8FD4`](https://upload.wikimedia.org/wikipedia/commons/2/23/Source_Han_Sans_Version_Difference.svg)
+![不同区域设置下的 `U+8FD4`](https://upload.wikimedia.org/wikipedia/commons/2/23/Source_Han_Sans_Version_Difference.svg)
 
 Unicode motivation is to save code points space (my guess). Information on how to render is supposed to be transferred outside of the string, as locale/language metadata.
 
-Unicode 这么做是出于节省码位空间的动机（我猜的）。渲染信息应该在字符串之外传递，作为区域设置/语言的元数据。
+Unicode 这么做是出于节省码位空间的动机（我猜的）。渲染信息应该在字符串之外传递，作为区域设置（locale）/语言的元数据。
 
 Unfortunately, it fails the original goal of Unicode:
 
@@ -668,23 +694,32 @@ Unfortunately, it fails the original goal of Unicode:
 
 In practice, dependency on locale brings a lot of problems:
 
-在实际中，对 locale 的依赖带来了很多问题：
+在实际中，对区域设置的依赖带来了很多问题：
 
 1. Being metadata, locale often gets lost.
-1. 作为元数据，locale 经常丢失。
-1. People are not limited to a single locale. For example, I can read and write English (USA), English (UK), German, and Russian. Which locale should I set my computer to?
-1. 人们不限于单一的 locale。例如，我可以阅读和写作英语（美国）、英语（英国）、德语和俄语。我应该将我的计算机设置为哪个 locale？
-1. It’s hard to mix and match. Like Russian names in Bulgarian text or vice versa. Why not? It’s the internet, people from all cultures hang out here.
-1. There’s no place to specify the locale. Even making the two screenshots above was non-trivial because in most software, there’s no dropdown or text input to change locale.
-1. When needed, it had to be guessed. For example, Twitter tries to guess the locale from the text of the tweet itself (because where else could it get it from?) and sometimes gets it wrong:
+1. 作为元数据，区域设置经常丢失。
+2. People are not limited to a single locale. For example, I can read and write English (USA), English (UK), German, and Russian. Which locale should I set my computer to?
+2. 人们不限于单一的区域设置。例如，我可以阅读和写作英语（美国）、英语（英国）、德语和俄语。我应该将我的计算机设置为哪个区域？
+3. It’s hard to mix and match. Like Russian names in Bulgarian text or vice versa. Why not? It’s the internet, people from all cultures hang out here.
+3. 混起来后再匹配很难。比如保加利亚文中的俄语名字，反之亦然。为什么不呢？这是互联网，来自各种文化的人都在这里冲浪。
+4. There’s no place to specify the locale. Even making the two screenshots above was non-trivial because in most software, there’s no dropdown or text input to change locale.
+4. 没有地方指定区域设置。即使是制作上面的两个截图也是比较复杂的，因为在大多数软件中，没有下拉菜单或文本输入来更改区域设置。
+5. When needed, it had to be guessed. For example, Twitter tries to guess the locale from the text of the tweet itself (because where else could it get it from?) and sometimes gets it wrong:
+5. 在需要的时候，我们只能靠猜。例如，Twitter 试图从推文本身的文本中猜测区域设置（因为它还能从哪里得到呢？）时有时会猜错[^twitter]：
 
-twitter_locale.jpg https://twitter.com/nikitonsky/status/1171115067112398849
+[^twitter]: Twitter 错误渲染俄语为保加利亚语——注意 <span lang='bg'>ь</span>、<span lang='bg'>к</span>、<span lang='bg'>з</span> 的字形——译者注
+
+<a href="https://twitter.com/nikitonsky/status/1171115067112398849">
+  <Img src="https://tonsky.me/blog/unicode/twitter_locale.jpg" />
+</a>
+
+![](./tweet-translated.webp)
 
 # Why does `String::toLowerCase()` accepts Locale as an argument?
 
 Another unfortunate example of locale dependence is the Unicode handling of dotless `i` in the Turkish language.
 
-另一个不幸的例子是 Unicode 处理土耳其语中无点 `i` 的方式。
+Unicode 处理土耳其语中无点 `i` 的方式是说明其对区域设置依赖的另一个例子。
 
 Unlike English, Turks have two `I` variants: dotted and dotless. Unicode decided to reuse `I` and `i` from ASCII and only add two new code points: `İ` and `ı`.
 
@@ -719,13 +754,21 @@ So no, you can’t convert string to lowercase without knowing what language tha
 />
 
 - quotation marks `“` `”` `‘` `’`,
+- 引号 `“` `”` `‘` `’`，
 - apostrophe `’`,
+- 撇号 `’`，
 - dashes `–` `—`,
+- 连接号 `–` `—`，
 - different variations of spaces (figure, hair, non-breaking),
+- 空格的变体（长空格、短空格、不换行空格），
 - bullets `•` `■` `☞`,
+- 点 `•` `■` `☞`，
 - currency symbols other than the `$` (kind of tells you who invented computers, doesn’t it?): `€` `¢` `£`,
+- 除了 `$` 之外的货币符号（这有点告诉你是谁发明了计算机，不是吗？）：`€` `¢` `£`，
 - mathematical signs—plus `+` and equals `=` are part of ASCII, but minus `−` and multiply `×` are not <nobr>¯\_(ツ)\_/¯</nobr>,
+- 数学符号——加号 `+` 和等号 `=` 是 ASCII 的一部分，但减号 `−` 和乘号 `×` 不是 <nobr>¯\_(ツ)\_/¯</nobr>，
 - various other signs `©` `™` `¶` `†` `§`.
+- 各种其他符号 `©` `™` `¶` `†` `§`。
 
 Hell, you can’t even spell `café`, `piñata`, or `naïve` without Unicode. So yes, we are all in it together, even Americans.
 
@@ -743,7 +786,13 @@ That goes back to Unicode v1. The first version of Unicode was supposed to be fi
 
 这要追溯到 Unicode v1。Unicode 的第一个版本应该是固定宽度的。准确地说，是 16 位固定宽度：
 
-![Unicode 标准的 1.0 版本, October 1991 年 10 月](https://tonsky.me/blog/unicode/unicode1@2x.png)
+<Img
+src="https://tonsky.me/blog/unicode/unicode1@2x.png"
+zhcap="Unicode 标准的 1.0 版本, October 1991 年 10 月"
+encap="Version 1.0 of the Unicode Standard, October 1991"
+width="840"
+height="558"
+/>
 
 They believed 65,536 characters would be enough for all human languages. They were almost right!
 
@@ -765,17 +814,24 @@ The top 6 bits in surrogate pairs are used for the mask, leaving 2×10 free bits
 
 代理对中的前 6 位用于掩码，剩下 2×10 个空闲位：
 
-```
+<pre>
    High Surrogate          Low Surrogate
         D800        ++          DC00
 1101 10?? ???? ???? ++ 1101 11?? ???? ????
-```
+</pre>
 
 Technically, both halves of the surrogate pair can be seen as Unicode code points, too. In practice, the whole range from `U+D800` to `U+DFFF` is allocated as “for surrogate pairs only”. Code points from there are not even considered valid in any other encodings.
 
 从技术上讲，代理对的两半也可以看作是 Unicode 码位。实际上，从 `U+D800` 到 `U+DFFF` 的整个范围都被分配为“仅用于代理对”。从那里开始的码位甚至在任何其他编码中都不被认为是有效的。
 
-![这个在已经非常拥挤的基本多语言平面上的空间永远不会再被拿来干任何好事](https://tonsky.me/blog/unicode/bmp@2x.png)
+<Plane
+zhcap="这个在已经非常拥挤的基本多语言平面上的空间永远不会再被拿来干任何好事"
+encap="This space on a very crammed Basic Multilingual Plane will never be used for anything good ever again
+">
+  <g transform="scale(0.6) translate(391,645)" data-href="https://tonsky.me/blog/unicode/bmp@2x.png">
+    <path d="M438.5 17C349.72 12.1302 215.423 7.75743 148.212 5.8528C139.796 5.61431 131.411 6.84615 123.414 9.4789L37.054 37.9102C22.9757 42.545 12.8279 54.8766 10.9895 69.5838L10.1055 76.6557C9.09987 84.701 12.101 92.7284 18.1379 98.1409V98.1409C21.3247 100.998 25.1984 102.979 29.3802 103.891L81.8143 115.324C86.9233 116.438 92.106 117 97.335 117C149.492 117 241.199 117 245 117C248.575 117 322.194 105.015 370.158 97.115C380.609 95.3934 390.536 91.4131 399.293 85.4535L448.493 51.9702C454.44 47.9225 458 41.1943 458 34V34" stroke="#FF00C9" stroke-width="11" stroke-linecap="round" fill="transparent" fill-opacity="0" />
+  </g>
+</Plane>
 
 # Is UTF-16 still alive?
 
@@ -793,7 +849,7 @@ Since then, Python has moved on, CD-ROM has become obsolete, but the rest is stu
 
 In practical terms today, UTF-16 has roughly the same usability as UTF-8. It’s also variable-length; counting UTF-16 units is as useless as counting bytes or code points, grapheme clusters are still a pain, etc. The only difference is memory requirements.
 
-在今天的实际情况下，UTF-16 的可用性与 UTF-8 大致相同。它也是可变长度的；计算 UTF-16 单元与计算字节或码位一样没有用，字位簇仍然很痛苦，等等。唯一的区别是内存需求。
+在今天的实际情况下，UTF-16 的可用性与 UTF-8 大致相同。它也是变长的；计算 UTF-16 单元与计算字节或码位一样没有用，字位簇仍然很痛苦，等等。唯一的区别是内存需求。
 
 The only downside of UTF-16 is that everything else is UTF-8, so it requires conversion every time a string is read from the network or from disk.
 
@@ -847,16 +903,8 @@ is a miracle. Send this to your fellow programmers so they can learn about it, t
 
 的事实是一个奇迹。将此发送给你的程序员同伴，让他们也能了解它。
 
-<Loud en="There’s such a thing as plain text, and it’s encoded with UTF-8.">
-  的确有这样一种东西叫做纯文本，
-  <br />
-  并且它使用 UTF-8 进行编码。
-</Loud>
+<Loud en="There’s such a thing as plain text, and it’s encoded with UTF-8.">的确有这样一种东西叫做纯文本，<br />并且它使用 UTF-8 进行编码。</Loud>
 
 Thanks Lev Walkin and my patrons for reading early drafts of this article.
 
 感谢 Lev Walkin 和我的赞助者们阅读了本文的早期草稿。
-
-<figure class="fig">
-  <Plane />
-</figure>

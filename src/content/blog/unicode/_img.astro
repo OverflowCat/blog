@@ -1,0 +1,28 @@
+---
+type AllOrNone<T> = T | { [K in keyof T]?: never };
+
+export type Props = {
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  zhcap?: string;
+  encap?: string;
+};
+
+let { src, alt, width = 600, height, zhcap, encap } = Astro.props;
+if (!src.startsWith("https://")) src = `https://tonsky.me/blog/unicode/${src}`;
+if (!alt) alt = zhcap;
+---
+
+<figure>
+  <img
+    src={src}
+    width={width}
+    height={height}
+    style={`aspect-ratio: ${width}/${height}; `}
+    alt={alt}
+  />
+  {encap && <figcaption lang="en" set:html={encap} />}
+  {zhcap && <figcaption lang="zh" set:html={zhcap} />}
+</figure>
