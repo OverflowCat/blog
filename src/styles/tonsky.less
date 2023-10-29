@@ -162,6 +162,17 @@ body {
   & > a {
     border: none;
   }
+  /* LISTS */
+  ul,
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    padding: 0 0 0 1em;
+  }
+  ul {
+    list-style-type: square;
+  }
 }
 
 h2 + p + blockquote {
@@ -199,7 +210,7 @@ h1 {
   font-size: 1.82em;
   text-align: left;
   &[lang="zh"] {
-    margin-bottom: 0.8em;
+    margin-bottom: 0.1em;
   }
   margin-top: 0.4em;
 }
@@ -276,16 +287,6 @@ blockquote > pre {
     font-size: inherit;
     white-space: unset;
   }
-}
-
-ul {
-  padding: 0 0 0 1em;
-  list-style-type: square;
-}
-
-ul > li,
-ol > li {
-  margin: 0.5em 0;
 }
 
 sup,
