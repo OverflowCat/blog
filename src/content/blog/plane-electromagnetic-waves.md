@@ -26,8 +26,8 @@ licence: CcByNc
 
 在分析其表达式之前，我们需要先定义一些量．
 
-- 振幅 $A$
-- 初相位 $\varphi_0$
+- <dfn>振幅</dfn> $A$
+- <dfn>初相位</dfn> $\varphi_0$
 
 这两个量在接下来的变换中都很简单．接下来：
 
@@ -75,7 +75,7 @@ $$
 
 ### 沿任意方向传播
 
-我们令波数为矢量 $\boldsymbol{\tilde \nu}$ 的模，则有波数 $\boldsymbol k = 2\pi\boldsymbol{\tilde \nu} = k \cdot \boldsymbol{\hat k}$，其中 $\boldsymbol{\hat k}$ 是波矢的单位矢量．[^k-vector]
+我们令波数为矢量 $\boldsymbol{\tilde \nu}$ 的模，则有<dfn>波数</dfn> $\boldsymbol k = 2\pi\boldsymbol{\tilde \nu} = k \cdot \boldsymbol{\hat k}$，其中 $\boldsymbol{\hat k}$ 是波矢的单位矢量．[^k-vector]
 
 [^k-vector]: [Wave vector - Wikipedia](https://en.wikipedia.org/wiki/Wave_vector)
 
@@ -166,7 +166,7 @@ $$
 
 ## 光程差和相位差
 
-光线在介质中传播距离 $s$（或写作 $r$、$d$、$x$）为其几何路程．但不同介质的折射率不同，会改变光的传播速度。所以我们需要使用**光程**（optical path length, OPL）来表示光在两点间传播的有效距离．
+光线在介质中传播距离 $s$（或写作 $r$、$d$、$x$）为其几何路程．但不同介质的折射率不同，会改变光的传播速度。所以我们需要使用<dfn>光程</dfn>（optical path length, OPL）来表示光在两点间传播的有效距离．
 
 在均匀介质中，光程是介质折射率 $n$ 与光线在介质中传播距离 $s$ 的乘积，即 $ns$．
 
@@ -174,7 +174,7 @@ $$ Δx=(n−n_0)h $$
 
 在真空中，$Δx = cΔt.$
 
-**光程差**（optical path difference, OPD）则是两束光线的光程之差．
+<dfn>光程差</dfn>（optical path difference, OPD）则是两束光线的光程之差．
 
 > 光程和光程差的重要在它们确定光的相位，而相位决定了干涉和衍射现象． [^wp-opl]
 
