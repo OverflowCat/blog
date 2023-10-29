@@ -11,11 +11,11 @@
 :target {
   scroll-margin-block: 5ex;
 }
-img,
+img:not(p > img),
 picture,
 video,
 canvas,
-svg {
+svg:not(p > svg) {
   display: block;
   max-width: 100%;
   height: auto;
@@ -74,6 +74,10 @@ body {
   // }
 }
 
+.content > blockquote[lang="en"] {
+  font-family: "IBM Plex Sans" !important;
+}
+
 pre,
 samp,
 kbd,
@@ -98,14 +102,11 @@ body {
 }
 
 .page {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  align-items: center;
-}
-
-.page_wide {
-  width: 810px;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 50px;
+  // align-items: center;
+  text-align: center;
 }
 
 .spacer {
@@ -118,6 +119,7 @@ body {
 
 /* CONTENT */
 .content {
+  text-align: initial; // start
   display: flex;
   flex-direction: column;
   gap: var(--gap);
@@ -149,6 +151,16 @@ body {
       opacity: 0.5;
     }
     transition: color 0.1s, border-color 0.1s, opacity 0.1s;
+  }
+
+  & > img,
+  & > video,
+  & > iframe,
+  & > a > img {
+    border-radius: var(--radius);
+  }
+  & > a {
+    border: none;
   }
 }
 
@@ -238,15 +250,18 @@ h4 > code,
   font-size: inherit !important;
 }
 
-pre {
-  font-size: 16px;
-  background: rgba(0, 0, 0, 0.06);
+.content > pre,
+blockquote > pre {
+  max-width: calc(var(--width) + 60px);
+  background: var(--gray-bg);
+  margin: var(--gap) 0;
+  // margin: 1em -30px;
   padding: 16px 30px 14px;
-  margin: 1em -30px;
   border-radius: 8px;
   white-space: pre-wrap;
   word-wrap: break-word;
   font-style: normal;
+  font-size: 16px;
   & > code {
     background: none;
     padding: 0;

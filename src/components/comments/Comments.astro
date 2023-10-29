@@ -8,7 +8,7 @@ const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 const comments = getComments(slug);
 ---
 
-<div class="comments">
+<div id="comments">
   <h2>评论</h2>
   {
     comments.length >= 1 && (
@@ -36,6 +36,9 @@ const comments = getComments(slug);
 </div>
 
 <style lang="less">
+  #comments {
+    padding: 1rem;
+  }
   h2 {
     margin: 1.5rem auto 0;
     text-align: center;

@@ -12,20 +12,21 @@ import Comments from "@/components/comments/Comments.astro";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
 import "@fontsource/ibm-plex-mono/cyrillic-400.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-400-italic.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/latin-600.css";
 import "@fontsource/ibm-plex-sans/latin-400-italic.css";
 
 let $ = cheerio.load(await Astro.slots.render("default"));
-$("li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote").each(
-  function () {
-    if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
-    const text = $(this).text();
-    if (!text.trim()) return;
-    const lang = hasChinese(text) ? "zh" : "en";
-    $(this).attr("lang", lang);
-  }
-);
+$(
+  "li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead"
+).each(function () {
+  if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
+  const text = $(this).text();
+  if (!text.trim()) return;
+  const lang = hasChinese(text) ? "zh" : "en";
+  $(this).attr("lang", lang);
+});
 const html = $.html();
 ---
 
@@ -35,14 +36,7 @@ const html = $.html();
   <label for="show-en" class="btn">Show English</label>
   <input type="checkbox" id="show-en" />
    /
-  <Languages
-    src="en"
-    here="zh"
-    langs={{
-      en: "https://tonsky.me/blog/syncthing/",
-      ru: "https://habr.com/ru/company/itelma/blog/550404/",
-    }}
-  />
+  <Languages src="en" here="zh" langs={frontmatter.langs} />
   <article class="content" set:html={html} />
 
   <Comments />
@@ -70,5 +64,10 @@ const html = $.html();
         display: none;
       }
     }
+  }
+
+  #comments {
+    max-width: 600px;
+    margin: 1rem auto 0;
   }
 </style>

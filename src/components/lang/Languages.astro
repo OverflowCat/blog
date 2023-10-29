@@ -2,34 +2,38 @@
 import ISO9631 from "iso-639-1";
 
 export interface Props {
-    langs: Record<string, string>;
-    src: keyof (typeof Astro)["props"]["langs"];
-    here: keyof (typeof Astro)["props"]["langs"];
+  langs: Record<string, string>;
+  src: keyof (typeof Astro)["props"]["langs"];
+  here: keyof (typeof Astro)["props"]["langs"];
 }
 
 const { langs, src, here } = Astro.props;
 ---
 
 <span class="languages">
-    <span>原文：</span>
-    <a href={langs[src]}> {ISO9631.getName(src)}</a><span> / 翻译：</span>
-    {
-        Object.entries(langs).map(
-            ([lang, url]) =>
-                lang !== src &&
-                (lang === here ? (
-                    <span>{ISO9631.getName(lang)} (Here)</span>
-                ) : (
-                    <span>
-                        <a href={url}>{ISO9631.getName(lang)}</a>
-                    </span>
-                ))
-        )
-    }
-    <slot />
+  <span>原文：</span>
+  <a href={langs[src]}> {ISO9631.getName(src)}</a><span> / 翻译：</span>
+  {
+    Object.entries(langs).map(
+      ([lang, url]) =>
+        lang !== src &&
+        (lang === here ? (
+          <span>{ISO9631.getName(lang)} (Here)</span>
+        ) : (
+          <span lang={lang} class="translation">
+            <a href={url}>{ISO9631.getNativeName(lang)}</a>
+          </span>
+        ))
+    )
+  }
+  <slot />
 </span>
 <style>
-    .languages {
-        margin-bottom: 1em;
-    }
+  .languages {
+    margin-bottom: 1em;
+  }
+  span.translation {
+    margin-right: 0.27em;
+    margin-left: 0.12em;
+  }
 </style>

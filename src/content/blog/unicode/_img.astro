@@ -22,6 +22,8 @@ if (!alt) alt = zhcap;
     height={height}
     style={`aspect-ratio: ${width}/${height}; `}
     alt={alt}
+    loading="lazy"
+    decoding="async"
   />
   {encap && <figcaption lang="en" set:html={encap} />}
   {zhcap && <figcaption lang="zh" set:html={zhcap} />}
