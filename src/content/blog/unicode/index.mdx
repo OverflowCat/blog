@@ -1,6 +1,6 @@
 ---
 title: 2023 年每个软件开发者都必须知道的关于 Unicode 的基本知识
-description: 仍然没有任何借口！
+description: 仍然不准找借口！
 photo: "https://tonsky.me/blog/unicode/utf8_trend@2x.png"
 date: 2023-10-30 00:15:00
 categories:
@@ -27,7 +27,7 @@ import "@/styles/tonsky-fig-new.less";
 
 # The Absolute Minimum Every Software Developer Must Know About Unicode in 2023 (Still No Excuses!)
 
-# 2023 年每个软件开发者都必须知道的关于 Unicode 的最基本的知识（仍然没有任何借口！）
+# 2023 年每个软件开发者都必须知道的关于 Unicode 的最基本的知识（仍然不准找借口！）
 
 Twenty years ago, [Joel Spolsky wrote](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/):
 
@@ -61,11 +61,11 @@ The question now becomes: how do we use UTF-8 correctly? Let’s see!
 
 Unicode is a standard that aims to unify all human languages, both past and present, and make them work with computers.
 
-Unicode 是一个旨在统一所有人类语言（包括过去和现在）并使它们能够在计算机上工作的标准。
+Unicode 是一种旨在统一过去和现在的所有人类语言，使其能够在计算机上使用的标准。
 
 In practice, Unicode is a table that assigns unique numbers to different characters.
 
-实际上，Unicode 是一个将不同字符分配给唯一数字的表格。
+在实践中，Unicode 是一个将不同字符分配给唯一编号的表格。
 
 For example:
 
@@ -128,7 +128,7 @@ For example, there’s no place for the Apple logo in Unicode, so Apple puts it 
 
 The Private Use Area is mostly used by icon fonts:
 
-私用区域主要由图标字体使用：
+私用区主要由图标字体使用：
 
 <Img src="https://tonsky.me/blog/unicode/nerd_font@2x.png"
   width="584"
@@ -147,7 +147,7 @@ It’s a convention for how to write code point values. The prefix `U+` means, w
 
 Oh, and `U+1F4A9` specifically is <code class="emoji">💩</code>.
 
-哦，`U+1F4A9` 具体是 <code class="emoji">💩</code>。
+噢，`U+1F4A9` 具体是 <code class="emoji">💩</code>。
 
 ## What’s UTF-8 then?
 
@@ -272,11 +272,11 @@ Any pure ASCII text is also a valid UTF-8 text, and any UTF-8 text that only use
 
 Second, UTF-8 is space-efficient for basic Latin. That was one of its main selling points over UTF-16. It might not be fair for texts all over the world, but for technical strings like HTML tags or JSON keys, it makes sense.
 
-第二，UTF-8 对于基本拉丁语来说是节省空间的。这是它比 UTF-16 的主要卖点之一。对于世界各地的文本来说可能不公平，但对于 HTML 标签或 JSON 键等技术字符串来说是有意义的。
+第二，UTF-8 对于基本拉丁语来说可以节省空间。这是它比 UTF-16 的主要卖点之一。对于世界各地的文本来说可能不公平，但对于 HTML 标签或 JSON 键等技术字符串来说是有意义的。
 
 On average, UTF-8 tends to be a pretty good deal, even for non-English computers. And for English, there’s no comparison.
 
-平均而言，UTF-8 往往是一个相当不错的选择，即使对于非英语的计算机也是如此。对于英语来说，没有比它更好的选择了。
+平均而言，UTF-8 往往是一个相当不错的选择，即使对于使用非英语的计算机也是如此。而对于英语而言，没有比它更好的选择了。
 
 Third, UTF-8 has error detection and recovery built-in. The first byte’s prefix always looks different from bytes 2-4. This way you can always tell if you are looking at a complete and valid sequence of UTF-8 bytes or if something is missing (for example, you jumped it the middle of the sequence).
 Then you can correct that by moving forward or backward until you find the beginning of the correct sequence.
@@ -331,7 +331,7 @@ UTF-32 对于操作码位很棒。确实，如果每个码位总是 4 个字节�
 
 The problem is, you don’t want to operate on code points. A code point is not a unit of writing; one code point is not always a single character. What you should be iterating on is called “**extended grapheme clusters**”, or graphemes for short.
 
-问题是，你想操作的并非码位。码位不是写作的单位；一个码位不总是一个字符。你应该迭代的是叫做「**<dfn>扩展字位簇</dfn>**（extended grapheme cluster）」的东西，我们在这里简称字位。
+问题是，你想操作的并非码位。码位不是书写的单位；一个码位不总是一个字符。你应该迭代的是叫做「**<dfn>扩展字位簇</dfn>**（extended grapheme cluster）」的东西，我们在这里简称字位。
 
 A grapheme is a minimally distinctive unit of writing in the context of a particular writing system. `ö` is one grapheme. `é` is one too. And `각`. Basically, grapheme is what the user thinks of as a single character.
 
@@ -467,11 +467,11 @@ As you can guess, different languages use different internal string representati
 
 BUT! If you ask any normal person, one that isn’t burdened with computer internals, they’ll give you a straight answer: 1. The length of <code class="emoji">🤦🏼‍♂️</code> string is 1.
 
-<b>但是！</b>如果你问任何正常的人，一个不被计算机内部所拖累的人，他们会给你一个直接的答案：1。`🤦🏼‍♂️`字符串的长度是 1。
+<b>但是！</b>如果你问任何正常的人，一个不被计算机内部所拖累的人，他们会给你一个直接的答案：1。<code class="emoji">🤦🏼‍♂️</code> 字符串的长度是 1。
 
 That’s what extended grapheme clusters are all about: what _humans_ perceive as a single character. And in this case, <code class="emoji">🤦🏼‍♂️</code> is undoubtedly a single character.
 
-这就是扩展字位簇存在的意义：人们认为是单个字符。在这种情况下，`🤦🏼‍♂️`无疑是一个单独的字符。
+这就是扩展字位簇存在的意义：人们认为是单个字符。在这种情况下，<code class="emoji">🤦🏼‍♂️</code> 无疑是一个单独的字符。
 
 The fact that <code class="emoji">🤦🏼‍♂️</code> consists of 5 code points (`U+1F926 U+1F3FB U+200D U+2642 U+FE0F`) is mere implementation detail. It should not be broken apart, it should not be counted as multiple characters, the text cursor should not be positioned inside it, it shouldn’t be partially selected, etc.
 
@@ -521,13 +521,15 @@ It makes no sense and has no semantics, but since it’s the default, programmer
 
 “I know, I’ll use a library to do strlen()!” — nobody, ever.
 
-“我知道，我会使用一个库来做 strlen()！”——从来没有人这样想。
+「我知道，我会使用一个库来做 strlen()！」——从来没有人这样想。
 
 But that’s exactly what you should be doing! Use a proper Unicode library! Yes, for basic stuff like `strlen` or `indexOf` or `substring`!
 
 但这正是你应该做的！使用一个合适的 Unicode 库！是的，对于像 `strlen` 或 `indexOf` 或 `substring` 这样的基本功能！
 
 For example:
+
+例如：
 
 1. C/C++/Java: use [ICU](https://github.com/unicode-org/icu). It’s a library from Unicode itself that encodes all the rules about text segmentation.
 1. C/C++/Java: 使用 [ICU](https://github.com/unicode-org/icu)。它是一个来自 Unicode 自身的库，它对文本分割的所有规则进行编码。
@@ -580,7 +582,7 @@ Even worse, different versions of your own app might be running on different Uni
 
 But that’s the reality we live in. You don’t really have a choice here. You can’t ignore Unicode or Unicode updates if you want to stay relevant and provide a decent user experience. So, buckle up, embrace, and update.
 
-但这就是我们生活的现实。你实际上别无选择。如果你想站稳脚跟并提供良好的用户体验，就不能忽略 Unicode 或 Unicode 更新。所以，寄好安全带，拥抱更新。
+但这就是我们所生活的现实——你实际上别无选择。如果你想站稳脚跟并提供良好的用户体验，就不能忽略 Unicode 或 Unicode 更新。所以，寄好安全带，拥抱更新。
 
 <Loud en="Update yearly">每年更新</Loud>
 
@@ -810,7 +812,7 @@ Hell, you can’t even spell `café`, `piñata`, or `naïve` without Unicode. So
 
 Touché.
 
-你书的队。[^touche]
+法国人：你书的队。[^touche]
 [^touche]: 原文是法语<q lang="fr">Touché</q>，意为「说得好」、「一针见血」。
 
 ## What are surrogate pairs?
@@ -843,7 +845,7 @@ Unicode 决定将这 65,536 个字符中的一些分配给编码更高码位的�
 
 A surrogate pair is two UTF-16 units used to encode a single Unicode code point. For example, `D83D DCA9` (two 16-bit units) encodes _one_ code point, `U+1F4A9`.
 
-<dfn>代理对</dfn>（<span lang="en">surrogate pair</span>）是用于编码单个 Unicode 码位的两个 UTF-16 单位。例如，`D83D DCA9`（两个 16 位单位）编码了一个码位，`U+1F4A9`。
+<dfn>代理对</dfn>（<span>surrogate pair</span>）是用于编码单个 Unicode 码位的两个 UTF-16 单位。例如，`D83D DCA9`（两个 16 位单位）编码了一个码位，`U+1F4A9`。
 
 The top 6 bits in surrogate pairs are used for the mask, leaving 2×10 free bits to spare:
 
@@ -890,7 +892,7 @@ In practical terms today, UTF-16 has roughly the same usability as UTF-8. It’s
 
 The only downside of UTF-16 is that everything else is UTF-8, so it requires conversion every time a string is read from the network or from disk.
 
-UTF-16 的唯一缺点是其他所有东西都是 UTF-8，因此每次从网络或磁盘读取字符串时都需要进行转换。
+UTF-16 的唯一缺点是其他所有东西都是 UTF-8，因此每次从网络或磁盘读取字符串时都要转换一下。
 
 Also, fun fact: the number of planes Unicode has (17) is defined by how much you can express with surrogate pairs in UTF-16.
 
