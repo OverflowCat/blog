@@ -23,7 +23,11 @@ import "@/styles/han.less";
 <!doctype html>
 <html lang="zh">
   <head>
-    <!-- <ViewTransitions fallback="none" /> -->
+    {
+      /*
+      <!-- <ViewTransitions fallback="none" /> -->
+      */
+    }
     <meta charset="utf-8" />
     {
       metas &&
@@ -41,11 +45,17 @@ import "@/styles/han.less";
       rel="apple-touch-icon"
       href="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png"
     />
+    <link rel="prefetch" href="/" />
+    <link rel="prefetch" href="/about/" />
+    {
+      /*
     <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
       crossorigin="anonymous"
-    /> -->
+    />-->
+    */
+    }
   </head>
   <body>
     <slot />
