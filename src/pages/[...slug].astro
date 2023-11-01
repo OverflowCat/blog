@@ -23,7 +23,9 @@ const metas = post.data.categories?.includes("Tonsky")
       viewport: "width=640",
       "theme-color": "hsl(51, 100%, 59%)",
     }
-  : undefined;
+  : {
+      "theme-color": "#111",
+    };
 ---
 
 <Page

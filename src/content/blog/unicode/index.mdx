@@ -31,9 +31,9 @@ import "@/styles/tonsky-fig-new.less";
   The Absolute Minimum Every Software Developer Must Know About Unicode in 2023 (Still No Excuses!)
 </div>
 
-<div style="text-align: right; margin-bottom: .7em;">
-  作者：<a href="https://tonsky.me/"><strong>Nikita</strong></a> (@tonsky)
-</div>
+<address style="text-align: right; margin-bottom: .7em;">
+  作者：<a href="https://tonsky.me/" rel="author"><strong>Nikita</strong></a> (@tonsky)
+</address>
 
 Twenty years ago, [Joel Spolsky wrote](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/):
 
@@ -485,7 +485,7 @@ The fact that <code class="emoji">🤦🏼‍♂️</code> consists of 5 code po
 
 For all intents and purposes, this is an atomic unit of text. Internally, it could be encoded whatever, but for user-facing API, it should be treated as a whole.
 
-就所有意图和目的而言，这是一个文本的原子单位。在内部，它可以被编码为任何东西，但对于面向用户的 API，它应该被视为一个整体。
+实际上，这是一个文本的原子单位。在内部，它可以被编码为任何东西，但对于面向用户的 API，它应该被视为一个整体。
 
 The only modern language that gets it right is Swift:
 
@@ -570,7 +570,7 @@ Yes! Ain’t it cool?
 
 (I know, it ain’t)
 
-（我知道，它不是）
+（我知道，这并不）
 
 Starting roughly in 2014, Unicode has been releasing a major revision of their standard every year. This is where you get your new emojis from — Android and iOS updates in the Fall usually include the newest Unicode standard among other things.
 
@@ -624,7 +624,7 @@ Remember earlier when I said that `ö` is two code points, `U+006F U+0308`? Basi
 
 They will look the same (`Å` vs `Å`), they should work the same, and for all intents and purposes, they are considered exactly the same. The only difference is the byte representation.
 
-他们将会看起来一样（`Å` vs `Å`），它们应该用起来一样，并且就所有意图和目的而言，它们被认为是完全相同的。唯一的区别是字节表示。
+他们将会看起来一样（`Å` vs `Å`），它们应该用起来一样，并且它们实际上在方方面面都被视为完全一样。唯一的区别是字节表示。
 
 That’s why we need normalization. There are four forms:
 
@@ -675,7 +675,7 @@ encap="All of these have their own code points, but they are also all Xs" />
 
 Why does the `ﬁ` ligature even have its own code point? No idea. A lot can happen in a million characters.
 
-为什么连 `ﬁ` 这个连字都有它自己的码位？不知道。在一百万个字符中会发生很多事情。
+为什么连 `ﬁ` 这个连字都有它自己的码位？不知道。在一百万个字符中，很多事情都可能发生。
 
 <Loud en="Before comparing strings or searching for a substring, normalize!">在比较字符串或搜索子字符串之前，归一化！</Loud>
 
@@ -793,7 +793,7 @@ So no, you can’t convert string to lowercase without knowing what language tha
   alt={`Still — yes. Even pure English text uses lots of “typographical signs” that aren't available in ASCII, like:`}
 />
 
-仍然是的。即使是纯英文文本也使用了许多 ASCII 中没有的「排版符号」，比如：
+依然应该。即使是纯英文文本也使用了许多 ASCII 中没有的「排版符号」，比如：
 
 - quotation marks `“` `”` `‘` `’`,
 - 引号 `“` `”` `‘` `’`，
@@ -814,7 +814,7 @@ So no, you can’t convert string to lowercase without knowing what language tha
 
 Hell, you can’t even spell `café`, `piñata`, or `naïve` without Unicode. So yes, we are all in it together, even Americans.
 
-见鬼，你甚至不能拼写 `café`、`piñata` 或 `naïve` 而不使用 Unicode。所以是的，我们在一条船上，即使是美国人。
+见鬼，你甚至不能拼写 `café`、`piñata` 或 `naïve` 而不使用 Unicode。所以是的，我们同舟共济，即使是美国人。
 
 Touché.
 
@@ -890,7 +890,7 @@ The promise of a fixed-width encoding that covers all human languages was so com
 
 Since then, Python has moved on, CD-ROM has become obsolete, but the rest is stuck with UTF-16 or even UCS-2. So UTF-16 lives there as in-memory representation.
 
-自从那时以来，Python 已经进步了，CD-ROM 已经过时了，但其余的仍然停留在 UTF-16 或甚至 UCS-2。因此，UTF-16 作为内存表示而存在。
+自从那时以来，Python 已经进步了，CD-ROM 已经过时了，但其余的仍然停留在 UTF-16 甚至 UCS-2。因此，UTF-16 作为内存表示而存在。
 
 In practical terms today, UTF-16 has roughly the same usability as UTF-8. It’s also variable-length; counting UTF-16 units is as useless as counting bytes or code points, grapheme clusters are still a pain, etc. The only difference is memory requirements.
 
@@ -959,7 +959,8 @@ Thanks Lev Walkin and my patrons for reading early drafts of this article.
 <div class="footer">
   2023 年 10 月 2 日 · 在
   [HackerNews](https://news.ycombinator.com/item?id=37735801) 上讨论 ·
-  翻译于 2023 年 10 月 27 日
+  翻译于 2023 年 10 月 27 日 · 在
+  [Twitter](https://twitter.com/lazy_static/status/1718672213585301620) 上讨论（中文）
 </div>
 
 <br />

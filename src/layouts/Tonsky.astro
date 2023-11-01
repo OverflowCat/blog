@@ -36,7 +36,12 @@ const html = $.html();
   <label for="show-en" class="btn">Show English</label>
   <input type="checkbox" id="show-en" />
    /
-  <Languages src="en" here="zh" langs={frontmatter.langs} />
+  <Languages
+    src="en"
+    here="zh"
+    langs={frontmatter.langs}
+    classList={["tonsky"]}
+  />
   <article class="content" set:html={html} />
 
   <Comments />

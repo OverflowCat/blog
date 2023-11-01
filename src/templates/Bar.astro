@@ -23,32 +23,34 @@ const slogan = pick(slogans)[lang || "zh-Hans"];
 transparent = true;
 ---
 
-<div class:list={[{ bar: !transparent }]} id="logo">
-  <Logo theme={transparent ? "transparent" : "dark"} />
-</div>
-<div id="slogan" set:text={slogan} />
-<ol>
-  {
-    items.map((item, i) => (
-      <li>
-        <a
-          href={item[2]}
-          data-replace={index === i ? "本页" : item[0]}
-          class={index === i ? "current" : ""}
-        >
-          <span>
-            &nbsp;
-            <span>{item[0]}</span>
-            <span class="en" lang="en">
-              / {item[1]}
+<nav>
+  <div class:list={[{ bar: !transparent }]} id="logo">
+    <Logo theme={transparent ? "transparent" : "dark"} />
+  </div>
+  <div id="slogan" set:text={slogan} />
+  <ol>
+    {
+      items.map((item, i) => (
+        <li>
+          <a
+            href={item[2]}
+            data-replace={index === i ? "本页" : item[0]}
+            class={index === i ? "current" : ""}
+          >
+            <span>
+              &nbsp;
+              <span>{item[0]}</span>
+              <span class="en" lang="en">
+                / {item[1]}
+              </span>
+              &nbsp;
             </span>
-            &nbsp;
-          </span>
-        </a>
-      </li>
-    ))
-  }
-</ol>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
 
 <style>
   @media only screen and (max-width: 800px) {
@@ -107,7 +109,7 @@ transparent = true;
     overflow-x: hidden;
     position: relative;
     display: inline-block;
-    border-bottom: none!important;
+    border-bottom: none !important;
   }
   a.current {
     height: 100%;

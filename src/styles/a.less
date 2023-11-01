@@ -1,24 +1,27 @@
 a {
-    border-bottom: 1px solid #999;
-    color: var(--link-color);
-    cursor: pointer;
-    outline: 0;
-    text-decoration: none;
-    overflow-wrap: break-word;
-    &:hover {
-        border-bottom-color: var(--link-hover-color);
-        color: var(--link-hover-color);
-    }
+  border-bottom: 1px solid #999;
+  color: var(--link-color);
+  cursor: pointer;
+  outline: 0;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  &:hover {
+    border-bottom-color: var(--link-hover-color);
+    color: var(--link-hover-color);
+  }
 
-    &[target="_blank"]::after {
-        content: '↗';
-        padding-left: 2px;
-        padding-right: 2px;
-        font-family: "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans CJK JP", 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', '.LucidaGrandeUI-Bold', 'Lucida Grande', 'Segoe UI', 'Arial', 'Menlo', sans-serif;
-    }
+  &[target="_blank"]:not(:has(img)):after {
+    content: "↗";
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
+      "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
+      "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
+      "Arial", sans-serif;
+  }
 }
 
 a:has(> img) {
-    border-bottom: 0;
-    color: inherit;
+  border-bottom: 0;
+  color: inherit;
 }

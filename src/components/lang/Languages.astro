@@ -5,12 +5,13 @@ export interface Props {
   langs: Record<string, string>;
   src: keyof (typeof Astro)["props"]["langs"];
   here: keyof (typeof Astro)["props"]["langs"];
+  classList: string[];
 }
 
-const { langs, src, here } = Astro.props;
+const { langs, src, here, classList } = Astro.props;
 ---
 
-<span class="languages">
+<span class:list={["languages"].concat(classList)}>
   <span>原文：</span>
   <a href={langs[src]}> {ISO9631.getName(src)}</a><span> / 翻译：</span>
   {
