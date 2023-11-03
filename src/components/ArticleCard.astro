@@ -58,7 +58,17 @@ const { post } = Astro.props;
           <img
             class="title-img"
             loading="lazy"
-            src={post.data.photo}
+            height={
+              post.data.photo.split(" ").length > 1
+                ? post.data.photo.split(" ")[1].split(":")[1]
+                : ""
+            }
+            width={
+              post.data.photo.split(" ").length > 1
+                ? post.data.photo.split(" ")[1].split(":")[0]
+                : ""
+            }
+            src={post.data.photo.split(" ")[0]}
             alt={post.data.title}
           />
         </td>

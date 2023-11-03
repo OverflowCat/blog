@@ -6,7 +6,10 @@ import LicenceBox from "@/components/licences/LicenceBox.astro";
 import Comments from "@/components/comments/Comments.astro";
 
 const { frontmatter } = Astro.props;
-const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+if (cover && cover.split(" ").length > 1) {
+  cover = cover.split(" ")[0];
+}
 let licence = frontmatter.licence;
 if (licence === undefined) {
   licence = "CcByNc";
