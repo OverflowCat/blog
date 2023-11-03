@@ -13,6 +13,14 @@ const githubLink = source ? source : "https://github.com/OverflowCat/blog";
 ---
 
 <footer>
+  <div class="counter">
+    <img
+      loading="eager"
+      width="238"
+      height="75"
+      src="https://moe-counter.glitch.me/get/@xinshijiededamen?theme=gelbooru"
+    />
+  </div>
   {noscript && <Noscript />}
   <div>
     Built with <a href="https://astro.build/"
@@ -51,6 +59,12 @@ const githubLink = source ? source : "https://github.com/OverflowCat/blog";
       a {
         color: #444;
         text-decoration: none;
+      }
+      .counter > img {
+        user-select: none;
+        display: block;
+        margin: auto;
+        padding-block-end: 8px;
       }
     }
   </style>
