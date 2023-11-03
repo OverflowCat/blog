@@ -1,0 +1,16 @@
+id: gms6fsml36r7h8lebqwbyoqe
+name: laoshubaby
+email: d41d8cd98f00b204e9800998ecf8427e
+message: "有一个问题，关于文中的Hangul的Unicode表示，确实存在一些地方因为Unicode支持不好而把Hangul显示的支离破碎、阿拉伯字\
+  母前后不连的情况，但我们更常用的是合在一起单独表示的吧？（也就三万多个，我寻思Unicode还不至于这么抠门）\r
+
+  \r
+
+  比如文中提到的\r
+
+  &gt; 각 (韩语) 是 U+1100 U+1161 U+11A8。\r
+
+  \r
+
+  但我们可以找到一个각，对应U+AC01，它直接就是这一个字"
+date: 2023-11-03T03:19:59.259Z
