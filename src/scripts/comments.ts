@@ -3,7 +3,7 @@ import { parse } from "yaml";
 import fs from "fs";
 import { type } from "arktype";
 
-export const Comment = type({
+export const CheckComment = type({
   id: "string",
   name: "string",
   email: "string",
@@ -12,7 +12,10 @@ export const Comment = type({
   "activitypub?": "string",
   message: "string",
   date: "any",
+  "reply?": "string",
 });
+
+export type CheckedComment = typeof CheckComment.infer;
 
 function readComment(path: string) {
   const text = fs.readFileSync(`comments/${path}`, {
@@ -20,7 +23,7 @@ function readComment(path: string) {
   });
   const parsed = parse(text);
   parsed["date"] = new Date(parsed["date"]);
-  const { data, problems } = Comment(parsed);
+  const { data, problems } = CheckComment(parsed);
   if (problems) {
     console.error(problems);
     throw new Error("Invalid comment");

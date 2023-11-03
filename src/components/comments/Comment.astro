@@ -1,0 +1,89 @@
+---
+import type { CheckedComment } from "@/scripts/comments";
+export type Props = {
+  comment: Pick<CheckedComment, "id" | "name" | "date" | "message" | "reply">;
+};
+import Icon from "astro-icon";
+
+const { comment } = Astro.props;
+const reply = comment.reply
+  ? {
+      id: comment.id + "r",
+      name: "猫猫",
+      date: comment.date,
+      message: comment.reply,
+      email: "",
+    }
+  : undefined;
+---
+
+<li>
+  <h4>
+    {comment.name}
+     &nbsp;
+    <time
+      datetime={comment.date.toISOString()}
+      set:text={comment.date.toLocaleDateString("zh")}
+    />
+  </h4>
+  <div class="message" set:html={comment.message} />
+  {
+    reply && (
+      <div class="reply">
+        <div class="icon">
+          <Icon name="ic:sharp-reply" />
+        </div>
+        <ul>
+          <Astro.self comment={reply} />
+        </ul>
+      </div>
+    )
+  }
+</li>
+
+<style lang="less">
+  li {
+    text-align: left; // reset Chrome's default
+    padding-block: 0.6em;
+    margin-block: 0.3em;
+    & + & {
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .message,
+    .message > * {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .reply {
+      margin-block-start: 8px;
+      padding-inline: 1em;
+      background-color: rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex: auto auto;
+      gap: 8px;
+      justify-content: center;
+      .icon {
+        margin: auto;
+        min-width: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 4px;
+      }
+    }
+
+    h4 {
+      font-size: 100%;
+      margin-block-end: 0.2rem;
+
+      & > time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-inline-start: 0.5rem;
+      }
+    }
+  }
+</style>

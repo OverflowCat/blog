@@ -16,6 +16,7 @@ metas["generator"] = Astro.generator;
 // import "modern-css-reset";
 
 import "@/styles/han.less";
+import "@/styles/monospace.less";
 
 // import { ViewTransitions } from "astro:transitions";
 ---
@@ -59,7 +60,7 @@ import "@/styles/han.less";
   </head>
   <body>
     <slot />
-    <style is:global>
+    <style is:global lang="less">
       :root {
         --body-bg-color: #eee;
         --accent-color: rgb(0, 0, 0);
@@ -96,6 +97,22 @@ import "@/styles/han.less";
       code {
         font-family: "更纱等距黑体", "Fira Code", "FiraCode NF",
           "Noto Sans CJK Mono SC", "Source Code Pro", consolas, monospace;
+      }
+
+      details > summary {
+        padding-inline: 1em;
+        padding-block: 5px;
+        transition: background-color 0.1s ease-in-out;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+          cursor: s-resize;
+          &[open] {
+            cursor: n-resize;
+          }
+        }
+        &:active {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
       }
     </style>
   </body>

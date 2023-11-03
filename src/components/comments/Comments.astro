@@ -2,6 +2,7 @@
 import { getComments } from "@/scripts/comments";
 import Form from "./Form.astro";
 import "@/styles/a.less";
+import Comment from "./Comment.astro";
 
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 
@@ -14,21 +15,9 @@ const comments = getComments(slug);
     comments.length >= 1 && (
       <section id="comment-list">
         <ul>
-          {comments.map(
-            (comment: { name: string; date: Date; message: string }) => (
-              <li>
-                <h4>
-                  {comment.name}
-                  &nbsp;
-                  <time
-                    datetime={comment.date}
-                    set:text={comment.date.toLocaleDateString("zh")}
-                  />
-                </h4>
-                <p class="message">{comment.message}</p>
-              </li>
-            )
-          )}
+          {comments.map((comment) => (
+            <Comment comment={comment} />
+          ))}
         </ul>
       </section>
     )
@@ -39,7 +28,14 @@ const comments = getComments(slug);
 
 <style lang="less">
   #comments {
-    padding: 1rem;
+    code,
+    pre,
+    a {
+      word-break: break-all;
+    }
+  }
+  .reply {
+    margin-inline-start: 1em;
   }
   h2 {
     margin: 1.5rem auto 0;
@@ -47,35 +43,9 @@ const comments = getComments(slug);
   }
   #comment-list {
     margin: 1rem 1rem;
-
     ul {
       list-style: none;
       padding: 0;
-    }
-
-    li {
-      margin-bottom: 1rem;
-      padding: 0 0.7rem;
-      .message {
-        font-size: 16px;
-        text-align: left;
-      }
-    }
-
-    h4 {
-      font-size: 125%;
-      margin-bottom: 1rem;
-
-      & > date {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        margin-inline-start: 0.5rem;
-      }
-    }
-
-    time {
-      font-size: 0.8rem;
-      color: #666;
     }
   }
 </style>
