@@ -38,7 +38,7 @@
     "yaml": "^2.3.4"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.5",
+    "@types/markdown-it": "^13.0.6",
     "@types/node": "^20.8.10",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.6",
