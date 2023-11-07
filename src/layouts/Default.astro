@@ -84,18 +84,18 @@ import "@/styles/article.less";
 
 <style is:global lang="less">
   .paper {
-    max-width: 1024px;
+    max-inline-size: 1024px;
     margin: auto;
     overflow-x: hidden;
   }
   img.cover {
-    width: 100%;
+    inline-size: 100%;
     height: auto;
     margin: 0;
     border-radius: 4px;
   }
   .info {
-    margin: 1rem 0;
+    margin-block: 1rem;
     color: #2e2e2e;
     font-size: 0.9rem;
     text-align: center;
@@ -104,8 +104,9 @@ import "@/styles/article.less";
       color: #151515;
       text-decoration: none;
       border: none;
-      padding: 3px 6px;
-      margin: 0 5px;
+      margin-block: 3px;
+      margin-inline: 6px;
+      margin-inline: 5px;
       border-radius: 0.5rem;
       background-color: #f4f4f4;
       color: #333;
@@ -123,6 +124,6 @@ import "@/styles/article.less";
   }
 
   section#comments {
-    margin: 1rem 0;
+    margin-block: 1em;
   }
 </style>

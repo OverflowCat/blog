@@ -82,33 +82,41 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
   }
 
   .form-group {
-    margin-bottom: 20px;
+    margin-block-end: 20px;
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-block-end: 5px;
       font-weight: bold;
-      text-align: left;
+      text-align: start;
       user-select: none;
       font-size: 17px;
     }
     input,
-    textarea {
-      width: 100%;
-      padding: 8px 10px;
+    textarea,
+    [contenteditable] {
+      inline-size: 100%;
+      text-orientation: mixed;
+      padding: 10px;
       border: 2px solid #e1e1e1;
       border-radius: 2px;
       font-size: 16px;
       box-sizing: border-box;
-
+      // &[type="text" i] {
+      //   writing-mode: inherit !important;
+      // }
+      transition: border 90ms;
+      &:hover {
+        border: 2px solid #91919187;
+      }
       &:focus {
         outline: none;
         border: 2px solid #737373;
       }
     }
     textarea {
-      resize: vertical;
-      min-height: 180px;
-      max-height: 500px;
+      resize: vertical; // TODO: Chrome 118 supports `block`
+      min-block-size: 180px;
+      max-block-size: 500px;
     }
   }
 

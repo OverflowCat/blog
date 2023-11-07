@@ -52,13 +52,7 @@ transparent = true;
   </ol>
 </nav>
 
-<style>
-  @media only screen and (max-width: 800px) {
-    span.en {
-      display: none !important;
-    }
-  }
-
+<style lang="less">
   * {
     user-select: none;
   }
@@ -75,18 +69,18 @@ transparent = true;
   #logo {
     padding: 1rem 2px 0.2rem;
     margin: 0 auto;
-  }
-  #logo.bar {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      202deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 5%,
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 0, 1) 80%,
-      rgba(255, 255, 255, 1) 95%,
-      rgba(255, 255, 255, 1) 100%
-    );
+    &.bar {
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        202deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 5%,
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(255, 255, 255, 1) 95%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
   }
   ol {
     font-size: 18px;
@@ -109,53 +103,53 @@ transparent = true;
     position: relative;
     display: inline-block;
     border-bottom: none !important;
-  }
-  a.current {
-    height: 100%;
-    top: 0;
-    transform-origin: 100% 50%;
-    color: #000000;
-  }
-  a::before,
-  a::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    left: 0;
-  }
-  a::before {
-    background-color: var(--accent-color);
-    height: 2px;
-    bottom: 0;
-    transform-origin: 100% 50%;
-    transform: scaleX(0);
-    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  }
-  a::after {
-    content: attr(data-replace);
-    height: 100%;
-    top: 0;
-    transform-origin: 100% 50%;
-    transform: translate3d(200%, 0, 0);
-    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-    color: var(--accent-color);
-  }
-  a:hover::before {
-    transform-origin: 0% 50%;
-    transform: scaleX(1);
-  }
-  a:hover::after {
-    transform: translate3d(0, 0, 0);
-  }
-  a span {
-    display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  }
-  a:hover span {
-    transform: translate3d(-200%, 0, 0);
-  }
-  a {
     text-decoration: none;
     color: #434343;
+    &.current {
+      height: 100%;
+      top: 0;
+      transform-origin: 100% 50%;
+      color: #000000;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+    }
+    &::before {
+      background-color: var(--accent-color);
+      height: 2px;
+      bottom: 0;
+      transform-origin: 100% 50%;
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    &::after {
+      content: attr(data-replace);
+      height: 100%;
+      top: 0;
+      transform-origin: 100% 50%;
+      transform: translate3d(200%, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+      color: var(--accent-color);
+    }
+    &:hover {
+      &::before {
+        transform-origin: 0% 50%;
+        transform: scaleX(1);
+      }
+      &::after {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    span {
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    &:hover span {
+      transform: translate3d(-200%, 0, 0);
+    }
   }
 </style>
