@@ -19,7 +19,7 @@ const { href, icon, rel } = Astro.props;
   </span>
 </a>
 
-<style>
+<style lang="less">
   a {
     display: block;
     width: 105px;
@@ -30,17 +30,16 @@ const { href, icon, rel } = Astro.props;
     color: #333333;
     text-align: center;
     text-decoration: none;
-    /*
-    text-overflow: ellipsis;
-    text-wrap: nowrap;
-    overflow: hidden;
-    */
     padding: 5px 2px;
     font-size: 13px;
     white-space: nowrap;
-  }
-  a:hover {
-    background-color: #eeeeee;
+    transition: background-color 0.1s ease-in-out;
+    &:hover {
+      background-color: #eee;
+    }
+    &:focus {
+      background-color: #ddd;
+    }
   }
   .icon {
     display: inline-block;

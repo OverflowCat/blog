@@ -3,6 +3,13 @@ title: 平面电磁波的表达式
 description: 平面电磁波可能是三维的波的最简单的例子．
 date: 2023-09-26 22:32:32
 photo: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Onde_electromagnetique.svg/2560px-Onde_electromagnetique.svg.png
+figcaption: |
+  <details>
+  <summary>
+  题图：<a href="https://commons.wikimedia.org/wiki/File:Onde_electromagnetique.svg">Onde electromagnetique</a> by <a href="https://commons.wikimedia.org/wiki/User:Emmanuel.boutet">SuperManu</a>, GFDL / CC-BY-SA
+  </summary>
+  A sinusoidal electromagnetic wave propagating along the positive z-axis, showing the electric field (blue) and magnetic field (red) vectors.
+  </details>
 categories: 光学
 tags:
   - "备忘"
@@ -13,10 +20,6 @@ noscript: true
 mathjax: true
 licence: CcByNc
 ---
-
-> 题图：[Onde electromagnetique](https://commons.wikimedia.org/wiki/File:Onde_electromagnetique.svg) by [SuperManu](https://commons.wikimedia.org/wiki/User:Emmanuel.boutet), GFDL / CC-BY-SA
->
-> A sinusoidal electromagnetic wave propagating along the positive z-axis, showing the electric field (blue) and magnetic field (red) vectors.
 
 平面电磁波是指在与传播方向正交的平面上各点电场或磁场具有相同值的电磁波．平面电磁波可能是三维的波的最简单的例子．根据傅里叶变换，任何一个波都可以看作是一系列平面波的叠加．因此，平面电磁波是一种非常重要的波．
 

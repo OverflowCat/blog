@@ -1,17 +1,23 @@
 ---
-// 专名号（Proper Name/None）
+// 专名号（Proper Name/Noun）
 ---
 
 <span class="pn outer">
-  <span class="pn inner"> <slot /></span>
+  <span class="inner"> <slot /></span>
 </span>
 
-<style>
-  .pn.inner {
-    margin: 0 -0.24em; /* The width of one space is usually .25em */
-  }
+<style lang="less">
   .pn.outer {
-    border-bottom: 1px solid;
-    margin: 0 1px;
+    margin-inline: 1px;
+    > .inner {
+      margin-inline: -1px;
+    }
+    border-block-end: 1px solid;
+    & + & {
+      margin-inline-start: 0.1em;
+      > .inner {
+        margin-inline-start: -0.05em;
+      }
+    }
   }
 </style>

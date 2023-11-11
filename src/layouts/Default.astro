@@ -28,7 +28,16 @@ import "@/styles/article.less";
 ---
 
 <Paper padding={true} paper={frontmatter.paper !== false}>
-  {cover && <img class="cover" src={cover} alt={frontmatter.title} />}
+  {
+    cover && (
+      <figure class="cover">
+        <img class="cover" src={cover} alt={frontmatter.title} />
+        {frontmatter.figcaption && (
+          <figcaption set:html={frontmatter.figcaption} />
+        )}
+      </figure>
+    )
+  }
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <div class="info">
     <div>
@@ -88,11 +97,19 @@ import "@/styles/article.less";
     margin: auto;
     overflow-x: hidden;
   }
-  img.cover {
-    inline-size: 100%;
-    height: auto;
+  .cover {
     margin: 0;
-    border-radius: 4px;
+    height: auto;
+    img {
+      inline-size: 100%;
+      border-radius: 4px;
+    }
+    figcaption {
+      margin-inline: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
   }
   .info {
     margin-block: 1rem;
