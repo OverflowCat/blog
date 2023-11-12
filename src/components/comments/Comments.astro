@@ -26,7 +26,7 @@ const comments = getComments(slug);
   <Form />
 </div>
 
-<style lang="less">
+<style lang="less" is:global>
   #comments {
     code,
     pre,
@@ -34,12 +34,10 @@ const comments = getComments(slug);
       word-break: break-all;
     }
   }
-  .reply {
-    margin-inline-start: 1em;
-  }
+</style>
+
+<style lang="less">
   h2 {
-    margin-block: 1.5rem 0;
-    margin-inline: auto;
     text-align: center;
   }
   #comment-list {

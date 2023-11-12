@@ -17,13 +17,14 @@ const reply = comment.reply
   : undefined;
 ---
 
-<li>
+<li itemprop="comment">
   <h4>
-    {comment.name}
+    <span set:html={comment.name} itemprop="name" />
      &nbsp;
     <time
       datetime={comment.date.toISOString()}
       set:text={comment.date.toLocaleDateString("zh")}
+      itemprop="datePublished"
     />
   </h4>
   <div class="message" set:html={comment.message} />
@@ -41,6 +42,40 @@ const reply = comment.reply
   }
 </li>
 
+<style lang="less" is:global>
+  .reply {
+    margin-block-start: 8px;
+    padding-inline: 1em;
+    background-color: rgba(0, 0, 0, 0.06);
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.6;
+    h2 {
+      margin-block: 1.5rem 0;
+      margin-inline: auto;
+      text-align: center;
+    }
+    p {
+      margin: 0;
+      + p {
+        margin-block-start: 0.5em;
+      }
+    }
+    .icon {
+      margin: auto;
+      min-width: 20px;
+      flex: 0 0 auto;
+    }
+    ul {
+      flex: 1;
+      list-style: none;
+      padding: 0;
+      margin: 4px;
+    }
+  }
+</style>
+
 <style lang="less">
   li {
     text-align: left; // reset Chrome's default
@@ -55,28 +90,9 @@ const reply = comment.reply
       font-size: 16px;
       text-align: start;
     }
-
-    .reply {
-      margin-block-start: 8px;
-      padding-inline: 1em;
-      background-color: rgba(0, 0, 0, 0.06);
-      display: flex;
-      flex: auto auto;
-      gap: 8px;
-      justify-content: center;
-      .icon {
-        margin: auto;
-        min-width: 20px;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 4px;
-      }
-    }
-
     h4 {
       font-size: 100%;
+      margin: 0;
       margin-block-end: 0.2rem;
 
       & > time {

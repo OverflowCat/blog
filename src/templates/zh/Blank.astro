@@ -6,7 +6,10 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<head><meta charset="utf-8" /></head>
+<head>
+  <meta charset="utf-8" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+</head>
 <slot />
 <style is:global>
   main {
