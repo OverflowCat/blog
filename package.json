@@ -23,7 +23,7 @@
     "@fontsource/noto-sans-mongolian": "^5.0.8",
     "@microflash/remark-figure-caption": "^2.0.2",
     "arktype": "1.0.27-alpha",
-    "astro": "^3.5.3",
+    "astro": "^3.5.5",
     "astro-icon": "^0.8.1",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
