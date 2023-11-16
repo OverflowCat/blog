@@ -17,7 +17,7 @@
     "@astrojs/mdx": "^1.1.4",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
-    "@astrojs/svelte": "^4.0.3",
+    "@astrojs/svelte": "^4.0.4",
     "@fontsource/ibm-plex-mono": "^5.0.8",
     "@fontsource/ibm-plex-sans": "^5.0.17",
     "@fontsource/noto-sans-mongolian": "^5.0.8",
