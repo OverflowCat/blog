@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.1
-    version: 0.4.1(astro@3.5.3)
+    version: 0.4.1(astro@3.5.7)
   '@astrojs/mdx':
     specifier: ^1.1.4
-    version: 1.1.4(astro@3.5.3)
+    version: 1.1.4(astro@3.5.7)
   '@astrojs/rss':
     specifier: ^3.0.0
     version: 3.0.0
@@ -19,7 +19,7 @@ dependencies:
     version: 3.0.3
   '@astrojs/svelte':
     specifier: ^4.0.3
-    version: 4.0.3(astro@3.5.3)(svelte@4.2.3)(typescript@5.2.2)(vite@4.5.0)
+    version: 4.0.3(astro@3.5.7)(svelte@4.2.3)(typescript@5.2.2)(vite@4.5.0)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -36,8 +36,8 @@ dependencies:
     specifier: 1.0.27-alpha
     version: 1.0.27-alpha
   astro:
-    specifier: ^3.5.3
-    version: 3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+    specifier: ^3.5.7
+    version: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
   astro-icon:
     specifier: ^0.8.1
     version: 0.8.1
@@ -117,12 +117,12 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.1(astro@3.5.3):
+  /@astro-community/astro-embed-youtube@0.4.1(astro@3.5.7):
     resolution: {integrity: sha512-sS3zp3JpCkQl0yl5iCZSuCcankz0Ownjg0Ju5KdON4BJVZUh2gHySCCvqKpsNWwto2VESKi9v7KHi1/R386FZg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta
     dependencies:
-      astro: 3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+      astro: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -134,13 +134,13 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/markdown-remark@3.4.0(astro@3.5.3):
+  /@astrojs/markdown-remark@3.4.0(astro@3.5.7):
     resolution: {integrity: sha512-uzLSKBQ4e70aH8gEbBHZ2pnv/KOJKB3WrXFBOF0U5Uwjcr2LNWeIBLjPRQjA4tbtteELh84YPBHny21mhvBGVA==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+      astro: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -158,16 +158,40 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@1.1.4(astro@3.5.3):
+  /@astrojs/markdown-remark@3.5.0(astro@3.5.7):
+    resolution: {integrity: sha512-q7vdIqzYhxpsfghg2YmkmSXCfp4w7lBTYP+SSHw89wVhC5Riltr3u8w2otBRxNLSByNi+ht/gGkFC23Shetytw==}
+    peerDependencies:
+      astro: ^3.0.0
+    dependencies:
+      '@astrojs/prism': 3.0.0
+      astro: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+      github-slugger: 2.0.0
+      import-meta-resolve: 3.0.0
+      mdast-util-definitions: 6.0.0
+      rehype-raw: 6.1.1
+      rehype-stringify: 9.0.4
+      remark-gfm: 3.0.1
+      remark-parse: 10.0.2
+      remark-rehype: 10.1.0
+      remark-smartypants: 2.0.0
+      shikiji: 0.6.10
+      unified: 10.1.2
+      unist-util-visit: 4.1.2
+      vfile: 5.3.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@astrojs/mdx@1.1.4(astro@3.5.7):
     resolution: {integrity: sha512-yP5O3TuSx/vKTyrw4ZPuRH/sXIKj5zDN03AZQt4Rlv8W7mUCpQnYC3bTOrnhBvNxLRCmB1WL2cip9RUmvd4MQw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
-      '@astrojs/markdown-remark': 3.4.0(astro@3.5.3)
+      '@astrojs/markdown-remark': 3.4.0(astro@3.5.7)
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+      astro: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
       es-module-lexer: 1.3.0
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -205,7 +229,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@4.0.3(astro@3.5.3)(svelte@4.2.3)(typescript@5.2.2)(vite@4.5.0):
+  /@astrojs/svelte@4.0.3(astro@3.5.7)(svelte@4.2.3)(typescript@5.2.2)(vite@4.5.0):
     resolution: {integrity: sha512-3toH/mkNFqMdmnMXh4XcksZfuOAwWVXdRrISyoRgNn1HalG6WBACFT+RwxAwpH7eXW/zUfrpfyZdcxYnVucHTg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -213,7 +237,7 @@ packages:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.2.3)(vite@4.5.0)
-      astro: 3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
+      astro: 3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2)
       svelte: 4.2.3
       svelte2tsx: 0.6.21(svelte@4.2.3)(typescript@5.2.2)
     transitivePeerDependencies:
@@ -1563,14 +1587,14 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro@3.5.3(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-08ya96yvQLdZjwYYpylzDTUGcyuA+Kw9zIT2RHfL7VzXtLTL1ZxhQjSo6CiTBH8Tcrdam88Fez+Q1awwKKajGw==}
+  /astro@3.5.7(@types/node@20.9.0)(less@4.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-sQiblxFOzWuqo6qdpw15AxGyvQfWa6DMlEazp2+6Ra1pK7uiuK/zxf5LZKiOeZ01Wtv4dveXOwPPwf2eN+5Wew==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.3.0
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 3.4.0(astro@3.5.3)
+      '@astrojs/markdown-remark': 3.5.0(astro@3.5.7)
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
