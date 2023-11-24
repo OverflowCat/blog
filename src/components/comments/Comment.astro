@@ -22,6 +22,7 @@ const reply = comment.reply
     <span set:html={comment.name} itemprop="name" />
      &nbsp;
     <time
+      class="monospace"
       datetime={comment.date.toISOString()}
       set:text={comment.date.toLocaleDateString("zh")}
       itemprop="datePublished"

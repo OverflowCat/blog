@@ -671,7 +671,7 @@ Visual variants are separate Unicode code points that represent the same charact
 <dfn>视觉变体</dfn>是表示相同字符的单独的 Unicode 码位，但是应该呈现不同。比如 `①` 或 `⁹` 或 `𝕏`。我们想要在像 `"𝕏²"` 这样的字符串中找到 `"x"` 和 `"2"`，不是吗？
 
 <Img src="https://tonsky.me/blog/unicode/x_variants@2x.png"
-width="438" height="185" 
+width="438" height="185"
 zhcap="所有这些字符都有它们自己的码位，但它们也都是 X"
 encap="All of these have their own code points, but they are also all Xs" />
 
@@ -683,7 +683,7 @@ Why does the `ﬁ` ligature even have its own code point? No idea. A lot can hap
 
 ## Unicode is locale-dependent
 
-## Unicode 是基于区域设置的
+## Unicode 是基于{区域设置}^(locale)的
 
 The Russian name Nikolay is written like this:
 
@@ -740,7 +740,7 @@ In practice, dependency on locale brings a lot of problems:
 2. People are not limited to a single locale. For example, I can read and write English (USA), English (UK), German, and Russian. Which locale should I set my computer to?
 2. 人们不限于单一的区域设置。例如，我可以阅读和写作英语（美国）、英语（英国）、德语和俄语。我应该将我的计算机设置为哪个区域？
 3. It’s hard to mix and match. Like Russian names in Bulgarian text or vice versa. Why not? It’s the internet, people from all cultures hang out here.
-3. 混起来后再匹配很难。比如保加利亚文中的俄语名字，反之亦然。为什么不呢？这是互联网，来自各种文化的人都在这里冲浪。
+3. 混起来后再匹配很难。比如保加利亚文中的俄语名字，反之亦然。这种情况不是时有发生吗？这是互联网，来自各种文化的人都在这里冲浪。
 4. There’s no place to specify the locale. Even making the two screenshots above was non-trivial because in most software, there’s no dropdown or text input to change locale.
 4. 没有地方指定区域设置。即使是制作上面的两个截图也是比较复杂的，因为在大多数软件中，没有下拉菜单或文本输入来更改区域设置。
 5. When needed, it had to be guessed. For example, Twitter tries to guess the locale from the text of the tweet itself (because where else could it get it from?) and sometimes gets it wrong:
@@ -785,7 +785,7 @@ So no, you can’t convert string to lowercase without knowing what language tha
 
 ## I live in the US/UK, should I even care?
 
-## 我住在美国/英国，我应该关心吗？
+## 我住在美国/英国，也应该在意这件事吗？
 
 <img
   src="https://tonsky.me/blog/unicode/english@2x.png"
@@ -816,7 +816,8 @@ So no, you can’t convert string to lowercase without knowing what language tha
 
 Hell, you can’t even spell `café`, `piñata`, or `naïve` without Unicode. So yes, we are all in it together, even Americans.
 
-见鬼，你甚至不能拼写 `café`、`piñata` 或 `naïve` 而不使用 Unicode。所以是的，我们同舟共济，即使是美国人。
+见鬼，不用 Unicode，你甚至拼写不了 `café`、`piñata`
+或 `naïve`。所以是的，我们同舟共济，即使是美国人。
 
 Touché.
 
@@ -873,9 +874,10 @@ Technically, both halves of the surrogate pair can be seen as Unicode code point
 zhcap="这个在已经非常拥挤的基本多语言平面上的空间永远不会再被拿来干任何好事"
 encap="This space on a very crammed Basic Multilingual Plane will never be used for anything good ever again
 ">
-  <g transform="scale(0.6) translate(391,645)" data-href="https://tonsky.me/blog/unicode/bmp@2x.png">
+  <g class="glow" transform="scale(0.6) translate(391,645)" data-href="https://tonsky.me/blog/unicode/bmp@2x.png">
     <path d="M438.5 17C349.72 12.1302 215.423 7.75743 148.212 5.8528C139.796 5.61431 131.411 6.84615 123.414 9.4789L37.054 37.9102C22.9757 42.545 12.8279 54.8766 10.9895 69.5838L10.1055 76.6557C9.09987 84.701 12.101 92.7284 18.1379 98.1409V98.1409C21.3247 100.998 25.1984 102.979 29.3802 103.891L81.8143 115.324C86.9233 116.438 92.106 117 97.335 117C149.492 117 241.199 117 245 117C248.575 117 322.194 105.015 370.158 97.115C380.609 95.3934 390.536 91.4131 399.293 85.4535L448.493 51.9702C454.44 47.9225 458 41.1943 458 34V34" stroke="#FF00C9" stroke-width="11" stroke-linecap="round" fill="transparent" fill-opacity="0" />
   </g>
+  <style> .glow:hover { filter: drop-shadow(0 0 6px #FF00C9); opacity: 90%; transition: all 0.2s; } </style>
 </Plane>
 
 ## Is UTF-16 still alive?
@@ -888,7 +890,7 @@ Yes!
 
 The promise of a fixed-width encoding that covers all human languages was so compelling that many systems were eager to adopt it. Among them were Microsoft Windows, Objective-C, Java, JavaScript, .NET, Python 2, QT, SMS, and CD-ROM!
 
-一个定长的、涵盖所有人类语言的编码的许诺是如此令人信服，以至于许多系统都迫不及待地采用了它，包括 Microsoft Windows、Objective-C、Java、JavaScript、.NET、Python 2、QT、SMS 和 CD-ROM！
+一个定长的、涵盖所有人类语言的编码的许诺是如此令人信服，以至于许多系统都迫不及待地采用了它。例如，Microsoft Windows、Objective-C、Java、JavaScript、.NET、Python 2、QT、短信，还有 CD-ROM！
 
 Since then, Python has moved on, CD-ROM has become obsolete, but the rest is stuck with UTF-16 or even UCS-2. So UTF-16 lives there as in-memory representation.
 
@@ -959,10 +961,11 @@ Thanks Lev Walkin and my patrons for reading early drafts of this article.
 感谢 Lev Walkin 和我的赞助者们阅读了本文的早期草稿。
 
 <div class="footer">
-  2023 年 10 月 2 日 · 在
-  [HackerNews](https://news.ycombinator.com/item?id=37735801) 上讨论 ·
-  翻译于 2023 年 10 月 27 日 · 在
-  [Twitter](https://twitter.com/lazy_static/status/1718672213585301620) 上讨论（中文）
+  2023 年 10 月 2 日
+· 在 [HackerNews](https://news.ycombinator.com/item?id=37735801) 上讨论
+· 翻译于 <time itemprop="pubDate" datetime={frontmatter.date}>2023 年 10 月 27 日</time>
+· 在 [Twitter](https://twitter.com/lazy_static/status/1718672213585301620) 上讨论（中文）·
+  最后更新于 <time>11 月 24 日</time>
 </div>
 
 <br />

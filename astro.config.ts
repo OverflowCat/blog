@@ -15,6 +15,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
 import rehypeExternalLinks from "rehype-external-links";
+import remarkRuby from "remark-ruby";
 
 // @ts-ignore
 import remarkFigureCaption from "@microflash/remark-figure-caption";
@@ -75,7 +76,7 @@ export default defineConfig({
       footnoteBackLabel: "返回内容"
     },
     syntaxHighlight: false,
-    remarkPlugins: [remarkMath, remarkFigureCaption],
+    remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption],
     rehypePlugins: [
       // TODO
       // @ts-ignore
