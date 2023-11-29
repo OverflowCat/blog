@@ -22,9 +22,11 @@ const githubLink = source ? source : "https://github.com/OverflowCat/blog";
     />
   </div>
   {noscript && <Noscript />}
-  <div>
+  <div data-build={Date.now()}>
     Built with <a href="https://astro.build/"
-      ><span class="icon"><Icon name="simple-icons:astro" /></span>Astro</a
+      ><span class="icon"><Icon name="simple-icons:astro" /></span>{
+        Astro.generator
+      }</a
     >
   </div>
   <div>
