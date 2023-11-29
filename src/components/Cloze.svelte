@@ -32,7 +32,7 @@
   }
   .cloze {
     cursor: pointer; /* 设置鼠标图标为手指 */
-    color: rgb(0, 100, 0);
+    color: #008007;
     font-weight: 600;
   }
   .cloze:hover {

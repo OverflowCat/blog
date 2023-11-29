@@ -1,0 +1,33 @@
+---
+import { hangulUuid } from "@/scripts/uuid";
+const id = "c-" + hangulUuid(3);
+---
+
+<span class="cloze"
+  ><input type="checkbox" id={id} /><label for={id}
+    ><slot name="hint">[...]</slot></label
+  ><label for={id}><slot /></label></span
+>
+
+<style lang="less" is:global>
+  span.cloze {
+    font-weight: 600;
+    color: #008007;
+    input {
+      display: none;
+      &:checked + label {
+        display: none;
+        & + label {
+          display: unset;
+        }
+      }
+      & + label {
+        cursor: zoom-in;
+        & + label {
+          display: none;
+          cursor: zoom-out;
+        }
+      }
+    }
+  }
+</style>
