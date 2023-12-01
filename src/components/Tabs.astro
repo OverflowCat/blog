@@ -1,0 +1,49 @@
+---
+const slotNames = Object.keys(Astro.slots);
+import { hangulUuid } from "@/scripts/uuid";
+
+export interface Props {
+  id?: string;
+}
+
+const tabId = Astro.props.id ?? "tab-" + hangulUuid(2);
+const count = slotNames.length;
+---
+
+<div role="tablist" id={tabId}>
+  {
+    slotNames.map((x, i) => {
+      const id = `${tabId}-${i}`;
+      return (
+        <>
+          <input type="radio" name={tabId} id={id} checked />
+          <label for={id} set:html={x} />
+        </>
+      );
+    })
+  }
+  <div class="tab-panels">
+    {
+      slotNames.map((x, i) => {
+        const id = `${tabId}-${i}`;
+        return <section id={id} set:html={Astro.slots.render(x)} />;
+      })
+    }
+  </div>
+</div>
+
+<style lang="less" is:global define:vars={{ count }}>
+  .tab-panels > section {
+    display: none;
+    // input:checked:nth-of-type(1) ~ &:nth-of-type(1),
+    // input:checked:nth-of-type(2) ~ &:nth-of-type(2),
+    // input:checked:nth-of-type(3) ~ &:nth-of-type(3) {
+    //   display: unset;
+    // }
+    each(range(5), {
+      input:checked:nth-of-type(@{value}) ~ &:nth-of-type(@{value}) {
+        display: unset;
+      }
+    });
+  }
+</style>
