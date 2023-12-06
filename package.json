@@ -19,7 +19,7 @@
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/svelte": "^4.0.4",
     "@fontsource/ibm-plex-mono": "^5.0.8",
-    "@fontsource/ibm-plex-sans": "^5.0.17",
+    "@fontsource/ibm-plex-sans": "^5.0.18",
     "@fontsource/noto-sans-mongolian": "^5.0.8",
     "@microflash/remark-figure-caption": "^2.0.2",
     "arktype": "1.0.28-alpha",
