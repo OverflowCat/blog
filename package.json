@@ -43,7 +43,7 @@
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.10.0",
     "modern-css-reset": "^1.4.0",
-    "npm-check-updates": "^16.14.11",
+    "npm-check-updates": "^16.14.12",
     "rehype-pretty-code": "^0.10.2",
     "rollup": "^4.6.0",
     "shiki": "^0.14.5",
