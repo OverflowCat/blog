@@ -10,7 +10,7 @@ import sitemap from "@astrojs/sitemap";
 
 // math
 import remarkMath from "remark-math";
-import rehypeMathRenderer from "rehype-mathjax";
+import rehypeMathRenderer from "rehype-mathjax/chtml";
 import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
@@ -80,7 +80,15 @@ export default defineConfig({
     rehypePlugins: [
       // TODO
       // @ts-ignore
-      rehypeMathRenderer, [rehypeExternalLinks, {
+      [
+        rehypeMathRenderer,
+        {
+          chtml: {
+            fontURL:
+              "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
+          },
+        },
+      ], [rehypeExternalLinks, {
         rel: [],
         target: "_blank"
       }],
