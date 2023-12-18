@@ -45,7 +45,7 @@
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.12",
     "rehype-pretty-code": "^0.12.1",
-    "rollup": "^4.9.0",
+    "rollup": "^4.9.1",
     "shiki": "^0.14.6",
     "typescript": "^5.3.3",
     "vite": "^5.0.8"
