@@ -44,7 +44,7 @@
     "@types/node": "^20.10.4",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.12",
-    "rehype-pretty-code": "^0.12.1",
+    "rehype-pretty-code": "^0.12.2",
     "rollup": "^4.9.0",
     "shiki": "^0.14.6",
     "typescript": "^5.3.3",
