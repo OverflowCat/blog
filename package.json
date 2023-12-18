@@ -35,7 +35,7 @@
     "rehype-mathjax": "^5.0.0",
     "remark-math": "^6.0.0",
     "remark-ruby": "^0.4.0",
-    "sharp": "^0.33.0",
+    "sharp": "^0.33.1",
     "svelte": "^4.2.8",
     "yaml": "^2.3.4"
   },
