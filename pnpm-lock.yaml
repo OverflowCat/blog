@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3
   '@astrojs/svelte':
-    specifier: ^5.0.1
-    version: 5.0.1(astro@4.0.4)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.8)
+    specifier: ^5.0.2
+    version: 5.0.2(astro@4.0.4)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.8)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -205,8 +205,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.0.1(astro@4.0.4)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.8):
-    resolution: {integrity: sha512-MQvm0VmkiHVBb41hkKvQKtZa2YZqImdJD23dDW6EGhFxRy1GEgJ4Hm6p4T30FXrLPQUoiay/BU5U/lHDd6ZlNg==}
+  /@astrojs/svelte@5.0.2(astro@4.0.4)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.8):
+    resolution: {integrity: sha512-B5h7sRXFmNvZucQlhz8MBsrsYfmVYCtcBUdDGe4ndJyBpD+klvmw31NGqhQp4z6HqxwbSWgaAvjXt/A76cgLIA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
