@@ -9,6 +9,6 @@
       "@scripts/*": ["src/scripts/*"],
       "@layouts/*": ["src/layouts/*"],
       "@contents/*": ["src/contents/*"]
-    }
+    },
   }
 }
