@@ -3,7 +3,7 @@ import type { CheckedComment } from "@/scripts/comments";
 export type Props = {
   comment: Pick<CheckedComment, "id" | "name" | "date" | "message" | "reply">;
 };
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const { comment } = Astro.props;
 const reply = comment.reply
@@ -33,7 +33,7 @@ const reply = comment.reply
     reply && (
       <div class="reply">
         <div class="icon">
-          <Icon name="ic:sharp-reply" />
+          <Icon name="mdi:reply" />
         </div>
         <ul>
           <Astro.self comment={reply} />

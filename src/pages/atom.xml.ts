@@ -1,9 +1,11 @@
 import rss from "@astrojs/rss";
-import { posts } from "@/scripts/collection-workaround";
 import MarkdownIt from "markdown-it";
 const md = new MarkdownIt();
+import { getCollection } from "astro:content";
 
 export async function GET(context: any) {
+  const posts = await getCollection<'blog'>("blog");
+
   let items = await Promise.all(
     posts.map(async (post) => {
       return {

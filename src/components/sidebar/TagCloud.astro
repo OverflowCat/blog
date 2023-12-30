@@ -16,7 +16,7 @@ function generateRandomColor() {
 
 <div class="tag-cloud">
   {
-    Array.from(getTagsInfo()).map(([k, v]) => (
+    Array.from(await getTagsInfo()).map(([k, v]) => (
       <a
         href={`/tags/${k}`}
         style={`font-size: ${Math.min(

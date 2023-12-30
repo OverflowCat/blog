@@ -1,19 +1,26 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Page from "@/templates/zh/Page.astro";
-import { posts } from "@/scripts/collection-workaround";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
 
-type Props = CollectionEntry<"blog">;
+export type Props = CollectionEntry<"blog">;
 import type { PathToSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
-const { Content } = await post.render();
+let Content; //  = (() => <p>渲染失败</p>)()
+try {
+  Content = (await post.render()).Content;
+} catch (e) {
+  console.error(e);
+}
+
 let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;

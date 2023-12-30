@@ -1,6 +1,8 @@
-import { posts } from "./collection-workaround";
+import { getCollection } from "astro:content";
 
-export function getTagsInfo() {
+const posts = await getCollection<'blog'>("blog");
+
+export async function getTagsInfo() {
   const tagsInfo = new Map<string, number>();
   posts.map((post) => {
     if (!post.data.tags) return;

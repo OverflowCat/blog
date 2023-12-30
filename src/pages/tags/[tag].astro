@@ -3,7 +3,7 @@ import { getTagsInfo } from "@/scripts/tags";
 import Archives from "../../components/ArticleList.astro";
 
 export async function getStaticPaths() {
-    const tags = Array.from(getTagsInfo()).map(([tag, _count]) => tag);
+    const tags = Array.from(await getTagsInfo()).map(([tag, _count]) => tag);
     const res = tags.map((tag) => ({ params: { tag } }));
     return res;
     // [

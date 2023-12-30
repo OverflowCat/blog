@@ -1,8 +1,8 @@
 ---
 import SimpleArticleCard from "@/components/SimpleArticleCard.astro";
-import { posts as postsWorkaround } from "@/scripts/collection-workaround";
 import PageWithSidebar from "@/templates/PageWithSidebar.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
+import { getCollection } from "astro:content";
 
 export interface Props {
   type?: "tag" | "category";
@@ -16,7 +16,7 @@ export interface Props {
   };
 }
 
-let posts = postsWorkaround.sort(
+let posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 

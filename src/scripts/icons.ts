@@ -10,7 +10,7 @@ export function getIconName(post: CollectionEntry<"blog">) {
     return "manju";
   }
   if (categories.includes("译文")) {
-    return "ph:translate-fill";
+    return "ic:round-translate";
   }
   if (categories.includes("Selected")) {
     return "ph:star";

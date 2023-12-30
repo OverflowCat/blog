@@ -24,9 +24,9 @@ const count = slotNames.length;
   }
   <div class="tab-panels">
     {
-      slotNames.map((x, i) => {
+      slotNames.map(async (x, i) => {
         const id = `${tabId}-${i}`;
-        return <section id={id} set:html={Astro.slots.render(x)} />;
+        return <section id={id} set:html={await Astro.slots.render(x)} />;
       })
     }
   </div>

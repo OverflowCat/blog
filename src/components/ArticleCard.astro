@@ -18,7 +18,7 @@ const { post } = Astro.props;
     <td class="content">
       <div>
         <span class="icon title-icon">
-          {(<Icon name={getIconName(post) || "ph:hash"} />)}
+          {(<Icon name={getIconName(post) || "ph:hash-bold"} />)}
         </span><a class="title" href={`/${post.slug}/`}
           >{post.data.title || "No title"}</a
         >
