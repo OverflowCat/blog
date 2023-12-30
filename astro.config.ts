@@ -1,5 +1,10 @@
 import { defineConfig } from "astro/config";
 
+// astro
+// icon
+import icon from "astro-icon";
+
+// frameworks
 import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
@@ -95,5 +100,5 @@ export default defineConfig({
       // @ts-ignore
       [rehypePrettyCode, prettyCodeOptions]]
   },
-  integrations: [svelte(), mdx(), sitemap()]
+  integrations: [icon(), svelte(), mdx(), sitemap()]
 });

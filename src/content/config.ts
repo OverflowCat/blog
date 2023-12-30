@@ -1,6 +1,6 @@
 // 1. Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-
+const ICON_PACKS = new Set(`clarity, codicon, entypo-social, ic, icon-park, mdi, ph, ri, simple-icons, tabler, teenyicons`.split(', '));
 // 2. Define a `type` and `schema` for each collection
 const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later
@@ -13,7 +13,7 @@ const blogCollection = defineCollection({
     draft: z.boolean().optional(),
     categories: z.optional(z.union([z.string(), z.array(z.string())])),
     description: z.string().optional(),
-    icon: z.string().optional(),
+    icon: z.string().refine(x => ((!x.includes(":")) || ICON_PACKS.has(x.split(':')[0]))).optional(),
     mathjax: z.boolean().optional(),
     hide_title: z.boolean().optional(),
     hide_cover: z.boolean().optional(),
