@@ -1,4 +1,4 @@
-pre>code {
+pre > code {
   display: grid;
   font-size: 90%;
   line-height: 150%;
@@ -16,24 +16,6 @@ pre>code {
   color: #1a202c;
 }
 
-div[data-rehype-pretty-code-fragment] {
-  position: relative;
-  margin: 2.25rem 0;
-  width: 100%;
-  border-radius: .375rem;
-  background-color: #f2f9fce5;
-}
-
-div[data-rehype-pretty-code-fragment]:has([data-rehype-pretty-code-title]) {
-  padding-top: 1.75rem;
-}
-
-@media (min-width: 1024px) {
-  div[data-rehype-pretty-code-fragment]:has([data-rehype-pretty-code-title]) {
-    padding-top: 2.5rem;
-  }
-}
-
 [data-highlighted-chars] {
   border-radius: 0.2rem;
   background-color: #52525b12;
@@ -45,97 +27,104 @@ div[data-rehype-pretty-code-title] {
   top: 0;
   left: 0;
   width: 100%;
-  border-radius: .375rem;
+  border-radius: 0.375rem;
   background-color: #bee3f8;
-  padding: .25rem .5rem;
-  font-size: .875rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
   color: #4a5568;
 }
 
 @media (min-width: 1024px) {
   div[data-rehype-pretty-code-title] {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 }
 
-div[data-rehype-pretty-code-fragment] pre {
-  margin: 0;
-  border: none;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-div[data-rehype-pretty-code-fragment] code {
-  display: flex;
-  flex-direction: column;
-}
-
-div[data-rehype-pretty-code-fragment] .line {
-  border-left-width: 2px;
-  border-left-style: solid;
-  border-left-color: transparent;
-  padding: 0 0.5rem;
-}
-
 @media (min-width: 640px) {
-  div[data-rehype-pretty-code-fragment] .line {
+  div[data-rehype-pretty-code-fragment]
+    figure[data-rehype-pretty-code-figure]
+    .line {
+    &::before {
+      margin-right: 1.2rem;
+    }
     padding-left: 1rem;
   }
 }
 
-div[data-rehype-pretty-code-fragment] .highlighted {
-  border-left-color: #4299e1;
-  background-color: rgba(200, 200, 255, 0.2);
+span[data-rehype-pretty-code-figure] { // inline
 }
 
-div[data-rehype-pretty-code-fragment] .word {
-  background-color: #90cdf4;
-  color: #fff;
-}
-
-div[data-rehype-pretty-code-fragment] code[data-line-numbers] {
-  counter-reset: line;
-}
-
-div[data-rehype-pretty-code-fragment] code[data-line-numbers]>.line::before {
-  counter-increment: line;
-  content: counter(line);
-  margin-right: 1rem;
-  display: inline-block;
-  width: 1rem;
-  user-select: none;
-  text-align: right;
-  color: #a0aec0;
-}
-
-@media (min-width: 640px) {
-  div[data-rehype-pretty-code-fragment] code[data-line-numbers]>.line::before {
-    margin-right: 1.5rem;
+figure[data-rehype-pretty-code-figure] { // block
+  position: relative;
+  margin: 1em -1em;
+  blockquote & {
+    margin: 1em 0;
   }
-}
+  padding: 0.2em 1em;
+  width: 100%;
+  border-radius: 0.375rem;
+  background-color: #f2f9fce5;
 
-// lineNumbers
+  &:has([data-rehype-pretty-code-title]) {
+    padding-top: 1.75rem;
+  }
 
-code {
-  counter-reset: line;
-}
+  @media (min-width: 1024px) {
+    &:has([data-rehype-pretty-code-title]) {
+      padding-top: 2.5rem;
+    }
+  }
 
-code>[data-line]::before {
-  counter-increment: line;
-  content: counter(line);
+  & > pre {
+    text-align: left;
+  }
 
-  /* Other styling */
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
-}
+  .highlighted {
+    border-left-color: #4299e1;
+    background-color: rgba(200, 200, 255, 0.2);
+  }
 
-code[data-line-numbers-max-digits='2']>[data-line]::before {
-  width: 2rem;
-}
+  code {
+    counter-reset: line;
+  }
 
-code[data-line-numbers-max-digits='3']>[data-line]::before {
-  width: 3rem;
+  // lineNumbers
+  code[data-line-numbers] {
+    counter-reset: line;
+    & > .line::before {
+      counter-increment: line;
+      content: counter(line);
+      margin-right: 1.5rem;
+      display: inline-block;
+      width: 24px;
+      user-select: none;
+      text-align: right;
+      color: #a0aec0;
+    }
+  }
+
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+  }
+
+  code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 2rem;
+  }
+
+  code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 3rem;
+  }
+
+  .word {
+    background-color: #90cdf4;
+    color: #fff;
+  }
 }
