@@ -57,8 +57,8 @@ dependencies:
     specifier: ^1.1.86
     version: 1.1.86
   '@iconify-json/tabler':
-    specifier: ^1.1.102
-    version: 1.1.102
+    specifier: ^1.1.103
+    version: 1.1.103
   '@iconify-json/teenyicons':
     specifier: ^1.1.9
     version: 1.1.9
@@ -772,8 +772,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/tabler@1.1.102:
-    resolution: {integrity: sha512-gNu23uz9aA1Xv8aoDmfkyEgMYwDdoK7c43/X2AieXbTLMofP0PepgLQ5afBRI3aJAvCrU22WW+DqObwgq7sGcA==}
+  /@iconify-json/tabler@1.1.103:
+    resolution: {integrity: sha512-8lCzy0GP4sjhRfFQO2nubytMb1OsEItjJ75ts/cOBPuj6bs9Wwq/Pxycz3DWg7cemTOVxiOyG1lednlhMy4DLg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
