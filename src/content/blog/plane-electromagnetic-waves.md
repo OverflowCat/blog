@@ -13,7 +13,7 @@ figcaption: |
 categories: 光学
 tags:
   - "备忘"
-icon: "lens"
+icon: "ri:camera-lens-line"
 # icon: "tabler:building-bridge"
 layout: "@/layouts/Default.astro"
 noscript: true

@@ -7,7 +7,7 @@ tags: 考试
 categories:
 - 题隙碎笔
 - Selected
-icon: "clarity:note-line"
+icon: "ph:note-pencil-bold" # "ci:note-edit"
 layout: "@/layouts/Default.astro"
 noscript: true
 ---

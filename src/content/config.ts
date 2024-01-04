@@ -1,6 +1,6 @@
 // 1. Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-const ICON_PACKS = new Set(`clarity, codicon, entypo-social, ic, icon-park, mdi, ph, ri, simple-icons, tabler, teenyicons`.split(', '));
+const ICON_PACKS = new Set(`clarity, codicon, entypo-social, gravity-ui, ic, icon-park, mdi, ph, ri, simple-icons, tabler`.split(', '));
 // 2. Define a `type` and `schema` for each collection
 const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later

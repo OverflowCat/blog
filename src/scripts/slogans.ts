@@ -11,5 +11,12 @@ const slogan = [
     ja: "それらは賛美できないものが世界を賛美している",
     en: "Those that cannot be praised praise the world",
   },
+  {
+    "zh-Hans": "我从未爱过这世界，它对我也一样",
+    "zh-Hant": "我從未愛過這世界，它對我也一樣",
+    ja: "私は世界を愛さなかった、世界もまた私を",
+    en: "I have not loved the world, nor the world me",
+  },
 ];
+
 export default slogan;

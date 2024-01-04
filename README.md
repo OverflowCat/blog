@@ -7,6 +7,14 @@
 
 About this blog, see [About](https://blog.xinshijiededa.men/about/). Below are technical details.
 
+## License
+
+The code is licensed under the [MIT License](/LICENSE).
+
+Article contents ususally are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), but you should check the license section on each generated pages, or the corresponding article's frontmatter.
+
+The source code is not intended to be used as a starter template, as it contains many custom components designed especially for my own use cases. You can reach me out for help (and I'm happy to do so) if you do want to use this framework for your blog, though.
+
 ## Changelog
 
 ### Astro 3.0

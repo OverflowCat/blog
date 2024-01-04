@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.3
-    version: 0.4.3(astro@4.0.8)
+    version: 0.4.3(astro@4.0.9)
   '@astrojs/mdx':
     specifier: ^2.0.3
-    version: 2.0.3(astro@4.0.8)
+    version: 2.0.3(astro@4.0.9)
   '@astrojs/rss':
     specifier: ^4.0.1
     version: 4.0.1
@@ -19,7 +19,7 @@ dependencies:
     version: 3.0.4
   '@astrojs/svelte':
     specifier: ^5.0.3
-    version: 5.0.3(astro@4.0.8)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10)
+    version: 5.0.3(astro@4.0.9)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -38,6 +38,9 @@ dependencies:
   '@iconify-json/entypo-social':
     specifier: ^1.1.8
     version: 1.1.8
+  '@iconify-json/gravity-ui':
+    specifier: ^1.1.1
+    version: 1.1.1
   '@iconify-json/ic':
     specifier: ^1.1.17
     version: 1.1.17
@@ -45,8 +48,8 @@ dependencies:
     specifier: ^1.1.13
     version: 1.1.13
   '@iconify-json/mdi':
-    specifier: ^1.1.63
-    version: 1.1.63
+    specifier: ^1.1.64
+    version: 1.1.64
   '@iconify-json/ph':
     specifier: ^1.1.9
     version: 1.1.9
@@ -57,11 +60,8 @@ dependencies:
     specifier: ^1.1.86
     version: 1.1.86
   '@iconify-json/tabler':
-    specifier: ^1.1.102
-    version: 1.1.102
-  '@iconify-json/teenyicons':
-    specifier: ^1.1.9
-    version: 1.1.9
+    specifier: ^1.1.103
+    version: 1.1.103
   '@microflash/remark-figure-caption':
     specifier: ^2.0.2
     version: 2.0.2
@@ -72,11 +72,11 @@ dependencies:
     specifier: 1.0.28-alpha
     version: 1.0.28-alpha
   astro:
-    specifier: ^4.0.8
-    version: 4.0.8(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+    specifier: ^4.0.9
+    version: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
   astro-icon:
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.0.2
+    version: 1.0.2
   bilibili-bv-av-convert:
     specifier: ^1.0.0
     version: 1.0.0
@@ -167,12 +167,12 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.3(astro@4.0.8):
+  /@astro-community/astro-embed-youtube@0.4.3(astro@4.0.9):
     resolution: {integrity: sha512-zXtPmR9yxrTo6cuLhH8v+r62bsXbsLJgsU2FiZalPr4bXJxAUQEIlG46S/qK0AEXi9uNShKqy4+zBaJ98xTVEg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.0.8(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -205,7 +205,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.3(astro@4.0.8):
+  /@astrojs/mdx@2.0.3(astro@4.0.9):
     resolution: {integrity: sha512-wFjQX5CihU5B4UAQNwc2R48ph0flpc6/yvDCFANE0agtgI2+BaVcAjuW0EhGOQCZ65dQDqnFKE0lvGs7EADYpg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -214,7 +214,7 @@ packages:
       '@astrojs/markdown-remark': 4.0.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.0.8(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -252,7 +252,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.0.3(astro@4.0.8)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10):
+  /@astrojs/svelte@5.0.3(astro@4.0.9)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10):
     resolution: {integrity: sha512-6TUBRUxmsEczKPBT6oDUAfvzuFCmITuhZfKPT5ZtOOyj9XOVnEnj/Iobd3ajKUbpWNYX7qZVAd1KMkmJc1Nhsg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -260,7 +260,7 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.1
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.8)(vite@5.0.10)
-      astro: 4.0.8(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       svelte: 4.2.8
       svelte2tsx: 0.6.27(svelte@4.2.8)(typescript@5.3.3)
     transitivePeerDependencies:
@@ -736,6 +736,12 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
+  /@iconify-json/gravity-ui@1.1.1:
+    resolution: {integrity: sha512-s888IHMeQ7aji3QbcNxNtrnaBGnNI6q6RFMGIQ2v8vinLsgaFLLMwluIC40ueI6yWdbVi8teaYmOEp6gC5d6aQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify-json/ic@1.1.17:
     resolution: {integrity: sha512-EvAjZzVESmN36zlyefylePUNaU2BQ3eRKVZ6KQSQ2bG01ppoZaiFZRri74VTyvp5Mlv2yn68ux1fgCoT+etGmA==}
     dependencies:
@@ -748,8 +754,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/mdi@1.1.63:
-    resolution: {integrity: sha512-b07dRM5LYdwJqd/lm+1+JDNDNSWHvpZ7ujb73oJxx3lmK1J0giDS0BSc4yia0hixNV0Z2q/4GyxAu/A8XqDnbg==}
+  /@iconify-json/mdi@1.1.64:
+    resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
@@ -772,14 +778,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/tabler@1.1.102:
-    resolution: {integrity: sha512-gNu23uz9aA1Xv8aoDmfkyEgMYwDdoK7c43/X2AieXbTLMofP0PepgLQ5afBRI3aJAvCrU22WW+DqObwgq7sGcA==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: false
-
-  /@iconify-json/teenyicons@1.1.9:
-    resolution: {integrity: sha512-8QsYNkeaKkUQensRE2OyTpjBmUTcHerwwTdo82Lsxh0t1g0tZVfqjuoevF5KwDFCbfObK49gdfiuyzGcmuliVw==}
+  /@iconify-json/tabler@1.1.103:
+    resolution: {integrity: sha512-8lCzy0GP4sjhRfFQO2nubytMb1OsEItjJ75ts/cOBPuj6bs9Wwq/Pxycz3DWg7cemTOVxiOyG1lednlhMy4DLg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
@@ -1730,8 +1730,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-icon@1.0.1:
-    resolution: {integrity: sha512-NtPyGeoSe/TJsGsea6T+8SDcW/wwZ7OIUq731DT7M6nw2B1p5BHuChiQI0bQvIIL79r48nMN7mQ8GBtwsDEucA==}
+  /astro-icon@1.0.2:
+    resolution: {integrity: sha512-MGgnjxHnI50bBWasBdt0pw/S9lWharfxhUv1sP2Vj1/KDaT/Cz35ZdlBgb4DKtfzQZREIJN2eQGqmVbvLq5p3w==}
     dependencies:
       '@iconify/tools': 3.0.7
       '@iconify/types': 2.0.0
@@ -1740,8 +1740,8 @@ packages:
       - supports-color
     dev: false
 
-  /astro@4.0.8(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-LwbYUfdrfys5mtI6cA5V8UvPRUVVTRQ68uF1ylrEge6BkPcHHJ7qCYLNdjnNPxZDR9bWi1awILJESB6j+w0P4w==}
+  /astro@4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-xQHapUGqdHQuaBDCYZxyVh5rvpgIUuulsEITl7bOQ6rRXwbQtoGc5gQ95dGV830PEpvyAGVhQ9pA8PIwfCMpeg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
