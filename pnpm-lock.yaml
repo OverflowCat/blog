@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.3
-    version: 0.4.3(astro@4.0.9)
+    version: 0.4.3(astro@4.1.1)
   '@astrojs/mdx':
     specifier: ^2.0.3
-    version: 2.0.3(astro@4.0.9)
+    version: 2.0.3(astro@4.1.1)
   '@astrojs/rss':
     specifier: ^4.0.1
     version: 4.0.1
@@ -19,7 +19,7 @@ dependencies:
     version: 3.0.4
   '@astrojs/svelte':
     specifier: ^5.0.3
-    version: 5.0.3(astro@4.0.9)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10)
+    version: 5.0.3(astro@4.1.1)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -72,8 +72,8 @@ dependencies:
     specifier: 1.0.28-alpha
     version: 1.0.28-alpha
   astro:
-    specifier: ^4.0.9
-    version: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+    specifier: ^4.1.1
+    version: 4.1.1(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
   astro-icon:
     specifier: ^1.0.2
     version: 1.0.2
@@ -167,12 +167,12 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.3(astro@4.0.9):
+  /@astro-community/astro-embed-youtube@0.4.3(astro@4.1.1):
     resolution: {integrity: sha512-zXtPmR9yxrTo6cuLhH8v+r62bsXbsLJgsU2FiZalPr4bXJxAUQEIlG46S/qK0AEXi9uNShKqy4+zBaJ98xTVEg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.1.1(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -205,7 +205,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.3(astro@4.0.9):
+  /@astrojs/mdx@2.0.3(astro@4.1.1):
     resolution: {integrity: sha512-wFjQX5CihU5B4UAQNwc2R48ph0flpc6/yvDCFANE0agtgI2+BaVcAjuW0EhGOQCZ65dQDqnFKE0lvGs7EADYpg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -214,7 +214,7 @@ packages:
       '@astrojs/markdown-remark': 4.0.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.1.1(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -252,7 +252,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.0.3(astro@4.0.9)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10):
+  /@astrojs/svelte@5.0.3(astro@4.1.1)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10):
     resolution: {integrity: sha512-6TUBRUxmsEczKPBT6oDUAfvzuFCmITuhZfKPT5ZtOOyj9XOVnEnj/Iobd3ajKUbpWNYX7qZVAd1KMkmJc1Nhsg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -260,7 +260,7 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.1
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.8)(vite@5.0.10)
-      astro: 4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.1.1(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3)
       svelte: 4.2.8
       svelte2tsx: 0.6.27(svelte@4.2.8)(typescript@5.3.3)
     transitivePeerDependencies:
@@ -1740,8 +1740,8 @@ packages:
       - supports-color
     dev: false
 
-  /astro@4.0.9(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-xQHapUGqdHQuaBDCYZxyVh5rvpgIUuulsEITl7bOQ6rRXwbQtoGc5gQ95dGV830PEpvyAGVhQ9pA8PIwfCMpeg==}
+  /astro@4.1.1(@types/node@20.10.6)(less@4.2.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-p/S1Ns4+yVh2lEsFW9hkJNRbnPfFWZ+1Wv7DSR3mDnabgCs49T7EbvOy8YIlLo0gtPAjI+b+4OEKRsxtBay2aA==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -1757,6 +1757,8 @@ packages:
       '@babel/types': 7.23.6
       '@types/babel__core': 7.20.5
       acorn: 8.11.2
+      aria-query: 5.3.0
+      axobject-query: 4.0.0
       boxen: 7.1.1
       chokidar: 3.5.3
       ci-info: 4.0.0
@@ -1826,6 +1828,12 @@ packages:
 
   /axobject-query@3.2.1:
     resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
+    dependencies:
+      dequal: 2.0.3
+    dev: false
+
+  /axobject-query@4.0.0:
+    resolution: {integrity: sha512-+60uv1hiVFhHZeO+Lz0RYzsVHy5Wr1ayX0mwda9KPDVLNJgZ1T9Ny7VmFbLDzxsH0D87I86vgj3gFrjTJUYznw==}
     dependencies:
       dequal: 2.0.3
     dev: false
@@ -2138,7 +2146,7 @@ packages:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
       '@types/estree': 1.0.0
-      acorn: 8.10.0
+      acorn: 8.11.2
       estree-walker: 3.0.3
       periscopic: 3.1.0
     dev: false
