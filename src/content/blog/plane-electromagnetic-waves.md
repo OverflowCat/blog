@@ -37,8 +37,10 @@ licence: CcByNc
 | 空间                                                                          | 时间                                                                               |
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | 空间周期 aka 波长 $\lambda$                                                   | 时间周期 aka 周期 $T$                                                              |
-| 空间频率 aka 波数 $\tilde\nu = \dfrac{1}{\lambda}$                            | 时间频率 $\nu=\dfrac{1}{T}$                                                        |
+| 空间频率 aka <span class="wn">波数</span> $\tilde\nu = \dfrac{1}{\lambda}$                            | 时间频率 aka 频率 aka <ruby lang="ja">周<span class="wn">波数</span><rt>しゅう<span class="wn">はすう</span></rt></ruby> $\nu=\dfrac{1}{T}$ |
 | 空间角频率 aka 波矢的绝对值 <br /> $\color{#b42242}k = \dfrac{2\pi}{\lambda}$ | 时间角频率 aka 角频率<br /> $\color{#126a1e}\omega = 2\pi\nu = \dfrac{2\pi}{T}$ |
+
+<style> .wn { color: #cc4211; } </style>
 
 空间与时间量的关系很好理解．比如，**空间周期与时间周期之比就是波速 ${\color{#aa34ae}v = \dfrac{\lambda}{T}} = \lambda\nu = \dfrac \omega k$．**
 
