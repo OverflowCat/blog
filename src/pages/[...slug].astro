@@ -12,20 +12,26 @@ export async function getStaticPaths() {
 }
 
 export type Props = CollectionEntry<"blog">;
-import type { PathToSupportedImage } from "@/scripts/open-graph";
+import {
+  toSupportedImage,
+  type PathToSupportedImage,
+} from "@/scripts/open-graph";
 const post = Astro.props;
 let Content; //  = (() => <p>渲染失败</p>)()
 try {
   Content = (await post.render()).Content;
 } catch (e) {
   console.error(e);
+  throw e;
 }
 
 let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
-const metas = post.data.categories?.includes("Tonsky")
+const metas: { [key: string]: string } = post.data.categories?.includes(
+  "Tonsky"
+)
   ? {
       viewport: "width=640",
       "theme-color": "hsl(51, 100%, 59%)",
@@ -42,7 +48,7 @@ const metas = post.data.categories?.includes("Tonsky")
   og={{
     title,
     description: post.data.description ?? "新世界的大门",
-    image: post.data.photo as PathToSupportedImage,
+    image: post.data.photo ? toSupportedImage(post.data.photo) : undefined,
     url: `https://blog.xinshijiededa.men/${post.slug}`,
   }}
   metas={metas}
