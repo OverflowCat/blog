@@ -8,6 +8,11 @@ import "@fontsource/noto-sans-mongolian";
 ---
 
 <aside id="sidebar">
+  <style is:inline>
+    aside#sidebar > .paper:first-of-type {
+      min-height: 295px;
+    } /* prevent CLS */
+  </style>
   <Paper padding={true}>
     <div
       class="site-author"
@@ -17,9 +22,10 @@ import "@fontsource/noto-sans-mongolian";
       <div id="site-author-image">
         <img
           class="site-author-image"
-          itemprop="image"
+          itemprop="avatar"
           alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
           src="https://avatars.githubusercontent.com/u/20166026?v=4"
+          loading="lazy"
         />
       </div>
       <p class="site-author-name" itemprop="name" lang="mnc">
