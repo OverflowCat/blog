@@ -57,8 +57,8 @@ dependencies:
     specifier: ^1.1.18
     version: 1.1.18
   '@iconify-json/simple-icons':
-    specifier: ^1.1.87
-    version: 1.1.87
+    specifier: ^1.1.88
+    version: 1.1.88
   '@iconify-json/tabler':
     specifier: ^1.1.103
     version: 1.1.103
@@ -772,8 +772,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/simple-icons@1.1.87:
-    resolution: {integrity: sha512-DNAWoLDgboIGVoqZBPWM25MPKdIjGnNgZYEBqrWcoPkaYF0q1jZEzTyC2y8yCOTTSrcSjhASk9CrMK+INfpnwQ==}
+  /@iconify-json/simple-icons@1.1.88:
+    resolution: {integrity: sha512-KJ4czDbJm3L2Ihl0SNb7R8naYgqYIlO+LsWQmVBf6eTNGj8EQjVlnnY3gkQKOQcDNPT1Z271Eh0VWAc4UYCStw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
