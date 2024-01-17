@@ -48,7 +48,7 @@
     "remark-math": "^6.0.0",
     "remark-ruby": "^0.4.0",
     "sharp": "^0.33.2",
-    "svelte": "^4.2.8",
+    "svelte": "^4.2.9",
     "yaml": "^2.3.4"
   },
   "devDependencies": {
