@@ -1,11 +1,16 @@
 ---
 import type { CheckedComment } from "@/scripts/comments";
 export type Props = {
-  comment: Pick<CheckedComment, "id" | "name" | "date" | "message" | "reply">;
+  comment: Pick<
+    CheckedComment,
+    "id" | "name" | "date" | "message" | "reply" | "format"
+  >;
 };
 import { Icon } from "astro-icon/components";
-
+import MarkdownIt from "markdown-it";
+const md = new MarkdownIt();
 const { comment } = Astro.props;
+const message = comment.format === "markdown" ? md.render(comment.message) : comment.message;
 const reply = comment.reply
   ? {
       id: comment.id + "r",
@@ -20,7 +25,7 @@ const reply = comment.reply
 <li itemprop="comment">
   <h4>
     <span set:html={comment.name} itemprop="name" />
-     &nbsp;
+    &nbsp;
     <time
       class="monospace"
       datetime={comment.date.toISOString()}
@@ -28,7 +33,7 @@ const reply = comment.reply
       itemprop="datePublished"
     />
   </h4>
-  <div class="message" set:html={comment.message} />
+  <div class="message" set:html={message} />
   {
     reply && (
       <div class="reply">

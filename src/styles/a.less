@@ -9,16 +9,17 @@ a {
     border-bottom-color: var(--link-hover-color);
     color: var(--link-hover-color);
   }
+}
 
-  &[target="_blank"]:not(:has(img)):after {
-    content: "↗";
-    padding-left: 2px;
-    padding-right: 2px;
-    font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
-      "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
-      "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
-      "Arial", sans-serif;
-  }
+#comment-list a::after,
+a[target="_blank"]:not(:has(img))::after {
+  content: "↗";
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
+    "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
+    "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
+    "Arial", sans-serif;
 }
 
 a:has(> img) {
