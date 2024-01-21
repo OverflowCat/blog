@@ -10,6 +10,7 @@ export const CheckComment = type({
   "website?": "string",
   "twitter?": "string",
   "activitypub?": "string",
+  "format?": "'markdown'|'html'",
   message: "string",
   date: "any",
   "reply?": "string",

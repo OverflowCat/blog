@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.4.4",
+  "version": "2.4.6",
   "private": true,
   "scripts": {
     "new": "node cli/write.js",
@@ -57,7 +57,7 @@
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.12",
     "rehype-pretty-code": "^0.12.5",
-    "rollup": "^4.9.5",
+    "rollup": "^4.9.6",
     "shiki": "^0.14.7",
     "typescript": "^5.3.3",
     "vite": "^5.0.12"
