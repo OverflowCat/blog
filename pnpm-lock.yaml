@@ -131,8 +131,8 @@ devDependencies:
     specifier: ^16.14.12
     version: 16.14.12
   rehype-pretty-code:
-    specifier: ^0.12.5
-    version: 0.12.5(shikiji@0.9.19)
+    specifier: ^0.12.6
+    version: 0.12.6(shikiji@0.9.19)
   rollup:
     specifier: ^4.9.6
     version: 4.9.6
@@ -1482,7 +1482,7 @@ packages:
   /@types/hast@3.0.0:
     resolution: {integrity: sha512-SoytUJRuf68HXYqcXicQIhCrLQjqeYU2anikr4G3p3Iz+OZO5QDQpDj++gv+RenHsnUBwNZ2dumBArF8VLSk2Q==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 3.0.0
     dev: false
 
   /@types/hast@3.0.3:
@@ -3093,7 +3093,7 @@ packages:
   /hast-util-is-element@3.0.0:
     resolution: {integrity: sha512-Val9mnv2IWpLbNPqc/pUem+a7Ipj2aHacCwgNfTiK0vJKl0LF+4Ba4+v1oPHFpf3bLYmreq0/l3Gud9S5OH42g==}
     dependencies:
-      '@types/hast': 3.0.0
+      '@types/hast': 3.0.3
     dev: false
 
   /hast-util-parse-selector@4.0.0:
@@ -3211,7 +3211,7 @@ packages:
   /hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
     dependencies:
-      '@types/hast': 3.0.0
+      '@types/hast': 3.0.3
     dev: false
 
   /hastscript@8.0.0:
@@ -5604,11 +5604,11 @@ packages:
       hast-util-from-html: 2.0.1
       unified: 11.0.4
 
-  /rehype-pretty-code@0.12.5(shikiji@0.9.19):
-    resolution: {integrity: sha512-EnLi5MrL9PROc2jfEnp6bAT+ui/k/uixg6dAT35LA1V2xq0RCpgZYD8bWbpaAUnyAgVfgsmKgXbjCqAJejFc+w==}
+  /rehype-pretty-code@0.12.6(shikiji@0.9.19):
+    resolution: {integrity: sha512-AW18s4eXwnb4PGwL0Y8BoUzBJr23epWNXndCKaZ52S4kl/4tsgM+406oCp5NdtPZsB0ItpaY+hCMv3kw58DLrA==}
     engines: {node: '>=18'}
     peerDependencies:
-      shikiji: ^0.7.0 || ^0.8.0 || ^0.9.0
+      shikiji: ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0
     dependencies:
       '@types/hast': 3.0.3
       hast-util-to-string: 3.0.0
