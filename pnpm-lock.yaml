@@ -75,8 +75,8 @@ dependencies:
     specifier: ^4.2.1
     version: 4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
   astro-icon:
-    specifier: ^1.0.2
-    version: 1.0.2
+    specifier: ^1.1.0
+    version: 1.1.0
   bilibili-bv-av-convert:
     specifier: ^1.0.0
     version: 1.0.0
@@ -1727,8 +1727,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-icon@1.0.2:
-    resolution: {integrity: sha512-MGgnjxHnI50bBWasBdt0pw/S9lWharfxhUv1sP2Vj1/KDaT/Cz35ZdlBgb4DKtfzQZREIJN2eQGqmVbvLq5p3w==}
+  /astro-icon@1.1.0:
+    resolution: {integrity: sha512-Nksc09p7UuHeMcPNS9w1pKqRw3+wEmmh0A3FJW+FNXvqaeWI4RLvD1MCWErpY3Z5Cvad317rvLdik/Hg8GEk8Q==}
     dependencies:
       '@iconify/tools': 3.0.7
       '@iconify/types': 2.0.0
