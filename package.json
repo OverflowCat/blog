@@ -58,7 +58,7 @@
     "npm-check-updates": "^16.14.12",
     "rehype-pretty-code": "^0.12.5",
     "rollup": "^4.9.6",
-    "shiki": "^0.14.7",
+    "shiki": "^1.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.12"
   }
