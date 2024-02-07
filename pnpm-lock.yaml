@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.4
-    version: 0.4.4(astro@4.2.1)
+    version: 0.4.4(astro@4.3.5)
   '@astrojs/mdx':
     specifier: ^2.0.5
-    version: 2.0.5(astro@4.2.1)
+    version: 2.0.5(astro@4.3.5)
   '@astrojs/rss':
     specifier: ^4.0.2
     version: 4.0.2
@@ -19,7 +19,7 @@ dependencies:
     version: 3.0.5
   '@astrojs/svelte':
     specifier: ^5.0.3
-    version: 5.0.3(astro@4.2.1)(svelte@4.2.9)(typescript@5.3.3)(vite@5.0.12)
+    version: 5.0.3(astro@4.3.5)(svelte@4.2.9)(typescript@5.3.3)(vite@5.0.12)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -72,8 +72,8 @@ dependencies:
     specifier: 1.0.29-alpha
     version: 1.0.29-alpha
   astro:
-    specifier: ^4.2.1
-    version: 4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
+    specifier: ^4.3.5
+    version: 4.3.5(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
   astro-icon:
     specifier: ^1.0.2
     version: 1.0.2
@@ -167,17 +167,17 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.4(astro@4.2.1):
+  /@astro-community/astro-embed-youtube@0.4.4(astro@4.3.5):
     resolution: {integrity: sha512-fYlycLrJFNnibZ9VHPSJO766kO2IgqYQU4mBd4iaDMaicL0gGX9cVZ80QdnpzGrI6w0XOJOY7prx86eWEVBy8w==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.3.5(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
       lite-youtube-embed: 0.2.0
     dev: false
 
-  /@astrojs/compiler@2.3.4:
-    resolution: {integrity: sha512-33/YtWoBCE0cBUNy1kh78FCDXBoBANX87ShgATlAHECYbG2+buNTAgq4Xgz4t5NgnEHPN21GIBC2Mvvwisoutw==}
+  /@astrojs/compiler@2.5.3:
+    resolution: {integrity: sha512-jzj01BRv/fmo+9Mr2FhocywGzEYiyiP2GVHje1ziGNU6c97kwhYGsnvwMkHrncAy9T9Vi54cjaMK7UE4ClX4vA==}
     dev: false
 
   /@astrojs/internal-helpers@0.2.1:
@@ -205,7 +205,28 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.5(astro@4.2.1):
+  /@astrojs/markdown-remark@4.2.1:
+    resolution: {integrity: sha512-2RQBIwrq+2qPYtp99bH+eL5hfbK0BoxXla85lHsRpIX/IsGqFrPX6pXI2cbWPihBwGbKCdxS6uZNX2QerZWwpQ==}
+    dependencies:
+      '@astrojs/prism': 3.0.0
+      github-slugger: 2.0.0
+      import-meta-resolve: 4.0.0
+      mdast-util-definitions: 6.0.0
+      rehype-raw: 7.0.0
+      rehype-stringify: 10.0.0
+      remark-gfm: 4.0.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.0.0
+      remark-smartypants: 2.0.0
+      shikiji: 0.9.19
+      unified: 11.0.4
+      unist-util-visit: 5.0.0
+      vfile: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@astrojs/mdx@2.0.5(astro@4.3.5):
     resolution: {integrity: sha512-3+1E11J6Yfb8XZIyaEBtJNdc4Dn9YbforPgmxiY5SYa0C5+f6KEUQi30Hd9I/tA8ytS+1MXw6ZE1BXbaRUo3ZA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -214,7 +235,7 @@ packages:
       '@astrojs/markdown-remark': 4.1.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.3.5(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -252,7 +273,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.0.3(astro@4.2.1)(svelte@4.2.9)(typescript@5.3.3)(vite@5.0.12):
+  /@astrojs/svelte@5.0.3(astro@4.3.5)(svelte@4.2.9)(typescript@5.3.3)(vite@5.0.12):
     resolution: {integrity: sha512-6TUBRUxmsEczKPBT6oDUAfvzuFCmITuhZfKPT5ZtOOyj9XOVnEnj/Iobd3ajKUbpWNYX7qZVAd1KMkmJc1Nhsg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -260,7 +281,7 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.1
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.9)(vite@5.0.12)
-      astro: 4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
+      astro: 4.3.5(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3)
       svelte: 4.2.9
       svelte2tsx: 0.6.27(svelte@4.2.9)(typescript@5.3.3)
     transitivePeerDependencies:
@@ -1737,14 +1758,14 @@ packages:
       - supports-color
     dev: false
 
-  /astro@4.2.1(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-TcrveW2/lohmljrbTUgcDxajEdF1yK+zBvb7SXroloGix/d4jkegO6GANFgvyy0zprMyajW7qgJEFyhWUX86Vw==}
+  /astro@4.3.5(@types/node@20.11.5)(less@4.2.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-7jPffNlcmDO94NlkWe/hUWta/pIjlx1LVD/DZb/fyjT1Jv+7mGhKZBIjkDfeVpequW70mep8cAS5RM7Pxa0Gdg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 2.3.4
+      '@astrojs/compiler': 2.5.3
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 4.1.0
+      '@astrojs/markdown-remark': 4.2.1
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.23.6
       '@babel/generator': 7.23.6
@@ -1762,6 +1783,7 @@ packages:
       clsx: 2.0.0
       common-ancestor-path: 1.0.1
       cookie: 0.6.0
+      cssesc: 3.0.0
       debug: 4.3.4
       deterministic-object-hash: 2.0.2
       devalue: 4.3.2
@@ -2198,9 +2220,11 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
 
   /color-string@1.9.1:
     resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
+    requiresBuild: true
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
@@ -2341,6 +2365,12 @@ packages:
   /css-what@6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
+    dev: false
+
+  /cssesc@3.0.0:
+    resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
+    engines: {node: '>=4'}
+    hasBin: true
     dev: false
 
   /csso@5.0.5:
@@ -3461,6 +3491,7 @@ packages:
 
   /is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
+    requiresBuild: true
     dev: false
 
   /is-binary-path@2.1.0:
@@ -6050,6 +6081,7 @@ packages:
 
   /simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+    requiresBuild: true
     dependencies:
       is-arrayish: 0.3.2
     dev: false
