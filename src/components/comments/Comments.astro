@@ -4,7 +4,11 @@ import Form from "./Form.astro";
 import "@/styles/a.less";
 import Comment from "./Comment.astro";
 
-const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
+export interface Props {
+  slug?: string;
+}
+
+const slug = Astro.props.slug ?? Astro.url.pathname.replace(/^\/|\/$/g, "");
 
 const comments = getComments(slug);
 ---

@@ -4,6 +4,7 @@ import Sidebar from "@/components/sidebar/Index.astro";
 import Paper from "@/components/Paper.astro";
 import "modern-css-reset";
 import type { OpenGraphData } from "@/scripts/open-graph";
+import Bar from "./Bar.astro";
 
 export interface Props {
   title: string;
@@ -17,7 +18,9 @@ export interface Props {
 const { title, bar, og } = Astro.props;
 ---
 
-<Page title={title} bar={bar} og={og} noscript>
+<Page title={title} og={og} noscript>
+  <Bar {...bar} lang="zh-Hans" />
+
   <main>
     <Sidebar />
     <Paper>

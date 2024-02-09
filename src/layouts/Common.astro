@@ -1,0 +1,133 @@
+---
+import { Icon } from "astro-icon/components";
+import "@/styles/icon.less";
+import LicenceBox from "@/components/licences/LicenceBox.astro";
+import "@/styles/snowy.css";
+export interface Props {
+  frontmatter: any;
+}
+const { frontmatter } = Astro.props;
+let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+if (cover && cover.split(" ").length > 1) {
+  cover = cover.split(" ")[0];
+}
+let licence = frontmatter.licence;
+if (licence === undefined) {
+  licence = "CcByNc";
+}
+
+let cats = frontmatter.categories as string | string[] | undefined;
+if (typeof cats === "string") {
+  cats = [cats];
+}
+let tags = frontmatter.tags as string | string[] | undefined;
+if (typeof tags === "string") {
+  tags = [tags];
+}
+
+import "@/styles/article.less";
+---
+
+{
+  cover && (
+    <figure class="cover">
+      <img class="cover" src={cover} alt={frontmatter.title} />
+      {frontmatter.figcaption && (
+        <figcaption set:html={frontmatter.figcaption} />
+      )}
+    </figure>
+  )
+}
+{!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
+<div class="info">
+  <div>
+    <span class="icon">
+      <Icon name="mdi:date-range" />
+    </span>日期：<time
+      datetime={frontmatter.date}
+      set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
+    />
+  </div>
+  {
+    cats && (
+      <div>
+        <span class="icon">
+          <Icon name="mdi:category" />
+        </span>
+        分类：
+        {cats.map((cat) => (
+          <a class="cat" href={`/categories/${cat}/`}>
+            {cat}
+          </a>
+        ))}
+      </div>
+    )
+  }
+  {
+    tags && (
+      <div>
+        <span class="icon">
+          <Icon name="mdi:tag" />
+        </span>
+        标签：
+        {tags.map((tag) => (
+          <a class="tag" href={`/tags/${tag}/`}>
+            {tag}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</div>
+<article>
+  <slot />
+</article>
+<LicenceBox name={licence} />
+
+<style is:global lang="less">
+  article {
+    color: var(--text-color);
+  }
+  .cover {
+    margin: 0;
+    height: auto;
+    img {
+      inline-size: 100%;
+      border-radius: 4px;
+    }
+    figcaption {
+      margin-inline: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555; // TODO: use theme color
+    }
+  }
+  .info {
+    margin-block: 1rem;
+    color: #2e2e2e;
+    font-size: 0.9rem;
+    text-align: center;
+    a.tag,
+    a.cat {
+      color: #151515;
+      text-decoration: none;
+      border: none;
+      margin-block: 3px;
+      margin-inline: 6px;
+      margin-inline: 5px;
+      border-radius: 0.5rem;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.1s;
+      &:hover {
+        background-color: #e7e7e7;
+      }
+      &:active {
+        background-color: #d9d9d9;
+      }
+    }
+    & > div {
+      margin: 0.8rem 0;
+    }
+  }
+</style>

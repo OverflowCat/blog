@@ -3,7 +3,6 @@ title: 拉普拉斯变换速查表
 date: 2022-12-16T22:16:47.000Z
 categories: 动态列表
 tags:
-- 积分变换
 - 数学
 mathjax: true
 layout: "@/layouts/Default.astro"

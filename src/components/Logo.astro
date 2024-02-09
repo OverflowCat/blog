@@ -1,18 +1,34 @@
 ---
 export interface Props {
-  theme?: "light" | "dark" | "transparent";
+  theme?: "light" | "dark" | "transparent" | "auto";
 }
-const light =
-  "https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg";
-const dark =
-  "https://user-images.githubusercontent.com/20166026/203767771-c977f2cb-30da-49a9-8936-761fc4ee3450.svg";
-const transparent = "/logo.svg";
 
-const theme = Astro.props.theme || "dark";
-const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
+// const light =
+//   "https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg";
+// const dark =
+//   "https://user-images.githubusercontent.com/20166026/203767771-c977f2cb-30da-49a9-8936-761fc4ee3450.svg";
+// const transparent = "/logo.svg";
+
+const theme = Astro.props.theme || "light";
+var filllight, filldark;
+switch (theme) {
+  case "light":
+  filllight = "black";
+  filldark = "black";
+  break;
+  case "dark":
+  filllight = "white";
+  filldark = "white";
+  break;
+  default:
+  filllight = "black";
+  filldark = "white";
+  break;
+}
+
 ---
 
-<div>
+<div class="logowrapper">
   <!-- <img
     id="logo-svg"
     src={url}
@@ -30,7 +46,6 @@ const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
     height="72px"
     width="221.531px"
     viewBox="0 0 1280 416"
-    style="enable-background:new 0 0 1280 416;"
     xml:space="preserve"
   >
     <path
@@ -159,14 +174,14 @@ const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
   </svg>
 </div>
 
-<style is:inline>
+<style define:vars={{ filldark, filllight }}>
   #logo {
     display: block;
     margin: 0 auto;
   }
-</style>
-
-<style>
+  .logowrapper {
+    z-index: 1000;
+  }
   /* critters:exclude */
   #logo:hover path[name="新世"] {
     d: path(
@@ -192,7 +207,13 @@ const url = theme === "light" ? light : theme === "dark" ? dark : transparent;
 
   svg#logo path {
     transition: 0.4s ease-out;
+    fill: var(--filllight);
   }
+  @media (prefers-color-scheme: dark) {
+    svg#logo path {
+      fill: var(--filldark);
+    }
+
   svg#logo .window {
     transition: 0.2s ease-out;
   }

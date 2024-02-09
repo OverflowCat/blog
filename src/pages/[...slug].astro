@@ -12,10 +12,7 @@ export async function getStaticPaths() {
 }
 
 export type Props = CollectionEntry<"blog">;
-import {
-  toSupportedImage,
-  type PathToSupportedImage,
-} from "@/scripts/open-graph";
+import { toSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
 let Content; //  = (() => <p>渲染失败</p>)()
 try {
@@ -43,7 +40,6 @@ const metas: { [key: string]: string } = post.data.categories?.includes(
 
 <Page
   title={title}
-  bar={{ transparent: true }}
   noscript={post.data.noscript}
   og={{
     title,

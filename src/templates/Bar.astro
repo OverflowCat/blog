@@ -1,7 +1,7 @@
 ---
 export interface Props {
   index?: number;
-  transparent?: boolean;
+  theme?: "transparent" | "dark" | "light" | "auto";
   lang: "zh-Hans" | "zh-Hant" | "en";
 }
 
@@ -16,16 +16,14 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-let { index, transparent, lang } = Astro.props;
+let { index, theme, lang } = Astro.props;
 
 const slogan = pick(slogans)[lang || "zh-Hans"];
-
-transparent = true;
 ---
 
 <nav>
-  <div class:list={[{ bar: !transparent }]} id="logo">
-    <Logo theme={transparent ? "transparent" : "dark"} />
+  <div id="logo">
+    <Logo theme={theme} />
   </div>
   <div id="slogan" set:text={slogan} />
   <ol>
@@ -52,13 +50,19 @@ transparent = true;
   </ol>
 </nav>
 
-<style lang="less">
+<style
+  lang="less"
+  define:vars={{
+    "active-color": theme === "dark" ? "white" : "#black",
+    "hint-color": theme === "dark" ? "#c3c3c3" : "#3c3c3c",
+  }}
+>
   * {
     user-select: none;
   }
   #slogan {
     margin: 8px 0;
-    color: #3c3c3c;
+    color: var(--hint-color, #3c3c3c);
   }
   #logo,
   #slogan,
@@ -69,18 +73,6 @@ transparent = true;
   #logo {
     padding: 1rem 2px 0.2rem;
     margin: 0 auto;
-    &.bar {
-      background: rgb(255, 255, 255);
-      background: linear-gradient(
-        202deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 5%,
-        rgba(0, 0, 0, 1) 20%,
-        rgba(0, 0, 0, 1) 80%,
-        rgba(255, 255, 255, 1) 95%,
-        rgba(255, 255, 255, 1) 100%
-      );
-    }
   }
   ol {
     font-size: 18px;
@@ -104,12 +96,12 @@ transparent = true;
     display: inline-block;
     border-bottom: none !important;
     text-decoration: none;
-    color: #434343;
+    color: var(--hint-color, #434343);
     &.current {
       height: 100%;
       top: 0;
       transform-origin: 100% 50%;
-      color: #000000;
+      color: var(--active-color);
     }
     &::before,
     &::after {
@@ -119,7 +111,7 @@ transparent = true;
       left: 0;
     }
     &::before {
-      background-color: var(--accent-color);
+      background-color: var(--active-color);
       height: 2px;
       bottom: 0;
       transform-origin: 100% 50%;
@@ -133,7 +125,7 @@ transparent = true;
       transform-origin: 100% 50%;
       transform: translate3d(200%, 0, 0);
       transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-      color: var(--accent-color);
+      color: var(--active-color);
     }
     &:hover {
       &::before {

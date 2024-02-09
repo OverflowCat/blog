@@ -12,7 +12,7 @@ export interface Props {
   title: string;
   bar?: {
     index?: number;
-    transparent?: boolean;
+    theme?: "light" | "dark" | "auto" | "transparent";
   };
 }
 
@@ -50,14 +50,14 @@ let _posts = posts.map((post) => {
 <PageWithSidebar title={title} bar={bar}>
   {title && title !== "归档" && <h1>{title}</h1>}
   <style is:inline>
-  h1 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-  }
-  h2 {
-    margin: 1rem 1rem 0.5rem 0.2rem;
-    height: 36px;
-  }
+    h1 {
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+    h2 {
+      margin: 1rem 1rem 0.5rem 0.2rem;
+      height: 36px;
+    }
   </style>
   <section class="contents">
     <ul>

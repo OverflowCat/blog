@@ -2,16 +2,12 @@
 export interface Props {
   title: string;
   noscript?: boolean;
-  bar?: {
-    index?: number;
-    transparent?: boolean;
-  };
   og?: OpenGraphData;
   metas?: { [key: string]: string };
   source?: string; // source code url on GitHub
 }
 
-let { title, bar, noscript, og, source } = Astro.props;
+let { title, noscript, og, source } = Astro.props;
 
 title = title ? title + " | 新世界的大门" : "新世界的大门";
 
@@ -31,13 +27,11 @@ const metas = {
 };
 
 import Base from "./Base.astro";
-import Bar from "../Bar.astro";
 import Footer from "../zh/Footer.astro";
 import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
 ---
 
 <Base title={title} metas={metas}>
-  <Bar {...bar} lang="zh-Hans" />
   <div class="main">
     <slot />
   </div>

@@ -1,0 +1,30 @@
+---
+export interface Props {
+  frontmatter: any;
+}
+import Common from "./Common.astro";
+import Comments from "@/components/comments/Comments.astro";
+import Bar from "@/templates/Bar.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Bar theme="dark" lang="zh-Hans" lang="zh-Hans" />
+
+<Common frontmatter={frontmatter}>
+  <slot />
+</Common>
+
+<Comments />
+
+<style is:global is:inline>
+  :root {
+    --html-bg-color: #202226;
+    --text-color: #f5f5f5;
+    color-scheme: dark;
+  }
+  body {
+    /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+</style>

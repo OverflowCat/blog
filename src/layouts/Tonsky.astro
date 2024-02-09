@@ -7,6 +7,7 @@ import "@/styles/han.less";
 
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
+import Bar from "@/templates/Bar.astro";
 import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
@@ -16,6 +17,7 @@ import "@fontsource/ibm-plex-mono/latin-400-italic.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/latin-600.css";
 import "@fontsource/ibm-plex-sans/latin-400-italic.css";
+// TODO: Plex Sans KR
 
 let $ = cheerio.load(await Astro.slots.render("default"));
 $(
@@ -30,12 +32,13 @@ $(
 const html = $.html();
 ---
 
+<Bar theme="light" lang="en" />
 <div class="page">
   <!-- {cover && <img src={cover} alt={frontmatter.title} />} -->
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <label for="show-en" class="btn">Show English</label>
   <input type="checkbox" id="show-en" />
-   /
+  /
   <Languages
     src="en"
     here="zh"
