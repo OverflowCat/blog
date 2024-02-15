@@ -57,7 +57,7 @@
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.14",
     "rehype-pretty-code": "^0.13.0",
-    "rollup": "^4.9.6",
+    "rollup": "^4.11.0",
     "sass": "^1.70.0",
     "shiki": "^1.1.1",
     "typescript": "^5.3.3",
