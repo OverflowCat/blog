@@ -1,0 +1,37 @@
+/*#region colors*/
+.fg-yellow { --fg: var(--yellow); color: var(--yellow) !important; }
+.bg-yellow { --bg: var(--yellow); background-color: var(--yellow); }
+.ac-yellow { --ac: var(--yellow); }
+
+.fg-cyan { --fg: var(--cyan); color: var(--cyan) !important; }
+.bg-cyan { --bg: var(--cyan); background-color: var(--cyan); }
+.ac-cyan { --ac: var(--cyan); }
+
+.fg-red { --fg: var(--red); color: var(--red) !important; }
+.bg-red { --bg: var(--red); background-color: var(--red); }
+.ac-red { --ac: var(--red); }
+
+.fg-blue { --fg: var(--blue); color: var(--blue) !important; }
+.bg-blue { --bg: var(--blue); background-color: var(--blue); }
+.ac-blue { --ac: var(--blue); }
+
+.fg-green { --fg: var(--green); color: var(--green) !important; }
+.bg-green { --bg: var(--green); background-color: var(--green); }
+.ac-green { --ac: var(--green); }
+
+.fg-purple { --fg: var(--purple); color: var(--purple) !important; }
+.bg-purple { --bg: var(--purple); background-color: var(--purple); }
+.ac-purple { --ac: var(--purple); }
+
+.fg-black { --fg: var(--black); color: var(--black) !important; }
+.bg-black { --bg: var(--black); background-color: var(--black); }
+.ac-black { --ac: var(--black); }
+
+.fg-white { --fg: var(--white); color: var(--white) !important; }
+.bg-white { --bg: var(--white); background-color: var(--white); }
+.ac-white { --ac: var(--white); }
+
+.fg-dark { --fg: var(--dark); color: var(--dark) !important; }
+.bg-dark { --bg: var(--dark); background-color: var(--dark); }
+.ac-dark { --ac: var(--dark); }
+/*#endregion*/
