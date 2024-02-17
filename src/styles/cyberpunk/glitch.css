@@ -1,0 +1,121 @@
+/*#region glitches*/
+
+/*description: good for images. Effect of a dying flickering screen. Sometimes bright, sometimes dark.*/
+.cyber-glitch-0
+{
+    animation: cyber-glitch-0 5s linear infinite;
+}
+
+
+@keyframes cyber-glitch-0
+{
+    0% {filter: blur(0) brightness(100%) contrast(100%);}
+    2% {filter: blur(.05rem) brightness(120%) contrast(120%);}
+    4% {filter: blur(.10rem) brightness(150%) contrast(150%);}
+    6% {filter: blur(.20rem) brightness(170%) contrast(170%);}
+    8% {filter: blur(0) brightness(100%) contrast(100%);}
+    10% {filter: blur(0) brightness(100%) contrast(100%);}
+    60% {filter: blur(0) brightness(100%) contrast(100%);}
+    62% {filter: blur(.05rem) brightness(60%) contrast(100%);}
+    64% {filter: blur(.10rem) brightness(40%) contrast(100%);}
+    66% {filter: blur(0) brightness(100%) contrast(100%);}
+    68% {filter: blur(.05rem) brightness(60%) contrast(100%);}
+    70% {filter: blur(.10rem) brightness(40%) contrast(100%);}
+    72% {filter: blur(0) brightness(100%) contrast(100%);}
+    100% {filter: blur(0) brightness(100%) contrast(100%);}
+}
+
+
+/*description: good for images. nevous little shake first, then distorting/breaking effect by rotating and inverting colors.*/
+.cyber-glitch-1
+{
+    animation: cyber-glitch-1 5s linear infinite;
+}
+
+@keyframes cyber-glitch-1
+{
+    0% {transform: translate(0,0) skew(0deg); filter: invert(0);}
+    1% {transform: translate(0,0) skew(-3deg); filter: invert(0);}
+    2% {transform: translate(0,0) skew(3deg); filter: invert(0);}
+    3% {transform: translate(0,0) skew(0deg); filter: invert(0);}
+    60% {transform: translate(0,0) skew(0deg); filter: invert(0);}
+    61% {transform: translate(0,0) skew(-3deg); filter: invert(0.2);}
+    62% {transform: translate(0,0) skew(0deg); filter: invert(0.2);}
+    63% {transform: translate(0,0) skew(3deg); filter: invert(0.8);}
+    64% {transform: translate(0,0) skew(0deg); filter: invert(0.2);}
+    65% {transform: translate(0,0) skew(0deg); filter: invert(0);}
+}
+
+/*description: good for text and containers with text. squeeze effect by removing top an bottom of the element, shake left to right, apply glitchy text-shadow, back to normal*/
+.cyber-glitch-2
+{
+    animation: cyber-glitch-2 4s linear infinite;
+}
+
+@keyframes cyber-glitch-2 
+{
+    0% {clip-path: var(--og-clip-path); transform: translateX(0); text-shadow: none;}
+    2% {clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%); transform: translateX(0); text-shadow: var(--cyan) 1px 1px, var(--yellow) -1px -1px;}
+    4% {clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%); transform: translateX(-1rem); text-shadow: var(--cyan) 1px 1px, var(--yellow) -1px -1px;}
+    6% {clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%); transform: translateX(1rem); text-shadow: var(--cyan) 1px 1px, var(--yellow) -1px -1px;}
+    8% {clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%); transform: translateX(0); text-shadow: var(--cyan) 1px 1px, var(--yellow) -1px -1px;}
+    12% {clip-path: polygon(0 10%, 0 40%, 100% 40%, 100% 10%); transform: translateX(0); text-shadow: var(--cyan) 1px 1px, var(--yellow) -1px -1px;}
+    14% {clip-path: var(--og-clip-path); transform: translateX(0); text-shadow: none;}
+    100% {clip-path: var(--og-clip-path); transform: translateX(0); text-shadow: none;}
+}
+
+/*description: good for text, especially underlines. Steady blinking*/
+.cyber-glitch-3
+{
+    animation: cyber-glitch-3 1s linear infinite;
+}
+
+@keyframes cyber-glitch-3 
+{
+    0% {visibility: visible;}
+    49% {visibility: visible;}
+    50% {visibility: hidden;}
+    100% {visibility: hidden;}
+}
+
+/*description: good for text, especially underlines. Blinking with different pauses in between.*/
+.cyber-glitch-4
+{
+    animation: cyber-glitch-4 5s linear infinite;
+}
+
+@keyframes cyber-glitch-4 
+{
+    0% {visibility: visible;}
+    1% {visibility: hidden;}
+    2% {visibility: hidden;}
+    3% {visibility: visible;}
+
+    20% {visibility: visible;}
+    21% {visibility: hidden;}
+    24% {visibility: hidden;}
+    25% {visibility: visible;}
+
+    40% {visibility: visible;}
+    41% {visibility: hidden;}
+    42% {visibility: hidden;}
+    43% {visibility: visible;}
+
+    44% {visibility: visible;}
+    45% {visibility: hidden;}
+    46% {visibility: hidden;}
+    47% {visibility: visible;}
+
+    60% {visibility: visible;}
+    61% {visibility: hidden;}
+    64% {visibility: hidden;}
+    65% {visibility: visible;}
+
+    70% {visibility: visible;}
+    71% {visibility: hidden;}
+    72% {visibility: hidden;}
+    73% {visibility: visible;}
+    
+    100% {visibility: visible;}
+}
+/*#endregion*/

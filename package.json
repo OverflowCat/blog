@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.4.6",
+  "version": "2.5.0",
   "private": true,
   "scripts": {
     "new": "node cli/write.js",
@@ -30,12 +30,12 @@
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/ph": "^1.1.11",
     "@iconify-json/ri": "^1.1.19",
-    "@iconify-json/simple-icons": "^1.1.90",
+    "@iconify-json/simple-icons": "^1.1.91",
     "@iconify-json/tabler": "^1.1.105",
     "@microflash/remark-figure-caption": "^2.0.2",
     "@myriaddreamin/typst.ts": "^0.4.1",
     "arktype": "1.0.29-alpha",
-    "astro": "^4.3.5",
+    "astro": "^4.3.6",
     "astro-icon": "^1.1.0",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
@@ -55,11 +55,11 @@
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.11.17",
     "modern-css-reset": "^1.4.0",
-    "npm-check-updates": "^16.14.14",
+    "npm-check-updates": "^16.14.15",
     "rehype-pretty-code": "^0.13.0",
-    "rollup": "^4.9.6",
+    "rollup": "^4.10.0",
     "sass": "^1.70.0",
-    "shiki": "^1.1.1",
+    "shiki": "^1.1.2",
     "typescript": "^5.3.3",
     "vite": "^5.1.1"
   }

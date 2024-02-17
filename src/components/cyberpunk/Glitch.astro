@@ -1,0 +1,25 @@
+---
+import "@/styles/cyberpunk/basic.css";
+import "@/styles/cyberpunk/glitch.css";
+
+export enum GlitchKind {
+  /** good for images. Effect of a dying flickering screen. Sometimes bright, sometimes dark. */
+  Flickering = "cyber-glitch-0",
+  /** good for images. nevous little shake first, then distorting/breaking effect by rotating and inverting colors. */
+  Distorting = "cyber-glitch-1",
+  /** good for text and containers with text. squeeze effect by removing top an bottom of the element, shake left to right, apply glitchy text-shadow, back to normal */
+  Squeeze = "cyber-glitch-2",
+  /** good for text, especially underlines. Steady blinking */
+  SteadyBlinking = "cyber-glitch-3",
+  /** good for text, especially underlines. Blinking with different pauses in between. */
+  Blinking = "cyber-glitch-4",
+}
+
+export interface Props {
+  kind?: GlitchKind;
+}
+---
+
+<div class={Astro.props.kind ?? GlitchKind.Flickering}>
+  <slot />
+</div>
