@@ -16,7 +16,7 @@
     "@astro-community/astro-embed-youtube": "^0.4.4",
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/sitemap": "^3.1.0",
     "@astrojs/svelte": "^5.0.3",
     "@fontsource/ibm-plex-mono": "^5.0.8",
     "@fontsource/ibm-plex-sans": "^5.0.18",
