@@ -3,9 +3,10 @@ import Page from "../en/Page.astro";
 const { title, noscript, bar_index } = Astro.props.frontmatter;
 import Paper from "@/components/Paper.astro";
 import "@/styles/a.less";
+Astro.locals.noscript = noscript;
 ---
 
-<Page title={title} noscript={noscript} bar={{ index: bar_index }}>
+<Page title={title} bar={{ index: bar_index }}>
   <Paper padding>
     <article id="post" lang="en">
       <slot />

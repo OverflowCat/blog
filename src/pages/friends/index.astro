@@ -17,10 +17,12 @@ description: # (多个可选，如果放不下可以用短的)
   zh-hans: 因此幻想是世界，谁若懂得，谁就会歌唱
   en: So fancy is the world, who knows, maybe they sing
   zh-hant: 悟已往之不諫，知來者之可追`;
+
+Astro.locals.noscript = true;
 ---
 
 <!-- 2022-11-24 19:15:00 -->
-<Layout title="友链" noscript={true}>
+<Layout title="友链">
   <h1>猫猫的<span class="text-gradient">朋友们</span></h1>
   <p class="info">可爱喵！以下友链按添加的时间顺序排列。</p>
   <ul role="list" class="link-card-grid">

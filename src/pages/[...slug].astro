@@ -36,11 +36,11 @@ const metas: { [key: string]: string } = post.data.categories?.includes(
   : {
       "theme-color": "#111",
     };
+Astro.locals.noscript = post.data.noscript;
 ---
 
 <Page
   title={title}
-  noscript={post.data.noscript}
   og={{
     title,
     description: post.data.description ?? "新世界的大门",
