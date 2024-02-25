@@ -1,10 +1,15 @@
 ---
+// import { Image, type LocalImageProps, type RemoteImageProps, } from "astro:assets";
+// export type ImageProps = LocalImageProps | RemoteImageProps;
+export type Src = string;
+export type Alt = string;
 export interface Props {
+  items: [Src, Alt][];
+  classList: string[];
   jump?: boolean;
 }
 
-const { jump } = Astro.props;
-const items = Object.entries(Astro.slots);
+const { jump, classList, items } = Astro.props;
 ---
 
 <section class="carousel" aria-label="Gallery">
@@ -13,7 +18,12 @@ const items = Object.entries(Astro.slots);
       items.map((item, index) => (
         <li id={`carousel__slide${index + 1}`} class="carousel__slide">
           <div class="carousel__snapper">
-            <slot name={item[0]} />
+            <img
+              class:list={classList}
+              src={item[0]}
+              alt={item[1]}
+              loading="lazy"
+            />
           </div>
           <a
             href={`#carousel__slide${index === 0 ? items.length : index}`}
@@ -101,13 +111,6 @@ const items = Object.entries(Astro.slots);
     }
   }
 
-  body {
-    max-width: 37.5rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-    font-family: "Lato", sans-serif;
-  }
-
   * {
     box-sizing: border-box;
     scrollbar-color: transparent transparent; /* thumb and track color */
@@ -140,7 +143,7 @@ const items = Object.entries(Astro.slots);
 
   .carousel {
     position: relative;
-    padding-top: 75%;
+    padding-top: 57%;
     filter: drop-shadow(0 0 10px #0003);
     perspective: 100px;
   }
@@ -162,12 +165,9 @@ const items = Object.entries(Astro.slots);
     position: relative;
     flex: 0 0 100%;
     width: 100%;
+    height: min-content;
     background-color: #f99;
     counter-increment: item;
-  }
-
-  .carousel__slide:nth-child(even) {
-    background-color: #99f;
   }
 
   .carousel__slide:before {
@@ -185,7 +185,7 @@ const items = Object.entries(Astro.slots);
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: min-content;
     scroll-snap-align: center;
   }
 
@@ -244,7 +244,7 @@ const items = Object.entries(Astro.slots);
   .carousel__next {
     position: absolute;
     top: 0;
-    margin-top: 37.5%;
+    margin-top: 28.5%;
     width: 4rem;
     height: 4rem;
     transform: translateY(-50%);

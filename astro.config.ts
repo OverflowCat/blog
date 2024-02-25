@@ -23,7 +23,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkRuby from "remark-ruby";
 
 // @ts-ignore
-import remarkFigureCaption from "@microflash/remark-figure-caption";
+import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflash/remark-figure-caption";
 
 type PrettyCodeNodePositionPoint = {
   line: number;
@@ -48,10 +48,12 @@ const prettyCodeOptions = {
   keepBackground: false,
   onVisitLine(node: PrettyCodeNode) {
     if (node.children.length === 0) {
-      node.children = [{
-        type: "text",
-        value: " "
-      }];
+      node.children = [
+        {
+          type: "text",
+          value: " ",
+        },
+      ];
     }
   },
   onVisitHighlightedLine(node: PrettyCodeNode) {
@@ -62,7 +64,7 @@ const prettyCodeOptions = {
   onVisitHighlightedWord(node: PrettyCodeNode) {
     node.properties.className = ["word"];
   },
-  tokensMap: {}
+  tokensMap: {},
 };
 
 // https://astro.build/config
@@ -72,13 +74,13 @@ export default defineConfig({
   site: "https://blog.xinshijiededa.men",
   vite: {
     ssr: {
-      noExternal: ["modern-css-reset"]
-    }
+      noExternal: ["modern-css-reset"],
+    },
   },
   markdown: {
     remarkRehype: {
       footnoteLabel: "---",
-      footnoteBackLabel: "返回内容"
+      footnoteBackLabel: "返回内容",
     },
     syntaxHighlight: false,
     remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption],
@@ -93,12 +95,17 @@ export default defineConfig({
               "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
           },
         },
-      ], [rehypeExternalLinks, {
-        rel: [],
-        target: "_blank"
-      }],
+      ],
+      [
+        rehypeExternalLinks,
+        {
+          rel: [],
+          target: "_blank",
+        },
+      ],
       // @ts-ignore
-      [rehypePrettyCode, prettyCodeOptions]]
+      [rehypePrettyCode, prettyCodeOptions],
+    ],
   },
-  integrations: [icon(), svelte(), mdx(), sitemap()]
+  integrations: [icon(), svelte(), mdx(), sitemap()],
 });

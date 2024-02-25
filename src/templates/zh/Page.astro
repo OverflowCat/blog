@@ -39,9 +39,19 @@ import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
 </Base>
 
 <style>
+  :root {
+    --bg-color: #fcfaf2;
+    --bg-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.04) 1.5px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1.5px, transparent 1px);
+  }
   body {
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACFJREFUeNpiZGBg4GegAsBlCD8TqSYNQg2Mo6FEBAAIMACdPABtrSW/IQAAAABJRU5ErkJggg==");
-    /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi/P//Py8DpQCXISBxJlING4QaGEdDiQgAEGAAg8sST3LGZYoAAAAASUVORK5CYII="); */
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+    background-size: 7px 7px;
   }
   .main {
     padding: 0.5rem;
