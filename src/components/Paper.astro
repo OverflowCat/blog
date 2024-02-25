@@ -2,9 +2,10 @@
 export interface Props {
   padding?: boolean;
   classes?: string[];
+  [key: string]: any;
 }
 
-let { padding, classes } = Astro.props;
+let { padding, classes, ...rest } = Astro.props;
 if (classes === undefined) {
   classes = [];
 }
@@ -13,7 +14,11 @@ if (padding) {
 }
 ---
 
-<div class:list={["paper"].concat(classes)} transition:animate="initial">
+<div
+  class:list={["paper"].concat(classes)}
+  transition:animate="initial"
+  {...rest}
+>
   <slot />
 </div>
 

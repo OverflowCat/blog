@@ -79,15 +79,12 @@ import "@/styles/article.less";
     )
   }
 </div>
-<article>
+<article id="post">
   <slot />
 </article>
 <LicenceBox name={licence} />
 
 <style is:global lang="less">
-  article {
-    color: var(--text-color);
-  }
   .cover {
     margin: 0;
     height: auto;

@@ -2,17 +2,19 @@
 // 专名号（Proper Name/Noun）
 ---
 
-<span class="pn outer">
-  <span class="inner"> <slot /></span>
+<span class="proper-noun outer">
+  <span class="inner"><slot /></span>
 </span>
 
 <style lang="less">
-  .pn.outer {
-    margin-inline: 1px;
+  .proper-noun.outer {
+    // margin-inline: 0.5px;
     > .inner {
       margin-inline: -1px;
     }
     border-block-end: 1px solid;
+    border-inline: 0;
+    box-sizing: content-box;
     & + & {
       margin-inline-start: 0.1em;
       > .inner {
