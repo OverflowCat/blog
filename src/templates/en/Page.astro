@@ -1,7 +1,6 @@
 ---
 export interface Props {
   title: string;
-  noscript?: boolean;
   bar?: {
     index?: number;
     transparent?: boolean;
@@ -10,7 +9,7 @@ export interface Props {
   metas?: { [key: string]: string };
 }
 
-let { title, bar, noscript, og } = Astro.props;
+let { title, bar, og } = Astro.props;
 
 title = title ? title + " | 新世界的大门" : "新世界的大门";
 
@@ -39,7 +38,7 @@ import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
   <div class="main">
     <slot />
   </div>
-  <Footer noscript={noscript} />
+  <Footer/>
 </Base>
 
 <style>

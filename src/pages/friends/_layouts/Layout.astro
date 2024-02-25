@@ -1,17 +1,15 @@
 ---
 export interface Props {
   title: string;
-  noscript?: boolean;
 }
 
 import Page from "@templates/zh/Page.astro";
 
-const { title, noscript } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <Page
   title={title}
-  noscript={noscript}
   source="https://github.com/OverflowCat/blog/blame/src/src/pages/friends/index.astro"
 >
   <slot />

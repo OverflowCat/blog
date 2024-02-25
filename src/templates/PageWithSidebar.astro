@@ -16,9 +16,10 @@ export interface Props {
 }
 
 const { title, bar, og } = Astro.props;
+Astro.locals.noscript = true;
 ---
 
-<Page title={title} og={og} noscript>
+<Page title={title} og={og}>
   <Bar {...bar} lang="zh-Hans" />
 
   <main>

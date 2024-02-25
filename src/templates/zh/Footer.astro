@@ -1,6 +1,5 @@
 ---
 export interface Props {
-  noscript?: boolean;
   source?: string;
 }
 
@@ -8,7 +7,9 @@ import Noscript from "@/components/boxes/Noscript.astro";
 import { Icon } from "astro-icon/components";
 import "@/styles/icon.less";
 
-const { noscript, source } = Astro.props;
+const { source } = Astro.props;
+console.log("footer", Astro.locals);
+const noscript = Astro.locals.noscript;
 const githubLink = source ? source : "https://github.com/OverflowCat/blog";
 ---
 
