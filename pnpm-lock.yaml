@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.5
     version: 3.0.5
   '@astrojs/svelte':
-    specifier: ^5.0.3
-    version: 5.0.3(astro@4.3.5)(svelte@4.2.10)(typescript@5.3.3)(vite@5.1.1)
+    specifier: ^5.1.0
+    version: 5.1.0(astro@4.3.5)(svelte@4.2.10)(typescript@5.3.3)(vite@5.1.1)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.8
     version: 5.0.8
@@ -255,12 +255,12 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.0.3(astro@4.3.5)(svelte@4.2.10)(typescript@5.3.3)(vite@5.1.1):
-    resolution: {integrity: sha512-6TUBRUxmsEczKPBT6oDUAfvzuFCmITuhZfKPT5ZtOOyj9XOVnEnj/Iobd3ajKUbpWNYX7qZVAd1KMkmJc1Nhsg==}
+  /@astrojs/svelte@5.1.0(astro@4.3.5)(svelte@4.2.10)(typescript@5.3.3)(vite@5.1.1):
+    resolution: {integrity: sha512-1f0wkFkHs+1vcCliaEB1j9SYEU/n5ZYTAASv5Rkq6nvjNFRrnPuXLQCYIYFqdGGqFm6UPdgKpJBFbFFeQlr4yA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
-      svelte: ^4.0.0 || ^5.0.0-next.1
+      svelte: ^4.0.0 || ^5.0.0-next.56
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.10)(vite@5.1.1)
       astro: 4.3.5(@types/node@20.11.17)(less@4.2.0)(sass@1.70.0)(typescript@5.3.3)
