@@ -11,6 +11,8 @@ const { source } = Astro.props;
 console.log("footer", Astro.locals);
 const noscript = Astro.locals.noscript;
 const githubLink = source ? source : "https://github.com/OverflowCat/blog";
+const slug =
+  Astro.url.pathname.replace(/^[/]/, "").replace(/[/]$/, "") || "index";
 ---
 
 <footer>
@@ -20,56 +22,64 @@ const githubLink = source ? source : "https://github.com/OverflowCat/blog";
       height="75"
       width="238"
       src="https://moe-counter.glitch.me/get/@xinshijiededamen?theme=gelbooru"
-      alt="Visitor Counter 用户访问计数器"
+      alt="全站用户访问计数器"
     />
-  </div>
-  {noscript && <Noscript />}
-  <div data-build={Date.now()}>
-    Built with <a href="https://astro.build/"
-      ><span class="icon"><Icon name="simple-icons:astro" /></span>{
-        Astro.generator
-      }</a
-    >
-  </div>
-  <div>
-    <a href={githubLink}>
-      {
-        source ? (
-          <>View & edit source code of this page on&nbsp;</>
-        ) : (
-          <>Hosted & open sourced on&nbsp;</>
-        )
-      }
-      <span class="icon">
-        <Icon name="entypo-social:github" />
-      </span>
-       GitHub</a
-    >
-  </div>
-  <div>
-    <span class="icon"><Icon name="door" /></span>
-    <span>新世界的大門 2024</span>
-  </div>
+    <div>
+      当前页面访问人数：<img
+        style="display: inline;"
+        loading="eager"
+        src=`https://count.xinshijiededa.men/${slug}/count.svg`
+        alt="当前页面用户访问计数器"
+      />
+    </div>
+    {noscript && <Noscript />}
+    <div data-build={Date.now()}>
+      Built with <a href="https://astro.build/"
+        ><span class="icon"><Icon name="simple-icons:astro" /></span>{
+          Astro.generator
+        }</a
+      >
+    </div>
+    <div>
+      <a href={githubLink}>
+        {
+          source ? (
+            <>View & edit source code of this page on&nbsp;</>
+          ) : (
+            <>Hosted & open sourced on&nbsp;</>
+          )
+        }
+        <span class="icon">
+          <Icon name="entypo-social:github" />
+        </span>
+        GitHub</a
+      >
+    </div>
+    <div>
+      <span class="icon"><Icon name="door" /></span>
+      <span>新世界的大門 2024</span>
+    </div>
 
-  <style is:global lang="less">
-    footer {
-      padding: 24px;
-      text-align: center;
-      font-size: 0.8em;
-      div {
-        margin: 8px 0;
+    <style is:global lang="less">
+      footer {
+        padding: 24px;
+        text-align: center;
+        font-size: 0.8em;
+        div {
+          margin: 8px 0;
+        }
+        color: #666;
+        a {
+          color: #444;
+          text-decoration: none;
+        }
+        .counter > img {
+          user-select: none;
+          display: block;
+          margin: auto;
+          padding-block-end: 8px;
+        }
       }
-      color: #666;
-      a {
-        color: #444;
-        text-decoration: none;
-      }
-      .counter > img {
-        user-select: none;
-        display: block;
-        margin: auto;
-        padding-block-end: 8px;
-      }
-    }
-  </style>
+    </style>
+  </div>
 </footer>
