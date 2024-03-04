@@ -27,8 +27,8 @@ dependencies:
     specifier: ^5.0.18
     version: 5.0.18
   '@fontsource/noto-sans-mongolian':
-    specifier: ^5.0.8
-    version: 5.0.8
+    specifier: ^5.0.12
+    version: 5.0.12
   '@iconify-json/clarity':
     specifier: ^1.1.12
     version: 1.1.12
@@ -788,8 +788,8 @@ packages:
     resolution: {integrity: sha512-xdtDTt5Ifdjdx//R8aAskULQuNR34D81pYTaZtk3q3fE7Fh2UDGHKCvlAoChG9NajThoLN+8PCrT0/cy/Dt5jg==}
     dev: false
 
-  /@fontsource/noto-sans-mongolian@5.0.8:
-    resolution: {integrity: sha512-Tmouan5F5eW94ZdX91EdEieMjRqbCefzmVxae0mOnYjblA4gXwNCY3L2COQjmrJLC3QSYTHoj6UjtZPid4JvEQ==}
+  /@fontsource/noto-sans-mongolian@5.0.12:
+    resolution: {integrity: sha512-hFn4jqE3ENTjcyd+PTQxJiyImJwIhwBkBv33eqDzjeOct9Xfsbg8uq4+rFN4Mu4jsAmUl8y2lSP9LT4klNRimA==}
     dev: false
 
   /@gar/promisify@1.1.3:
