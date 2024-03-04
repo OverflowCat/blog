@@ -50,7 +50,7 @@
     "remark-ruby": "^0.4.0",
     "sharp": "^0.33.2",
     "svelte": "^4.2.11",
-    "yaml": "^2.3.4"
+    "yaml": "^2.4.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
