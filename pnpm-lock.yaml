@@ -60,8 +60,8 @@ dependencies:
     specifier: ^1.1.91
     version: 1.1.91
   '@iconify-json/tabler':
-    specifier: ^1.1.105
-    version: 1.1.105
+    specifier: ^1.1.106
+    version: 1.1.106
   '@myriaddreamin/typst.ts':
     specifier: ^0.4.1
     version: 0.4.1
@@ -856,8 +856,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/tabler@1.1.105:
-    resolution: {integrity: sha512-USJbNfa0fAHBLilxTKn70wkvFnopmfcomfpqD0ul/69uyZnonztHhyrbM8MI9Ua4eYXaPymoB7tuZ+Ionx6xfg==}
+  /@iconify-json/tabler@1.1.106:
+    resolution: {integrity: sha512-TcGGQ2nDhb2OmKsMPk3SuNxf259Rjirbvkz3gX1C8fexJmSWqR8AsH98/VMbK7VVYb2L2FIfX3QJxKpJvXEryw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
