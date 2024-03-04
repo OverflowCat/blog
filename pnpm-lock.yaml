@@ -54,8 +54,8 @@ dependencies:
     specifier: ^1.1.11
     version: 1.1.11
   '@iconify-json/ri':
-    specifier: ^1.1.19
-    version: 1.1.19
+    specifier: ^1.1.20
+    version: 1.1.20
   '@iconify-json/simple-icons':
     specifier: ^1.1.91
     version: 1.1.91
@@ -844,8 +844,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/ri@1.1.19:
-    resolution: {integrity: sha512-S9usTucQOY//J3LGIGZ+A6i8AYGCStDcLKjmWzI2UPnWJo+Xd5dESMQGkhOI5BlG3W4AtH6RmiXcpbPy3krmjQ==}
+  /@iconify-json/ri@1.1.20:
+    resolution: {integrity: sha512-yScIGjLFBCJKWKskQTWRjNI2Awoq+VRDkRxEsCQvSfdz41n+xkRtFG2K6J1OVI90ClRHfjFC8VJ2+WzxxyFjTQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
