@@ -6,7 +6,6 @@ tags:
 - 汉语
 - 翻译
 categories: 咬文嚼字
-cover: //telegra.ph/file/00734577b158cb8de66da.jpg
 layout: "@/layouts/Default.astro"
 noscript: true
 ---
