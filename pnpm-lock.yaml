@@ -70,7 +70,7 @@ dependencies:
     version: 1.0.29-alpha
   astro:
     specifier: ^4.4.11
-    version: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+    version: 4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
   astro-icon:
     specifier: ^1.1.0
     version: 1.1.0
@@ -125,8 +125,8 @@ devDependencies:
     specifier: ^13.0.7
     version: 13.0.7
   '@types/node':
-    specifier: ^20.11.24
-    version: 20.11.24
+    specifier: ^20.11.25
+    version: 20.11.25
   modern-css-reset:
     specifier: ^1.4.0
     version: 1.4.0
@@ -150,7 +150,7 @@ devDependencies:
     version: 5.3.3
   vite:
     specifier: ^5.1.5
-    version: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
+    version: 5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)
 
 packages:
 
@@ -178,7 +178,7 @@ packages:
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -269,7 +269,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -316,7 +316,7 @@ packages:
       typescript: ^5.3.3
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.12)(vite@5.1.5)
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
       svelte: 4.2.12
       svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.3.3)
       typescript: 5.3.3
@@ -1444,7 +1444,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.12)(vite@5.1.5)
       debug: 4.3.4
       svelte: 4.2.12
-      vite: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1463,7 +1463,7 @@ packages:
       magic-string: 0.30.5
       svelte: 4.2.12
       svelte-hmr: 0.15.3(svelte@4.2.12)
-      vite: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)
       vitefu: 0.2.5(vite@5.1.5)
     transitivePeerDependencies:
       - supports-color
@@ -1537,7 +1537,7 @@ packages:
   /@types/cheerio@0.22.35:
     resolution: {integrity: sha512-yD57BchKRvTV+JD53UZ6PD8KWY5g5rvvMLRnZR3EQBCZXiDT/HR+pKpMzFGlWNhFrXlo7VPZXtKvIEwZkAWOIA==}
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: false
 
   /@types/debug@4.1.7:
@@ -1628,21 +1628,21 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: false
 
-  /@types/node@20.11.24:
-    resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
+  /@types/node@20.11.25:
+    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
     dependencies:
       undici-types: 5.26.5
 
   /@types/sax@1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: false
 
   /@types/tar@6.1.10:
     resolution: {integrity: sha512-60ZO+W0tRKJ3ggdzJKp75xKVlNogKYMqGvr2bMH/+k3T0BagfYTnbmVDFMJB1BFttz6yRgP5MDGP27eh7brrqw==}
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
       minipass: 4.2.8
     dev: false
 
@@ -1657,7 +1657,7 @@ packages:
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
     requiresBuild: true
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: false
     optional: true
 
@@ -1900,7 +1900,7 @@ packages:
       astro: ^3.0.0
     dependencies:
       '@astrojs/check': 0.2.1(typescript@5.3.3)
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
       clsx: 2.0.0
       date-fns: 2.30.0
       typescript: 5.3.3
@@ -1909,7 +1909,7 @@ packages:
       - prettier-plugin-astro
     dev: false
 
-  /astro@4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3):
+  /astro@4.4.11(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3):
     resolution: {integrity: sha512-mJ1k67xzAJO1vTTpATe76uSWhOgiEj3Id7narE6X2rMMOBjR8vJM+9Cmv/Wbpot6uMwFo780skUowlMptK96fQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1973,7 +1973,7 @@ packages:
       tsconfck: 3.0.0(typescript@5.3.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)
       vitefu: 0.2.5(vite@5.1.5)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -7042,7 +7042,7 @@ packages:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  /vite@5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1):
+  /vite@5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1):
     resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7070,7 +7070,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
       esbuild: 0.19.7
       less: 4.2.0
       postcss: 8.4.35
@@ -7087,7 +7087,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
+      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)
     dev: false
 
   /volar-service-css@0.0.29(@volar/language-service@2.0.4):
