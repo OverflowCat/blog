@@ -19,7 +19,7 @@ dependencies:
     version: 3.1.1
   '@astrojs/svelte':
     specifier: ^5.2.0
-    version: 5.2.0(astro@4.4.11)(svelte@4.2.12)(typescript@5.3.3)(vite@5.1.5)
+    version: 5.2.0(astro@4.4.11)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.12
     version: 5.0.12
@@ -70,7 +70,7 @@ dependencies:
     version: 1.0.29-alpha
   astro:
     specifier: ^4.4.11
-    version: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+    version: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
   astro-icon:
     specifier: ^1.1.0
     version: 1.1.0
@@ -146,8 +146,8 @@ devDependencies:
     specifier: ^1.1.7
     version: 1.1.7
   typescript:
-    specifier: ^5.3.3
-    version: 5.3.3
+    specifier: ^5.4.2
+    version: 5.4.2
   vite:
     specifier: ^5.1.5
     version: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
@@ -178,21 +178,21 @@ packages:
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       lite-youtube-embed: 0.2.0
     dev: false
 
-  /@astrojs/check@0.2.1(typescript@5.3.3):
+  /@astrojs/check@0.2.1(typescript@5.4.2):
     resolution: {integrity: sha512-s85uBS/qjnqsKAeM0VKNWKvNaqvR06ZJupEwr2oT5/6Bti7qB5Vd8KekWIRAu2/WqOXHMFaDJz5D+qSizFnq5g==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.7.4(typescript@5.3.3)
+      '@astrojs/language-server': 2.7.4(typescript@5.4.2)
       chokidar: 3.5.3
       fast-glob: 3.3.2
       kleur: 4.1.5
-      typescript: 5.3.3
+      typescript: 5.4.2
       yargs: 17.7.2
     transitivePeerDependencies:
       - prettier
@@ -207,7 +207,7 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/language-server@2.7.4(typescript@5.3.3):
+  /@astrojs/language-server@2.7.4(typescript@5.4.2):
     resolution: {integrity: sha512-U317ZKx5VXg2Sy6iPgYOliOZ10Ji/eo8MGFCry2/yT+rYTfb81HbrSWUu9nsZzpFK66So5aprQutRWWM/m7mPQ==}
     hasBin: true
     peerDependencies:
@@ -221,7 +221,7 @@ packages:
     dependencies:
       '@astrojs/compiler': 2.5.3
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@volar/kit': 2.0.4(typescript@5.3.3)
+      '@volar/kit': 2.0.4(typescript@5.4.2)
       '@volar/language-core': 2.0.4
       '@volar/language-server': 2.0.4
       '@volar/language-service': 2.0.4
@@ -269,7 +269,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -307,7 +307,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.2.0(astro@4.4.11)(svelte@4.2.12)(typescript@5.3.3)(vite@5.1.5):
+  /@astrojs/svelte@5.2.0(astro@4.4.11)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-GmwbXks2WMkmAfl0rlPM/2gA1RtmZzjGV2mOceV3g7QNyjIsSYBPKrlEnSFnuR+YMvlAtWdbMFBsb3gtGxnTTg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -316,10 +316,10 @@ packages:
       typescript: ^5.3.3
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.12)(vite@5.1.5)
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       svelte: 4.2.12
-      svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.3.3)
-      typescript: 5.3.3
+      svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.4.2)
+      typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -1665,7 +1665,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
 
-  /@volar/kit@2.0.4(typescript@5.3.3):
+  /@volar/kit@2.0.4(typescript@5.4.2):
     resolution: {integrity: sha512-USRx/o0jKz7o8+lEKWMxWqbqvC46XFrf3IE6CZBYzRo9kM7RERQLwUYaoT2bOcHt5DQWublpnTgdgHMm37Gysg==}
     peerDependencies:
       typescript: '*'
@@ -1673,7 +1673,7 @@ packages:
       '@volar/language-service': 2.0.4
       '@volar/typescript': 2.0.4
       typesafe-path: 0.2.2
-      typescript: 5.3.3
+      typescript: 5.4.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
     dev: false
@@ -1899,17 +1899,17 @@ packages:
     peerDependencies:
       astro: ^3.0.0
     dependencies:
-      '@astrojs/check': 0.2.1(typescript@5.3.3)
-      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3)
+      '@astrojs/check': 0.2.1(typescript@5.4.2)
+      astro: 4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       clsx: 2.0.0
       date-fns: 2.30.0
-      typescript: 5.3.3
+      typescript: 5.4.2
     transitivePeerDependencies:
       - prettier
       - prettier-plugin-astro
     dev: false
 
-  /astro@4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.3.3):
+  /astro@4.4.11(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2):
     resolution: {integrity: sha512-mJ1k67xzAJO1vTTpATe76uSWhOgiEj3Id7narE6X2rMMOBjR8vJM+9Cmv/Wbpot6uMwFo780skUowlMptK96fQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1970,7 +1970,7 @@ packages:
       shikiji-core: 0.9.19
       string-width: 7.0.0
       strip-ansi: 7.1.0
-      tsconfck: 3.0.0(typescript@5.3.3)
+      tsconfck: 3.0.0(typescript@5.4.2)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
       vite: 5.1.5(@types/node@20.11.24)(less@4.2.0)(sass@1.71.1)
@@ -6519,7 +6519,7 @@ packages:
       svelte: 4.2.12
     dev: false
 
-  /svelte2tsx@0.6.27(svelte@4.2.12)(typescript@5.3.3):
+  /svelte2tsx@0.6.27(svelte@4.2.12)(typescript@5.4.2):
     resolution: {integrity: sha512-E1uPW1o6VsbRz+nUk3fznZ2lSmCITAJoNu8AYefWSvIwE2pSB01i5sId4RMbWNzfcwCQl1DcgGShCPcldl4rvg==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
@@ -6528,7 +6528,7 @@ packages:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 4.2.12
-      typescript: 5.3.3
+      typescript: 5.4.2
     dev: false
 
   /svelte@4.2.12:
@@ -6662,7 +6662,7 @@ packages:
   /trough@2.1.0:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
 
-  /tsconfck@3.0.0(typescript@5.3.3):
+  /tsconfck@3.0.0(typescript@5.4.2):
     resolution: {integrity: sha512-w3wnsIrJNi7avf4Zb0VjOoodoO0woEqGgZGQm+LHH9przdUI+XDKsWAXwxHA1DaRTjeuZNcregSzr7RaA8zG9A==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -6672,7 +6672,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.3.3
+      typescript: 5.4.2
     dev: false
 
   /tslib@2.4.1:
@@ -6722,8 +6722,8 @@ packages:
       semver: 7.5.4
     dev: false
 
-  /typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+  /typescript@5.4.2:
+    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
