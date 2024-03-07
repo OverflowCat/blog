@@ -19,19 +19,11 @@ const slug =
   <div class="counter">
     <img
       loading="eager"
-      height="75"
-      width="238"
-      src="https://moe-counter.glitch.me/get/@xinshijiededamen?theme=gelbooru"
-      alt="全站用户访问计数器"
+      width="408"
+      height="108"
+      src=`https://count.xinshijiededa.men/${slug}/full-count.svg`
+      alt="用户访问计数器"
     />
-    <div>
-      <img
-        style="display: inline;"
-        loading="eager"
-        src=`https://count.xinshijiededa.men/${slug}/page-count.svg`
-        alt="当前页面用户访问计数器"
-      />
-    </div>
     {noscript && <Noscript />}
     <div data-build={Date.now()}>
       Built with <a href="https://astro.build/"
