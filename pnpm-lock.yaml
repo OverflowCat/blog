@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.4
-    version: 0.4.4(astro@4.4.13)
+    version: 0.4.4(astro@4.4.14)
   '@astrojs/mdx':
     specifier: ^2.1.1
-    version: 2.1.1(astro@4.4.13)
+    version: 2.1.1(astro@4.4.14)
   '@astrojs/rss':
     specifier: ^4.0.5
     version: 4.0.5
@@ -19,7 +19,7 @@ dependencies:
     version: 3.1.1
   '@astrojs/svelte':
     specifier: ^5.2.0
-    version: 5.2.0(astro@4.4.13)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5)
+    version: 5.2.0(astro@4.4.14)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5)
   '@fontsource/ibm-plex-mono':
     specifier: ^5.0.12
     version: 5.0.12
@@ -69,14 +69,14 @@ dependencies:
     specifier: 1.0.29-alpha
     version: 1.0.29-alpha
   astro:
-    specifier: ^4.4.13
-    version: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
+    specifier: ^4.4.14
+    version: 4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
   astro-icon:
     specifier: ^1.1.0
     version: 1.1.0
   astro-tweet:
     specifier: ^0.0.3
-    version: 0.0.3(astro@4.4.13)
+    version: 0.0.3(astro@4.4.14)
   bilibili-bv-av-convert:
     specifier: ^1.0.0
     version: 1.0.0
@@ -173,12 +173,12 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.4(astro@4.4.13):
+  /@astro-community/astro-embed-youtube@0.4.4(astro@4.4.14):
     resolution: {integrity: sha512-fYlycLrJFNnibZ9VHPSJO766kO2IgqYQU4mBd4iaDMaicL0gGX9cVZ80QdnpzGrI6w0XOJOY7prx86eWEVBy8w==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
-      astro: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
+      astro: 4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       lite-youtube-embed: 0.2.0
     dev: false
 
@@ -260,7 +260,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.1.1(astro@4.4.13):
+  /@astrojs/mdx@2.1.1(astro@4.4.14):
     resolution: {integrity: sha512-AgGFdE7HOGmoFooGvMSatkA9FiSKwyVW7ImHot/bXJ6uAbFfu6iG2ht18Cf1pT22Hda/6iSCGWusFvBv0/EnKQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -269,7 +269,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
+      astro: 4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -307,7 +307,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/svelte@5.2.0(astro@4.4.13)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5):
+  /@astrojs/svelte@5.2.0(astro@4.4.14)(svelte@4.2.12)(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-GmwbXks2WMkmAfl0rlPM/2gA1RtmZzjGV2mOceV3g7QNyjIsSYBPKrlEnSFnuR+YMvlAtWdbMFBsb3gtGxnTTg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -316,7 +316,7 @@ packages:
       typescript: ^5.3.3
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.12)(vite@5.1.5)
-      astro: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
+      astro: 4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       svelte: 4.2.12
       svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.4.2)
       typescript: 5.4.2
@@ -1894,13 +1894,13 @@ packages:
       - supports-color
     dev: false
 
-  /astro-tweet@0.0.3(astro@4.4.13):
+  /astro-tweet@0.0.3(astro@4.4.14):
     resolution: {integrity: sha512-paHtuaO/ni6TC6mhc+p4S6EojJA4/m6adYiJzz7nF3p4zWY6GPgxhZcPw9Hnh14TZYS4qrWZnDrmKZQC+LuYhQ==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/check': 0.2.1(typescript@5.4.2)
-      astro: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
+      astro: 4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
       clsx: 2.0.0
       date-fns: 2.30.0
       typescript: 5.4.2
@@ -1909,8 +1909,8 @@ packages:
       - prettier-plugin-astro
     dev: false
 
-  /astro@4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2):
-    resolution: {integrity: sha512-kx2k2DJd9Os15zJBo8fK01/2F7/4wH6sAKmlBHlkGHIFm6CKSSzWCK/IWQ0DybNWtthK9A3HDZ4VYWv0BJDOBg==}
+  /astro@4.4.14(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2):
+    resolution: {integrity: sha512-b8l8NyUP38sWDkCSx9PKTX8aISIXhEGCnsx5FugOTyMisYeeY2hwyaiUpL11WvNJafq28RY0RMO+HWBR6te6fA==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -3383,7 +3383,7 @@ packages:
   /hast-util-to-parse5@8.0.0:
     resolution: {integrity: sha512-3KKrV5ZVI8if87DVSi1vDeByYrkGzg4mEfeu4alwgmmIeARiBLKCZS2uw5Gb6nU9x9Yufyj3iudm6i7nl52PFw==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
       devlop: 1.1.0
       property-information: 6.2.0
@@ -4389,7 +4389,7 @@ packages:
   /mdast-util-to-hast@13.0.2:
     resolution: {integrity: sha512-U5I+500EOOw9e3ZrclN3Is3fRpw8c19SMyNZlZ2IS+7vLsNzb2Om11VpIVOR+/0137GhZsFEF6YiKD5+0Hr2Og==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.0
       '@ungap/structured-clone': 1.2.0
       devlop: 1.1.0
