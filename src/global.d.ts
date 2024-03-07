@@ -1,0 +1,1 @@
+type BlogPost = CollectionEntry<"blog">;

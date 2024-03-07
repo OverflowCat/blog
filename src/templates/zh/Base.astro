@@ -17,7 +17,6 @@ metas["generator"] = Astro.generator;
 
 import "@/styles/han.less";
 import "@/styles/monospace.less";
-import "@/styles/snowflakes.scss";
 // import { ViewTransitions } from "astro:transitions";
 ---
 
@@ -47,13 +46,6 @@ import "@/styles/snowflakes.scss";
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
-    <div class="snowflakes">
-      {
-        Array(100)
-          .fill(0)
-          .map((_, i) => <div class="snow" />)
-      }
-    </div>
     <slot />
     <style is:global lang="less">
       .snowflakes {

@@ -1,0 +1,11 @@
+---
+import "@/styles/snowflakes.scss";
+---
+
+<div class="snowflakes">
+  {
+    Array(100)
+      .fill(0)
+      .map((_, i) => <div class="snow" />)
+  }
+</div>

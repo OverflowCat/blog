@@ -12,15 +12,17 @@ console.log("footer", Astro.locals);
 const noscript = Astro.locals.noscript;
 const githubLink = source ? source : "https://github.com/OverflowCat/blog";
 const slug =
-  Astro.url.pathname.replace(/^[/]/, "").replace(/[/]$/, "") || "index";
+  encodeURIComponent(
+    Astro.url.pathname.replace(/^[/]/, "").replace(/[/]$/, "")
+  ) || "index";
 ---
 
 <footer>
   <div class="counter">
     <img
       loading="eager"
-      width="408"
-      height="108"
+      width="400"
+      height="130"
       src=`https://count.xinshijiededa.men/${slug}/full-count.svg`
       alt="用户访问计数器"
     />
@@ -56,7 +58,7 @@ const slug =
       footer {
         padding: 24px;
         text-align: center;
-        font-size: 0.8em;
+        font-size: 0.9em;
         div {
           margin: 8px 0;
         }
@@ -66,10 +68,10 @@ const slug =
           text-decoration: none;
         }
         .counter > img {
+          box-sizing: content-box;
           user-select: none;
           display: block;
           margin: auto;
-          padding-block-end: 8px;
         }
       }
     </style>
