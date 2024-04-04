@@ -34,7 +34,7 @@
     "@iconify-json/tabler": "^1.1.106",
     "@myriaddreamin/typst.ts": "^0.4.1",
     "arktype": "1.0.29-alpha",
-    "astro": "^4.4.13",
+    "astro": "^4.5.16",
     "astro-icon": "^1.1.0",
     "astro-tweet": "^0.0.3",
     "bilibili-bv-av-convert": "^1.0.0",
