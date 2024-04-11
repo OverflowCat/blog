@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astro-community/astro-embed-youtube':
-    specifier: ^0.4.4
-    version: 0.4.4(astro@4.4.13)
+    specifier: ^0.5.2
+    version: 0.5.2(astro@4.4.13)
   '@astrojs/mdx':
     specifier: ^2.1.1
     version: 2.1.1(astro@4.4.13)
@@ -173,13 +173,13 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astro-community/astro-embed-youtube@0.4.4(astro@4.4.13):
-    resolution: {integrity: sha512-fYlycLrJFNnibZ9VHPSJO766kO2IgqYQU4mBd4iaDMaicL0gGX9cVZ80QdnpzGrI6w0XOJOY7prx86eWEVBy8w==}
+  /@astro-community/astro-embed-youtube@0.5.2(astro@4.4.13):
+    resolution: {integrity: sha512-cckWcq7mFCmI6uPpIlRolSafSQRYZBOaxIc8DaCUh8+JQAtPF7O4EdpRpZBUcvbARrWEEyHJCWrt0XOGppMniw==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
     dependencies:
       astro: 4.4.13(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(typescript@5.4.2)
-      lite-youtube-embed: 0.2.0
+      lite-youtube-embed: 0.3.2
     dev: false
 
   /@astrojs/check@0.2.1(typescript@5.4.2):
@@ -4011,8 +4011,8 @@ packages:
       uc.micro: 2.0.0
     dev: false
 
-  /lite-youtube-embed@0.2.0:
-    resolution: {integrity: sha512-XXXAk5sbvtjjwbie3XG+6HppgTm1HTGL/Uk9z9NkJH53o7puZLur434heHzAjkS60hZB3vT4ls25zl5rMiX4EA==}
+  /lite-youtube-embed@0.3.2:
+    resolution: {integrity: sha512-b1dgKyF4PHhinonmr3PB172Nj0qQgA/7DE9EmeIXHR1ksnFEC2olWjNJyJGdsN2cleKHRjjsmrziKlwXtPlmLQ==}
     dev: false
 
   /load-yaml-file@0.2.0:
