@@ -149,6 +149,20 @@ Astro.locals.noscript = true;
       avatar="//avatars.githubusercontent.com/u/32504382?v=4"
       desc="<span lang='en'>selfish saltfish.</span>"
     />
+    <Card
+      id="sakura"
+      link="sakurame.eu.org"
+      title="Sakura's Blog"
+      avatar="//github.com/OverflowCat/blog/assets/20166026/4c2b9f74-5c5f-48e8-80ee-a8de80cc40b9"
+      desc="一个专注于技术和思考分享的博客"
+    >
+      <style is:inline>
+        .link-card#sakura code {
+          background-color: #d6ecf0;
+        }
+      </style>
+      <div>aaa</div>
+    </Card>
   </ul>
 
   <h1>交换友链</h1>
@@ -220,7 +234,8 @@ Astro.locals.noscript = true;
     border-radius: 0.4rem;
   }
   .info strong {
-    color: rgb(var(--accent));
+    /* color: rgb(var(--accent)); */
+    color: var(--accent);
   }
   .link-card-grid {
     display: grid;

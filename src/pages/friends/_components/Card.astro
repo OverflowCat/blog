@@ -1,16 +1,17 @@
 ---
 export interface Props {
+  id?: string;
   title: string;
   link: string;
   avatar: string;
   desc?: string;
 }
 
-const { link, title, avatar, desc } = Astro.props;
+const { id, link, title, avatar, desc } = Astro.props;
 const href = "https://" + link;
 ---
 
-<li class="link-card">
+<li class="link-card" id={id}>
   <a href={href}>
     <div class="grid-container">
       <div class="title"><h2 set:html={title} /></div>
@@ -75,7 +76,8 @@ const href = "https://" + link;
     background-position: 0;
   }
   .link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--accent));
+    /* color: rgb(var(--accent)); */
+    color: var(--accent);
   }
   img.avatar {
     height: 54px;
@@ -135,7 +137,8 @@ const href = "https://" + link;
     font-size: 0.875em;
     font-weight: bold;
     background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
+    /* color: rgb(var(--accent)); */
+    color: var(--accent);
     border-radius: 4px;
     padding: 0.3em 0.45em;
   }
