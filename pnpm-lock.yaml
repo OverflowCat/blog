@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.4.0
     version: 5.4.0(astro@4.6.1)(svelte@4.2.14)(typescript@5.4.5)(vite@5.2.8)
   '@fontsource/ibm-plex-mono':
-    specifier: ^5.0.12
-    version: 5.0.12
+    specifier: ^5.0.13
+    version: 5.0.13
   '@fontsource/ibm-plex-sans':
     specifier: ^5.0.19
     version: 5.0.19
@@ -995,8 +995,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@fontsource/ibm-plex-mono@5.0.12:
-    resolution: {integrity: sha512-RamYYYUQk7FX/yVbQqGxyMR+AfX5hfCZsLo5pr5BBUBNf2i3N4AjJ4AWfieqLx1Mdwt2ukzXYojlf9J0G/gaZQ==}
+  /@fontsource/ibm-plex-mono@5.0.13:
+    resolution: {integrity: sha512-gtlMmvk//2AgDEZDFsoL5z9mgW3ZZg/9SC7pIfDwNKp5DtZpApgqd1Fua3HhPwYRIHrT76IQ1tMTzQKLEGtJGQ==}
     dev: false
 
   /@fontsource/ibm-plex-sans@5.0.19:
