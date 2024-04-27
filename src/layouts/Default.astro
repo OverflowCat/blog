@@ -10,26 +10,36 @@ import Bar from "@/templates/Bar.astro";
 ---
 
 <Bar theme="light" lang="zh-Hans" />
-<Paper padding={true} paper={frontmatter.paper !== false} classes={["snowy"]}>
+<Paper
+  padding={true}
+  paper={frontmatter.paper !== false}
+  classes={["resizable"]}
+>
   <Common frontmatter={frontmatter}>
     <slot />
   </Common>
 </Paper>
 
 <section id="comments">
-  <Paper padding={true} paper={true}>
+  <Paper padding={true} paper={true} classes={["resizable"]}>
     <Comments />
   </Paper>
 </section>
 
-<style is:global lang="less">
+<style lang="less" is:global is:inline>
   :root {
     color-scheme: light;
   }
   .paper {
-    max-inline-size: 1024px;
     margin: auto;
     overflow-x: hidden;
+    resize: horizontal;
+  }
+
+  .resizable {
+    inline-size: 1024px;
+    max-inline-size: calc(100vi - 2em);
+    min-inline-size: 480px;
   }
 
   section#comments {

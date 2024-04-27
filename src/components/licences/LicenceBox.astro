@@ -9,7 +9,7 @@ const { name } = Astro.props;
 ---
 
 {
-  name ?  
+  name ?
     (<div class="licence">
   {
     !!name &&
@@ -31,12 +31,13 @@ const { name } = Astro.props;
 
 <style lang="less" is:global>
   .licence {
-    border: 2px solid #a7a7a7;
-    background-color: #f9f9f9;
+    // border: 2px solid #a7a7a7;
+    // background-color: #f9f9f9;
     padding: 6px 18px;
-    line-height: 150%;
-    p {
-      @import "@/styles/a.less";
+    opacity: 0.75;
+    // line-height: 150%;
+    a {
+      color: inherit;
     }
   }
 </style>

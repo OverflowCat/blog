@@ -21,13 +21,17 @@ const { code, lang } = Astro.props;
 
 import MODERN_MAKE_YELLOW from "vendor/themes/modern-make-yellow/modern-make-yellow.json";
 // import YELLOW_DELIGHT from "vendor/themes/yellow-delight.json";
-const theme = {
+import type { ThemeRegistrationRaw } from "shiki";
+
+const theme: ThemeRegistrationRaw = {
   ...MODERN_MAKE_YELLOW,
   fg: "#000",
   bg: "var(--gray-bg);",
   settings: [],
 };
-theme.colors["editor.background"] = theme.bg;
+
+if (theme.colors && theme.colors["editor.background"])
+  theme.colors["editor.background"] = theme.bg as string;
 ---
 
 <Shiki code={code} lang={lang} theme={theme} />

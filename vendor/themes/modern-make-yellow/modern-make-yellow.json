@@ -1,7 +1,5 @@
 {
-  "name": "Modern Make Yellow",
-  "$schema": "vscode://schemas/color-theme",
-  "type": "dark",
+  "displayName": "modern-make-yellow",
   "colors": {
       "activityBar.background": "#F6E33A",
       "activityBar.border": "#F6E33A60",
