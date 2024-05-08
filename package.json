@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.0.1",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.11",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.20",
     "rehype-pretty-code": "^0.13.1",
