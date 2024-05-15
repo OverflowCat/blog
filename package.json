@@ -15,7 +15,7 @@
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.2",
     "@astrojs/mdx": "^2.3.1",
-    "@astrojs/rss": "^4.0.5",
+    "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/svelte": "^5.4.0",
     "@fontsource/ibm-plex-mono": "^5.0.13",
