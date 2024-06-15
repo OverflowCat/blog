@@ -10,7 +10,7 @@ import { Icon } from "astro-icon/components";
 import MarkdownIt from "markdown-it";
 const md = new MarkdownIt();
 const { comment } = Astro.props;
-const message = comment.format === "markdown" ? md.render(comment.message) : comment.message;
+const message = comment?.format === "markdown" ? md.render(comment.message) : comment.message;
 const reply = comment.reply
   ? {
       id: comment.id + "r",

@@ -24,12 +24,12 @@ function readComment(path: string) {
   });
   const parsed = parse(text);
   parsed["date"] = new Date(parsed["date"]);
-  const { data, problems } = CheckComment(parsed);
-  if (problems) {
-    console.error(problems);
+  const out = CheckComment(parsed);
+  if (out instanceof type.errors) {
+    console.error(out);
     throw new Error("Invalid comment");
   }
-  return data;
+  return out;
 }
 
 const getYamlFiles = (slug: string) => {
@@ -39,7 +39,10 @@ const getYamlFiles = (slug: string) => {
   return fs
     .readdirSync(`comments/${slug}/`)
     .filter((file) => {
-      return file.startsWith("entry") && file.endsWith(".yml");
+      return (
+        file.startsWith("entry") &&
+        (file.endsWith(".yml") || file.endsWith(".yaml"))
+      );
     })
     .map((filename) => `${slug}/${filename}`);
 };
