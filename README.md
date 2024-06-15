@@ -7,6 +7,11 @@
 
 About this blog, see [About](https://blog.xinshijiededa.men/about/). Below are technical details.
 
+## Develop
+
+- `pnpm install`: install deps
+- `pnpm bump`: update deps
+
 ## License
 
 The code is licensed under the [MIT License](/LICENSE).
