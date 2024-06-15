@@ -9,7 +9,6 @@ export interface Props {
 }
 
 const slug = Astro.props.slug ?? Astro.url.pathname.replace(/^\/|\/$/g, "");
-
 const comments = getComments(slug);
 ---
 
