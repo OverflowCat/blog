@@ -47,17 +47,58 @@ import "@/styles/monospace.less";
   </head>
   <body>
     <slot />
+    <div id="no-darkreader">
+      <div id="notice">
+        <p>
+          本站不支持 Dark Reader 的暗色模式，请对本站关闭后再访问。<br
+          />（亮色模式的对比度、亮度等选项不受影响）
+        </p><br />
+        <p lang="en">
+          This site does not support dark mode by Dark Reader, please turn it
+          off before visiting.<br />(Contrast, brightness, etc. of light mode
+          are not affected)
+        </p>
+      </div>
+    </div>
+
     <style is:global lang="less">
-      .snowflakes {
+      @keyframes blur-in {
+        from {
+          backdrop-filter: blur(0px);
+        }
+        to {
+          backdrop-filter: blur(10px);
+        }
+      }
+      #no-darkreader {
+        display: none;
         position: fixed;
+        z-index: 11111;
         top: 0;
         left: 0;
-        bottom: 0;
-        right: 0;
-        pointer-events: none;
-        z-index: 999;
-        background: rgba(0, 0, 0, 0.08);
-        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 1em;
+
+        #notice {
+          font-size: 1.25em;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      html[data-darkreader-scheme="dark"] {
+        #no-darkreader {
+          display: block !important;
+          animation: blur-in 0.5s forwards;
+          filter: none!important;
+        }
+
+        & > * > * {
+          filter: blur(3px);
+        }
       }
 
       :root {
