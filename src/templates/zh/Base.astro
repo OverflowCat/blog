@@ -17,6 +17,7 @@ metas["generator"] = Astro.generator;
 
 import "@/styles/han.less";
 import "@/styles/monospace.less";
+import "@/styles/no-dark.less";
 // import { ViewTransitions } from "astro:transitions";
 ---
 
@@ -62,45 +63,6 @@ import "@/styles/monospace.less";
     </div>
 
     <style is:global lang="less">
-      @keyframes blur-in {
-        from {
-          backdrop-filter: blur(0px);
-        }
-        to {
-          backdrop-filter: blur(10px);
-        }
-      }
-      #no-darkreader {
-        display: none;
-        position: fixed;
-        z-index: 11111;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.2);
-        padding: 1em;
-
-        #notice {
-          font-size: 1.25em;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-      html[data-darkreader-scheme="dark"] {
-        #no-darkreader {
-          display: block !important;
-          animation: blur-in 0.5s forwards;
-          filter: none!important;
-        }
-
-        & > * > * {
-          filter: blur(3px);
-        }
-      }
-
       :root {
         --accent-color: rgb(0, 0, 0);
       }

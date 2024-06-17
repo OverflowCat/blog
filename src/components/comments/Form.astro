@@ -1,6 +1,13 @@
 ---
 import nameGen from "@/scripts/name-gen";
+import { pick } from "@/scripts/serendipity.ts";
 let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const placeholder = pick([
+  "请洒潘江，各倾陆海云尔…",
+  "矮纸斜行闲作草，晴窗细乳戏分茶…",
+  "此意在人间，试听徽外三两弦…",
+  "给主人留下些什么吧～",
+]);
 ---
 
 <form
@@ -29,7 +36,7 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
       name="fields[message]"
       id="message"
       rows="6"
-      placeholder="请洒潘江，各倾陆海云尔……\n\n（暂不支持 Markdown，但你可以合理使用 HTML 标记）"
+      placeholder={placeholder}
       required></textarea>
   </div>
 
@@ -73,16 +80,20 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
     }
   }
 
+  .hidden {
+    display: none;
+    user-select: none;
+  }
+
   .comment-form {
-    font-family: Arial, sans-serif;
     font-size: 115%;
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
   }
-
   .form-group {
     margin-block-end: 20px;
+
     label {
       display: block;
       margin-block-end: 5px;
@@ -91,51 +102,20 @@ let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
       user-select: none;
       font-size: 17px;
     }
+
     input,
     textarea,
     [contenteditable] {
       inline-size: 100%;
+      max-inline-size: 100%;
       text-orientation: mixed;
       padding: 10px;
-      border: 2px solid #e1e1e1;
-      border-radius: 2px;
-      font-size: 16px;
-      box-sizing: border-box;
-      // &[type="text" i] {
-      //   writing-mode: inherit !important;
-      // }
-      transition: border 90ms;
-      &:hover {
-        border: 2px solid #91919187;
-      }
-      &:focus {
-        outline: none;
-        border: 2px solid #737373;
-      }
     }
+
     textarea {
       resize: vertical; // TODO: Chrome 118 supports `block`
       min-block-size: 180px;
       max-block-size: 500px;
     }
-  }
-
-  .form-button {
-    background-color: #424242;
-    color: #ffffff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: #6c6c6c;
-    }
-  }
-
-  .hidden {
-    display: none;
-    user-select: none;
   }
 </style>

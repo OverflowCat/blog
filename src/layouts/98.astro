@@ -1,0 +1,98 @@
+---
+import "@/styles/icon.less";
+import "98.css";
+import "@/styles/98-patch.css";
+import "@/styles/monospace.less";
+import Comments from "@/components/comments/Comments.astro";
+// import "@/styles/snowy.css";
+import Common from "./Common.astro";
+import Bar from "@/templates/Bar.astro";
+const { frontmatter } = Astro.props;
+const content = await Astro.slots.render("default");
+import * as cheerio from "cheerio";
+import { genTocTree, renderTree, type Heading } from "@/components/98/98.ts";
+import Window from "@/components/98/Window.astro";
+// import { getCollection } from "astro:content";
+// const posts = await getCollection<"blog">("blog");
+// const post = posts.filter(p => p.data.title === frontmatter.title)[0];
+// const rendered = await post.render();
+// console.log(rendered);
+// const Content = rendered.Content;
+const $ = cheerio.load(content);
+const headings = $("h2, h3, h4, h5, h6");
+const toc: Heading[] = [];
+// { depth: 2, slug: 'pcmodwin-40', text: 'PcModWin 4.0' },
+headings.each((i, el) => {
+  const $el = $(el);
+  const id = $el.attr("id");
+  const text = $el.text();
+  toc.push({ id, text, level: parseInt(el.name[1]) });
+  $el.append(`<a class="anchor" href="#${id}">#</a>`);
+});
+console.log(toc);
+const root = genTocTree(toc);
+const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
+---
+
+<Bar theme="light" lang="zh-Hans" />
+
+<main id="theme">
+  <aside id="toc" set:html={treeHtml} />
+  <div id="common">
+    <Common frontmatter={frontmatter}>
+      <div id="rendered" set:html={content} />
+      <!-- <Content /> -->
+    </Common>
+    <Window title="Comments" id="comments" element="section">
+      <Comments />
+    </Window>
+  </div>
+</main>
+
+<style lang="less" is:global is:inline>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    color-scheme: light;
+    background: #ddd !important;
+  }
+  section#comments {
+    margin-block: 1em;
+    margin-inline: auto;
+    box-sizing: content-box;
+    max-width: min(734px, 100%);
+  }
+  main#theme {
+    display: flex;
+    gap: 1em;
+    max-width: min(100%, 1024px);
+    margin: 0 auto;
+  }
+  div#common {
+    flex: 1 1 auto;
+  }
+  aside#toc {
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
+    padding-top: 1em;
+    overflow-y: auto;
+    flex: 1 0 200px;
+    & > ul {
+      min-width: 200px;
+    }
+  }
+
+  @media (max-width: 915px) {
+    main#theme {
+      flex-direction: column;
+    }
+    aside#toc {
+      align-self: unset;
+      position: unset;
+      margin: 10px;
+      box-sizing: border-box;
+    }
+  }
+</style>

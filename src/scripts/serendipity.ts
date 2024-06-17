@@ -1,1 +1,3 @@
-export const pick = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
+export function pick<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}

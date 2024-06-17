@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Fusion Pixel P 12px SC";
+    src: url(/fonts/fusion-pixel-12px-proportional-zh_hans.woff2) format("woff2");
+}
+
+article {
+    font-size: 18px !important;
+    font-family: "Fusion Pixel P 12px SC", Arial !important;
+}
+
+.title-bar,
+.window,
+button,
+input,
+label,
+option,
+select,
+table,
+textarea,
+ul.tree-view {
+    font-family: "Pixelated MS Sans Serif", "Fusion Pixel P 12px SC", Arial !important;
+    font-size: 16px !important;
+}
+
+h1 {
+    font-size: 2.5rem !important;
+}
+
+h2 {
+    font-size: 2rem !important;
+}
+
+h3 {
+    font-size: 1.75rem !important;
+}
+
+h4 {
+    font-size: 1.5rem !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button:not([aria-label]) { 
+    height: 1.9em;
+}

@@ -1,0 +1,35 @@
+.form-group {
+  input,
+  textarea,
+  [contenteditable] {
+    border: 2px solid #e1e1e1;
+    border-radius: 2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    // &[type="text" i] {
+    //   writing-mode: inherit !important;
+    // }
+    transition: border 90ms;
+    &:hover {
+      border: 2px solid #91919187;
+    }
+    &:focus {
+      outline: none;
+      border: 2px solid #737373;
+    }
+  }
+}
+
+.form-button {
+  background-color: #424242;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #6c6c6c;
+  }
+}

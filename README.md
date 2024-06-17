@@ -11,6 +11,7 @@ About this blog, see [About](https://blog.xinshijiededa.men/about/). Below are t
 
 - `pnpm install`: install deps
 - `pnpm bump`: update deps
+- `pnpm new <slug>`: create a new article
 
 ## License
 

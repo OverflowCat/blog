@@ -74,7 +74,7 @@ export default defineConfig({
   site: "https://blog.xinshijiededa.men",
   vite: {
     ssr: {
-      noExternal: ["modern-css-reset"],
+      noExternal: ["modern-css-reset", "xp.css", "98.css"],
     },
   },
   markdown: {

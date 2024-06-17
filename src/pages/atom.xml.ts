@@ -24,6 +24,7 @@ export async function GET(context: any) {
     return b.pubDate.valueOf() - a.pubDate.valueOf();
   });
   return rss({
+    // stylesheet: '/feed/pretty-feed-v3.xsl', // TODO
     // `<title>` field in output xml
     title: "新世界的大门",
     // `<description>` field in output xml
