@@ -7,21 +7,24 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import Bar from "@/templates/Bar.astro";
-const { frontmatter } = Astro.props;
-const content = await Astro.slots.render("default");
-import * as cheerio from "cheerio";
+let headings: Heading[] = Astro.props.headings;
+let { frontmatter } = Astro.props;
 import { genTocTree, renderTree, type Heading } from "@/components/98/98.ts";
 import Window from "@/components/98/Window.astro";
-// import { getCollection } from "astro:content";
-// const posts = await getCollection<"blog">("blog");
-// const post = posts.filter(p => p.data.title === frontmatter.title)[0];
-// const rendered = await post.render();
-// console.log(rendered);
-// const Content = rendered.Content;
+/*
+const content = await Astro.slots.render("default");
+import * as cheerio from "cheerio";
+import { getCollection } from "astro:content";
+const posts = await getCollection<"blog">("blog");
+const post = posts.filter(p => p.data.title === frontmatter.title)[0];
+const rendered = await post.render();
+console.log(rendered);
+*/
+console.log(Astro.props.headings);
+/*
 const $ = cheerio.load(content);
 const headings = $("h2, h3, h4, h5, h6");
-const toc: Heading[] = [];
-// { depth: 2, slug: 'pcmodwin-40', text: 'PcModWin 4.0' },
+{ depth: 2, slug: 'pcmodwin-40', text: 'PcModWin 4.0' },
 headings.each((i, el) => {
   const $el = $(el);
   const id = $el.attr("id");
@@ -29,19 +32,18 @@ headings.each((i, el) => {
   toc.push({ id, text, level: parseInt(el.name[1]) });
   $el.append(`<a class="anchor" href="#${id}">#</a>`);
 });
-console.log(toc);
-const root = genTocTree(toc);
+*/
+const root = genTocTree(headings);
 const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
 ---
 
 <Bar theme="light" lang="zh-Hans" />
 
 <main id="theme">
-  <aside id="toc" set:html={treeHtml} />
+  <aside id="toc" transition:name="aside-block" set:html={treeHtml} />
   <div id="common">
     <Common frontmatter={frontmatter}>
-      <div id="rendered" set:html={content} />
-      <!-- <Content /> -->
+      <slot />
     </Common>
     <Window title="Comments" id="comments" element="section">
       <Comments />
@@ -61,12 +63,12 @@ const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
     margin-block: 1em;
     margin-inline: auto;
     box-sizing: content-box;
-    max-width: min(734px, 100%);
+    max-width: min(754px, 100%);
   }
   main#theme {
     display: flex;
     gap: 1em;
-    max-width: min(100%, 1024px);
+    max-width: min(100%, 1050px);
     margin: 0 auto;
   }
   div#common {
@@ -93,6 +95,11 @@ const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
       position: unset;
       margin: 10px;
       box-sizing: border-box;
+    }
+  }
+  @media (min-width: 1200px) {
+    main#theme {
+      transform: translateX(-5em);
     }
   }
 </style>

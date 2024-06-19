@@ -24,7 +24,7 @@ Astro.locals.noscript = true;
 
   <main>
     <Sidebar />
-    <Paper>
+    <Paper transition:name="main">
       <section class="contents">
         <slot />
       </section>
@@ -52,11 +52,11 @@ Astro.locals.noscript = true;
       flex-direction: column-reverse;
     }
     aside#sidebar {
-      max-width: 700px !important;
+      max-inline-size: 700px !important;
       flex-direction: column-reverse !important;
     }
     aside#sidebar .paper {
-      max-width: 700px !important;
+      max-inline-size: 700px !important;
     }
   }
   @media (min-width: 900px) {

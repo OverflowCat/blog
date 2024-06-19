@@ -3,9 +3,10 @@ export interface Props {
   padding?: boolean;
   classes?: string[];
   [key: string]: any;
+  transitionName?: string;
 }
 
-let { padding, classes, ...rest } = Astro.props;
+let { padding, classes, transitionName, ...rest } = Astro.props;
 if (classes === undefined) {
   classes = [];
 }
@@ -16,8 +17,9 @@ if (padding) {
 
 <div
   class:list={["paper"].concat(classes)}
-  transition:animate="initial"
   {...rest}
+  transition:animate="initial"
+  transition:name={transitionName}
 >
   <slot />
 </div>

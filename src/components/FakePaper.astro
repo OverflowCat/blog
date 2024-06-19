@@ -3,14 +3,15 @@ export interface Props {
   paper: boolean;
   padding?: boolean;
   classes?: string[];
+  transitionName?: string;
 }
 import Paper from "./Paper.astro";
-const { paper, padding, classes } = Astro.props;
+const { paper, padding, classes, transitionName } = Astro.props;
 ---
 
 {
   paper ? (
-    <Paper classes={classes} padding={padding}>
+    <Paper classes={classes} padding={padding} transitionName={transitionName}>
       <slot />
     </Paper>
   ) : (

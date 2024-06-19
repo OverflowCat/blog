@@ -1,6 +1,5 @@
-import { getCollection } from "astro:content";
-
-const posts = await getCollection<'blog'>("blog");
+import { getBlogPosts } from "@/scripts/post";
+const posts = await getBlogPosts();
 
 export async function getTagsInfo() {
   const tagsInfo = new Map<string, number>();

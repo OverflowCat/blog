@@ -40,7 +40,7 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
 
 点击 <button>Card1_input</button> 可以设置参数。
 
-<Info title="Standard Atmosphere">
+<Info title="Info: Standard Atmosphere">
 
 6 种标准大气模式是美国空军地球物理实验室（AFGL）建立的较全面反映大气随地理和季节变化特性的参数模式：
 
@@ -62,7 +62,7 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
     <label for="radio6"><u>M</u>odTran 2</label>。调整为 <input id="radio5" type="radio" name="first-example" />
   <label for="radio5"><u>D</u>istort</label> 可以设置为 x 流近似。
 
-![scattering](./scattering.png)
+![scattering](./scattering.webp)
 
 <details open><summary>Disort 注意事项</summary>如果你使用 Disort，推荐设置为 16 流，其他在 Windows 11 上可能无法运行。此外，仿真时命令行可能会多次卡住，此时按下 <kbd>Ctrl</kbd> + <kbd>C</kbd> 即可。</details>
 
@@ -70,7 +70,7 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
 
 第五页设置太阳辐射参数，默认即可。
 
-<Info title="Aerosol">
+<Info title="Info: Aerosol">
 
 大气气溶胶粒子是指在大气中悬浮着的各种固态、液态和固液混合态的微粒，其粒径一般为 $0.001 \sim 100$ μm。气溶胶粒子既有海洋溅沫、土壤和矿物质、生物圈以及火山活动自然形成的，也有化石燃料和生物质燃烧、工农业生产等人类活动产生的。
 
@@ -80,7 +80,7 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
 
 第七页设置几何和光谱参数。比较重要的：
 
-![geometry](./geo-spec.png)
+![geometry](./geo-spec.webp)
 
 - 观测的天顶角（Zenith Angle / deg）：默认为 180，即垂直向下。
 {/* - 初始频率（Initial Frequency）：默认为14000。可以根据波长设置。这里我们将第二个输入框设置为 0.4 (um)。频率和后面的 nm 单位会自动计算。 */}
@@ -98,9 +98,9 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
 
 #### 查看结果
 
-![](./plot.png)
+![](./plot.webp)
 
-![](./plot-config.png)
+![](./plot-config.webp)
 
-![](./plot-result.png)
+![](./plot-result.webp)
 

@@ -47,4 +47,14 @@ const Element = Astro.props.element || `aside`;
       width: var(--width, 600px);
     }
   }
+  @media (min-width: 1200px) {
+    aside.window {
+      margin-right: -5em;
+    }
+  }
+  @media (min-width: 1400px) {
+    aside.window {
+      margin-right: -12em;
+    }
+  }
 </style>

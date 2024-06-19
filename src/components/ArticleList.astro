@@ -2,7 +2,7 @@
 import SimpleArticleCard from "@/components/SimpleArticleCard.astro";
 import PageWithSidebar from "@/templates/PageWithSidebar.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "@/scripts/post";
 
 export interface Props {
   type?: "tag" | "category";
@@ -16,7 +16,7 @@ export interface Props {
   };
 }
 
-let posts = (await getCollection("blog")).sort(
+let posts = (await getBlogPosts()).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 

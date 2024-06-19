@@ -1,22 +1,22 @@
 export type Heading = {
   id?: string;
-  level: number;
+  depth: number;
   text: string;
 };
 
 export type TocNode = {
-  id: string;
-  level: number;
+  slug: string;
+  depth: number;
   text: string;
   children: TocNode[];
 };
 
 export function genTocTree(toc: any[]): TocNode {
-  const root: any = { id: "", level: 1, text: "文章", children: [] };
+  const root: any = { slug: "", depth: 1, text: "文章", children: [] };
   let node = root;
   let parents = [root];
   for (const item of toc) {
-    while (item.level <= node.level) {
+    while (item.depth <= node.depth) {
       node = parents.pop()!;
     }
     if (node.children === undefined) node.children = [];
@@ -25,8 +25,8 @@ export function genTocTree(toc: any[]): TocNode {
     node = item;
   }
   root.children.push({
-    id: "comments",
-    level: 1,
+    slug: "comments",
+    depth: 1,
     text: "评论",
     children: [],
   });
@@ -39,6 +39,6 @@ export function renderTree(node: TocNode): string {
     .map((x) => `<li>${x}</li>`)
     .join("");
   if (childTree)
-    return `<a href="#${node.id}">${node.text}</a><ul>${childTree}</ul>`;
-  return `<a href="#${node.id}">${node.text}</a>`;
+    return `<a href="#${node.slug}">${node.text}</a><ul>${childTree}</ul>`;
+  return `<a href="#${node.slug}">${node.text}</a>`;
 }

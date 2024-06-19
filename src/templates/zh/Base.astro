@@ -18,7 +18,6 @@ metas["generator"] = Astro.generator;
 import "@/styles/han.less";
 import "@/styles/monospace.less";
 import "@/styles/no-dark.less";
-// import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -45,6 +44,11 @@ import "@/styles/no-dark.less";
     <link rel="prefetch" href="/" />
     <link rel="prefetch" href="/about/" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <style>
+      @view-transition {
+        navigation: auto; /* enabled! */
+      }
+    </style>
   </head>
   <body>
     <slot />
@@ -61,8 +65,7 @@ import "@/styles/no-dark.less";
         </p>
       </div>
     </div>
-
-    <style is:global lang="less">
+    <style is:global>
       :root {
         --accent-color: rgb(0, 0, 0);
       }
@@ -104,6 +107,17 @@ import "@/styles/no-dark.less";
         margin: 2em 0;
       }
 
+      * {
+        text-spacing-trim: space-first;
+      }
+
+      @media (prefers-reduced-motion) {
+        @view-transition {
+          navigation: none;
+        }
+      }
+    </style>
+    <style is:global lang="less">
       details > summary {
         padding-inline: 1em;
         padding-block: 5px;

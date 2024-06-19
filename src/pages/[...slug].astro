@@ -1,10 +1,11 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Page from "@/templates/zh/Page.astro";
-import { getCollection } from "astro:content";
+import { toSupportedImage } from "@/scripts/open-graph";
+import { getBlogPosts } from "@/scripts/post";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
@@ -12,7 +13,6 @@ export async function getStaticPaths() {
 }
 
 export type Props = CollectionEntry<"blog">;
-import { toSupportedImage } from "@/scripts/open-graph";
 const post = Astro.props;
 let Content; //  = (() => <p>渲染失败</p>)()
 try {

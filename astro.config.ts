@@ -73,6 +73,9 @@ const prettyCodeOptions = {
 export default defineConfig({
   site: "https://blog.xinshijiededa.men",
   vite: {
+    css: {
+      preprocessorOptions: {},
+    },
     ssr: {
       noExternal: ["modern-css-reset", "xp.css", "98.css"],
     },
