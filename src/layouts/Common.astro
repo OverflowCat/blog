@@ -2,9 +2,11 @@
 import { Icon } from "astro-icon/components";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
+import { crc32base } from "@/scripts/serendipity";
+
 // import "@/styles/snowy.css";
 export interface Props {
-  frontmatter: any;
+  frontmatter: BlogPost["data"];
 }
 const { frontmatter } = Astro.props;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
@@ -31,14 +33,26 @@ import "@/styles/article.less";
 {
   cover && (
     <figure class="cover">
-      <img class="cover" src={cover} alt={frontmatter.title} />
+      <img
+        class="cover"
+        src={cover}
+        alt={frontmatter.title}
+        transition:name={crc32base(frontmatter.photo)}
+      />
       {frontmatter.figcaption && (
         <figcaption set:html={frontmatter.figcaption} />
       )}
     </figure>
   )
 }
-{!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
+{
+  !frontmatter.hide_title && (
+    <h1
+      transition:name={crc32base(frontmatter.title)}
+      set:text={frontmatter.title}
+    />
+  )
+}
 <div class="info">
   <div>
     <span class="icon">

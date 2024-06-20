@@ -29,7 +29,7 @@ const slogan = pick(slogans)[lang || "zh-Hans"];
   <ol>
     {
       items.map((item, i) => (
-        <li>
+        <li transition:name={`navbar-${i}`}>
           <a
             href={item[2]}
             data-replace={index === i ? "本页" : item[0]}

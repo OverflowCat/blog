@@ -7,6 +7,7 @@ import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "@/scripts/date";
 import { Icon } from "astro-icon/components";
 import { getIconName } from "@/scripts/icons";
+import { crc32base } from "@/scripts/serendipity";
 import "@/styles/title.less";
 
 const { post } = Astro.props;
@@ -17,4 +18,9 @@ const icon = getIconName(post);
 <span class="icon title-icon">
   {icon && <Icon name={icon} />}
 </span>
-<a class="title" href={`/${post.slug}/`} set:text={post.data.title} />
+<a
+  class="title"
+  href={`/${post.slug}/`}
+  transition:name={crc32base(post.data.title)}
+  set:text={post.data.title}
+/>

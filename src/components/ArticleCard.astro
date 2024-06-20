@@ -7,6 +7,7 @@ import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
 import { Icon } from "astro-icon/components";
 import { getIconName } from "@/scripts/icons";
+import { crc32base } from "@/scripts/serendipity";
 import "@/styles/title.less";
 import "@/styles/icon.less";
 
@@ -19,8 +20,10 @@ const { post } = Astro.props;
       <div>
         <span class="icon title-icon">
           {(<Icon name={getIconName(post) || "ph:hash-bold"} />)}
-        </span><a class="title" href={`/${post.slug}/`}
-          >{post.data.title || "No title"}</a
+        </span><a
+          class="title"
+          transition:name={crc32base(post.data.title)}
+          href={`/${post.slug}/`}>{post.data.title || "No title"}</a
         >
         {
           !post.data.description && (
@@ -58,6 +61,7 @@ const { post } = Astro.props;
           <img
             class="title-img"
             loading="lazy"
+            transition:name={crc32base(post.data.photo)}
             height={
               post.data.photo.split(" ").length > 1
                 ? post.data.photo.split(" ")[1].split(":")[1]
