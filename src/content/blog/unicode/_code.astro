@@ -18,7 +18,9 @@ export interface Props {
 }
 
 const { code, lang } = Astro.props;
+import { Prism } from '@astrojs/prism';
 
+/*
 import MODERN_MAKE_YELLOW from "vendor/themes/modern-make-yellow/modern-make-yellow.json";
 // import YELLOW_DELIGHT from "vendor/themes/yellow-delight.json";
 import type { ThemeRegistrationRaw } from "shiki";
@@ -32,6 +34,7 @@ const theme: ThemeRegistrationRaw = {
 
 if (theme.colors && theme.colors["editor.background"])
   theme.colors["editor.background"] = theme.bg as string;
+*/
 ---
 
-<Shiki code={code} lang={lang} theme={theme} />
+<Prism code={code} lang={lang} />

@@ -77,6 +77,7 @@ export default defineConfig({
       preprocessorOptions: {},
     },
     ssr: {
+      external: ["prismjs"],
       noExternal: ["modern-css-reset", "xp.css", "98.css"],
     },
   },

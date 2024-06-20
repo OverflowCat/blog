@@ -19,7 +19,8 @@ noscript: true
 
 import Plane from "./_plane.astro";
 import Loud from "./_loud.astro";
-import Code from "./_code.astro";
+import Code from './_code.astro';
+import "@/styles/prism/modern-make-yellow.css";
 import Img from "./_img.astro";
 import { Icon } from "astro-icon/components";
 import "@/styles/icon.less";
@@ -608,7 +609,7 @@ Copy any of these to your JavaScript console:
   code={`"Å" === "Å";
 "Å" === "Å";
 "Å" === "Å";`}
-  lang="js"
+  lang="javascript"
 />
 
 What do you get? False? You should get false, and it’s not a mistake.

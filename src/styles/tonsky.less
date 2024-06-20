@@ -129,7 +129,7 @@ footer a,
 #comments a {
   color: inherit;
   text-decoration: none;
-  border-bottom: var(--border) solid var(--gray-line)!important; /** TODO: use var */
+  border-bottom: var(--border) solid var(--gray-line) !important; /** TODO: use var */
 
   &:has(img) {
     border-bottom: none;
@@ -283,6 +283,10 @@ code {
   font-style: normal;
   background: var(--gray-bg);
   padding: 2px 6px;
+  pre > & {
+    padding: 0;
+  }
+
   border-radius: 4px;
   font-size: 0.944rem;
 
@@ -420,4 +424,15 @@ img.inline {
 .emoji {
   font-size: 125%;
   line-height: 22.5px;
+}
+
+button {
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 6px;
+  transition: background 0.1s;
+  &:hover {
+    background: rgba(0, 0, 0, 0.18);
+  }
 }
