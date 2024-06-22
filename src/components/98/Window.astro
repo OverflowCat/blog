@@ -10,16 +10,6 @@ export type Props = {
 };
 const { title, id, width } = Astro.props;
 const Element = Astro.props.element || `aside`;
-// let widthVar = width;
-// if (typeof width === `number`) {
-//   widthVar = `${width}px`;
-// } else if (typeof width === `undefined`) {
-//   if (Element === `aside`) {
-//     widthVar = `600px`;
-//   } else {
-//     widthVar = `100%`;
-//   }
-// }
 ---
 
 <Element class="window" id={id}>

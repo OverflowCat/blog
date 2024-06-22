@@ -40,8 +40,8 @@ Astro.locals.noscript = true;
     gap: 16px;
   }
   .contents {
-    max-width: 850px;
-    width: 100%;
+    max-inline-size: 850px;
+    inline-size: 100%;
     padding: 0 20px;
   }
 </style>
@@ -59,9 +59,10 @@ Astro.locals.noscript = true;
       max-inline-size: 700px !important;
     }
   }
-  @media (min-width: 900px) {
+
+  @container html (min-inline-size: 900px) {
     .contents {
-      min-width: 700px;
+      min-inline-size: 700px !important;
     }
     main {
       flex-direction: row;
@@ -69,7 +70,21 @@ Astro.locals.noscript = true;
     aside#sidebar {
       align-self: flex-start;
       position: sticky;
-      top: 50px;
+      inset-block-start: 50px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .contents {
+      min-inline-size: 700px;
+    }
+    main {
+      flex-direction: row;
+    }
+    aside#sidebar {
+      align-self: flex-start;
+      position: sticky;
+      inset-block-start: 50px;
     }
     .paper {
       align-self: start;

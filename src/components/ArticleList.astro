@@ -49,16 +49,6 @@ let _posts = posts.map((post) => {
 
 <PageWithSidebar title={title} bar={bar}>
   {title && title !== "归档" && <h1>{title}</h1>}
-  <style is:inline>
-    h1 {
-      margin: 1rem 0;
-      font-size: 1.5rem;
-    }
-    h2 {
-      margin: 1rem 1rem 0.5rem 0.2rem;
-      height: 36px;
-    }
-  </style>
   <section class="contents">
     <ul>
       {
@@ -83,14 +73,32 @@ let _posts = posts.map((post) => {
 </PageWithSidebar>
 
 <style>
+  h1,
+  h2 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    margin-inline-start: 0.5rem;
+    margin-inline-end: 0.2rem;
+    height: 36px;
+  }
   ul {
     list-style-type: none;
     padding: unset;
   }
   li {
-    margin: 0.5rem 0;
-    border-bottom: 1px solid lightgray;
-    padding: 0.5rem 0;
+    /* margin: 0.5rem 0; */
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.5rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    border-block-end: 1px solid lightgray;
+    /* padding: 0.5rem 0; */
+    padding: 0.5rem;
     content-visibility: auto;
   }
   #end-info {

@@ -49,7 +49,6 @@ const html = $.html();
 
   <Comments />
 </div>
-
 <style is:global lang="less">
   input#show-en {
     accent-color: #383838;
@@ -64,13 +63,28 @@ const html = $.html();
   .page {
     article {
       margin-top: 1em;
-      // overflow-x: hidden;
+
+      [lang="en"] {
+        transition-property: opacity, transform, display;
+        transition-duration: 0.3s;
+        transition-behavior: allow-discrete;
+      }
     }
   }
+
+  @starting-style {
+    article [lang="en"] {
+      opacity: 0;
+      transform: translateY(-50%) scaleY(0);
+    }
+  }
+
   #show-en:not(:checked) {
     & ~ article {
       [lang="en"] {
         display: none;
+        opacity: 0;
+        transform: translateY(-50%) scaleY(0);
       }
     }
   }
