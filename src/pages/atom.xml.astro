@@ -1,0 +1,57 @@
+---
+export const partial = true;
+import { getBlogPosts } from "@/scripts/post";
+const posts = (await getBlogPosts()).filter((post) => post.data.draft !== true);
+let items = await Promise.all(
+  posts.map(async (post) => {
+    const url = new URL(Astro.site!);
+    url.pathname = post.slug;
+    let link = url.href;
+    if (!link.endsWith("/")) link += "/";
+    return {
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description,
+      link,
+      content: await post.render(),
+    };
+  })
+);
+items = items.sort((a, b) => {
+  return b.pubDate.valueOf() - a.pubDate.valueOf();
+});
+const result = items.map((post) => ({
+  start: `
+<item>
+<title>${post.title}</title>
+<link>${post.link}</link>
+<guid>${post.link}</guid>
+<description>${post.description}</description>
+<pubDate>${post.pubDate}</pubDate>
+<content:encoded><![CDATA[`,
+  content: post.content,
+}));
+
+const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>新世界的大门</title>
+    <description>因此幻想是世界，谁若懂得，谁就会歌唱</description>
+    <link>https://blog.xinshijiededa.men/</link>
+  </channel>
+  <language>zh-cn</language>
+`;
+const rssFooterXml = `</rss>`;
+---
+
+<Fragment set:html={rssHeaderXml} />
+{
+  result.map(({ start, content }) => (
+    <>
+      <Fragment set:html={start} />
+      <content.Content />
+      <Fragment set:html={`]]></content:encoded>`} />
+    </>
+  ))
+}
+<Fragment set:html={rssFooterXml} />
