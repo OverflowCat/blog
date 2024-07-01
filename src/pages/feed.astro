@@ -1,0 +1,62 @@
+---
+export const partial = true;
+import { getBlogPosts } from "@/scripts/post";
+
+const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>新世界的大门</title>
+<subtitle>因此幻想是世界，谁若懂得，谁就会歌唱</subtitle>
+<link href="https://blog.xinshijiededa.men/atom.xml" rel="self" />
+<link href="https://blog.xinshijiededa.men/" />
+<language>zh-CN</language>
+`;
+const rssFooterXml = `</feed>`;
+
+const posts = (await getBlogPosts()).filter((post) => post.data.draft !== true);
+let items = await Promise.all(
+  posts.map(async (post) => {
+    const url = new URL(Astro.site!);
+    url.pathname = post.slug;
+    let link = url.href;
+    if (!link.endsWith("/")) link += "/";
+    return {
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description ?? "",
+      link,
+      content: await post.render(),
+    };
+  })
+);
+items = items.sort((a, b) => {
+  return b.pubDate.valueOf() - a.pubDate.valueOf();
+});
+
+// id: Its content MUST be an IRI, as defined by [RFC3987].
+const result = items.map((post) => ({
+  start: `
+<entry>
+<title>${post.title}</title>
+<link href="${post.link}"></link>
+<id>${post.link}</id>
+<summary>${post.description}</summary>
+<published>${post.pubDate.toISOString()}</published>
+<updated>${post.pubDate.toISOString()}</updated>
+<generator href="https://astro.build">Astro</generator>
+<author><name>ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</name></author>
+<content type="xhtml"><![CDATA[`,
+  content: post.content,
+}));
+---
+
+<Fragment set:html={rssHeaderXml} />
+{
+  result.map(({ start, content }) => (
+    <>
+      <Fragment set:html={start} />
+      <content.Content />
+      <Fragment set:html={`]]></content></entry>`} />
+    </>
+  ))
+}
+<Fragment set:html={rssFooterXml} />

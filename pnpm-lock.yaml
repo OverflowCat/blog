@@ -13,10 +13,10 @@ importers:
         version: 0.1.20
       '@astro-community/astro-embed-youtube':
         specifier: ^0.5.2
-        version: 0.5.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))
+        version: 0.5.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))
       '@astrojs/mdx':
         specifier: ^3.1.2
-        version: 3.1.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))
+        version: 3.1.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))
       '@astrojs/prism':
         specifier: ^3.1.0
         version: 3.1.0
@@ -28,7 +28,7 @@ importers:
         version: 3.1.6
       '@astrojs/svelte':
         specifier: ^5.6.0
-        version: 5.6.0(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))(svelte@4.2.18)(typescript@5.5.2)(vite@5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6))
+        version: 5.6.0(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))(svelte@4.2.18)(typescript@5.5.3)(vite@5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6))
       '@fontsource/ibm-plex-mono':
         specifier: ^5.0.13
         version: 5.0.13
@@ -82,7 +82,7 @@ importers:
         version: 2.0.0-dev.26
       astro:
         specifier: ^4.11.3
-        version: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)
+        version: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
@@ -91,7 +91,7 @@ importers:
         version: 0.3.3
       astro-tweet:
         specifier: ^0.0.4
-        version: 0.0.4(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))
+        version: 0.0.4(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -166,8 +166,8 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0
       typescript:
-        specifier: ^5.5.2
-        version: 5.5.2
+        specifier: ^5.5.3
+        version: 5.5.3
       vite:
         specifier: ^5.3.2
         version: 5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)
@@ -3556,8 +3556,8 @@ packages:
   typescript-auto-import-cache@0.3.2:
     resolution: {integrity: sha512-+laqe5SFL1vN62FPOOJSUDTZxtgsoOXjneYOXIpx5rQ4UMiN89NAtJLpqLqyebv9fgQ/IMeeTX+mQyRnwvJzvg==}
 
-  typescript@5.5.2:
-    resolution: {integrity: sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==}
+  typescript@5.5.3:
+    resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -3976,18 +3976,18 @@ snapshots:
 
   '@arktype/util@0.0.51': {}
 
-  '@astro-community/astro-embed-youtube@0.5.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))':
+  '@astro-community/astro-embed-youtube@0.5.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))':
     dependencies:
-      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)
       lite-youtube-embed: 0.3.2
 
-  '@astrojs/check@0.2.1(typescript@5.5.2)':
+  '@astrojs/check@0.2.1(typescript@5.5.3)':
     dependencies:
-      '@astrojs/language-server': 2.7.4(typescript@5.5.2)
+      '@astrojs/language-server': 2.7.4(typescript@5.5.3)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
-      typescript: 5.5.2
+      typescript: 5.5.3
       yargs: 17.7.2
     transitivePeerDependencies:
       - prettier
@@ -3999,11 +3999,11 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.7.4(typescript@5.5.2)':
+  '@astrojs/language-server@2.7.4(typescript@5.5.3)':
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@volar/kit': 2.0.4(typescript@5.5.2)
+      '@volar/kit': 2.0.4(typescript@5.5.3)
       '@volar/language-core': 2.0.4
       '@volar/language-server': 2.0.4
       '@volar/language-service': 2.0.4
@@ -4043,12 +4043,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))':
+  '@astrojs/mdx@3.1.2(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.1
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.0
-      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -4079,13 +4079,13 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/svelte@5.6.0(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2))(svelte@4.2.18)(typescript@5.5.2)(vite@5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6))':
+  '@astrojs/svelte@5.6.0(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3))(svelte@4.2.18)(typescript@5.5.3)(vite@5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@4.2.18)(vite@5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6))
-      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)
       svelte: 4.2.18
-      svelte2tsx: 0.7.9(svelte@4.2.18)(typescript@5.5.2)
-      typescript: 5.5.2
+      svelte2tsx: 0.7.9(svelte@4.2.18)(typescript@5.5.3)
+      typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -4862,12 +4862,12 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@volar/kit@2.0.4(typescript@5.5.2)':
+  '@volar/kit@2.0.4(typescript@5.5.3)':
     dependencies:
       '@volar/language-service': 2.0.4
       '@volar/typescript': 2.0.4
       typesafe-path: 0.2.2
-      typescript: 5.5.2
+      typescript: 5.5.3
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
 
@@ -5022,18 +5022,18 @@ snapshots:
       marked-smartypants: 1.1.6(marked@12.0.1)
       ultrahtml: 1.5.3
 
-  astro-tweet@0.0.4(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)):
+  astro-tweet@0.0.4(astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)):
     dependencies:
-      '@astrojs/check': 0.2.1(typescript@5.5.2)
-      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2)
+      '@astrojs/check': 0.2.1(typescript@5.5.3)
+      astro: 4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3)
       clsx: 2.0.0
       date-fns: 2.30.0
-      typescript: 5.5.2
+      typescript: 5.5.3
     transitivePeerDependencies:
       - prettier
       - prettier-plugin-astro
 
-  astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.2):
+  astro@4.11.3(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)(typescript@5.5.3):
     dependencies:
       '@astrojs/compiler': 2.8.1
       '@astrojs/internal-helpers': 0.4.1
@@ -5088,7 +5088,7 @@ snapshots:
       shiki: 1.10.0
       string-width: 7.1.0
       strip-ansi: 7.1.0
-      tsconfck: 3.1.0(typescript@5.5.2)
+      tsconfck: 3.1.0(typescript@5.5.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
       vite: 5.3.2(@types/node@20.14.9)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.6)
@@ -8033,12 +8033,12 @@ snapshots:
     dependencies:
       svelte: 4.2.18
 
-  svelte2tsx@0.7.9(svelte@4.2.18)(typescript@5.5.2):
+  svelte2tsx@0.7.9(svelte@4.2.18)(typescript@5.5.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 4.2.18
-      typescript: 5.5.2
+      typescript: 5.5.3
 
   svelte@4.2.18:
     dependencies:
@@ -8100,9 +8100,9 @@ snapshots:
 
   trough@2.1.0: {}
 
-  tsconfck@3.1.0(typescript@5.5.2):
+  tsconfck@3.1.0(typescript@5.5.3):
     optionalDependencies:
-      typescript: 5.5.2
+      typescript: 5.5.3
 
   tslib@2.4.1: {}
 
@@ -8128,7 +8128,7 @@ snapshots:
     dependencies:
       semver: 7.6.2
 
-  typescript@5.5.2: {}
+  typescript@5.5.3: {}
 
   uc.micro@2.1.0: {}
 
