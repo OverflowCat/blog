@@ -36,7 +36,7 @@
     "@iconify-json/simple-icons": "^1.1.108",
     "@iconify-json/tabler": "^1.1.115",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "arktype": "2.0.0-dev.26",
+    "arktype": "2.0.0-dev.28",
     "astro": "^4.11.3",
     "astro-icon": "^1.1.0",
     "astro-remote": "^0.3.3",
