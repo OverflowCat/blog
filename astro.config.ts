@@ -66,12 +66,27 @@ const prettyCodeOptions = {
   },
   tokensMap: {},
 };
-
-// https://astro.build/config
-
+/* 
+// rss
+const moveAtom = () => {
+  return {
+    name: "move-atom-feed",
+    apply: "build",
+    buildEnd() {
+      // move ./dist/feed/index.html to ./dist/atom.xml
+      try {
+        fs.renameSync("./dist/feed/index.html", "./dist/atom.xml");
+      } catch (e) {
+        console.error("Moving atom.xml failed: ", e);
+      }
+    },
+  } as const;
+};
+ */
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.xinshijiededa.men",
+  // redirects: { "/atom.xml": "/feed" },
   vite: {
     css: {
       preprocessorOptions: {},

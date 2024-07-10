@@ -1,0 +1,9 @@
+---
+export interface Props {
+  callback: (result: string) => string;
+}
+const s = await Astro.slots.render("default");
+const html = Astro.props.callback(s);
+---
+
+<Fragment set:html={html} />

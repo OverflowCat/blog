@@ -1,0 +1,83 @@
+---
+export const partial = true;
+import SlotRenderer from "@/components/SlotRenderer.astro";
+import { getBlogPosts } from "@/scripts/post";
+
+const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="zh-CN" xmlns="http://www.w3.org/2005/Atom">
+<title>新世界的大门</title>
+<subtitle>因此幻想是世界，谁若懂得，谁就会歌唱</subtitle>
+<id>https://blog.xinshijiededa.men/</id>
+<updated>${new Date().toISOString()}</updated>
+<link href="https://blog.xinshijiededa.men/atom.xml" rel="self" />
+<link href="https://blog.xinshijiededa.men/" />
+<generator uri="https://astro.build" version="${Astro.generator.split(" ").at(-1)}">Astro</generator>
+`;
+const rssFooterXml = `</feed>`;
+
+const posts = (await getBlogPosts()).filter((post) => post.data.draft !== true);
+let items = await Promise.all(
+  posts.map(async (post) => {
+    const url = new URL(Astro.site!);
+    url.pathname = post.slug;
+    let link = url.href;
+    if (!link.endsWith("/")) link += "/";
+    return {
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description ?? "",
+      link,
+      content: await post.render(),
+    };
+  })
+);
+items = items.sort((a, b) => {
+  return b.pubDate.valueOf() - a.pubDate.valueOf();
+});
+
+// id: Its content MUST be an IRI, as defined by [RFC3987].
+const result = items.map((post) => ({
+  start: `
+<entry>
+<title>${post.title}</title>
+<link href="${post.link}"></link>
+<link rel="self" href="https://blog.xinshijiededa.men/atom.xml"></link>
+<id>${post.link}</id>
+<summary>${post.description || "by 新世界的大门"}</summary>
+<published>${post.pubDate.toISOString()}</published>
+<updated>${post.pubDate.toISOString()}</updated>
+<author><name>ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</name></author>
+<content type="html">`,
+  content: post.content,
+  link: post.link,
+}));
+
+function xhtmlify(html: string, link: string): string {
+  const url_relative_base = link.split("/").slice(0, -1).join("/");
+  html = html.replaceAll("src=&quot;./", `src="${url_relative_base}/`);
+  html = html.replaceAll("src=&quot;/", `src="https://blog.xinshijiededa.men/`);
+  // This page contains the following errors:
+  // error on line 20 at column 51: Specification mandates value for attribute data-astro-cid-m7ys62bo
+  html = html.replace(/ data-astro-cid-[a-z0-9]+/g, (match) => {
+    return match.replace(/^ data-astro-cid/, " data-a") + '=""';
+  });
+  html = '<div id="atom-xml-wrapper">' + html + "</div>";
+  html = html.replaceAll("&", "&amp;");
+  html = html.replaceAll("<", "&lt;");
+  return html.toWellFormed(); // requires Node.js 20.0.0+
+}
+---
+
+<Fragment set:html={rssHeaderXml} />
+{
+  result.map(({ start, content, link }) => (
+    <>
+      <Fragment set:html={start} />
+      <SlotRenderer callback={(s) => xhtmlify(s, link)}>
+        <content.Content />
+      </SlotRenderer>
+      <Fragment set:html={`</content></entry>`} />
+    </>
+  ))
+}
+<Fragment set:html={rssFooterXml} />

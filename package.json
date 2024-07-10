@@ -1,13 +1,16 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "new": "node cli/write.js",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node cli/atom.js",
     "preview": "astro preview",
     "bump": "npm-check-updates -u",
     "astro": "astro"
@@ -33,11 +36,11 @@
     "@iconify-json/mdi": "^1.1.67",
     "@iconify-json/ph": "^1.1.13",
     "@iconify-json/ri": "^1.1.21",
-    "@iconify-json/simple-icons": "^1.1.107",
-    "@iconify-json/tabler": "^1.1.115",
+    "@iconify-json/simple-icons": "^1.1.109",
+    "@iconify-json/tabler": "^1.1.117",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "arktype": "2.0.0-dev.26",
-    "astro": "^4.11.3",
+    "arktype": "2.0.0-dev.29",
+    "astro": "^4.11.5",
     "astro-icon": "^1.1.0",
     "astro-remote": "^0.3.3",
     "astro-tweet": "^0.0.4",
@@ -60,14 +63,14 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.1",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.20",
     "rehype-pretty-code": "^0.13.2",
-    "rollup": "^4.18.0",
-    "sass": "^1.77.6",
-    "shiki": "^1.10.0",
-    "typescript": "^5.5.2",
-    "vite": "^5.3.2"
+    "rollup": "^4.18.1",
+    "sass": "^1.77.7",
+    "shiki": "^1.10.3",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3"
   }
 }
