@@ -37,11 +37,11 @@ items = items.sort((a, b) => {
 
 // id: Its content MUST be an IRI, as defined by [RFC3987].
 const result = items.map((post) => ({
+  // TODO: atom:rights
   start: `
 <entry>
 <title>${post.title}</title>
 <link href="${post.link}"></link>
-<link rel="self" href="https://blog.xinshijiededa.men/atom.xml"></link>
 <id>${post.link}</id>
 <summary>${post.description || "by 新世界的大门"}</summary>
 <published>${post.pubDate.toISOString()}</published>
