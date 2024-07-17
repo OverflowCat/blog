@@ -1,0 +1,44 @@
+---
+import { getAllComments } from "@/scripts/comments";
+const comments = await getAllComments();
+const segmenter = new Intl.Segmenter();
+function truncate(str: string, length: number) {
+  const iter = segmenter.segment(str);
+  const graphemes = [];
+  for (const { segment } of iter) {
+    graphemes.push(segment);
+    if (graphemes.length >= length) break;
+  }
+  let res = graphemes.join("");
+  if (graphemes.length < str.length) {
+    res += "…";
+  }
+  return res;
+}
+---
+
+<ul>
+  {
+    comments.slice(0, 7).map((comment) => (
+      <li>
+        <strong>{comment.name}</strong> 在
+        <date>
+          {comment.date.getMonth() + 1} 月 {comment.date.getDate()} 日
+        </date>
+        说：
+        {truncate(comment.message, 20)}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0.5em;
+  }
+  date {
+    color: #333;
+    font-style: italic;
+  }
+</style>

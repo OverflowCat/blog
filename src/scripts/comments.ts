@@ -1,7 +1,9 @@
 import { fstat } from "fs";
 import { parse } from "yaml";
 import fs from "fs";
+import { readFile } from "fs/promises";
 import { type } from "arktype";
+import recursiveReaddirFiles from "recursive-readdir-files";
 
 export const CheckComment = type({
   id: "string",
@@ -18,8 +20,12 @@ export const CheckComment = type({
 
 export type CheckedComment = typeof CheckComment.infer;
 
+function readCommentFromSlug(path: string) {
+  return readComment(`comments/${path}`);
+}
+
 function readComment(path: string) {
-  const text = fs.readFileSync(`comments/${path}`, {
+  const text = fs.readFileSync(path, {
     encoding: "utf-8",
   });
   const parsed = parse(text);
@@ -32,7 +38,7 @@ function readComment(path: string) {
   return out;
 }
 
-const getYamlFiles = (slug: string) => {
+const getYamlFilesBySlug = (slug: string) => {
   if (!fs.existsSync(`comments/${slug}/`)) {
     return [];
   }
@@ -48,8 +54,21 @@ const getYamlFiles = (slug: string) => {
 };
 
 export const getComments = (slug: string) =>
-  getYamlFiles(slug)
-    .map(readComment)
+  getYamlFilesBySlug(slug)
+    .map(readCommentFromSlug)
     .sort((a, b) => {
       return a.date.getTime() - b.date.getTime();
     });
+
+export async function getAllComments() {
+  const yamlFiles = await recursiveReaddirFiles("comments", {
+    include: /\.ya?ml$/,
+  });
+  return yamlFiles
+    .map((f) => f.path)
+    .filter((p) => p.endsWith(".yaml") || p.endsWith(".yml"))
+    .map(readComment)
+    .toSorted(
+      (a, b) => (b.date as Date).getTime() - (a.date as Date).getTime(),
+    );
+}

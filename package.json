@@ -39,7 +39,7 @@
     "@iconify-json/simple-icons": "^1.1.109",
     "@iconify-json/tabler": "^1.1.117",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "arktype": "2.0.0-dev.29",
+    "arktype": "2.0.0-beta.0",
     "astro": "^4.11.5",
     "astro-icon": "^1.1.0",
     "astro-remote": "^0.3.3",
@@ -52,6 +52,7 @@
     "less": "^4.2.0",
     "markdown-it": "^14.1.0",
     "prismjs": "^1.29.0",
+    "recursive-readdir-files": "^2.3.1",
     "rehype-external-links": "^3.0.0",
     "rehype-mathjax": "^6.0.0",
     "remark-math": "^6.0.0",
@@ -63,14 +64,14 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.1",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.20",
     "rehype-pretty-code": "^0.13.2",
     "rollup": "^4.18.1",
-    "sass": "^1.77.7",
+    "sass": "^1.77.8",
     "shiki": "^1.10.3",
     "typescript": "^5.5.3",
-    "vite": "^5.3.3"
+    "vite": "^5.3.4"
   }
 }
