@@ -25,6 +25,9 @@ import remarkRuby from "remark-ruby";
 // @ts-ignore
 import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflash/remark-figure-caption";
 
+// Atomic CSS
+import UnoCSS from "unocss/astro";
+
 type PrettyCodeNodePositionPoint = {
   line: number;
   column: number;
@@ -66,7 +69,7 @@ const prettyCodeOptions = {
   },
   tokensMap: {},
 };
-/* 
+/*
 // rss
 const moveAtom = () => {
   return {
@@ -126,5 +129,5 @@ export default defineConfig({
       [rehypePrettyCode, prettyCodeOptions],
     ],
   },
-  integrations: [icon(), svelte(), mdx(), sitemap()],
+  integrations: [icon(), UnoCSS(), svelte(), mdx(), sitemap()],
 });

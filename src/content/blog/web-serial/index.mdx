@@ -9,7 +9,18 @@ category: ["页面仔的自我修养"]
 description: 不懂体系结构，但计算机处处是前端
 ---
 
-<figure>
+<style>@media (min-width: 1605px) \{
+  aside \{
+    position: fixed;
+    right: 1rem;
+    top: 16rem;
+  \}
+  .tweet \{
+    justify-content: center;
+  \}
+\}</style>
+<aside class="lg:float-right lg:ms-4" style="margin-block-start: -1em; margin-block-end: -1em;">
+<figure class="lg:inline-block">
   <img
     src="/aigc/fe-architecture.webp"
     alt="A satirical cartoon depicting a frontend developer, who is unfamiliar with computer architecture, thinking that everything in a computer is related to frontend development."
@@ -18,10 +29,13 @@ description: 不懂体系结构，但计算机处处是前端
   />
   <figcaption>不懂体系结构，但计算机处处是前端</figcaption>
 </figure>
+</aside>
 
 import Tweet from "astro-tweet";
 
+<div class="flex tweet" data-tweet-id="1809085263110365233">
 <Tweet id="1809085263110365233" />
+</div>
 
 这几天调试压力传感器，发现 Web Serial API 着实很简单，惟需注意以下几点：
 

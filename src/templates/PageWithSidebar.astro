@@ -25,7 +25,7 @@ Astro.locals.noscript = true;
   <main>
     <Sidebar />
     <Paper transitionName="main">
-      <section class="contents">
+      <section class="inhalt">
         <slot />
       </section>
     </Paper>
@@ -39,7 +39,7 @@ Astro.locals.noscript = true;
     justify-content: center;
     gap: 16px;
   }
-  .contents {
+  .inhalt {
     max-inline-size: 850px;
     inline-size: 100%;
     padding: 0 20px;
@@ -61,7 +61,7 @@ Astro.locals.noscript = true;
   }
 
   @container html (min-inline-size: 900px) {
-    .contents {
+    .inhalt {
       min-inline-size: 700px !important;
     }
     main {
@@ -75,7 +75,7 @@ Astro.locals.noscript = true;
   }
 
   @media (min-width: 900px) {
-    .contents {
+    .inhalt {
       min-inline-size: 700px;
     }
     main {
