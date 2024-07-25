@@ -1,0 +1,11 @@
+@media (min-width: 1605px) {
+  aside {
+    position: fixed;
+    right   : 1rem;
+    top     : 16rem;
+  }
+
+  .tweet {
+    justify-content: center;
+  }
+}

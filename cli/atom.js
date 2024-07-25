@@ -1,7 +1,14 @@
 import fs from "fs";
+try {
+  fs.rmSync("./dist/atom.xml", { recursive: true });
+} catch (_) {}
+try {
+  fs.rmSync("./dist/atom.xml");
+} catch (_) {}
 
 try {
-  fs.renameSync("./dist/feed/index.html", "./dist/atom.xml");
+  fs.mkdirSync("./dist/atom.xml");
+  fs.renameSync("./dist/feed/index.html", "./dist/atom.xml/index.xml");
 } catch (e) {
   console.error("Moving atom.xml failed: ", e);
 }
