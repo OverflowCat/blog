@@ -36,10 +36,10 @@
     "@iconify-json/mdi": "^1.1.67",
     "@iconify-json/ph": "^1.1.13",
     "@iconify-json/ri": "^1.1.21",
-    "@iconify-json/simple-icons": "^1.1.109",
+    "@iconify-json/simple-icons": "^1.1.110",
     "@iconify-json/tabler": "^1.1.118",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "arktype": "2.0.0-beta.1",
+    "arktype": "2.0.0-beta.2",
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
     "astro-remote": "^0.3.3",
@@ -63,16 +63,16 @@
     "yaml": "^2.5.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "^14.1.1",
-    "@types/node": "^20.14.12",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.0.0",
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^16.14.20",
     "rehype-pretty-code": "^0.13.2",
-    "rollup": "^4.19.0",
+    "rollup": "^4.19.1",
     "sass": "^1.77.8",
-    "shiki": "^1.11.1",
+    "shiki": "^1.12.0",
     "typescript": "^5.5.4",
-    "unocss": "^0.61.5",
-    "vite": "^5.3.4"
+    "unocss": "^0.61.6",
+    "vite": "^5.3.5"
   }
 }
