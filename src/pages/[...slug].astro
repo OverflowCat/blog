@@ -3,17 +3,30 @@ import type { CollectionEntry } from "astro:content";
 import Page from "@/templates/zh/Page.astro";
 import { toSupportedImage } from "@/scripts/open-graph";
 import { getBlogPosts } from "@/scripts/post";
+import SlotRenderer from "@/components/SlotRenderer.astro";
+
+const OPENCC_SCHEME = "s2twp.json";
+// @ts-ignore
+import * as OpenCC from "opencc-js";
+const cc = OpenCC.Converter({ from: "cn", to: "twp" }) as (s: string) => string;
 
 export async function getStaticPaths() {
-  const posts = await getBlogPosts();
-  return posts.map((post) => ({
+  const posts = (await getBlogPosts()).map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
+  const hantPosts = posts.map((post) => ({
+    params: { slug: post.params.slug + "/hant" },
+    props: post.props,
+  }));
+  return [...posts, ...hantPosts];
 }
 
 export type Props = CollectionEntry<"blog">;
 const post = Astro.props;
+const slug = Astro.params.slug;
+const isHant = slug.endsWith("/hant");
+console.log(slug, isHant);
 let Content; //  = (() => <p>渲染失败</p>)()
 try {
   Content = (await post.render()).Content;
@@ -26,6 +39,7 @@ let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
+
 const metas: { [key: string]: string } = post.data.categories?.includes(
   "Tonsky"
 )
@@ -50,5 +64,18 @@ Astro.locals.noscript = post.data.noscript;
   metas={metas}
   source={`https://github.com/OverflowCat/blog/blob/src/src/content/blog/${post.id}?plain=1`}
 >
-  <Content />
-</Page>
+  {
+    isHant ? (
+      <SlotRenderer
+        callback={(s) => {
+          const res = cc(s);
+          return res;
+        }}
+      >
+        <Content />
+      </SlotRenderer>
+    ) : (
+      <Content />
+    )
+  }</Page
+>

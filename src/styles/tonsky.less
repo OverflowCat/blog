@@ -72,14 +72,50 @@ html {
     U+2264-2265, U+2500-259F, U+25CA, U+2713, U+274C, U+2B0E-2B11;
 }
 
+@font-face {
+  font-family: "IBM Plex Sans TC";
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans TC";
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2")
+    format("woff2");
+  font-weight: 450;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans TC";
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Medium.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans TC";
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   font: 18px/1.5 "IBM Plex Sans", "Noto Sans CJK SC", "Pingfang SC", sans-serif;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  // article > [lang^="zh"] {
-  //   font: 20px/1.68 "IBM Plex Sans", "Noto Sans CJK SC", sans-serif;
-  // }
+
+  [lang="zh-Hant"],
+  [lang="zh-TW"],
+  [lang="zh-HK"] {
+    font-family: "IBM Plex Sans", "IBM Plex Sans TC", "Noto Sans",
+      "Noto Sans CJK TC", "HarmonyOS Sans TC", sans-serif !important;
+  }
 }
 
 .content > blockquote[lang="en"] {
@@ -238,7 +274,7 @@ h1 {
   font-size: 1.82em;
   text-align: left;
 
-  &[lang="zh"] {
+  &[lang^="zh"] {
     margin-bottom: 0.1em;
   }
 
@@ -261,7 +297,7 @@ h2 {
     margin: 0.8em 0 -0.8em 0;
   }
 
-  &[lang="zh"] {
+  &[lang^="zh"] {
     margin: 0.7em 0 0.4em 0;
   }
 }

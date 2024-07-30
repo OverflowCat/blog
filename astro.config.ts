@@ -90,6 +90,10 @@ const moveAtom = () => {
 export default defineConfig({
   site: "https://blog.xinshijiededa.men",
   // redirects: { "/atom.xml": "/feed" },
+  trailingSlash: "never",
+  build: {
+    format: "preserve",
+  },
   vite: {
     css: {
       preprocessorOptions: {},

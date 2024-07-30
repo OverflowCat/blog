@@ -113,6 +113,9 @@ importers:
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
+      opencc-js:
+        specifier: ^1.0.5
+        version: 1.0.5
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -3067,6 +3070,9 @@ packages:
   onetime@6.0.0:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
+
+  opencc-js@1.0.5:
+    resolution: {integrity: sha512-LD+1SoNnZdlRwtYTjnQdFrSVCAaYpuDqL5CkmOaHOkKoKh7mFxUicLTRVNLU5C+Jmi1vXQ3QL4jWdgSaa4sKjg==}
 
   ora@8.0.1:
     resolution: {integrity: sha512-ANIvzobt1rls2BDny5fWZ3ZVKyD6nscLvfFRpQgfWsythlcsVUC9kL0zq6j2Z5z9wwp1kd7wpsD/T9qNPVLCaQ==}
@@ -7836,6 +7842,8 @@ snapshots:
   onetime@6.0.0:
     dependencies:
       mimic-fn: 4.0.0
+
+  opencc-js@1.0.5: {}
 
   ora@8.0.1:
     dependencies:
