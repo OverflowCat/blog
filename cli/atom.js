@@ -8,7 +8,7 @@ try {
 
 try {
   fs.mkdirSync("./dist/atom.xml");
-  fs.renameSync("./dist/feed.html", "./dist/atom.xml/index.xml");
+  fs.renameSync("./dist/feed/index.html", "./dist/atom.xml/index.xml");
 } catch (e) {
   console.error("Moving atom.xml failed: ", e);
 }

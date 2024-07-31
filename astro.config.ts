@@ -16,6 +16,9 @@ import sitemap from "@astrojs/sitemap";
 // math
 import remarkMath from "remark-math";
 import rehypeMathRenderer from "rehype-mathjax/chtml";
+// import rehypeTypst from "@myriaddreamin/rehype-typst";
+
+// code
 import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
@@ -86,13 +89,23 @@ const moveAtom = () => {
   } as const;
 };
  */
+
+const rehypeMath = [
+  rehypeMathRenderer,
+  {
+    chtml: {
+      fontURL:
+        "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
+    },
+  },
+]
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.xinshijiededa.men",
   // redirects: { "/atom.xml": "/feed" },
-  trailingSlash: "never",
   build: {
-    format: "preserve",
+    // format: "preserve",
   },
   vite: {
     css: {
@@ -113,15 +126,9 @@ export default defineConfig({
     rehypePlugins: [
       // TODO
       // @ts-ignore
-      [
-        rehypeMathRenderer,
-        {
-          chtml: {
-            fontURL:
-              "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
-          },
-        },
-      ],
+      // rehypeMath,
+      // rehypeTypst,
+      rehypeMath,
       [
         rehypeExternalLinks,
         {

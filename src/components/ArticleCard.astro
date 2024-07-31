@@ -39,7 +39,7 @@ const { post } = Astro.props;
         {post.data.description}
         {
           post.data.description && (
-            <a class="continue" href={`/${post.slug}/`}>
+            <a class="continue" href={`/${post.slug}`}>
               阅读更多 →
             </a>
           )
