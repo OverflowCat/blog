@@ -100,7 +100,7 @@ const rehypeMath = [
         "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
     },
   },
-]
+];
 
 // https://astro.build/config
 export default defineConfig({
@@ -141,6 +141,9 @@ export default defineConfig({
       // @ts-ignore
       [rehypePrettyCode, prettyCodeOptions],
     ],
+  },
+  experimental: {
+    contentCollectionCache: true,
   },
   integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap()],
 });
