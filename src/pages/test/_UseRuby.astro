@@ -1,0 +1,86 @@
+---
+export type Unit = {
+  kanji: string;
+  furigana?: string;
+  okurigana?: string;
+  kaeriten?: string;
+  punctuation?: string;
+};
+export type Props = {
+  nextFurigana: boolean;
+  unit: Unit;
+};
+const { unit, nextFurigana } = Astro.props;
+const { kanji } = unit;
+const Element = unit.furigana ? "ruby" : "span";
+const KanjiElement = unit.furigana ? "rb" : "span";
+let classList: Record<string, boolean> = {
+  unit: true,
+  "has-okurigana": !!unit.okurigana,
+  // "has-only-1-furigana": furigana?.length === 1,
+  // "has-less-than-3-furigana": furigana?.length < 3,
+  // "has-furigana": !!furigana,
+  "next-unit-has-furigana": nextFurigana,
+};
+
+if (unit.furigana) {
+  classList["has-furigana"] = true;
+  if (unit.furigana.length === 1) {
+    classList["has-only-1-furigana"] = true;
+  } else if (unit.furigana.length < 3) {
+    classList["has-less-than-3-furigana"] = true;
+  }
+}
+
+function getPunctuationClassName(punctuation: string) {
+  switch (punctuation) {
+    case "〻":
+      return "ninojiten";
+    case "―":
+      return "dash";
+    case "…":
+      return "ellipsis";
+    case "「":
+    case "」":
+    case "『":
+    case "』":
+      return "right-corner-bracket";
+    default:
+      return "";
+  }
+}
+---
+
+<Element class:list={classList}>
+  <KanjiElement class="kanji" set:html={kanji} />
+  {unit.furigana && <rt class="furigana">{unit.furigana}</rt>}
+  {
+    unit.okurigana && (
+      <span class="kunten okurigana">
+        <sup set:html={unit.okurigana} />
+      </span>
+    )
+  }
+  {
+    unit.kaeriten && (
+      <span
+        class={
+          unit.kaeriten.length === 1
+            ? "kunten kaeriten"
+            : "kunten kaeriten ichiten"
+        }
+      >
+        <sub>{unit.kaeriten}</sub>
+      </span>
+    )
+  }
+  {
+    unit.punctuation && (
+      <span
+        class={`kunten punctuation ${getPunctuationClassName(unit.punctuation)}`}
+      >
+        {unit.punctuation === "〻" ? <sup>〻</sup> : unit.punctuation}
+      </span>
+    )
+  }
+</Element>
