@@ -16,7 +16,9 @@ import sitemap from "@astrojs/sitemap";
 // math
 import remarkMath from "remark-math";
 import rehypeMathRenderer from "rehype-mathjax/chtml";
-// import rehypeTypst from "@myriaddreamin/rehype-typst";
+
+// typst
+import { typst } from "astro-typst";
 
 // code
 import rehypePrettyCode from "rehype-pretty-code";
@@ -140,5 +142,5 @@ export default defineConfig({
       [rehypePrettyCode, prettyCodeOptions],
     ],
   },
-  integrations: [icon(), UnoCSS(), svelte(), mdx(), sitemap()],
+  integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap()],
 });
