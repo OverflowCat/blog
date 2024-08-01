@@ -93,8 +93,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(astro@4.13.0(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4))
       astro-typst:
-        specifier: ^0.2.4
-        version: 0.2.4(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4)
+        specifier: ^0.2.6
+        version: 0.2.6(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -1303,8 +1303,8 @@ packages:
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
 
-  astro-typst@0.2.4:
-    resolution: {integrity: sha512-tGgfWMc/YQ0EtfGPwTlVUecchJ4U5G3SbDNSF9liiWL0md34pswECXn69JXpsls4Zw2+d0yrD+7fl/DV2uABWg==}
+  astro-typst@0.2.6:
+    resolution: {integrity: sha512-0CYknnBVMSiswMhAMKa3sFslCYdwGfzyLzjS1HF8rvneSEZys+2XUlV0Hd/27lhu22cS1y5/pRTdUILUYfCT6Q==}
 
   astro@4.13.0:
     resolution: {integrity: sha512-tExzJeK1rh7OdVipi1e8S6koVgjQyveSy5fNEc/4Tit4GKl/olMTUEHepZSAKR7VCyiEC/hi3rjaV3t4lxR3tA==}
@@ -4848,7 +4848,7 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  astro-typst@0.2.4(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4):
+  astro-typst@0.2.6(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.0-rc6
       astro: 4.13.0(@types/node@22.0.2)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4)

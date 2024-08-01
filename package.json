@@ -44,7 +44,7 @@
     "astro-icon": "^1.1.0",
     "astro-remote": "^0.3.3",
     "astro-tweet": "^0.0.4",
-    "astro-typst": "^0.2.4",
+    "astro-typst": "^0.2.6",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
     "gridsome-remark-figure-caption": "^1.2.2",
