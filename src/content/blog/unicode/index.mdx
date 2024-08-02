@@ -20,6 +20,7 @@ noscript: true
 import Plane from "./_plane.astro";
 import Loud from "./_loud.astro";
 import Code from './_code.astro';
+import Replacement from "./_replacement.astro";
 import "@/styles/prism/modern-make-yellow.css";
 import Img from "./_img.astro";
 import { Icon } from "astro-icon/components";
@@ -304,27 +305,27 @@ And a couple of important consequences:
 - You CAN’T get a substring by cutting at arbitrary byte offsets. You might cut off part of the character.
 - 你**不能**通过在任意字节偏移处切割来获取子字符串。你可能会切掉字符的一部分。
 
-Those who do will eventually meet this bad boy: �
+Those who do will eventually meet this bad boy: <Replacement />
 
-试图这样做的人最终会遇到这个坏小子：�
+试图这样做的人最终会遇到这个坏小子：<Replacement />
 
-## What’s �?
+## What’s <Replacement />?
 
-## � 是什么？
+## <Replacement /> 是什么？
 
 `U+FFFD`, the Replacement Character, is simply another code point in the Unicode table. Apps and libraries can use it when they detect Unicode errors.
 
 `U+FFFD`，<dfn>替换字符</dfn>，只是 Unicode 表中的另一个码位。当应用程序和库检测到 Unicode 错误时，它们可以使用它。
 
-If you cut half of the code point off, there’s not much left to do with the other half, except displaying an error. That’s when � is used.
+If you cut half of the code point off, there’s not much left to do with the other half, except displaying an error. That’s when <Replacement /> is used.
 
-如果你切掉了码位的一半，那就没有什么其他办法，只能显示错误了。这就是使用 � 的时候。
+如果你切掉了码位的一半，那就没有什么其他办法，只能显示错误了。这就是使用 <Replacement /> 的时候。
 
 <Code
   lang="js"
   code={`var bytes = "Аналитика".getBytes("UTF-8");
 var partial = Arrays.copyOfRange(bytes, 0, 11);
-new String(partial, "UTF-8"); // => "Анал�"`}
+new String(partial, "UTF-8"); // => "Анал${String.fromCharCode(65533)}"`}
 />
 
 ## Wouldn’t UTF-32 be easier for everything?

@@ -248,11 +248,16 @@ function manjuify(str: string) {
     margin: 8px;
     padding: 4px;
     padding-top: 12px;
+    .line:not(:last-child) {
+      border-block-end: 2px solid #dadada;
+      padding-block-end: 12px;
+    }
   }
   .line {
     line-height: 160%;
     margin-block-start: 0.85em;
     margin-block-end: 0.85em;
+    box-sizing: content-box;
   }
   div[lang^="m"] span:hover {
     font-weight: bold;

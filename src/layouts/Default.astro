@@ -28,20 +28,27 @@ import "@/styles/form.less";
   </Paper>
 </section>
 
-<style lang="less" is:global is:inline>
+<style is:global is:inline>
   :root {
     color-scheme: light;
   }
+
   .paper {
     margin: auto;
     overflow-x: hidden;
     resize: horizontal;
-  }
 
-  .resizable {
     inline-size: 1024px;
     max-inline-size: calc(100vi - 2em);
-    min-inline-size: 480px;
+    min-inline-size: 380px;
+  }
+
+  @media (max-width: 480px) {
+    .resizable {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 100%;
+    }
   }
 
   section#comments {

@@ -18,34 +18,39 @@
   let height = "500px";
 </script>
 
-{#if load}
-  <div class="bili">
-    <iframe {height} class="bili" title="哔哩哔哩视频" {src} />
-  </div>
-{:else}
-  <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-  <img
-    role="button"
-    aria-label="点击即从哔哩哔哩加载视频"
-    title="点击即从哔哩哔哩加载视频"
-    class="bili-cover"
-    tabindex="0"
-    aria-pressed="false"
-    on:click={load_vid}
-    on:keypress={load_vid}
-    src={thumbnail}
-    alt="{av} 视频封面"
-    bind:this={img}
-  />
-  视频 <code>AV{av}</code> / <code>{bv}</code>：
-  <button on:click={load_vid}>从哔哩哔哩加载</button>
-  <a href="https://www.bilibili.com/video/{bv}">去哔哩哔哩观看</a>
-  <small
-    >也可以点击视频封面加载视频。注意哔哩哔哩弹幕网可能会收集您的信息，这与本站无关。在阁下进行操作前，网页不会与哔哩哔哩弹幕网建立连接。</small
-  >
-{/if}
+<div class="bilicontainer">
+  {#if load}
+    <div class="bili">
+      <iframe {height} class="bili" title="哔哩哔哩视频" {src} />
+    </div>
+  {:else}
+    <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+    <img
+      role="button"
+      aria-label="点击即从哔哩哔哩加载视频"
+      title="点击即从哔哩哔哩加载视频"
+      class="bili-cover"
+      tabindex="0"
+      aria-pressed="false"
+      on:click={load_vid}
+      on:keypress={load_vid}
+      src={thumbnail}
+      alt="{av} 视频封面"
+      bind:this={img}
+    />
+    视频 <code>AV{av}</code> / <code>{bv}</code>：
+    <button on:click={load_vid}>从哔哩哔哩加载</button>
+    <a href="https://www.bilibili.com/video/{bv}">去哔哩哔哩观看</a>
+    <small
+      >也可以点击视频封面加载视频。注意哔哩哔哩弹幕网可能会收集您的信息，这与本站无关。在阁下进行操作前，网页不会与哔哩哔哩弹幕网建立连接。</small
+    >
+  {/if}
+</div>
 
 <style>
+  .bilicontainer {
+    max-width: min(95%, 90vw);
+  }
   div.bili {
     max-width: 900px;
     max-height: 700px;

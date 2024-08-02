@@ -114,8 +114,8 @@ export default defineConfig({
       preprocessorOptions: {},
     },
     ssr: {
-      external: ["prismjs"],
-      noExternal: ["modern-css-reset", "xp.css", "98.css"],
+      external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
+      noExternal: ["modern-css-reset", "xp.css", "98.css", "astro-typst"],
     },
   },
   markdown: {
