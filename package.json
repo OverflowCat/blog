@@ -38,6 +38,7 @@
     "@iconify-json/ri": "^1.1.21",
     "@iconify-json/simple-icons": "^1.1.111",
     "@iconify-json/tabler": "^1.1.118",
+    "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc6",
     "@myriaddreamin/typst.ts": "^0.4.1",
     "arktype": "2.0.0-beta.2",
     "astro": "^4.13.1",
