@@ -20,11 +20,13 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Install Noto fonts
+        run: sudo apt-get install -y fonts-noto-cjk-extra
       - name: Install, build, and upload my site
         uses: withastro/action@v2
         with:
           # path: . # The root location of your Astro project inside the repository. (optional)
-          node-version: 21 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
+          node-version: 22 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
           package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
   deploy:

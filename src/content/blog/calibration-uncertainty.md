@@ -7,6 +7,7 @@ hide_cover: true
 noscript: true
 licence: CcByNc
 layout: "@/layouts/Default.astro"
+resizable: false
 tags: ["误差理论"]
 ---
 

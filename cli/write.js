@@ -11,7 +11,7 @@ const title = args[0];
 const content = `---
 title: ${title}
 date: ${new Date().toISOString()}
-cover:
+photo:
 noscript: false
 licence: false
 layout: "@/layouts/Default.astro"

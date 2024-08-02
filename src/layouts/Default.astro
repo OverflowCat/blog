@@ -8,25 +8,8 @@ import Common from "./Common.astro";
 const { frontmatter } = Astro.props;
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
+const classes = frontmatter.resizable !== false ? ["resizable"] : [];
 ---
-
-<Bar theme="light" lang="zh-Hans" />
-<Paper
-  transitionName="main"
-  padding={true}
-  paper={frontmatter.paper !== false}
-  classes={["resizable"]}
->
-  <Common frontmatter={frontmatter}>
-    <slot />
-  </Common>
-</Paper>
-
-<section id="comments">
-  <Paper padding={true} paper={true} classes={["resizable"]}>
-    <Comments />
-  </Paper>
-</section>
 
 <style is:global is:inline>
   :root {
@@ -35,12 +18,16 @@ import "@/styles/form.less";
 
   .paper {
     margin: auto;
-    overflow-x: hidden;
-    resize: horizontal;
-
     inline-size: 1024px;
     max-inline-size: calc(100vi - 2em);
     min-inline-size: 380px;
+  }
+  .resizable {
+    resize: horizontal;
+    overflow-x: hidden;
+  }
+  .paper:not(.resizable) {
+    overflow-x: auto;
   }
 
   @media (max-width: 480px) {
@@ -55,3 +42,21 @@ import "@/styles/form.less";
     margin-block: 1em;
   }
 </style>
+
+<Bar theme="light" lang="zh-Hans" />
+<Paper
+  transitionName="main"
+  padding={true}
+  paper={frontmatter.paper !== false}
+  classes={classes}
+>
+  <Common frontmatter={frontmatter}>
+    <slot />
+  </Common>
+</Paper>
+
+<section id="comments">
+  <Paper padding={true} paper={true} classes={classes}>
+    <Comments />
+  </Paper>
+</section>

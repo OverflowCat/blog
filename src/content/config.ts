@@ -37,6 +37,7 @@ const blogCollection = defineCollection({
         z.undefined(),
       ]),
       paper: z.boolean().optional(),
+      resizable: z.boolean().optional(),
     }),
 });
 
