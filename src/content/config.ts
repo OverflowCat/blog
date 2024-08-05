@@ -12,7 +12,20 @@ const blogCollection = defineCollection({
 		z.object({
 			title: z.string(),
 			tags: z.optional(z.union([z.string(), z.array(z.string())])),
-			photo: z.string().optional(), // photo: image().optional(),
+			photo: z
+				.string()
+				.refine((x) => !/ /.test(x))
+				.optional()
+				.or(
+					z.object({
+						src: z.string().refine((x) => !/ /.test(x)),
+						alt: z.string().optional(),
+						aspect: z.string().refine((x) => {
+							const [x1, x2] = x.split(":").map(Number);
+							return x1 > 0 && x2 > 0;
+						}),
+					}),
+				),
 			figcaption: z.string().optional(),
 			date: z.date(),
 			draft: z.boolean().optional(), // TODO: remove this

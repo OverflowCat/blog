@@ -8,9 +8,6 @@ export interface OpenGraphData {
 
 export type PathToSupportedImage = `${string}.${"png" | "jpg" | "jpeg"}`;
 export function toSupportedImage(s: string): PathToSupportedImage {
-  if (/ /.test(s)) {
-    s = s.split(" ")[0]
-  }
   if (!(s.endsWith(".png") || s.endsWith(".jpg") || s.endsWith(".jpeg")))
     console.warn("Unsupported image format");
   return s as PathToSupportedImage;

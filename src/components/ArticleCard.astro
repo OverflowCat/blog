@@ -61,19 +61,31 @@ const { post } = Astro.props;
           <img
             class="title-img"
             loading="lazy"
-            transition:name={crc32base(post.data.photo)}
+            transition:name={crc32base(
+              typeof post.data.photo === "string"
+                ? post.data.photo
+                : post.data.photo?.src,
+            )}
             height={
-              post.data.photo.split(" ").length > 1
-                ? post.data.photo.split(" ")[1].split(":")[1]
+              typeof post.data.photo !== "string"
+                ? post.data.photo.aspect.split(":")[0]
                 : ""
             }
             width={
-              post.data.photo.split(" ").length > 1
-                ? post.data.photo.split(" ")[1].split(":")[0]
+              typeof post.data.photo !== "string"
+                ? post.data.photo.aspect.split(":")[1]
                 : ""
             }
-            src={post.data.photo.split(" ")[0]}
-            alt={post.data.title}
+            src={
+              typeof post.data.photo === "string"
+                ? post.data.photo
+                : post.data.photo?.src
+            }
+            alt={
+              typeof post.data.photo !== "string" && post.data.photo.alt
+                ? post.data.photo.alt
+                : post.data.title
+            }
           />
         </td>
       )

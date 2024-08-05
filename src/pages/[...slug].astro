@@ -8,6 +8,7 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 const OPENCC_SCHEME = "s2twp.json";
 // @ts-ignore
 import * as OpenCC from "opencc-js";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 const cc = OpenCC.Converter({ from: "cn", to: "twp" }) as (s: string) => string;
 
 export async function getStaticPaths() {
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
     props: post,
   }));
   const hantPosts = posts.map((post) => ({
-    params: { slug: post.params.slug + "/hant/" },
+    params: { slug: `${post.params.slug}/hant/` },
     props: post.props,
   }));
   return [...posts, ...hantPosts];
@@ -27,7 +28,7 @@ const post = Astro.props;
 const slug = Astro.params.slug;
 const isHant = slug.endsWith("/hant") || slug.endsWith("/hant/");
 console.log(slug, isHant);
-let Content; //  = (() => <p>渲染失败</p>)()
+let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
 try {
   Content = (await post.render()).Content;
 } catch (e) {
@@ -41,7 +42,7 @@ if (post.data.categories?.includes("译文")) {
 }
 
 const metas: { [key: string]: string } = post.data.categories?.includes(
-  "Tonsky"
+  "Tonsky",
 )
   ? {
       viewport: "width=640",
@@ -58,7 +59,13 @@ Astro.locals.noscript = post.data.noscript;
   og={{
     title,
     description: post.data.description ?? "新世界的大门",
-    image: post.data.photo ? toSupportedImage(post.data.photo) : undefined,
+    image: post.data.photo
+      ? toSupportedImage(
+          typeof post.data.photo === "string"
+            ? post.data.photo
+            : post.data.photo.src,
+        )
+      : undefined,
     url: `https://blog.xinshijiededa.men/${post.slug}`,
   }}
   metas={metas}

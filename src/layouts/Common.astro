@@ -11,9 +11,7 @@ export interface Props {
 }
 const { frontmatter } = Astro.props;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
-if (cover && cover.split(" ").length > 1) {
-  cover = cover.split(" ")[0];
-}
+if (cover?.src) cover = cover.src;
 let licence = frontmatter.licence;
 if (licence === undefined) {
   licence = "CcByNc";
