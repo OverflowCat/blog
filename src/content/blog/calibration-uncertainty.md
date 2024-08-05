@@ -8,6 +8,7 @@ noscript: true
 licence: CcByNc
 layout: "@/layouts/Default.astro"
 resizable: false
+hant: false
 tags: ["误差理论"]
 ---
 

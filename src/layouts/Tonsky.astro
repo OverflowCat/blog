@@ -8,6 +8,7 @@ import "@/styles/han.less";
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import Bar from "@/templates/Bar.astro";
+import Han from "@/components/Han.astro";
 import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
@@ -19,12 +20,14 @@ import "@fontsource/ibm-plex-sans/latin-600.css";
 import "@fontsource/ibm-plex-sans/latin-400-italic.css";
 import "@fontsource/ibm-plex-sans-kr";
 
+const HANS = "&#x6C49;&#35821;";
+
 const slug = Astro.url.pathname;
 const zhLocale = slug.endsWith("/hant") ? "zh-Hant" : "zh-Hans";
 
-let $ = cheerio.load(await Astro.slots.render("default"));
+const $ = cheerio.load(await Astro.slots.render("default"));
 $(
-  "li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead"
+  "li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead",
 ).each(function () {
   if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
   const text = $(this).text();
@@ -39,7 +42,7 @@ const html = $.html();
 <div class="page">
   <!-- {cover && <img src={cover} alt={frontmatter.title} />} -->
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
-  <label for="show-en" class="btn">Show English</label>
+  <label for="show-en" class="btn">双语</label>
   <input type="checkbox" id="show-en" />
   /
   <Languages
@@ -48,6 +51,7 @@ const html = $.html();
     langs={frontmatter.langs}
     classList={["tonsky"]}
   />
+  <Han float={false} hans={HANS} hant="漢語" />
   <article class="content" set:html={html} />
 
   <Comments />

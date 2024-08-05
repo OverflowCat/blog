@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Han from "@/components/Han.astro";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
 import { crc32base } from "@/scripts/serendipity";
@@ -53,6 +54,7 @@ import "@/styles/article.less";
     />
   )
 }
+{frontmatter.hant !== false && <Han float={true} />}
 <div class="info">
   <div>
     <span class="icon">
@@ -123,6 +125,7 @@ import "@/styles/article.less";
       color: #151515;
       text-decoration: none;
       border: none;
+      padding: 4px;
       margin-block: 3px;
       margin-inline: 6px;
       margin-inline: 5px;

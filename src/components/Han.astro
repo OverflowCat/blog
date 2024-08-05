@@ -1,0 +1,65 @@
+---
+export type Props = {
+    float?: boolean;
+    hans?: string;
+    hant?: string;
+};
+let { float, hans, hant } = Astro.props;
+if (float === undefined) float = true;
+if (hans === undefined) hans = "&#x6C49;";
+if (hant === undefined) hant = "漢";
+---
+
+<div id="han-cc" class:list={[{ float }]}>
+    {
+        Astro.url.pathname.endsWith("/hant") ? (
+            <a href={"./"}>
+                <span id="han-from" set:html={hant + " →"} />
+                <span id="han-to" set:html={hans} />
+            </a>
+        ) : Astro.url.pathname.endsWith("/hant/") ? (
+            <a href={"../"}>
+                <span id="han-from" set:html={hant + " →"} />
+                <span id="han-to" set:html={hans} />
+            </a>
+        ) : (
+            <a href={"./hant"}>
+                <span id="han-from" set:html={hans + " →"} />
+                <span id="han-to" set:html={hant} />
+            </a>
+        )
+    }
+</div>
+<style lang="less">
+    #han-cc {
+        a {
+            transition: color 0.1s;
+        }
+        #han-from {
+            display: none;
+        }
+        &:hover {
+            color: #ececec;
+            background-color: #666;
+            #han-from {
+                display: inline;
+            }
+        }
+        &.float {
+            padding: 4px;
+            border: #333;
+            border-radius: 3px;
+            font-size: 1.15em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            a {
+                text-decoration: none;
+                color: #a2a2a2;
+            }
+        }
+        &:not(.float) {
+            display: inline;
+        }
+    }
+</style>

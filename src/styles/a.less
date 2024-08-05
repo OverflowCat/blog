@@ -1,4 +1,4 @@
-article#post > :not(div),
+article#post> :not(div),
 #comments {
   a {
     border-bottom: 2px solid var(--link-underline-color);
@@ -7,6 +7,7 @@ article#post > :not(div),
     outline: 0;
     text-decoration: none;
     overflow-wrap: break-word;
+
     &:hover {
       border-bottom-color: var(--link-underline-hover-color);
       color: var(--link-hover-color);
@@ -26,5 +27,34 @@ article#post > :not(div),
         "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
         "Arial", sans-serif;
     }
+  }
+}
+
+a[href^="#"] {
+  display: none;
+  border: none !important;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /*
+  position: relative;
+  &:hover a[href^="#"] {
+    display: flex;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: -20px;
+  }
+  */
+  &:hover a[href^="#"] {
+    display: inline;
+    margin-inline-start: 0.25em;
   }
 }

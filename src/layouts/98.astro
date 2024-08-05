@@ -7,8 +7,8 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import Bar from "@/templates/Bar.astro";
-let headings: Heading[] = Astro.props.headings;
-let { frontmatter } = Astro.props;
+const headings: Heading[] = Astro.props.headings;
+const { frontmatter } = Astro.props;
 import { genTocTree, renderTree, type Heading } from "@/components/98/98.ts";
 import Window from "@/components/98/Window.astro";
 /*
