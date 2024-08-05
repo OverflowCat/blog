@@ -30,7 +30,7 @@ function rdmHan() {
 }
 
 export function hanUuid(length = 4, useCommon = true) {
-    let generator = useCommon ? rdmCommonHan : rdmHan;
+    const generator = useCommon ? rdmCommonHan : rdmHan;
     let uuid = "";
     for (let i = 0; i < length; i++) {
         uuid += generator();

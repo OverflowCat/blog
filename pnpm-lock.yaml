@@ -77,6 +77,9 @@ importers:
       '@iconify-json/tabler':
         specifier: ^1.1.119
         version: 1.1.119
+      '@myriaddreamin/rehype-typst':
+        specifier: 0.5.0-rc6
+        version: 0.5.0-rc6
       '@myriaddreamin/typst-ts-node-compiler':
         specifier: 0.5.0-rc6
         version: 0.5.0-rc6
@@ -162,9 +165,15 @@ importers:
       '@biomejs/biome':
         specifier: ^1.8.3
         version: 1.8.3
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/node':
         specifier: ^22.1.0
         version: 22.1.0
@@ -969,6 +978,9 @@ packages:
 
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
+
+  '@myriaddreamin/rehype-typst@0.5.0-rc6':
+    resolution: {integrity: sha512-L613cStwJN/WvFXCe1IuFjR6iiDS4kDA6x3Abs6wH5fmouwhKFSQ2/yiSNC+Xsblh3GpORja+uVemRjF9M3QaA==}
 
   '@myriaddreamin/typst-ts-node-compiler-android-arm-eabi@0.5.0-rc6':
     resolution: {integrity: sha512-iRIHbIzDt2sCPCYcOC57ayGFh6jUpibKxoQeoWCd0OlPu0fFSCVs2GuLCFb6BswQoEtgWNF2nVTUpPalmZ0DQQ==}
@@ -2029,6 +2041,9 @@ packages:
 
   hast-util-from-dom@5.0.0:
     resolution: {integrity: sha512-d6235voAp/XR3Hh5uy7aGLbM3S4KamdW0WEgOaU1YoewnuYw4HXb5eRtv9g65m/RFGEfUY1Mw4UqCc5Y8L4Stg==}
+
+  hast-util-from-html-isomorphic@2.0.0:
+    resolution: {integrity: sha512-zJfpXq44yff2hmE0XmwEOzdWin5xwH+QIhMLOScpX91e/NSGPsAzNCvLQDIEPyO2TXi+lBmU6hjLIhV8MwP2kw==}
 
   hast-util-from-html@2.0.1:
     resolution: {integrity: sha512-RXQBLMl9kjKVNkJTIO6bZyb2n+cUH8LFaSSzo82jiLT6Tfc+Pt7VQCS+/h3YwG4jaNE2TA2sdJisGWR+aJrp0g==}
@@ -4461,6 +4476,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@myriaddreamin/rehype-typst@0.5.0-rc6':
+    dependencies:
+      '@myriaddreamin/typst-ts-node-compiler': 0.5.0-rc6
+      '@types/hast': 3.0.4
+      '@types/katex': 0.16.7
+      hast-util-from-html-isomorphic: 2.0.0
+      hast-util-to-text: 4.0.2
+      https-proxy-agent: 7.0.5
+      unist-util-visit-parents: 6.0.1
+      vfile: 6.0.2
+    transitivePeerDependencies:
+      - supports-color
+
   '@myriaddreamin/typst-ts-node-compiler-android-arm-eabi@0.5.0-rc6':
     optional: true
 
@@ -5703,6 +5731,13 @@ snapshots:
       '@types/hast': 3.0.4
       hastscript: 8.0.0
       web-namespaces: 2.0.1
+
+  hast-util-from-html-isomorphic@2.0.0:
+    dependencies:
+      '@types/hast': 3.0.4
+      hast-util-from-dom: 5.0.0
+      hast-util-from-html: 2.0.1
+      unist-util-remove-position: 5.0.0
 
   hast-util-from-html@2.0.1:
     dependencies:

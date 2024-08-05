@@ -4,7 +4,7 @@ date: 2022-12-16T22:16:47.000Z
 categories: 动态列表
 tags:
 - 数学
-mathjax: true
+math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true
 ---

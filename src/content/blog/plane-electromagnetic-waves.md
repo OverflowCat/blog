@@ -17,7 +17,7 @@ icon: "ri:camera-lens-line"
 # icon: "tabler:building-bridge"
 layout: "@/layouts/Default.astro"
 noscript: true
-mathjax: true
+math: mathjax
 licence: CcByNc
 ---
 

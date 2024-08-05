@@ -5,7 +5,7 @@ photo: https://user-images.githubusercontent.com/20166026/244607878-b6545089-178
 date: 2023-06-09 13:04:03
 categories: 光学
 tags: 备忘
-mathjax: true
+math: mathjax
 # icon: microscope-lens
 layout: "@/layouts/Default.astro"
 noscript: false

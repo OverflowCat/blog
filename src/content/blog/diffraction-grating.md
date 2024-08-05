@@ -4,7 +4,7 @@ description: 光栅是刻有平行等宽、等距狭缝的平面玻璃或金属�
 date: 2022-12-26 01:49:21
 categories: 光学
 tags: 备忘
-mathjax: true
+math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true
 ---

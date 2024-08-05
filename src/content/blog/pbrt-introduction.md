@@ -3,7 +3,7 @@ title: PBRT 笔记：1. 绪论
 date: 2023-01-15 03:33:40
 tags: 光线追踪
 categories: 读书笔记
-mathjax: true
+math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true
 ---

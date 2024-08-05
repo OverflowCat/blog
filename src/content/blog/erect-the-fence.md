@@ -8,7 +8,7 @@ tags:
 categories:
 - 题解
 - Selected
-mathjax: true
+math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true
 ---

@@ -9,7 +9,6 @@ categories:
 tags:
   - "Astro"
 icon: "simple-icons:astro"
-mathjax: false
 layout: "@/layouts/Default.astro"
 noscript: true
 ---
@@ -53,7 +52,7 @@ Astro 并没有一套状态管理方法。绑定的变量值只在渲染阶段�
 
 是的，除了 Astro 的内置组件，你可以自由地使用 Svelte、React、Vue、Solid、Qwik、Lit、Preact、Alpine 的组件作为框架！若要跨框架放置内容，也可通过 `<slot>{:html}` 来传递。既然是静态站点，那么选择不自己再造一套状态管理的轮子这种务实的做法很让我喜欢。
 
-更重要的是 [MDX](https://mdxjs.com/) 的 integration，即可以在 Markdown 中导入以上这些组件，和文本混排。MDX 和 `remark` / `rehype` 组件，作为文档型站点的核心，是受到 Astro 官方的支持的，有 e2e test 保证可靠性。MDX 虽然是 HTML 语法，但的确算是很符合我需求的（真正的）模板系统了。行内组件，只要你不写，就不会有多余的空格；块级的组件在起始标记之后和闭合标记之前各空一行，即可又在其中嵌套 Markdown。虽然 `import{:js}` 语句之类的缺少语法高亮和编辑器补全，但相比于能实现相同功能的 MediaWiki 那一套，我觉得已经足够简单易用了。 
+更重要的是 [MDX](https://mdxjs.com/) 的 integration，即可以在 Markdown 中导入以上这些组件，和文本混排。MDX 和 `remark` / `rehype` 组件，作为文档型站点的核心，是受到 Astro 官方的支持的，有 e2e test 保证可靠性。MDX 虽然是 HTML 语法，但的确算是很符合我需求的（真正的）模板系统了。行内组件，只要你不写，就不会有多余的空格；块级的组件在起始标记之后和闭合标记之前各空一行，即可又在其中嵌套 Markdown。虽然 `import{:js}` 语句之类的缺少语法高亮和编辑器补全，但相比于能实现相同功能的 MediaWiki 那一套，我觉得已经足够简单易用了。
 
 ## 路由
 

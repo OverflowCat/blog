@@ -3,8 +3,10 @@ import { defineConfig } from "astro/config";
 // astro
 
 // heading ids
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
-import rehypeAutolinkHeadings, { type Options } from "rehype-autolink-headings";
+import {
+	rehypeHeadingIds,
+} from "@astrojs/markdown-remark";
+import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 
 // icon
 import icon from "astro-icon";
@@ -20,9 +22,7 @@ import sitemap from "@astrojs/sitemap";
 
 // math
 import remarkMath from "remark-math";
-import rehypeMathRenderer from "rehype-mathjax/chtml";
-
-// typst
+import rehypeMultiMath from "./src/scripts/rehype/math.ts";
 import { typst } from "astro-typst";
 
 // code
@@ -80,33 +80,6 @@ const prettyCodeOptions = {
 	},
 	tokensMap: {},
 };
-/*
-// rss
-const moveAtom = () => {
-  return {
-    name: "move-atom-feed",
-    apply: "build",
-    buildEnd() {
-      // move ./dist/feed/index.html to ./dist/atom.xml
-      try {
-        fs.renameSync("./dist/feed/index.html", "./dist/atom.xml");
-      } catch (e) {
-        console.error("Moving atom.xml failed: ", e);
-      }
-    },
-  } as const;
-};
- */
-
-const rehypeMath = [
-	rehypeMathRenderer,
-	{
-		chtml: {
-			fontURL:
-				"https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
-		},
-	},
-];
 
 // https://astro.build/config
 export default defineConfig({
@@ -145,25 +118,8 @@ export default defineConfig({
 			 * before any plugins that rely on it:
 			 */
 			rehypeHeadingIds,
-			[
-				rehypeAutolinkHeadings,
-				{
-          content: [
-            {
-              type: "element",
-              tagName: "span",
-              properties: { className: ["anchor"] },
-              children: [{ type: "text", value: "#" }],
-            },
-          ],
-					behavior: "append",
-				} satisfies Options,
-			],
-			// TODO
-			// @ts-ignore
-			// rehypeMath,
-			// rehypeTypst,
-			rehypeMath,
+			rehypeAutolinkHeadings,
+			rehypeMultiMath,
 			[
 				rehypeExternalLinks,
 				{

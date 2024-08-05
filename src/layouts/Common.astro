@@ -7,7 +7,7 @@ import { crc32base } from "@/scripts/serendipity";
 
 // import "@/styles/snowy.css";
 export interface Props {
-  frontmatter: BlogPost["data"];
+  frontmatter: Frontmatter;
 }
 const { frontmatter } = Astro.props;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;

@@ -8,22 +8,24 @@ let { float, hans, hant } = Astro.props;
 if (float === undefined) float = true;
 if (hans === undefined) hans = "&#x6C49;";
 if (hant === undefined) hant = "漢";
+
+const p = Astro.url.pathname;
 ---
 
 <div id="han-cc" class:list={[{ float }]}>
     {
-        Astro.url.pathname.endsWith("/hant") ? (
+        p.endsWith("/hant") ? (
             <a href={"./"}>
                 <span id="han-from" set:html={hant + " →"} />
                 <span id="han-to" set:html={hans} />
             </a>
-        ) : Astro.url.pathname.endsWith("/hant/") ? (
+        ) : p.endsWith("/hant/") ? (
             <a href={"../"}>
                 <span id="han-from" set:html={hant + " →"} />
                 <span id="han-to" set:html={hans} />
             </a>
         ) : (
-            <a href={"./hant"}>
+            <a href={p.endsWith("/") ? "./hant" : p + "/hant"}>
                 <span id="han-from" set:html={hans + " →"} />
                 <span id="han-to" set:html={hant} />
             </a>

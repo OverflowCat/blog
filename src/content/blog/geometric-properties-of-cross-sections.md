@@ -3,7 +3,7 @@ title: 截面的几何性质
 date: 2022-11-19 16:59:30
 tags: 笔记
 categories: 材料力学
-mathjax: true
+math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true
 ---
