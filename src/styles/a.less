@@ -30,31 +30,34 @@ article#post> :not(div),
   }
 }
 
-a[href^="#"] {
-  display: none;
-  border: none !important;
-}
+article#post {
 
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  /*
-  position: relative;
-  &:hover a[href^="#"] {
-    display: flex;
-    position: absolute;
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: -20px;
+  a[href^="#"] {
+    display: none;
+    border: none !important;
   }
-  */
-  &:hover a[href^="#"] {
-    display: inline;
-    margin-inline-start: 0.25em;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+
+    /*
+    position: relative;
+    &:hover a[href^="#"] {
+      display: flex;
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: -20px;
+      }
+      */
+    &:hover a[href^="#"] {
+      display: inline;
+      margin-inline-start: 0.25em;
+    }
   }
 }
