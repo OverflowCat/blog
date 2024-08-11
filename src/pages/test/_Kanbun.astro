@@ -63,10 +63,10 @@ const punctuationStr = "〻―・、，。…「」『』";
 
 function isKana(str: string) {
   if (str === "・") return false; // ・ is in the katakana block but treated as punctuation here
-  let code = str.charCodeAt(0);
-  if (parseInt("3040", 16) <= code && code <= parseInt("30FF", 16)) return true; // Hiragana & Katakana
-  if (parseInt("31F0", 16) <= code && code <= parseInt("31FF", 16)) return true; // Katakana Phonetic Extensions
-  if (parseInt("FF66", 16) <= code && code <= parseInt("FF9F", 16)) return true; // Halfwidth Katakana
+  const code = str.charCodeAt(0);
+  if (0x3040 <= code && code <= 0x30FF) return true; // Hiragana & Katakana
+  if (0x31F0 <= code && code <= 0x31FF) return true; // Katakana Phonetic Extensions
+  if (0xFF66 <= code && code <= 0xFF9F) return true; // Halfwidth Katakana
   return false;
 }
 
@@ -76,13 +76,11 @@ function replaceBetween(
   right: string,
   from: string | RegExp,
   to: string,
-  condition = function (s: any) {
-    return true;
-  }
+  condition = (s: any) => true
 ) {
   return str
     .split(left)
-    .map(function (s) {
+    .map((s) => {
       if (!s.includes(right)) return s;
       const _s = s.split(right);
       _s[0] = left + _s[0] + right;
@@ -93,8 +91,7 @@ function replaceBetween(
 }
 
 function toUnits(str: string) {
-  console.log({ str });
-  let arr = [...str];
+  const arr = [...str];
   for (let i = 0, lastBracketIndex = -1; i < arr.length; i++) {
     if (leftBrackets.includes(arr[i])) lastBracketIndex = i;
     if (lastBracketIndex === -1) {
@@ -116,7 +113,7 @@ function toUnits(str: string) {
   console.info({ str });
   // “⌊感⌋{ジテハ}[レ]”“⌊時⌋{ニ}”“⌊花⌋{ニモ}” => ["⌊感⌋{ジテハ}[レ]", "⌊時⌋{ニ}", "⌊花⌋{ニモ}"]
   // extract all units without “ and ”
-  let parts = [];
+  const parts = [];
   const reg = /“(.+?)”/g;
   let match;
   while ((match = reg.exec(str))) {

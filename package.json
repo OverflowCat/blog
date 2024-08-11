@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "private": true,
   "engines": {
     "node": ">=22"
@@ -10,10 +10,15 @@
     "new": "node cli/write.js",
     "dev": "astro dev",
     "start": "astro dev",
+    "s": "astro dev",
     "build": "astro build && node cli/atom.js",
+    "b": "astro build && node cli/atom.js",
+    "bf": "astro build -- --force && node cli/atom.js",
     "preview": "astro preview",
+    "v": "astro preview",
     "bump": "npm-check-updates -u",
-    "astro": "astro"
+    "astro": "astro",
+    "a": "astro"
   },
   "dependencies": {
     "98.css": "^0.1.20",

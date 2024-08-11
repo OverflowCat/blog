@@ -2,6 +2,7 @@
 export const partial = true;
 import SlotRenderer from "@/components/SlotRenderer.astro";
 import { getBlogPosts } from "@/scripts/post";
+import { load } from "cheerio";
 
 const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xml:lang="zh-CN" xmlns="http://www.w3.org/2005/Atom">
@@ -13,11 +14,12 @@ const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 <link href="https://blog.xinshijiededa.men/" />
 <generator uri="https://astro.build" version="${Astro.generator.split(" ").at(-1)}">Astro</generator>
 `;
-const rssFooterXml = `</feed>`;
+const rssFooterXml = "</feed>";
 
 const posts = (await getBlogPosts()).filter((post) => post.data.draft !== true);
 let items = await Promise.all(
   posts.map(async (post) => {
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const url = new URL(Astro.site!);
     url.pathname = post.slug;
     let link = url.href;
@@ -29,7 +31,7 @@ let items = await Promise.all(
       link,
       content: await post.render(),
     };
-  })
+  }),
 );
 items = items.sort((a, b) => {
   return b.pubDate.valueOf() - a.pubDate.valueOf();
@@ -52,19 +54,31 @@ const result = items.map((post) => ({
   link: post.link,
 }));
 
-function xhtmlify(html: string, link: string): string {
+function xhtmlify(s: string, link: string): string {
   const url_relative_base = link.split("/").slice(0, -1).join("/");
-  html = html.replaceAll("src=&quot;./", `src="${url_relative_base}/`);
+  let html = s.replaceAll("src=&quot;./", `src="${url_relative_base}/`);
   html = html.replaceAll("src=&quot;/", `src="https://blog.xinshijiededa.men/`);
   // This page contains the following errors:
   // error on line 20 at column 51: Specification mandates value for attribute data-astro-cid-m7ys62bo
   html = html.replace(/ data-astro-cid-[a-z0-9]+/g, (match) => {
+    // biome-ignore lint/style/useTemplate: <explanation>
     return match.replace(/^ data-astro-cid/, " data-a") + '=""';
   });
-  html = '<div id="atom-xml-wrapper">' + html + "</div>";
+  html = html.toWellFormed(); // requires Node.js 20.0.0+
+  const $ = load(html);
+  $('nav').remove();
+  $('footer').remove();
+  $('style').remove();
+  $('section#comments').remove();
+  $("svg.typst-doc path").remove();
+  const body = $("body").html();
+  if (body === null) {
+    throw new Error("html === null");
+  }
+  html = `<div id="atom-xml-wrapper">${body}</div>`;
   html = html.replaceAll("&", "&amp;");
   html = html.replaceAll("<", "&lt;");
-  return html.toWellFormed(); // requires Node.js 20.0.0+
+  return html;
 }
 ---
 

@@ -8,8 +8,9 @@
     So don't expect it to always produce the same output.
 */
 export function cyrb53a(str: string, seed = 0) {
-    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
-    for (let i = 0, ch; i < str.length; i++) {
+    let h1 = 0xdeadbeef ^ seed;
+    let h2 = 0x41c6ce57 ^ seed;
+    for (let i = 0, ch: number; i < str.length; i++) {
         ch = str.charCodeAt(i);
         h1 = Math.imul(h1 ^ ch, 0x85ebca77);
         h2 = Math.imul(h2 ^ ch, 0xc2b2ae3d);
@@ -22,6 +23,6 @@ export function cyrb53a(str: string, seed = 0) {
 
 export function shortUuid(base?: number) {
     let uuid = crypto.randomUUID().split("-").at(-1)!;
-    if (base) uuid = parseInt(uuid, 16).toString(base);
+    if (base) uuid = Number.parseInt(uuid, 16).toString(base);
     return uuid;
 }
