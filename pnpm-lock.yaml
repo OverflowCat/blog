@@ -12,8 +12,8 @@ importers:
         specifier: ^0.1.20
         version: 0.1.20
       '@astro-community/astro-embed-youtube':
-        specifier: ^0.5.2
-        version: 0.5.2(astro@4.13.1(@types/node@22.1.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4))
+        specifier: ^0.5.3
+        version: 0.5.3(astro@4.13.1(@types/node@22.1.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4))
       '@astrojs/markdown-remark':
         specifier: ^5.2.0
         version: 5.2.0
@@ -229,8 +229,8 @@ packages:
   '@asamuzakjp/dom-selector@2.0.2':
     resolution: {integrity: sha512-x1KXOatwofR6ZAYzXRBL5wrdV0vwNxlTCK9NCuLqAzQYARqGcvFwiJA6A1ERuh+dgeA4Dxm3JBYictIes+SqUQ==}
 
-  '@astro-community/astro-embed-youtube@0.5.2':
-    resolution: {integrity: sha512-cckWcq7mFCmI6uPpIlRolSafSQRYZBOaxIc8DaCUh8+JQAtPF7O4EdpRpZBUcvbARrWEEyHJCWrt0XOGppMniw==}
+  '@astro-community/astro-embed-youtube@0.5.3':
+    resolution: {integrity: sha512-O06Y6XwhDM5e72Hl/n3qgl7jDSrJpqTSTurFZZ7RQypJQzfyhlWgc99f0REdAtZSnLkq7069HfuMX4CzcaOdkg==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
 
@@ -2418,8 +2418,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  lite-youtube-embed@0.3.2:
-    resolution: {integrity: sha512-b1dgKyF4PHhinonmr3PB172Nj0qQgA/7DE9EmeIXHR1ksnFEC2olWjNJyJGdsN2cleKHRjjsmrziKlwXtPlmLQ==}
+  lite-youtube-embed@0.3.3:
+    resolution: {integrity: sha512-gFfVVnj6NRjxVfJKo3qoLtpi0v5mn3AcR4eKD45wrxQuxzveFJUb+7Cr6uV6n+DjO8X3p0UzPPquhGt0H/y+NA==}
 
   load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
@@ -3732,10 +3732,10 @@ snapshots:
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
 
-  '@astro-community/astro-embed-youtube@0.5.2(astro@4.13.1(@types/node@22.1.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4))':
+  '@astro-community/astro-embed-youtube@0.5.3(astro@4.13.1(@types/node@22.1.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4))':
     dependencies:
       astro: 4.13.1(@types/node@22.1.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)(typescript@5.5.4)
-      lite-youtube-embed: 0.3.2
+      lite-youtube-embed: 0.3.3
 
   '@astrojs/check@0.2.1(typescript@5.5.4)':
     dependencies:
@@ -6171,7 +6171,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  lite-youtube-embed@0.3.2: {}
+  lite-youtube-embed@0.3.3: {}
 
   load-tsconfig@0.2.5: {}
 
