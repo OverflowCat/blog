@@ -2,7 +2,7 @@
 export type Props = {
     float?: boolean;
     hans?: string;
-    hant?: string;
+    hant?: string | false;
 };
 let { float, hans, hant } = Astro.props;
 if (float === undefined) float = true;
@@ -10,29 +10,57 @@ if (hans === undefined) hans = "&#x6C49;";
 if (hant === undefined) hant = "漢";
 
 const p = Astro.url.pathname;
+
+import { Icon } from "astro-icon/components";
 ---
 
-<div id="han-cc" class:list={[{ float }]}>
+<div id="han-float" class:list={[{ float }, "flex", "flex-row"]}>
     {
-        p.endsWith("/hant") ? (
-            <a href={"./"}>
-                <span id="han-from" set:html={hant + " →"} />
-                <span id="han-to" set:html={hans} />
-            </a>
-        ) : p.endsWith("/hant/") ? (
-            <a href={"../"}>
-                <span id="han-from" set:html={hant + " →"} />
-                <span id="han-to" set:html={hans} />
-            </a>
-        ) : (
-            <a href={p.endsWith("/") ? "./hant" : p + "/hant"}>
-                <span id="han-from" set:html={hans + " →"} />
-                <span id="han-to" set:html={hant} />
-            </a>
+        hant !== false && (
+            <div id="han-cc" class="inline">
+                {p.endsWith("/hant") ? (
+                    <a href={"./"}>
+                        <span id="han-from" set:html={hant + " →"} />
+                        <span id="han-to" set:html={hans} />
+                    </a>
+                ) : p.endsWith("/hant/") ? (
+                    <a href={"../"}>
+                        <span id="han-from" set:html={hant + " →"} />
+                        <span id="han-to" set:html={hans} />
+                    </a>
+                ) : (
+                    <a href={p.endsWith("/") ? "./hant" : p + "/hant"}>
+                        <span id="han-from" set:html={hans + " →"} />
+                        <span id="han-to" set:html={hant} />
+                    </a>
+                )}
+            </div>
         )
     }
+    <div id="veho" class="inline-flex flex-row">
+        <a href="#vert">
+            <Icon name="fluent:text-direction-vertical-24-filled" />
+        </a>
+        <a href="#">
+            <Icon name="fluent:text-direction-horizontal-ltr-24-filled" />
+        </a>
+    </div>
 </div>
 <style lang="less">
+    #han-float {
+        &.float {
+            padding: 4px;
+            border: #333;
+            border-radius: 3px;
+            font-size: 1.15em;
+            position: absolute;
+            inset-block-start: 10px;
+            inset-inline-end: 10px;
+        }
+        &:not(.float) {
+            display: inline;
+        }
+    }
     #han-cc {
         a {
             transition: color 0.1s;
@@ -41,27 +69,34 @@ const p = Astro.url.pathname;
             display: none;
         }
         &:hover {
-            color: #ececec;
-            background-color: #666;
             #han-from {
                 display: inline;
             }
         }
-        &.float {
-            padding: 4px;
-            border: #333;
-            border-radius: 3px;
-            font-size: 1.15em;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            a {
-                text-decoration: none;
-                color: #a2a2a2;
-            }
+    }
+    a {
+        display: inline-flex;
+        block-size: 100%;
+        text-decoration: none;
+        color: var(--text, #a2a2a2);
+        align-items: center;
+        justify-content: center;
+    }
+    #han-cc,
+    a {
+        padding-inline-start: 4px;
+        padding-inline-end: 4px;
+        border-radius: 2px;
+        &:hover {
+            filter: invert(1);
         }
-        &:not(.float) {
-            display: inline;
+    }
+</style>
+<style is:global>
+    #vert:target {
+        writing-mode: vertical-rl;
+        [aria-hidden="true"] {
+            display: none !important;
         }
     }
 </style>

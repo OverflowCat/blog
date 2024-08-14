@@ -1,7 +1,7 @@
 article#post> :not(div),
 #comments {
   a {
-    border-bottom: 2px solid var(--link-underline-color);
+    border-block-end: 2px solid var(--link-underline-color);
     color: var(--link-color);
     cursor: pointer;
     outline: 0;
@@ -9,12 +9,12 @@ article#post> :not(div),
     overflow-wrap: break-word;
 
     &:hover {
-      border-bottom-color: var(--link-underline-hover-color);
+      border-block-end-color: var(--link-underline-hover-color);
       color: var(--link-hover-color);
     }
 
     &:has(> img) {
-      border-bottom: 0;
+      border: 0;
       color: inherit;
     }
 

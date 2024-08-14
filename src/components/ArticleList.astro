@@ -17,7 +17,7 @@ export interface Props {
 }
 
 let posts = (await getBlogPosts()).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 const { type, name, simple, title, bar } = Astro.props;
@@ -28,7 +28,8 @@ if (type && name) {
   posts = posts.filter((post) => {
     if (type === "tag") {
       return post.data.tags?.includes(name);
-    } else if (type === "category") {
+    }
+    if (type === "category") {
       return post.data.categories?.includes(name);
     }
     return false;
@@ -36,9 +37,9 @@ if (type && name) {
 }
 
 let prev_year = 0;
-let _posts = posts.map((post) => {
+const _posts = posts.map((post) => {
   const year = post.data.date.getFullYear();
-  let isAnotherYear = year !== prev_year;
+  const isAnotherYear = year !== prev_year;
   if (isAnotherYear) prev_year = year;
   return {
     ...post,

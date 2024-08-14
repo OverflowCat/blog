@@ -10,9 +10,9 @@ let { title, metas } = Astro.props;
 
 if (!metas?.viewport) {
   if (!metas) metas = {};
-  metas["viewport"] = "width=device-width, initial-scale=1.0";
+  metas.viewport = "width=device-width, initial-scale=1.0";
 }
-metas["generator"] = Astro.generator;
+metas.generator = Astro.generator;
 // import "modern-css-reset";
 
 import "@/styles/han.less";
@@ -21,7 +21,7 @@ import "@/styles/no-dark.less";
 ---
 
 <!doctype html>
-<html lang="zh">
+<html lang="zh" id="vert">
   <head>
     <meta charset="utf-8" />
     {
@@ -31,7 +31,12 @@ import "@/styles/no-dark.less";
         ))
     }
     <title>{title}</title>
-    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="RSS 订阅" />
+    <link
+      href="/atom.xml"
+      type="application/atom+xml"
+      rel="alternate"
+      title="RSS 订阅"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -112,6 +117,10 @@ import "@/styles/no-dark.less";
 
       * {
         text-spacing-trim: space-first;
+      }
+
+      .MathJax {
+        writing-mode: horizontal-tb !important;
       }
 
       @media (prefers-reduced-motion) {

@@ -1,22 +1,9 @@
 ---
 import { getAllComments } from "@/scripts/comments";
+import { truncate } from "@/scripts/intl";
 import "@/styles/a.less";
 
 const comments = await getAllComments();
-const segmenter = new Intl.Segmenter();
-function truncate(str: string, length: number) {
-	const iter = segmenter.segment(str);
-	const graphemes = [];
-	for (const { segment } of iter) {
-		graphemes.push(segment);
-		if (graphemes.length >= length) break;
-	}
-	let res = graphemes.join("");
-	if (graphemes.length < str.length) {
-		res += "…";
-	}
-	return res;
-}
 ---
 
 <ul id="comments">
@@ -27,7 +14,9 @@ function truncate(str: string, length: number) {
         <date>
           {comment.date.getMonth() + 1} 月 {comment.date.getDate()} 日
         </date>
-        评论《<a href={comment.slug} set:text={comment.title} />》说：
+        评论《
+        <a href={comment.slug} set:text={comment.title} />
+        》说：
         {truncate(comment.message, 30)}
       </li>
     ))

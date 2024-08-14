@@ -104,6 +104,7 @@ article#post {
   img {
     max-height: min(600px, 100%);
     max-width: 100%;
+    /* &[width][height] {} */
     height: auto;
     display: block;
     margin: auto;
@@ -134,8 +135,9 @@ article#post {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 0.875em;
-    margin: 0 0 20px;
-    width: 100%;
+    margin: 0;
+    margin-inline: 20px;
+    inline-size: 100%;
   }
 
   & h3 {
@@ -199,16 +201,16 @@ article#post {
   th,
   td {
     border: 1px solid #ddd;
-    border-bottom: 3px solid #ddd;
+    border-block-end: 3px solid #ddd;
   }
 
   th {
     font-weight: 700;
-    padding-bottom: 10px;
+    padding-block-end: 10px;
   }
 
   td {
-    border-bottom-width: 1px;
+    border-block-end-width: 1px;
   }
 
   .dead {

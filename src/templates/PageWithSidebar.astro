@@ -5,6 +5,7 @@ import Paper from "@/components/Paper.astro";
 import "modern-css-reset";
 import type { OpenGraphData } from "@/scripts/open-graph";
 import Bar from "./Bar.astro";
+import Han from "@/components/Han.astro";
 
 export interface Props {
   title: string;
@@ -21,7 +22,7 @@ Astro.locals.noscript = true;
 
 <Page title={title} og={og}>
   <Bar {...bar} lang="zh-Hans" />
-
+  <Han hant={false} />
   <main>
     <Sidebar />
     <Paper transitionName="main">
@@ -41,8 +42,9 @@ Astro.locals.noscript = true;
   }
   .inhalt {
     max-inline-size: 850px;
-    inline-size: 100%;
-    padding: 0 20px;
+    inline-size: 100vi;
+    padding: 0;
+    padding-inline: 0.75rem;
   }
 </style>
 
@@ -86,6 +88,7 @@ Astro.locals.noscript = true;
     }
     .paper {
       align-self: start;
+      max-inline-size: 100%;
     }
   }
 </style>

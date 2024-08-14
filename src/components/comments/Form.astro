@@ -1,7 +1,7 @@
 ---
 import nameGen from "@/scripts/name-gen";
 import { pick } from "@/scripts/serendipity.ts";
-let slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 const placeholder = pick([
   "请洒潘江，各倾陆海云尔…",
   "矮纸斜行闲作草，晴窗细乳戏分茶…",
