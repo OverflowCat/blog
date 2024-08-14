@@ -16,7 +16,7 @@ noscript: false
 licence: false
 layout: "@/layouts/Default.astro"
 tags: []
-category: []
+categories: []
 draft: true
 ---
 

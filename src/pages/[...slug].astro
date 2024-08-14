@@ -27,7 +27,6 @@ export type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const slug = Astro.params.slug;
 const isHant = slug.endsWith("/hant") || slug.endsWith("/hant/");
-console.log(slug, isHant);
 let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
 try {
   Content = (await post.render()).Content;
@@ -37,7 +36,7 @@ try {
 }
 
 let title = post.data.title;
-if (post.data.categories?.includes("译文")) {
+if (post.data.categories.includes("译文")) {
   title = `（译）${title}`;
 }
 

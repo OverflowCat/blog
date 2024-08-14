@@ -8,7 +8,6 @@ import { Icon } from "astro-icon/components";
 import "@/styles/icon.less";
 
 const { source } = Astro.props;
-console.log("footer", Astro.locals);
 const noscript = Astro.locals.noscript;
 const githubLink = source ? source : "https://github.com/OverflowCat/blog";
 const slug =
@@ -59,9 +58,9 @@ const slug =
       //   display: none;
       // }
       footer {
-        padding: 24px;
         text-align: center;
         font-size: 0.9em;
+        padding-block-end: 1.5rem;
         div {
           margin: 8px 0;
         }

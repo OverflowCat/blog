@@ -49,7 +49,8 @@ Astro.locals.noscript = true;
 </style>
 
 <style is:global>
-  @media (max-width: 900px) {
+  /* @media (max-width: 900px) { */
+  @container html (max-inline-size: 900px) {
     main {
       flex-direction: column-reverse;
     }
@@ -72,23 +73,6 @@ Astro.locals.noscript = true;
     aside#sidebar {
       align-self: flex-start;
       inset-block-start: 50px;
-    }
-  }
-
-  @media (min-width: 900px) {
-    .inhalt {
-      min-inline-size: 700px;
-    }
-    main {
-      flex-direction: row;
-    }
-    aside#sidebar {
-      align-self: flex-start;
-      inset-block-start: 50px;
-    }
-    .paper {
-      align-self: start;
-      max-inline-size: 100%;
     }
   }
 </style>

@@ -18,9 +18,8 @@ import { getCollection } from "astro:content";
 const posts = await getCollection<"blog">("blog");
 const post = posts.filter(p => p.data.title === frontmatter.title)[0];
 const rendered = await post.render();
-console.log(rendered);
-*/
 console.log(Astro.props.headings);
+*/
 /*
 const $ = cheerio.load(content);
 const headings = $("h2, h3, h4, h5, h6");

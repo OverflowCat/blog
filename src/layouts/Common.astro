@@ -1,4 +1,5 @@
 ---
+import type { Frontmatter } from "@/types";
 import { Icon } from "astro-icon/components";
 import Han from "@/components/Han.astro";
 import "@/styles/icon.less";
@@ -10,20 +11,12 @@ export interface Props {
   frontmatter: Frontmatter;
 }
 const { frontmatter } = Astro.props;
+const { vert, hant, categories: cats, tags, date } = frontmatter;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
-if (cover?.src) cover = cover.src;
+if (typeof cover === "object" && "src" in cover) cover = cover.src;
 let licence = frontmatter.licence;
 if (licence === undefined) {
   licence = "CcByNc";
-}
-
-let cats = frontmatter.categories as string | string[] | undefined;
-if (typeof cats === "string") {
-  cats = [cats];
-}
-let tags = frontmatter.tags as string | string[] | undefined;
-if (typeof tags === "string") {
-  tags = [tags];
 }
 
 import "@/styles/article.less";
@@ -36,7 +29,7 @@ import "@/styles/article.less";
         class="cover"
         src={cover}
         alt={frontmatter.title}
-        transition:name={crc32base(frontmatter.photo)}
+        transition:name={crc32base(frontmatter.photo?.toString() || "")}
       />
       {frontmatter.figcaption && (
         <figcaption set:html={frontmatter.figcaption} />
@@ -52,13 +45,17 @@ import "@/styles/article.less";
     />
   )
 }
-{frontmatter.hant !== false && <Han float={true} />}
+{
+  (hant || vert) && (
+    <Han float={true} vert={vert} hant={hant === false ? false : undefined} />
+  )
+}
 <div class="info">
   <div>
     <span class="icon">
       <Icon name="mdi:date-range" />
     </span>日期：<time
-      datetime={frontmatter.date}
+      datetime={date as unknown as string}
       set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
     />
   </div>

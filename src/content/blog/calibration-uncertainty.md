@@ -10,6 +10,7 @@ layout: "@/layouts/Default.astro"
 resizable: false
 hant: false
 tags: ["误差理论"]
+categories: ["Typst"]
 ---
 
 <object data="https://github.com/OverflowCat/blog/assets/20166026/bfbba98c-c917-401c-8637-2aa1672a198a" type="image/svg+xml" id="typst-svg" ></object>

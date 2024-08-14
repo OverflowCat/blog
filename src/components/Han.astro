@@ -3,8 +3,9 @@ export type Props = {
     float?: boolean;
     hans?: string;
     hant?: string | false;
+    vert?: boolean;
 };
-let { float, hans, hant } = Astro.props;
+let { float, hans, hant, vert } = Astro.props;
 if (float === undefined) float = true;
 if (hans === undefined) hans = "&#x6C49;";
 if (hant === undefined) hant = "漢";
@@ -37,14 +38,18 @@ import { Icon } from "astro-icon/components";
             </div>
         )
     }
-    <div id="veho" class="inline-flex flex-row">
-        <a href="#vert">
-            <Icon name="fluent:text-direction-vertical-24-filled" />
-        </a>
-        <a href="#">
-            <Icon name="fluent:text-direction-horizontal-ltr-24-filled" />
-        </a>
-    </div>
+    {
+        vert !== false && (
+            <div id="veho" class="inline-flex flex-row">
+                <a href="#vert">
+                    <Icon class="text-xl" name="fluent:text-direction-vertical-24-filled" />
+                </a>
+                <a href="#">
+                    <Icon class="text-xl" name="fluent:text-direction-horizontal-ltr-24-filled" />
+                </a>
+            </div>
+        )
+    }
 </div>
 <style lang="less">
     #han-float {
@@ -92,7 +97,7 @@ import { Icon } from "astro-icon/components";
         }
     }
 </style>
-<style is:global>
+<style is:global is:inline>
     #vert:target {
         writing-mode: vertical-rl;
         [aria-hidden="true"] {

@@ -85,7 +85,12 @@ import "@/styles/no-dark.less";
       body {
         margin: 0px;
         padding: 0px;
+        box-sizing: content-box;
         position: relative;
+        & + * {
+          padding: 0;
+          margin: 0;
+        }
       }
 
       h1 {

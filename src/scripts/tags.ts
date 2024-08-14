@@ -19,16 +19,14 @@ export function getCatsInfo() {
 	const catsInfo = new Map<string, number>();
 	posts.map((post) => {
 		if (!post.data.categories) return;
-		if (typeof post.data.categories === "string") {
+		if (typeof post.data.categories === "string")
 			catsInfo.set(
 				post.data.categories,
 				(catsInfo.get(post.data.categories) || 0) + 1,
 			);
-		} else {
-			(post.data.categories as string[]).forEach((cat) => {
+		else
+			for (const cat of post.data.categories)
 				catsInfo.set(cat, (catsInfo.get(cat) || 0) + 1);
-			});
-		}
 	});
 	return catsInfo;
 }

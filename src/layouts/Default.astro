@@ -4,11 +4,16 @@ import "@/styles/icon.less";
 import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
-
-const { frontmatter } = Astro.props;
+let { frontmatter } = Astro.props;
+frontmatter = schema.parse(frontmatter);
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
-const classes = frontmatter.resizable !== false ? ["resizable"] : [];
+import type { Frontmatter } from "@/types";
+import { schema } from "@/scripts/schema";
+const classes = frontmatter.resizable ? ["resizable"] : [];
+export type Props = {
+  frontmatter: Frontmatter;
+};
 ---
 
 <style is:global is:inline>
@@ -47,7 +52,7 @@ const classes = frontmatter.resizable !== false ? ["resizable"] : [];
 <Paper
   transitionName="main"
   padding={true}
-  paper={frontmatter.paper !== false}
+  paper={frontmatter.paper}
   classes={classes}
 >
   <Common frontmatter={frontmatter}>
