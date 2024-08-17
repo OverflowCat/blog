@@ -85,7 +85,7 @@ importers:
         version: 0.5.0-rc6
       '@myriaddreamin/typst.ts':
         specifier: ^0.4.1
-        version: 0.4.1
+        version: 0.4.1(@myriaddreamin/typst-ts-renderer@0.5.0-rc6)
       arktype:
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2
@@ -105,8 +105,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(astro@4.14.2(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4))
       astro-typst:
-        specifier: ^0.3.4
-        version: 0.3.4(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4)
+        specifier: ^0.4.0
+        version: 0.4.0(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -1083,11 +1083,25 @@ packages:
     resolution: {integrity: sha512-GE4j5dizqSBzmRCMgVQJp4Nq75ynPeYLm8cBwM8JYzArN8Hw6vu1gv8qg3zX+ls6zelSDxjUsFHKSnXUS9untg==}
     engines: {node: '>= 10'}
 
+  '@myriaddreamin/typst-ts-renderer@0.5.0-rc6':
+    resolution: {integrity: sha512-iE+pTxrVe9jDl1poih6yWHZyKDzOCu2ej8ODi3d325wheC9c5mq1wbEEcXPNguEthgAI/VWdd91loLnY1ufroQ==}
+
   '@myriaddreamin/typst.ts@0.4.1':
     resolution: {integrity: sha512-hNkVeQaqYEt6xSuTxbDzvm0f3KkymbTGpQv6QsYyCUsa/xBzijyDN9pspW+TA+H5f9u+x1GmmGgn3bZojrHttg==}
     peerDependencies:
       '@myriaddreamin/typst-ts-renderer': ^0.4.1
       '@myriaddreamin/typst-ts-web-compiler': ^0.4.1
+    peerDependenciesMeta:
+      '@myriaddreamin/typst-ts-renderer':
+        optional: true
+      '@myriaddreamin/typst-ts-web-compiler':
+        optional: true
+
+  '@myriaddreamin/typst.ts@0.5.0-rc6':
+    resolution: {integrity: sha512-3sMH0lt4cVtx9wczaoNKW+MWHfPjc+J+r5no/upZhHn2kf1QVUKY0ovy8O6Y3PMRUzq4GSwp+l33uNg9lC2Bjg==}
+    peerDependencies:
+      '@myriaddreamin/typst-ts-renderer': ^0.5.0-rc6
+      '@myriaddreamin/typst-ts-web-compiler': ^0.5.0-rc6
     peerDependenciesMeta:
       '@myriaddreamin/typst-ts-renderer':
         optional: true
@@ -1526,8 +1540,8 @@ packages:
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
 
-  astro-typst@0.3.4:
-    resolution: {integrity: sha512-97H9xPzsIi257Z/vdL6vWEl3R1Q5AsxOBD4oK1RooCqJvrKERcAfQIbWuBmIq3ephNQzvx+0mLjHjzwqs3Dvxw==}
+  astro-typst@0.4.0:
+    resolution: {integrity: sha512-HqptwXJWUEtX3PekwePgY+KFUhIarsY/lQSFnz0YuZb9GrUj2C48LZisEcupIte5mqLYqbzzrLn1GUl1f+lN1A==}
 
   astro@4.14.2:
     resolution: {integrity: sha512-x9VeYx8Ih6kYKBMVwwsfRzsZVq30+SUhiawnYQ6+46qQnEx3zH05KcH24HsJMe6dVpHD8HdH7CWR5C4o7Q/jeg==}
@@ -4756,9 +4770,19 @@ snapshots:
       '@myriaddreamin/typst-ts-node-compiler-win32-arm64-msvc': 0.5.0-rc6
       '@myriaddreamin/typst-ts-node-compiler-win32-x64-msvc': 0.5.0-rc6
 
-  '@myriaddreamin/typst.ts@0.4.1':
+  '@myriaddreamin/typst-ts-renderer@0.5.0-rc6': {}
+
+  '@myriaddreamin/typst.ts@0.4.1(@myriaddreamin/typst-ts-renderer@0.5.0-rc6)':
     dependencies:
       idb: 7.1.1
+    optionalDependencies:
+      '@myriaddreamin/typst-ts-renderer': 0.5.0-rc6
+
+  '@myriaddreamin/typst.ts@0.5.0-rc6(@myriaddreamin/typst-ts-renderer@0.5.0-rc6)':
+    dependencies:
+      idb: 7.1.1
+    optionalDependencies:
+      '@myriaddreamin/typst-ts-renderer': 0.5.0-rc6
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -5296,14 +5320,17 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  astro-typst@0.3.4(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4):
+  astro-typst@0.4.0(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.0-rc6
+      '@myriaddreamin/typst-ts-renderer': 0.5.0-rc6
+      '@myriaddreamin/typst.ts': 0.5.0-rc6(@myriaddreamin/typst-ts-renderer@0.5.0-rc6)
       '@rollup/plugin-node-resolve': 15.2.3(rollup@4.20.0)
       astro: 4.14.2(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(rollup@4.20.0)(sass@1.77.8)(typescript@5.5.4)
       cheerio: 1.0.0-rc.12
       vite: 5.4.1(@types/node@22.4.0)(less@4.2.0)(lightningcss@1.25.1)(sass@1.77.8)
     transitivePeerDependencies:
+      - '@myriaddreamin/typst-ts-web-compiler'
       - '@types/node'
       - less
       - lightningcss
