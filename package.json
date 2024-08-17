@@ -48,7 +48,7 @@
     "@myriaddreamin/rehype-typst": "0.5.0-rc6",
     "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc6",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "arktype": "2.0.0-beta.2",
+    "arktype": "2.0.0-beta.5",
     "astro": "^4.14.2",
     "astro-embed": "^0.7.2",
     "astro-icon": "^1.1.1",
