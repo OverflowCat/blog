@@ -8,6 +8,7 @@ export type Props = {
   height?: number;
   zhcap?: string;
   encap?: string;
+  classList?: string[];
 };
 
 let { src, alt, width = 600, height, zhcap, encap } = Astro.props;
@@ -17,6 +18,7 @@ if (!alt) alt = zhcap;
 
 <figure>
   <img
+    class:list={Astro.props.classList}
     src={src}
     width={width}
     height={height}

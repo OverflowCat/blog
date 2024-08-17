@@ -239,11 +239,16 @@
   left: 1em;
 }
 
-.kanbun.show-borders .unit > * {
+#show-borders:checked ~ .kanbun .unit > * {
   outline: 1px solid #2196f3;
+  transition: background .1s;
 }
 
-.kanbun.show-borders .unit.has-multiple-kanji > .kanji {
+#show-borders:checked ~ .kanbun .unit > *:hover {
+  background: #7ec5ff;
+}
+
+#show-borders:checked ~ .kanbun .unit.has-multiple-kanji > .kanji {
   outline: 0;
 }
 

@@ -14,9 +14,7 @@ const comments = await getAllComments();
         <date>
           {comment.date.getMonth() + 1} 月 {comment.date.getDate()} 日
         </date>
-        评论《
-        <a href={comment.slug} set:text={comment.title} />
-        》说：
+        评论《<a href={comment.slug} set:text={comment.title} />》说：
         {truncate(comment.message, 30)}
       </li>
     ))

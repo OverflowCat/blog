@@ -23,7 +23,6 @@ const {
   okuriganaSinking,
   splitTouchingKana,
   furiganaCenterAlign,
-  showBorders,
 } = Astro.props;
 export type Unit = {
   kanji: string;
@@ -38,7 +37,6 @@ const classList = {
   "okurigana-sinking": okuriganaSinking !== false,
   "split-touching-kana": splitTouchingKana,
   "furigana-center-align": furiganaCenterAlign,
-  "show-borders": showBorders,
 };
 
 const brackets = {
@@ -110,7 +108,7 @@ function toUnits(str: string) {
   str = str.replace(new RegExp(`”“⌊([${punctuationStr}])⌋`, "g"), "⦉$1⦊");
   // now, str has been fully annotated
 
-  console.info({ str });
+  // console.info({ str });
   // “⌊感⌋{ジテハ}[レ]”“⌊時⌋{ニ}”“⌊花⌋{ニモ}” => ["⌊感⌋{ジテハ}[レ]", "⌊時⌋{ニ}", "⌊花⌋{ニモ}"]
   // extract all units without “ and ”
   const parts = [];

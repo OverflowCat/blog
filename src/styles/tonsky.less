@@ -18,12 +18,11 @@ img:not(p > img),
 picture,
 video,
 canvas,
-figure>svg,
-figure>video,
+figure > svg,
+figure > video,
 svg:not(p > svg) {
   display: block;
-  /* height: auto; */
-  max-width: 100%!important;
+  // max-width: 100% !important;
 }
 
 p,
@@ -34,7 +33,7 @@ h3 {
 }
 
 body {
-  min-height: 100vb;
+  min-block-size: 100vb;
 }
 
 html {
@@ -44,8 +43,6 @@ html {
 }
 
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -76,28 +73,32 @@ html {
 
 @font-face {
   font-family: "IBM Plex Sans TC";
-  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "IBM Plex Sans TC";
-  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Text.woff2")
+    format("woff2");
   font-weight: 450;
   font-style: normal;
 }
 
 @font-face {
   font-family: "IBM Plex Sans TC";
-  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Medium.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Medium.woff2")
+    format("woff2");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "IBM Plex Sans TC";
-  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Bold.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/tonsky/fonts/IBMPlexSansTC-Bold.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
 }
@@ -120,7 +121,7 @@ body {
   }
 }
 
-.content>blockquote[lang="en"] {
+.content > blockquote[lang="en"] {
   font-family: "IBM Plex Sans" !important;
 }
 
@@ -193,9 +194,7 @@ footer a,
     opacity: 0.5;
   }
 
-  transition: color 0.1s,
-  border-color 0.1s,
-  opacity 0.1s;
+  transition: color 0.1s, border-color 0.1s, opacity 0.1s;
 }
 
 /* CONTENT */
@@ -206,19 +205,23 @@ footer a,
   gap: var(--gap);
   align-items: center;
 
-  &>* {
+  & > * {
     inline-size: 96vi;
     max-inline-size: var(--width);
   }
 
-  &>img,
-  &>video,
-  &>iframe,
-  &>a>img {
+  & > img,
+  & > video,
+  & > iframe,
+  & > a > img {
     border-radius: var(--radius);
+    #vert:target & {
+      inline-size: unset;
+      max-inline-size: 350px;
+    }
   }
 
-  &>a {
+  & > a {
     border: none;
   }
 
@@ -228,7 +231,7 @@ footer a,
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    padding: 0 0 0 1em;
+    padding-inline-start: 1em;
   }
 
   ul {
@@ -243,9 +246,9 @@ footer a,
   }
 }
 
-h2+p+blockquote {
-  margin-bottom: 30px;
-  margin-right: 1em;
+h2 + p + blockquote {
+  margin-block-end: 30px;
+  margin-inline-end: 1em;
 }
 
 /* BLOCKQUOTES */
@@ -254,8 +257,8 @@ blockquote {
   flex-direction: column;
   gap: var(--gap);
   margin: var(--gap) 0;
-  padding: 0 0 0 1em;
-  border-left: 2px solid var(--gray-line);
+  padding-inline-start: 1em;
+  border-inline-start: 2px solid var(--gray-line);
 
   &[lang="en"] {
     font-style: italic;
@@ -280,18 +283,19 @@ h1 {
   text-align: left;
 
   &[lang^="zh"] {
-    margin-bottom: 0.1em;
+    margin-block-end: 0.1em;
   }
 
-  margin-top: 0.4em;
+  margin-block-start: 0.4em;
 }
 
 h3 {
   font-size: 1.4em;
 }
 
-h2+h3 {
-  margin: -0.75em 0 0.9em;
+h2 + h3 {
+  margin-block-start: -0.75em;
+  margin-block-end: 0.9em;
 }
 
 h2 {
@@ -303,7 +307,9 @@ h2 {
   }
 
   &[lang^="zh"] {
-    margin: 0.7em 0 0.4em 0;
+    // margin: 0.7em 0 0.4em 0;
+    margin-block-start: 0.7em;
+    margin-block-end: 0.4em;
   }
 }
 
@@ -319,14 +325,14 @@ code {
   background: var(--gray-bg);
   padding: 2px 6px;
 
-  pre>& {
+  pre > & {
     padding: 0;
   }
 
   border-radius: 4px;
   font-size: 0.944rem;
 
-  p>& {
+  p > & {
     font-size: 17px;
   }
 
@@ -334,18 +340,23 @@ code {
 }
 
 // &:not(p code),  &:not(pre code),  &:not(li code),  &:not(table code) { font-size: inherit; }
-h1>code,
-h2>code,
-h3>code,
-h4>code,
-.loud>code,
-.foot>code {
+h1 > code,
+h2 > code,
+h3 > code,
+h4 > code,
+.loud > code,
+.foot > code {
   font-size: inherit !important;
 }
 
-.content>pre,
-blockquote>pre {
+.content > pre,
+section > pre,
+blockquote > pre {
+  writing-mode: horizontal-tb;
   max-width: calc(var(--width) + 60px);
+  #vert:target & {
+    max-width: min-content;
+  }
   background: var(--gray-bg);
   margin: var(--gap) 0;
   padding: 16px 30px 14px;
@@ -355,7 +366,7 @@ blockquote>pre {
   font-style: normal;
   font-size: 16px;
 
-  &>code {
+  & > code {
     background: none;
     font-size: inherit;
     white-space: unset;
@@ -379,7 +390,7 @@ sup,
 }
 
 sub {
-  top: 0.5ex;
+  inset-block-start: 0.5ex;
 }
 
 .btn {
@@ -387,11 +398,12 @@ sub {
   text-decoration: none;
   background: rgba(0, 0, 0, 0.1);
   border: none;
-  padding: 0px 7px;
+  padding-block: 0px;
+  padding-inline: 7px;
   display: inline-block;
   border-radius: 4px;
   position: relative;
-  top: -1px;
+  inset-block-start: -1px;
 
   &:hover {
     background: rgba(0, 0, 0, 0.18);
@@ -405,17 +417,17 @@ sub {
 }
 
 .footnote {
-  margin: 0 5px;
+  margin-inline: 5px;
 }
 
 .footnotes-br {
   width: 100px;
   height: 2px;
   background: #000000;
-  margin-top: 5em;
+  margin-block-start: 5em;
 }
 
-.footnotes>ol {
+.footnotes > ol {
   padding-left: 1em;
 }
 
@@ -439,14 +451,14 @@ sub {
 
 .footer {
   font-size: 16px;
-  margin-bottom: 0.5em;
+  margin-block-end: 0.5em;
 }
 
-.footer>.separator {
+.footer > .separator {
   margin: 0 4px;
 }
 
-.footer>a {
+.footer > a {
   margin-right: 5px;
 }
 

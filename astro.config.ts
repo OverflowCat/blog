@@ -31,6 +31,34 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 import rehypeExternalLinks from "rehype-external-links";
 import remarkRuby from "remark-ruby";
+import remarkDirect from "remark-directive";
+import { h } from 'hastscript';
+import { visit } from 'unist-util-visit';
+
+
+function myRemarkPlugin() {
+	/**
+	 * @param {import('mdast').Root} tree
+	 *   Tree.
+	 * @returns {undefined}
+	 *   Nothing.
+	 */
+	return function (tree) {
+		visit(tree, function (node) {
+			if (
+				node.type === 'containerDirective' ||
+				node.type === 'leafDirective' ||
+				node.type === 'textDirective'
+			) {
+				const data = node.data || (node.data = {})
+				const hast = h(node.name, node.attributes || {})
+
+				data.hName = hast.tagName
+				data.hProperties = hast.properties
+			}
+		})
+	}
+}
 
 // @ts-ignore
 import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflash/remark-figure-caption";
@@ -103,7 +131,7 @@ export default defineConfig({
 			footnoteBackLabel: "返回内容",
 		},
 		syntaxHighlight: false,
-		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption],
+		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption, remarkDirect, myRemarkPlugin],
 		rehypePlugins: [
 			/**
 			 * You can customize these heading IDs by adding a rehype plugin that

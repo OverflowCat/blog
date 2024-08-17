@@ -25,13 +25,23 @@ const zhLocale = slug.endsWith("/hant") ? "zh-Hant" : "zh-Hans";
 
 const $ = cheerio.load(await Astro.slots.render("default"));
 $(
-  "li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead",
+  "li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead"
 ).each(function () {
   if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
   const text = $(this).text();
   if (!text.trim()) return;
   const lang = hasChinese(text) ? zhLocale : "en";
   $(this).attr("lang", lang);
+});
+
+$("[lang^='zh']:not(svg *)").each(function () {
+  const innerHTML = $(this).html();
+  if (!innerHTML) return;
+  $(this).html(
+    innerHTML.replace(/(?<!\d) ?Unicode ?/g, function (match) {
+      return `<span class="h">${match}</span><span class="vert">统一码</span>`;
+    })
+  );
 });
 const html = $.html();
 ---
@@ -112,5 +122,15 @@ const html = $.html();
       "Source Han Sans K", "Source Han Sans KR", "Noto Sans CJK KR", NanumGothic,
       "Malgun Gothic", "NanumMyeongjo YetHangul", NanumMyeongjo, Batang,
       UnBatang, sans-serif !important;
+  }
+
+  span.h + span.vert {
+    display: none;
+  }
+  #vert:target span.h {
+    display: none;
+    & + span.vert {
+      display: inline;
+    }
   }
 </style>

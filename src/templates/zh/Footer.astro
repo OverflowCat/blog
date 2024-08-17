@@ -17,6 +17,12 @@ const slug =
 ---
 
 <footer>
+  {
+      Astro.url.hostname === "localhost" ?
+  <div>
+    Debug mode
+  </div>
+   : 
   <div class="counter">
     <img
       loading="eager"
@@ -25,57 +31,58 @@ const slug =
       src=`https://count.xinshijiededa.men/${slug}/full-count.svg`
       alt="用户访问计数器"
     />
-    {noscript && <Noscript />}
-    <div data-build={Date.now()}>
-      Built with <a href="https://astro.build/"
-        ><span class="icon"><Icon name="simple-icons:astro" /></span>{
-          Astro.generator
-        }</a
-      >
-    </div>
-    <div>
-      <a href={githubLink}>
-        {
-          source ? (
-            <>View & edit source code of this page on&nbsp;</>
-          ) : (
-            <>Hosted & open sourced on&nbsp;</>
-          )
-        }
-        <span class="icon">
-          <Icon name="entypo-social:github" />
-        </span>
-        GitHub</a
-      >
-    </div>
-    <div>
-      <span class="icon"><Icon name="door" /></span>
-      <span>新世界的大門 2024</span>
-    </div>
-
-    <style is:global lang="less">
-      // body:has(astro-dev-toolbar) footer {
-      //   display: none;
-      // }
-      footer {
-        text-align: center;
-        font-size: 0.9em;
-        padding-block-end: 1.5rem;
-        div {
-          margin: 8px 0;
-        }
-        color: #666;
-        a {
-          color: #444;
-          text-decoration: none;
-        }
-        .counter > img {
-          box-sizing: content-box;
-          user-select: none;
-          display: block;
-          margin: auto;
-        }
-      }
-    </style>
   </div>
+  }
+  {noscript && <Noscript />}
+  <div data-build={Date.now()}>
+    Built with <a href="https://astro.build/"
+      ><span class="icon"><Icon name="simple-icons:astro" /></span>{
+        Astro.generator
+      }</a
+    >
+  </div>
+  <div>
+    <a href={githubLink}>
+      {
+        source ? (
+          <>View & edit source code of this page on&nbsp;</>
+        ) : (
+          <>Hosted & open sourced on&nbsp;</>
+        )
+      }
+      <span class="icon">
+        <Icon name="entypo-social:github" />
+      </span>
+      GitHub</a
+    >
+  </div>
+  <div>
+    <span class="icon"><Icon name="door" /></span>
+    <span>新世界的大門 2024</span>
+  </div>
+
+  <style is:global lang="less">
+    // body:has(astro-dev-toolbar) footer {
+    //   display: none;
+    // }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding-block-end: 1.5rem;
+      div {
+        margin: 8px 0;
+      }
+      color: #666;
+      a {
+        color: #444;
+        text-decoration: none;
+      }
+      .counter > img {
+        box-sizing: content-box;
+        user-select: none;
+        display: block;
+        margin: auto;
+      }
+    }
+  </style>
 </footer>

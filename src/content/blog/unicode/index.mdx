@@ -358,7 +358,7 @@ The problem is, in Unicode, some graphemes are encoded with multiple code points
 
 For example, `é` (a single grapheme) is encoded in Unicode as `e` (U+0065 Latin Small Letter E) + `´` (U+0301 Combining Acute Accent). Two code points!
 
-比如说，`é`（一个单独的字位）在 Unicode 中被编码为 `e`（U+0065 拉丁小写字母 E）+ `´`（U+0301 连接重音符）。两个码位！
+比如说，<code class='yoko'>é</code>（一个单独的字位）在 Unicode 中被编码为 <code class='yoko'>e</code>（U+0065 拉丁小写字母 E）+ <code class='yoko'>´</code>（U+0301 连接重音符）。两个码位！
 
 It can also be more than two:
 
@@ -370,8 +370,8 @@ It can also be more than two:
 - <code class="emoji">👨‍🏭</code> 是 `U+1F468` + `U+200D` + `U+1F3ED`
 - <code class="emoji">🚵🏻‍♀️</code> is `U+1F6B5` + `U+1F3FB` + `U+200D` + `U+2640` + `U+FE0F`
 - <code class="emoji">🚵🏻‍♀️</code> 是 `U+1F6B5` + `U+1F3FB` + `U+200D` + `U+2640` + `U+FE0F`
-- `y̖̠͍̘͇͗̏̽̎͞` is `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
-- `y̖̠͍̘͇͗̏̽̎͞` 是 `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
+- <samp class='yoko'>y̖̠͍̘͇͗̏̽̎͞</samp> is `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
+- <samp class='yoko'>y̖̠͍̘͇͗̏̽̎͞</samp> 是 `U+0079` + `U+0316` + `U+0320` + `U+034D` + `U+0318` + `U+0347` + `U+0357` + `U+030F` + `U+033D` + `U+030E` + `U+035E`
 
 There’s no limit, as far as I know.
 
@@ -425,12 +425,12 @@ Not really. Extended Grapheme Clusters are also used for alive, actively used la
 
 并不。没有消亡的、活跃使用的语言也使用扩展字位簇。例如：
 
-- `ö` (German) is a single character, but multiple code points (`U+006F U+0308`).
-- `ö` (德语) 是一个单独的字符，但是多个码位（`U+006F U+0308`）。
-- `ą́` (Lithuanian) is `U+00E1 U+0328`.
-- `ą́` (立陶宛语) 是 `U+00E1 U+0328`。
-- `각` (Korean) is `U+1100 U+1161 U+11A8`.
-- <code lang="ko">각</code> (韩语) 是 `U+1100 U+1161 U+11A8`。
+- <samp class="yoko">ö</samp> (German) is a single character, but multiple code points (`U+006F U+0308`).
+- <samp class="yoko">ö</samp> (德语) 是一个单独的字符，但是多个码位（`U+006F U+0308`）。
+- <samp class="yoko">ą́</samp> (Lithuanian) is `U+00E1 U+0328`.
+- <samp class="yoko">ą́</samp> (立陶宛语) 是 `U+00E1 U+0328`。
+- <samp class="yoko">각</samp> (Korean) is `U+1100 U+1161 U+11A8`.
+- <samp lang="ko" class='yoko'>각</samp> (韩语) 是 `U+1100 U+1161 U+11A8`。
 
 So no, it’s not just about emojis.
 
@@ -447,6 +447,8 @@ The question is inspired by [this brilliant article](https://hsivonen.fi/string-
 Different programming languages will happily give you different answers.
 
 不同的编程语言很乐意给你不同的答案。
+
+<section class="wm-h inline-unset!">
 
 <p lang="mul">Python 3:</p>
 
@@ -471,6 +473,8 @@ Different programming languages will happily give you different answers.
   code={`println!("{}", "🤦🏼‍♂️".len());
 // => 17`}
 />
+
+</section>
 
 As you can guess, different languages use different internal string representations (UTF-32, UTF-16, UTF-8) and report length in whatever units they store characters in (ints, shorts, bytes).
 
@@ -714,7 +718,7 @@ Wait a second! How does the computer know when to render Bulgarian-style glyphs 
 
 Short answer: it doesn’t. Unfortunately, Unicode is not a perfect system, and it has many shortcomings. Among them is assigning the same code point to glyphs that are supposed to look differently, like Cyrillic Lowercase K and Bulgarian Lowercase K (both are `U+043A`).
 
-简短的回答：它不知道。不幸的是，Unicode 不是一个完美的系统，它有很多缺点。其中之一就是是将相同的码位分配给应该看起来不同的字形，比如西里尔小写字母 <span lang="ru">K</span> 和保加利亚语小写字母 <span lang="bg">K</span>（都是 `U+043A`）。
+简短的回答：它不知道。不幸的是，Unicode 不是一个完美的系统，它有很多缺点。其中之一就是是将相同的码位分配给应该看起来不同的字形，比如西里尔小写字母 <span lang="ru" class='yoko'>K</span> 和保加利亚语小写字母 <span lang="bg" class='yoko'>K</span>（都是 `U+043A`）。
 
 From what I understand, Asian people [get it much worse](https://en.wikipedia.org/wiki/Han_unification): many Chinese, Japanese, and Korean logograms that are written very differently get assigned the same code point:
 
@@ -749,13 +753,12 @@ In practice, dependency on locale brings a lot of problems:
 5. When needed, it had to be guessed. For example, Twitter tries to guess the locale from the text of the tweet itself (because where else could it get it from?) and sometimes gets it wrong:
 5. 在需要的时候，我们只能靠猜。例如，Twitter 试图从推文本身的文本中猜测区域设置（因为它还能从哪里得到呢？）时有时会猜错[^twitter]：
 
-[^twitter]: Twitter 错误渲染俄语为保加利亚语——注意 <span lang='bg'>и</span>、<span lang='ru'>й</span>、<span lang='bg'>ь</span>、<span lang='bg'>к</span>、<span lang='bg'>з</span> 等字母的字形。
+[^twitter]: Twitter 错误渲染俄语为保加利亚语——注意 <span lang='bg' class='yoko'>и</span>、<span lang='ru'>й</span>、<span lang='bg' class='yoko'>ь</span>、<span lang='bg' class='yoko'>к</span>、<span lang='bg' class='yoko'>з</span> 等字母的字形。
 
 <a href="https://twitter.com/nikitonsky/status/1171115067112398849">
   <Img src="https://tonsky.me/blog/unicode/twitter_locale.jpg" />
 </a>
-
-![](/tonsky/tweet-translated.webp)
+<img src='/tonsky/tweet-translated.webp' />
 
 ## Why does `String::toLowerCase()` accepts Locale as an argument?
 
