@@ -111,8 +111,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       cheerio:
-        specifier: 1.0.0-rc.12
-        version: 1.0.0-rc.12
+        specifier: 1.0.0
+        version: 1.0.0
       gridsome-remark-figure-caption:
         specifier: ^1.2.2
         version: 1.2.2
