@@ -44,6 +44,7 @@ function get_sections(str: string) {
   const regex = /(\d)(\D+)/g;
   const sections: [string, number][] = [];
   let match: RegExpExecArray | null;
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
   while ((match = regex.exec(str))) {
     sections.push([match[2], Number.parseInt(match[1])]);
   }
