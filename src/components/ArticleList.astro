@@ -3,21 +3,23 @@ import SimpleArticleCard from "@/components/SimpleArticleCard.astro";
 import PageWithSidebar from "@/templates/PageWithSidebar.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
 import { getBlogPosts } from "@/scripts/post";
+import CommentList from "@/components/CommentList.astro";
+import Paper from "./Paper.astro";
 
 export interface Props {
-  type?: "tag" | "category";
-  name?: string;
-  simple?: boolean;
-  year?: boolean;
-  title: string;
-  bar?: {
-    index?: number;
-    theme?: "light" | "dark" | "auto" | "transparent";
-  };
+	type?: "tag" | "category";
+	name?: string;
+	simple?: boolean;
+	year?: boolean;
+	title: string;
+	bar?: {
+		index?: number;
+		theme?: "light" | "dark" | "auto" | "transparent";
+	};
 }
 
 let posts = (await getBlogPosts()).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 const { type, name, simple, title, bar } = Astro.props;
@@ -25,53 +27,65 @@ const { type, name, simple, title, bar } = Astro.props;
 const year = Astro.props.year !== false;
 
 if (type && name) {
-  posts = posts.filter((post) => {
-    const { tags, categories } = post.data;
-    if (type === "tag") {
-      return tags.includes(name);
-    }
-    if (type === "category") {
-      return categories.includes(name);
-    }
-    return false;
-  });
+	posts = posts.filter((post) => {
+		const { tags, categories } = post.data;
+		if (type === "tag") {
+			return tags.includes(name);
+		}
+		if (type === "category") {
+			return categories.includes(name);
+		}
+		return false;
+	});
 }
 
 let prev_year = 0;
 const _posts = posts.map((post) => {
-  const year = post.data.date.getFullYear();
-  const isAnotherYear = year !== prev_year;
-  if (isAnotherYear) prev_year = year;
-  return {
-    ...post,
-    isAnotherYear,
-  };
+	const year = post.data.date.getFullYear();
+	const isAnotherYear = year !== prev_year;
+	if (isAnotherYear) prev_year = year;
+	return {
+		...post,
+		isAnotherYear,
+	};
 });
 ---
 
 <PageWithSidebar title={title} bar={bar}>
-  {title && title !== "归档" && <h1>{title}</h1>}
-  <section class="inhalt">
-    <ul>
-      {
-        _posts.map((post) => (
-          <>
-            {year && post.isAnotherYear && (
-              <h2>{post.data.date.getFullYear()}</h2>
-            )}
-            <li>
-              {simple ? (
-                <SimpleArticleCard post={post} />
-              ) : (
-                <ArticleCard post={post} />
+  <slot name="default">
+    {title && title !== "归档" && <h1>{title}</h1>}
+    <section class="inhalt">
+      <ul>
+        {
+          _posts.map((post) => (
+            <>
+              {year && post.isAnotherYear && (
+                <h2>{post.data.date.getFullYear()}</h2>
               )}
-            </li>
-          </>
-        ))
-      }
-    </ul>
-    <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
-  </section>
+              <li>
+                {simple ? (
+                  <SimpleArticleCard post={post} />
+                ) : (
+                  <ArticleCard post={post} />
+                )}
+              </li>
+            </>
+          ))
+        }
+      </ul>
+      <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
+    </section>
+  </slot>
+  <slot name="comments">
+    {
+      !(type && name) && (
+        <Paper padding={true}>
+          <h3>评论</h3>
+          <CommentList />
+        </Paper>
+      )
+    }
+  </slot>
 </PageWithSidebar>
 
 <style>

@@ -2,10 +2,13 @@
 import remarkMath from "remark-math";
 import rehypeMathRenderer from "rehype-mathjax/chtml";
 // typst
+// @ts-ignore
 import rehypeTypst from "@myriaddreamin/rehype-typst";
 
 import type * as hast from "hast";
 import type * as mdast from "mdast";
+import type { MarkdownVFile, RehypePlugin } from "@astrojs/markdown-remark";
+import type { Frontmatter } from "@/types";
 
 const rehypeMultiMath: RehypePlugin = () => {
 	// init mathjax

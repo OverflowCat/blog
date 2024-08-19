@@ -7,24 +7,25 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 
 const OPENCC_SCHEME = "s2twp.json";
 // @ts-ignore
-import * as OpenCC from "opencc-js";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
-const cc = OpenCC.Converter({ from: "cn", to: "twp" }) as (s: string) => string;
+import { getEntry } from "astro:content";
+import getCC from "@/scripts/cc";
 
 export async function getStaticPaths() {
   const posts = (await getBlogPosts()).map((post) => ({
     params: { slug: post.slug },
-    props: post,
+    // props: post,
   }));
   const hantPosts = posts.map((post) => ({
     params: { slug: `${post.params.slug}/hant/` },
-    props: post.props,
+    // props: post.props,
   }));
   return [...posts, ...hantPosts];
 }
 
-export type Props = CollectionEntry<"blog">;
-const post = Astro.props;
+// export type Props = CollectionEntry<"blog">;
+const post = await getEntry("blog", Astro.params.slug);
+if (!post) throw new Error("Post not found");
 const slug = Astro.params.slug;
 const isHant = slug.endsWith("/hant") || slug.endsWith("/hant/");
 let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
@@ -74,7 +75,7 @@ Astro.locals.noscript = post.data.noscript;
     isHant ? (
       <SlotRenderer
         callback={(s) => {
-          let res = cc(s);
+          let res = getCC()(s);
           res = res.replaceAll(` lang="zh-Hans"`, ` lang="zh-Hant"`);
           return res;
         }}

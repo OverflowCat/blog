@@ -1,7 +1,6 @@
 ---
 import Paper from "../Paper.astro";
 import OtherPlatfromItem from "./OtherPlatfromItem.astro";
-import CommentList from "@/components/CommentList.astro";
 import TagCloud from "./TagCloud.astro";
 import CatCloud from "./CatCloud.astro";
 import "@/styles/manchu.less";
@@ -70,10 +69,7 @@ import "@fontsource/noto-sans-mongolian";
       </OtherPlatfromItem>
     </div>
   </Paper>
-  <Paper padding={true}>
-    <h3>评论</h3>
-    <CommentList />
-  </Paper>
+  <slot name="comments"></slot>
   <Paper padding={true}>
     <h3>标签</h3>
     <TagCloud />
