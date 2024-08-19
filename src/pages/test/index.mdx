@@ -1,13 +1,17 @@
 ---
 title: 测试
 date: 2023-07-27 02:05:00
-layout: "@/layouts/Default.astro"
 licence: false
 noscript: false
 categories: 测试
 tags: 排版
 math: typst
+layout: '@/templates/zh/Page.astro'
 ---
+
+import Default from "@/layouts/Default.astro";
+
+<Default frontmatter={frontmatter}>
 
 # 文本
 ## h2 Heading
@@ -80,7 +84,7 @@ import { YouTube } from "astro-embed";
 <YouTube id="https://www.youtube.com/watch?v=9Bq57NUkxnE" />
 
 <div class="flex justify-center">
-<div>
+<div lang='zh-juai'>
 
 夜心頭的毛淞子灑落在窗外，<br />
 心上的人這晚子你又在哪塊。<br />
@@ -106,7 +110,7 @@ import { YouTube } from "astro-embed";
 鬧市歸去霓裳隱隱相忘在江湖。<br />
 
 </div>
-<div>
+<div lang='zh-juai-latn' style='font-family: Ubuntu, "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", sans-serif'>
 
 Yìi’xing’teu’dii mó sông’dsê sãlac dsềtsuang wề<br />
 Xing’sang’dii lén dsec wàen’dsê lĩi yèu dsềlã(k)uê<br />
@@ -136,7 +140,9 @@ Lòsì gui kìi lí sang yĩngy xiang wàng dsề jiang hú.<br />
 
 #### 闽南
 
-Niau-á (_Felis silvestris catus_), iá-niau (_Felis silvestris_) ê a-chéng, ū-ê 分類 mā to̍k-li̍p chi̍t chéng _*Felis catus*_, sī 1 chióng 人類 kúi-ā-chheng nî lâi 培養 hō͘ lo̍h-sèng ê sió-hêng bah-si̍t tōng-bu̍t. It-poaⁿ 認為 siōng chhin ê 野性 chéng sī Hui-chiu iá-niau (_Felis silvestris lybica_).
+<div lang="nan">
+**Niau-á**(_Felis silvestris catus_), iá-niau (_Felis silvestris_) ê a-chéng, ū-ê 分類 mā to̍k-li̍p chi̍t chéng _*Felis catus*_, sī 1 chióng 人類 kúi-ā-chheng nî lâi 培養 hō͘ lo̍h-sèng ê sió-hêng bah-si̍t tōng-bu̍t. It-poaⁿ 認為 siōng chhin ê 野性 chéng sī Hui-chiu iá-niau (_Felis silvestris lybica_).
+</div>
 
 #### 粤
 
@@ -428,3 +434,5 @@ import DigitalCircuit from "@/components/DigitalCircuit.astro";
 ## Telegram
 
 <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="iAaFJPb5" data-limit="5" data-page-id="test" data-color="343638" data-dislikes="1" data-colorful="1"></script>
+
+</Default>

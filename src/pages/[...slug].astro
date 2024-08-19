@@ -12,22 +12,32 @@ import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
 
 export async function getStaticPaths() {
-  const posts = (await getBlogPosts()).map((post) => ({
-    params: { slug: post.slug },
-    // props: post,
-  }));
-  const hantPosts = posts.map((post) => ({
-    params: { slug: `${post.params.slug}/hant/` },
-    // props: post.props,
-  }));
+  const posts = (await getBlogPosts()).map((post) => {
+    const slug = post.slug;
+    return {
+      params: { slug: post.slug },
+      props: { slug, hant: false },
+    }
+  });
+  const hantPosts = posts.map((post) => {
+    const slug = post.props.slug;
+    return {
+      params: { slug: `${slug}/hant/` },
+      props: { slug, hant: true }
+    }
+  });
   return [...posts, ...hantPosts];
 }
 
-// export type Props = CollectionEntry<"blog">;
-const post = await getEntry("blog", Astro.params.slug);
-if (!post) throw new Error("Post not found");
-const slug = Astro.params.slug;
-const isHant = slug.endsWith("/hant") || slug.endsWith("/hant/");
+export type Props = {
+  slug: string,
+  hant: boolean,
+}
+
+const post = await getEntry("blog", Astro.props.slug);
+if (!post) throw new Error(`Post ${Astro.params.slug} not found at ${Astro.props.slug}. Check if slug is correct.`);
+// const slug = Astro.props.slug;
+const isHant = Astro.props.hant;
 let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
 try {
   Content = (await post.render()).Content;

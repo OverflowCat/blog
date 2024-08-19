@@ -138,7 +138,6 @@ function toUnits(str: string) {
       return { kanji, furigana, okurigana, kaeriten, punctuation };
     })
     .filter(Boolean);
-  console.info({ units });
 
   return units.filter((x) => x.kanji) as Unit[];
   // process other brackets

@@ -122,7 +122,7 @@ export default defineConfig({
 		},
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
-			noExternal: ["modern-css-reset", "xp.css", "98.css"],
+			noExternal: ["modern-css-reset", "xp.css", "98.css", "/@astro-community/"],
 		},
 	},
 	markdown: {

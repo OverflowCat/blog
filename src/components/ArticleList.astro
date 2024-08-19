@@ -74,12 +74,16 @@ const _posts = posts.map((post) => {
       </ul>
       <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
     </section>
-    <Fragment slot="comments">
-      <Paper padding>
-        <h3 class="text-align-center m-2">评论</h3>
-        <CommentList />
-      </Paper>
-    </Fragment>
+    {
+      !type && (
+        <Fragment slot="comments">
+          <Paper padding>
+            <h3 class="text-align-center m-2">评论</h3>
+            <CommentList />
+          </Paper>
+        </Fragment>
+      )
+    }
 </PageWithSidebar>
 
 <style>
