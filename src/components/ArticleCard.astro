@@ -93,7 +93,21 @@ const { post } = Astro.props;
   </tr>
 </table>
 
-<style>
+<style lang="less" is:global>
+  td {
+    padding: 0px;
+    &.content {
+      vertical-align: top;
+    }
+    &.title-img {
+      inline-size: 175px;
+      #vert:target & {
+        inline-size: 0; // WTF???
+      }
+    }
+  }
+</style>
+<style lang="less">
   .continue {
     font-size: 90%;
     margin: 0;
@@ -106,8 +120,6 @@ const { post } = Astro.props;
   blockquote {
     margin-block-start: 6px;
     margin-block-end: 6px;
-    margin-inline-start: 0;
-    margin-inline-end: 8px;
 
     color: #383838;
     border-inline-start: 4px solid #ddd;
@@ -123,17 +135,10 @@ const { post } = Astro.props;
     inline-size: 100%;
     border-collapse: collapse;
   }
-  td {
-    padding: 0px;
-  }
-  td.content {
-    vertical-align: top;
-  }
-  td.title-img {
-    width: 175px;
-  }
+
   img.title-img {
     margin-inline-start: 10px;
+    width: 175px;
     height: auto;
     border-radius: 4px;
   }

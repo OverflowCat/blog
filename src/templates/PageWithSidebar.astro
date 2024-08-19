@@ -24,7 +24,7 @@ Astro.locals.noscript = true;
   <Bar {...bar} lang="zh-Hans" />
   <Han hant={false} />
   <main>
-    <Sidebar><slot name="comments" /></Sidebar>
+    <Sidebar><slot name="comments" slot="comments" /></Sidebar>
     <Paper transitionName="main">
       <section class="inhalt">
         <slot />

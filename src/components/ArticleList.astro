@@ -52,7 +52,6 @@ const _posts = posts.map((post) => {
 ---
 
 <PageWithSidebar title={title} bar={bar}>
-  <slot name="default">
     {title && title !== "归档" && <h1>{title}</h1>}
     <section class="inhalt">
       <ul>
@@ -75,17 +74,12 @@ const _posts = posts.map((post) => {
       </ul>
       <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
     </section>
-  </slot>
-  <slot name="comments">
-    {
-      !(type && name) && (
-        <Paper padding={true}>
-          <h3>评论</h3>
-          <CommentList />
-        </Paper>
-      )
-    }
-  </slot>
+    <Fragment slot="comments">
+      <Paper padding>
+        <h3 class="text-align-center m-2">评论</h3>
+        <CommentList />
+      </Paper>
+    </Fragment>
 </PageWithSidebar>
 
 <style>
@@ -107,13 +101,9 @@ const _posts = posts.map((post) => {
     padding: unset;
   }
   li {
-    /* margin: 0.5rem 0; */
-    margin-block-start: 0.5rem;
-    margin-block-end: 0.5rem;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
+    margin: 0;
+    margin-block: 0.5rem;
     border-block-end: 1px solid lightgray;
-    /* padding: 0.5rem 0; */
     padding: 0.5rem;
     content-visibility: auto;
   }

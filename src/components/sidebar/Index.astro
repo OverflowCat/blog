@@ -69,11 +69,11 @@ import "@fontsource/noto-sans-mongolian";
       </OtherPlatfromItem>
     </div>
   </Paper>
-  <slot name="comments"></slot>
+  <slot name="comments" />
   <Paper padding={true}>
-    <h3>标签</h3>
+    <h3 class="text-align-center m-2">标签</h3>
     <TagCloud />
-    <h3>分类</h3>
+    <h3 class="text-align-center m-2">分类</h3>
     <CatCloud />
   </Paper>
 </aside>
@@ -137,9 +137,5 @@ import "@fontsource/noto-sans-mongolian";
   }
   .site-author-image:hover {
     transform: rotateZ(360deg);
-  }
-  h3 {
-    text-align: center;
-    margin: 0.75rem 0 0.5rem;
   }
 </style>
