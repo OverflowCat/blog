@@ -1,3 +1,5 @@
+@import "./kbd.less";
+
 pre {
   // white-space: normal;
   text-wrap: wrap;
@@ -109,14 +111,23 @@ figure[data-rehype-pretty-code-figure] { // block
     }
   }
 
+  code > [data-line] {
+    margin-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    word-break: break-all;
+  }
+
   code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
-
+    word-break: keep-all;
     /* Other styling */
     display: inline-block;
-    width: 1rem;
-    margin-right: 1rem;
+    width: 1.5rem;
+    // margin-right: 1rem;
+    position: absolute;
+    left: -2rem;
     text-align: right;
     color: gray;
   }

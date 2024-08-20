@@ -26,6 +26,7 @@ import rehypeMultiMath from "./src/scripts/rehype/math.ts";
 import { typst } from "astro-typst";
 
 // code
+import remarkSampKbd from "remark-samp-kbd";
 import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
@@ -43,8 +44,8 @@ function myRemarkPlugin() {
 	 * @returns {undefined}
 	 *   Nothing.
 	 */
-	return function (tree) {
-		visit(tree, function (node) {
+	return (tree: Root) => {
+		visit(tree, (node) => {
 			if (
 				node.type === 'containerDirective' ||
 				node.type === 'leafDirective' ||
@@ -65,6 +66,7 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 
 // Atomic CSS
 import UnoCSS from "unocss/astro";
+import type { Root } from "mdast";
 
 type PrettyCodeNodePositionPoint = {
 	line: number;
@@ -131,7 +133,7 @@ export default defineConfig({
 			footnoteBackLabel: "返回内容",
 		},
 		syntaxHighlight: false,
-		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption, remarkDirect, myRemarkPlugin],
+		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption, remarkSampKbd, remarkDirect, myRemarkPlugin],
 		rehypePlugins: [
 			/**
 			 * You can customize these heading IDs by adding a rehype plugin that

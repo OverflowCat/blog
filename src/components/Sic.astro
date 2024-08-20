@@ -1,0 +1,18 @@
+---
+export type Props = {
+  href?: string;
+  reason?: string;
+  sup?: boolean;
+};
+const { href, reason, sup } = Astro.props;
+const Tag = href ? "a" : "abbr";
+const Wrap = sup !== false ? "sup" : "span";
+---
+
+<mark><slot></slot></mark><Wrap>[<i><Tag href={href} title={reason || "原文如此"}>sic</Tag></i>]</Wrap>
+
+<style>
+  mark {
+    background-color: rgba(255, 255, 0, 0.367);
+  }
+</style>

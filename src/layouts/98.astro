@@ -11,27 +11,6 @@ const headings: Heading[] = Astro.props.headings;
 const { frontmatter } = Astro.props;
 import { genTocTree, renderTree, type Heading } from "@/components/98/98.ts";
 import Window from "@/components/98/Window.astro";
-/*
-const content = await Astro.slots.render("default");
-import * as cheerio from "cheerio";
-import { getCollection } from "astro:content";
-const posts = await getCollection<"blog">("blog");
-const post = posts.filter(p => p.data.title === frontmatter.title)[0];
-const rendered = await post.render();
-console.log(Astro.props.headings);
-*/
-/*
-const $ = cheerio.load(content);
-const headings = $("h2, h3, h4, h5, h6");
-{ depth: 2, slug: 'pcmodwin-40', text: 'PcModWin 4.0' },
-headings.each((i, el) => {
-  const $el = $(el);
-  const id = $el.attr("id");
-  const text = $el.text();
-  toc.push({ id, text, level: parseInt(el.name[1]) });
-  $el.append(`<a class="anchor" href="#${id}">#</a>`);
-});
-*/
 const root = genTocTree(headings);
 const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
 ---
@@ -51,12 +30,15 @@ const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
 </main>
 
 <style lang="less" is:global is:inline>
-  * {
-    box-sizing: border-box;
-  }
   body {
-    color-scheme: light;
-    background: #ddd !important;
+    *,
+    *::before,
+    *::after {
+      font-size: 1rem;
+      box-sizing: border-box;
+      color-scheme: light;
+      background: #ddd !important;
+    }
   }
   section#comments {
     margin-block: 1em;

@@ -196,9 +196,7 @@ import Kanbun from "./_Kanbun.astro";
 
 __这是加粗文本__ __bold__
 
-*这是斜体文本* *italic*
-
-_这是斜体文本_ _bold_
+*这是强调文本* <span lang='en'>*italic*</span> _这是强调文本_
 
 ~~删除线~~ ~~del~~
 
@@ -288,6 +286,15 @@ defmodule Solution do
   defp get_base_10(n, b10), do: div(b10, 10)
 end
 ```
+
+### `<samp>`, `<kbd>`, `<var>`
+
+This is
+`code1`,````` `code2` `````,
+````` code`3 `````, ````` code`4 `````.
+
+And we have ``sample code``, keyboard shortcut ```Ctrl```+```Shift```+```C```,
+and variable like ````x````!
 
 ## Tables
 
