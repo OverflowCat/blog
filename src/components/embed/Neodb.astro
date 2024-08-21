@@ -1,8 +1,135 @@
 ---
 export type Props = {
+    post: string| BigInt;
+    item: string;
     title: string;
-    url: string;
-    desc: string;
+    authors: string[];
+    category: "游戏" | "动画" | "音乐" | "书籍" | "电影" | "电视剧" | "漫画" | "小说" | "杂志" | "演出" | "活动" | "软件" | "网站" | "社交" | "服务" | "商店" | "品牌" | "组织" | "人物" | "地点" | "食品" | "其他";
+    categories: string[];
+    platforms: string[];
+    img: string;
+    altTitles: [string, string][]; // [title, lang]
+    date: string;
 }
-const { title, url, desc } = Astro.props;
+const { title, post, item, altTitles, date, img, platforms, categories, category, authors } = Astro.props;
+const postHref = `https://neodb.social/@overflowcat@neodb.social/posts/${post}/`;
+const itemHref= `https://neodb.social/${item}`;
 ---
+
+<article>
+    <div class="item">
+        <div class="cover">
+            <a href={itemHref}>
+                <img src={img} alt="cover">
+            </a>
+        </div>
+        <div>
+            <hgroup>
+                <h5>
+                    <a href={itemHref}>
+                        {title}
+                    </a>
+                    <small>
+                        <span class="category">{category}</span>
+                    </small>
+                </h5>
+            </hgroup>
+            <div>
+                <div class="brief">
+                    <div class="multi-fields">
+                        <span>
+                            {Object.entries(altTitles).map(([lang, title]) => (
+                                <span lang={lang} set:html={title} />
+                            ))}
+                            by {
+                                authors.join("、")
+                            }
+                        </span>
+                        <date>{date}</date>
+                    </div>
+                </div>
+                <div class="full">
+                    <div class="multi-fields">
+                        <span set:html={"类型：" + categories.map(category => (
+                                `<span>${category}</span>`
+                            )).join(' / ')}>
+                        </span>
+                        <span set:html={
+                            "平台：" + platforms.map(platform => (
+                                `<span>${platform}</span>`
+                            )).join(' / ')
+                        }></span>
+                    </div>
+                    <div class="desc">
+                        <slot />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<style>
+    article {
+        margin: 20px;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: .9rem;
+        line-height: 120%;
+    }
+
+    hgroup {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .cover {
+        margin-right: 20px;
+    }
+
+    .cover img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    h5 {
+        margin-bottom: 5px;
+    }
+
+    .category {
+        margin-right: 5px;
+        padding: 2px 5px;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    .site-list a {
+        margin-right: 5px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .brief {
+        margin-bottom: 10px;
+    }
+
+    .multi-fields span {
+        margin-right: 10px;
+    }
+
+    .desc {
+        /* max-height: 100px; */
+        /* overflow: hidden; */
+    }
+</style>

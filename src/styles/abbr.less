@@ -1,0 +1,15 @@
+abbr {
+    text-decoration-color: rgba(159, 159, 159, 0.6);
+
+    &[lang] {
+        text-decoration-color: transparent;
+    }
+
+    &:hover,
+    &>span:hover {
+        text-decoration-color: rgb(159, 159, 159);
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-thickness: auto;
+    }
+}

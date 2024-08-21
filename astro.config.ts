@@ -35,16 +35,12 @@ import remarkRuby from "remark-ruby";
 import remarkDirect from "remark-directive";
 import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
+import type { Node } from "mdast";
+
 
 
 function myRemarkPlugin() {
-	/**
-	 * @param {import('mdast').Root} tree
-	 *   Tree.
-	 * @returns {undefined}
-	 *   Nothing.
-	 */
-	return (tree: Root) => {
+	return (tree: Node) => {
 		visit(tree, (node) => {
 			if (
 				node.type === 'containerDirective' ||
@@ -54,8 +50,17 @@ function myRemarkPlugin() {
 				const data = node.data || (node.data = {})
 				const hast = h(node.name, node.attributes || {})
 
-				data.hName = hast.tagName
-				data.hProperties = hast.properties
+				let name = hast.tagName;
+				let props = hast.properties;
+				if (name === "j" && props) {
+					name = "abbr";
+					props = {
+						title: props.m || props.e || props.p,
+						lang: "zh-juai",
+					}
+				}
+				data.hName = name;
+				data.hProperties = props;
 			}
 		})
 	}
@@ -66,7 +71,6 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 
 // Atomic CSS
 import UnoCSS from "unocss/astro";
-import type { Root } from "mdast";
 
 type PrettyCodeNodePositionPoint = {
 	line: number;
