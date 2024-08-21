@@ -49,8 +49,7 @@ Astro.locals.noscript = true;
 </style>
 
 <style is:global>
-  /* @media (max-width: 900px) { */
-  @container html (max-inline-size: 900px) {
+  @container html (max-inline-size: 1100px) {
     main {
       flex-direction: column-reverse;
     }
@@ -63,7 +62,7 @@ Astro.locals.noscript = true;
     }
   }
 
-  @container html (min-inline-size: 900px) {
+  @container html (min-inline-size: 1100px) {
     .inhalt {
       min-inline-size: 700px !important;
     }

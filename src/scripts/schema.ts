@@ -6,7 +6,7 @@ const ICON_PACKS = new Set(
 	),
 );
 // 2. Define a `type` and `schema` for each collection
-function transform2arr(val: null | string | string[]) {
+function transform2arr(val: null | undefined | string | string[]) {
 	if (!val) {
 		return [];
 	}
@@ -92,5 +92,6 @@ export const schema = z
 			if (data.math === "typst")
 				data.vert = false;
 		}
+		console.debug("validating frontmatter", data.title);
 		return data;
 	})

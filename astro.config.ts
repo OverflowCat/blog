@@ -160,6 +160,7 @@ export default defineConfig({
 		],
 	},
 	experimental: {
+		contentIntellisense: true,
 		contentCollectionCache: true,
 	},
 	integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap()],

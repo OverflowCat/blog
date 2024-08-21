@@ -4,12 +4,13 @@
   "version": "2.8.6",
   "private": true,
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "scripts": {
     "new": "node cli/write.js",
     "dev": "astro dev",
-    "dm": "export NODE_OPTIONS=--max_old_space_size=4096 && astro dev",
+    "dm": "export NODE_OPTIONS=--max_old_space_size=3496 && astro dev",
+    "dv": "export NODE_OPTIONS=--max_old_space_size=3496 && astro dev --verbose",
     "start": "astro dev",
     "s": "astro dev",
     "build": "astro build && node cli/atom.js",

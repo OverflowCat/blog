@@ -106,8 +106,7 @@ const { post } = Astro.props;
   blockquote {
     margin-block-start: 6px;
     margin-block-end: 6px;
-    margin-inline-start: 0;
-    margin-inline-end: 8px;
+    margin-inline: 0;
 
     color: #383838;
     border-inline-start: 4px solid #ddd;
@@ -116,7 +115,7 @@ const { post } = Astro.props;
     padding-inline-start: 11px;
   }
   .title-date {
-    float: right;
+    float: inline-end;
     inset-block-end: 2px;
   }
   table {
@@ -130,14 +129,17 @@ const { post } = Astro.props;
     vertical-align: top;
   }
   td.title-img {
+    height: 0; /* Prevent the table row from expanding -- What the hell? */
     width: 175px;
+    text-align: end;
   }
   img.title-img {
     margin-inline-start: 10px;
+    margin-inline-end: 0;
     height: auto;
     border-radius: 4px;
   }
-  @media (max-width: 650px) {
+  @container html (max-inline-size: 650px) {
     td.title-img {
       display: none;
     }
