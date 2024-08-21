@@ -1,12 +1,23 @@
 @font-face {
     font-family: "Fusion Pixel P 12px SC";
-    src: url(/fonts/fusion-pixel-12px-proportional-zh_hans.woff2) format("woff2");
+    src        : url(/fonts/fusion-pixel-12px-proportional-zh_hans.woff2) format("woff2");
 }
 
-article {
-    font-size: 18px !important;
+body {
+    color-scheme: light;
+    background  : #ddd !important;
+}
+
+* {
+    font-size  : 1rem;
     font-family: "Fusion Pixel P 12px SC", Arial !important;
 }
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 
 .title-bar,
 .window,
@@ -19,23 +30,32 @@ table,
 textarea,
 ul.tree-view {
     font-family: "Pixelated MS Sans Serif", "Fusion Pixel P 12px SC", Arial !important;
-    font-size: 16px !important;
+    font-size  : 16px !important;
 }
 
-h1 {
+h1,
+h1 * {
     font-size: 2.5rem !important;
 }
 
-h2 {
+h2,
+h2 * {
     font-size: 2rem !important;
 }
 
-h3 {
+h3,
+h3 * {
     font-size: 1.75rem !important;
 }
 
-h4 {
+h4,
+h4 * {
     font-size: 1.5rem !important;
+}
+
+h5,
+h5 * {
+    font-size: 1.25rem !important;
 }
 
 html {
@@ -46,6 +66,6 @@ html {
     padding-left: 5px;
 }
 
-button:not([aria-label]) { 
+button:not([aria-label]) {
     height: 1.9em;
 }
