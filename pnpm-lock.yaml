@@ -153,8 +153,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       recursive-readdir-files:
-        specifier: ^2.3.1
-        version: 2.3.1
+        specifier: ^2.3.2
+        version: 2.3.2
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
@@ -3198,8 +3198,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  recursive-readdir-files@2.3.1:
-    resolution: {integrity: sha512-BQfYr6RUl1wdla4+F8gTFzItE52/GpYssMiq+wHIN77n8mF9wzb1M/MndkDImZSzfFjrz5tJ/S5jdV7hGolm6g==}
+  recursive-readdir-files@2.3.2:
+    resolution: {integrity: sha512-BwDsPaFW9HUlUHagjQRb3gdgh+SGz434W8XgTXPfOTpj1HKgzMJsJnpuh3qCvHGMLwOuFXI6Te20PwzXKasWDA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   regenerator-runtime@0.14.1:
@@ -7602,7 +7602,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  recursive-readdir-files@2.3.1: {}
+  recursive-readdir-files@2.3.2: {}
 
   regenerator-runtime@0.14.1: {}
 

@@ -72,7 +72,7 @@
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "recursive-readdir-files": "^2.3.1",
+    "recursive-readdir-files": "^2.3.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
     "rehype-mathjax": "^6.0.0",
