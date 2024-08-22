@@ -6,6 +6,11 @@ math: typst
 licence: false
 layout: "@/layouts/Default.astro"
 tags: []
+photo:
+  src: "/palworld/你醒啦.jpg"
+  alt: "你醒啦？"
+  aspect: "16:9"
+figcaption: "你醒啦？"
 vert: true
 hant: true
 categories: 周报
@@ -25,7 +30,7 @@ import "./style.less";
 
 你应该已经注意到本博客部分文章（包括本文）的开头的角落里多了三个按钮，分别是字词转换、[直书](./#vert)和[横书](./#博客更新)。
 
-简正转换是通过 opencc-js 实现，因为 opencc 在我这边因为 [C++ 代码出包](https://github.com/BYVoid/OpenCC/issues/883)的原因装不上。
+简正转换是通过 opencc-js 实现，因为 opencc 在我:j[这块]{m="tsəʔ⁴ kʰuɛ⁵³，这里"}因为 [C++ 代码出包](https://github.com/BYVoid/OpenCC/issues/883)的原因装不上。
 
 ### 直排布局
 
@@ -55,7 +60,7 @@ Typst integration for Astro. Contribute to OverflowCat/astro-typst development b
 
 </aside>
 
-感谢 Typst.ts 的作者，Node compiler 会自动下载所需的依赖，所以这边已经支持的功能如下：
+感谢 Typst.ts 的作者，Node compiler 会自动下载所需的依赖，所以很轻松地已经支持了：
 
 - [x] 从 Typst Universe 引入包
 - [x] 使用系统字体
@@ -145,8 +150,6 @@ import Sic from "@components/Sic.astro";
 ### 幻兽帕鲁
 
 <Neodb item="palworld" />
-
-![你醒啦？](./palworld/20240715154822_1.jpg)
 
 没玩多久，感觉前期有点枯燥。
 
