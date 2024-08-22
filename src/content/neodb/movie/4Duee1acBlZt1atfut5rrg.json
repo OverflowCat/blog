@@ -1,0 +1,147 @@
+{
+  "id": "https://neodb.social/movie/4Duee1acBlZt1atfut5rrg",
+  "type": "Movie",
+  "uuid": "4Duee1acBlZt1atfut5rrg",
+  "url": "/movie/4Duee1acBlZt1atfut5rrg",
+  "api_url": "/api/movie/4Duee1acBlZt1atfut5rrg",
+  "category": "movie",
+  "parent_uuid": null,
+  "display_title": "从21世纪安全撤离",
+  "external_resources": [
+    {
+      "url": "https://www.imdb.com/title/tt7171442/"
+    },
+    {
+      "url": "https://www.themoviedb.org/movie/1242372"
+    },
+    {
+      "url": "https://movie.douban.com/subject/26816104/"
+    }
+  ],
+  "title": "从21世纪安全撤离",
+  "description": "在地球人都不知道的K星，三个被命运选中的少年，靠打个喷嚏就可以往返未来二十年。面对毁灭世界的惊天阴谋，他们除了清澈的愚蠢和个位数的战力外一无所有，如何变身英雄对抗意图毁灭世界的超级坏坏的大坏蛋？外表看似大人，头脑却异于常人的“王炸”兄弟组合，代表k星拯救未来！",
+  "localized_title": [
+    {
+      "lang": "en",
+      "text": "Evacuate from the 21st Century"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "ko",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "ja",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "pt",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "de",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "fr",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "es",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "zh-hk",
+      "text": "从21世纪安全撤离"
+    },
+    {
+      "lang": "zh-tw",
+      "text": "从21世纪安全撤离"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "在地球人都不知道的K星，三个被命运选中的少年，靠打个喷嚏就可以往返未来二十年。面对毁灭世界的惊天阴谋，他们除了清澈的愚蠢和个位数的战力外一无所有，如何变身英雄对抗意图毁灭世界的超级坏坏的大坏蛋？外表看似大人，头脑却异于常人的“王炸”兄弟组合，代表k星拯救未来！"
+    },
+    {
+      "lang": "ko",
+      "text": ""
+    },
+    {
+      "lang": "ja",
+      "text": ""
+    },
+    {
+      "lang": "pt",
+      "text": ""
+    },
+    {
+      "lang": "de",
+      "text": ""
+    },
+    {
+      "lang": "fr",
+      "text": ""
+    },
+    {
+      "lang": "es",
+      "text": ""
+    },
+    {
+      "lang": "en",
+      "text": "On Planet K, unknown to anyone on Earth, three teenagers chosen by fate can travel back and forth twenty years into the future by sneezing. In the face of a shocking plot to destroy the world, they have nothing but crystal-clear stupidity and single-digit combat power, so how can they transform into heroes and fight against the super-villainous villains who are intent on destroying the world? How can they turn into heroes and fight against the super baddest villains intent on destroying the world? The \"King Bomb\" brothers, who look like grown-ups but have minds like no other, will save the future on behalf of the K-Star!"
+    },
+    {
+      "lang": "zh-hk",
+      "text": ""
+    },
+    {
+      "lang": "zh-tw",
+      "text": ""
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubanmovie/2024/07/21/f8159e79-e098-438c-970d-aa17be240e89.jpg",
+  "rating": 7.1,
+  "rating_count": 42,
+  "brief": "在地球人都不知道的K星，三个被命运选中的少年，靠打个喷嚏就可以往返未来二十年。面对毁灭世界的惊天阴谋，他们除了清澈的愚蠢和个位数的战力外一无所有，如何变身英雄对抗意图毁灭世界的超级坏坏的大坏蛋？外表看似大人，头脑却异于常人的“王炸”兄弟组合，代表k星拯救未来！",
+  "orig_title": "从21世纪安全撤离",
+  "other_title": [],
+  "director": [
+    "李阳"
+  ],
+  "playwright": [
+    "李阳"
+  ],
+  "actor": [
+    "张若昀",
+    "钟楚曦",
+    "宋洋",
+    "吴晓亮",
+    "朱颜曼滋",
+    "李晨浩",
+    "温峥嵘",
+    "石凉",
+    "陈一辰",
+    "李卓钊",
+    "康启轩",
+    "马凡丁"
+  ],
+  "genre": [
+    "喜剧",
+    "科幻"
+  ],
+  "language": [
+    "汉语普通话"
+  ],
+  "area": [
+    "中国大陆"
+  ],
+  "year": 2024,
+  "site": null,
+  "duration": "98分钟",
+  "imdb": "tt7171442"
+}

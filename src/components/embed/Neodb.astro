@@ -1,19 +1,65 @@
 ---
 export type Props = {
-    post: string| BigInt;
-    item: string;
-    title: string;
-    authors: string[];
-    category: "游戏" | "动画" | "音乐" | "书籍" | "电影" | "电视剧" | "漫画" | "小说" | "杂志" | "演出" | "活动" | "软件" | "网站" | "社交" | "服务" | "商店" | "品牌" | "组织" | "人物" | "地点" | "食品" | "其他";
-    categories: string[];
-    platforms: string[];
-    img: string;
-    altTitles: [string, string][]; // [title, lang]
-    date: string;
+	post?: string | bigint;
+	item: string;
+};
+
+const {
+	post,
+	item,
+} = Astro.props;
+import type { Game, Movie, NeoItem } from "@/scripts/schema/neodb";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("neodb", item);
+if (!entry) {
+	throw new Error("Entry not found");
 }
-const { title, post, item, altTitles, date, img, platforms, categories, category, authors } = Astro.props;
+const data = entry.data as NeoItem;
+const {
+	id: url,
+	display_title: title,
+	description: desc,
+	rating,
+	type: category,
+	genre,
+	cover_image_url: img,
+	localized_title: altTitles,
+} = data;
+let authors: string[];
+let platforms: string[] = [];
+
+if (category === "Game") {
+    var {
+        developer,
+	    publisher,
+	    release_date: date
+    } = data as Game;
+    platforms = (data as Game).platform; 
+    authors = developer.concat(publisher);
+} else if (category === "Movie") {
+    var {
+        director,
+        actor,
+        playwright,
+    } = data as Movie;
+    var date = data.year.toString();
+    authors = director.concat(actor, playwright);
+} else {
+    authors = [];
+    var date = "";
+}
 const postHref = `https://neodb.social/@overflowcat@neodb.social/posts/${post}/`;
-const itemHref= `https://neodb.social/${item}`;
+const itemHref = `https://neodb.social/${item}`;
+/* img="https://neodb.social/m/item/doubangame/2024/08/16/ed2acb1b-7df3-4dff-a5af-b57c93f57ebc.jpg" title="1比1人形食玩"
+ altTitles={{"en": "1 to 1 humanoid edible toys"}}
+ category="游戏"
+ authors={["汉谟拉比炒面", "我的屁是香哒"]}
+ date="2024年8月8日"
+ post="347886723885871304"
+ item="game/4pOgy2d3N1pjL3qXEOhSOs"
+ categories={["视觉小说"]}
+ platforms={['Windows', 'macOS']} */
 ---
 
 <article>
@@ -23,46 +69,47 @@ const itemHref= `https://neodb.social/${item}`;
                 <img src={img} alt="cover">
             </a>
         </div>
-        <div>
+        <div class="main">
             <hgroup>
                 <h5>
-                    <a href={itemHref}>
-                        {title}
-                    </a>
+                    <a href={itemHref}>{title}</a>
                     <small>
                         <span class="category">{category}</span>
+                        <date>{date}</date>
                     </small>
                 </h5>
             </hgroup>
             <div>
                 <div class="brief">
-                    <div class="multi-fields">
+                    <div class="multi-fields trim-p">
                         <span>
-                            {Object.entries(altTitles).map(([lang, title]) => (
-                                <span lang={lang} set:html={title} />
+                            {altTitles.filter(({text}) => text !== title).map(({lang, text}) => (
+                                <span lang={lang}><i>{text}</i></span>
                             ))}
-                            by {
-                                authors.join("、")
-                            }
+                            by {authors.join("、")}
                         </span>
-                        <date>{date}</date>
                     </div>
                 </div>
                 <div class="full">
                     <div class="multi-fields">
-                        <span set:html={"类型：" + categories.map(category => (
-                                `<span>${category}</span>`
+                        <span set:html={"<b>类型</b>：" + genre.map(g => (
+                                `<span>${g}</span>`
                             )).join(' / ')}>
                         </span>
-                        <span set:html={
-                            "平台：" + platforms.map(platform => (
+                        {
+                            platforms?.length > 0 && <span set:html={
+                            "<b>平台</b>：" + platforms.map(platform => (
                                 `<span>${platform}</span>`
                             )).join(' / ')
                         }></span>
+                        }
                     </div>
                     <div class="desc">
-                        <slot />
+                        {
+                            desc && <p set:html={desc} class="trim-p" />
+                        }
                     </div>
+                    <slot />
                 </div>
             </div>
         </div>
@@ -70,66 +117,75 @@ const itemHref= `https://neodb.social/${item}`;
 </article>
 
 <style>
-    article {
-        margin: 20px;
-        padding: 10px;
-        background-color: #f5f5f5;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-size: .9rem;
-        line-height: 120%;
-    }
+article {
+    padding: .5rem;
+    margin: .5rem;
+    background-color: #f5f5f5b7;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: .95rem;
+    line-height: 1.5;
+}
 
-    hgroup {
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
+hgroup {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+h5 {
+    margin-block: .25em; 
+}
+h5 a {font-size: 1.25em; }
 
-    .item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+.item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    /* flex: 1; */
+}
 
-    .cover {
-        margin-right: 20px;
-    }
+.flex {
+display: flex;
+align-items: center; /* 使子元素上下居中 */
+}
 
-    .cover img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+.cover {
+    flex-shrink: 0; /* 防止 cover 缩小 */
+}
 
-    h5 {
-        margin-bottom: 5px;
-    }
+.cover img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
 
-    .category {
-        margin-right: 5px;
-        padding: 2px 5px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-        font-size: 12px;
-    }
+.main {
+    flex-grow: 1; /* 使 main 占据剩下的空间 */
+}
 
-    .site-list a {
-        margin-right: 5px;
-        color: #333;
-        text-decoration: none;
-    }
+.category {
+    margin-right: 5px;
+    padding: 2px 5px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    font-size: 12px;
+}
 
-    .brief {
-        margin-bottom: 10px;
-    }
+.site-list a {
+    margin-right: 5px;
+    color: #333;
+    text-decoration: none;
+}
 
-    .multi-fields span {
-        margin-right: 10px;
-    }
+.multi-fields span {
+    margin-inline-end: 10px;
+}
 
-    .desc {
-        /* max-height: 100px; */
-        /* overflow: hidden; */
-    }
+.trim-p {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: block-axis;
+    overflow: hidden;
+}
 </style>

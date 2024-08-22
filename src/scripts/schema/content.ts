@@ -6,7 +6,7 @@ const ICON_PACKS = new Set(
 	),
 );
 // 2. Define a `type` and `schema` for each collection
-function transform2arr(val: null | string | string[]) {
+function transform2arr(val: null | undefined | string | string[]) {
 	if (!val) {
 		return [];
 	}
@@ -20,7 +20,7 @@ const TAG_TYPE = z
 	.nullish()
 	.transform(transform2arr);
 
-export const schema = z
+export const blogSchema = z
 	.object({
 		title: z.string(),
 		categories: TAG_TYPE,
@@ -77,8 +77,8 @@ export const schema = z
 		]),
 		paper: z.boolean().default(true),
 		resizable: z.boolean().default(true),
-		hant: z.boolean().default(true),
-		vert: z.boolean().default(true),
+		hant: z.boolean().optional(),
+		vert: z.boolean().optional(),
 	})
 	// .refine((data) => !(data.math && data.vert), {
 	// 	message: "Math is not supported in vertical mode.",
@@ -88,9 +88,11 @@ export const schema = z
 	// })
 	.transform((data) => {
 		if (data.math) {
-			data.hant = false;
+			if (data.hant !== true) data.hant = false;
 			if (data.math === "typst")
-				data.vert = false;
+				if (data.vert !== true) data.vert = false;
 		}
+		if (data.vert === undefined) data.vert = false;
+		if (data.hant === undefined) data.hant = false;
 		return data;
 	})

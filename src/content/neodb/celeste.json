@@ -1,0 +1,73 @@
+{
+  "id": "https://neodb.social/game/5O9GrvAJ5fFCPIP8So13Ep",
+  "type": "Game",
+  "uuid": "5O9GrvAJ5fFCPIP8So13Ep",
+  "url": "/game/5O9GrvAJ5fFCPIP8So13Ep",
+  "api_url": "/api/game/5O9GrvAJ5fFCPIP8So13Ep",
+  "category": "game",
+  "parent_uuid": null,
+  "display_title": "蔚蓝",
+  "external_resources": [
+    {
+      "url": "https://www.douban.com/game/27598218/"
+    },
+    {
+      "url": "https://store.steampowered.com/app/504230"
+    }
+  ],
+  "title": "蔚蓝",
+  "description": "《Celeste》是《TowerFall》的制作者推出的又一力作。这款平台游戏节奏极为紧凑，玩家需要在 Madeline 攀登塞莱斯特山 (Celeste Mountain) 的旅程中，帮助她克服内心深处的恐惧。勇敢面对数百个手工打造的挑战场景，揭开诡异的秘密，解开神秘山峰的谜团吧。",
+  "localized_title": [
+    {
+      "lang": "zh-cn",
+      "text": "蔚蓝"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "蔚蓝山"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "塞莱斯特山"
+    },
+    {
+      "lang": "zh-tw",
+      "text": "蔚藍山脈"
+    },
+    {
+      "lang": "en",
+      "text": "Celeste"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "《Celeste》是《TowerFall》的制作者推出的又一力作。这款平台游戏节奏极为紧凑，玩家需要在 Madeline 攀登塞莱斯特山 (Celeste Mountain) 的旅程中，帮助她克服内心深处的恐惧。勇敢面对数百个手工打造的挑战场景，揭开诡异的秘密，解开神秘山峰的谜团吧。"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubangame/2024/07/16/1c1f66b2-0f0c-4cdd-bab9-e200d062117d.jpg",
+  "rating": 9.1,
+  "rating_count": 102,
+  "brief": "《Celeste》是《TowerFall》的制作者推出的又一力作。这款平台游戏节奏极为紧凑，玩家需要在 Madeline 攀登塞莱斯特山 (Celeste Mountain) 的旅程中，帮助她克服内心深处的恐惧。勇敢面对数百个手工打造的挑战场景，揭开诡异的秘密，解开神秘山峰的谜团吧。",
+  "genre": [
+    "横版过关",
+    "动作"
+  ],
+  "developer": [
+    "Matt Makes Games"
+  ],
+  "publisher": [
+    "Matt Makes Games"
+  ],
+  "platform": [
+    "PC",
+    "Mac",
+    "PS4",
+    "Xbox One",
+    "Nintendo Switch",
+    "Linux"
+  ],
+  "release_type": null,
+  "release_date": "2018-01-25",
+  "official_site": ""
+}

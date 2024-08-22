@@ -1,0 +1,158 @@
+{
+  "id": "https://neodb.social/movie/06WDIK5w49jE3HjBHN7Jqg",
+  "type": "Movie",
+  "uuid": "06WDIK5w49jE3HjBHN7Jqg",
+  "url": "/movie/06WDIK5w49jE3HjBHN7Jqg",
+  "api_url": "/api/movie/06WDIK5w49jE3HjBHN7Jqg",
+  "category": "movie",
+  "parent_uuid": null,
+  "display_title": "解密",
+  "external_resources": [
+    {
+      "url": "https://www.themoviedb.org/movie/1241486"
+    },
+    {
+      "url": "https://movie.douban.com/subject/26370387/"
+    }
+  ],
+  "title": "解密",
+  "description": "影片根据茅盾文学奖获奖者麦家的同名长篇小说改编，故事关于上世纪四十年代，世界局势风起云涌，及时准确破译敌方的通讯密码至关重要。容金珍（刘昊然 饰）自幼展现出惊人的数学天赋，被时任大学校长的小黎黎（吴彦祖 饰）和太太叶筱凝（俞飞鸿 饰）抚养长大。大学入学之际，容金珍因解出数学系老师希伊斯（约翰·库萨克 饰）布置的难题而被更多人注意到，其中就有神秘部门701局局长郑某（陈道明 饰），容金珍从此走进了密码破译的大门。",
+  "localized_title": [
+    {
+      "lang": "en",
+      "text": "Decoded"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "解密"
+    },
+    {
+      "lang": "ko",
+      "text": "解密"
+    },
+    {
+      "lang": "ja",
+      "text": "解密"
+    },
+    {
+      "lang": "pt",
+      "text": "解密"
+    },
+    {
+      "lang": "de",
+      "text": "解密"
+    },
+    {
+      "lang": "fr",
+      "text": "解密"
+    },
+    {
+      "lang": "es",
+      "text": "解密"
+    },
+    {
+      "lang": "zh-hk",
+      "text": "解密"
+    },
+    {
+      "lang": "zh-tw",
+      "text": "解密"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "影片根据茅盾文学奖获奖者麦家的同名长篇小说改编，故事关于上世纪四十年代，世界局势风起云涌，及时准确破译敌方的通讯密码至关重要。容金珍（刘昊然 饰）自幼展现出惊人的数学天赋，被时任大学校长的小黎黎（吴彦祖 饰）和太太叶筱凝（俞飞鸿 饰）抚养长大。大学入学之际，容金珍因解出数学系老师希伊斯（约翰·库萨克 饰）布置的难题而被更多人注意到，其中就有神秘部门701局局长郑某（陈道明 饰），容金珍从此走进了密码破译的大门。"
+    },
+    {
+      "lang": "ko",
+      "text": ""
+    },
+    {
+      "lang": "ja",
+      "text": ""
+    },
+    {
+      "lang": "pt",
+      "text": ""
+    },
+    {
+      "lang": "de",
+      "text": ""
+    },
+    {
+      "lang": "fr",
+      "text": ""
+    },
+    {
+      "lang": "es",
+      "text": ""
+    },
+    {
+      "lang": "en",
+      "text": "In the 1940s, the world was in turmoil, and it was crucial to decipher the enemy's communication codes in a timely and accurate manner. Rong Jinzhen has shown amazing mathematical talent since her childhood, and because she solved the problems assigned by her math teacher, she was noticed by more people, and even walked into the door of code-breaking by mistake."
+    },
+    {
+      "lang": "zh-hk",
+      "text": ""
+    },
+    {
+      "lang": "zh-tw",
+      "text": ""
+    },
+    {
+      "lang": "zh-cn",
+      "text": "上世纪40年代，世界局势暗流涌动，即时准确破译敌人的通讯密码至关重要。容金珍（刘昊然 饰）自小就展现出对数字的独有天赋，因意外破解数学系老师设置的难题，让他被更多的人注意到……"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubanmovie/2024/08/04/71d195c5-a85a-4266-aabc-5f82f181fbfa.jpg",
+  "rating": 5.1,
+  "rating_count": 8,
+  "brief": "影片根据茅盾文学奖获奖者麦家的同名长篇小说改编，故事关于上世纪四十年代，世界局势风起云涌，及时准确破译敌方的通讯密码至关重要。容金珍（刘昊然 饰）自幼展现出惊人的数学天赋，被时任大学校长的小黎黎（吴彦祖 饰）和太太叶筱凝（俞飞鸿 饰）抚养长大。大学入学之际，容金珍因解出数学系老师希伊斯（约翰·库萨克 饰）布置的难题而被更多人注意到，其中就有神秘部门701局局长郑某（陈道明 饰），容金珍从此走进了密码破译的大门。",
+  "orig_title": "解密",
+  "other_title": [],
+  "director": [
+    "陈思诚"
+  ],
+  "playwright": [
+    "陈思诚",
+    "克里斯托弗·麦克布莱德"
+  ],
+  "actor": [
+    "刘昊然",
+    "约翰·库萨克",
+    "陈道明",
+    "吴彦祖",
+    "俞飞鸿",
+    "任璐遥",
+    "陈雨锶",
+    "王雨甜",
+    "周游",
+    "朱珠",
+    "曹翠芬",
+    "吴彦姝",
+    "许还山",
+    "王宝强",
+    "肖央",
+    "潘粤明",
+    "沙宝亮",
+    "周野芒",
+    "王龙正",
+    "欧阳娜娜"
+  ],
+  "genre": [
+    "剧情",
+    "历史"
+  ],
+  "language": [
+    "汉语普通话",
+    "英语"
+  ],
+  "area": [
+    "中国大陆"
+  ],
+  "year": 2024,
+  "site": null,
+  "duration": "156分钟",
+  "imdb": "tt31888816"
+}

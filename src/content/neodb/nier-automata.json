@@ -1,0 +1,70 @@
+{
+  "id": "https://neodb.social/game/11qLbCZMeMpnh4zcnd9i46",
+  "type": "Game",
+  "uuid": "11qLbCZMeMpnh4zcnd9i46",
+  "url": "/game/11qLbCZMeMpnh4zcnd9i46",
+  "api_url": "/api/game/11qLbCZMeMpnh4zcnd9i46",
+  "category": "game",
+  "parent_uuid": null,
+  "display_title": "尼尔：机械纪元",
+  "external_resources": [
+    {
+      "url": "https://store.steampowered.com/app/524220"
+    },
+    {
+      "url": "https://www.douban.com/game/26426281/"
+    }
+  ],
+  "title": "尼尔：机械纪元",
+  "description": "这是诅咒，还是惩罚？\r\n\r\n『NieR:Automata』是由Square Enix监制，PlatinumGames开发的开放式世界动作RPG。\r\n\r\n在遥远的未来，面对外星人操纵的「机械生物」的压倒性战力，人类节节败退，最后逃到月球。您将扮演隶属机器人部队「寄叶」的「2B」，投身夺回地球的激烈战役。\r\n\r\n在不仅仅是娱乐作品的本作当中，将能畅享令人心情随之起伏的故事，以及流畅的60fps开放式世界。",
+  "localized_title": [
+    {
+      "lang": "zh-cn",
+      "text": "尼尔：机械纪元"
+    },
+    {
+      "lang": "ja",
+      "text": "ニーア オートマタ"
+    },
+    {
+      "lang": "ro",
+      "text": "NieR:Automata"
+    },
+    {
+      "lang": "en",
+      "text": "NieR:Automata"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "这是诅咒，还是惩罚？\r\n\r\n『NieR:Automata』是由Square Enix监制，PlatinumGames开发的开放式世界动作RPG。\r\n\r\n在遥远的未来，面对外星人操纵的「机械生物」的压倒性战力，人类节节败退，最后逃到月球。您将扮演隶属机器人部队「寄叶」的「2B」，投身夺回地球的激烈战役。\r\n\r\n在不仅仅是娱乐作品的本作当中，将能畅享令人心情随之起伏的故事，以及流畅的60fps开放式世界。"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubangame/2024/07/16/070cc272-fea8-4e13-a2aa-9fce580a374b.jpg",
+  "rating": 8.6,
+  "rating_count": 118,
+  "brief": "这是诅咒，还是惩罚？\r\n\r\n『NieR:Automata』是由Square Enix监制，PlatinumGames开发的开放式世界动作RPG。\r\n\r\n在遥远的未来，面对外星人操纵的「机械生物」的压倒性战力，人类节节败退，最后逃到月球。您将扮演隶属机器人部队「寄叶」的「2B」，投身夺回地球的激烈战役。\r\n\r\n在不仅仅是娱乐作品的本作当中，将能畅享令人心情随之起伏的故事，以及流畅的60fps开放式世界。",
+  "genre": [
+    "射击",
+    "角色扮演",
+    "冒险",
+    "动作"
+  ],
+  "developer": [
+    "8-4, Ltd.",
+    "PlatinumGames"
+  ],
+  "publisher": [
+    "Square Enix"
+  ],
+  "platform": [
+    "PC",
+    "PS4",
+    "Xbox One",
+    "Nintendo Switch"
+  ],
+  "release_type": null,
+  "release_date": "2017-02-23",
+  "official_site": "http://www.niergame.com/"
+}

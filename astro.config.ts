@@ -3,9 +3,7 @@ import { defineConfig } from "astro/config";
 // astro
 
 // heading ids
-import {
-	rehypeHeadingIds,
-} from "@astrojs/markdown-remark";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 
 // icon
@@ -14,7 +12,6 @@ import icon from "astro-icon";
 // frameworks
 import svelte from "@astrojs/svelte";
 
-// https://astro.build/config
 import mdx from "@astrojs/mdx";
 
 // sitemap
@@ -36,34 +33,26 @@ import remarkDirect from "remark-directive";
 import { h } from 'hastscript';
 import { visit } from 'unist-util-visit';
 import type { Node } from "mdast";
-
-
-
 function myRemarkPlugin() {
 	return (tree: Node) => {
-		visit(tree, (node) => {
-			if (
-				node.type === 'containerDirective' ||
-				node.type === 'leafDirective' ||
-				node.type === 'textDirective'
-			) {
-				const data = node.data || (node.data = {})
-				const hast = h(node.name, node.attributes || {})
-
+		visit(tree, node => {
+			if (node.type === 'containerDirective' || node.type === 'leafDirective' || node.type === 'textDirective') {
+				const data = node.data || (node.data = {});
+				const hast = h(node.name, node.attributes || {});
 				let name = hast.tagName;
 				let props = hast.properties;
 				if (name === "j" && props) {
 					name = "abbr";
 					props = {
 						title: props.m || props.e || props.p,
-						lang: "zh-juai",
-					}
+						lang: "zh-juai"
+					};
 				}
 				data.hName = name;
 				data.hProperties = props;
 			}
-		})
-	}
+		});
+	};
 }
 
 // @ts-ignore
@@ -71,7 +60,7 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 
 // Atomic CSS
 import UnoCSS from "unocss/astro";
-
+import react from "@astrojs/react";
 type PrettyCodeNodePositionPoint = {
 	line: number;
 	column: number;
@@ -96,12 +85,10 @@ const prettyCodeOptions = {
 	keepBackground: false,
 	onVisitLine(node: PrettyCodeNode) {
 		if (node.children.length === 0) {
-			node.children = [
-				{
-					type: "text",
-					value: " ",
-				},
-			];
+			node.children = [{
+				type: "text",
+				value: " "
+			}];
 		}
 	},
 	onVisitHighlightedLine(node: PrettyCodeNode) {
@@ -112,8 +99,10 @@ const prettyCodeOptions = {
 	onVisitHighlightedWord(node: PrettyCodeNode) {
 		node.properties.className = ["word"];
 	},
-	tokensMap: {},
+	tokensMap: {}
 };
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
@@ -124,17 +113,17 @@ export default defineConfig({
 	},
 	vite: {
 		css: {
-			preprocessorOptions: {},
+			preprocessorOptions: {}
 		},
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
-			noExternal: ["modern-css-reset", "xp.css", "98.css", "/@astro-community/"],
-		},
+			noExternal: ["modern-css-reset", "xp.css", "98.css", "/@astro-community/"]
+		}
 	},
 	markdown: {
 		remarkRehype: {
 			footnoteLabel: "---",
-			footnoteBackLabel: "返回内容",
+			footnoteBackLabel: "返回内容"
 		},
 		syntaxHighlight: false,
 		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption, remarkSampKbd, remarkDirect, myRemarkPlugin],
@@ -151,22 +140,15 @@ export default defineConfig({
 			 * `rehypeHeadingIds` plugin directly. Be sure to add `rehypeHeadingIds`
 			 * before any plugins that rely on it:
 			 */
-			rehypeHeadingIds,
-			rehypeAutolinkHeadings,
-			rehypeMultiMath,
-			[
-				rehypeExternalLinks,
-				{
-					rel: [],
-					target: "_blank",
-				},
-			],
+			rehypeHeadingIds, rehypeAutolinkHeadings, rehypeMultiMath, [rehypeExternalLinks, {
+				rel: [],
+				target: "_blank"
+			}],
 			// @ts-ignore
-			[rehypePrettyCode, prettyCodeOptions],
-		],
+			[rehypePrettyCode, prettyCodeOptions]]
 	},
 	experimental: {
-		contentCollectionCache: true,
+		contentCollectionCache: true
 	},
-	integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap()],
+	integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap(), react()]
 });

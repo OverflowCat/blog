@@ -1,0 +1,55 @@
+{
+  "id": "https://neodb.social/game/4pOgy2d3N1pjL3qXEOhSOs",
+  "type": "Game",
+  "uuid": "4pOgy2d3N1pjL3qXEOhSOs",
+  "url": "/game/4pOgy2d3N1pjL3qXEOhSOs",
+  "api_url": "/api/game/4pOgy2d3N1pjL3qXEOhSOs",
+  "category": "game",
+  "parent_uuid": null,
+  "display_title": "1比1人形食玩",
+  "external_resources": [
+    {
+      "url": "https://store.steampowered.com/app/2976720"
+    },
+    {
+      "url": "https://www.douban.com/game/36890201/"
+    }
+  ],
+  "title": "1比1人形食玩",
+  "description": "",
+  "localized_title": [
+    {
+      "lang": "zh-cn",
+      "text": "1比1人形食玩"
+    },
+    {
+      "lang": "en",
+      "text": "1 to 1 humanoid edible toys"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "故事简介：\n关于模糊的爱意、食欲、撕咬欲的故事。\n\n\n    人物介绍：\n主角：\n罪里央——似乎认为自己和其他人没什么两样。\n\n可恋爱角色：\n知沙渡——作为朋友，真是米其林级别的美味！\n\n米霖——小虫子，一口吞掉也不会被发现\n\n梨爱——他在撒谎吗？要咬一口吗？\n\n\n    游戏概要：\n\n标题：1比1人形食玩\n类型：女性向恋爱犯罪题材视觉小说\n结局数：6个\n\n\n    制作人员：\n\n汉谟拉比炒面、我的屁是香哒\n\n    计划发行日期: 2024 年 7 月\r"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubangame/2024/08/16/ed2acb1b-7df3-4dff-a5af-b57c93f57ebc.jpg",
+  "rating": null,
+  "rating_count": 3,
+  "brief": "故事简介：\n关于模糊的爱意、食欲、撕咬欲的故事。\n\n\n    人物介绍：\n主角：\n罪里央——似乎认为自己和其他人没什么两样。\n\n可恋爱角色：\n知沙渡——作为朋友，真是米其林级别的美味！\n\n米霖——小虫子，一口吞掉也不会被发现\n\n梨爱——他在撒谎吗？要咬一口吗？\n\n\n    游戏概要：\n\n标题：1比1人形食玩\n类型：女性向恋爱犯罪题材视觉小说\n结局数：6个\n\n\n    制作人员：\n\n汉谟拉比炒面、我的屁是香哒\n\n    计划发行日期: 2024 年 7 月\r",
+  "genre": [
+    "文字冒险"
+  ],
+  "developer": [
+    "汉谟拉比炒面",
+    "我的屁是香哒"
+  ],
+  "publisher": [],
+  "platform": [
+    "PC",
+    "Mac"
+  ],
+  "release_type": null,
+  "release_date": "2024-08-08",
+  "official_site": null
+}

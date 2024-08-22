@@ -1,15 +1,32 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@templates/*": ["src/templates/*"],
-      "@components/*": ["src/components/*"],
-      "@scripts/*": ["src/scripts/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@contents/*": ["src/contents/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@templates/*": [
+        "src/templates/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@scripts/*": [
+        "src/scripts/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@contents/*": [
+        "src/contents/*"
+      ]
     },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

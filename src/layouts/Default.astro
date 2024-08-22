@@ -5,11 +5,11 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 let { frontmatter } = Astro.props;
-frontmatter = schema.parse(frontmatter);
+frontmatter = blogSchema.parse(frontmatter);
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
 import type { Frontmatter } from "@/types";
-import { schema } from "@/scripts/schema";
+import { blogSchema } from "@/scripts/schema/content";
 const classes = frontmatter.resizable ? ["resizable"] : [];
 export type Props = {
   frontmatter: Frontmatter;

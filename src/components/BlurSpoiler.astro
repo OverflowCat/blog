@@ -1,0 +1,20 @@
+---
+export type Props = {
+
+}
+---
+
+<div class="blur-spoiler">
+  <slot />
+</div>
+
+<style lang="less">
+  .blur-spoiler {
+    filter: blur(11px) brightness(0.8) saturate(0.7);
+    &:hover {
+      transition: filter 1.4s cubic-bezier(0.7, 0, 1, 1);
+      filter: blur(0);
+    }
+    transition: filter 0.4s;
+  }
+  </style>

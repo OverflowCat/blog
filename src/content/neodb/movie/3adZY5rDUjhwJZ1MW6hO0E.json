@@ -1,0 +1,108 @@
+{
+  "id": "https://neodb.social/movie/3adZY5rDUjhwJZ1MW6hO0E",
+  "type": "Movie",
+  "uuid": "3adZY5rDUjhwJZ1MW6hO0E",
+  "url": "/movie/3adZY5rDUjhwJZ1MW6hO0E",
+  "api_url": "/api/movie/3adZY5rDUjhwJZ1MW6hO0E",
+  "category": "movie",
+  "parent_uuid": null,
+  "display_title": "寂静之地：入侵日",
+  "external_resources": [
+    {
+      "url": "https://eggplant.place/movie/7dmjhtNGahDJopoPIfINPW"
+    },
+    {
+      "url": "https://movie.douban.com/subject/34996971/"
+    },
+    {
+      "url": "https://www.imdb.com/title/tt13433802/"
+    },
+    {
+      "url": "https://www.themoviedb.org/movie/762441"
+    }
+  ],
+  "title": "寂静之地：入侵日",
+  "description": "影片聚焦末世第一天，带领观众重返怪兽入侵日。见证人类在末世第一天如何逃亡生存，也将揭晓人类世界如何变得寂静，相较前作格局全面升级，全新的视角也将带来前所未有的“无声”体验。",
+  "localized_title": [
+    {
+      "lang": "zh-cn",
+      "text": "寂静之地：入侵日"
+    },
+    {
+      "lang": "en",
+      "text": "A Quiet Place: Day One"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "噤界：入侵日(台)"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "无声绝境外传：首袭日(港)"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "无声绝境III(港)"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "寂静之地前传"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "影片聚焦末世第一天，带领观众重返怪兽入侵日。见证人类在末世第一天如何逃亡生存，也将揭晓人类世界如何变得寂静，相较前作格局全面升级，全新的视角也将带来前所未有的“无声”体验。"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/doubanmovie/2024/03/11/287c8cc3-0039-47fb-8469-555ba31522c7.webp",
+  "rating": 6.1,
+  "rating_count": 34,
+  "brief": "影片聚焦末世第一天，带领观众重返怪兽入侵日。见证人类在末世第一天如何逃亡生存，也将揭晓人类世界如何变得寂静，相较前作格局全面升级，全新的视角也将带来前所未有的“无声”体验。",
+  "orig_title": "A Quiet Place: Day One",
+  "other_title": [
+    "噤界：入侵日(台)",
+    "无声绝境外传：首袭日(港)",
+    "无声绝境III(港)",
+    "寂静之地前传"
+  ],
+  "director": [
+    "迈克尔·萨诺斯基"
+  ],
+  "playwright": [
+    "迈克尔·萨诺斯基",
+    "约翰·卡拉辛斯基",
+    "布莱恩·伍兹",
+    "斯科特·贝克"
+  ],
+  "actor": [
+    "露皮塔·尼永奥",
+    "杰曼·翰苏",
+    "约瑟夫·奎恩",
+    "亚历克斯·沃尔夫",
+    "丹尼斯·欧哈拉",
+    "凯恩·艾登",
+    "Jennifer Woodward",
+    "Jonathan Sparrow",
+    "以利亚·昂格瓦里",
+    "Alexander John",
+    "Zay Domo Artist",
+    "Mark Khan"
+  ],
+  "genre": [
+    "剧情",
+    "科幻",
+    "惊悚",
+    "恐怖"
+  ],
+  "language": [
+    "英语"
+  ],
+  "area": [
+    "美国"
+  ],
+  "year": 2024,
+  "site": "",
+  "duration": "116分钟",
+  "imdb": "tt13433802"
+}

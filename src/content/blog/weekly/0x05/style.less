@@ -1,0 +1,17 @@
+article#post img {
+  max-width: min(100%, 720px);
+  height: auto;
+  #vert:target & {
+    max-width: 500px;
+    height: auto;
+  }
+}
+
+figure {
+  figcaption {
+    margin-block-start: 1em;
+  }
+  & > img {
+    margin: auto;
+  }
+}
