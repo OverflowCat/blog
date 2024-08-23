@@ -82,7 +82,7 @@
     "remark-samp-kbd": "^0.1.0",
     "sharp": "^0.33.5",
     "spoiled": "^0.3.2",
-    "svelte": "^4.2.18",
+    "svelte": "^4.2.19",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
     "yaml": "^2.5.0"
