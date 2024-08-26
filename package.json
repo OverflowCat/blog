@@ -96,7 +96,7 @@
     "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^17.1.0",
     "rehype-pretty-code": "^0.13.2",
-    "rollup": "^4.21.0",
+    "rollup": "^4.21.1",
     "sass": "^1.77.8",
     "shiki": "^1.14.1",
     "typescript": "^5.5.4",
