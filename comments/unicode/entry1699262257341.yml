@@ -1,6 +1,0 @@
-id: nn1uz5ri9h7rt46w3y2t0ruo
-name: 羊羊羊
-email: d41d8cd98f00b204e9800998ecf8427e
-message: NFKC和NFKD的示例图，为什么三个demo的最终转换是一样的？完全看不出来NFKC的组合特性
-reply: "其实这里可能主要是为了展示 NFKC 对于视觉变体的处理，即，即使有 composable form，但是因为是视觉变体，所以也不能使用，只能回到默认字符。"
-date: 2023-11-06T09:17:37.341Z

@@ -1,0 +1,8 @@
+{
+  "id": "gms6fsml36r7h8lebqwbyoqe",
+  "name": "laoshubaby",
+  "email": "d41d8cd98f00b204e9800998ecf8427e",
+  "message": "有一个问题，关于文中的Hangul的Unicode表示，确实存在一些地方因为Unicode支持不好而把Hangul显示的支离破碎、阿拉伯字母前后不连的情况，但我们更常用的是合在一起单独表示的吧？（也就三万多个，我寻思Unicode还不至于这么抠门）<br /> 比如文中提到的<br /> <blockquote>각 (韩语) 是 U+1100 U+1161 U+11A8。</blockquote> 但我们可以找到一个각，对应U+AC01，它直接就是这一个字",
+  "reply": "这个我也确实发现了。不过，如果你在 Wiktionary 查韩语单词的词源的话会经常遇到词源部分有来自<span lang=\"ko\">《龍飛御天歌》《釋譜詳節》</span>这种中古韩语的文献（如 <a href=\"https://en.wiktionary.org/wiki/%EC%A2%8B%EB%8B%A4#Korean\" lang=\"ko\">ᄀᆞᆮᄒᆞ다</a> 和 <a href=\"https://en.wiktionary.org/wiki/%EB%88%84%E1%87%88%EB%AF%88#Middle_Korean\" lang=\"ko\">누ᇈ믈</a>）。此时 Unicode 这种编码韩语的方式的弊端就体现出来了：大部分渲染引擎都不能很好地渲染，或者字体中不含有相关字符。",
+  "date": "2023-11-03T03:19:59.259Z"
+}

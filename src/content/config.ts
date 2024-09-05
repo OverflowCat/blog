@@ -1,7 +1,8 @@
 // 1. Import utilities from `astro:content`
+import { commentsSchema } from "@/scripts/schema/comments";
 import { blogSchema } from "@/scripts/schema/content";
 import { neoSchema } from "@/scripts/schema/neodb";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 const blogCollection = defineCollection({
 	type: "content", // v2.5.0 and later
 	schema: () => blogSchema,
@@ -11,7 +12,14 @@ const neodbCollection = defineCollection({
 	schema: () => neoSchema,
 });
 
+const commentsCollection = defineCollection({
+	type: 'data',
+	schema: () => commentsSchema,
+})
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
 	blog: blogCollection,
+	comments: commentsCollection,
+	neodb: neodbCollection,
 };
