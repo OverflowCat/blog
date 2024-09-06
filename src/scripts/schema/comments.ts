@@ -8,8 +8,8 @@ export const commentsSchema = z.object({
   twitter: z.string().optional(),
   activitypub: z.string().optional(),
   format: z.enum(["markdown", "html"]).optional(),
-  message: z.string(),
-  date: z.string().pipe(z.coerce.date()),
+  // date: z.string().pipe(z.coerce.date()),
+  date: z.coerce.date(),
   reply: z.string().optional(),
 });
 

@@ -1,16 +1,12 @@
 ---
 export type Props = {
-  comment: TransformedComment;
+  comment: TransformedComment & { data: { message?: string } };
 };
 import type { TransformedComment } from "@/scripts/comments";
 import { Icon } from "astro-icon/components";
-import MarkdownIt from "markdown-it";
-const md = new MarkdownIt();
 const { comment } = Astro.props;
-const { data} = comment;
-const {message, date} = data;
-const msg =
-  data.format === "markdown" ? md.render(message) : message;
+const { data } = comment;
+const { date } = data;
 const reply = data.reply
   ? {
     ...comment,
@@ -23,6 +19,8 @@ const reply = data.reply
     },
   }
   : undefined;
+
+const message = data.message? data.message : await comment.render();
 ---
 
 <li itemprop="comment" id={"comment-" + data.id}>
@@ -36,7 +34,11 @@ const reply = data.reply
       itemprop="datePublished"
     />
   </hgroup>
-  <div class="message" set:html={message} />
+    {
+      typeof message === 'string' ?
+      <div class="message" set:html={message} /> :   
+      <div class="message"> <message.Content /> </div>
+    }
   {
     reply && (
       <div class="reply">

@@ -1,0 +1,97 @@
+:root {
+  --accent-color: rgb(0, 0, 0);
+}
+
+html {
+  background-color: var(--html-bg-color, white);
+  container-type: inline-size;
+  container-name: html;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 1.6;
+  min-block-size: 100svb;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+body {
+  margin-block: 0;
+  margin-inline: 0;
+  padding: 0px;
+  box-sizing: content-box;
+  position: relative;
+  & + * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+h1 {
+  text-align: center;
+  text-wrap: balance;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: start;
+  text-wrap: balance;
+}
+
+a {
+  text-decoration-skip-ink: all;
+}
+
+::selection {
+  background-color: rgba(37, 37, 37, 0.85);
+  color: #fff;
+}
+
+pre,
+code {
+  font-family: "更纱等距黑体", "Fira Code", "FiraCode NF",
+    "Noto Sans CJK Mono SC", "Source Code Pro", consolas, monospace;
+}
+
+figure {
+  margin-block: 2em;
+}
+
+.MathJax {
+  writing-mode: horizontal-tb !important;
+}
+
+@media (prefers-reduced-motion) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+details > summary {
+  padding-inline: 1em;
+  padding-block: 5px;
+  transition: background-color 0.1s ease-in-out;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: s-resize;
+    &[open] {
+      cursor: n-resize;
+    }
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

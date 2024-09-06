@@ -93,7 +93,6 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.5.4",
-    "modern-css-reset": "^1.4.0",
     "npm-check-updates": "^17.1.1",
     "rehype-pretty-code": "^0.14.0",
     "rollup": "^4.21.2",
