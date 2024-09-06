@@ -1,38 +1,44 @@
 ---
-import type { CheckedComment } from "@/scripts/comments";
 export type Props = {
-  comment: Pick<CheckedComment, "id" | "name" | "date" | "message"> &
-    Partial<CheckedComment>;
+  comment: TransformedComment & { data: { message?: string } };
 };
+import type { TransformedComment } from "@/scripts/comments";
 import { Icon } from "astro-icon/components";
-import MarkdownIt from "markdown-it";
-const md = new MarkdownIt();
 const { comment } = Astro.props;
-const message =
-  comment?.format === "markdown" ? md.render(comment.message) : comment.message;
-const reply = comment.reply
+const { data } = comment;
+const { date } = data;
+const reply = data.reply
   ? {
+    ...comment,
+    data: {
       id: comment.id + "r",
       name: "猫猫",
-      date: comment.date,
-      message: comment.reply,
+      date: date,
+      message: data.reply,
       email: "",
-    }
+    },
+  }
   : undefined;
+
+const message = data.message? data.message : await comment.render();
 ---
 
-<li itemprop="comment">
-  <h4>
-    <span set:html={comment.name} itemprop="name" />
+<li itemprop="comment" id={"comment-" + data.id}>
+  <hgroup>
+    <h4 set:html={data.name} itemprop="name" />
     &nbsp;
     <time
       class="monospace"
-      datetime={comment.date.toISOString()}
-      set:text={comment.date.toLocaleDateString("zh")}
+      datetime={date.toISOString()}
+      set:text={date.toLocaleDateString("zh")}
       itemprop="datePublished"
     />
-  </h4>
-  <div class="message" set:html={message} />
+  </hgroup>
+    {
+      typeof message === 'string' ?
+      <div class="message" set:html={message} /> :   
+      <div class="message"> <message.Content /> </div>
+    }
   {
     reply && (
       <div class="reply">
@@ -95,15 +101,19 @@ const reply = comment.reply
       font-size: 16px;
       text-align: start;
     }
-    h4 {
-      font-size: 100%;
-      margin: 0;
-      margin-block-end: 0.2rem;
 
-      & > time {
-        font-size: 0.8rem;
+    hgroup {
+      display: flex;
+      align-items: self-end;
+      h4 {
+        font-size: 90%;
+        margin-block: .2rem;
+      }
+      time {
+        font-size: .9rem;
         color: var(--text-secondary);
         margin-inline-start: 0.5rem;
+        margin-block-end: 0.2rem;
       }
     }
   }

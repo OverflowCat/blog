@@ -210,9 +210,6 @@ importers:
       '@types/node':
         specifier: ^22.5.4
         version: 22.5.4
-      modern-css-reset:
-        specifier: ^1.4.0
-        version: 1.4.0
       npm-check-updates:
         specifier: ^17.1.1
         version: 17.1.1
@@ -3008,9 +3005,6 @@ packages:
 
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
-
-  modern-css-reset@1.4.0:
-    resolution: {integrity: sha512-0crZmSFmrxkI7159rvQWjpDhy0u4+Awg/iOycJdlVn0RSeft/a+6BrQHR3IqvmdK25sqt0o6Z5Ap7cWgUee2rw==}
 
   mrmime@2.0.0:
     resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}
@@ -7496,8 +7490,6 @@ snapshots:
       pathe: 1.1.2
       pkg-types: 1.1.3
       ufo: 1.5.4
-
-  modern-css-reset@1.4.0: {}
 
   mrmime@2.0.0: {}
 
