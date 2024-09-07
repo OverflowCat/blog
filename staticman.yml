@@ -7,8 +7,16 @@ comments:
   #
   # Names of the fields the form is allowed to submit. If a field that is
   # not here is part of the request, an error will be thrown.
-  allowedFields: ["name", "email", "url", "message", "twitter", "activitypub"]
-
+  allowedFields:
+    - slug
+    - name
+    - email
+    - message
+    - format
+    - captcha
+    - url
+    - twitter
+    - activitypub
   # (*) REQUIRED
   #
   # Name of the branch being used. Must match the one sent in the URL of the
@@ -25,7 +33,8 @@ comments:
 
   # The format of the generated data files. Accepted values are "json", "yaml"
   # or "frontmatter"
-  format: "yaml"
+  # Comment worker unimpemented
+  format: "frontmatter"
 
   # List of fields to be populated automatically by Staticman and included in
   # the data file. Keys are the name of the field. The value can be an object
