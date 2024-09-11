@@ -5,14 +5,14 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 let { frontmatter } = Astro.props;
-frontmatter = blogSchema.parse(frontmatter);
+if (frontmatter) frontmatter = blogSchema.parse(frontmatter);
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
 import type { Frontmatter } from "@/types";
 import { blogSchema } from "@/scripts/schema/content";
-const classes = frontmatter.resizable ? ["resizable"] : [];
+const classes = frontmatter?.resizable ? ["resizable"] : [];
 export type Props = {
-  frontmatter: Frontmatter;
+  frontmatter?: Frontmatter;
 };
 ---
 
@@ -52,12 +52,16 @@ export type Props = {
 <Paper
   transitionName="main"
   padding={true}
-  paper={frontmatter.paper}
+  paper={frontmatter?.paper ?? true}
   classes={classes}
 >
+{
+  frontmatter &&
   <Common frontmatter={frontmatter}>
     <slot />
   </Common>
+}
+<slot />
 </Paper>
 
 <section id="comments">
