@@ -103,8 +103,6 @@ const prettyCodeOptions = {
 };
 
 // https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
 	site: "https://blog.xinshijiededa.men",
 	// redirects: { "/atom.xml": "/feed" },
@@ -117,7 +115,7 @@ export default defineConfig({
 		},
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
-			noExternal: ["xp.css", "98.css", "/@astro-community/"]
+			noExternal: ["xp.css", "98.css", "rehype-remnote/style/*"]
 		}
 	},
 	markdown: {
@@ -140,7 +138,11 @@ export default defineConfig({
 			 * `rehypeHeadingIds` plugin directly. Be sure to add `rehypeHeadingIds`
 			 * before any plugins that rely on it:
 			 */
-			rehypeHeadingIds, rehypeAutolinkHeadings, rehypeMultiMath, [rehypeExternalLinks, {
+			rehypeHeadingIds,
+			// @ts-ignore
+			rehypeAutolinkHeadings,
+			rehypeMultiMath,
+			[rehypeExternalLinks, {
 				rel: [],
 				target: "_blank"
 			}],
@@ -148,6 +150,7 @@ export default defineConfig({
 			[rehypePrettyCode, prettyCodeOptions]]
 	},
 	experimental: {
+		contentLayer: true,
 		contentCollectionCache: true
 	},
 	integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap(), react()]

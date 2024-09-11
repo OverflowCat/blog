@@ -1,0 +1,99 @@
+---
+import { unified, type Parser } from "unified";
+import Page from "@/templates/zh/Page.astro";
+import astroConfig from "astro.config";
+import { getCollection } from "astro:content";
+import { transformDoc, DEFAULT_CONFIG } from "rehype-remnote";
+import stringify from 'rehype-stringify';
+import type { Remnote } from "@/scripts/schema/remnote";
+
+export type Props = Remnote;
+
+export async function getStaticPaths() {
+	const notes = await getCollection("remnote");
+	return notes.map((note) => ({
+		params: { id: note.id },
+		props: note.data,
+	}));
+}
+
+const { id } = Astro.params;
+const title = "笔记";
+
+import fs from "fs/promises";
+import { MarkdownVFile } from "@astrojs/markdown-remark";
+// @ts-expect-error
+const file = await fs.readFile(Astro.props.path, "utf-8");
+
+function remParse(options = DEFAULT_CONFIG) {
+  const self = this;
+
+  self.parser = parser as Parser;
+
+  function parser(doc: string, file: MarkdownVFile) {
+    doc = JSON.parse(doc);
+    return transformDoc(doc, options);
+  }
+}
+
+
+const rehypePipe = astroConfig.markdown?.rehypePlugins ?? [];
+
+let processor = unified().use(remParse);
+for (const plugin of rehypePipe) {
+  if (Array.isArray(plugin))
+    processor = processor.use(...plugin);
+  else
+    processor = processor.use(plugin);
+}
+// @ts-expect-error
+processor = processor.use(stringify);
+const html = await processor.process(file);
+
+import "rehype-remnote/style/mini.css";
+import "rehype-remnote/style/cloze.css";
+import "rehype-remnote/style/math.css";
+---
+
+<Page
+  title=title
+  og={{
+    title,
+    description: "RemNote",
+    url: `https://blog.xinshijiededa.men/rem/${id}`,
+  }}>
+
+  <div>
+    <h1>{id}</h1>
+    <div class="rem" set:html={html}></div>
+</div>
+
+
+<style lang="less" is:global>
+.rem {
+    --list-item-delta: -2.9ch;
+
+    details {
+        summary {
+            padding-inline: 0;
+            padding-block: 0;
+            margin: 0;
+
+            &:hover {
+                cursor: copy;
+                background-color: transparent;
+            }
+
+            &[open] {
+                cursor: text;
+            }
+        }
+    }
+
+    li {
+        padding-block: .15em;
+    }
+}
+</style>
+
+</Page>
