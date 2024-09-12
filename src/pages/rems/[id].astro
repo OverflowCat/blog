@@ -2,16 +2,18 @@
 import { unified, type Parser } from "unified";
 import Page from "@/templates/zh/Page.astro";
 import Layout from "@/layouts/Default.astro";
-import astroConfig from "astro.config";
+// import astroConfig from "astro.config";
 import { getCollection } from "astro:content";
 import { transformDoc, DEFAULT_CONFIG } from "rehype-remnote";
 import stringify from 'rehype-stringify';
 import type { Remnote } from "@/scripts/schema/remnote";
+import { rehypePipe } from "@/scripts/rehype/common";
+import { generateUno } from "@/scripts/uno";
 
 export type Props = Remnote;
 
 export async function getStaticPaths() {
-	const notes = await getCollection("remnote");
+	const notes = await getCollection("rems");
 	return notes.map((note) => ({
 		params: { id: note.id },
 		props: note.data,
@@ -20,24 +22,21 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const title = "RemNote 笔记";
-
-import fs from "fs/promises";
-import { MarkdownVFile } from "@astrojs/markdown-remark";
-// @ts-expect-error
-const file = await fs.readFile(Astro.props.path, "utf-8");
+const data = Astro.props;
+const map = new Map<string, string>();
+map.set(id, data);
 
 function remParse(options = DEFAULT_CONFIG) {
   const self = this;
 
   self.parser = parser as Parser;
 
-  function parser(doc: string, file: MarkdownVFile) {
-    doc = JSON.parse(doc);
+  function parser(doc: string, file: unknown) {
+    doc = map.get(doc)!;
     return transformDoc(doc, options);
   }
 }
 
-const rehypePipe = astroConfig.markdown?.rehypePlugins ?? [];
 
 let processor = unified().use(remParse);
 for (const plugin of rehypePipe) {
@@ -48,7 +47,8 @@ for (const plugin of rehypePipe) {
 }
 // @ts-expect-error
 processor = processor.use(stringify);
-const html = await processor.process(file);
+const html = (await processor.process(id)).toString();
+const style = await generateUno(html);
 
 import "rehype-remnote/style/mini.css";
 import "rehype-remnote/style/cloze.css";
@@ -56,6 +56,7 @@ import "rehype-remnote/style/math.css";
 import "@/styles/a.less";
 ---
 
+<style set:html={style} />
 <Page
   title={title}
   og={{
@@ -72,12 +73,24 @@ import "@/styles/a.less";
   <style lang="less" is:global>
     .rem {
       --list-item-delta: -2.9ch;
+
+      a {
+        border-radius: 0!important;
+      }
+
+      a, span.cloze, li:not(:has(details:only-child)) {
+        transition: background-color 0.1s;
+        border-radius: 0.2em;
+        &:hover {
+          background-color: rgba(100, 100, 100, 0.1);
+        }
+        &:active {
+          background-color: rgba(100, 100, 100, 0.2);
+        }
+      }
+
       details {
         summary {
-          padding-inline: 0;
-          padding-block: 0;
-          margin: 0;
-
           &:hover {
             cursor: copy;
             background-color: transparent;

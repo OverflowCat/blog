@@ -20,16 +20,30 @@ export async function getRems(): Promise<{ id: string }[]> {
     return ids;
 }
 
-export async function getRemnotes(path: string): Promise<{ id: string, path: string }[]> {
+export async function getRemnotes(path: string): Promise<{ id: string, path: string, content: string }[]> {
     const files = await fs.readdir(path);
-    return files.map((file) => ({
-        id: file.split(".")[0], path: path + "/" + file
-    }));
+    const result = [];
+    for (const file of files) {
+        const filePath = `${path}/${file}`;
+        const content = await fs.readFile(filePath, 'utf-8');
+        result.push({
+            id: file.split(".")[0],
+            path,
+            content
+        });
+    }
+    return result;
 }
 
 export const remnoteSchema = z.object({
     id: z.string(),
     path: z.string(),
+    content: z.string(),
+});
+
+export const remnoteJsonSchema = z.object({
+    val: z.any(),
+    ch: z.any(),
 });
 
 export type Remnote = z.infer<typeof remnoteSchema>;

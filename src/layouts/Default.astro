@@ -56,12 +56,11 @@ export type Props = {
   classes={classes}
 >
 {
-  frontmatter &&
+  frontmatter ?
   <Common frontmatter={frontmatter}>
     <slot />
-  </Common>
+  </Common> : <slot />
 }
-<slot />
 </Paper>
 
 <section id="comments">

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "./bili.less";
   export let autoplay: boolean; // 需要用户确认才能加载
   export let thumbnail: string;
   export let av: number | undefined;
@@ -46,23 +47,3 @@
     >
   {/if}
 </div>
-
-<style>
-  .bilicontainer {
-    max-width: min(95%, 90vw);
-  }
-  div.bili {
-    max-width: 900px;
-    max-height: 700px;
-  }
-  img.bili-cover {
-    cursor: pointer;
-  }
-  iframe.bili {
-    width: 100%;
-    border: none;
-  }
-  small {
-    color: #565656e2;
-  }
-</style>

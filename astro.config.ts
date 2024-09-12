@@ -10,7 +10,6 @@ import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 import icon from "astro-icon";
 
 // frameworks
-import svelte from "@astrojs/svelte";
 
 import mdx from "@astrojs/mdx";
 
@@ -19,15 +18,13 @@ import sitemap from "@astrojs/sitemap";
 
 // math
 import remarkMath from "remark-math";
-import rehypeMultiMath from "./src/scripts/rehype/math.ts";
 import { typst } from "astro-typst";
 
 // code
+// @ts-ignore
 import remarkSampKbd from "remark-samp-kbd";
-import rehypePrettyCode from "rehype-pretty-code";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
-import rehypeExternalLinks from "rehype-external-links";
 import remarkRuby from "remark-ruby";
 import remarkDirect from "remark-directive";
 import { h } from 'hastscript';
@@ -61,46 +58,8 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 // Atomic CSS
 import UnoCSS from "unocss/astro";
 import react from "@astrojs/react";
-type PrettyCodeNodePositionPoint = {
-	line: number;
-	column: number;
-	offset: number;
-};
-interface PrettyCodeNode {
-	type: string;
-	tagName: string;
-	properties: {
-		className: string[] | undefined;
-		"data-line": "";
-	};
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	children: any[];
-	position: {
-		start: PrettyCodeNodePositionPoint;
-		end: PrettyCodeNodePositionPoint;
-	};
-}
-const prettyCodeOptions = {
-	theme: "material-theme-lighter",
-	keepBackground: false,
-	onVisitLine(node: PrettyCodeNode) {
-		if (node.children.length === 0) {
-			node.children = [{
-				type: "text",
-				value: " "
-			}];
-		}
-	},
-	onVisitHighlightedLine(node: PrettyCodeNode) {
-		// node.properties.className?.push("highlighted");
-		if (node.properties.className === undefined) node.properties.className = [];
-		node.properties.className.push("highlighted");
-	},
-	onVisitHighlightedWord(node: PrettyCodeNode) {
-		node.properties.className = ["word"];
-	},
-	tokensMap: {}
-};
+
+import { rehypePipe } from "./src/scripts/rehype/common.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -110,9 +69,6 @@ export default defineConfig({
 		// format: "preserve",
 	},
 	vite: {
-		css: {
-			preprocessorOptions: {}
-		},
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
 			noExternal: ["xp.css", "98.css", "rehype-remnote/style/*"]
@@ -141,17 +97,12 @@ export default defineConfig({
 			rehypeHeadingIds,
 			// @ts-ignore
 			rehypeAutolinkHeadings,
-			rehypeMultiMath,
-			[rehypeExternalLinks, {
-				rel: [],
-				target: "_blank"
-			}],
-			// @ts-ignore
-			[rehypePrettyCode, prettyCodeOptions]]
+			// @ts-expect-error
+		].concat(rehypePipe)
 	},
 	experimental: {
 		contentLayer: true,
 		contentCollectionCache: true
 	},
-	integrations: [icon(), UnoCSS(), svelte(), mdx(), typst(), sitemap(), react()]
+	integrations: [icon(), UnoCSS(), react(), mdx(), typst(), sitemap()]
 });
