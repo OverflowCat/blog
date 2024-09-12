@@ -3,15 +3,15 @@ import { unified, type Parser } from "unified";
 import Page from "@/templates/zh/Page.astro";
 import Layout from "@/layouts/Default.astro";
 // import astroConfig from "astro.config";
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import { transformDoc, DEFAULT_CONFIG } from "rehype-remnote";
 import stringify from 'rehype-stringify';
 import type { Remnote } from "@/scripts/schema/remnote";
 import { rehypePipe } from "@/scripts/rehype/common";
 import { generateUno } from "@/scripts/uno";
 
+/*
 export type Props = Remnote;
-
 export async function getStaticPaths() {
 	const notes = await getCollection("rems");
 	return notes.map((note) => ({
@@ -19,12 +19,15 @@ export async function getStaticPaths() {
 		props: note.data,
 	}));
 }
+*/
 
-const { id } = Astro.params;
-const title = "RemNote 笔记";
-const data = Astro.props;
-const map = new Map<string, string>();
-map.set(id, data);
+export type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+const entry = await getEntry("rems", id);
+const data = entry.data;
 
 function remParse(options = DEFAULT_CONFIG) {
   const self = this;
@@ -32,11 +35,10 @@ function remParse(options = DEFAULT_CONFIG) {
   self.parser = parser as Parser;
 
   function parser(doc: string, file: unknown) {
-    doc = map.get(doc)!;
+    doc = data;
     return transformDoc(doc, options);
   }
 }
-
 
 let processor = unified().use(remParse);
 for (const plugin of rehypePipe) {
@@ -56,56 +58,58 @@ import "rehype-remnote/style/math.css";
 import "@/styles/a.less";
 ---
 
-<style set:html={style} />
-<Page
-  title={title}
-  og={{
-    title,
-    description: "RemNote",
-    url: `https://blog.xinshijiededa.men/rem/${id}`,
-  }}>
-<Layout>
-  <article id="post">
-    <h1>{id}</h1>
-    <div class="rem" set:html={html}></div>
-  </article>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+</style>
+<div class="rem" set:html={html}></div>
+<style set:html={style} is:global />
+<style lang="less" is:global>
+  .rem details[open]:before {
+    z-index: initial!important;
+  }
 
-  <style lang="less" is:global>
-    .rem {
-      --list-item-delta: -2.9ch;
+  figure:has(pre) {
+    margin-block: 0!important;
+    margin-inline: .5em!important;
+  }
 
-      a {
-        border-radius: 0!important;
+  .rem, figcaption {
+    font-family: 'Inria Sans', "Noto Sans CJK SC", sans-serif;
+  }
+  figcaption a {
+    color: inherit;
+  }
+  .rem {
+    a {
+      border-radius: 0!important;
+    }
+
+    a, span.cloze, li:not(:has(details:only-child)) {
+      transition: background-color 0.1s;
+      border-radius: 0.2em;
+      &:hover {
+        background-color: rgba(100, 100, 100, 0.08);
       }
+      &:active {
+        background-color: rgba(100, 100, 100, 0.14);
+      }
+    }
 
-      a, span.cloze, li:not(:has(details:only-child)) {
-        transition: background-color 0.1s;
-        border-radius: 0.2em;
+    details {
+      summary {
         &:hover {
-          background-color: rgba(100, 100, 100, 0.1);
+          cursor: copy;
+          background-color: transparent;
         }
-        &:active {
-          background-color: rgba(100, 100, 100, 0.2);
+
+          &[open] {
+            cursor: text;
+          }
         }
       }
 
-      details {
-        summary {
-          &:hover {
-            cursor: copy;
-            background-color: transparent;
-          }
-
-            &[open] {
-              cursor: text;
-            }
-          }
-        }
-
-        li {
-          padding-block: .15em;
-        }
+      li {
+        padding-block: .15em;
       }
-  </style>
-</Layout>
-</Page>
+    }
+</style>

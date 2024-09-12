@@ -18,9 +18,9 @@ layout: "@/layouts/Default.astro"
 noscript: false
 ---
 
-import Bilibili from "@/components/Bilibili.svelte";
+import Bilibili from "@/components/social/bili/Bilibili.tsx";
+import YouTube from "@/components/social/YouTube.astro";
 import Pn from "@/components/Pn.astro";
-import { YouTube } from "astro-embed";
 
 <script src="/scripts/jxl/jxl.min.js" />
 
@@ -113,7 +113,7 @@ pdf.js 开发的困难之处还在于其提供的 API 少得可怜。比如，�
 
 ### I tried 8 different Postgres ORMs
 
-<YouTube id="https://www.youtube.com/watch?v=4QN1BzxF8wM" />
+<YouTube id="4QN1BzxF8wM" />
 
 FireShip 的视频质量一如既往地高。看下来还是 Prisma 最好。去年用过一次，但是当时用的 SQLite，没体会出它的好处，现在用 PostgreSQL，migration 就很方便了。
 

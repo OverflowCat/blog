@@ -1,6 +1,6 @@
 // math
-import remarkMath from "remark-math";
 import rehypeMathRenderer from "rehype-mathjax/chtml";
+// import rehypeKatex from 'rehype-katex'
 // typst
 // @ts-ignore
 import rehypeTypst from "@myriaddreamin/rehype-typst";
@@ -16,7 +16,17 @@ const rehypeMultiMath: RehypePlugin = () => {
 			fontURL:
 				"https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
 		},
+		tex: {
+			// @ts-expect-error
+			macros: {
+				bold: ["{\\bf #1}", 1],
+				inv: ["-1"],
+				dd: ["\\mathrm{d}"],
+			},
+		},
 	} satisfies Parameters<typeof rehypeMathRenderer>[0]);
+	// init katex
+	// const rehypeKatexHook = rehypeKatex();
 	// init typst
 	const rehypeTypstHook = rehypeTypst();
 
@@ -30,6 +40,9 @@ const rehypeMultiMath: RehypePlugin = () => {
 			case "typst":
 				// @ts-ignore
 				return rehypeTypstHook(tree, vfile);
+			// case "katex":
+			// 	// @ts-ignore
+			// 	return rehypeKatexHook(tree, vfile);
 			default:
 				// handle default case here
 				break;

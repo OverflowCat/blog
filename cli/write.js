@@ -24,6 +24,11 @@ draft: true
 
 const filePath = path.join(".", "src", "content", "blog", `${title}.mdx`);
 
+if (fs.existsSync(filePath)) {
+  console.log(`File ${title}.mdx already exists!`);
+  process.exit(1);
+}
+
 fs.writeFile(filePath, content, (err) => {
   if (err) throw err;
   console.log(`File ${title}.mdx created successfully!`);

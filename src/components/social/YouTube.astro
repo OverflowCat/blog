@@ -1,0 +1,17 @@
+---
+export type Props = {
+    id: string;
+}
+const { id } = Astro.props;
+---
+
+<script defer is:inline
+    src="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.js"
+></script>
+<link
+    rel="stylesheet"
+    href="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.css"
+/>
+<div class="yt">
+    <lite-youtube videoid={id}></lite-youtube>
+</div>

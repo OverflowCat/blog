@@ -10,6 +10,7 @@ layout: '@/templates/zh/Page.astro'
 ---
 
 import Default from "@/layouts/Default.astro";
+import YouTube from "@/components/social/YouTube.astro";
 
 <Default frontmatter={frontmatter}>
 
@@ -79,9 +80,7 @@ ___
 
 #### 下江
 
-import { YouTube } from "astro-embed";
-
-<YouTube id="https://www.youtube.com/watch?v=9Bq57NUkxnE" />
+<YouTube id="https://www.youtube.com/9Bq57NUkxnE" />
 
 <div class="flex justify-center">
 <div lang='zh-juai'>
@@ -407,6 +406,10 @@ A :i[lovely] language know as :abbr[HTML]{title="HyperText Markup Language"}.
 # 框架
 
 ## UnoCSS
+
+import Uno from "./_Uno.astro";
+
+<Uno />
 
 <figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
   <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp" alt="" width="384" height="512" />

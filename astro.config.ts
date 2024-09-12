@@ -101,8 +101,8 @@ export default defineConfig({
 		].concat(rehypePipe)
 	},
 	experimental: {
-		contentLayer: true,
-		contentCollectionCache: true
+		contentLayer: false,
+		contentCollectionCache: false,
 	},
 	integrations: [icon(), UnoCSS(), react(), mdx(), typst(), sitemap()]
 });
