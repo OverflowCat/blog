@@ -23,7 +23,7 @@ const placeholder = pick([
   <div class="form-group">
     <label for="fields[email]">Email *</label>
     <input
-      type="text"
+      type="email"
       name="fields[email]"
       placeholder="不会公开显示"
       required
@@ -33,7 +33,7 @@ const placeholder = pick([
   <div class="form-group">
     <label for="fields[url]">主页链接</label>
     <input
-      type="url"
+      type="text"
       name="fields[url]"
       placeholder="你的个人主页、博客、社交媒体等的 URL"
     />
@@ -54,7 +54,7 @@ const placeholder = pick([
     <!-- <label for="options[captcha]">验证码，别勾选我！</label> -->
     <!-- <input type="checkbox" name="fields[captcha]" /> -->
     <label for="options[slug]">Slug</label>
-    <input type="text" name="options[slug]" value={slug} />
+    <input type="hidden" name="options[slug]" value={slug} />
   </div>
 
   <button type="submit" class="form-button">发送</button>

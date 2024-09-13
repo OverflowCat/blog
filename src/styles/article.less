@@ -70,14 +70,19 @@ article#post {
   font-size: 18px;
   text-align: start;
   line-height: 175%;
-  margin: 14px 7px;
   color: var(--text-color);
 
   @media (min-width: 800px) {
-    padding: 8px 24px;
+    margin-block: 10px;
+    margin-inline: 5px;
+    padding-block: 8px;
+    padding-inline: 24px;
   }
   @media (min-width: 1200px) {
-    padding: 8px 32px;
+    margin-block: 14px;
+    margin-inline: 7px;
+    padding-block: 8px;
+    padding-inline: 32px;
   }
 
   :not(pre) > code {

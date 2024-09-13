@@ -29,7 +29,7 @@ const { id } = Astro.props;
 const entry = await getEntry("rems", id);
 const data = entry.data;
 
-function remParse(options = DEFAULT_CONFIG) {
+function remParse(options = { ...DEFAULT_CONFIG, unwrapRoot: true, }) {
   const self = this;
 
   self.parser = parser as Parser;
@@ -76,22 +76,21 @@ import "@/styles/a.less";
   .rem, figcaption {
     font-family: 'Inria Sans', "Noto Sans CJK SC", sans-serif;
   }
-  figcaption a {
-    color: inherit;
-  }
+
   .rem {
     a {
       border-radius: 0!important;
     }
-
-    a, span.cloze, li:not(:has(details:only-child)) {
+    padding-inline-start: calc(-1 * var(--list-item-delta) + .2em);
+    padding-inline-end: .4rem;
+    &, a, span.cloze, li:not(:has(details:only-child)) {
       transition: background-color 0.1s;
-      border-radius: 0.2em;
+      border-radius: 0.25rem;
       &:hover {
-        background-color: rgba(100, 100, 100, 0.08);
+        background-color: var(--hover-bg-color);
       }
       &:active {
-        background-color: rgba(100, 100, 100, 0.14);
+        background-color: var(--hover-bg-color);
       }
     }
 
@@ -110,6 +109,11 @@ import "@/styles/a.less";
 
       li {
         padding-block: .15em;
+      }
+
+      .card-arrow, details::before {
+        font-weight: 600;
+        font-family: "Noto Sans", sans-serif, system-ui;
       }
     }
 </style>

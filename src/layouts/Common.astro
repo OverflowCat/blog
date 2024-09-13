@@ -13,7 +13,13 @@ export interface Props {
 const { frontmatter } = Astro.props;
 const { vert, hant, categories: cats, tags, date } = frontmatter;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
-if (typeof cover === "object" && "src" in cover) cover = cover.src;
+
+var coverWidth: undefined | number = undefined;
+var coverHeight: undefined | number = undefined;
+if (typeof cover === "object" && "src" in cover) {
+  [coverWidth, coverHeight] = cover.aspect.split(":").map(Number);
+  cover = cover.src;
+}
 let licence = frontmatter.licence;
 if (licence === undefined) {
   licence = "CcByNc";
@@ -28,6 +34,8 @@ import "@/styles/article.less";
       <img
         class="cover"
         src={cover}
+        width={coverWidth}
+        height={coverHeight}
         alt={frontmatter.title}
         transition:name={crc32base(frontmatter.photo?.toString() || "")}
       />

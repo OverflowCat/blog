@@ -31,6 +31,17 @@ article#post> :not(div),
   }
 }
 
+figcaption a {
+  color: inherit;
+  text-decoration-color: var(--link-underline-color);
+  text-decoration-skip-ink: all;
+  transition: text-decoration-color 0.1s ease-in-out;
+
+  &:hover {
+    text-decoration-color: var(--link-underline-hover-color);
+  }
+}
+
 article#post {
 
   a[href^="#"] {

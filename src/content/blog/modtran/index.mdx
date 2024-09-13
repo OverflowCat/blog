@@ -104,7 +104,13 @@ MODTRAN (**MOD**erate resolution atmospheric **TRAN**smission) 是一个大气�
 
 ## 结果分析
 
-我们需要手动找到输出的数据。右键所用的沙盒，点击「沙盒内容」>「浏览内容」，找到 <samp>drive\C\PcModWin40\Bin</samp>，用编辑器打开。
+我们需要手动找到输出的数据。右键所用的沙盒，点击「沙盒内容」>「浏览内容」，找到 <samp>drive\C\PcModWin40\Bin\tape7</samp>，用编辑器打开。
+
+<Info title="Info: tape7">
+
+<samp>tape7</samp> 包含了 MODTRAN 运行的所有光谱结果的主要文件。文件中的头部信息包含将被删除的部分 <samp>tape5</samp> 信息。<samp>tape7</samp> 中的头部部分后跟着一系列光谱点及其相应的透射率。每一列都有传输或辐射的不同组成部分。
+
+</Info>
 
 在第 11 行开始，会有如下的 tsv 输出：
 
