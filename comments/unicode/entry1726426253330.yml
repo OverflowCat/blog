@@ -1,0 +1,53 @@
+id: vuy6y24fffoafnbjozeefr6f
+name: YinMo19
+email: d41d8cd98f00b204e9800998ecf8427e
+message: "写的太好了！\r
+
+  \r
+
+  不过作为 rust 学习者，这里的语言特性我也想说两句（x\r
+
+  ```rust\r
+
+  fn main() {\r
+
+  \    println!(&quot;🤦🏼‍♂️:{}&quot;,&quot;🤦🏼‍♂️&quot;.chars().next().unw\
+  rap());\r
+
+  }\r
+
+  ```\r
+
+  rust虽然在直接计算 `len` 的时候使用比特来计算，但是如果我们将字符串转换为迭代器，他可以正确的去划分一个字符具体到哪个地方。\r
+
+  \r
+
+  &gt; Returns an iterator over the [char]s of a string slice.\r
+
+  &gt; \r
+
+  &gt; As a string slice consists of valid UTF-8, we can iterate through a
+  string slice by [char]. This method returns such an iterator.\r
+
+  &gt; \r
+
+  &gt; It&#39;s important to remember that [char] represents a Unicode Scalar
+  Value, and might not match your idea of what a &#39;character&#39; is.
+  Iteration over grapheme clusters may be what you actually want. This
+  functionality is not provided by Rust&#39;s standard library, check crates.io
+  instead.\r
+
+  \r
+
+  作为一门比较偏向底层的语言，`len` 去表示有几个字节，而在使用的时候使用正确的切分方法，我想这应该足够了。\r
+
+  \r
+
+  ---\r
+
+  \r
+
+  不过仔细再检验一下发现，好像将这个字符粘贴到命令行中会出现：🤦\\U+1F3FC\\U+200D♂️，或许是截止现在我的命令行还不识别这个字符。
+  rust 的切割行为也一样，或许因为内置的 unicode 没有更新到最新标准。"
+url: blog.yinmo19.top
+date: 2024-09-15T18:50:53.330Z
