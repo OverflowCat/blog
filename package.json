@@ -53,7 +53,7 @@
     "@myriaddreamin/typst.ts": "^0.4.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "arktype": "2.0.0-rc.6",
+    "arktype": "2.0.0-rc.8",
     "astro": "^4.15.4",
     "astro-icon": "^1.1.1",
     "astro-remote": "^0.3.3",
