@@ -135,8 +135,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       mdn-data:
-        specifier: ^2.11.0
-        version: 2.11.0
+        specifier: ^2.11.1
+        version: 2.11.1
       opencc-js:
         specifier: ^1.0.5
         version: 1.0.5
@@ -2750,8 +2750,8 @@ packages:
   mdn-data@2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
 
-  mdn-data@2.11.0:
-    resolution: {integrity: sha512-S0sFyKlg6/vBlk17+BJmKLvjC/+4xp5C9mjEGGxjNcz4FDkUjRDbozlV1tL39jSo01mgdXAzihPjyhE57/yefg==}
+  mdn-data@2.11.1:
+    resolution: {integrity: sha512-Hdx3wmyqPFrhd6YHVuSkUK2eIGAcxR0xlndcgZqjA68yMJTbfXrjJwbgsBOsNjI7LnBIVUQnmyMVSdi/ob0GpQ==}
 
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
@@ -6917,7 +6917,7 @@ snapshots:
 
   mdn-data@2.0.30: {}
 
-  mdn-data@2.11.0: {}
+  mdn-data@2.11.1: {}
 
   mdurl@2.0.0: {}
 
