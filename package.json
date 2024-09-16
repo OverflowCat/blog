@@ -32,7 +32,7 @@
     "@astrojs/react": "^3.6.2",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
-    "@fontsource/ibm-plex-mono": "^5.0.15",
+    "@fontsource/ibm-plex-mono": "^5.1.0",
     "@fontsource/ibm-plex-sans": "^5.0.22",
     "@fontsource/ibm-plex-sans-kr": "^5.0.14",
     "@fontsource/noto-sans-mongolian": "^5.0.16",
