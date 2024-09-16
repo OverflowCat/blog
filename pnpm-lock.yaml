@@ -36,8 +36,8 @@ importers:
         specifier: ^5.0.22
         version: 5.0.22
       '@fontsource/ibm-plex-sans-kr':
-        specifier: ^5.0.14
-        version: 5.0.14
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource/noto-sans-mongolian':
         specifier: ^5.0.16
         version: 5.0.16
@@ -853,8 +853,8 @@ packages:
   '@fontsource/ibm-plex-mono@5.0.15':
     resolution: {integrity: sha512-etA4nIhgrywWWV8RQ8lXQtxujJmiX7MT5JZq9T8vIdEhBH42ErsjD1ewLwhGlgfafA3veoqVGsEAF9CmgpRGwA==}
 
-  '@fontsource/ibm-plex-sans-kr@5.0.14':
-    resolution: {integrity: sha512-L45QcA6lFPVI000yoDXUqB4hu8DzenBeb+mx43+Oj2v6+ocQmVTBPm/PzWxVlrbuzQ96HmLBtZ3idL7FgnfOTA==}
+  '@fontsource/ibm-plex-sans-kr@5.1.0':
+    resolution: {integrity: sha512-6wZqYoptCL+8VqR3oFK4rCLYtasZ9VtyEQ+NYpUhuzqh15FkonW8kJNpqocM1tmVyAOEXC/tZgcqeAEAY5lJig==}
 
   '@fontsource/ibm-plex-sans@5.0.22':
     resolution: {integrity: sha512-c/MxHekLpvTC23Ldw3rZWLPjnWzsAaz9EBY6Z2EbMsMzQ8vHFYaucDKbRTlrt87Ytqthns3ByAhnTkO3k7tR9g==}
@@ -4585,7 +4585,7 @@ snapshots:
 
   '@fontsource/ibm-plex-mono@5.0.15': {}
 
-  '@fontsource/ibm-plex-sans-kr@5.0.14': {}
+  '@fontsource/ibm-plex-sans-kr@5.1.0': {}
 
   '@fontsource/ibm-plex-sans@5.0.22': {}
 

@@ -34,7 +34,7 @@
     "@astrojs/sitemap": "^3.1.6",
     "@fontsource/ibm-plex-mono": "^5.0.15",
     "@fontsource/ibm-plex-sans": "^5.0.22",
-    "@fontsource/ibm-plex-sans-kr": "^5.0.14",
+    "@fontsource/ibm-plex-sans-kr": "^5.1.0",
     "@fontsource/noto-sans-mongolian": "^5.0.16",
     "@iconify-json/clarity": "^1.2.0",
     "@iconify-json/codicon": "^1.2.0",
