@@ -99,7 +99,7 @@
     "npm-check-updates": "^17.1.1",
     "rehype-pretty-code": "^0.14.0",
     "rollup": "^4.21.3",
-    "sass": "^1.78.0",
+    "sass": "^1.79.1",
     "shiki": "^1.17.7",
     "typescript": "^5.6.2",
     "unocss": "^0.62.4",
