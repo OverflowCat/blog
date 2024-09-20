@@ -98,7 +98,7 @@
     "@types/node": "^22.5.5",
     "npm-check-updates": "^17.1.1",
     "rehype-pretty-code": "^0.14.0",
-    "rollup": "^4.21.3",
+    "rollup": "^4.22.2",
     "sass": "^1.78.0",
     "shiki": "^1.17.7",
     "typescript": "^5.6.2",
