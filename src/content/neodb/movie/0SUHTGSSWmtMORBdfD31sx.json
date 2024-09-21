@@ -1,0 +1,69 @@
+{
+  "id": "https://neodb.social/movie/0SUHTGSSWmtMORBdfD31sx",
+  "type": "Movie",
+  "uuid": "0SUHTGSSWmtMORBdfD31sx",
+  "url": "/movie/0SUHTGSSWmtMORBdfD31sx",
+  "api_url": "/api/movie/0SUHTGSSWmtMORBdfD31sx",
+  "category": "movie",
+  "parent_uuid": null,
+  "display_title": "网络炼狱：揭发N号房",
+  "external_resources": [],
+  "title": "网络炼狱：揭发N号房",
+  "description": "一个可以匿名使用的在线聊天室，一个性犯罪的温床。揭发2019年震撼韩国的网络聊天室恶行。",
+  "localized_title": [
+    {
+      "lang": "zh-cn",
+      "text": "网络炼狱：揭发N号房"
+    },
+    {
+      "lang": "ko",
+      "text": "사이버 지옥: n번방을 무너뜨려라"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "网路炼狱：揭发N号房"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "网络地狱：N 号房现形记"
+    },
+    {
+      "lang": "en",
+      "text": "Cyber Hell: Exposing an Internet Horror"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "zh-cn",
+      "text": "一个可以匿名使用的在线聊天室，一个性犯罪的温床。揭发2019年震撼韩国的网络聊天室恶行。"
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/movie/2022/04/200db0c506-ff30-4c59-992e-52bea7425b01.jpg",
+  "rating": 7.5,
+  "rating_count": 108,
+  "brief": "一个可以匿名使用的在线聊天室，一个性犯罪的温床。揭发2019年震撼韩国的网络聊天室恶行。",
+  "orig_title": "사이버 지옥: n번방을 무너뜨려라",
+  "other_title": [
+    "网路炼狱：揭发N号房",
+    "网络地狱：N 号房现形记",
+    "Cyber Hell: Exposing an Internet Horror"
+  ],
+  "director": [
+    "崔真星"
+  ],
+  "playwright": [],
+  "actor": [],
+  "genre": [
+    "Documentary"
+  ],
+  "language": [
+    "韩语"
+  ],
+  "area": [
+    "韩国"
+  ],
+  "year": 2022,
+  "site": null,
+  "duration": "105分钟",
+  "imdb": null
+}

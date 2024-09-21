@@ -43,6 +43,8 @@ const slugMap = new Map(posts.map((post) => [post.slug as string, post.data]));
       box-sizing: content-box;
       * {
         display: inline;
+        overflow: hidden;
+        width: 100%;
       }
       padding-block: .2em;
       border-block-end: 1px solid #ddd;

@@ -11,17 +11,16 @@ description: 不懂体系结构，但计算机处处是前端
 
 import "./style.css";
 
-<aside class="lg:float-end lg:ms-4" style="margin-block-start: -1em; margin-block-end: -1em;">
-<figure class="lg:inline-block">
-  <img
-    src="/aigc/fe-architecture.webp"
-    alt="A satirical cartoon depicting a frontend developer, who is unfamiliar with computer architecture, thinking that everything in a computer is related to frontend development."
-    width="250px"
-    height="250px"
-  />
-  <figcaption>不懂体系结构，但计算机处处是前端</figcaption>
-</figure>
-</aside>
+import FloatingImg from "@/components/FloatingImg.astro";
+
+<FloatingImg
+  src="/aigc/fe-architecture.webp"
+  alt="A satirical cartoon depicting a frontend developer, who is unfamiliar with computer architecture, thinking that everything in a computer is related to frontend development."
+  width="250"
+  height="250"
+>
+  不懂体系结构，但计算机处处是前端
+</FloatingImg>
 
 import Tweet from "logical-astro-tweet";
 

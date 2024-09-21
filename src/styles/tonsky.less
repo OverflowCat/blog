@@ -109,6 +109,7 @@ body {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  --font-mono: "IBM Plex Mono", "Noto Sans CJK Mono SC", monospace, "Noto Sans CJK SC";
 
   p[lang^="zh"] {
     line-height: 1.68;
@@ -126,13 +127,6 @@ body {
   font-family: "IBM Plex Sans" !important;
 }
 
-pre,
-samp,
-kbd,
-code {
-  font-family: "IBM Plex Mono", monospace;
-}
-
 body {
   color: var(--text);
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAQSURBVHgBAQUA+v8A/dsp/wfbAwFy+CMuAAAAAElFTkSuQmCC) !important;
@@ -140,9 +134,6 @@ body {
   background-color: hsl(51, 100%, 59%) !important;
   /* fallback */
   background-color: #fddb29;
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  -moz-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

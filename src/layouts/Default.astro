@@ -4,6 +4,7 @@ import "@/styles/icon.less";
 import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
+import "@shikijs/twoslash/style-rich.css";
 let { frontmatter } = Astro.props;
 if (frontmatter) frontmatter = blogSchema.parse(frontmatter);
 import Bar from "@/templates/Bar.astro";
@@ -18,9 +19,18 @@ export type Props = {
 
 <style is:global is:inline>
   :root {
+    --font-mono: "IBM Plex Mono",
+    "JetBrains Mono", "JetBrains Mono NF",
+    "JetBrainsMono NF",
+    "更纱等距黑体",
+    FiraCode, "Fira Code", "FiraCode NF",
+    "Noto Sans CJK Mono SC", "Source Code Pro",
+    "Noto Sans Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP",
+    "Noto Sans Mono CJK KR", "Noto Sans Mono CJK TC", "Lucida Console",
+    Liberation Mono, DejaVu Sans Mono, Consolas, Bitstream Vera Sans Mono,
+    "Courier New", "FiraCode NF", monospace;
     color-scheme: light;
   }
-
   .paper {
     margin: auto;
     inline-size: 1024px;

@@ -33,6 +33,7 @@ if (!fs.existsSync(folderPath)) {
   fs.mkdirSync(folderPath, { recursive: true });
 }
 const filePath = path.join(folderPath, `${fileName}.json`);
+console.log(`Fetching ${slug}...`);
 const content = await fetchItem(slug);
 console.info(content);
 fs.writeFileSync(filePath, JSON.stringify(content, null, 2));

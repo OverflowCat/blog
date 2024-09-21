@@ -71,7 +71,7 @@ export default defineConfig({
 	vite: {
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
-			noExternal: ["xp.css", "98.css", "rehype-remnote/style/*"]
+			noExternal: ["xp.css", "98.css", "@shikijs/twoslash/style-rich.css", "rehype-remnote/style/*"]
 		}
 	},
 	markdown: {

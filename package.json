@@ -27,7 +27,7 @@
   "dependencies": {
     "98.css": "^0.1.20",
     "@astrojs/markdown-remark": "^5.2.0",
-    "@astrojs/mdx": "^3.1.6",
+    "@astrojs/mdx": "^3.1.7",
     "@astrojs/prism": "^3.1.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/rss": "^4.0.7",
@@ -51,10 +51,11 @@
     "@myriaddreamin/rehype-typst": "0.5.0-rc7",
     "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc7",
     "@myriaddreamin/typst.ts": "^0.4.1",
-    "@types/react": "^18.3.7",
+    "@shikijs/twoslash": "^1.18.0",
+    "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
-    "arktype": "2.0.0-rc.9",
-    "astro": "^4.15.6",
+    "arktype": "2.0.0-rc.12",
+    "astro": "^4.15.8",
     "astro-icon": "^1.1.1",
     "astro-remote": "^0.3.3",
     "astro-typst": "0.6.0",
@@ -91,18 +92,19 @@
     "yaml": "^2.5.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.1",
+    "@biomejs/biome": "^1.9.2",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.5.5",
-    "npm-check-updates": "^17.1.1",
+    "npm-check-updates": "^17.1.2",
     "rehype-pretty-code": "^0.14.0",
     "rollup": "^4.21.3",
-    "sass": "^1.78.0",
-    "shiki": "^1.17.7",
+    "sass": "^1.79.3",
+    "shiki": "^1.18.0",
+    "twoslash": "^0.2.11",
     "typescript": "^5.6.2",
     "unocss": "^0.62.4",
-    "vite": "^5.4.6"
+    "vite": "^5.4.7"
   }
 }

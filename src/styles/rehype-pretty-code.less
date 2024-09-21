@@ -1,12 +1,27 @@
 @import "./kbd.less";
 
 pre {
-  // white-space: normal;
   text-wrap: wrap;
   writing-mode: horizontal-tb;
 }
 
-pre > code {
+.twoslash-popup-container {
+  width: clamp(200px, 360px, 90vw);
+}
+.twoslash .twoslash-error-line {
+  width: unset!important;
+}
+
+[data-rehype-pretty-code-figure],
+pre.astro-code {
+  margin-block: .5em;
+}
+
+[data-rehype-pretty-code-figure]>pre>code {
+  font-size: 100%;
+}
+
+pre>code {
   display: grid;
   font-size: 90%;
   line-height: 150%;
@@ -49,41 +64,38 @@ div[data-rehype-pretty-code-title] {
 }
 
 @media (min-width: 640px) {
-  div[data-rehype-pretty-code-fragment]
-    figure[data-rehype-pretty-code-figure]
-    .line {
+  div[data-rehype-pretty-code-fragment] figure[data-rehype-pretty-code-figure] .line {
     &::before {
       margin-right: 1.2rem;
     }
+
     padding-left: 1rem;
   }
 }
 
-span[data-rehype-pretty-code-figure] { // inline
+span[data-rehype-pretty-code-figure] {
+  // inline
 }
 
-figure[data-rehype-pretty-code-figure] { // block
+figure[data-rehype-pretty-code-figure],
+pre.astro-code {
+  // block
   position: relative;
-  margin: 1em -1em;
+
   blockquote & {
     margin: 1em 0;
   }
+
   padding: 0.2em 1em;
   width: 100%;
   border-radius: 0.375rem;
   background-color: #f2f9fce5;
 
   &:has([data-rehype-pretty-code-title]) {
-    padding-top: 1.75rem;
+    padding-top: 1rem;
   }
 
-  @media (min-width: 1024px) {
-    &:has([data-rehype-pretty-code-title]) {
-      padding-top: 1rem;
-    }
-  }
-
-  & > pre {
+  &>pre {
     text-align: left;
   }
 
@@ -99,7 +111,8 @@ figure[data-rehype-pretty-code-figure] { // block
   // lineNumbers
   code[data-line-numbers] {
     counter-reset: line;
-    & > .line::before {
+
+    &>.line::before {
       counter-increment: line;
       content: counter(line);
       margin-right: 1.5rem;
@@ -111,14 +124,14 @@ figure[data-rehype-pretty-code-figure] { // block
     }
   }
 
-  code > [data-line] {
+  code>[data-line] {
     margin-left: 1rem;
     padding-right: 1rem;
     position: relative;
     word-break: break-all;
   }
 
-  code > [data-line]::before {
+  code>[data-line]::before {
     counter-increment: line;
     content: counter(line);
     word-break: keep-all;
@@ -132,11 +145,11 @@ figure[data-rehype-pretty-code-figure] { // block
     color: gray;
   }
 
-  code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  code[data-line-numbers-max-digits="2"]>[data-line]::before {
     width: 2rem;
   }
 
-  code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  code[data-line-numbers-max-digits="3"]>[data-line]::before {
     width: 3rem;
   }
 

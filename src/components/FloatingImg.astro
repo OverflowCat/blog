@@ -1,0 +1,32 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: string;
+  height: string;
+}
+
+const { src, alt, width, height } = Astro.props;
+---
+
+<aside class="lg:float-end lg:ms-4" style="margin-block-start: -1em; margin-block-end: -1em;">
+  <figure class="lg:inline-block">
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+    />
+    <figcaption><slot /></figcaption>
+  </figure>
+</aside>
+
+<style>
+@media (min-width: 1605px) {
+  aside {
+    position: fixed;
+    right   : 1rem;
+    top     : 16rem;
+  }
+}
+</style>

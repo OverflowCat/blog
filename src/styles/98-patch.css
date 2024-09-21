@@ -13,11 +13,8 @@
     src        : url(/fonts/fusion-pixel-12px-proportional-zh_hans.woff2) format("woff2");
 }
 
-pre, code, samp, kbd, var, tt, time, .mono, .monospace {
-    font-family: "Departure Mono", "Fusion Pixel P 12px SC", monospace!important;
-}
-
 body {
+    --font-mono: "Departure Mono", "Fusion Pixel P 12px SC", monospace;
     color-scheme: light;
     background  : #ddd !important;
 }

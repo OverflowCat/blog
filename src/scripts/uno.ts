@@ -1,5 +1,5 @@
 import { createGenerator } from "unocss";
-import unoConfig from "uno.config";
+import unoConfig from "uno.config"; // 导入当前项目的 UnoCSS 配置
 
 /**
  * Generate UnoCSS style from HTML string

@@ -1,6 +1,8 @@
 import rehypeMultiMath from "./math.ts";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+import { transformerTwoslash } from '@shikijs/twoslash';
+
 type PrettyCodeNodePositionPoint = {
     line: number;
     column: number;
@@ -20,9 +22,13 @@ interface PrettyCodeNode {
         end: PrettyCodeNodePositionPoint;
     };
 }
-const prettyCodeOptions = {
-    theme: "material-theme-lighter",
+
+const prettyCodeOptions: Options = {
+    theme: "snazzy-light",
     keepBackground: false,
+    transformers: [
+        transformerTwoslash(),
+    ],
     onVisitLine(node: PrettyCodeNode) {
         if (node.children.length === 0) {
             node.children = [{
