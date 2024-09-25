@@ -101,7 +101,6 @@ export default defineConfig({
 		].concat(rehypePipe)
 	},
 	experimental: {
-		contentLayer: false,
 		contentCollectionCache: false,
 	},
 	integrations: [icon(), UnoCSS(), react(), mdx(), typst(), sitemap()]
