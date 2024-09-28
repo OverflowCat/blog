@@ -1,21 +1,28 @@
 ---
 export type Props = {
     float?: boolean;
+    theme?: boolean;
     hans?: string;
     hant?: string | false;
     vert?: boolean;
 };
-let { float, hans, hant, vert } = Astro.props;
+let { float, hans, hant, vert, theme } = Astro.props;
 if (float === undefined) float = true;
 if (hans === undefined) hans = "&#x6C49;";
 if (hant === undefined) hant = "漢";
 
 const p = Astro.url.pathname;
 
+import Theme from "./Theme.astro";
 import { Icon } from "astro-icon/components";
 ---
 
 <div id="han-float" class:list={[{ float }, "flex", "flex-row"]}>
+    {
+        theme !== false && (
+            <Theme />
+        )
+    }
     {
         hant !== false && (
             <div id="han-cc" class="inline">
@@ -41,11 +48,11 @@ import { Icon } from "astro-icon/components";
     {
         vert !== false && (
             <div id="veho" class="inline-flex flex-row">
-                <a href="#vert">
-                    <Icon class="text-xl" name="fluent:text-direction-vertical-24-filled" />
+                <a href="#vert" class="text-xl">
+                    <Icon name="fluent:text-direction-vertical-24-filled" />
                 </a>
-                <a href="#">
-                    <Icon class="text-xl" name="fluent:text-direction-horizontal-ltr-24-filled" />
+                <a href="#" class="text-xl">
+                    <Icon name="fluent:text-direction-horizontal-ltr-24-filled" />
                 </a>
             </div>
         )

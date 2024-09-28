@@ -47,7 +47,7 @@ const slugMap = new Map(posts.map((post) => [post.slug as string, post.data]));
         width: 100%;
       }
       padding-block: .2em;
-      border-block-end: 1px solid #ddd;
+      border-block-end: 1.8px solid var(--border-color);
       &:last-of-type {
         border-block-end: 1px solid transparent;
       }
@@ -58,7 +58,7 @@ const slugMap = new Map(posts.map((post) => [post.slug as string, post.data]));
       transition: all 0.2s;
     }
     date {
-      color: #333;
+      color: var(--text-secondary);
       font-style: italic;
     }
     a {

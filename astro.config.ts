@@ -56,7 +56,7 @@ function myRemarkPlugin() {
 import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflash/remark-figure-caption";
 
 // Atomic CSS
-import UnoCSS from "unocss/astro";
+import unocss from "unocss/astro";
 import react from "@astrojs/react";
 
 import { rehypePipe } from "./src/scripts/rehype/common.ts";
@@ -103,5 +103,5 @@ export default defineConfig({
 	experimental: {
 		contentCollectionCache: false,
 	},
-	integrations: [icon(), UnoCSS(), react(), mdx(), typst(), sitemap()]
+	integrations: [unocss(), icon(), react(), mdx(), typst(), sitemap()]
 });

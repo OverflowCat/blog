@@ -1,9 +1,55 @@
 :root {
+  // downgrade to light
+  color-scheme: light;
+  --text-color: #222;
+  --text-secondary: #444;
   --accent-color: rgb(0, 0, 0);
+  --link-color: #333;
+  --link-visited-color: #383838;
+  --link-hover-color: #222;
+  --link-underline-color: rgba(128, 128, 128, 0.5);
+  --link-underline-hover-color: rgba(128, 128, 128, 1);
+  --hint-color: #434343;
+  --bg-color: #fcfaf2;
+  --bg-accent: #f5f5f5b7;
+  --bg-secondary: #b3b3b3;
+  --sel-bg: rgba(37, 37, 37, 0.85);
+  --bg-gradient: rgba(0, 0, 0, .04);
+  --bg-image: linear-gradient(to right, var(--bg-gradient) 1.5px, transparent 1px), linear-gradient(to bottom, var(--bg-gradient) 1.5px, transparent 1px);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: lightgray;
+  --title-color: #2f2f2f;
+}
+@supports (color: light-dark(#fff, #000)) {
+  :root {
+    --text-color: light-dark(#222, #ddd);
+    --text-secondary: light-dark(#444, #ccc);
+    --accent-color: rgb(0, 0, 0);
+    --link-color: light-dark(#333, #ddd);
+    --link-visited-color: lightdark(#383838, #d4d4d4);
+    --link-hover-color: light-dark(#222, #ddd);
+    --link-underline-color: light-dark(rgba(128, 128, 128, 0.5), rgba(137, 137, 137, 0.5));
+    --link-underline-hover-color: light-dark(rgba(128, 128, 128, 1), rgba(137, 137, 137, 1));
+    --hint-color: light-dark(#434343, #c9c9c9);
+    --bg-color: light-dark(#fcfaf2, rgba(32, 34, 38));
+    --bg-accent: light-dark(#f5f5f5b7, #a8a8a839);
+    --bg-secondary: light-dark(#d8d8d8, #444);
+    --paper-bg: light-dark(rgba(255, 255, 255, 1), rgba(0, 0, 0, 0));
+    --sel-bg: light-dark(rgba(37, 37, 37, 0.85), rgba(217, 217, 217, 0.9));
+    /*
+    --bg-image-light: linear-gradient(to right, rgba(0, 0, 0, .04) 1.5px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1.5px, transparent 1px);
+    --bg-image-dark: linear-gradient(to right, rgba(255, 255, 255, .04) 1.5px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, .04) 1.5px, transparent 1px);
+    --bg-image: light-dark((var(--bg-image-light)), (var(--bg-image-dark)));
+    */
+    --bg-gradient: light-dark(rgba(0, 0, 0, .04), rgba(255, 255, 255, .04));
+    --bg-image: linear-gradient(to right, var(--bg-gradient) 1.5px, transparent 1px), linear-gradient(to bottom, var(--bg-gradient) 1.5px, transparent 1px);
+    --shadow-color: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.1));
+    --border-color: light-dark(lightgray, darkgray);
+    --title-color: light-dark(#2f2f2f, #f5f5f5);
+  }
 }
 
 html {
-  background-color: var(--html-bg-color, white);
   container-type: inline-size;
   container-name: html;
   -moz-text-size-adjust: none;
@@ -53,12 +99,17 @@ h6 {
   text-wrap: balance;
 }
 
+hr {
+  border: 0;
+  border-block-start: 1.5px solid color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
 a, u {
   text-decoration-skip-ink: all;
 }
 
 ::selection {
-  background-color: rgba(37, 37, 37, 0.85);
+  background-color: var(--sel-bg);
   color: #fff;
 }
 
@@ -70,10 +121,18 @@ figure {
   writing-mode: horizontal-tb !important;
 }
 
-@media (prefers-reduced-motion) {
-  @view-transition {
-    navigation: none;
-  }
+select {
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1em;
+  cursor: pointer;
+}
+
+option {
+  padding: 0.5em;
 }
 
 details {
@@ -98,5 +157,11 @@ details {
     &:active {
       background-color: rgba(0, 0, 0, 0.1);
     }
+  }
+}
+
+@media (prefers-reduced-motion) {
+  @view-transition {
+    navigation: none;
   }
 }

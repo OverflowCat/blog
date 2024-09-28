@@ -59,9 +59,8 @@ const html = $.html();
     langs={frontmatter.langs}
     classList={["tonsky"]}
   />
-  <Han float={false} hans={HANS} hant="漢語" />
+  <Han float={false} theme={false} hans={HANS} hant="漢語" />
   <article class="content" set:html={html} />
-
   <Comments />
 </div>
 <style is:global lang="less">

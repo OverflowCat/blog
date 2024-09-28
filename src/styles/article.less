@@ -3,12 +3,7 @@
 :root {
   --content-bg-color: #fff;
   --card-bg-color: #f5f5f5;
-  --text-color: #333;
-  --blockquote-color: #555;
-  --link-color: #333;
-  --link-hover-color: #222;
-  --link-underline-color: rgba(128, 128, 128, 0.5);
-  --link-underline-hover-color: rgba(128, 128, 128, 1);
+  --blockquote-color: light-dark(#555, #bbb);
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
@@ -207,8 +202,8 @@ article#post {
 
   th,
   td {
-    border: 1px solid #ddd;
-    border-block-end: 3px solid #ddd;
+    border: 1.8px solid var(--border-color);
+    border-block-end: 3px solid var(--border-color);
   }
 
   th {

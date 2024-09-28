@@ -6,7 +6,7 @@ export interface Props {
 }
 
 import Logo from "@components/Logo.astro";
-import slogans from "@scripts/slogans.ts";
+import slogans from "@scripts/slogans";
 import { pick } from "@/scripts/serendipity";
 
 const items = [
@@ -54,7 +54,6 @@ const slogan = pick(slogans)[lang || "zh-Hans"];
   lang="less"
   define:vars={{
     "active-color": theme === "dark" ? "white" : "#black",
-    "hint-color": theme === "dark" ? "#c3c3c3" : "#3c3c3c",
   }}
 >
   * {

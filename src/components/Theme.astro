@@ -1,0 +1,52 @@
+<div id="theme-switcher">
+    <select id="theme-select">
+        <option value="light" selected>明</option>
+        <option value="dark">暗</option>
+        <option value="system">系统</option>
+    </select>
+</div>
+
+<style lang="less" is:global>
+// :root {
+//     color: blue;
+//     &:has(option[value="light"]:checked) {
+//         color: yellow;
+//     }
+//     &:has(option[value="dark"]:checked) {
+//         color: red;
+//     }
+// }
+
+:root > *, :root > * > *, :root > * > * > * {
+    transition: background-color .7s, background-image .7s, color .2s;
+}
+#theme-switcher {
+    display: none;
+}
+@supports (color: light-dark(#fff, #000)) {
+    :root {
+        color-scheme: light dark;
+        &:has(option[value="light"]:checked) {
+            color-scheme: light;
+        }
+        &:has(option[value="dark"]:checked) {
+            color-scheme: dark;
+        }
+    }
+    #theme-switcher {
+        display: block;
+    }
+    select#theme-select {
+        > option {
+            background-color: var(--paper-bg);
+        }
+        @apply i-material-symbols:night-sight-auto;
+        &:has(option[value="light"]:checked) {
+            @apply i-material-symbols:light-mode-rounded;
+        }
+        &:has(option[value="dark"]:checked) {
+            @apply i-material-symbols:dark-mode-rounded;
+        }
+    }
+}
+</style>
