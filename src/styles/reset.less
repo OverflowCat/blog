@@ -4,6 +4,7 @@
   --text-color: #222;
   --text-secondary: #444;
   --accent-color: rgb(0, 0, 0);
+  --hr-color: #ddd;
   --link-color: #333;
   --link-visited-color: #383838;
   --link-hover-color: #222;
@@ -13,11 +14,15 @@
   --bg-color: #fcfaf2;
   --bg-accent: #f5f5f5b7;
   --bg-secondary: #b3b3b3;
+  --bg-secondary-hover: #e7e7e7;
+  --bd-secondary-active: #dcdcdc;
+  --paper-bg: rgba(255, 255, 255, 1);
   --sel-bg: rgba(37, 37, 37, 0.85);
   --bg-gradient: rgba(0, 0, 0, .04);
   --bg-image: linear-gradient(to right, var(--bg-gradient) 1.5px, transparent 1px), linear-gradient(to bottom, var(--bg-gradient) 1.5px, transparent 1px);
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-color: lightgray;
+  --input-border-color: #e1e1e1;
   --title-color: #2f2f2f;
 }
 @supports (color: light-dark(#fff, #000)) {
@@ -25,6 +30,7 @@
     --text-color: light-dark(#222, #ddd);
     --text-secondary: light-dark(#444, #ccc);
     --accent-color: rgb(0, 0, 0);
+    --hr-color: light-dark(#ddd, #333);
     --link-color: light-dark(#333, #ddd);
     --link-visited-color: lightdark(#383838, #d4d4d4);
     --link-hover-color: light-dark(#222, #ddd);
@@ -34,6 +40,8 @@
     --bg-color: light-dark(#fcfaf2, rgba(32, 34, 38));
     --bg-accent: light-dark(#f5f5f5b7, #a8a8a839);
     --bg-secondary: light-dark(#d8d8d8, #444);
+    --bg-secondary-hover: light-dark(#e7e7e7, #333);
+    --bd-secondary-active: light-dark(#dcdcdc, #333);
     --paper-bg: light-dark(rgba(255, 255, 255, 1), rgba(0, 0, 0, 0));
     --sel-bg: light-dark(rgba(37, 37, 37, 0.85), rgba(217, 217, 217, 0.9));
     /*
@@ -45,6 +53,7 @@
     --bg-image: linear-gradient(to right, var(--bg-gradient) 1.5px, transparent 1px), linear-gradient(to bottom, var(--bg-gradient) 1.5px, transparent 1px);
     --shadow-color: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.1));
     --border-color: light-dark(lightgray, darkgray);
+    --input-border-color: light-dark(#e1e1e1, #333);
     --title-color: light-dark(#2f2f2f, #f5f5f5);
   }
 }
@@ -115,6 +124,10 @@ a, u {
 
 figure {
   margin-block: 1em;
+}
+
+figcaption {
+  margin-block: 0.6em;
 }
 
 .MathJax {

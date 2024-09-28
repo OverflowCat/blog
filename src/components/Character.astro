@@ -1,0 +1,38 @@
+---
+export interface Props {
+    sticker: StickerName;
+    name: string;
+    colors?: [string, string];
+}
+
+import Picture from 'astro/components/Picture.astro';
+import Bubble from './Bubble.astro';
+import inquisitive from "@/assets/stickers/cat/inquisitive.webp";
+import rolling from "@/assets/stickers/cat/rolling.webp";
+import pawlicking from "@/assets/stickers/cat/paw-licking.webp";
+
+const map = {
+    inquisitive,
+    rolling,
+    pawlicking,
+} as const;
+
+type StickerName = keyof typeof map;
+
+const {
+    sticker,
+    name,
+    colors,
+} = Astro.props;
+const img = map[sticker];
+
+---
+<div class="m-inline-auto rounded-2 flex max-inline-fit gap-2 p-2 items-end">
+  <div class="flex flex-col text-end">
+    <Picture class="size-28" src={img} formats={['avif', 'webp', 'jpg']} alt={`Sticker of a cat, ${sticker}`} />
+    <div>{name}</div>
+  </div>
+  <Bubble colors={colors} classList={['mbe-4', 'max-inline-2xl']}>
+    <slot />
+  </Bubble>
+</div>

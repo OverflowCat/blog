@@ -1,10 +1,6 @@
 import { z } from "astro:content";
+import { ICON_PACKS_SET } from "../icons";
 
-const ICON_PACKS = new Set(
-	"clarity, codicon, entypo-social, gravity-ui, ic, icon-park, mdi, ph, ri, simple-icons, tabler".split(
-		", ",
-	),
-);
 // 2. Define a `type` and `schema` for each collection
 function transform2arr(val: null | undefined | string | string[]) {
 	if (!val) {
@@ -52,7 +48,7 @@ export const blogSchema = z
 		icon: z
 			.string()
 			.refine(
-				(x: string) => !x.includes(":") || ICON_PACKS.has(x.split(":")[0]),
+				(x: string) => !x.includes(":") || ICON_PACKS_SET.has(x.split(":")[0]),
 			)
 			.optional(),
 		math: z.optional(

@@ -20,12 +20,19 @@
 :root > *, :root > * > *, :root > * > * > * {
     transition: background-color .7s, background-image .7s, color .2s;
 }
+
 #theme-switcher {
     display: none;
+    color: var(--text-secondary);
+    &:has(select:focus) {
+        outline: 2px solid light-dark(black, white);
+    }
 }
-@supports (color: light-dark(#fff, #000)) {
+@supports (color: light-dark(black, white)) {
     :root {
-        color-scheme: light dark;
+        &:has(option[value="system"]:checked) {
+            color-scheme: light dark;
+        }
         &:has(option[value="light"]:checked) {
             color-scheme: light;
         }
@@ -35,10 +42,11 @@
     }
     #theme-switcher {
         display: block;
+        padding: 4px;
     }
     select#theme-select {
         > option {
-            background-color: var(--paper-bg);
+            background-color: var(--bg-color);
         }
         @apply i-material-symbols:night-sight-auto;
         &:has(option[value="light"]:checked) {

@@ -20,7 +20,11 @@ const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
 <main id="theme">
   <aside id="toc" transition:name="aside-block" set:html={treeHtml} />
   <div id="common">
-    <Common frontmatter={frontmatter}>
+    <Common frontmatter={frontmatter} icons={{
+      calendar: "i-pixelarticons:calendar-text",
+      category: "i-pixelarticons:folder-plus",
+      tag: "i-pixelarticons:label",
+    }}>
       <slot />
     </Common>
     <Window title="Comments" id="comments" element="section">

@@ -1,0 +1,75 @@
+---
+import Bubble from './Bubble.astro';
+
+type User = {
+    id: string;
+    name: string;
+    avatar?: string;
+    you?: boolean;
+};
+
+type Message = {
+    id?: string;
+    quote?: string;
+    text: string;
+    time: string;
+    sender: User["id"];
+};
+
+export type Props = {
+  users: User[];
+  messages: Message[];
+}
+
+const { messages, users } = Astro.props;
+
+const groupedMessages: Message[][] = messages.reduce(
+	(acc: Message[][], message: Message) => {
+		const lastGroup = acc[acc.length - 1];
+		const lastMessage = lastGroup?.[lastGroup.length - 1];
+		if (lastMessage?.sender === message.sender) {
+			lastGroup.push(message);
+		} else {
+			acc.push([message]);
+		}
+		return acc;
+	},
+	[],
+);
+
+const userMap: Map<string, User> = new Map(
+	users.map((user: User) => [user.id, user]),
+);
+
+---
+
+<div class="inline-full mb-4">
+  {groupedMessages.map((group: Message[]) => {
+    const sender = userMap.get(group[0].sender);
+    if (!sender) throw new Error(`Sender not found for message ${group[0].id}`);
+    const isYou = sender.you;
+
+    return (
+      <div class:list={{
+        flex: true,
+        'gap-2.5': true,
+        'justify-end': isYou,
+      }}>
+        {!isYou && sender.avatar && (
+          <img src={sender.avatar} alt={`${sender.name} avatar`} class="w-10 h-11" />
+        )}
+        <div class={`grid ${isYou ? 'items-end' : ''}`}>
+          <div class={`text-sm text-2nd font-semibold leading-snug pb-1 ${isYou ? 'text-right' : ''}`}>
+            {sender.name}
+          </div>
+          {group.map((message: Message, index: any) => (
+            <Bubble message={{ ...message, sender }} />
+          ))}
+        </div>
+        {isYou && sender.avatar && (
+          <img src={sender.avatar} alt="Your avatar" class="w-10 h-11" />
+        )}
+      </div>
+    );
+  })}
+</div>

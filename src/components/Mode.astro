@@ -1,0 +1,116 @@
+---
+export type Props = {
+	float?: boolean;
+	theme?: boolean;
+	hans?: string;
+	hant?: string | false;
+	vert?: boolean;
+};
+let { float, hans, hant, vert, theme } = Astro.props;
+if (float === undefined) float = true;
+if (hans === undefined) hans = "&#x6C49;";
+if (hant === undefined) hant = "漢";
+
+const p = Astro.url.pathname;
+
+import Theme from "./Theme.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<div id="han-float" class:list={[{ float }, "flex", "flex-row"]}>
+    {
+        hant !== false && (
+            <div id="han-cc" class="inline">
+                {p.endsWith("/hant") ? (
+                    <a href={"./"}>
+                        <span id="han-from" set:html={hant + " →"} />
+                        <span id="han-to" set:html={hans} />
+                    </a>
+                ) : p.endsWith("/hant/") ? (
+                    <a href={"../"}>
+                        <span id="han-from" set:html={hant + " →"} />
+                        <span id="han-to" set:html={hans} />
+                    </a>
+                ) : (
+                    <a href={p.endsWith("/") ? "./hant" : p + "/hant"}>
+                        <span id="han-from" set:html={hans + " →"} />
+                        <span id="han-to" set:html={hant} />
+                    </a>
+                )}
+            </div>
+        )
+    }
+    {
+        vert !== false && (
+            <div id="veho" class="inline-flex flex-row">
+                <a href="#vert" class="text-xl">
+                    <Icon name="fluent:text-direction-vertical-24-filled" />
+                </a>
+                <a href="#" class="text-xl">
+                    <Icon name="fluent:text-direction-horizontal-ltr-24-filled" />
+                </a>
+            </div>
+        )
+    }
+    {
+        theme !== false && (
+            <Theme />
+        )
+    }
+</div>
+<style lang="less">
+    #han-float {
+        &.float {
+            padding: 4px;
+            border: var(--text-secondary);
+            border-radius: 3px;
+            font-size: 1.2em;
+            position: absolute;
+            inset-block-start: 10px;
+            inset-inline-end: 10px;
+        }
+        &:not(.float) {
+            display: inline;
+        }
+    }
+    #han-cc {
+        a {
+            transition: color 0.1s;
+        }
+        #han-from {
+            display: none;
+        }
+        &:hover {
+            #han-from {
+                display: inline;
+            }
+        }
+    }
+    a {
+        display: inline-flex;
+        block-size: 100%;
+        text-decoration: none;
+        color: var(--text, #a2a2a2);
+        align-items: center;
+        justify-content: center;
+    }
+    #han-cc,
+    a {
+        padding-inline-start: 4px;
+        padding-inline-end: 4px;
+        border-radius: 2px;
+        &:hover {
+            filter: invert(1);
+        }
+    }
+</style>
+<style is:global is:inline>
+    #vert:target {
+        writing-mode: vertical-rl;
+        inline-size: 100dvi;
+        max-inline-size: 100dvi;
+        [aria-hidden="true"] {
+            display: none !important;
+        }
+    }
+</style>

@@ -1,9 +1,24 @@
+a {
+  color: inherit;
+  text-decoration-skip-ink: all;
+}
+
+&[target="_blank"]:not(:has(img))::after {
+  content: "↗";
+  text-decoration-color: transparent;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
+    "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
+    "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
+    "Arial", sans-serif;
+}
+
 article#post details,
 article#post> :not(div),
 #comments {
   a {
     border-block-end: 2px solid var(--link-underline-color);
-    color: var(--link-color);
     cursor: pointer;
     outline: 0;
     text-decoration: none;
@@ -18,23 +33,12 @@ article#post> :not(div),
       border: 0;
       color: inherit;
     }
-
-    &[target="_blank"]:not(:has(img))::after {
-      content: "↗";
-      padding-left: 2px;
-      padding-right: 2px;
-      font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
-        "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
-        "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
-        "Arial", sans-serif;
-    }
   }
 }
 
 figcaption a {
   color: inherit;
   text-decoration-color: var(--link-underline-color);
-  text-decoration-skip-ink: all;
   transition: text-decoration-color 0.1s ease-in-out;
 
   &:hover {

@@ -2,13 +2,10 @@
   input,
   textarea,
   [contenteditable] {
-    border: 2px solid #e1e1e1;
+    border: 2px solid var(--border-color, #e1e1e1);
     border-radius: 2px;
     font-size: 16px;
     box-sizing: border-box;
-    // &[type="text" i] {
-    //   writing-mode: inherit !important;
-    // }
     transition: border 90ms;
     &:hover {
       border: 2px solid #91919187;

@@ -18,44 +18,25 @@
   --btn-default-hover-border-color: #222;
 }
 
-// dark mode
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     --content-bg-color: #222;
-//     --card-bg-color: #333;
-//     --text-color: #ddd;
-//     --blockquote-color: #aaa;
-//     --link-color: #ddd;
-//     --link-hover-color: #fff;
-//     --brand-color: #fff;
-//     --brand-hover-color: #fff;
-//     --table-row-odd-bg-color: #333;
-//     --table-row-hover-bg-color: #444;
-//     --menu-item-bg-color: #333;
-//     --theme-color: #fff;
-//     --btn-default-bg: #222;
-//     --btn-default-color: #ddd;
-//     --btn-default-border-color: #ddd;
-//     --btn-default-hover-bg: #fff;
-//     --btn-default-hover-color: #222;
-//     --btn-default-hover-border-color: #222;
-//     color-scheme: dark;
-//   }
-// }
+// 段落间距
+
+article#post>p {
+  @apply m-block-4;
+}
 
 h1,
-article#post > h2,
-article#post > h3,
-article#post > h4,
-article#post > h5,
-article#post > h6 {
+article#post>h2,
+article#post>h3,
+article#post>h4,
+article#post>h5,
+article#post>h6 {
   font-family: "Noto Serif SC", "Noto Serif CJK SC", "华文中宋", "STZhongsong",
     "STSong", "Songti SC", "宋体", "SimSun", "PingFang SC", "Microsoft YaHei",
     sans-serif;
   font-weight: bold;
   line-height: 140%;
-  margin-block: 30px 15px;
-  margin-inline: 0;
+  margin-block-start: 1.75em;
+  margin-block-end: 1em;
 }
 
 article#post {
@@ -73,6 +54,7 @@ article#post {
     padding-block: 8px;
     padding-inline: 24px;
   }
+
   @media (min-width: 1200px) {
     margin-block: 14px;
     margin-inline: 7px;
@@ -80,7 +62,7 @@ article#post {
     padding-inline: 32px;
   }
 
-  :not(pre) > code {
+  :not(pre)>code {
     font-size: 94%;
     // word-break: break-all;
   }
@@ -88,21 +70,19 @@ article#post {
   @import "a.less";
 
   [lang="en"] {
-    font-family: "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial,
-      sans-serif;
+    font-family: var(--font-sans-en);
   }
 
   [lang="ja"] {
-    font-family: "Noto Sans JP", "Noto Sans CJK JP", "MS Meiyo", "Meiryo",
-      "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo",
-      "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
+    font-family: var(--font-sans-ja);
   }
 
   figure {
     max-width: 100%;
   }
 
-  img {
+  >img,
+  >figure>img {
     max-height: min(600px, 100%);
     max-width: 100%;
     /* &[width][height] {} */
@@ -120,16 +100,14 @@ article#post {
   }
 
   hr {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      #ddd,
-      #ddd 4px,
-      transparent 4px,
-      transparent 8px
-    );
+    background-image: repeating-linear-gradient(-45deg,
+        var(--hr-color),
+        var(--hr-color) 4px,
+        transparent 4px,
+        transparent 8px);
     border: 0;
-    height: 3px;
-    margin: 40px 0;
+    block-size: 3px;
+    margin-block: 2em;
   }
 
   table {
@@ -151,22 +129,22 @@ article#post {
     font-weight: bold;
   }
 
-  & figure {
+  >figure {
     text-align: center;
     font-size: 16px;
     line-height: 20px;
     // font-style: italic;
   }
 
-  & figure img,
-  & figure video {
+  >figure img,
+  >figure video {
     // margin: 0 auto 1em;
     margin: auto;
     border-radius: 3px;
   }
 
   & blockquote {
-    border-inline-start: 4px solid #ddd;
+    border-inline-start: 4px solid var(--hr-color);
     color: var(--blockquote-color);
     margin: 0;
     padding: 0 8px 0 12px;

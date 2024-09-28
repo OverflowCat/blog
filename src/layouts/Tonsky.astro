@@ -6,7 +6,7 @@ import "@/styles/han.less";
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import Bar from "@/templates/Bar.astro";
-import Han from "@/components/Han.astro";
+import Han from "@/components/Mode.astro";
 import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
@@ -46,9 +46,12 @@ $("[lang^='zh']:not(svg *)").each(function () {
 const html = $.html();
 ---
 
+{
+Astro.locals.renderer == 'rss' ?
+<article set:html={html} />
+:
 <Bar theme="light" lang="en" />
 <div class="page">
-  <!-- {cover && <img src={cover} alt={frontmatter.title} />} -->
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <label for="show-en" class="btn">双语</label>
   <input type="checkbox" id="show-en" />
@@ -58,11 +61,12 @@ const html = $.html();
     here="zh"
     langs={frontmatter.langs}
     classList={["tonsky"]}
-  />
+    />
   <Han float={false} theme={false} hans={HANS} hant="漢語" />
   <article class="content" set:html={html} />
   <Comments />
 </div>
+
 <style is:global lang="less">
   input#show-en {
     accent-color: #383838;
@@ -133,3 +137,4 @@ const html = $.html();
     }
   }
 </style>
+}

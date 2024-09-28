@@ -1,21 +1,27 @@
 ---
 import type { Frontmatter } from "@/types";
-import { Icon } from "astro-icon/components";
-import Han from "@/components/Han.astro";
+import Han from "@/components/Mode.astro";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
 import { crc32base } from "@/scripts/serendipity";
+import type { AtomIconName } from "@/scripts/icons";
 
 // import "@/styles/snowy.css";
+
 export interface Props {
   frontmatter: Frontmatter;
+  icons?: {
+    calendar?: AtomIconName;
+    category?: AtomIconName;
+    tag?: AtomIconName;
+  }
 }
-const { frontmatter } = Astro.props;
+const { frontmatter, icons } = Astro.props;
 const { vert, hant, categories: cats, tags, date } = frontmatter;
 let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
 
-var coverWidth: undefined | number = undefined;
-var coverHeight: undefined | number = undefined;
+let coverWidth: undefined | number = undefined;
+let coverHeight: undefined | number = undefined;
 if (typeof cover === "object" && "src" in cover) {
   [coverWidth, coverHeight] = cover.aspect.split(":").map(Number);
   cover = cover.src;
@@ -60,19 +66,17 @@ import "@/styles/article.less";
 }
 <div class="info">
   <div>
-    <span class="icon">
-      <Icon name="mdi:date-range" />
-    </span>日期：<time
+    <div class:list={[icons?.calendar ?? 'i-mdi:date-range', 'icon']}></div>
+    日期：
+    <time
       datetime={date as unknown as string}
       set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
     />
   </div>
   {
-    cats && (
+    !!cats.length && (
       <div>
-        <span class="icon">
-          <Icon name="mdi:category" />
-        </span>
+        <div class:list={[icons?.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div>
         分类：
         {cats.map((cat) => (
           <a class="cat" href={`/categories/${cat}/`}>
@@ -83,11 +87,9 @@ import "@/styles/article.less";
     )
   }
   {
-    tags && (
+    !!tags.length && (
       <div>
-        <span class="icon">
-          <Icon name="mdi:tag" />
-        </span>
+        <div class:list={[icons?.tag ?? 'i-pixelarticons:label', 'icon']}></div>
         标签：
         {tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>
@@ -104,6 +106,12 @@ import "@/styles/article.less";
 <LicenceBox name={licence} />
 
 <style is:global lang="less">
+  .icon {
+    @apply inline-block;
+    vertical-align: sub;
+    width: 1.2em;
+    height: 1.2em;
+  }
   .cover {
     margin: 0;
     height: auto;
@@ -133,14 +141,14 @@ import "@/styles/article.less";
       margin-inline: 6px;
       margin-inline: 5px;
       border-radius: 0.5rem;
-      background-color: #f4f4f4;
-      color: #333;
       transition: background-color 0.1s;
+      border: 2px solid var(--bg-secondary);
+      color: var(--text-secondary);
       &:hover {
-        background-color: #e7e7e7;
+        background-color: var(--bg-secondary-hover);
       }
       &:active {
-        background-color: #d9d9d9;
+        background-color: var(----bg-secondary-active);
       }
     }
     & > div {

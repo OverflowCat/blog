@@ -1,0 +1,52 @@
+---
+export type Props = {
+    dir?: "start" | "end";
+    classList?: string[];
+    colors?: [string, string];
+}
+const dir = Astro.props.dir || "start";
+let classList = Astro.props.classList || [];
+classList = classList.concat(['bubble', `bubble-inline-${dir}`]);
+const colors = Astro.props.colors || ["#d19234da", "#ff7a14"];
+---
+
+<div class:list={classList}>
+    <slot />
+</div>
+
+<style define:vars={{
+    "color-ini": colors[0],
+    "color-end": colors[1],
+}}>
+</style>
+
+<style>
+.bubble {
+  --corner-radius: .7em;
+  --tail-size: 1.1em;
+  padding: 1em;
+  border-inline: var(--tail-size) solid #0000; /* Creates space for the tail */
+  border-radius: calc(var(--corner-radius) + var(--tail-size)) / var(--corner-radius); /* Smooth corner with tail */
+
+  /* Creates the tail using a mask */
+  mask:
+    radial-gradient(100% 100% at var(--tail-position) 0,#0000 99%,#000 102%)
+      var(--tail-position) 100%/var(--tail-size) var(--tail-size) no-repeat,
+    linear-gradient(#000 0 0) padding-box;
+
+  background: linear-gradient(135deg, var(--color-ini), var(--color-end)) border-box; /* Gradient background */
+  color: #fff; /* White text color */
+}
+
+/* Bubble aligned to the inline-start (left for LTR, right for RTL) */
+.bubble-inline-start {
+  --tail-position: 0; /* Sets the tail position to the start */
+  border-end-start-radius: 0 0; /* Removes the border radius where the tail connects */
+}
+
+/* Bubble aligned to the inline-end (right for LTR, left for RTL) */
+.bubble-inline-end {
+  --tail-position: 100%; /* Sets the tail position to the end */
+  border-end-end-radius: 0 0; /* Removes the border radius where the tail connects */
+}
+</style>

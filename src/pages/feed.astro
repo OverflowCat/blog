@@ -3,7 +3,7 @@ export const partial = true;
 import SlotRenderer from "@/components/SlotRenderer.astro";
 import { getBlogPosts } from "@/scripts/post";
 import { load } from "cheerio";
-
+Astro.locals.renderer = 'rss';
 const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xml:lang="zh-CN" xmlns="http://www.w3.org/2005/Atom">
 <title>新世界的大门</title>

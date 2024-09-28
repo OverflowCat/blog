@@ -17,8 +17,21 @@ export type Props = {
 };
 ---
 
+{Astro.locals.renderer === 'rss' ?
+  <Common frontmatter={{
+    ...frontmatter,
+    hant: false,
+    vert: false,
+  }}></Common>
+  <slot />
+:
 <style is:global is:inline>
   :root {
+    --font-sans-en: "Noto Sans", "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --font-sans-ja: "Noto Sans JP", "Noto Sans CJK JP", "MS Meiyo", "Meiryo",
+      "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo",
+      "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
     --font-mono: "IBM Plex Mono",
     "JetBrains Mono", "JetBrains Mono NF",
     "JetBrainsMono NF",
@@ -78,3 +91,4 @@ export type Props = {
     <Comments />
   </Paper>
 </section>
+}

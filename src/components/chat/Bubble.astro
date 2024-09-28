@@ -1,0 +1,34 @@
+---
+type Message = {
+    id?: string;
+    quote?: string;
+    text: string;
+    time: string;
+    sender: {
+        name: string;
+        you?: boolean;
+    };
+};
+export type Props = {
+    message: Message
+}
+
+const { message } = Astro.props;
+const isYou = message.sender.you;
+---
+
+<div class={`grid ${isYou ? 'ml-auto' : ''}`}>
+    <div class={`p-inline-3 p-block-2 ${isYou ? 'bg-orange-700' : 'bg-gray-100'} rounded justify-start items-center gap-3 inline-flex`}>
+      <article class={`${isYou ? 'text-white' : 'text-gray-900'} leading-snug`}>
+        {message.quote && <blockquote class="m-block-2!" set:html={message.quote} />}
+        <p class="m-block-2" set:html={message.text} />
+        <slot />
+      </article>
+      <slot name="after" />
+    </div>
+    <div class={`${isYou ? 'justify-start' : 'justify-end'} items-center inline-flex`}>
+      <time datetime={(new Date(message.time)).toISOString()} class="text-hint text-xs font-normal leading-4 p-block-1">
+        {message.time}
+      </time>
+    </div>
+</div>

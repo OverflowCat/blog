@@ -5,7 +5,6 @@ import { toSupportedImage } from "@/scripts/open-graph";
 import { getBlogPosts } from "@/scripts/post";
 import SlotRenderer from "@/components/SlotRenderer.astro";
 
-const OPENCC_SCHEME = "s2twp.json";
 // @ts-ignore
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import { getEntry } from "astro:content";
@@ -95,5 +94,5 @@ Astro.locals.noscript = post.data.noscript;
     ) : (
       <Content />
     )
-  }</Page
->
+  }
+</Page>
