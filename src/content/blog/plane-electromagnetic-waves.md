@@ -2,14 +2,15 @@
 title: 平面电磁波的表达式
 description: 平面电磁波可能是三维的波的最简单的例子。
 date: 2023-09-26 22:32:32
-photo: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Onde_electromagnetique.svg/2560px-Onde_electromagnetique.svg.png
-figcaption: |
-  <details>
-  <summary>
-  题图：<a href="https://commons.wikimedia.org/wiki/File:Onde_electromagnetique.svg">Onde electromagnetique</a> by <a href="https://commons.wikimedia.org/wiki/User:Emmanuel.boutet">SuperManu</a>, GFDL / CC-BY-SA
-  </summary>
-  A sinusoidal electromagnetic wave propagating along the positive z-axis, showing the electric field (blue) and magnetic field (red) vectors.
-  </details>
+photo:
+  src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Onde_electromagnetique.svg/2560px-Onde_electromagnetique.svg.png
+  caption: |
+    <details>
+      <summary>
+      题图：<a href="https://commons.wikimedia.org/wiki/File:Onde_electromagnetique.svg">Onde electromagnetique</a> by <a href="https://commons.wikimedia.org/wiki/User:Emmanuel.boutet">SuperManu</a>, GFDL / CC-BY-SA
+      </summary>
+      A sinusoidal electromagnetic wave propagating along the positive z-axis, showing the electric field (blue) and magnetic field (red) vectors.
+    </details>
 categories: 光学
 tags:
   - "备忘"

@@ -1,17 +1,16 @@
 ---
 export interface Props {
-  frontmatter: any;
+  file: string;
+  url: string;
 }
 import Common from "./Common.astro";
 import Comments from "@/components/comments/Comments.astro";
 import Bar from "@/templates/Bar.astro";
-
-const { frontmatter } = Astro.props;
 ---
 
 <Bar theme="dark" lang="zh-Hans" lang="zh-Hans" />
 
-<Common frontmatter={frontmatter}>
+<Common layoutProps={Astro.props}>
   <slot />
 </Common>
 

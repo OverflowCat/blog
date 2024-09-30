@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import type React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BVtoAV, AVtoBV } from "bilibili-bv-av-convert";
 import "./bili.less";
 

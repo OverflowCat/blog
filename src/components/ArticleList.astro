@@ -30,10 +30,10 @@ if (type && name) {
 	posts = posts.filter((post) => {
 		const { tags, categories } = post.data;
 		if (type === "tag") {
-			return tags.includes(name);
+			return tags?.includes(name);
 		}
 		if (type === "category") {
-			return categories.includes(name);
+			return categories?.includes(name);
 		}
 		return false;
 	});

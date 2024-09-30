@@ -16,30 +16,30 @@ const locDate = new Intl.DateTimeFormat('zh-Hans-CN', {
 ---
 
 <div class="color-scheme-light flex flex-row gap-4 m-inline-auto bg-[#0E2A51] text-white p-4 rounded-lg max-inline-fit shadow-lg">
-    <img class="indicator size-10" src="https://developer.mozilla.org/static/media/low-dark.4ed53864ce1653e32eaa.svg" />
+    <img class="indicator size-10" src="https://developer.mozilla.org/static/media/low-dark.4ed53864ce1653e32eaa.svg" alt="勾" />
     <div class="flex flex-col">
         <div class="flex items-center justify-between">
             <div class="flex flex-wrap items-center space-inline-2 gap-2">
                 <span class="text-lg font-semibold">Baseline {baseline}</span>
                 <span class="bg-blue-500 text-xs font-medium p-inline-2 p-block-0.5 rounded">NEWLY AVAILABLE</span>
                 <div class="rounded-8 bg-[#0E1A41] flex p-2">
-                    <span class="i-logos:chrome text-2xl" aria-label="Google Chrome"></span>
-                    <img class="check hue-rotate-432 size-6 mis--1!"
+                    <span class="i-logos:chrome text-2xl" role="img" aria-label="Google Chrome"></span>
+                    <img class="check hue-rotate-432 size-6 mis--1!" alt="可用"
                         src="https://developer.mozilla.org/static/media/browser-check.d960a1037f7d1ffb1eec.svg" />
                     <span class="i-logos:microsoft-edge text-2xl" aria-label="Microsoft Edge"></span>
-                    <img class="check hue-rotate-432 size-6 mis--1!"
+                    <img class="check hue-rotate-432 size-6 mis--1!" alt="可用"
                         src="https://developer.mozilla.org/static/media/browser-check.d960a1037f7d1ffb1eec.svg" />
                     <div class="mono text-sm m-block-auto p-1">{versions.chromium}</div>
                 </div>
                 <div class="rounded-8 bg-[#0E1A41] flex p-2">
-                    <span class="i-logos:firefox text-2xl" aria-label="Mozilla Firefox"></span>
-                    <img class="check hue-rotate-432 size-6 mis--1!"
+                    <span class="i-logos:firefox text-2xl" role="img" aria-label="Mozilla Firefox"></span>
+                    <img class="check hue-rotate-432 size-6 mis--1!" alt="可用"
                     src="https://developer.mozilla.org/static/media/browser-check.d960a1037f7d1ffb1eec.svg" />
                     <div class="mono text-sm m-block-auto p-1">{versions.gecko}</div>
                 </div>
                 <div class="rounded-8 bg-[#0E1A41] flex p-2">
-                    <span class="i-logos:safari text-2xl" aria-label="Apple Safari"></span>
-                    <img class="check hue-rotate-432 size-6 mis--1!"
+                    <span class="i-logos:safari text-2xl" role="img" aria-label="Apple Safari"></span>
+                    <img class="check hue-rotate-432 size-6 mis--1!" alt="可用"
                     src="https://developer.mozilla.org/static/media/browser-check.d960a1037f7d1ffb1eec.svg" />
                     <div class="mono text-sm m-block-auto p-1">{versions.webkit}</div>
                 </div>

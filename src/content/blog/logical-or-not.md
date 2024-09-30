@@ -1,6 +1,9 @@
 ---
 title: 逻辑和无逻辑
-photo: https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/deadlines-and-adhd.png
+photo:
+  src: https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/deadlines-and-adhd.png
+  aspect: "1536:768"
+  alt: 一位女孩正在桌前看书，似乎陷入了思考或疲惫的状态。她周围被堆满了各种各样的书籍和资料，背景的书架上也放满了书本，显得非常凌乱。墙上挂着的钟表显示时间已晚，暗示她可能在长时间学习或工作。整体画面使用了较暗的色调，搭配橙色的暖光，营造出一种深夜学习或工作疲惫的氛围。画风略带手绘漫画风格，线条较粗，细节丰富。
 description: 《考纲》「要求考生克服紧张情绪，以平和的心态参加考试，合理支配考试时间，以实事求是的科学态度解答试题，树立战胜困难的信心，体现锲而不舍的精神」。
 date: 2021-05-07 21:29:23
 tags: 考试

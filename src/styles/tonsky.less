@@ -206,11 +206,13 @@ footer a,
   & > img,
   & > video,
   & > iframe,
-  & > a > img {
+  & > a > img,
+  figure > picture > img,
+  figure > img {
     border-radius: var(--radius);
     #vert:target & {
-      inline-size: unset;
-      max-inline-size: 350px;
+      height: auto;
+      max-width: 35rem;
     }
   }
 

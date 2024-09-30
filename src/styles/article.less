@@ -78,15 +78,17 @@ article#post {
   }
 
   figure {
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 
   >img,
-  >figure>img {
-    max-height: min(600px, 100%);
-    max-width: 100%;
+  >figure>img,
+  >picture>img {
+    max-block-size: min(600px, 100%);
+    max-inline-size: 100%;
     /* &[width][height] {} */
-    height: auto;
+    block-size: auto;
+    object-fit: contain;
     display: block;
     margin: auto;
   }
@@ -137,6 +139,7 @@ article#post {
   }
 
   >figure img,
+  >figure picture,
   >figure video {
     // margin: 0 auto 1em;
     margin: auto;

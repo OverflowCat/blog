@@ -1,16 +1,11 @@
+import type { Frontmatter } from "@/types";
+
 export interface OpenGraphData {
   title: string;
   description: string;
-  image?: PathToSupportedImage;
+  image?: string;
   url: string;
   type?: string;
-}
-
-export type PathToSupportedImage = `${string}.${"png" | "jpg" | "jpeg"}`;
-export function toSupportedImage(s: string): PathToSupportedImage {
-  if (!(s.endsWith(".png") || s.endsWith(".jpg") || s.endsWith(".jpeg")))
-    console.warn("Unsupported image format");
-  return s as PathToSupportedImage;
 }
 
 export function genOpenGraphMetas(data: OpenGraphData) {

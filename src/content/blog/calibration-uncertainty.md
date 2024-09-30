@@ -2,8 +2,11 @@
 title: 手提式数字多用表 80V DC 点校准的不确定度评定
 description: "作为常规校准工作的一部分，用多功能校准仪作为工作标准，对手提式数字多用表（DMM）80 V DC 点进行校准，并给出一份校准证书。对被校准的量进行直接测量的校准的过程都大同小异，可以以此作为参考。"
 date: 2024-04-13T23:30:00.000Z
-photo: https://xkcd.in/resources/compiled_cn/78e07bc16f83fd9915db436525e0d88c.jpg
-hide_cover: true
+photo:
+  src: https://user-images.githubusercontent.com/20166026/235226696-fc9b400f-75ad-4496-906d-fd4b9301c389.jpg
+  alt: 不确定度
+  aspect: "4:3"
+  hide: true
 noscript: true
 licence: CcByNc
 layout: "@/layouts/Default.astro"

@@ -3,17 +3,6 @@ a {
   text-decoration-skip-ink: all;
 }
 
-&[target="_blank"]:not(:has(img))::after {
-  content: "↗";
-  text-decoration-color: transparent;
-  padding-left: 2px;
-  padding-right: 2px;
-  font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
-    "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
-    "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
-    "Arial", sans-serif;
-}
-
 article#post details,
 article#post> :not(div),
 #comments {
@@ -23,6 +12,17 @@ article#post> :not(div),
     outline: 0;
     text-decoration: none;
     overflow-wrap: break-word;
+
+  &[target="_blank"]:not(:has(img))::after {
+    content: "↗";
+    text-decoration-color: transparent;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
+      "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
+      "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
+      "Arial", sans-serif;
+  }
 
     &:hover {
       border-block-end-color: var(--link-underline-hover-color);

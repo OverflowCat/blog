@@ -9,7 +9,7 @@ import { glob } from 'astro/loaders';
 // 2. Define a collection using `defineCollection`
 const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later
-  schema: () => blogSchema,
+  schema: blogSchema,
 });
 
 const neodbCollection = defineCollection({

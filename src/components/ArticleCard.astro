@@ -5,6 +5,7 @@ export interface Props {
 
 import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
+import { Image, Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getIconName } from "@/scripts/icons";
 import { crc32base } from "@/scripts/serendipity";
@@ -12,6 +13,8 @@ import "@/styles/title.less";
 import "@/styles/icon.less";
 
 const { post } = Astro.props;
+const { data } = post;
+const { photo } = data;
 ---
 
 <table>
@@ -22,70 +25,75 @@ const { post } = Astro.props;
           {(<Icon name={getIconName(post) || "ph:hash-bold"} />)}
         </span><a
           class="title"
-          transition:name={crc32base(post.data.title)}
-          href={`/${post.slug}/`}>{post.data.title || "No title"}</a
+          transition:name={crc32base(data.title)}
+          href={`/${post.slug}/`}>{data.title || "No title"}</a
         >
         {
-          !post.data.description && (
+          !data.description && (
             <time
               class="title-date"
-              datetime={post.data.date?.toISOString() || ""}
-              set:text={formatPostDate(post.data.date)}
+              datetime={data.date?.toISOString() || ""}
+              set:text={formatPostDate(data.date)}
             />
           )
         }
       </div>
       <blockquote>
-        {post.data.description}
+        {data.description}
         {
-          post.data.description && (
+          data.description && (
             <a class="continue" href={`/${post.slug}`}>
               阅读更多 →
             </a>
           )
         }
         {
-          post.data.description && (
+          data.description && (
             <time
               class="title-date"
-              datetime={post.data.date?.toISOString() || ""}
-              set:text={formatPostDate(post.data.date)}
+              datetime={data.date?.toISOString() || ""}
+              set:text={formatPostDate(data.date)}
             />
           )
         }
       </blockquote>
     </td>
     {
-      post.data.photo && (
+      photo && photo.src && (
         <td class="title-img">
           <img
             class="title-img"
             loading="lazy"
             transition:name={crc32base(
-              typeof post.data.photo === "string"
-                ? post.data.photo
-                : post.data.photo?.src,
+              typeof photo === "string"
+                ? photo
+                : photo?.src,
             )}
-            height={
-              typeof post.data.photo !== "string"
-                ? post.data.photo.aspect.split(":")[0]
-                : ""
-            }
             width={
-              typeof post.data.photo !== "string"
-                ? post.data.photo.aspect.split(":")[1]
+              photo.aspect
+                ? photo.aspect.split(":")[0]
                 : ""
             }
-            src={
-              typeof post.data.photo === "string"
-                ? post.data.photo
-                : post.data.photo?.src
+            height={
+              photo.aspect
+                ? photo.aspect.split(":")[1]
+                : ""
             }
-            alt={
-              typeof post.data.photo !== "string" && post.data.photo.alt
-                ? post.data.photo.alt
-                : post.data.title
-            }
+            src={photo.src}
+            alt={photo.alt ? photo.alt : data.title}
+          />
+        </td>
+      )
+    }
+    {
+      photo?.img && (
+        <td class="title-img">
+          <Picture
+            class="title-img"
+            transition:name={crc32base(photo.img.src)}
+            src={photo.img}
+            alt={photo.alt ? photo.alt : data.title}
+            formats={["avif", "webp", "jpg"]}
           />
         </td>
       )

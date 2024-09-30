@@ -1,52 +1,65 @@
 ---
-import type { Frontmatter } from "@/types";
+import type { BlogPost, Frontmatter } from "@/types";
 import Han from "@/components/Mode.astro";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
 import { crc32base } from "@/scripts/serendipity";
 import type { AtomIconName } from "@/scripts/icons";
-
-// import "@/styles/snowy.css";
-
+import Image from "astro/components/Image.astro";
+import { getEntry } from "astro:content";
 export interface Props {
-  frontmatter: Frontmatter;
+  layoutProps: {
+    url?: string;
+    file?: string;
+    frontmatter?: Frontmatter;
+  }
   icons?: {
     calendar?: AtomIconName;
     category?: AtomIconName;
     tag?: AtomIconName;
   }
 }
-const { frontmatter, icons } = Astro.props;
-const { vert, hant, categories: cats, tags, date } = frontmatter;
-let cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+function arrify<T>(x: T | T[]): T[] {
+  return Array.isArray(x) ? x : [x];
+}
 
-let coverWidth: undefined | number = undefined;
-let coverHeight: undefined | number = undefined;
-if (typeof cover === "object" && "src" in cover) {
-  [coverWidth, coverHeight] = cover.aspect.split(":").map(Number);
-  cover = cover.src;
+const { icons, layoutProps } = Astro.props;
+console.info(layoutProps);
+const { url, file } = layoutProps;
+console.log("ntransformed id", url, file);
+import { url2id } from "@/scripts/post";
+const id = url2id(url?? file ?? Astro.url.pathname);
+console.log("transformed id", id);
+const frontmatter = (await getEntry("blog", id))?.data;
+if (!frontmatter) {
+  throw new Error(`Post ${id} not found.`);
 }
-let licence = frontmatter.licence;
-if (licence === undefined) {
-  licence = "CcByNc";
-}
+const { vert, hant, date } = frontmatter;
+const cats = arrify(frontmatter.categories);
+const tags = arrify(frontmatter.tags);
+const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+const licence = frontmatter.licence ?? "CcByNc";
 
 import "@/styles/article.less";
+import { Picture } from "astro:assets";
 ---
 
 {
   cover && (
     <figure class="cover">
-      <img
-        class="cover"
-        src={cover}
-        width={coverWidth}
-        height={coverHeight}
-        alt={frontmatter.title}
-        transition:name={crc32base(frontmatter.photo?.toString() || "")}
-      />
-      {frontmatter.figcaption && (
-        <figcaption set:html={frontmatter.figcaption} />
+      {
+        (cover.img !== undefined) ? (
+          <Picture
+            src={cover.img}
+            alt={cover.alt ?? ""}
+            formats={["avif", "webp", "jpg"]}
+          />
+        ) : (
+          <img src={cover.src} alt={cover.alt} />
+        )
+      }
+      {cover.caption && (
+        <figcaption set:html={cover.caption} />
       )}
     </figure>
   )
@@ -116,7 +129,9 @@ import "@/styles/article.less";
     margin: 0;
     height: auto;
     img {
+      object-fit: contain;
       inline-size: 100%;
+      block-size: auto;
       border-radius: 4px;
     }
     figcaption {

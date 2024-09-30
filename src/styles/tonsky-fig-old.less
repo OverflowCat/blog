@@ -1,9 +1,12 @@
-p > img,
-.fig,
-figure {
-  display: block !important;
-  margin: var(--gap) 0;
-  max-width: calc(var(--width) + 60px);
+.content {
+  p > img,
+  .fig,
+  figure {
+    display: block !important;
+    margin: var(--gap) 0;
+    inline-size: unset;
+    max-inline-size: calc(var(--width) + 60px);
+  }
 }
 
 .fig,
@@ -19,9 +22,12 @@ figcaption {
 .fig img,
 .fig svg,
 figure > img,
+figure > picture > img,
 figure > svg,
 figure > video,
-figure > a > img {
+a > img {
   margin: 0 auto 1em;
   border-radius: 3px;
+  max-inline-size: 100%;
+  block-size: auto;
 }

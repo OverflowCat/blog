@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Page from "@/templates/zh/Page.astro";
-import { toSupportedImage } from "@/scripts/open-graph";
 import { getBlogPosts } from "@/scripts/post";
 import SlotRenderer from "@/components/SlotRenderer.astro";
 
@@ -9,6 +8,7 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
+import { getImage } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = (await getBlogPosts()).map((post) => {
@@ -46,7 +46,7 @@ try {
 }
 
 let title = post.data.title;
-if (post.data.categories.includes("译文")) {
+if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
 
@@ -60,6 +60,14 @@ const metas: { [key: string]: string } = post.data.categories?.includes(
   : {
       "theme-color": "#111",
     };
+let image = post.data.photo?.src;
+if (post.data.photo?.img) {
+  const got = await getImage({
+    src: post.data.photo.img,
+  });
+  image = got.src;
+}
+
 Astro.locals.noscript = post.data.noscript;
 ---
 
@@ -68,13 +76,7 @@ Astro.locals.noscript = post.data.noscript;
   og={{
     title,
     description: post.data.description ?? "新世界的大门",
-    image: post.data.photo
-      ? toSupportedImage(
-          typeof post.data.photo === "string"
-            ? post.data.photo
-            : post.data.photo.src,
-        )
-      : undefined,
+    image,
     url: `https://blog.xinshijiededa.men/${post.slug}`,
   }}
   metas={metas}

@@ -1,4 +1,14 @@
 ---
+export type Props = {
+  headings: Heading[];
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+	url: string;
+};
+
+const { headings } = Astro.props;
+
 import "@/styles/icon.less";
 import "98.css";
 import "@/styles/98-patch.css";
@@ -7,20 +17,23 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import Bar from "@/templates/Bar.astro";
-const headings: Heading[] = Astro.props.headings;
-const { frontmatter } = Astro.props;
 import { genTocTree, renderTree, type Heading } from "@/components/98/98.ts";
 import Window from "@/components/98/Window.astro";
+import type { Frontmatter } from "@/types";
 const root = genTocTree(headings);
 const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
 ---
+{
+Astro.locals.renderer == 'rss' ?
+<slot />
+:
 
 <Bar theme="light" lang="zh-Hans" />
 
 <main id="theme">
   <aside id="toc" transition:name="aside-block" set:html={treeHtml} />
   <div id="common">
-    <Common frontmatter={frontmatter} icons={{
+    <Common layoutProps={Astro.props} icons={{
       calendar: "i-pixelarticons:calendar-text",
       category: "i-pixelarticons:folder-plus",
       tag: "i-pixelarticons:label",
@@ -78,3 +91,4 @@ const treeHtml = `<ul class="tree-view">${renderTree(root)}</ul>`;
     }
   }
 </style>
+}

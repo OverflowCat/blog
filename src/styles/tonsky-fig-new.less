@@ -3,16 +3,16 @@
   & > figure {
     width: unset;
     max-inline-size: 96vw;
-    margin: var(--gap) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap);
     & > img,
     & > video,
     & > iframe,
     & > a > img {
       border-radius: var(--radius);
+      max-inline-size: 100%;
+      block-size: auto;
     }
     & > figure > a {
       border: none;

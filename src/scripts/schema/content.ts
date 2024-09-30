@@ -1,5 +1,6 @@
-import { z } from "astro:content";
+import { z, type SchemaContext } from "astro:content";
 import { ICON_PACKS_SET } from "../icons";
+import photo from "./photo";
 
 // 2. Define a `type` and `schema` for each collection
 function transform2arr(val: null | undefined | string | string[]) {
@@ -16,26 +17,12 @@ const TAG_TYPE = z
 	.nullish()
 	.transform(transform2arr);
 
-export const blogSchema = z
+export const blogSchema = (ctx: SchemaContext) => z
 	.object({
 		title: z.string(),
 		categories: TAG_TYPE,
 		tags: TAG_TYPE,
-		photo: z
-			.string()
-			.refine((x: string) => !/ /.test(x))
-			.optional()
-			.or(
-				z.object({
-					src: z.string().refine((x) => !/ /.test(x)),
-					alt: z.string().optional(),
-					aspect: z.string().refine((x) => {
-						const [x1, x2] = x.split(":").map(Number);
-						return x1 > 0 && x2 > 0;
-					}),
-				}),
-			),
-		figcaption: z.string().optional(),
+		photo: photo(ctx.image).optional(),
 		date: z.coerce.date(),
 		draft: z
 			.boolean()
@@ -55,10 +42,6 @@ export const blogSchema = z
 			z.union([z.literal("mathjax"), z.literal("katex"), z.literal("typst")]),
 		),
 		hide_title: z
-			.boolean()
-			.optional()
-			.transform((x) => (x === undefined ? false : x)),
-		hide_cover: z
 			.boolean()
 			.optional()
 			.transform((x) => (x === undefined ? false : x)),

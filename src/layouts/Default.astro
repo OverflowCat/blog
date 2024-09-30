@@ -5,24 +5,21 @@ import Comments from "@/components/comments/Comments.astro";
 // import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import "@shikijs/twoslash/style-rich.css";
-let { frontmatter } = Astro.props;
-if (frontmatter) frontmatter = blogSchema.parse(frontmatter);
+const { frontmatter } = Astro.props;
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
 import type { Frontmatter } from "@/types";
-import { blogSchema } from "@/scripts/schema/content";
 const classes = frontmatter?.resizable ? ["resizable"] : [];
 export type Props = {
-  frontmatter?: Frontmatter;
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+	url: string;
 };
 ---
 
 {Astro.locals.renderer === 'rss' ?
-  <Common frontmatter={{
-    ...frontmatter,
-    hant: false,
-    vert: false,
-  }}></Common>
+  <Common layoutProps={Astro.props}></Common>
   <slot />
 :
 <style is:global is:inline>
@@ -80,7 +77,7 @@ export type Props = {
 >
 {
   frontmatter ?
-  <Common frontmatter={frontmatter}>
+  <Common layoutProps={Astro.props}>
     <slot />
   </Common> : <slot />
 }

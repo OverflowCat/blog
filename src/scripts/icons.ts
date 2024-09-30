@@ -2,7 +2,7 @@ import type { BlogPost } from "@/types"
 
 export function getIconName(post: BlogPost) {
   if (post.data.icon) return post.data.icon;
-  const categories = post.data.categories.toString();
+  const categories = post.data.categories?.toString();
   // TODO: Fix this
   if (!categories) {
     return;

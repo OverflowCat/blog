@@ -10,6 +10,7 @@ import Bubble from './Bubble.astro';
 import inquisitive from "@/assets/stickers/cat/inquisitive.webp";
 import rolling from "@/assets/stickers/cat/rolling.webp";
 import pawlicking from "@/assets/stickers/cat/paw-licking.webp";
+import { getImage } from 'astro:assets';
 
 const map = {
     inquisitive,
@@ -25,12 +26,14 @@ const {
     colors,
 } = Astro.props;
 const img = map[sticker];
+const resolved = await Promise.all(Object.values(map).map(async src => getImage({src})))
+console.log(resolved);
 
 ---
-<div class="m-inline-auto rounded-2 flex max-inline-fit gap-2 p-2 items-end">
-  <div class="flex flex-col text-end">
-    <Picture class="size-28" src={img} formats={['avif', 'webp', 'jpg']} alt={`Sticker of a cat, ${sticker}`} />
-    <div>{name}</div>
+<div class="m-inline-auto rounded-2 flex max-inline-fit gap--4 p-2 items-end">
+  <div class="flex flex-col text-center">
+    <Picture width={128} src={img} formats={['avif', 'webp', 'jpg']} alt={`Sticker of a cat, ${sticker}`} />
+    <div class="text-sm text-2nd">{name}</div>
   </div>
   <Bubble colors={colors} classList={['mbe-4', 'max-inline-2xl']}>
     <slot />

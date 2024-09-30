@@ -1,8 +1,11 @@
 ---
 title: 服务端渲染阵营九宫格
 date: 2023-04-09 01:50:00
-photo: https://user-images.githubusercontent.com/20166026/230737062-897858da-a1c4-4fc4-a0a2-cdd59dda3369.png # https://user-images.githubusercontent.com/20166026/230736978-8ee7171a-a6b3-4417-bcf0-729005e23aa8.png
-hide_cover: true
+photo:
+  src: https://user-images.githubusercontent.com/20166026/230737062-897858da-a1c4-4fc4-a0a2-cdd59dda3369.png # https://user-images.githubusercontent.com/20166026/230736978-8ee7171a-a6b3-4417-bcf0-729005e23aa8.png
+  aspect: "1806:881"
+  alt: 正文截图：一个九宫格，每个格子里有一个图标，分别是 Next.js、PHP、RDP、Svelte、Cloudflare、OBS、Electron、WASM 和 Stable Diffusion。
+  hide: true
 description: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养

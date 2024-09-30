@@ -1,10 +1,11 @@
 ---
 export type Props = {
-
+  classList?: string[];
 }
+const classes = Astro.props.classList ?? [];
 ---
 
-<div class="blur-spoiler">
+<div class:list={["blur-spoiler", ...classes]}>
   <slot />
 </div>
 

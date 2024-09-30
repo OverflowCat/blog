@@ -68,6 +68,14 @@ export default defineConfig({
 	build: {
 		// format: "preserve",
 	},
+	image: {
+		domains: [
+			"github.com",
+			"githubusercontent.com",
+			"wikimedia.org",
+			"xkcd.in",
+		]
+	},
 	vite: {
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],

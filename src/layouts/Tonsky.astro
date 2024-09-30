@@ -38,9 +38,9 @@ $("[lang^='zh']:not(svg *)").each(function () {
   const innerHTML = $(this).html();
   if (!innerHTML) return;
   $(this).html(
-    innerHTML.replace(/(?<!\d) ?Unicode ?/g, function (match) {
-      return `<span class="h">${match}</span><span class="vert">统一码</span>`;
-    })
+    innerHTML.replace(
+      /(?<!\d) ?Unicode ?/g,
+      (match) => `<span class="h">${match}</span><span class="vert">统一码</span>`)
   );
 });
 const html = $.html();

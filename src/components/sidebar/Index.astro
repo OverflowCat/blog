@@ -5,6 +5,8 @@ import TagCloud from "./TagCloud.astro";
 import CatCloud from "./CatCloud.astro";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
+import { Picture } from "astro:assets";
+import avatar from "@/assets/avatar.png";
 ---
 
 <aside id="sidebar">
@@ -20,12 +22,13 @@ import "@fontsource/noto-sans-mongolian";
       itemtype="http://schema.org/Person"
     >
       <div id="site-author-image">
-        <img
+        <Picture
+          loading="eager"
           class="site-author-image"
           itemprop="avatar"
           alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
-          src="/avatar.png"
-          loading="lazy"
+          src={avatar}
+          formats={["avif", "webp", "png"]}
         />
       </div>
       <p class="site-author-name" itemprop="name" lang="mnc">

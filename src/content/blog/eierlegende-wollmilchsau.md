@@ -3,7 +3,7 @@ title: 下蛋的毛奶猪
 photo:
     src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Wollmilchsau.png"
     alt: "Eierlegende Wollmilchsau, German for 'egg-laying wool-milk-sow'"
-    aspect: 1702:987
+    aspect: "1702:987"
 description: 如果「X」不成功的话，这会是 Elon Musk 的「Everything App」的一个良好的暂定名称。
 date: 2022-10-08 14:47:27
 tags:
