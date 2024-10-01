@@ -46,13 +46,11 @@ export type Props = {
     inline-size: 1024px;
     max-inline-size: calc(100dvi - 2em);
     min-inline-size: 380px;
+    overflow: hidden;
   }
   .resizable {
     resize: inline;
     /* overflow-x: hidden; */
-  }
-  .paper:not(.resizable) {
-    overflow-x: auto;
   }
 
   @media (max-width: 480px) {

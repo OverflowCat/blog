@@ -34,8 +34,22 @@ const colors = Astro.props.colors || ["#d19234da", "#ff7a14"];
       var(--tail-position) 100%/var(--tail-size) var(--tail-size) no-repeat,
     linear-gradient(#000 0 0) padding-box;
 
-  background: linear-gradient(135deg, var(--color-ini), var(--color-end)) border-box; /* Gradient background */
+  background: linear-gradient(135deg, var(--color-ini), var(--color-end)) border-box;
+  animation-timeline: --page-timeline;
+  animation-name: bubble-gradient;
+  animation-duration: .1s;
   color: #fff; /* White text color */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes bubble-gradient {
+    0% {
+      background: linear-gradient(135deg, var(--color-ini), var(--color-end)) border-box;
+    }
+    100% {
+      background: linear-gradient(4950deg, var(--color-ini), var(--color-end)) border-box;
+    }
+  }
 }
 
 /* Bubble aligned to the inline-start (left for LTR, right for RTL) */

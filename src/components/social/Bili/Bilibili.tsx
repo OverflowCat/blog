@@ -51,7 +51,7 @@ const Bilibili: React.FC<BilibiliProps> = ({ autoplay, thumbnail, av, bv }) => {
             role="button"
             aria-label="点击即从哔哩哔哩加载视频"
             title="点击即从哔哩哔哩加载视频"
-            className="bili-cover"
+            className="bili-cover max-inline-full block-auto"
             tabIndex={0}
             aria-pressed="false"
             onClick={loadVid}

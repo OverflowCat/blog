@@ -26,10 +26,9 @@ function arrify<T>(x: T | T[]): T[] {
 const { icons, layoutProps } = Astro.props;
 console.info(layoutProps);
 const { url, file } = layoutProps;
-console.log("ntransformed id", url, file);
 import { url2id } from "@/scripts/post";
 const id = url2id(url?? file ?? Astro.url.pathname);
-console.log("transformed id", id);
+
 const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
   throw new Error(`Post ${id} not found.`);
@@ -50,12 +49,13 @@ import { Picture } from "astro:assets";
       {
         (cover.img !== undefined) ? (
           <Picture
+            id="cover"
             src={cover.img}
             alt={cover.alt ?? ""}
             formats={["avif", "webp", "jpg"]}
           />
         ) : (
-          <img src={cover.src} alt={cover.alt} />
+          <img id="cover" src={cover.src} alt={cover.alt} />
         )
       }
       {cover.caption && (
@@ -119,6 +119,9 @@ import { Picture } from "astro:assets";
 <LicenceBox name={licence} />
 
 <style is:global lang="less">
+  html {
+    scroll-timeline: --page-timeline block;
+  }
   .icon {
     @apply inline-block;
     vertical-align: sub;
@@ -128,12 +131,30 @@ import { Picture } from "astro:assets";
   .cover {
     margin: 0;
     height: auto;
-    img {
+    #cover {
       object-fit: contain;
       inline-size: 100%;
       block-size: auto;
       border-radius: 4px;
+      animation-timeline: --page-timeline;
+      animation-name: cover-fade-and-zoom;
+      animation-duration: 1s;
+      transform-origin: center 90%;
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes cover-fade-and-zoom {
+        0%, 1% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(6);
+        }
+      }
+    }
+
     figcaption {
       margin-inline: 2rem;
       text-align: center;
