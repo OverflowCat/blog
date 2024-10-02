@@ -229,8 +229,8 @@ importers:
         specifier: ^22.7.4
         version: 22.7.4
       '@unocss/preset-icons':
-        specifier: ^0.63.1
-        version: 0.63.1
+        specifier: ^0.63.2
+        version: 0.63.2
       '@unocss/transformer-directives':
         specifier: ^0.63.1
         version: 0.63.1
@@ -1414,6 +1414,9 @@ packages:
   '@unocss/core@0.63.1':
     resolution: {integrity: sha512-scg53c6vw8cRsX4DbUO+MlTXicA9GWztm6PW0lsisJxXrdbQQCd+J+PIhrxLUExxeNqxTKsL3Msy9bwJU5uUsQ==}
 
+  '@unocss/core@0.63.2':
+    resolution: {integrity: sha512-S262ISnTkr6LSyNPXCWBZhHF49lD2snSHUJLXmmATnb2JpCRu/mMUvxJmsk9dPlsH3Ioa35Lw9sMiDWAZ9L5Gw==}
+
   '@unocss/extractor-arbitrary-variants@0.63.1':
     resolution: {integrity: sha512-yqHDUgFCR4R2HMuD2k4dVkkdT2uOa/gUDIY6xoseOx1r98Fxlyvdr0UnLOaWsSSzpSGm7SS7XtafGa24IgJRUQ==}
 
@@ -1431,6 +1434,9 @@ packages:
 
   '@unocss/preset-icons@0.63.1':
     resolution: {integrity: sha512-ucCLrlQ6DsFzqSu/Cmqo3q/F/ybV+2P/TQflHS9Oo8wtOETxTT0aPEEEd/sj1SPTU9uUbLEeS6TaRD6MrwLcrw==}
+
+  '@unocss/preset-icons@0.63.2':
+    resolution: {integrity: sha512-PqIkIPPBJ+5RuWS6boE6g23Jj8QtbyzjluiqaowFug/q7LgVgn6NV012CxAxEGNFkW8tYO9xmw7iR/hCVMQYQQ==}
 
   '@unocss/preset-mini@0.63.1':
     resolution: {integrity: sha512-8NW3hK5fp+glBI2v1/3utp+Gv0yXoVTX66531BDDXxivsCJBNRTh40TP8hXSbtDne615UGrykIjyadsUHCRK5Q==}
@@ -4976,6 +4982,8 @@ snapshots:
 
   '@unocss/core@0.63.1': {}
 
+  '@unocss/core@0.63.2': {}
+
   '@unocss/extractor-arbitrary-variants@0.63.1':
     dependencies:
       '@unocss/core': 0.63.1
@@ -5006,6 +5014,14 @@ snapshots:
     dependencies:
       '@iconify/utils': 2.1.33
       '@unocss/core': 0.63.1
+      ofetch: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@unocss/preset-icons@0.63.2':
+    dependencies:
+      '@iconify/utils': 2.1.33
+      '@unocss/core': 0.63.2
       ofetch: 1.4.0
     transitivePeerDependencies:
       - supports-color
