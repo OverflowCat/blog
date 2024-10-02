@@ -55,7 +55,7 @@
     "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc7",
     "@myriaddreamin/typst.ts": "^0.4.1",
     "@shikijs/twoslash": "^1.21.0",
-    "@types/react": "^18.3.10",
+    "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "arktype": "2.0.0-rc.13",
     "astro": "5.0.0-beta.1",
