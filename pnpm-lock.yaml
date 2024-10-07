@@ -39,8 +39,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@fontsource/noto-sans-mongolian':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.1
+        version: 5.1.1
       '@iconify-json/clarity':
         specifier: ^1.2.0
         version: 1.2.0
@@ -804,8 +804,8 @@ packages:
   '@fontsource/ibm-plex-sans@5.1.0':
     resolution: {integrity: sha512-v2aFHGh33ogG+At6dVNUCX6vWlNAhQ6STWj5WrBKPxVWX1SsAnHNq8sXQBa7WHEt29Irmozuk7GTp6GzFlpwdQ==}
 
-  '@fontsource/noto-sans-mongolian@5.1.0':
-    resolution: {integrity: sha512-CdFwPAPpCIyEm2CwiJiEaebXbSCAWKfrrmuTm5tqTaUIBoKDBuusYWTOpOI3xUfKUax6bMNUlTIaxAU0LNwDMA==}
+  '@fontsource/noto-sans-mongolian@5.1.1':
+    resolution: {integrity: sha512-iC+lshvjSlTPiZ7Tmsh0wU9v109R7zbMeV7djYUEXujoEEUkNMbD/3xePF91FikTRR4hCOHngzogNoTE+Pp0yQ==}
 
   '@iconify-json/clarity@1.2.0':
     resolution: {integrity: sha512-VpxyfOMCFeW1Vp/x6LA12nZQ+a63L6rUEMmsgvq4+zKI/EJ4rk1L/89Q4NnICpGoRbpkal3Up3xzBJFcR+uMfg==}
@@ -4367,7 +4367,7 @@ snapshots:
 
   '@fontsource/ibm-plex-sans@5.1.0': {}
 
-  '@fontsource/noto-sans-mongolian@5.1.0': {}
+  '@fontsource/noto-sans-mongolian@5.1.1': {}
 
   '@iconify-json/clarity@1.2.0':
     dependencies:
