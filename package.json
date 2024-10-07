@@ -99,7 +99,7 @@
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "@unocss/preset-icons": "^0.63.1",
     "@unocss/transformer-directives": "^0.63.1",
     "npm-check-updates": "^17.1.3",
