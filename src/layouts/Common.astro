@@ -24,10 +24,9 @@ function arrify<T>(x: T | T[]): T[] {
 }
 
 const { icons, layoutProps } = Astro.props;
-console.info(layoutProps);
 const { url, file } = layoutProps;
-import { url2id } from "@/scripts/post";
-const id = url2id(url?? file ?? Astro.url.pathname);
+import { resolvePostId } from "@/scripts/post";
+const id = resolvePostId(url?? file ?? Astro.url.pathname);
 
 const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
@@ -36,7 +35,7 @@ if (!frontmatter) {
 const { vert, hant, date } = frontmatter;
 const cats = arrify(frontmatter.categories);
 const tags = arrify(frontmatter.tags);
-const cover = frontmatter.hide_cover ? undefined : frontmatter.photo;
+const cover = frontmatter.photo?.hide ? undefined : frontmatter.photo;
 const licence = frontmatter.licence ?? "CcByNc";
 
 import "@/styles/article.less";
@@ -150,7 +149,7 @@ import { Picture } from "astro:assets";
         }
         100% {
           opacity: 0;
-          transform: scale(6);
+          transform: scale(5);
         }
       }
     }

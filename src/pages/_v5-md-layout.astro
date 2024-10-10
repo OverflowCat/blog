@@ -1,0 +1,25 @@
+---
+import type { Frontmatter } from "@/types";
+export interface Props {
+    ext: string | undefined | null;
+    props: {
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+    url?: string;
+    };
+}
+
+import Default from "@/layouts/Default.astro";
+const { ext } = Astro.props;
+---
+
+{
+    ext == "md" ? (
+        <Default {...Astro.props.props}>
+            <slot />
+        </Default>
+    ) : (
+        <slot />
+    )
+}

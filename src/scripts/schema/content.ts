@@ -17,7 +17,7 @@ const TAG_TYPE = z
 	.nullish()
 	.transform(transform2arr);
 
-export const blogSchema = (ctx: SchemaContext) => z
+export const postSchemaGen = (ctx: SchemaContext) => z
 	.object({
 		title: z.string(),
 		categories: TAG_TYPE,
@@ -55,6 +55,9 @@ export const blogSchema = (ctx: SchemaContext) => z
 			z.undefined(),
 		]),
 		paper: z.boolean().default(true),
+		ext: z.union([
+			z.literal("md"), z.literal("mdx"), z.literal("typ")
+		]).nullish(),
 		resizable: z.boolean().default(true),
 		hant: z.boolean().optional(),
 		vert: z.boolean().optional(),

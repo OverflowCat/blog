@@ -8,6 +8,7 @@ export interface Props {
 import Logo from "@components/Logo.astro";
 import slogans from "@scripts/slogans";
 import { pick } from "@/scripts/serendipity";
+import assert from "node:assert";
 
 const items = [
   ["主页", "Home", "/"],
@@ -17,15 +18,16 @@ const items = [
   ["关于", "About", "/about"],
 ];
 let { index, theme, lang } = Astro.props;
-
-const slogan = pick(slogans)[lang || "zh-Hans"];
+if (!lang) lang = "zh-Hans";
+const slogan = pick(slogans.filter(s => s[lang]))[lang];
+assert(slogan, "slogan is undefined");
 ---
 
 <nav>
   <div id="logo">
     <Logo theme={theme} />
   </div>
-  <div id="slogan" set:text={slogan} />
+  <div id="slogan" set:text={typeof slogan === "string" ? slogan : slogan[0]} />
   <ol>
     {
       items.map((item, i) => (

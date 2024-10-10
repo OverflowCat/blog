@@ -21,7 +21,7 @@ let items = await Promise.all(
   posts.map(async (post) => {
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const url = new URL(Astro.site!);
-    url.pathname = post.slug;
+    url.pathname = post.id;
     let link = url.href;
     if (!link.endsWith("/")) link += "/";
     return {

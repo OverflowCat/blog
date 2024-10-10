@@ -8,8 +8,8 @@ export async function getBlogPosts() {
 	return posts;
 }
 
-export function url2id(url: string) {
+export function resolvePostId(url: string) {
 	return url
-		.replace(/^(.*src\/content\/blog)?\//, "")
+		.replace(/^(.*src\/posts)?\//, "")
 		.replace(/((\/index)?\.[a-z]+?|\/)$/, "") as BlogPost["id"];
 }

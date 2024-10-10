@@ -25,8 +25,8 @@ const { photo } = data;
           {(<Icon name={getIconName(post) || "ph:hash-bold"} />)}
         </span><a
           class="title"
-          transition:name={crc32base(data.title)}
-          href={`/${post.slug}/`}>{data.title || "No title"}</a
+          transition:name={crc32base(post.data.title)}
+          href={`/${post.id}/`}>{post.data.title || "No title"}</a
         >
         {
           !data.description && (
@@ -42,7 +42,7 @@ const { photo } = data;
         {data.description}
         {
           data.description && (
-            <a class="continue" href={`/${post.slug}`}>
+            <a class="continue" href={`/${post.id}`}>
               阅读更多 →
             </a>
           )

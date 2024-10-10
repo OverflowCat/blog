@@ -1,15 +1,15 @@
 // 1. Import utilities from `astro:content`
 import { commentsSchema } from "@/scripts/schema/comments";
-import { blogSchema } from "@/scripts/schema/content";
+import { postSchemaGen } from "@/scripts/schema/content";
 import { neoSchema } from "@/scripts/schema/neodb";
-import { getRemnotes, remnoteJsonSchema } from "@/scripts/schema/remnote";
+import { remnoteJsonSchema } from "@/scripts/schema/remnote";
 import { defineCollection } from "astro:content";
 import { glob } from 'astro/loaders';
 
 // 2. Define a collection using `defineCollection`
 const blogCollection = defineCollection({
-  type: "content", // v2.5.0 and later
-  schema: blogSchema,
+  loader: glob({ pattern: '**\/[^_]*.(md|mdx)', base: "./src/posts/" }),
+  schema: postSchemaGen,
 });
 
 const neodbCollection = defineCollection({

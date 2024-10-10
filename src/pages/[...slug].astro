@@ -9,12 +9,13 @@ import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
 import { getImage } from "astro:assets";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = (await getBlogPosts()).map((post) => {
-    const slug = post.slug;
+    const slug = post.id;
     return {
-      params: { slug: post.slug },
+      params: { slug },
       props: { slug, hant: false },
     }
   });
@@ -25,6 +26,7 @@ export async function getStaticPaths() {
       props: { slug, hant: true }
     }
   });
+  const slugs = [...posts, ...hantPosts];
   return [...posts, ...hantPosts];
 }
 
@@ -35,11 +37,10 @@ export type Props = {
 
 const post = await getEntry("blog", Astro.props.slug);
 if (!post) throw new Error(`Post ${Astro.params.slug} not found at ${Astro.props.slug}. Check if slug is correct.`);
-// const slug = Astro.props.slug;
 const isHant = Astro.props.hant;
 let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
 try {
-  Content = (await post.render()).Content;
+  Content = (await render(post)).Content;
 } catch (e) {
   console.error(e);
   throw e;
@@ -68,7 +69,9 @@ if (post.data.photo?.img) {
   image = got.src;
 }
 
+import V5MdLayout from "@/pages/_v5-md-layout.astro";
 Astro.locals.noscript = post.data.noscript;
+console.log(post.data.ext)
 ---
 
 <Page
@@ -77,11 +80,18 @@ Astro.locals.noscript = post.data.noscript;
     title,
     description: post.data.description ?? "新世界的大门",
     image,
-    url: `https://blog.xinshijiededa.men/${post.slug}`,
+    url: `https://blog.xinshijiededa.men/${post.id}/`,
   }}
   metas={metas}
-  source={`https://github.com/OverflowCat/blog/blob/src/src/content/blog/${post.id}?plain=1`}
+  source={`https://github.com/OverflowCat/blog/blob/src/src/posts/${post.id}?plain=1`}
 >
+  <V5MdLayout ext={post.data.ext} props={
+    {
+      frontmatter: post.data,
+      content: post.data,
+      file: post.id,
+    }
+  }>
   {
     isHant ? (
       <SlotRenderer
@@ -97,4 +107,5 @@ Astro.locals.noscript = post.data.noscript;
       <Content />
     )
   }
+  </V5MdLayout>
 </Page>

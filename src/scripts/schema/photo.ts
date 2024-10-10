@@ -6,7 +6,6 @@ export default (image: SchemaContext['image']) => z.object({
     alt: z.string().optional(),
     caption: z.string().optional(),
     aspect: z.string().refine((x) => {
-        console.info("aspect", x);
         const [x1, x2] = x.split(":").map(Number);
         return x1 > 0 && x2 > 0;
     }).optional(),

@@ -13,7 +13,11 @@ const comments = await Promise.all(
     }))
 );
 const posts = await getBlogPosts();
-const slugMap = new Map(posts.map((post) => [post.slug as string, post.data]));
+const slugMap = new Map(posts.map((post) => [post.id, post.data]));
+function getTitle(id: string) {
+  const slug = id.split("/").slice(0, -1).join("/");
+  return slugMap.get(slug)?.title;
+}
 ---
 
 <ul id="comments">
@@ -24,8 +28,8 @@ const slugMap = new Map(posts.map((post) => [post.slug as string, post.data]));
         <date>
           {comment.data.date.getMonth() + 1} 月 {comment.data.date.getDate()} 日
         </date>
-        评论《<a href={`${comment.slug}/#comment-${comment.data.id}`} set:text={slugMap.get(comment.slug)!.title} />》说：
-        <comment.message.Content />
+        评论《<a href={`${comment.slug}/#comment-${comment.data.id}`} set:text={getTitle(comment.id)} />》说：
+        {/* <comment.message.Content /> */}
       </li>
     ))
   }

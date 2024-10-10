@@ -1,0 +1,165 @@
+---
+type Vocabulary = Record<string, string>;
+import { manjuify, moelify } from "@/scripts/manju";
+
+export interface Props {
+  vocab: Vocabulary;
+  lines: string;
+  manju?: boolean;
+}
+
+import "@/styles/manchu.less";
+
+const manju = Astro.props.manju;
+
+// turn Astro.props.vocab into a map
+const vocab = new Map(
+  Object.entries(Astro.props.vocab).map((x) => {
+    return [
+      x[0].replaceAll("/", ""),
+      {
+        mnc: x[0],
+        ja: x[1],
+      },
+    ];
+  }),
+);
+
+const pairs = Astro.props.lines
+  .trim()
+  .split("\n\n")
+  .map((line) => {
+    const lines = line.split("\n").filter((x) => !x.startsWith("//"));
+    if (lines.length !== 3) {
+      throw new Error(`Invalid Manchu lines: ${lines}`);
+    }
+    return {
+      mnc: lines[0],
+      ja: lines[1],
+      zh: lines[2],
+    };
+  });
+
+function get_sections(str: string) {
+  const regex = /(\d)(\D+)/g;
+  const sections: [string, number][] = [];
+  let match: RegExpExecArray | null;
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+  while ((match = regex.exec(str))) {
+    sections.push([match[2], Number.parseInt(match[1])]);
+  }
+  return sections;
+  // Output: [["把", 6], ["所有的", 1], ["烦恼", 2], ["所有的", 4], ["worries", 5], ["统统都吹散", 6]]
+}
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Noto Sans Mongolian is injected globally in Hexo -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  rel="stylesheet"
+/>
+
+<div class={manju ? "mnc-area" : "moe-area"}>
+  {
+    pairs.map(({ mnc, ja, zh }, line_idx) => {
+      const japanese = mnc
+        .split(/ /)
+        .map((word) => vocab.get(word.replace(/[.?,!]/g, "")));
+
+      const get_color = (x: number) => (x == 0 ? 0 : ((x + line_idx) % 6) + 1);
+
+      return (
+        <div class="line">
+          <div lang={manju ? "mnc" : "moe"}>
+            {mnc.split(" ").map((word, idx) => (
+              <span
+                title={japanese[idx]?.ja.replaceAll("/", "")}
+                class={`color-${get_color(idx + 1)}`}
+                set:html={(manju ? manjuify(word) : moelify(word)) + " "}
+              />
+            ))}
+          </div>
+          <div lang="ja">
+            {get_sections(ja).map(([word, idx]) => {
+              return (
+                <span
+                  class={`color-${get_color(idx as number)}`}
+                  set:text={word}
+                />
+              );
+            })}
+          </div>
+          <div lang="zh">
+            {get_sections(zh).map(([word, idx]) => {
+              return (
+                <span
+                  class={`color-${get_color(idx as number)}`}
+                  set:text={word}
+                />
+              );
+            })}
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<!-- inject global manchu styles -->
+<style is:global is:inline>
+  [lang="moe"] {
+    font-family: "Ubuntu Mono", "Noto Sans Mono", "Noto Sans Mono CJK SC",
+      "Consolas", monospace;
+  }
+</style>
+
+<style>
+  div.line {
+    text-align: left;
+  }
+  .mnc-area {
+    writing-mode: vertical-lr;
+    overflow-x: scroll;
+    max-width: 100%;
+    margin: 8px;
+    padding: 4px;
+    padding-top: 12px;
+    .line:not(:last-child) {
+      border-block-end: 2px solid #dadada;
+      padding-block-end: 12px;
+    }
+  }
+  .line {
+    line-height: 160%;
+    margin-block-start: 0.85em;
+    margin-block-end: 0.85em;
+    box-sizing: content-box;
+  }
+  div[lang^="m"] span:hover {
+    font-weight: bold;
+    cursor: help;
+  }
+  .color-0 {
+    color: #3b3b3b;
+  }
+  .color-1 {
+    color: #f73b3b;
+  }
+  .color-2 {
+    color: #468f1f;
+  }
+  .color-3 {
+    color: #bb078b;
+  }
+  .color-4 {
+    color: #0d65a4;
+  }
+  .color-5 {
+    color: #da5807;
+  }
+  .color-6 {
+    color: #e1204d;
+  }
+</style>

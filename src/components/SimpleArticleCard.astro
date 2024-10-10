@@ -20,7 +20,7 @@ const icon = getIconName(post);
 </span>
 <a
   class="title"
-  href={`/${post.slug}`}
+  href={`/${post.id}`}
   transition:name={crc32base(post.data.title)}
   set:text={post.data.title}
 />

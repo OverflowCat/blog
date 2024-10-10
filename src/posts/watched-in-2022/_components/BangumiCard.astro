@@ -1,0 +1,286 @@
+---
+import VideoSticker from "./VideoSticker.astro";
+import Rating from "./Rating.astro";
+
+interface Episodes {
+  lang?: string;
+  progress?: number | boolean;
+  list?:
+    | string[] // 只有名称没有编号
+    | ([string, string] | [string, string, boolean | string | undefined])[]
+    | number; // 只有总集数
+}
+
+export interface Props {
+  title_ja?: string;
+  title_en?: string;
+  title_zh?: string;
+  sticker?: string;
+  episodes?: Episodes;
+  ongoing?: boolean;
+  rating: number;
+  review?: string;
+}
+
+const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
+  Astro.props;
+---
+
+<li class="link-card">
+  <div class="container">
+    <h2>
+      {title_ja && <span set:html={title_ja} lang="ja" />}
+      {
+        title_zh && (
+          <>
+            {title_ja && <span class="slash">/ </span>}
+            <span set:html={title_zh} lang="zh" />
+          </>
+        )
+      }
+      {
+        title_en && (
+          <>
+            {(title_ja || title_zh) && <span class="slash">/ </span>}
+            <i class="title-en monospace" set:html={title_en} lang="en" />
+          </>
+        )
+      }
+      {
+        ongoing ? (
+          <span class="status ongoing">连载中</span>
+        ) : (
+          <span class="status concluded">已完结</span>
+        )
+      }
+    </h2>
+    {
+      sticker && (
+        <div class="sticker">
+          {sticker.endsWith(".mp4") || sticker.endsWith(".webm") ? (
+            <VideoSticker src={sticker} width="168px" />
+          ) : (
+            <img src={sticker} alt="sticker" width="200px" loading="lazy" />
+          )}
+        </div>
+      )
+    }
+    <div class="review">
+      <Rating value={rating} /> 分
+      {
+        Astro.slots["default"] && (
+          <>
+            ——
+            <span class="comment">
+              <slot />
+            </span>
+          </>
+        )
+      }
+    </div>
+    {
+      episodes?.list === undefined || typeof episodes.list === "number" ? (
+        episodes?.list == undefined ? (
+          <div>
+            <span class="watched">已观看</span>
+          </div>
+        ) : (
+          <div class="episodes">
+            <b>观看进度</b>：
+            {episodes.progress
+              ? `${episodes.progress} / ${episodes.list}`
+              : `已观看，共 ${episodes.list} 集`}
+          </div>
+        )
+      ) : (
+        <ol class="episodes" lang={episodes.lang || "ja"}>
+          {episodes.list.map((ep, i) =>
+            Array.isArray(ep) ? (
+              <li class="ep custom">
+                <span
+                  class="monospace"
+                  set:html={ep[0].replaceAll(" ", "&nbsp;")}
+                />
+                {"number" === typeof episodes.progress ? (
+                  episodes.progress >= i + 1 ? (
+                    episodes.progress == i + 1 ? (
+                      <span class="watching">在看</span>
+                    ) : (
+                      <span class="watched">看过</span>
+                    )
+                  ) : (
+                    <span class="unwatched">待看</span>
+                  )
+                ) : episodes.progress === true ? (
+                  ep[2] === false ? (
+                    <span class="unwatched">待看</span>
+                  ) : (
+                    <span class="watched">看过</span>
+                  )
+                ) : (
+                  <span class="watched">看过</span>
+                )}
+                <span set:html={ep[1]} />
+              </li>
+            ) : (
+              <li class="ep">
+                {"number" === typeof episodes.progress ? (
+                  episodes.progress >= i + 1 ? (
+                    episodes.progress == i + 1 ? (
+                      <span class="watching">在看</span>
+                    ) : (
+                      <span class="watched">看过</span>
+                    )
+                  ) : (
+                    <span class="unwatched">待看</span>
+                  )
+                ) : (
+                  <span class="watched">看过</span>
+                )}
+                <span set:html={ep} />
+              </li>
+            )
+          )}
+        </ol>
+      )
+    }
+  </div>
+</li>
+
+<style lang="less" is:global>
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    h2 {
+      color: rgb(var(--accent));
+    }
+  }
+  span.watched {
+    background-color: rgb(59, 146, 8);
+    color: white;
+    margin: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 4px;
+  }
+  span.watching {
+    background-color: rgb(134, 52, 1);
+    color: white;
+    margin: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 4px;
+  }
+  span.unwatched {
+    background-color: rgb(157, 5, 60);
+    color: white;
+    margin: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 4px;
+  }
+  span.watcing,
+  span.unwatched,
+  span.watched {
+    user-select: none;
+  }
+  .link-card {
+    list-style: none;
+    padding: 0.15rem;
+    background-color: white;
+    background-image: var(--accent-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    & > div.container {
+      padding: 1rem 1.3rem;
+      border-radius: 0.35rem;
+      color: #111;
+      background-color: white;
+      opacity: 0.84;
+    }
+  }
+
+  span.status {
+    font-size: 90%;
+    font-weight: 700;
+    padding: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+    color: white;
+    white-space: nowrap;
+    &.ongoing {
+      background-color: cornflowerblue;
+    }
+    &.concluded {
+      background-color: forestgreen;
+    }
+  }
+
+  li.ep {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    content-visibility: auto;
+
+    &:not(.custom) {
+      list-style-type: decimal;
+      padding-right: 2px;
+    }
+    &.custom {
+      list-style: none;
+      margin-left: -20px !important;
+      margin: 0;
+    }
+  }
+</style>
+
+<style>
+  .review {
+    line-height: 150%;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    padding: 8px;
+    background-color: rgba(200, 200, 200, 0.2);
+    border-radius: 0.5rem;
+  }
+  .sticker {
+    margin: 8px;
+    text-align: center;
+  }
+  h2 {
+    line-height: 150%;
+    font-size: 28px;
+  }
+  .slash {
+    color: #888;
+  }
+  ol.episodes {
+    padding-left: 16px;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #444;
+  }
+  a {
+    border: none !important;
+  }
+  a:hover {
+    cursor: default;
+  }
+</style>
