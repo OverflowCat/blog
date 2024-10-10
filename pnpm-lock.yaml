@@ -15,8 +15,8 @@ importers:
         specifier: 6.0.0-beta.1
         version: 6.0.0-beta.1
       '@astrojs/mdx':
-        specifier: 4.0.0-beta.1
-        version: 4.0.0-beta.1(astro@5.0.0-beta.2(@types/node@22.7.5)(less@4.2.0)(lightningcss@1.27.0)(rollup@4.24.0)(sass@1.79.4)(typescript@5.6.3))
+        specifier: 4.0.0-beta.2
+        version: 4.0.0-beta.2(astro@5.0.0-beta.2(@types/node@22.7.5)(less@4.2.0)(lightningcss@1.27.0)(rollup@4.24.0)(sass@1.79.4)(typescript@5.6.3))
       '@astrojs/prism':
         specifier: 3.1.0
         version: 3.1.0
@@ -313,8 +313,11 @@ packages:
   '@astrojs/markdown-remark@6.0.0-beta.1':
     resolution: {integrity: sha512-aNl4fUDEkCNisBdHgWWOk2G1hoVBBOK6Dc5BjQg6DtIuSEmNap/xs14ukJL1LZ+xw+w10pVnhjQG7x7bQ4lrRA==}
 
-  '@astrojs/mdx@4.0.0-beta.1':
-    resolution: {integrity: sha512-uqVXVT2xVjN+oxl3mXHHOnxY9l+bjuVwnjPCO8AdoL489x69Crvg455D6akCtQR+ER+NMTscVvTv6BeFylC0tg==}
+  '@astrojs/markdown-remark@6.0.0-beta.2':
+    resolution: {integrity: sha512-XHadnf3c+hb2A0kWBuwKA3TqBKi7bIF3bpRt49DTnE3dVlsHDPmByn0Wj3CZij1HvXL/ODmPiOJt2JGXMeivuQ==}
+
+  '@astrojs/mdx@4.0.0-beta.2':
+    resolution: {integrity: sha512-h0iT7VhU7JAVMOY8ahX0urtYlwmWs2jcLEOg2tk1THGVBucn6lfXxHX078W7FR094DXCPr1xjX5J8Nkmx3M6gQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       astro: ^5.0.0-alpha.0
@@ -3967,15 +3970,38 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.0-beta.1(astro@5.0.0-beta.2(@types/node@22.7.5)(less@4.2.0)(lightningcss@1.27.0)(rollup@4.24.0)(sass@1.79.4)(typescript@5.6.3))':
+  '@astrojs/markdown-remark@6.0.0-beta.2':
     dependencies:
-      '@astrojs/markdown-remark': 6.0.0-beta.1
+      '@astrojs/prism': 3.1.0
+      github-slugger: 2.0.0
+      hast-util-from-html: 2.0.3
+      hast-util-to-text: 4.0.2
+      import-meta-resolve: 4.1.0
+      js-yaml: 4.1.0
+      mdast-util-definitions: 6.0.0
+      rehype-raw: 7.0.0
+      rehype-stringify: 10.0.1
+      remark-gfm: 4.0.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.1
+      remark-smartypants: 3.0.2
+      shiki: 1.22.0
+      unified: 11.0.5
+      unist-util-remove-position: 5.0.0
+      unist-util-visit: 5.0.0
+      unist-util-visit-parents: 6.0.1
+      vfile: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@astrojs/mdx@4.0.0-beta.2(astro@5.0.0-beta.2(@types/node@22.7.5)(less@4.2.0)(lightningcss@1.27.0)(rollup@4.24.0)(sass@1.79.4)(typescript@5.6.3))':
+    dependencies:
+      '@astrojs/markdown-remark': 6.0.0-beta.2
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
       astro: 5.0.0-beta.2(@types/node@22.7.5)(less@4.2.0)(lightningcss@1.27.0)(rollup@4.24.0)(sass@1.79.4)(typescript@5.6.3)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
-      gray-matter: 4.0.3
       hast-util-to-html: 9.0.3
       kleur: 4.1.5
       rehype-raw: 7.0.0
