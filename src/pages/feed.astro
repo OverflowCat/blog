@@ -2,6 +2,7 @@
 export const partial = true;
 import SlotRenderer from "@/components/SlotRenderer.astro";
 import { getBlogPosts } from "@/scripts/post";
+import { render } from "astro:content";
 import { load } from "cheerio";
 Astro.locals.renderer = 'rss';
 const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -29,7 +30,7 @@ let items = await Promise.all(
       pubDate: post.data.date,
       description: post.data.description ?? "",
       link,
-      content: await post.render(),
+      content: await render(post),
     };
   }),
 );
@@ -68,7 +69,6 @@ function xhtmlify(s: string, link: string): string {
   const $ = load(html);
   $('nav').remove();
   $('footer').remove();
-  $('style').remove();
   $('section#comments').remove();
   $("svg.typst-doc path").remove();
   const body = $("body").html();
