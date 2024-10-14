@@ -92,7 +92,7 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
-    "yaml": "^2.5.1"
+    "yaml": "^2.6.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
