@@ -177,8 +177,8 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       rehype-remnote:
-        specifier: 0.2.3
-        version: 0.2.3
+        specifier: 0.2.4
+        version: 0.2.4
       rehype-stringify:
         specifier: ^10.0.1
         version: 10.0.1
@@ -3314,8 +3314,8 @@ packages:
   rehype-raw@7.0.0:
     resolution: {integrity: sha512-/aE8hCfKlQeA8LmyeyQvQF3eBiLRGNlfBJEvWH7ivp9sBqs7TNqBL5X3v157rM4IFETqDnIOO+z5M/biZbo9Ww==}
 
-  rehype-remnote@0.2.3:
-    resolution: {integrity: sha512-G9rIc37wAYgRe+zaI0t2mP0+EljDQXQVifgF3XzNFqKFfREZXeUDfI3BRiduf5a3fMTl1sglI80gpDqjochAIA==}
+  rehype-remnote@0.2.4:
+    resolution: {integrity: sha512-47ei1KGGC0g/0QeZnemkCK6rLB9tACdYrvox8YmOljF/xoxZJDdEysU6yHdGX3uCtiLsLTOns04T+3zaUfsFbw==}
     engines: {node: '>=20'}
 
   rehype-stringify@10.0.1:
@@ -7628,7 +7628,7 @@ snapshots:
       hast-util-raw: 9.0.4
       vfile: 6.0.3
 
-  rehype-remnote@0.2.3:
+  rehype-remnote@0.2.4:
     dependencies:
       hast-util-classnames: 3.0.0
       hast-util-to-html: 9.0.3
