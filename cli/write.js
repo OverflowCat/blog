@@ -24,6 +24,10 @@ draft: true
 
 const filePath = path.join(".", "src", "posts", `${title}.mdx`);
 
+const folder = path.dirname(filePath);
+if (!fs.existsSync(folder));
+  fs.mkdirSync(folder, { recursive: true });
+
 if (fs.existsSync(filePath)) {
   console.log(`File ${title}.mdx already exists!`);
   process.exit(1);

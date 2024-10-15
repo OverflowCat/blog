@@ -22,6 +22,8 @@ const rehypeMultiMath: RehypePlugin = () => {
 				bold: ["{\\bf #1}", 1],
 				inv: ["-1"],
 				dd: ["\\mathrm{d}"],
+				j: ["\\mathrm{j}"],
+				i: ["\\mathrm{i}"],
 			},
 		},
 	} satisfies Parameters<typeof rehypeMathRenderer>[0]);
