@@ -40,6 +40,7 @@ const licence = frontmatter.licence ?? "CcByNc";
 
 import "@/styles/article.less";
 import { Picture } from "astro:assets";
+import { getCatSlug } from "@/scripts/tags";
 ---
 
 {
@@ -91,7 +92,7 @@ import { Picture } from "astro:assets";
         <div class:list={[icons?.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div>
         分类：
         {cats.map((cat) => (
-          <a class="cat" href={`/categories/${cat}/`}>
+          <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
             {cat}
           </a>
         ))}

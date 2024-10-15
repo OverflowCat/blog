@@ -30,3 +30,29 @@ export function getCatsInfo() {
 	});
 	return catsInfo;
 }
+
+export const CAT_MAP = {
+	"周报": "weekly",
+	"页面仔的自我修养": "frontend",
+	"备忘": "memo",
+	"Typst": "typst",
+	"译文": "translation",
+	"Tonsky": "tonsky",
+	"光学": "optics",
+	"Changelog": "changelog",
+	"Writeup": "writeup",
+	"题解": "solution",
+	"满语": "manchu",
+	"Selected": "selected",
+	"编程": "programming",
+	"Python": "python",
+	'读书笔记': "book",
+	'年终总结': "wrapped",
+	'动态列表': "list",
+	'咬文嚼字': "word",
+	'题隙碎笔': "gaokao",
+} as Record<string, string>;
+
+export function getCatSlug(cat: string) {
+	return CAT_MAP[cat] ?? cat;
+}

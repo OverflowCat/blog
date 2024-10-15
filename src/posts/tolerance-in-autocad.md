@@ -5,7 +5,6 @@ date: 2022-11-24 17:53:08
 tags:
 - AutoCAD
 - 公差
-categories: 制图
 layout: "@/layouts/Default.astro"
 noscript: true
 ext: md

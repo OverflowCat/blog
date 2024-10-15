@@ -1,21 +1,25 @@
 ---
-import { getCatsInfo } from "@/scripts/tags";
+import { getCatSlug, getCatsInfo } from "@/scripts/tags";
 import ArticleList from "@/components/ArticleList.astro";
 
 export async function getStaticPaths() {
     const categories = Array.from(getCatsInfo()).map(
         ([category, _count]) => category
-    );
-    const res = categories.map((category) => ({ params: { category } }));
+    )
+    const res = categories.map((category) => ({
+        params: { category: getCatSlug(category) },
+        props: { category },
+    }));
     return res;
 }
 
 const { category } = Astro.params;
+const { category: catName } = Astro.props;
 ---
 
 <ArticleList
     type="category"
-    name={category}
+    name={catName}
     simple={false}
-    title={`标签：${category}`}
+    title={`分类：${catName}`}
 />

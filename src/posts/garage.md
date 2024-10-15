@@ -21,4 +21,4 @@ PS: 今天再去机房考试，学校已经 ban 了网络连接。发现进入�
 
 * * *
 
-写于 Telegraph，2020 年 10 月 23 日。如果你看不到图片，说明你无法访问 [telegra.ph](https://telegra.ph)。
+写于 Telegraph，2020 年 10 月 23 日，原标题为「garage」。如果你看不到图片，说明你无法访问 [telegra.ph](https://telegra.ph)。

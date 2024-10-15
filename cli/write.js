@@ -22,7 +22,7 @@ draft: true
 
 `;
 
-const filePath = path.join(".", "src", "content", "blog", `${title}.mdx`);
+const filePath = path.join(".", "src", "posts", `${title}.mdx`);
 
 if (fs.existsSync(filePath)) {
   console.log(`File ${title}.mdx already exists!`);

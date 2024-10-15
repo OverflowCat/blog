@@ -45,6 +45,18 @@ function myRemarkPlugin() {
 						lang: "zh-juai"
 					};
 				}
+				if (name === "de") {
+					name = "span";
+					props = {
+						lang: "de"
+					};
+				}
+				if (name === "en") {
+					name = "span";
+					props = {
+						lang: "en"
+					};
+				}
 				data.hName = name;
 				data.hProperties = props;
 			}
@@ -107,9 +119,6 @@ export default defineConfig({
 			rehypeAutolinkHeadings,
 			// @ts-expect-error
 		].concat(rehypePipe)
-	},
-	experimental: {
-		contentCollectionCache: false,
 	},
 	integrations: [unocss(), icon(), react(), mdx(), typst(), sitemap()]
 });

@@ -1,5 +1,5 @@
 ---
-import { getCatsInfo } from "@/scripts/tags";
+import { getCatsInfo, getCatSlug } from "@/scripts/tags";
 import "@/styles/tag-cloud.less";
 
 function generateRandomColor() {
@@ -18,7 +18,7 @@ function generateRandomColor() {
   {
     Array.from(getCatsInfo()).map(([k, v]) => (
       <a
-        href={`/categories/${k}`}
+        href={`/categories/${getCatSlug(k)}/`}
         style={`font-size: ${Math.min(
           21,
           1.8 * v + 13 - k.length / 3
