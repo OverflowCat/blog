@@ -50,7 +50,7 @@ const remnoteCollection = defineCollection({
 */
 
 const remnoteCollection = defineCollection({
-  type: "data",
+  loader: glob({ pattern: '**\/[^_]*.json', base: "./src/content/rems/" }),
   schema: () => remnoteJsonSchema,
 });
 
