@@ -77,6 +77,14 @@ dfn[lang="zh"] {
     "NanumMyeongjo YetHangul", NanumMyeongjo, Batang, UnBatang, sans-serif;
 }
 
+.upright {
+  text-combine-upright: all;
+  #vert:target & {
+    margin-inline-start: -.5ch;
+    margin-inline-end: -.5ch;
+  }
+}
+
 article {
   blockquote {
     &:not(:lang(zh)):not(:lang(ja)) {
@@ -129,8 +137,4 @@ article {
     -webkit-text-emphasis-position: over;
     text-emphasis-position: over;
   }
-}
-
-.yoko {
-  text-combine-upright: all;
 }

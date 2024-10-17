@@ -9,6 +9,8 @@ export default defineConfig({
   rules: [
     ["text-2nd", { color: "var(--text-secondary)" }],
     ["text-hint", { color: "var(--text-hint)" }],
+    ["upright", { "text-combine-upright": "all" }],
+    ["yoko", { "text-combine-upright": "all" }],
   ],
   transformers: [transformerDirectives()],
 });

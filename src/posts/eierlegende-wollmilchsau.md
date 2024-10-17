@@ -16,7 +16,7 @@ noscript: true
 ext: md
 ---
 
-> 本文译自德国驻美大使馆 2011 年 10 月 28 日的文章：<span lang='de'>[_Word of the Week: Eierlegende Wollmilchsau_](https://germanyinusa.com/2011/10/28/word-of-the-week-eierlegende-wollmilchsau/)</span>。封面图片：[Eierlegende Wollmilchsau, German for "egg-laying wool-milk-sow"](https://de.wikipedia.org/wiki/Datei:Wollmilchsau.png) by [de:User:Pixelrausch](https://de.wikipedia.org/wiki/User:Pixelrausch), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0)
+> 本文译自德国驻美大使馆 :up[2011] 年 :up[10] 月 :up[28] 日的文章：<span lang='de'>[_Word of the Week: Eierlegende Wollmilchsau_](https://germanyinusa.com/2011/10/28/word-of-the-week-eierlegende-wollmilchsau/)</span>。封面图片：[Eierlegende Wollmilchsau, German for "egg-laying wool-milk-sow"](https://de.wikipedia.org/wiki/Datei:Wollmilchsau.png) by [de:User:Pixelrausch](https://de.wikipedia.org/wiki/User:Pixelrausch), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0)
 
 想象这样一幅画面：一头猪，浑身长着蓬松的毛，会下蛋，会产奶。这就是本周的关键词——<em lang="de">Eierlegende Wollmilchsau</em>，直译为「生蛋的　羊毛－牛奶－母猪」。虽然这种小动物可能听起来有点像自然界的怪胎，但它确是每个农民的梦想——结合了鸡（下蛋）、羊（产毛）、牛（产奶）和猪（做成熏肉）的品质的完美农场动物。它味道鲜美，还可以生产所有的日常必需品：它是一种没有缺点的动物。不消说，这种生物并不存在。
 
@@ -35,4 +35,4 @@ ext: md
 
 * * *
 
-2022 年 10 月 8 日。[点此在 IPFS 上查看](https://ipfs.io/ipfs/Qmbf73dbDuQv4zss9Mf1164kZecqNNKBYx7q9CLstCnxHf/)。
+:up[2022] 年 :up[10] 月 :up[8] 日。[点此在 IPFS 上查看](https://ipfs.io/ipfs/Qmbf73dbDuQv4zss9Mf1164kZecqNNKBYx7q9CLstCnxHf/)。

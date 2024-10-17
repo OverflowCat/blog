@@ -38,24 +38,40 @@ function myRemarkPlugin() {
 				const hast = h(node.name, node.attributes || {});
 				let name = hast.tagName;
 				let props = hast.properties;
-				if (name === "j" && props) {
-					name = "abbr";
-					props = {
-						title: props.m || props.e || props.p,
-						lang: "zh-juai"
-					};
-				}
-				if (name === "de") {
-					name = "span";
-					props = {
-						lang: "de"
-					};
-				}
-				if (name === "en") {
-					name = "span";
-					props = {
-						lang: "en"
-					};
+				switch (name) {
+					case "j":
+						if (props) {
+							name = "abbr";
+							props = {
+								title: props.m || props.e || props.p,
+								lang: "zh-juai"
+							};
+						}
+						break;
+					case "de":
+						name = "span";
+						props = {
+							lang: "de"
+						};
+						break;
+					case "en":
+						name = "span";
+						props = {
+							lang: "en"
+						};
+						break;
+					case "up":
+						name = "span";
+						props = {
+							className: ["upright"]
+						};
+						break;
+					case "yoko":
+						name = "span";
+						props = {
+							className: ["yoko"]
+						};
+						break;
 				}
 				data.hName = name;
 				data.hProperties = props;
