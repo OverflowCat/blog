@@ -78,8 +78,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       '@iconify-json/ri':
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       '@iconify-json/simple-icons':
         specifier: ^1.2.8
         version: 1.2.8
@@ -990,8 +990,8 @@ packages:
   '@iconify-json/pixelarticons@1.2.1':
     resolution: {integrity: sha512-qGDhOKbpGYFZnjtCCZHnFn/QQIVjRw1XSCHIYD+LJtQXa4JYWhBjuveeRdt4ZYua51AIIhKb0/r3TMEaFemGfA==}
 
-  '@iconify-json/ri@1.2.1':
-    resolution: {integrity: sha512-xI3+xZHBI+wlhQqd6jRRcLD5K8B8vQNyxcSB43myxNZ/SfXIn7Ny28h0jyPo9e0gT8fGhqx6R5PeLz/UBB8jwQ==}
+  '@iconify-json/ri@1.2.2':
+    resolution: {integrity: sha512-7i6uxb8guYyyWtcf23QgKXlipvwaqBSnm3tGgo0eBlc1C8C1rHVEJXManwB7PrxWXLAecBL/Sb+0zaLfSYeQzg==}
 
   '@iconify-json/simple-icons@1.2.8':
     resolution: {integrity: sha512-AzBpj2XAcWQbiy3i0rLq6lFw0pLT8lc/ptdsBc97N8KFKyXW4d62EK/EhAd82Ld0WsO+1exOvnfeIiX2FPsdzw==}
@@ -4682,7 +4682,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ri@1.2.1':
+  '@iconify-json/ri@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
