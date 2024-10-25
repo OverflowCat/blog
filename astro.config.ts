@@ -25,6 +25,7 @@ import { typst } from "astro-typst";
 import remarkSampKbd from "remark-samp-kbd";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
+import { manjuify } from "./src/scripts/manju.ts";
 import remarkRuby from "remark-ruby";
 import remarkDirect from "remark-directive";
 import { h } from 'hastscript';
@@ -47,6 +48,32 @@ function myRemarkPlugin() {
 								lang: "zh-juai"
 							};
 						}
+						break;
+					case "m": // Möllendorff
+						name = "span";
+						// console.log(node);
+						/*
+						{
+						type: 'textDirective',
+						name: 'm',
+						attributes: {},
+						children: [ { type: 'text', value: 'ilha -i', position: [Object] } ],
+						position: {
+							start: { line: 18, column: 87, offset: 1237 },
+							end: { line: 18, column: 98, offset: 1248 }
+						},
+						data: {}
+						}
+						*/
+						// @ts-ignore
+						node.children?.forEach(child => {
+							if (child.type === 'text')
+								child.value = manjuify(child.value);
+						});
+						// console.log(node);
+						props = {
+							lang: "mnc"
+						};
 						break;
 					case "de":
 						name = "span";

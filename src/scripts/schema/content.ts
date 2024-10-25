@@ -38,6 +38,16 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 				(x: string) => !x.includes(":") || ICON_PACKS_SET.has(x.split(":")[0]),
 			)
 			.optional(),
+		lang: z.union([
+			// 汉语
+			z.literal("cmn"),
+			// 淮语
+			z.literal("juai"),
+			// 满语
+			z.literal("mnc"),
+			// 英语
+			z.literal("en"),
+		]).optional(),
 		math: z.optional(
 			z.union([z.literal("mathjax"), z.literal("katex"), z.literal("typst")]),
 		),
@@ -49,6 +59,7 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 		licence: z.union([
 			z.literal("CcByNc"),
 			z.literal("CcBySa"),
+			z.literal("Minzoku"),
 			z.literal("PD"),
 			z.string().nullable(),
 			z.literal(false),

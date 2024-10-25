@@ -1,14 +1,22 @@
 ---
 export interface Props {
   title: string;
+  lang: string;
   // noscript?: boolean;
   og?: OpenGraphData;
   metas?: { [key: string]: string };
   source?: string; // source code url on GitHub
 }
 
-let { title, og, source } = Astro.props;
+let { title, og, source, lang } = Astro.props;
 
+// keep: en, mnc, ja, zh-*. else resolve to zh
+if (
+  !lang ||
+  (!["en", "mnc", "ja", "zh-*"].includes(lang) && !/zh-/.test(lang))
+) {
+  lang = "zh";
+}
 title = title ? `${title} | 新世界的大门` : "新世界的大门";
 
 if (!og) {
@@ -29,10 +37,9 @@ const metas = {
 import Base from "./Base.astro";
 import Footer from "../zh/Footer.astro";
 import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
-
 ---
 
-<Base title={title} metas={metas}>
+<Base title={title} metas={metas} lang={lang}>
   <div class="main">
     <slot />
   </div>

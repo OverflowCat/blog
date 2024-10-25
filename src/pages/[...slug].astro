@@ -10,6 +10,7 @@ import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
 import { getImage } from "astro:assets";
 import { render } from "astro:content";
+import "@/styles/manchu.less";
 
 export async function getStaticPaths() {
   const posts = (await getBlogPosts()).map((post) => {
@@ -51,6 +52,8 @@ if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
 
+let lang = post.data.lang;
+
 const metas: { [key: string]: string } = post.data.categories?.includes(
   "Tonsky",
 )
@@ -71,11 +74,11 @@ if (post.data.photo?.img) {
 
 import V5MdLayout from "@/pages/_v5-md-layout.astro";
 Astro.locals.noscript = post.data.noscript;
-console.log(post.data.ext)
 ---
 
 <Page
   title={title}
+  lang={lang}
   og={{
     title,
     description: post.data.description ?? "新世界的大门",

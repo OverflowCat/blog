@@ -8,15 +8,19 @@
 }
 
 [lang="mnc"] {
-  font-family: "Noto Sans Mongolian", "Mongolian Baiti";
+  font-family: "Noto Sans Mongolian", "Mongolian Baiti", "Noto Sans CJK TC", "Noto Sans CJK SC", "Source Han Sans SC";
   writing-mode: vertical-lr;
-  // for the f*cking WebKit, where `writing-mode` alone won't work.
-  // See https://github.com/w3c/mlreq/issues/39
-  text-orientation: sideways;
-  
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "vert" 1;
+
+  &:not(:has([lang^="zh"])) {
+    // for the f*cking WebKit, where `writing-mode` alone won't work.
+    // See https://github.com/w3c/mlreq/issues/39
+    text-orientation: sideways;
+  }
+
   [lang^="zh"] {
     writing-mode: sideways-lr;
-    text-orientation: upright;
+    // text-orientation: upright;
   }
 }
 

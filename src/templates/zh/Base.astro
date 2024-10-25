@@ -1,12 +1,13 @@
 ---
 export interface Props {
   title: string;
+  lang: string;
   metas?: {
     [key: string]: string;
   };
 }
 
-let { title, metas } = Astro.props;
+let { title, lang, metas } = Astro.props;
 
 if (!metas?.viewport) {
   if (!metas) metas = {};
@@ -21,7 +22,7 @@ import "@/styles/no-dark.less";
 ---
 
 <!doctype html>
-<html lang="zh" id="vert">
+<html lang={lang} id="vert">
   <head>
     <meta charset="utf-8" />
     {
@@ -51,6 +52,11 @@ import "@/styles/no-dark.less";
     <link rel="prefetch" href="/about" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <style>
+      html[lang="mnc"] {
+        writing-mode: vertical-lr;
+        inline-size: 100dvi;
+        max-inline-size: 100dvi;
+      }
       @view-transition {
         navigation: auto; /* enabled! */
       }
