@@ -22,7 +22,17 @@ const { photo } = data;
     <td class="content">
       <div>
         <span class="icon title-icon">
-          {(<Icon name={getIconName(post) || "ph:hash-bold"} />)}
+          {
+            (
+              <Icon
+                name={
+                  getIconName(post) ||
+                  // "ph:hash-bold"
+                  "mdi:halloween"
+                }
+              />
+            )
+          }
         </span><a
           class="title"
           transition:name={crc32base(post.data.title)}
@@ -65,20 +75,10 @@ const { photo } = data;
             class="title-img"
             loading="lazy"
             transition:name={crc32base(
-              typeof photo === "string"
-                ? photo
-                : photo?.src,
+              typeof photo === "string" ? photo : photo?.src
             )}
-            width={
-              photo.aspect
-                ? photo.aspect.split(":")[0]
-                : ""
-            }
-            height={
-              photo.aspect
-                ? photo.aspect.split(":")[1]
-                : ""
-            }
+            width={photo.aspect ? photo.aspect.split(":")[0] : ""}
+            height={photo.aspect ? photo.aspect.split(":")[1] : ""}
             src={photo.src}
             alt={photo.alt ? photo.alt : data.title}
           />
