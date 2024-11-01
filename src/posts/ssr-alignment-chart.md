@@ -46,10 +46,10 @@ ext: md
         <div style="padding-top: 4px;"><img style="background-color: rgb(34, 34, 34);" src="https://pages.github.com/images/logo.svg"></div>
       </td>
       <td>
-        <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg">
+        <img loading="lazy" src="/icons/cloudflare.svg">
       </td>
       <td>
-        <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Open_Broadcaster_Software_Logo.png/2048px-Open_Broadcaster_Software_Logo.png">
+        <img loading="lazy" src="/icons/obs.svg">
       </td>
     </tr>
     <tr>
