@@ -1,0 +1,135 @@
+---
+title: "惊鸿一瞥 v5.0.0.71：抢微信"
+description: 前端已经崛起了，这人还没收到通知吗？
+date: 2024-11-01T17:53:37.127Z
+noscript: false
+licence: false
+layout: "@/layouts/Default.astro"
+hant: true
+tags: []
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/Mey2CfQ7Z-_R3Ra6fxvY0N5LQYq6jtZMMV-vmTgYvPS76z2VP3bK0R706cekicrq2r_BMtxj_hHzFXk4skuovZa_TLwzmfqqenn3BtBBodFzFl6IR8E2BPB0j-jCyD1a.webp"
+  alt: ArkTs
+  aspect: "1:1"
+  hide: true
+categories:
+  - 惊鸿一瞥
+---
+
+import "@/styles/harmony.less";
+import FloatingImg from "@/components/FloatingImg.astro";
+
+<FloatingImg
+  src="https://remnote-user-data.s3.amazonaws.com/Mey2CfQ7Z-_R3Ra6fxvY0N5LQYq6jtZMMV-vmTgYvPS76z2VP3bK0R706cekicrq2r_BMtxj_hHzFXk4skuovZa_TLwzmfqqenn3BtBBodFzFl6IR8E2BPB0j-jCyD1a.webp"
+  alt="A dynamic image illustrating the widespread use of Huawei's ArkTS in various devices within the OpenHarmony ecosystem. The scene includes diverse people..."
+  width="250"
+  height="250"
+>
+前端已经崛起了，这人还没收到通知吗？
+</FloatingImg>
+
+这是一个新系列，主要记录 HarmonyOS NEXT 以及 OpenHarmony 的使用体验，将会不定期更新。
+
+朝菌不知晦朔，前端不知春秋。不错的，电子设备和软件的更新太快，我们几乎不能在几十年後再寻回当年的每处细节。因此，未来的鸿蒙系统无论是真的建成了繁荣开放的生态，还是像安卓那样被专有软硬件绑架，抑或是将人们拉入了万劫不复的深渊，我都希望为它的迭代留下一份书面记录，以伺後人考古。
+
+## 系统
+
+正式版的发布会真的没啥看头，非常枯燥。说禁止了一些不合理的权限，比如读取所有图片之类的，但是这样除了云空间就没办法备份所有图片了吧。
+
+### 界面
+
+<img src="https://remnote-user-data.s3.amazonaws.com/gj4lGdtRSKFeRKClgt5CtJnqG9ge3kBLbNvqmseUZqA5zxlIpMduQRh3yO50AJ80aH8AKkoHJaIpOfU3N4tibPFipkeNBcO2wpiro6pF5eu3fCn06c1qcznVNNXc4PYa.jpeg" />
+
+控制中心在更新後成了这样，抄 iOS 其实真的不如原来的好看（并且还没有米抄得好），半截的亮度条也实在不好调节。
+
+### 数据
+
+更新时最终会强制你备份数据到本机。公测开始後，华为云空间提供无限量的备份空间，但仅限恢复到本机。
+
+备份是为了退回做准备的——从 HarmonyOS 升级到 HarmonyOS NEXT 是应用自己写入到一个沙箱中完成数据迁移的，而目前似乎没有办法备份 NEXT 的数据——有手机克隆 app，但是似乎无法克隆到 HarmonyOS 设备上。我这里没有其他 NEXT 设备，也没法验证，而且一般通过用户肯定也没有。
+
+至于内置的备份功能？虽然有，但是情况比安卓更糟糕——安卓还要开发者主动把清单值设置为 `false`，而 oh 要开发者自己实现一个备份用的 `BackupExtensionAbility`，主动设置 `allowToBackupRestore` 为 `true`。
+
+### i18n
+
+似乎除了中英维藏，其他语言都会 fallback 到英文。
+
+调成其他语言会导致支付宝和微信的小程序无法使用，不知道是什么原因。
+
+### 华为互传
+
+用着没什么问题，除了速度有些慢。惊讶的是在 HarmonyOS 2.0 的旧设备上发现已经有了 10 分钟的限制。可能一开始就没有无限制的选项？
+
+看上去现在应用可以直接 embed 一个互传的界面，无需用户同意。你会看到一个经典的动画：
+
+<img src="https://remnote-user-data.s3.amazonaws.com/noS2EkXFJ1gyvv5fQ_YP95sejqadtTwoZxz2LxAehWWfBhilO_zNhpx28YNqLotseyzJbKbLYI7rVZOgPznJrcJnMSFbndOdaU8IZSQhByHmaNNyA3sUJ2wxyDkS-aV_.gif" width="100" height="100" />
+
+## 系统应用
+
+### 浏览器
+
+公测版去掉了臭名昭著的黑名单。
+
+设置 ⇒ 更多 ⇒ 应用服务模式 可选 基本模式。
+
+没有全屏以及将网页安装为应用（或者添加到桌面）的功能。
+
+User Agent 是 ``Mozilla/5.0 (Phone; OpenHarmony 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 ArkWeb/4.1.6.1 Mobile HuaweiBrowser/5.0.3.351``。
+
+### 相机
+
+功能比较简陋，连定时拍照之类的功能都没有。
+
+## 三方应用
+
+### 哔哩哔哩
+
+- 後台播放没问题。
+- 投屏（到云视听小电视，实际上是电视端联网加载）的逻辑和其他端的不统一，投屏结束後电视端会继续播放投屏前的内容。
+
+:img{src="https://remnote-user-data.s3.amazonaws.com/g8cAWcmdm5zz-H2pAW_RznZYaL7tjeHDCs0C8KErzYXv6iR6pzWcx8-KCeN32LTu41sYNIqlHoUq7cz9ETNFiUVYC_BJR5AHInjwJTESa88OhF_YfrFk3-WmLTML7Vrn.jpeg" height=400 class="float-end p-2"}
+
+哔哩哔哩的业务逻辑是用 Kotlin 编译到 JavaScript 实现的。更新记录中写
+
+> 最低系统版本要求5.0.0.71
+>
+> ……
+>
+> 迁移使用鸿蒙内置JSVM
+
+
+所以看来还能用自己的 JS 运行时。
+
+### 支付宝
+
+- 近两周支持了碰一下支付。
+- 有部分小程序运行不了，会提示不支持。
+
+### 微信
+
+只有测试版，并且……是要抢名额的！方法是在应用商店搜索「微信」，如果能点进下载界面就说明有名额。
+
+小程序只能下拉打开最近使用过的。有些有 bug，不过没有遇到像支付宝那样提示不支持的。
+
+30 日更新了 1.0.1.16，似乎支持聊天记录迁移了。但是，每个新版都要抢，已经安装了旧测试版也没有更新。
+
+ArkTs 中可以在 ``module.json5`` 中为所有 abilities 的 [splash screen](https://en.wikipedia.org/wiki/Splash_screen) 指定一张图片。如果你没有指定，那就显示图标。
+
+```json
+  "icon": "$media:app_icon",
+  "label": "$string:EntryAbility_label",
+  "startWindowIcon": "$media:app_icon",
+  "startWindowBackground": "$color:start_window_background",
+```
+
+比较有意思的一点是，微信开屏的地球图片是放的正方形图片，你可以清晰地看到其与背景之间的颜色差异。
+
+<video width="300" height="200" autoplay="autoplay" loop="loop" muted="muted">
+  <source src="https://github.com/user-attachments/assets/ff7e5105-f77d-4858-839c-150aa7c39e7b" type="video/mp4" />
+</video>
+
+### 微信读书
+
+- 手机上做扫码登录…点微信登录，检测到没微信，还是会让扫码。
+- 无法切换字体，排版也很粗糙。
+- 没有借书、购买会员等功能。
