@@ -226,8 +226,8 @@ importers:
         specifier: ^22.8.6
         version: 22.8.6
       '@unocss/preset-icons':
-        specifier: ^0.63.6
-        version: 0.63.6
+        specifier: ^0.64.0
+        version: 0.64.0
       '@unocss/transformer-directives':
         specifier: ^0.63.6
         version: 0.63.6
@@ -1647,6 +1647,9 @@ packages:
   '@unocss/core@0.63.6':
     resolution: {integrity: sha512-Q4QPgJ271Up89+vIqqOKgtdCKkFpHqvHN8W1LUlKPqtYnOvVYaOIVNAZowaIdEhPuc83yLc6Tg2+7riK18QKEw==}
 
+  '@unocss/core@0.64.0':
+    resolution: {integrity: sha512-Qb8wWPYNlTagCdJGzULew+e3NMM8Bd7fr38lDLgrMj+njop+wzkSe1ZZOyMMH9yHSq/Rznn5eCjnyzyHwxGslQ==}
+
   '@unocss/extractor-arbitrary-variants@0.63.6':
     resolution: {integrity: sha512-HJX0oAa9uzwKYoU8CoJdP1gxjuqFmOLxyZmITjStAmZNZpIxlz2wz4VrHmqml2dkvx/mifGGGc/GxZpQ36D12Q==}
 
@@ -1664,6 +1667,9 @@ packages:
 
   '@unocss/preset-icons@0.63.6':
     resolution: {integrity: sha512-fRU44wXABnMPT/9zhKBNSUeDJlOxJhUJP9W3FSRnc+ktjAifJIj0xpUKtEqxL46QMq825Bsj2yDSquzP+XYGnQ==}
+
+  '@unocss/preset-icons@0.64.0':
+    resolution: {integrity: sha512-jhozA4r583agZZpKttdootaWfvQ29lY/kHxNU1Ah2xeRQcVXXEh7M3cG0bo9HSIX9/BgXSk5rWQlqSPIqFl4Lw==}
 
   '@unocss/preset-mini@0.63.6':
     resolution: {integrity: sha512-pZDZbSuxabHSwPIy3zCgQ4MNdVCSHvOvZecreH+v96R1oOhquiwU8WiSbkxvZiKiLQJd7JUVW87E1pAzr5ZGGQ==}
@@ -3132,6 +3138,9 @@ packages:
 
   ofetch@1.4.0:
     resolution: {integrity: sha512-MuHgsEhU6zGeX+EMh+8mSMrYTnsqJQQrpM00Q6QHMKNqQ0bKy0B43tk8tL1wg+CnsSTy1kg4Ir2T5Ig6rD+dfQ==}
+
+  ofetch@1.4.1:
+    resolution: {integrity: sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw==}
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
@@ -5376,6 +5385,8 @@ snapshots:
 
   '@unocss/core@0.63.6': {}
 
+  '@unocss/core@0.64.0': {}
+
   '@unocss/extractor-arbitrary-variants@0.63.6':
     dependencies:
       '@unocss/core': 0.63.6
@@ -5410,6 +5421,14 @@ snapshots:
       '@iconify/utils': 2.1.33
       '@unocss/core': 0.63.6
       ofetch: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@unocss/preset-icons@0.64.0':
+    dependencies:
+      '@iconify/utils': 2.1.33
+      '@unocss/core': 0.64.0
+      ofetch: 1.4.1
     transitivePeerDependencies:
       - supports-color
 
@@ -7451,7 +7470,7 @@ snapshots:
 
   mlly@1.7.1:
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.14.0
       pathe: 1.1.2
       pkg-types: 1.2.0
       ufo: 1.5.4
@@ -7491,6 +7510,12 @@ snapshots:
       boolbase: 1.0.0
 
   ofetch@1.4.0:
+    dependencies:
+      destr: 2.0.3
+      node-fetch-native: 1.6.4
+      ufo: 1.5.4
+
+  ofetch@1.4.1:
     dependencies:
       destr: 2.0.3
       node-fetch-native: 1.6.4
