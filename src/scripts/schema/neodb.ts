@@ -66,5 +66,40 @@ export const movieSchema = z.object({
 });
 export type Movie = z.infer<typeof movieSchema>;
 
-export const neoSchema = z.union([gameSchema, movieSchema]);
+export const bookSchema = z.object({
+  id: z.string().url(),
+  type: z.union([z.literal('Edition'), z.literal('Book')]),
+  uuid: z.string(),
+  url: z.string(),
+  api_url: z.string(),
+  category: z.literal('book'),
+  parent_uuid: z.string().nullable(),
+  display_title: z.string(),
+  external_resources: z.array(ExternalResourceSchema),
+  title: z.string(),
+  description: z.string(),
+  localized_title: z.array(LocalizedTextSchema),
+  localized_description: z.array(LocalizedTextSchema),
+  cover_image_url: z.string().url(),
+  rating: z.number().nullable(),
+  rating_count: z.number(),
+  brief: z.string(),
+  subtitle: z.string().nullable(),
+  orig_title: z.string(),
+  author: z.array(z.string()),
+  translator: z.array(z.string()),
+  language: z.array(z.string()),
+  pub_house: z.string(),
+  pub_year: z.number(),
+  pub_month: z.number(),
+  binding: z.string(),
+  price: z.string(),
+  pages: z.number(),
+  series: z.string().nullable(),
+  imprint: z.string(),
+  isbn: z.string(),
+});
+export type Book = z.infer<typeof bookSchema>;
+
+export const neoSchema = z.union([gameSchema, movieSchema, bookSchema]);
 export type NeoItem = z.infer<typeof neoSchema>;

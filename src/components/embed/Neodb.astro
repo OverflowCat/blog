@@ -1,50 +1,48 @@
 ---
 export type Props = {
-	post?: string | bigint;
-	item: string;
+    post?: string | bigint;
+    item: string;
 };
 
-const {
-	post,
-	item,
-} = Astro.props;
+const { post, item } = Astro.props;
 import type { Game, Movie, NeoItem } from "@/scripts/schema/neodb";
 import { getEntry } from "astro:content";
 
 const entry = await getEntry("neodb", item);
 if (!entry) {
-	throw new Error("Entry not found");
+    throw new Error("Entry not found");
 }
 const data = entry.data as NeoItem;
 const {
-	id: url,
-	display_title: title,
-	description: desc,
-	rating,
-	type: category,
-	genre,
-	cover_image_url: img,
-	localized_title: altTitles,
+    id: url,
+    display_title: title,
+    description: desc,
+    rating,
+    category,
+    cover_image_url: img,
+    localized_title: altTitles,
 } = data;
+let genre = "genre" in data ? data.genre : [];
 let authors: string[];
 let platforms: string[] = [];
+let pub_house = "";
+let imprint = "";
 
-if (category === "Game") {
-    var {
-        developer,
-	    publisher,
-	    release_date: date
-    } = data as Game;
+if (category === "game") {
+    var { developer, publisher, release_date: date } = data as Game;
     platforms = (data as Game).platform;
     authors = developer.concat(publisher);
-} else if (category === "Movie") {
-    var {
-        director,
-        actor,
-        playwright,
-    } = data as Movie;
+} else if (category === "movie") {
+    var { director, actor, playwright } = data as Movie;
     var date = data.year.toString();
     authors = director.concat(actor, playwright);
+} else if (category === "book") {
+    let 作编译者 = new Set(data.author);
+    作编译者.add(data.translator.map((t) => t + "（译）").join("、"));
+    authors = Array.from(作编译者);
+    var date = data.pub_year.toString();
+    pub_house = data.pub_house;
+    imprint = data.imprint;
 } else {
     authors = [];
     var date = "";
@@ -66,7 +64,7 @@ const itemHref = `https://neodb.social/${item}`;
     <div class="item">
         <div class="cover">
             <a href={itemHref}>
-                <img src={img} alt="cover">
+                <img src={img} alt="cover" />
             </a>
         </div>
         <div class="main">
@@ -76,6 +74,11 @@ const itemHref = `https://neodb.social/${item}`;
                     <small>
                         <span class="category">{category}</span>
                         <date>{date}</date>
+                        {
+                            "isbn" in data && (
+                                <samp class="isbn mis-4">ISBN {data.isbn}</samp>
+                            )
+                        }
                     </small>
                 </h5>
             </hgroup>
@@ -83,31 +86,65 @@ const itemHref = `https://neodb.social/${item}`;
                 <div class="brief">
                     <div class="multi-fields trim-p">
                         <span>
-                            {altTitles.filter(({text}) => text !== title).map(({lang, text}) => (
-                                <span lang={lang}><i>{text}</i></span>
-                            ))}
+                            {
+                                altTitles
+                                    .filter(({ text }) => text !== title)
+                                    .map(({ lang, text }) => (
+                                        <span lang={lang}>
+                                            <i>{text}</i>
+                                        </span>
+                                    ))
+                            }
                             by {authors.join("、")}
                         </span>
                     </div>
                 </div>
                 <div class="full">
                     <div class="multi-fields">
-                        <span set:html={"<b>类型</b>：" + genre.map(g => (
-                                `<span>${g}</span>`
-                            )).join(' / ')}>
-                        </span>
                         {
-                            platforms?.length > 0 && <span set:html={
-                            "<b>平台</b>：" + platforms.map(platform => (
-                                `<span>${platform}</span>`
-                            )).join(' / ')
-                        }></span>
+                            genre?.length > 0 && (
+                                <span
+                                    set:html={
+                                        "<b>类型</b>：" +
+                                        genre
+                                            .map((g) => `<span>${g}</span>`)
+                                            .join(" / ")
+                                    }
+                                />
+                            )
+                        }
+                        {
+                            platforms?.length > 0 && (
+                                <span
+                                    set:html={
+                                        "<b>平台</b>：" +
+                                        platforms
+                                            .map(
+                                                (platform) =>
+                                                    `<span>${platform}</span>`,
+                                            )
+                                            .join(" / ")
+                                    }
+                                />
+                            )
+                        }
+                        {
+                            pub_house && (
+                                <span itemprop="publisher">
+                                    <b>出版社</b>：{pub_house}
+                                </span>
+                            )
+                        }
+                        {
+                            imprint && (
+                                <span itemprop="imprint">
+                                    <b>出品方</b>：{imprint}
+                                </span>
+                            )
                         }
                     </div>
                     <div class="desc">
-                        {
-                            desc && <p set:html={desc} class="trim-p" />
-                        }
+                        {desc && <p set:html={desc} class="trim-p" />}
                     </div>
                     <slot />
                 </div>
@@ -117,75 +154,78 @@ const itemHref = `https://neodb.social/${item}`;
 </article>
 
 <style>
-article {
-    padding: .5rem;
-    margin: .5rem;
-    background-color: var(--bg-accent);
-    border-radius: 5px;
-    box-shadow: 0 4px 4px var(--shadow-color);
-    font-size: .95rem;
-    line-height: 1.5;
-}
+    article {
+        padding: 0.5rem;
+        margin: 0.5rem;
+        background-color: var(--bg-accent);
+        border-radius: 5px;
+        box-shadow: 0 4px 4px var(--shadow-color);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
 
-hgroup {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.5;
-}
-h5 {
-    margin-block: .25em;
-}
-h5 a {font-size: 1.25em; }
+    hgroup {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+    h5 {
+        margin-block: 0.25em;
+    }
+    h5 a {
+        font-size: 1.25em;
+    }
 
-.item {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    /* flex: 1; */
-}
+    .item {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        /* flex: 1; */
+    }
 
-.flex {
-display: flex;
-align-items: center; /* 使子元素上下居中 */
-}
+    .flex {
+        display: flex;
+        align-items: center; /* 使子元素上下居中 */
+    }
 
-.cover {
-    flex-shrink: 0; /* 防止 cover 缩小 */
-}
+    .cover {
+        flex-shrink: 0; /* 防止 cover 缩小 */
+    }
 
-.cover img {
-    width: min(155px, 32vi);
-    height: auto;
-    display: block;
-}
+    .cover img {
+        width: min(155px, 32vi);
+        height: auto;
+        display: block;
+    }
 
-.main {
-    flex-grow: 1; /* 使 main 占据剩下的空间 */
-}
+    .main {
+        flex-grow: 1; /* 使 main 占据剩下的空间 */
+    }
 
-.category {
-    margin-block-end: 5px;
-    padding: 2px 5px;
-    background-color: var(--bg-secondary);
-    border-radius: 3px;
-    font-size: 12px;
-}
+    .category,
+    .isbn {
+        margin-block-end: 5px;
+        padding: 2px 5px;
+        background-color: var(--bg-secondary);
+        border-radius: 3px;
+        font-size: 12px;
+    }
 
-.site-list a {
-    margin-block-end: 5px;
-    color: var(--text-secondary);
-    text-decoration: none;
-}
+    .site-list a {
+        margin-block-end: 5px;
+        color: var(--text-secondary);
+        text-decoration: none;
+    }
 
-.multi-fields span {
-    margin-inline-end: 10px;
-}
+    .multi-fields span {
+        margin-inline-end: 10px;
+    }
 
-.trim-p {
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: block-axis;
-    overflow: hidden;
-}
+    .trim-p {
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: block-axis;
+        overflow: hidden;
+    }
 </style>

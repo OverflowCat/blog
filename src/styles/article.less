@@ -69,7 +69,7 @@ article#post {
 
   @import "a.less";
 
-  [lang="en"] {
+  [lang="en"], [lang="no"], [lang="de"], [lang="es"] {
     font-family: var(--font-sans-en);
   }
 
@@ -215,6 +215,10 @@ lite-youtube {
 
 iframe {
   border: 0;
+}
+
+figure:has([data-tall-image]) img {
+  max-height: 500px;
 }
 
 // .katex {
