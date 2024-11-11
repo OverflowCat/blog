@@ -104,7 +104,7 @@
     "@unocss/transformer-directives": "^0.64.0",
     "npm-check-updates": "^17.1.10",
     "rehype-pretty-code": "^0.14.0",
-    "rollup": "^4.24.4",
+    "rollup": "^4.25.0",
     "sass": "^1.80.6",
     "shiki": "^1.22.2",
     "twoslash": "^0.2.12",
