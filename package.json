@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.13.0",
+  "version": "2.14.1",
   "private": true,
   "engines": {
     "node": ">=20"

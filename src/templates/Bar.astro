@@ -89,17 +89,21 @@ assert(slogan, "slogan is undefined");
   a {
     line-height: 200%;
     display: inline-block;
+    outline: none;
     padding-inline-start: 0.7em;
     padding-inline-end: 0.7em;
     border-bottom: none !important;
     text-decoration: none;
     color: var(--hint-color, #434343);
     transition: background-color 0.3s ease;
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background-color: var(--bg-dim);
     }
   }
-  li:has(a:is(:hover, :focus-visible)) {
+
+  li:has(a:is(:hover, :focus-visible)),
+  ul:not(:has(a:is(:hover, :focus-visible))) a.current {
     anchor-name: --indicator;
   }
   ul::before {
