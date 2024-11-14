@@ -1,7 +1,7 @@
 ---
 export interface Props {
   index?: number;
-  theme?: "transparent" | "dark" | "light" | "auto";
+  theme?: "transparent" | "auto";
   lang: "zh-Hans" | "zh-Hant" | "en";
 }
 
@@ -19,7 +19,7 @@ const items = [
 ];
 let { index, theme, lang } = Astro.props;
 if (!lang) lang = "zh-Hans";
-const slogan = pick(slogans.filter(s => s[lang]))[lang];
+const slogan = pick(slogans.filter((s) => s[lang]))[lang];
 assert(slogan, "slogan is undefined");
 ---
 
@@ -28,7 +28,7 @@ assert(slogan, "slogan is undefined");
     <Logo theme={theme} />
   </div>
   <div id="slogan" set:text={typeof slogan === "string" ? slogan : slogan[0]} />
-  <ol>
+  <ul>
     {
       items.map((item, i) => (
         <li transition:name={`navbar-${i}`}>
@@ -37,27 +37,24 @@ assert(slogan, "slogan is undefined");
             data-replace={index === i ? "本页" : item[0]}
             class={index === i ? "current" : ""}
           >
-            <span>
-              &nbsp;
+            <>
               <span>{item[0]}</span>
+              <span class="separator">·</span>
               <span class="en" lang="en">
-                / {item[1]}
+                {item[1]}
               </span>
-              &nbsp;
-            </span>
+            </>
           </a>
         </li>
       ))
     }
-  </ol>
+  </ul>
 </nav>
 
-<style
-  lang="less"
-  define:vars={{
-    "active-color": theme === "dark" ? "white" : "#black",
-  }}
->
+<style lang="less">
+  :root {
+    --indicator-size: 0.15em;
+  }
   * {
     user-select: none;
   }
@@ -67,7 +64,7 @@ assert(slogan, "slogan is undefined");
   }
   #logo,
   #slogan,
-  ol {
+  ul {
     text-align: center;
     place-items: center center;
   }
@@ -75,74 +72,50 @@ assert(slogan, "slogan is undefined");
     padding: 1rem 2px 0.2rem;
     margin: 0 auto;
   }
-  ol {
+  ul {
+    display: flex;
+    justify-content: center;
     font-size: 18px;
-    margin: 0.3rem 0 0.6rem auto;
-    margin-block-start: auto;
-    margin-block-end: auto;
-    padding-inline-start: 2px;
-    padding-inline-end: 2px;
+    gap: 0;
+    margin-block-start: var(--indicator-size);
+    margin-block-end: var(--indicator-size);
+    padding: 0;
   }
   li {
     display: inline-block;
     text-align: center;
-    margin-inline-start: 0.3em;
-    margin-inline-end: 0.3em;
     font-weight: 700;
   }
   a {
     line-height: 200%;
-    overflow-x: hidden;
-    position: relative;
     display: inline-block;
+    padding-inline-start: 0.7em;
+    padding-inline-end: 0.7em;
     border-bottom: none !important;
     text-decoration: none;
     color: var(--hint-color, #434343);
-    &.current {
-      height: 100%;
-      top: 0;
-      transform-origin: 100% 50%;
-      color: var(--active-color);
-    }
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      left: 0;
-    }
-    &::before {
-      background-color: var(--active-color);
-      height: 2px;
-      bottom: 0;
-      transform-origin: 100% 50%;
-      transform: scaleX(0);
-      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-    }
-    &::after {
-      content: attr(data-replace);
-      height: 100%;
-      top: 0;
-      transform-origin: 100% 50%;
-      transform: translate3d(200%, 0, 0);
-      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-      color: var(--active-color);
-    }
+    transition: background-color 0.3s ease;
     &:hover {
-      &::before {
-        transform-origin: 0% 50%;
-        transform: scaleX(1);
-      }
-      &::after {
-        transform: translate3d(0, 0, 0);
-      }
+      background-color: var(--bg-dim);
     }
-    span {
-      display: inline-block;
-      transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-    }
-    &:hover span {
-      transform: translate3d(-200%, 0, 0);
+  }
+  li:has(a:is(:hover, :focus-visible)) {
+    anchor-name: --indicator;
+  }
+  ul::before {
+    content: "";
+    position: absolute;
+    block-size: var(--indicator-size);
+    background-color: var(--logo-color);
+    transition: all 0.3s ease;
+    inset-block-start: anchor(--indicator end);
+    inset-inline-start: anchor(--indicator start);
+    block-size: anchor(--indicator);
+    inline-size: anchor-size(--indicator);
+  }
+  @container html (max-inline-size: 768px) {
+    .separator {
+      display: none;
     }
   }
 </style>
