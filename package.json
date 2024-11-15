@@ -101,7 +101,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.9.0",
     "@unocss/preset-icons": "^0.64.0",
-    "@unocss/transformer-directives": "^0.64.0",
+    "@unocss/transformer-directives": "^0.64.1",
     "npm-check-updates": "^17.1.11",
     "rehype-pretty-code": "^0.14.0",
     "rollup": "^4.26.0",
