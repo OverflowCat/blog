@@ -116,7 +116,7 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 // Atomic CSS
 import unocss from "unocss/astro";
 import react from "@astrojs/react";
-import qwik from "@qwikdev/astro";
+// import qwik from "@qwikdev/astro";
 
 import { rehypePipe } from "./src/scripts/rehype/common.ts";
 
@@ -186,8 +186,10 @@ export default defineConfig({
 	integrations: [
 		unocss(),
 		icon(),
-		qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
-		react({ include: ["**/react/*", "**/*.tsx*", "spoiled"] }),
+		// qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
+		react(
+			// { include: ["**/react/*", "**/*.tsx*", "spoiled"] }
+		),
 		mdx(),
 		typst(),
 		sitemap(),
