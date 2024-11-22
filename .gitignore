@@ -1,6 +1,6 @@
 # build output
 /dist/
-
+tmp-*/**
 /.astro/
 
 # dependencies

@@ -27,8 +27,6 @@ const {
 } = Astro.props;
 const img = map[sticker];
 const resolved = await Promise.all(Object.values(map).map(async src => getImage({src})))
-console.log(resolved);
-
 ---
 <div class="m-inline-auto rounded-2 flex max-inline-fit gap--4 p-2 items-end">
   <div class="flex flex-col text-center">

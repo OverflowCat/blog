@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
-
 // astro
+// import node from '@astrojs/node';
 
 // heading ids
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
@@ -127,6 +127,10 @@ export default defineConfig({
 	build: {
 		// format: "preserve",
 	},
+	// output: "server",
+	// adapter: node({
+  //   mode: 'standalone',
+  // }),
 	image: {
 		domains: [
 			"github.com",
@@ -183,7 +187,7 @@ export default defineConfig({
 		unocss(),
 		icon(),
 		qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
-		// react({ include: ["**/react/*", "**/*.tsx*"] }),
+		react({ include: ["**/react/*", "**/*.tsx*", "spoiled"] }),
 		mdx(),
 		typst(),
 		sitemap(),
