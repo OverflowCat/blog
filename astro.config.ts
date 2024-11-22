@@ -28,13 +28,17 @@ import remarkSampKbd from "remark-samp-kbd";
 import { manjuify } from "./src/scripts/manju.ts";
 import remarkRuby from "remark-ruby";
 import remarkDirect from "remark-directive";
-import { h } from 'hastscript';
-import { visit } from 'unist-util-visit';
+import { h } from "hastscript";
+import { visit } from "unist-util-visit";
 import type { Node } from "mdast";
 function myRemarkPlugin() {
 	return (tree: Node) => {
-		visit(tree, node => {
-			if (node.type === 'containerDirective' || node.type === 'leafDirective' || node.type === 'textDirective') {
+		visit(tree, (node) => {
+			if (
+				node.type === "containerDirective" ||
+				node.type === "leafDirective" ||
+				node.type === "textDirective"
+			) {
 				const data = node.data || (node.data = {});
 				const hast = h(node.name, node.attributes || {});
 				let name = hast.tagName;
@@ -45,7 +49,7 @@ function myRemarkPlugin() {
 							name = "abbr";
 							props = {
 								title: props.m || props.e || props.p,
-								lang: "zh-juai"
+								lang: "zh-juai",
 							};
 						}
 						break;
@@ -66,37 +70,36 @@ function myRemarkPlugin() {
 						}
 						*/
 						// @ts-ignore
-						node.children?.forEach(child => {
-							if (child.type === 'text')
-								child.value = manjuify(child.value);
+						node.children?.forEach((child) => {
+							if (child.type === "text") child.value = manjuify(child.value);
 						});
 						// console.log(node);
 						props = {
-							lang: "mnc"
+							lang: "mnc",
 						};
 						break;
 					case "de":
 						name = "span";
 						props = {
-							lang: "de"
+							lang: "de",
 						};
 						break;
 					case "en":
 						name = "span";
 						props = {
-							lang: "en"
+							lang: "en",
 						};
 						break;
 					case "up":
 						name = "span";
 						props = {
-							className: ["upright"]
+							className: ["upright"],
 						};
 						break;
 					case "yoko":
 						name = "span";
 						props = {
-							className: ["yoko"]
+							className: ["yoko"],
 						};
 						break;
 				}
@@ -113,6 +116,7 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 // Atomic CSS
 import unocss from "unocss/astro";
 import react from "@astrojs/react";
+import qwik from "@qwikdev/astro";
 
 import { rehypePipe } from "./src/scripts/rehype/common.ts";
 
@@ -129,21 +133,33 @@ export default defineConfig({
 			"githubusercontent.com",
 			"wikimedia.org",
 			"xkcd.in",
-		]
+		],
 	},
 	vite: {
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
-			noExternal: ["xp.css", "98.css", "@shikijs/twoslash/style-rich.css", "rehype-remnote/style/*"]
-		}
+			noExternal: [
+				"xp.css",
+				"98.css",
+				"@shikijs/twoslash/style-rich.css",
+				"rehype-remnote/style/*",
+			],
+		},
 	},
 	markdown: {
 		remarkRehype: {
 			footnoteLabel: "---",
-			footnoteBackLabel: "返回内容"
+			footnoteBackLabel: "返回内容",
 		},
 		syntaxHighlight: false,
-		remarkPlugins: [remarkMath, remarkRuby, remarkFigureCaption, remarkSampKbd, remarkDirect, myRemarkPlugin],
+		remarkPlugins: [
+			remarkMath,
+			remarkRuby,
+			remarkFigureCaption,
+			remarkSampKbd,
+			remarkDirect,
+			myRemarkPlugin,
+		],
 		rehypePlugins: [
 			/**
 			 * You can customize these heading IDs by adding a rehype plugin that
@@ -161,7 +177,15 @@ export default defineConfig({
 			// @ts-ignore
 			rehypeAutolinkHeadings,
 			// @ts-expect-error
-		].concat(rehypePipe)
+		].concat(rehypePipe),
 	},
-	integrations: [unocss(), icon(), react(), mdx(), typst(), sitemap()]
+	integrations: [
+		unocss(),
+		icon(),
+		qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
+		// react({ include: ["**/react/*", "**/*.tsx*"] }),
+		mdx(),
+		typst(),
+		sitemap(),
+	],
 });

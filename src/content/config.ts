@@ -4,22 +4,26 @@ import { postSchemaGen } from "@/scripts/schema/content";
 import { neoSchema } from "@/scripts/schema/neodb";
 import { remnoteJsonSchema } from "@/scripts/schema/remnote";
 import { defineCollection } from "astro:content";
-import { glob } from 'astro/loaders';
+import { glob } from "astro/loaders";
+import fs from "node:fs";
 
 // 2. Define a collection using `defineCollection`
+const postDir = "./src/posts/";
+if (!fs.existsSync(postDir))
+	console.error(`Directory ${postDir} does not exist`);
 const blogCollection = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.(md|mdx)', base: "./src/posts/" }),
-  schema: postSchemaGen,
+	loader: glob({ pattern: "**/[^_]*.(md|mdx)", base: postDir }),
+	schema: postSchemaGen,
 });
 
 const neodbCollection = defineCollection({
-  type: "data",
-  schema: () => neoSchema,
+	type: "data",
+	schema: () => neoSchema,
 });
 
 const commentsCollection = defineCollection({
-  type: "content",
-  schema: () => commentsSchema,
+	type: "content",
+	schema: () => commentsSchema,
 });
 
 /*
@@ -50,14 +54,14 @@ const remnoteCollection = defineCollection({
 */
 
 const remnoteCollection = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.json', base: "./src/content/rems/" }),
-  schema: () => remnoteJsonSchema,
+	loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/rems/" }),
+	schema: () => remnoteJsonSchema,
 });
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  blog: blogCollection,
-  comments: commentsCollection,
-  rems: remnoteCollection,
-  neodb: neodbCollection,
+	blog: blogCollection,
+	comments: commentsCollection,
+	rems: remnoteCollection,
+	neodb: neodbCollection,
 };

@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "astro-build.astro-vscode",
+    "johnreemar.vscode-qwik-snippets",
     "antfu.unocss"
   ],
   "unwantedRecommendations": []
