@@ -2,6 +2,7 @@ import rehypeMultiMath from "./math.ts";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import { transformerTwoslash } from '@shikijs/twoslash';
+import { rehypeTwemoji, type RehypeTwemojiOptions } from 'rehype-twemoji'
 
 type PrettyCodeNodePositionPoint = {
     line: number;
@@ -56,4 +57,5 @@ export const rehypePipe = [
     }],
     // @ts-ignore
     [rehypePrettyCode, prettyCodeOptions],
+    [rehypeTwemoji, {} as RehypeTwemojiOptions],
 ]
