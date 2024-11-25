@@ -57,8 +57,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       '@iconify-json/fluent':
-        specifier: ^1.2.7
-        version: 1.2.7
+        specifier: ^1.2.8
+        version: 1.2.8
       '@iconify-json/gravity-ui':
         specifier: ^1.2.2
         version: 1.2.2
@@ -974,8 +974,8 @@ packages:
   '@iconify-json/entypo-social@1.2.1':
     resolution: {integrity: sha512-uplWU0gC+yh1VCWcY0kaq0JIEq3DMpKoV5UnsoZVr2rjhQXuhyMJ78M5SGg8my7zqNbX7WPoaikiQJOG2PhtdA==}
 
-  '@iconify-json/fluent@1.2.7':
-    resolution: {integrity: sha512-R5Duyek2QCPxHP0NlcgYsaSFe0ftiMiL17fJrCxop0OKgZbUuqpgruGSmnRqljjvsdv3TdR7HV5XobGYejUIBw==}
+  '@iconify-json/fluent@1.2.8':
+    resolution: {integrity: sha512-yFpS3eKof874LYu0/pK0epz2c+UXlF5lTY+oX+xcXP9V5NAe4oSgWMBnKvJsxsYSEbgGhAMqDf+4y0GvyBzLVw==}
 
   '@iconify-json/gravity-ui@1.2.2':
     resolution: {integrity: sha512-9PNVp7jbDW/cYTLCP2p6e57T/O4KiWZDhtsi9tHmthZVsNXIdxA9kh5VBT/VUwBqG9rPictI5cb6Fkf6U3yz/Q==}
@@ -4882,7 +4882,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.7':
+  '@iconify-json/fluent@1.2.8':
     dependencies:
       '@iconify/types': 2.0.0
 
