@@ -33,7 +33,7 @@
     "@astrojs/react": "^3.6.3",
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
-    "@builder.io/qwik": "^1.10.0",
+    "@builder.io/qwik": "^1.11.0",
     "@flla/qwik-lottie": "^0.2.0",
     "@fontsource/ibm-plex-mono": "^5.1.0",
     "@fontsource/ibm-plex-sans": "^5.1.0",
