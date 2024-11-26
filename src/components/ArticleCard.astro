@@ -69,7 +69,7 @@ const { photo } = data;
       </blockquote>
     </td>
     {
-      photo && photo.src && (
+      photo && photo.src && !photo.hide && (
         <td class="title-img">
           <img
             class="title-img"
@@ -86,7 +86,7 @@ const { photo } = data;
       )
     }
     {
-      photo?.img && (
+      photo?.img  && !photo.img.hide && (
         <td class="title-img">
           <Picture
             class="title-img"
