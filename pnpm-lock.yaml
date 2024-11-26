@@ -93,8 +93,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8
       '@myriaddreamin/rehype-typst':
-        specifier: 0.5.0-rc7
-        version: 0.5.0-rc7
+        specifier: 0.5.0-rc9
+        version: 0.5.0-rc9
       '@myriaddreamin/typst-ts-node-compiler':
         specifier: 0.5.0-rc9
         version: 0.5.0-rc9
@@ -1149,8 +1149,8 @@ packages:
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
 
-  '@myriaddreamin/rehype-typst@0.5.0-rc7':
-    resolution: {integrity: sha512-oIUmJzV8c+PZoV4TZwSupN9e06EaC2i0DpjU6NPe6y0HE7MoPOd35s6i+RjdSNPDguqBdP2MO4VaqnGahQW/ig==}
+  '@myriaddreamin/rehype-typst@0.5.0-rc9':
+    resolution: {integrity: sha512-6YZ7KkoWch/5bOBUHAbHX3lpYV0KfS7Cwa6/AdU70YoQCLxU2nut9D+vNMH0iWujFU8545nMngh2D0vZRKOofA==}
 
   '@myriaddreamin/typst-ts-node-compiler-android-arm-eabi@0.5.0-rc9':
     resolution: {integrity: sha512-xMvGjWeuP8CwTYIzrcK2ypwiUStlcUv8QPHqocQbCq4lWdtMf5ib2gX2Q3yW3phoFjZ34Q07NS2vFOJ3eVHnbQ==}
@@ -5132,7 +5132,7 @@ snapshots:
       - acorn
       - supports-color
 
-  '@myriaddreamin/rehype-typst@0.5.0-rc7':
+  '@myriaddreamin/rehype-typst@0.5.0-rc9':
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.0-rc9
       '@types/hast': 3.0.4

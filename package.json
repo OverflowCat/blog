@@ -54,7 +54,7 @@
     "@iconify-json/ri": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.13",
     "@iconify-json/tabler": "^1.2.8",
-    "@myriaddreamin/rehype-typst": "0.5.0-rc7",
+    "@myriaddreamin/rehype-typst": "0.5.0-rc9",
     "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc9",
     "@myriaddreamin/typst.ts": "^0.4.1",
     "@qwikdev/astro": "^0.6.3",
