@@ -934,7 +934,7 @@ To sum it up:
 - Using code points for iterating over a string is wrong. They are not the basic unit of writing. One grapheme could consist of multiple code points.
 - 以码位为单位来迭代字符串是错误的。它们不是书写的基本单位。一个字位可能由多个码位组成。
 - To detect grapheme boundaries, you need Unicode tables.
-- 要检测字位的边界，你需要表格。
+- 要检测字位的边界，你需要转换表。
 - Use a Unicode library for everything Unicode, even boring stuff like `strlen`, `indexOf` and `substring`.
 - 对于所有 Unicode 相关的东西，甚至是像 `strlen`、`indexOf` 和 `substring` 这样的无聊的东西，都要使用 Unicode 库。
 - Unicode updates every year, and rules sometimes change.

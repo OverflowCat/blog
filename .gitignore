@@ -1,7 +1,8 @@
 # build output
 /dist/
-tmp-*/**
+# tmp-*/**
 /.astro/
+sort.py
 
 # dependencies
 node_modules/
