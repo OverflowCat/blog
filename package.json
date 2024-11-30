@@ -56,7 +56,7 @@
     "@iconify-json/tabler": "^1.2.8",
     "@myriaddreamin/rehype-typst": "0.5.0-rc7",
     "@myriaddreamin/typst-ts-node-compiler": "0.5.0-rc9",
-    "@myriaddreamin/typst.ts": "^0.4.1",
+    "@myriaddreamin/typst.ts": "^0.5.0",
     "@qwikdev/astro": "^0.6.3",
     "@shikijs/twoslash": "^1.23.1",
     "@types/react": "^18.3.12",
