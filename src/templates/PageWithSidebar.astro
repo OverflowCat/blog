@@ -19,12 +19,12 @@ const { title, bar, og } = Astro.props;
 Astro.locals.noscript = true;
 ---
 
-<Page title={title} og={og}>
+<Page title={title} og={og} lang="zh-Hans">
   <Bar {...bar} lang="zh-Hans" />
   <Han hant={false} />
   <main>
     <Sidebar><slot name="comments" slot="comments" /></Sidebar>
-    <Paper transitionName="main">
+    <Paper id="page-main" transitionName="main">
       <section class="inhalt">
         <slot />
       </section>
@@ -35,43 +35,40 @@ Astro.locals.noscript = true;
 <style>
   main {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 16px;
+    inline-size: 100%;
   }
   .inhalt {
-    max-inline-size: 850px;
+    max-inline-size: 750px;
     inline-size: 100dvi;
     padding: 0;
     padding-inline: 0.75rem;
   }
+  #main-page {
+    flex: 1;
+  }
 </style>
 
 <style is:global>
-  /* @media (max-width: 900px) { */
-  @container html (max-inline-size: 900px) {
-    main {
-      flex-direction: column-reverse;
-    }
+  @container html (max-inline-size: 1000px) {
     aside#sidebar {
-      max-inline-size: 700px !important;
-      flex-direction: column-reverse !important;
+      order: 2;
     }
-    aside#sidebar .paper {
-      max-inline-size: 700px !important;
+    #page-main {
+      order: 1;
     }
   }
 
-  @container html (min-inline-size: 900px) {
+  @container html (min-inline-size: 1000px) {
     .inhalt {
-      min-inline-size: 700px !important;
     }
     main {
-      flex-direction: row;
     }
     aside#sidebar {
-      align-self: flex-start;
-      inset-block-start: 50px;
+      align-self: start;
     }
   }
 </style>
