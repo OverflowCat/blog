@@ -140,11 +140,17 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		server: {
+			hmr: {
+				timeout: 3000,
+			},
+		},
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
 			noExternal: [
 				"xp.css",
 				"98.css",
+				"@ibm/plex-sans-sc",
 				"@shikijs/twoslash/style-rich.css",
 				"rehype-remnote/style/*",
 			],
@@ -185,7 +191,6 @@ export default defineConfig({
 	},
 	integrations: [
 		unocss(),
-		icon(),
 		// qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
 		react(
 			// { include: ["**/react/*", "**/*.tsx*", "spoiled"] }
@@ -193,5 +198,6 @@ export default defineConfig({
 		mdx(),
 		typst(),
 		sitemap(),
+		icon(),
 	],
 });

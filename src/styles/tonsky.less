@@ -111,11 +111,19 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   --font-mono: "IBM Plex Mono", "Noto Sans CJK Mono SC", monospace, "Noto Sans CJK SC";
+  font-weight: 450;
 
   p[lang^="zh"] {
     line-height: 1.68;
   }
-
+  
+  [lang="zh-Hans"],
+  [lang="zh-CN"],
+  [lang="zh-SG"] {
+    font-family: "IBM Plex Sans", "IBM Plex Sans SC", "Noto Sans",
+    "Noto Sans CJK SC", "HarmonyOS Sans SC", sans-serif !important;
+  }
+  
   [lang="zh-Hant"],
   [lang="zh-TW"],
   [lang="zh-HK"] {
