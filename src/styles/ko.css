@@ -1,0 +1,12 @@
+article > p:nth-of-type(odd) {
+    font-weight: 600;
+    font-size: 1.2em;
+    font-family: "IBM Plex Sans KR", "Noto Sans CJK KR", "Pingfang SC", sans-serif;
+}
+
+article > p:nth-of-type(even) {
+    font-weight: 500;
+    font-size: 1.1em;
+    font-family: "IBM Plex Sans", "IBM Plex Sans SC", "Noto Sans",
+    "Noto Sans CJK SC", "HarmonyOS Sans SC", sans-serif !important;
+}
