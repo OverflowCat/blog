@@ -60,7 +60,7 @@
     "@myriaddreamin/typst.ts": "^0.5.1",
     "@qwikdev/astro": "^0.6.3",
     "@shikijs/twoslash": "^1.24.0",
-    "@types/react": "^18.3.12",
+    "@types/react": "^18.3.13",
     "@types/react-dom": "^18.3.1",
     "astro": "5.0.2",
     "astro-icon": "^1.1.4",
