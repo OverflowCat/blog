@@ -78,7 +78,7 @@ Astro.locals.noscript = post.data.noscript;
 
 <Page
   title={title}
-  lang={lang}
+  lang={lang ?? "zh"}
   og={{
     title,
     description: post.data.description ?? "新世界的大门",
@@ -86,7 +86,7 @@ Astro.locals.noscript = post.data.noscript;
     url: `https://blog.xinshijiededa.men/${post.id}/`,
   }}
   metas={metas}
-  source={`https://github.com/OverflowCat/blog/blob/src/src/posts/${post.id}?plain=1`}
+  source={`https://github.com/OverflowCat/blog/blob/src/${post.filePath}?plain=1`}
 >
   <V5MdLayout ext={post.data.ext} props={
     {
