@@ -1,0 +1,56 @@
+---
+export type Props = {
+  initialContent: string;
+}
+
+const { initialContent } = Astro.props;
+---
+
+<script>
+  import { Moonpad } from "@moonbit/moonpad";
+  const moonpadElement = document.getElementById("moonpad-element") as Moonpad;
+  const outputElement = document.getElementById("output")!;
+
+  if (customElements.get("moonpad-wc") === undefined) {
+    const MoonpadWc = Moonpad;
+    customElements.define("moonpad-wc", MoonpadWc);
+  }
+
+  document
+    .getElementById("run-button")!
+    .addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        const output = await moonpadElement.run(); // Assuming run() is a method of the Moonpad Web Component
+        outputElement.textContent = output ?? "";
+      } catch {
+        outputElement.textContent = "Compile error";
+      }
+    });
+
+  document.getElementById("reset-button")!.addEventListener("click", (e) => {
+    e.preventDefault();
+    moonpadElement.reset(); // Reset method of Moonpad Web Component
+  });
+
+  document.getElementById("format-button")!.addEventListener("click", (e) => {
+    e.preventDefault();
+    moonpadElement.format(); // Format method of Moonpad Web Component
+  });
+</script>
+
+<div id="moonpad-container" class="wrapper">
+  <div class="buttons-wrapper">
+    <button id="run-button" class="button button--secondary">Run</button>
+    <button id="reset-button" class="button button--secondary">Reset</button>
+    <button id="format-button" class="button button--secondary">Format</button>
+  </div>
+  <!-- @ts-ignore -->
+  <moonpad-wc id="moonpad-element" data-theme="light" data-content={initialContent}><style>button {
+    @apply bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded border-none mbe-4;
+  }</style></moonpad-wc>
+  <section class="mt-4 p-block-2">
+    <div class="text-sm text-blue m-2">输出</div>
+    <pre id="output" style="white-space: pre-wrap;" class="bg-blue-100 rounded-md p-4"><br /></pre>
+  </section>
+</div>

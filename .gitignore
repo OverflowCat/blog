@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # typst
 *.pdf
+
+# moonpad
+public/lsp-server.js

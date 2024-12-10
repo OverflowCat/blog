@@ -1,0 +1,55 @@
+---
+title: 介绍 Tsukimiya bot
+date: 2024-12-10T20:51:50.344Z
+photo:
+  src: https://cdn.you.com/youagent-images/flux1_1-pro/37c9c967-f696-4310-8a85-c1e03d3d70dd.png
+  hide: true
+noscript: true
+licence: "CcBySa"
+icon: mdi:rabbit
+layout: "@/layouts/Default.astro"
+tags: []
+categories: []
+ext: md
+---
+
+Tsukimiya bot（[@tsukimiya_bot](https://t.me/tsukimiya_bot)）是一个 Telegram 机器人，可以 eval [月兔](https://moonbitlang.com/) 和[仓颉编程语言](https://cangjie-lang.cn/)的代码。
+
+## 使用
+
+- `/eval`, `/mbt`, `/mb`, `/moon`, `/evalmbt` - eval Moonbit 代码。如果代码不在 `fn main` 中，将会自动包裹。此情况下，如果尾语句不是 println，则会 println 最后一行表达式的值。
+- `/cj`, `/cangjie`, `/evalcj` - eval 仓颉编程语言代码。
+
+![Moonbit](/screenshots/moonbit.png)
+![仓颉](/screenshots/cangjie.png)
+
+## 实现
+
+### Moonbit
+
+对 Moonbit 代码的 eval 实现比较抽象。[Jinser](https://forest.purejs.icu/index.xml) 说想把 Moonbit 编译器编译到 JS 后 worker 部分的代码拿出来跑在 Cloudflare Workers 上。虽然这个大小的 JS 不付钱的话不太能放在边缘上，但这启发了我。
+
+寻找一通，发现官网上 [文档](https://docs.moonbitlang.cn/) 里面有很多带了编辑器的例子可以在浏览器里编译 Moonbit 代码并生成 WASM 再运行，甚至还带了语言服务器。查看了 Docusaurus 上文档的源码，发现是 [``@moonbit/moonpad``](https://www.npmjs.com/package/@moonbit/moonpad?activeTab=readme) 的包，封装成了 Web 组件。我这边也封装成了 Astro 组件放在文章里（里面写死了 ``lsp-server.js`` 的路径，需要擦屁股），你可以猛戳下面的 Run 按钮查看效果。
+
+import Moon from "@/components/Moon.astro"
+
+<Moon client:visible initialContent={`fn sum(xs: @immut/list.T[Int]) -> Int {
+    loop xs, 0 {
+        Nil, acc => break acc // break 可以省略
+        Cons(x, rest), acc => continue rest, x + acc
+    }
+  }
+
+  fn main {
+    println(sum(Cons(1, Cons(2, Cons(3, Nil)))))
+  }`} />
+
+依赖里面的 ``core`` 仍然是闭源的，我们没法获得编译器的源码。不过不要紧，跑在浏览器里就好了。开一个 HTTP 服务器然后 bot 部分用 Puppeteer 模拟点击。这样，虽然最终没有跑在边缘上，但可以使用 [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) 跑在 Cloudflare Workers 上。当然，最终还是要付钱。
+
+### 仓颉
+
+仓颉则是直接使用了官网上 [在线体验](https://cangjie-lang.cn/playground) 部分的 API。
+
+## 源码
+
+其他的不得说项，具体可看源码：[tsukimiya-bot](https://github.com/OverflowCat/tsukimiya/)。

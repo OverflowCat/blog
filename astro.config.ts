@@ -146,7 +146,7 @@ export default defineConfig({
 			},
 		},
 		ssr: {
-			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler"],
+			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler", "astro-icon"],
 			noExternal: [
 				"xp.css",
 				"98.css",

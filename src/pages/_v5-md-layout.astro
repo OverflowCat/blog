@@ -10,16 +10,7 @@ export interface Props {
     };
 }
 
-import Default from "@/layouts/Default.astro";
 const { ext } = Astro.props;
 ---
 
-{
-    ext == "md" ? (
-        <Default {...Astro.props.props}>
-            <slot />
-        </Default>
-    ) : (
-        <slot />
-    )
-}
+<slot />
