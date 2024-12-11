@@ -30,7 +30,7 @@
     "@astrojs/markdown-remark": "6.0.1",
     "@astrojs/mdx": "4.0.2",
     "@astrojs/prism": "3.2.0",
-    "@astrojs/react": "^4.0.0",
+    "@astrojs/react": "^4.1.0",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@builder.io/qwik": "^1.11.0",
