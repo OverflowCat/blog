@@ -13,6 +13,10 @@ About this blog, see [About](https://blog.xinshijiededa.men/about/). Below are t
 - `pnpm bump`: update deps
 - `pnpm new <slug>`: create a new article
 
+## GitHub Actions
+
+The GitHub Actions workflow installs `pnpm` before installing dependencies and building the site.
+
 ## License
 
 The code is licensed under the [MIT License](/LICENSE).
