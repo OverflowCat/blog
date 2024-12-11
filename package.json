@@ -63,7 +63,7 @@
     "@shikijs/twoslash": "^1.24.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
-    "astro": "5.0.4",
+    "astro": "5.0.5",
     "astro-remote": "^0.3.3",
     "astro-typst": "0.7.0-beta.1",
     "bilibili-bv-av-convert": "^1.0.0",
