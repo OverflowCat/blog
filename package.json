@@ -110,7 +110,7 @@
     "rehype-pretty-code": "^0.14.0",
     "rehype-twemoji": "^0.0.6",
     "rollup": "^4.28.1",
-    "sass": "^1.82.0",
+    "sass": "^1.83.0",
     "shiki": "^1.24.2",
     "twoslash": "^0.2.12",
     "typescript": "^5.7.2",
