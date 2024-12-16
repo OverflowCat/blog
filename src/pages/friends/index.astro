@@ -9,6 +9,7 @@ import Bar from "@/templates/Bar.astro";
 
 const EXAMPLE = `title: 新世界的大门
 href: https://blog.xinshijiededa.men
+feed: https://blog.xinshijiededa.men/atom.xml/ # or \`false\`
 avatar: # (多种格式可选)
   https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp
   https://raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.svg
@@ -32,6 +33,7 @@ Astro.locals.noscript = true;
       link="blog.hongdou.dev"
       title="红豆的猫窝"
       avatar="//telegra.ph/file/2d55a0dadc16a08c3f652.png"
+      feed="https://blog.hongdou.dev/index.xml"
     >
       <del>
         <Color color="rgb(245, 169, 184)">粉</Color><Color
@@ -46,13 +48,14 @@ Astro.locals.noscript = true;
       title="Bersella AI"
       avatar="//bersella-ai.cc/uploads/avatar.png"
       desc="My memories & dreams"
+      feed={false}
     />
-
     <Card
       link="rkm.mx"
       title="/rkm/ Rikumi"
       avatar="//avatars.githubusercontent.com/u/5051300?v=4"
       desc="Can you hear me?"
+      feed={false}
       script={true}
     >
       也是页面仔的梨咕米
@@ -61,6 +64,7 @@ Astro.locals.noscript = true;
       link="ray-eldath.me"
       title="Ray Eldath"
       avatar="//telegra.ph/file/e2aca16b28236a5d3d456.png"
+      feed="https://ray-eldath.me/atom.xml"
     >
       寒寒！
     </Card>
@@ -68,6 +72,7 @@ Astro.locals.noscript = true;
       link="lemonhx.moe"
       title="LemonHX"
       avatar="//avatars.githubusercontent.com/u/35558393?v=4"
+      feed="https://lemonhx.moe/feed"
     >
       柠檬🍋
     </Card>
@@ -75,6 +80,7 @@ Astro.locals.noscript = true;
       link="cynosura.one"
       title="楓々"
       avatar="//cynosura.one/img/avatar.webp"
+      feed="https://cynosura.one/posts/feeds/all.atom.xml"
       script={true}
     >
       熊熊
@@ -83,6 +89,7 @@ Astro.locals.noscript = true;
       link="umrpowered.codeberg.page"
       title="U.M.R Powered"
       avatar="//umrpowered.codeberg.page/assets/avatars/ai-generated-maid.webp"
+      feed="https://umrpowered.codeberg.page/feed.xml"
       desc="因「U.M.R Powered」希望被搜索引擎顺利检索而搭建起来的简单博客"
     >
       稳如<Pn>永仪</Pn>的 UMR 猫猫（
@@ -91,12 +98,14 @@ Astro.locals.noscript = true;
       link="littleqiu.net"
       title="DreamCity"
       avatar="//www.littleqiu.net/images/Avatar.png"
+      feed="https://littleqiu.net/atom.xml"
       desc="迷惘少年的梦想世界"
     />
     <Card
       link="hly0928.com"
       title="Steven's Blog"
       avatar="//blog.hly0928.com/images/avatar.png"
+      feed="https://blog.hly0928.com/index.xml"
       desc="悟已往之不諫，知來者之可追"
     >
       可恶喵，竟然和我用一样的签名档😤
@@ -106,23 +115,27 @@ Astro.locals.noscript = true;
       title="刘其然的部落格"
       avatar="//avatars.githubusercontent.com/u/113300968?v=4"
       desc="Liu Qiran's Blog"
+      feed="https://www.liuqiran.com/feed/"
     />
     <Card
       link="blog.wws0629.com"
       title="淼表"
       avatar="//blog.wws0629.com/imgs/wws.png"
+      feed={false}
       desc="寄蜉蝣于天地 渺沧海之一粟"
     />
     <Card
       title="dpkg123 的博客"
       link="dpkg123.site"
       avatar="//dpkg123.site/favicon.jpg"
+      feed="https://dpkg123.netlify.app/atom.xml"
       desc="路漫漫其修远兮，吾将上下而求索。"
     />
     <Card
       title="VitalyR"
       link="vitalyr.com"
       avatar="//avatars.githubusercontent.com/u/24508452"
+      feed="https://vitalyr.com/index.xml"
       desc="长天高远，星月粲然"
     >
       虚宝
@@ -131,18 +144,21 @@ Astro.locals.noscript = true;
       link="cronfox.2434.me"
       title="CronfoxLabs"
       avatar="//assets.2434.me/img/avatar/avatar-256x-256c.png"
+      feed={false}
       desc='<span lang="ja">何がここまであなたをうごかすの？</span>'
     />
     <Card
       link="www.yunyitang.me/zh/"
       title="Yunyi's Blog"
       avatar="https://www.yunyitang.me/img/Avatar.png"
+      feed="https://www.yunyitang.me/atom.xml"
       desc="<span lang='en'>Little squirrel Hopping around</span>"
     />
     <Card
       link="laoshubaby.moe"
       title="布丁天堂"
       avatar="//github.com/laoshubaby.png"
+      feed={null}
       desc=""
     >
       老鼠宝子
@@ -151,6 +167,7 @@ Astro.locals.noscript = true;
       link="with.fish"
       title="鱼类观测研究所"
       avatar="//avatars.githubusercontent.com/u/32504382?v=4"
+      feed="https://with.fish/atom.xml"
       desc="<span lang='en'>selfish saltfish.</span>"
     />
     <Card
@@ -158,6 +175,7 @@ Astro.locals.noscript = true;
       link="sakurame.eu.org"
       title="Sakura's Blog"
       avatar="//github.com/OverflowCat/blog/assets/20166026/4c2b9f74-5c5f-48e8-80ee-a8de80cc40b9"
+      feed="https://sakurame.eu.org/atom.xml"
       desc="一个专注于技术和思考分享的博客"
       script={true}
     >
@@ -171,16 +189,23 @@ Astro.locals.noscript = true;
       link="blog.nyaasu.top"
       title="Nyaasu 研究所"
       avatar="//blog.nyaasu.top/usr/imgs/avatar.jpeg"
+      feed="https://blog.nyaasu.top/feed"
       desc="ニャース研究所"
     />
     <Card
       link="ventusuta.com"
       title="Ventus Uta 的网络日志"
       avatar="//avatars.githubusercontent.com/u/135337676"
+      feed="https://blog.ventusuta.com/feed"
       desc="8 点、Classroom 见。"
     />
   </ul>
 
+  <h1 id="subscribe">订阅全部</h1>
+  <p class="info">
+    你可以订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
+    此 <a href="/friends.opml">OPML</a> 文件可以用于导入到支持的阅读器中。
+  </p>
   <h1 id="exchange">交换友链</h1>
   <h2 id="self">本站信息</h2>
   <style is:global>
@@ -212,6 +237,7 @@ Astro.locals.noscript = true;
       link="blog.xinshijiededa.men"
       title="新世界的大门"
       avatar="//raw.githubusercontent.com/OverflowCat/blog/test_a/imgs/avatar/xni.webp"
+      feed="https://blog.xinshijiededa.men/atom.xml"
       desc='<span lang="zh-hant">悟已往之不諫，知來者之可追</span>'
     >
       你可以在 <code>desc</code> 中使用 HTML。不提供 <code>desc</code>

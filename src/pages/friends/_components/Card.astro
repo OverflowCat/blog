@@ -3,6 +3,8 @@ export interface Props {
   id?: string;
   title: string;
   link: string;
+  /** RSS 订阅地址 */
+  feed: string | false | null;
   avatar: string;
   /** 网站自己的描述 */
   desc?: string;
@@ -10,9 +12,12 @@ export interface Props {
   script?: boolean;
 }
 
-const { id, link, title, avatar, desc, script } = Astro.props;
+const { id, link, title, avatar, desc, feed, script } = Astro.props;
 const href = "https://" + link;
-import { Icon } from "astro-icon/components";
+
+import { collect, generateFeedOpml } from "@/scripts/opml";
+feed &&
+  collect({ title, href: "https://" + href, url: feed, desc: desc ?? "" });
 ---
 
 <li class="link-card" id={id}>
@@ -23,13 +28,8 @@ import { Icon } from "astro-icon/components";
       <div class="link">
         <p id="link">
           <code>{link}</code>
-          {
-            script && (
-              <span class="require-js">
-                <Icon name="ic:round-javascript" />
-              </span>
-            )
-          }
+          {feed && <i class="has-feed" />}
+          {script && <i class="require-js" />}
         </p>
       </div>
       <div class="main">
@@ -52,12 +52,16 @@ import { Icon } from "astro-icon/components";
   </a>
 </li>
 <style>
-  .require-js > svg {
-    opacity: 0;
+  .has-feed {
+    @apply i-mdi:rss inline-block opacity-70 vertical-top;
+    transform: translateY(40%);
   }
-  .link-card:hover .require-js > svg {
+  .require-js {
+    @apply inline-block opacity-0 i-ic:round-javascript;
+  }
+  .link-card:hover .require-js {
     transform: scale(2) translateY(40%);
-    opacity: 0.6;
+    opacity: 0.7;
     transition: opacity 0.6s;
   }
   .link-card {
