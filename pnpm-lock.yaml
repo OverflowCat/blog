@@ -16,13 +16,13 @@ importers:
         version: 6.0.1
       '@astrojs/mdx':
         specifier: 4.0.2
-        version: 4.0.2(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: 4.0.2(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
       '@astrojs/prism':
         specifier: 3.2.0
         version: 3.2.0
       '@astrojs/react':
-        specifier: ^4.1.0
-        version: 4.1.0(@types/node@22.10.2)(@types/react-dom@19.0.2(@types/react@19.0.1))(@types/react@19.0.1)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)
+        specifier: ^4.1.1
+        version: 4.1.1(@types/node@22.10.2)(@types/react-dom@19.0.2(@types/react@19.0.1))(@types/react@19.0.1)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)
       '@astrojs/rss':
         specifier: ^4.0.10
         version: 4.0.10
@@ -51,50 +51,50 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       '@iconify-json/clarity':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/codicon':
-        specifier: ^1.2.7
-        version: 1.2.7
-      '@iconify-json/entypo-social':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/fluent':
-        specifier: ^1.2.8
-        version: 1.2.8
-      '@iconify-json/gravity-ui':
         specifier: ^1.2.2
         version: 1.2.2
-      '@iconify-json/ic':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/icon-park':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/logos':
-        specifier: ^1.2.3
-        version: 1.2.3
-      '@iconify-json/material-symbols':
-        specifier: ^1.2.10
-        version: 1.2.10
-      '@iconify-json/mdi':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/ph':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/pixelarticons':
-        specifier: ^1.2.1
-        version: 1.2.1
-      '@iconify-json/ri':
-        specifier: ^1.2.3
-        version: 1.2.3
-      '@iconify-json/simple-icons':
-        specifier: ^1.2.15
-        version: 1.2.15
-      '@iconify-json/tabler':
+      '@iconify-json/codicon':
+        specifier: ^1.2.8
+        version: 1.2.8
+      '@iconify-json/entypo-social':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/fluent':
         specifier: ^1.2.11
         version: 1.2.11
+      '@iconify-json/gravity-ui':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/ic':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/icon-park':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/logos':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.12
+        version: 1.2.12
+      '@iconify-json/mdi':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/ph':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/pixelarticons':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/ri':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.16
+        version: 1.2.16
+      '@iconify-json/tabler':
+        specifier: ^1.2.13
+        version: 1.2.13
       '@moonbit/moonpad':
         specifier: ^0.0.9
         version: 0.0.9(@lezer/common@1.2.3)
@@ -109,7 +109,7 @@ importers:
         version: 0.5.1
       '@qwikdev/astro':
         specifier: ^0.6.3
-        version: 0.6.3(@builder.io/qwik@1.11.0(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)))(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))
+        version: 0.6.3(@builder.io/qwik@1.11.0(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)))(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))
       '@shikijs/twoslash':
         specifier: ^1.24.2
         version: 1.24.2(typescript@5.7.2)
@@ -120,8 +120,8 @@ importers:
         specifier: ^19.0.2
         version: 19.0.2(@types/react@19.0.1)
       astro:
-        specifier: 5.0.5
-        version: 5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+        specifier: 5.0.9
+        version: 5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astro-icon:
         specifier: 1.1.4
         version: 1.1.4
@@ -130,7 +130,7 @@ importers:
         version: 0.3.3
       astro-typst:
         specifier: 0.7.0-beta.1
-        version: 0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.1)(@types/node@22.10.2)(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)
+        version: 0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.1)(@types/node@22.10.2)(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -154,7 +154,7 @@ importers:
         version: 4.2.1
       logical-astro-tweet:
         specifier: ^0.0.5
-        version: 0.0.5(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: 0.0.5(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -329,8 +329,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/react@4.1.0':
-    resolution: {integrity: sha512-8F0ncvcCexVeQZMwPouLSFuzCK1KXUIYQ57lW3ZG2p7B5DGAajXGanb/CGF7MMSpX8Z0t9sELQqLHOCV/+78Ig==}
+  '@astrojs/react@4.1.1':
+    resolution: {integrity: sha512-hT66DWYGquAgXm0miy+mjxEp9zOiqhKUWzLaJbXv+PDlObggmj8uiAkc+JWOs6lQdC4tldY3vIAr50ex0W9NKA==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       '@types/react': ^17.0.50 || ^18.0.21 || ^19.0.0
@@ -996,50 +996,50 @@ packages:
     resolution: {integrity: sha512-1u/8f5TtDHXWNQe+YfIESesZGX2PmhEfyU0znlyFvATch+xc5fPYjXj2gWKMTmdKsDawqAm/BkJBQjx2CDlZww==}
     hasBin: true
 
-  '@iconify-json/clarity@1.2.1':
-    resolution: {integrity: sha512-xUjFG3QU/Kqcs2O7/wHAj+xLlfJvzPY0bE5C5AaspwmOnau5R+rcTCAKtDZHUUvhSq+9t7GAJ5bUO5nkzmttrA==}
+  '@iconify-json/clarity@1.2.2':
+    resolution: {integrity: sha512-ShZVAWkcI/OYQSBdGPYKjyCrT1ApACYrenPmWD8VJKY8KGip+tSe0qv1c8+Jsfou8Jx71XS7x+rJQC1ydRygIA==}
 
-  '@iconify-json/codicon@1.2.7':
-    resolution: {integrity: sha512-zrMLWCNBqD+Yz/1tOEsKrHAcKL2AqSgYD6Y3aA/TDiv9/LeBoHuiPwFbXJzQOurC8cHI2EKfptaEBaiOUHjZ9g==}
+  '@iconify-json/codicon@1.2.8':
+    resolution: {integrity: sha512-JTNIQj1zmLgTiCNPr+4d2IBpwJkskRGq8UBxtgfQ3pIUd/suto128Omc75GJy2q/nCrrgA8d8RaMvRbU1DijRA==}
 
-  '@iconify-json/entypo-social@1.2.1':
-    resolution: {integrity: sha512-uplWU0gC+yh1VCWcY0kaq0JIEq3DMpKoV5UnsoZVr2rjhQXuhyMJ78M5SGg8my7zqNbX7WPoaikiQJOG2PhtdA==}
+  '@iconify-json/entypo-social@1.2.2':
+    resolution: {integrity: sha512-70dql8kxhMh2JE7pnrBC83IPt9bRxsfOVVvPuEdgi7DbB62Im+VoAWVARSf3K7lIFNYL6VDlYUXuqIB/QdtR8A==}
 
-  '@iconify-json/fluent@1.2.8':
-    resolution: {integrity: sha512-yFpS3eKof874LYu0/pK0epz2c+UXlF5lTY+oX+xcXP9V5NAe4oSgWMBnKvJsxsYSEbgGhAMqDf+4y0GvyBzLVw==}
+  '@iconify-json/fluent@1.2.11':
+    resolution: {integrity: sha512-cIaUZiNoEFF22tldJOh2mcwk/d6C+kpo5R4xhgLAy6HH61NaY4Lqktje4qK2nqzQqAvYB2NpDjJnmBQw6zUlJw==}
 
-  '@iconify-json/gravity-ui@1.2.2':
-    resolution: {integrity: sha512-9PNVp7jbDW/cYTLCP2p6e57T/O4KiWZDhtsi9tHmthZVsNXIdxA9kh5VBT/VUwBqG9rPictI5cb6Fkf6U3yz/Q==}
+  '@iconify-json/gravity-ui@1.2.4':
+    resolution: {integrity: sha512-8o8L0exFRA7a6U585bkYzxjAsMhx7WeUE2DsF/tkomqJLbcBZOlryLH6Sizk5xKRKLc8RMTj1LTfKQRKc7Jmew==}
 
-  '@iconify-json/ic@1.2.1':
-    resolution: {integrity: sha512-UjL/bjJP/T5EV881+hTzcfTKVo0KEUjhnMiJcLtPzNgPtU2KZZmRx8BSKKR61H4CN/5FTEbyawGyG0aEt3SwGQ==}
+  '@iconify-json/ic@1.2.2':
+    resolution: {integrity: sha512-QmjwS3lYiOmVWgTCEOTFyGODaR/+689+ajep/VsrCcsUN0Gdle5PmIcibDsdmRyrOsW/E77G41UUijdbjQUofw==}
 
-  '@iconify-json/icon-park@1.2.1':
-    resolution: {integrity: sha512-rSawdNaRnF1J8E4EUgkisYKTJ8J0GBmXTMyO2SqqFWs8bR8yExXrfGgFh9N6z3iFYje2IiCcOreT10imrWPLnA==}
+  '@iconify-json/icon-park@1.2.2':
+    resolution: {integrity: sha512-MdC180Mfz0h9RLTCcT49uKdllynCcG2V0nmggAkTn9pEJig9bOvQzC+05otNSlMjloAPzryj/RCf2P/nHiEeHg==}
 
-  '@iconify-json/logos@1.2.3':
-    resolution: {integrity: sha512-JLHS5hgZP1b55EONAWNeqBUuriRfRNKWXK4cqYx0PpVaJfIIMiiMxFfvoQiX/bkE9XgkLhcKmDUqL3LXPdXPwQ==}
+  '@iconify-json/logos@1.2.4':
+    resolution: {integrity: sha512-XC4If5D/hbaZvUkTV8iaZuGlQCyG6CNOlaAaJaGa13V5QMYwYjgtKk3vPP8wz3wtTVNVEVk3LRx1fOJz+YnSMw==}
 
-  '@iconify-json/material-symbols@1.2.10':
-    resolution: {integrity: sha512-GcZxhOFStM7Dk/oZvJSaW0tR/k6NwTq+KDzYgCNBDg52ktZuRa/gkjRiYooJm/8PAe9NBYxIx8XjS/wi4sasdQ==}
+  '@iconify-json/material-symbols@1.2.12':
+    resolution: {integrity: sha512-2p2T13Kccy7R2HNbdiVsIcHxjp4s9a+iKlfbtt29hldG1pVNaPIlMALNA9bjdEwPjwsVFe06INCbjCRc68JysQ==}
 
-  '@iconify-json/mdi@1.2.1':
-    resolution: {integrity: sha512-dSkQU78gsZV6Yxnq78+LuX7jzeFC/5NAmz7O3rh558GimGFcwMVY/OtqRowIzjqJBmMmWZft7wkFV4TrwRXjlg==}
+  '@iconify-json/mdi@1.2.2':
+    resolution: {integrity: sha512-84aznJXzfGdbOXGe8xB7E5uNAb7Yo5IABwTgq2X3kczb819qZeS9eL31bTVn7wJdCLK5ieaoUc2GTS3QYIkJ6g==}
 
-  '@iconify-json/ph@1.2.1':
-    resolution: {integrity: sha512-x0DNfwWrS18dbsBYOq3XGiZnGz4CgRyC+YSl/TZvMQiKhIUl1woWqUbMYqqfMNUBzjyk7ulvaRovpRsIlqIf8g==}
+  '@iconify-json/ph@1.2.2':
+    resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
 
-  '@iconify-json/pixelarticons@1.2.1':
-    resolution: {integrity: sha512-qGDhOKbpGYFZnjtCCZHnFn/QQIVjRw1XSCHIYD+LJtQXa4JYWhBjuveeRdt4ZYua51AIIhKb0/r3TMEaFemGfA==}
+  '@iconify-json/pixelarticons@1.2.2':
+    resolution: {integrity: sha512-BAAzqfT0XKUc/a8MgTxOH1aSm44InW9abUIQ1qu5dBntKlYuJP/dN0JfK4WEpUS78T/7HP8w9v1nSQjENLyjFg==}
 
-  '@iconify-json/ri@1.2.3':
-    resolution: {integrity: sha512-UVKofd5xkSevGd5K01pvO4NWsu+2C9spu+GxnMZUYymUiaWmpCAxtd22MFSpm6MGf0MP4GCwhDCo1Q8L8oZ9wg==}
+  '@iconify-json/ri@1.2.4':
+    resolution: {integrity: sha512-d5hcfIkaZMFljITII6JFzKahZVWVELX5O/lcJeIa5qi/CsFS6vbfv28fJKtGarSqsPPPGpd9xJa8CmKTXXfDqw==}
 
-  '@iconify-json/simple-icons@1.2.15':
-    resolution: {integrity: sha512-4vxMQwkjsbjVIVGsPjKBnLMqAXu4wSlHmeN35KaJLK0UJNUj/ef6ES5c4bT/U4bSZjD2oZqOjOWTPD+HCrSUkg==}
+  '@iconify-json/simple-icons@1.2.16':
+    resolution: {integrity: sha512-mnQ0Ih8CDIgOqbi0qz01AJNOeFVuGFRimelg3JmJtD0y5EpZVw+enPPcpcxJKipsRZ/oqhcP3AhYkF1kM7yomg==}
 
-  '@iconify-json/tabler@1.2.11':
-    resolution: {integrity: sha512-sOZRVC+QaGmagdogWlz/cTmgXyo5OfRMaac28fAv0+CgESO/eQRBbnjgP4boKG+eKWxjQvRACDOI1HZ1J6Jh7Q==}
+  '@iconify-json/tabler@1.2.13':
+    resolution: {integrity: sha512-vXnl0db3Q/v1e+lMEGmdrzJeFVyR//20gbUU2HFOrJP08nbz1EGRa8urNS4zL3oEV6Wjgo11AHJLSs628I6swQ==}
 
   '@iconify/tools@4.0.7':
     resolution: {integrity: sha512-zOJxKIfZn96ZRGGvIWzDRLD9vb2CsxjcLuM+QIdvwWbv6SWhm49gECzUnd4d2P0sq9sfodT7yCNobWK8nvavxQ==}
@@ -1861,8 +1861,8 @@ packages:
       '@myriaddreamin/typst-ts-renderer': 0.5.0-rc9
       astro: '>= 3.0.0'
 
-  astro@5.0.5:
-    resolution: {integrity: sha512-xfptdmurDsQcj/Anc7mU+eKlcyV7ppJIlmaSwhX3ZWwK5N/0rGKVmUqnuILgR6MB0XVJiIfublNzDGoyj4Q6BQ==}
+  astro@5.0.9:
+    resolution: {integrity: sha512-6jRMPSB+V82y/l8XOylPYJz78ux268nNNV2SLRvUaT4faf18rvIFAR33Y25wTM0Oeukcv1951xFuFsmAkQc+jg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -4412,12 +4412,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.2(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))':
+  '@astrojs/mdx@4.0.2(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.0.1
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      astro: 5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.3
@@ -4435,7 +4435,7 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@4.1.0(@types/node@22.10.2)(@types/react-dom@19.0.2(@types/react@19.0.1))(@types/react@19.0.1)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)':
+  '@astrojs/react@4.1.1(@types/node@22.10.2)(@types/react-dom@19.0.2(@types/react@19.0.1))(@types/react@19.0.1)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)':
     dependencies:
       '@types/react': 19.0.1
       '@types/react-dom': 19.0.2(@types/react@19.0.1)
@@ -4950,63 +4950,63 @@ snapshots:
 
   '@ibm/telemetry-js@1.8.0': {}
 
-  '@iconify-json/clarity@1.2.1':
+  '@iconify-json/clarity@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/codicon@1.2.7':
+  '@iconify-json/codicon@1.2.8':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/entypo-social@1.2.1':
+  '@iconify-json/entypo-social@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.8':
+  '@iconify-json/fluent@1.2.11':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/gravity-ui@1.2.2':
+  '@iconify-json/gravity-ui@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ic@1.2.1':
+  '@iconify-json/ic@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/icon-park@1.2.1':
+  '@iconify-json/icon-park@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/logos@1.2.3':
+  '@iconify-json/logos@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols@1.2.10':
+  '@iconify-json/material-symbols@1.2.12':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.2.1':
+  '@iconify-json/mdi@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ph@1.2.1':
+  '@iconify-json/ph@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/pixelarticons@1.2.1':
+  '@iconify-json/pixelarticons@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ri@1.2.3':
+  '@iconify-json/ri@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.15':
+  '@iconify-json/simple-icons@1.2.16':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/tabler@1.2.11':
+  '@iconify-json/tabler@1.2.13':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -5357,10 +5357,10 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@qwikdev/astro@0.6.3(@builder.io/qwik@1.11.0(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)))(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))':
+  '@qwikdev/astro@0.6.3(@builder.io/qwik@1.11.0(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1)))(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))':
     dependencies:
       '@builder.io/qwik': 1.11.0(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))
-      astro-integration-kit: 0.2.1(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+      astro-integration-kit: 0.2.1(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
       fs-extra: 11.2.0
       fs-move: 6.0.0
       typescript: 5.7.2
@@ -5923,9 +5923,9 @@ snapshots:
       - debug
       - supports-color
 
-  astro-integration-kit@0.2.1(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)):
+  astro-integration-kit@0.2.1(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)):
     dependencies:
-      astro: 5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      astro: 5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       pathe: 1.1.2
 
   astro-remote@0.3.3:
@@ -5936,12 +5936,12 @@ snapshots:
       marked-smartypants: 1.1.9(marked@12.0.2)
       ultrahtml: 1.5.3
 
-  astro-typst@0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.1)(@types/node@22.10.2)(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0):
+  astro-typst@0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.1)(@types/node@22.10.2)(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.1
       '@myriaddreamin/typst.ts': 0.5.0-rc6
       '@rollup/plugin-node-resolve': 15.3.0(rollup@4.28.1)
-      astro: 5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      astro: 5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       cheerio: 1.0.0-rc.12
       vite: 5.4.11(@types/node@22.10.2)(less@4.2.1)(lightningcss@1.27.0)(sass@1.83.0)
     transitivePeerDependencies:
@@ -5956,7 +5956,7 @@ snapshots:
       - sugarss
       - terser
 
-  astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1):
+  astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.2
@@ -7193,10 +7193,10 @@ snapshots:
 
   lodash@4.17.21: {}
 
-  logical-astro-tweet@0.0.5(astro@5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)):
+  logical-astro-tweet@0.0.5(astro@5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)):
     dependencies:
       '@astrojs/check': 0.2.1(typescript@5.7.2)
-      astro: 5.0.5(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      astro: 5.0.9(@types/node@22.10.2)(jiti@1.21.6)(less@4.2.1)(lightningcss@1.27.0)(rollup@4.28.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       clsx: 2.1.1
       date-fns: 2.30.0
       typescript: 5.7.2
