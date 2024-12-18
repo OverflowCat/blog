@@ -6,6 +6,7 @@ import Stroke from "./_components/Stroke.astro";
 import Pn from "@/components/Pn.astro";
 import { Code } from "astro:components";
 import Bar from "@/templates/Bar.astro";
+import "@/styles/monospace.less";
 
 const EXAMPLE = `title: 新世界的大门
 href: https://blog.xinshijiededa.men
@@ -210,8 +211,11 @@ Astro.locals.noscript = true;
 
   <h1 id="subscribe">订阅全部</h1>
   <p class="info">
-    你可以订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
-    此 <a href="/friends.opml">OPML</a> 文件可以用于导入到支持的阅读器中。
+    你可以使用此 <a
+      id="opml"
+      class="rounded bg-amber text-black p-2 m-inline-2 decoration-none"
+      href="/friends.opml">OPML 文件</a
+    >订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
   </p>
   <h1 id="exchange">交换友链</h1>
   <h2 id="self">本站信息</h2>
@@ -258,14 +262,13 @@ Astro.locals.noscript = true;
     list-style: none;
   }
 </style>
-<style>
+<style lang="less">
   img {
     max-width: 100%; /* fix overflow (when screen is narrow on mobile) */
   }
   h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 800;
-    margin: 0;
   }
   .text-gradient {
     background-image: var(--accent-gradient);
@@ -275,22 +278,28 @@ Astro.locals.noscript = true;
     background-position: 0%;
   }
   .info {
+    @apply mb-4 p-4 rounded-md;
     line-height: 1.6;
-    margin: 1rem 0;
     border: 1px solid rgba(var(--accent), 25%);
     background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
+    strong {
+      color: var(--accent);
+    }
   }
-  .info strong {
-    /* color: rgb(var(--accent)); */
-    color: var(--accent);
+  #opml {
+    color: white;
+    background-image: var(--accent-gradient);
+    background-size: 400%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    &:hover {
+      background-position: 15%;
+    }
+    &:focus {
+      background-position: 35%;
+    }
   }
   .link-card-grid {
-    display: grid;
-    justify-content: center;
+    @apply grid gap-4 justify-center p-0;
     grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
-    gap: 1rem;
-    padding: 0;
   }
 </style>
