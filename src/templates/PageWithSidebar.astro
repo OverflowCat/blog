@@ -4,7 +4,6 @@ import Sidebar from "@/components/sidebar/Index.astro";
 import Paper from "@/components/Paper.astro";
 import type { OpenGraphData } from "@/scripts/open-graph";
 import Bar from "./Bar.astro";
-import Han from "@/components/Mode.astro";
 
 export interface Props {
   title: string;
@@ -17,11 +16,13 @@ export interface Props {
 
 const { title, bar, og } = Astro.props;
 Astro.locals.noscript = true;
+Astro.locals.hant = false;
+Astro.locals.vert = true;
 ---
 
 <Page title={title} og={og} lang="zh-Hans">
   <Bar {...bar} lang="zh-Hans" />
-  <Han hant={false} />
+  <!-- <Han hant={false} /> -->
   <main>
     <Sidebar><slot name="comments" slot="comments" /></Sidebar>
     <Paper id="page-main" transitionName="main">

@@ -17,7 +17,7 @@ import Theme from "./Theme.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<div id="han-float" class:list={[{ float }, "flex", "flex-row"]}>
+<div id="han-float" class:list={[{ float }, "flex", "flex-row", "mie-2"]}>
     {
         hant !== false && (
             <div id="han-cc" class="inline">
@@ -60,18 +60,12 @@ import { Icon } from "astro-icon/components";
 </div>
 <style lang="less">
     #han-float {
-        &.float {
-            padding: 4px;
-            border: var(--text-secondary);
-            border-radius: 3px;
-            font-size: 1.2em;
-            position: absolute;
-            inset-block-start: 10px;
-            inset-inline-end: 10px;
-        }
-        &:not(.float) {
-            display: inline;
-        }
+        padding: 4px;
+        border: var(--text-secondary);
+        border-radius: 3px;
+        font-size: 1.2em;
+        inset-block-start: 10px;
+        inset-inline-end: 10px;
     }
     #han-cc {
         a {
@@ -88,7 +82,7 @@ import { Icon } from "astro-icon/components";
     }
     a {
         display: inline-flex;
-        block-size: 100%;
+        block-size: 90%;
         text-decoration: none;
         border: none!important;
         color: var(--text, #a2a2a2);

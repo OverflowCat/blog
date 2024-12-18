@@ -10,6 +10,11 @@ import slogans from "@scripts/slogans";
 import { pick } from "@/scripts/serendipity";
 import assert from "node:assert";
 
+import Han from "@/components/Mode.astro";
+console.log(Astro.url.toString(), Astro.locals);
+const hant = Astro.locals.hant ?? false;
+const vert = Astro.locals.vert ?? false;
+
 const items = [
   ["主页", "Home", "/"],
   ["归档", "Archives", "/archives"],
@@ -28,29 +33,110 @@ assert(slogan, "slogan is undefined");
     <Logo theme={theme} />
   </div>
   <div id="slogan" set:text={typeof slogan === "string" ? slogan : slogan[0]} />
-  <ul>
-    {
-      items.map((item, i) => (
-        <li transition:name={`navbar-${i}`}>
-          <a
-            href={item[2]}
-            data-replace={index === i ? "本页" : item[0]}
-            class={index === i ? "current" : ""}
-          >
-            <>
-              <span>{item[0]}</span>
-              <span class="separator">·</span>
-              <span class="en" lang="en">
-                {item[1]}
-              </span>
-            </>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
 </nav>
+<nav id="sticky">
+  <div class="backdrop">
+    <div class="logowrapper edge min-inline-20">
+      <img class="logo" src="/logo.svg" alt="logo" />
+    </div>
+    <ul class="block">
+      {
+        items.map((item, i) => (
+          <li transition:name={`navbar-${i}`}>
+            <a
+              href={item[2]}
+              data-replace={index === i ? "本页" : item[0]}
+              class={index === i ? "current" : ""}
+            >
+              <span>{item[0]}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="edge min-inline-20">
+    {
+      (hant || vert) && (
+        <Han float={false} vert={vert} hant={hant === false ? false : undefined} />
+      )
+    }
+    </div>
+  </div>
+</nav>
+<style is:global lang="less">
+  @media (prefers-color-scheme: dark) {
+    nav#sticky .logowrapper {
+      filter: invert(var(--auto-scheme, 0));
+    }
+  }
+  nav#sticky {
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    // width: fit-content;
+    @apply m-auto mbs--1 mbe-2 sticky min-block-10 pbe-2 inline-full left-0 top-0;
+    align-items: space-between;
+    .logo {
+      @apply h-8 m-1;
+      animation-name: navlogo;
+      animation-duration: 10s;
+      animation-timeline: --page-timeline;
+      filter: var(--logo-filter, none);
+    }
+  }
+  @keyframes navblur {
+    0% {
+      backdrop-filter: blur(0);
+    }
+    3% {
+      backdrop-filter: blur(0);
+    }
+    15% {
+      backdrop-filter: blur(15px);
+    }
+    100% {
+      backdrop-filter: blur(15px);
+    }
+  }
+  @keyframes navlogo {
+    0% {
+      opacity: 0;
+    }
+    3% {
+      opacity: 0;
+    }
+    15% {
+      opacity: .6;
+    }
+    100% {
+      opacity: .6;
+    }
+  }
+  .backdrop {
+    @apply flex absolute justify-center items-start w-full;
+    pointer-events: none;
+    * {
+      pointer-events: all;
+    }
+    z-index: 0;
+    inset: 0;
+    /* Extend backdrop surface to the bottom */
+    --extended-by: 250px;
+    bottom: calc(-1 * var(--extended-by));
+    /* Mask out the part falling outside the nav */
+    --cutoff: calc(100% - var(--extended-by));
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black var(--cutoff),
+      transparent var(--cutoff)
+    );
 
+    animation-name: navblur;
+    animation-duration: 10s;
+    animation-timeline: --page-timeline;
+  }
+</style>
 <style lang="less">
   :root {
     --indicator-size: 0.15em;
@@ -59,7 +145,7 @@ assert(slogan, "slogan is undefined");
     user-select: none;
   }
   #slogan {
-    margin: 8px 0;
+    @apply m-block-2 m-inline-0;
     color: var(--hint-color, #3c3c3c);
   }
   #logo,
@@ -69,31 +155,23 @@ assert(slogan, "slogan is undefined");
     place-items: center center;
   }
   #logo {
-    padding: 1rem 2px 0.2rem;
-    margin: 0 auto;
+    @apply pbs-4 pbe-1 p-inline-.5 m-block-0 m-inline-auto;
   }
   ul {
-    display: flex;
-    justify-content: center;
-    font-size: 18px;
-    gap: 0;
+    @apply flex justify-center text-4.5 gap-0 p-0;
     margin-block-start: var(--indicator-size);
     margin-block-end: var(--indicator-size);
-    padding: 0;
   }
   li {
-    display: inline-block;
-    text-align: center;
+    @apply inline-block text-center;
     font-weight: 700;
   }
   a {
     line-height: 200%;
-    display: inline-block;
+    @apply inline-block decoration-none border-b-none!;
     outline: none;
     padding-inline-start: 0.7em;
     padding-inline-end: 0.7em;
-    border-bottom: none !important;
-    text-decoration: none;
     color: var(--hint-color, #434343);
     transition: background-color 0.3s ease;
     &:hover,
@@ -102,6 +180,7 @@ assert(slogan, "slogan is undefined");
     }
   }
 
+/* 
   li:has(a:is(:hover, :focus-visible)),
   ul:not(:has(a:is(:hover, :focus-visible))) a.current {
     anchor-name: --indicator;
@@ -117,9 +196,40 @@ assert(slogan, "slogan is undefined");
     block-size: anchor(--indicator);
     inline-size: anchor-size(--indicator);
   }
+ */
+ .edge {
+  display: none;
+ }
+ nav#sticky {
+  backdrop-filter: blur(15);
+ }
+ @supports(scroll-timeline-name: --foo) and (container-type: inline-size) {
+  .edge {
+    display: unset;
+  }
+  nav#sticky {
+    backdrop-filter: none;
+  }
+  .backdrop {
+    @apply justify-between;
+  }
+ }
   @container html (max-inline-size: 768px) {
     .separator {
       display: none;
+    }
+    .edge {
+      @apply min-inline-0;
+    }
+  }
+  @container html (max-inline-size: 520px) {
+    .edge:first-child {
+      display: none;
+    }
+  }
+  @container html (min-inline-size: 520px) {
+    .backdrop {
+      // @apply justify-between;
     }
   }
 </style>

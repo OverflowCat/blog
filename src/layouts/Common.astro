@@ -1,6 +1,5 @@
 ---
 import type { BlogPost, Frontmatter } from "@/types";
-import Han from "@/components/Mode.astro";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
 import { crc32base } from "@/scripts/serendipity";
@@ -41,6 +40,8 @@ const licence = frontmatter.licence ?? "CcByNc";
 import "@/styles/article.less";
 import { Picture } from "astro:assets";
 import { getCatSlug } from "@/scripts/tags";
+Astro.locals.hant = hant;
+Astro.locals.vert = vert;
 ---
 
 {
@@ -70,11 +71,6 @@ import { getCatSlug } from "@/scripts/tags";
       transition:name={crc32base(frontmatter.title)}
       set:text={frontmatter.title}
     />
-  )
-}
-{
-  (hant || vert) && (
-    <Han float={true} vert={vert} hant={hant === false ? false : undefined} />
   )
 }
 <div class="info">
