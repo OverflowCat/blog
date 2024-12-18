@@ -20,18 +20,25 @@ function escapeXml(unsafe: string) {
     });
 }
 
+function u(input: string) {
+    return Array.from(input).map(char => {
+        const codePoint = char.codePointAt(0)!.toString(16).toUpperCase();
+        return `&#x${codePoint};`;
+    }).join('');
+}
+
 export function generateFeedOpml() {
     const feedList: string[] = [];
     feeds.values()
         .forEach(
             (feed) => feedList.push(`
 <outline
-    text="${escapeXml(feed.title)}"
-    title="${escapeXml(feed.title)}"
+    text="${u(escapeXml(feed.title))}"
+    title="${u(escapeXml(feed.title))}"
     type="rss"
     xmlUrl="${feed.url}"
     htmlUrl="${feed.href}"
-    description="${escapeXml(feed.desc)}"
+    description="${u(escapeXml(feed.desc))}"
 />`
             ));
     if (feedList.length === 0) {
