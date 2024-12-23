@@ -78,20 +78,19 @@ assert(slogan, "slogan is undefined");
     align-items: space-between;
     .logo {
       @apply h-8 m-1;
-      animation-name: navlogo;
-      animation-duration: 10s;
       animation-timeline: --page-timeline;
+      animation-name: navlogo;
       filter: var(--logo-filter, none);
     }
   }
   @keyframes navblur {
     0% {
-      backdrop-filter: blur(0);
+      backdrop-filter: blur(0px);
+    }
+    1.5% {
+      backdrop-filter: blur(0px);
     }
     3% {
-      backdrop-filter: blur(0);
-    }
-    15% {
       backdrop-filter: blur(15px);
     }
     100% {
@@ -102,10 +101,10 @@ assert(slogan, "slogan is undefined");
     0% {
       opacity: 0;
     }
-    3% {
+    1% {
       opacity: 0;
     }
-    15% {
+    3% {
       opacity: .6;
     }
     100% {
@@ -133,7 +132,6 @@ assert(slogan, "slogan is undefined");
     );
 
     animation-name: navblur;
-    animation-duration: 10s;
     animation-timeline: --page-timeline;
   }
 </style>
@@ -201,7 +199,7 @@ assert(slogan, "slogan is undefined");
   display: none;
  }
  nav#sticky {
-  backdrop-filter: blur(15);
+  backdrop-filter: blur(15px);
  }
  @supports(scroll-timeline-name: --foo) and (container-type: inline-size) {
   .edge {
@@ -225,11 +223,6 @@ assert(slogan, "slogan is undefined");
   @container html (max-inline-size: 520px) {
     .edge:first-child {
       display: none;
-    }
-  }
-  @container html (min-inline-size: 520px) {
-    .backdrop {
-      // @apply justify-between;
     }
   }
 </style>
