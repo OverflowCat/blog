@@ -64,6 +64,12 @@ assert(slogan, "slogan is undefined");
   </div>
 </nav>
 <style is:global lang="less">
+  nav#sticky+div {
+    view-timeline: --view-timeline block;
+  }
+  html {
+    timeline-scope: --view-timeline;
+  }
   @media (prefers-color-scheme: dark) {
     nav#sticky .logowrapper {
       filter: invert(var(--auto-scheme, 0));
@@ -78,14 +84,17 @@ assert(slogan, "slogan is undefined");
     align-items: space-between;
     .logo {
       @apply h-8 m-1;
-      animation-timeline: --page-timeline;
+      animation-timeline: --view-timeline;
       animation-name: navlogo;
+      animation-fill-mode: forwards;
+      animation-duration: 1ms;
       filter: var(--logo-filter, none);
     }
   }
   @keyframes navblur {
     0% {
       backdrop-filter: blur(0px);
+      // background-color: oklch(.5 .12 166);
     }
     1.5% {
       backdrop-filter: blur(0px);
@@ -95,6 +104,7 @@ assert(slogan, "slogan is undefined");
     }
     100% {
       backdrop-filter: blur(15px);
+      // background-color: oklch(.5 .14 29);
     }
   }
   @keyframes navlogo {
@@ -132,7 +142,7 @@ assert(slogan, "slogan is undefined");
     );
 
     animation-name: navblur;
-    animation-timeline: --page-timeline;
+    animation-timeline: --view-timeline;
   }
 </style>
 <style lang="less">
