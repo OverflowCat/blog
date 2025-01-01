@@ -50,13 +50,14 @@ import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
   body {
     background-size: 7px 7px;
     background-image: var(--bg-image);
-    animation-name: bg-parallax;
-    animation-duration: 1ms; /* Firefox requires this to apply the animation */
-    animation-direction: alternate;
-    animation-timeline: scroll(block root);
+    background-attachment: fixed;
+    /* animation-name: bg-parallax; */
+    /* animation-duration: 1ms;  Firefox requires this to apply the animation */
+    /* animation-direction: alternate; */
+    /* animation-timeline: scroll(block root); */
   }
 
-  @keyframes bg-parallax {
+  /* @keyframes bg-parallax {
     0% {
       background-position: 0 0;
     }

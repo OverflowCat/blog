@@ -20,7 +20,7 @@ feed &&
   collect({ title, href: "https://" + href, url: feed, desc: desc ?? "" });
 ---
 
-<li class="link-card" id={id}>
+<li class="link-card drop-shadow-sm" id={id}>
   <a href={href}>
     <div class="grid-container">
       <div class="title"><h2>{title}</h2></div>
@@ -74,9 +74,6 @@ feed &&
     border-radius: 0.5rem;
     background-position: 100%;
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -2px rgba(0, 0, 0, 0.1);
   }
 
   .link-card > a {

@@ -26,3 +26,5 @@ pnpm-debug.log*
 
 # moonpad
 public/lsp-server.js
+
+public/huai

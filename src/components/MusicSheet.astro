@@ -1,0 +1,245 @@
+---
+import Blob from "cross-blob";
+import fs from "fs";
+import jsdom from "jsdom";
+import osmd from "opensheetmusicdisplay";
+
+export type Props = {
+  xml: string;
+  slug: string;
+}
+
+const { xml, slug } = Astro.props;
+
+interface GenerateImageOptions {
+  width?: number;
+  height?: number;
+  darkMode?: boolean;
+  skyBottomLine?: boolean;
+  boundingBoxes?: string;
+  skyBottomLinePreference?: "--batch" | "--webgl" | "";
+}
+
+async function generateOSMDImage(
+  inputFile: string,
+  outputDir: string,
+  imageFormat: "svg" | "png",
+  options: GenerateImageOptions = {}
+): Promise<string> {
+  const {
+    width = 1440,
+    height = 32767,
+    darkMode = false,
+    skyBottomLine = false,
+    boundingBoxes,
+    skyBottomLinePreference = "",
+  } = options;
+  const pageFormat = height > 0 && width > 0 ? `${width}x${height}` : "Endless";
+
+  const dom = new jsdom.JSDOM("<!DOCTYPE html></html>");
+  global.window = dom.window;
+  global.document = window.document;
+  global.HTMLElement = window.HTMLElement;
+  global.HTMLAnchorElement = window.HTMLAnchorElement;
+  global.XMLHttpRequest = window.XMLHttpRequest;
+  global.DOMParser = window.DOMParser;
+  global.Node = window.Node;
+  if (imageFormat === "png") {
+    global.Canvas = window.Canvas;
+  }
+  global.Blob = Blob;
+
+  try {
+    const { default: headless_gl } = await import("gl");
+    const oldCreateElement = document.createElement.bind(document);
+    document.createElement = function (tagName, options) {
+      if (tagName.toLowerCase() === "canvas") {
+        const canvas = oldCreateElement(tagName, options);
+        const oldGetContext = canvas.getContext.bind(canvas);
+        canvas.getContext = function (contextType, contextAttributes) {
+          if (
+            contextType.toLowerCase() === "webgl" ||
+            contextType.toLowerCase() === "experimental-webgl"
+          ) {
+            const gl = headless_gl(
+              canvas.width,
+              canvas.height,
+              contextAttributes
+            );
+            gl.canvas = canvas;
+            return gl;
+          } else {
+            return oldGetContext(contextType, contextAttributes);
+          }
+        };
+        return canvas;
+      } else {
+        return oldCreateElement(tagName, options);
+      }
+    };
+  } catch (error) {
+    if (skyBottomLinePreference === "--webgl") {
+      console.warn(
+        "WebGL image generation was requested but gl is not installed; using non-WebGL generation."
+      );
+    }
+  }
+
+  const div = document.createElement("div");
+  div.id = "browserlessDiv";
+  document.body.appendChild(div);
+
+  div.width = width;
+  div.height = height;
+  div.setAttribute("width", width);
+  div.setAttribute("height", height);
+  div.setAttribute("offsetWidth", width);
+
+  Object.defineProperties(window.HTMLElement.prototype, {
+    offsetLeft: {
+      get: function () {
+        return parseFloat(window.getComputedStyle(this).marginTop) || 0;
+      },
+    },
+    offsetTop: {
+      get: function () {
+        return parseFloat(window.getComputedStyle(this).marginTop) || 0;
+      },
+    },
+    offsetHeight: {
+      get: function () {
+        return height;
+      },
+    },
+    offsetWidth: {
+      get: function () {
+        return width;
+      },
+    },
+  });
+
+
+  const backend = imageFormat === "png" ? "canvas" : "svg";
+  const osmdInstance = new osmd.OpenSheetMusicDisplay(div, {
+    autoResize: false,
+    backend: backend,
+    pageBackgroundColor: "#FFFFFF",
+    pageFormat: pageFormat,
+  });
+
+  if (imageFormat === "png") {
+    osmdInstance.EngravingRules.pageBackgroundColor = "#FFFFFF";
+  }
+
+  const makeSkyBottomLineOptions = () => {
+    if (skyBottomLinePreference === "--batch") {
+      return {
+        preferredSkyBottomLineBatchCalculatorBackend: 0,
+        skyBottomLineBatchCriteria: 0,
+      };
+    } else if (skyBottomLinePreference === "--webgl") {
+      return {
+        preferredSkyBottomLineBatchCalculatorBackend: 1,
+        skyBottomLineBatchCriteria: 0,
+      };
+    } else {
+      return {
+        preferredSkyBottomLineBatchCalculatorBackend: 0,
+        skyBottomLineBatchCriteria: Infinity,
+      };
+    }
+  };
+
+  // let loadParameter = FS.readFileSync(inputFile);
+  let loadParameter = inputFile;
+  // if (inputFile.endsWith(".mxl")) {
+  //     loadParameter = await OSMD.MXLHelper.MXLtoXMLstring(loadParameter);
+  // } else {
+  //     loadParameter = loadParameter.toString();
+  // }
+
+  osmdInstance.setOptions({
+    pageBackgroundColor: "#FFFFFF",
+    pageFormat: pageFormat,
+    ...makeSkyBottomLineOptions(),
+  });
+  if (darkMode) {
+    osmdInstance.setOptions({ darkMode: true });
+  }
+  osmdInstance.drawSkyLine = skyBottomLine;
+  osmdInstance.drawBottomLine = skyBottomLine;
+  osmdInstance.setDrawBoundingBox(boundingBoxes, false);
+
+  try {
+    await osmdInstance.load(loadParameter, inputFile);
+    osmdInstance.render();
+  } catch (ex) {
+    console.error("Couldn't load or render sample", ex);
+    return;
+  }
+
+  const images = [];
+  for (
+    let pageNumber = 1;
+    pageNumber < Number.POSITIVE_INFINITY;
+    pageNumber++
+  ) {
+    const element = document.getElementById(
+      imageFormat === "png"
+        ? `osmdCanvasVexFlowBackendCanvas${pageNumber}`
+        : `osmdSvgPage${pageNumber}`
+    );
+    if (!element) break;
+
+    if (imageFormat === "png") {
+      const canvas = element as HTMLCanvasElement;
+      if (!canvas.toDataURL) {
+        console.error(
+          `Could not get canvas image for page ${pageNumber} of file: ${inputFile}`
+        );
+        break;
+      }
+      images.push(canvas.toDataURL());
+    } else {
+      const svgElement = element as SVGSVGElement;
+      svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      images.push(svgElement.outerHTML);
+    }
+  }
+
+  for (let pageIndex = 0; pageIndex < images.length; pageIndex++) {
+    const pageNumberingString = `${pageIndex + 1}`;
+    const skybottomlineString = skyBottomLine ? "skybottomline_" : "";
+    const darkmodeString = darkMode ? "darkmode_" : "";
+    const graphicalNoteBboxesString = boundingBoxes
+      ? "bbox" + boundingBoxes + "_"
+      : "";
+    const outputFilename = `${outputDir}/${inputFile.split("/").pop()}_${darkmodeString}${skybottomlineString}${graphicalNoteBboxesString}${pageNumberingString}.${imageFormat}`;
+    console.info({
+      outputDir,
+    });
+    if (imageFormat === "png") {
+      const imageData = images[pageIndex].split(";base64,").pop();
+      const imageBuffer = Buffer.from(imageData, "base64");
+      // FS.writeFileSync(outputFilename, imageBuffer);
+    } else {
+      // FS.writeFileSync(outputFilename, images[pageIndex], { encoding: "utf-8" });
+      const resStr = images[pageIndex];
+      return resStr;
+    }
+  }
+}
+
+const outputDir = "./public/sheets/"; // 替换为你的输出目录
+let svg = await generateOSMDImage(xml, outputDir, "svg", {
+  width: 800,
+  height: -1,
+  darkMode: false,
+  skyBottomLine: false,
+});
+svg = svg.replaceAll("Times New Roman", "Noto Serif CJK TC");
+// fs.writeFileSync(`./public/sheets/${slug}.svg`, svg);
+---
+
+<div set:html={svg} class="block m-auto text-center" />
+<img style="display: none;" src={`/sheets/${slug}.svg`} />

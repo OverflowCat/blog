@@ -1,22 +1,28 @@
 ---
 export interface Props {
   padding?: boolean;
+  paper?: boolean;
   classes?: string[];
   [key: string]: any;
   transitionName?: string;
 }
 
-let { padding, classes, transitionName, ...rest } = Astro.props;
+let { padding, classes, paper, transitionName, ...rest } = Astro.props;
 if (classes === undefined) {
   classes = [];
 }
 if (padding) {
   classes?.push("padding");
 }
+
+classes = ["paper"].concat(classes)
+if (paper !== false) {
+  classes?.push("vpaper");
+}
 ---
 
 <div
-  class:list={["paper"].concat(classes)}
+  class:list={classes}
   {...rest}
   transition:animate="initial"
   transition:name={transitionName}
@@ -25,14 +31,8 @@ if (padding) {
 </div>
 
 <style>
-  .paper {
-    box-shadow:
-      rgba(0, 0, 0, 0.12) 0px 2px 2px 0px,
-      rgba(0, 0, 0, 0.06) 0px 3px 1px -2px,
-      rgba(0, 0, 0, 0.12) 0px 1px 5px 0px,
-      rgba(0, 0, 0, 0.09) 0px -1px 0.5px 0px;
-    box-sizing: border-box;
-    border-radius: initial;
+  .vpaper {
+    @apply drop-shadow-lg box-border;
     background-color: var(--paper-bg);
   }
   .padding {

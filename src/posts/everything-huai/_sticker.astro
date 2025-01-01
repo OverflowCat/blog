@@ -1,0 +1,45 @@
+---
+export type Props = {
+  word: string;
+  pron?: string;
+  png: string;
+  webp: string;
+  height: number;
+};
+
+const item = Astro.props;
+
+/// 将 1 替换为 ¹，2 替换为 ²，以此类推。其他字符不变。
+function num2sup(s: string) {
+  return s.replace(/[0-9]/g, (c) => {
+    return String.fromCharCode(c.charCodeAt(0) - "0".charCodeAt(0) + 0xb8);
+  });
+}
+
+const IMAGE_PREFIX = "https://cdn.jsdelivr.net/gh/OverflowCat/everything-huai@master/";
+// "/huai/";
+---
+
+<section class="card max-inline-2xl text-center m-block-8 m-auto">
+  <picture class="m-inline-auto inline-block">
+    <source srcset={IMAGE_PREFIX + item.webp} type="image/webp" />
+    <img src={IMAGE_PREFIX + item.png} alt={item.word} loading="lazy" width={512/2} height={item.height/2} />
+  </picture>
+  <div class="text-start">
+    <h2>
+      {
+        item.pron ? (
+          <>
+            <ruby>
+              {item.word}
+              <rt>{item.pron}</rt>
+            </ruby>
+          </>
+        ) : (
+          <>{item.word}</>
+        )
+      }
+    </h2>
+    <slot />
+  </div>
+</section>

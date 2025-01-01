@@ -60,10 +60,9 @@ import { Icon } from "astro-icon/components";
 </div>
 <style lang="less">
     #han-float {
-        padding: 4px;
+        @apply inline-block p-1;
         border: var(--text-secondary);
         border-radius: 3px;
-        font-size: 1.2em;
         inset-block-start: 10px;
         inset-inline-end: 10px;
     }
@@ -71,15 +70,8 @@ import { Icon } from "astro-icon/components";
         a {
             transition: color 0.1s;
         }
-        #han-from {
-            display: none;
-        }
-        &:hover {
-            #han-from {
-                display: inline;
-            }
-        }
     }
+
     a {
         display: inline-flex;
         block-size: 90%;

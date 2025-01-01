@@ -22,8 +22,10 @@ function escapeXml(unsafe: string) {
 
 function u(input: string) {
     return Array.from(input).map(char => {
-        const codePoint = char.codePointAt(0)!.toString(16).toUpperCase();
-        return `&#x${codePoint};`;
+        const codepoint = char.codePointAt(0)!;
+        if (codepoint < 0x80) return char;
+        const hex = codepoint.toString(16).toUpperCase();
+        return `&#x${hex};`;
     }).join('');
 }
 

@@ -4,7 +4,9 @@
 declare namespace App {
   interface Locals {
     title: string;
-    metas: any;
+    metas: object;
+    hant?: boolean;
+    vert?: string | false;
     noscript: boolean;
     renderer?: 'rss';
   }

@@ -40,10 +40,10 @@ article#post>h6 {
 }
 
 article#post {
-  font-family: var(--font-sans, "Noto Sans", 
-    "Noto Sans CJK SC", "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
-    "Plangothic P1", "Plangothic P2",
-    "Open Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
+  font-family: var(--font-sans, "Noto Sans",
+      "Noto Sans CJK SC", "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
+      "Plangothic P1", "Plangothic P2",
+      "Open Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
   font-size: 18px;
   text-align: start;
   line-height: 175%;
@@ -70,7 +70,10 @@ article#post {
 
   @import "a.less";
 
-  [lang="en"], [lang="no"], [lang="de"], [lang="es"] {
+  [lang="en"],
+  [lang="no"],
+  [lang="de"],
+  [lang="es"] {
     font-family: var(--font-sans-en);
   }
 
@@ -94,13 +97,26 @@ article#post {
     margin: auto;
   }
 
+  .img-sm+img,
+  .img-sm+figure>img,
+  .img-sm+picture>img {
+    max-block-size: min(300px, 640px);
+  }
+
+  .img-md+img,
+  .img-md+figure>img,
+  .img-md+picture>img {
+    max-block-size: min(360px, 900px);
+  }
+
   video {
     max-height: 600px;
     max-width: min(800px, 100%);
     height: auto;
   }
-  
-  .typst-doc, video {
+
+  .typst-doc,
+  video {
     display: block;
     margin: auto;
   }
