@@ -6,7 +6,7 @@ declare namespace App {
     title: string;
     metas: object;
     hant?: boolean;
-    vert?: string | false;
+    vert?: string | bool;
     noscript: boolean;
     renderer?: 'rss';
   }

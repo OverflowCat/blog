@@ -7,6 +7,7 @@ import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
 import { Picture } from "astro:assets";
 import avatar from "@/assets/avatar.png";
+import Search from "./Search.astro";
 ---
 
 <aside id="sidebar">
@@ -31,8 +32,8 @@ import avatar from "@/assets/avatar.png";
           formats={["avif", "webp", "png"]}
         />
       </div>
-      <p class="site-author-name" itemprop="name" lang="mnc">
-        ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh" class="yoko">猫</span>
+      <p class="site-author-name vertical-mid" itemprop="name" lang="mnc">
+        ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh">猫</span>
       </p>
       <div class="site-description" itemprop="description">猫猫的博客</div>
     </div>
@@ -71,6 +72,9 @@ import avatar from "@/assets/avatar.png";
         Instagram
       </OtherPlatfromItem>
     </div>
+  </Paper>
+  <Paper padding={true}>
+    <Search />
   </Paper>
   <slot name="comments" />
   <Paper padding={true}>
