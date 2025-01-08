@@ -1,5 +1,5 @@
-![新世界的大门 Logo](https://user-images.githubusercontent.com/20166026/203767771-c977f2cb-30da-49a9-8936-761fc4ee3450.svg#gh-dark-mode-only)
-![新世界的大门 Logo](https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg#gh-light-mode-only)
+<!-- ![新世界的大门 Logo](https://user-images.githubusercontent.com/20166026/203767771-c977f2cb-30da-49a9-8936-761fc4ee3450.svg#gh-dark-mode-only)
+![新世界的大门 Logo](https://user-images.githubusercontent.com/20166026/203770324-bafac264-f05f-4ce4-b944-d28e5de06e0d.svg#gh-light-mode-only) -->
 <h1 align="center">新世界的大门 blog</h1>
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
