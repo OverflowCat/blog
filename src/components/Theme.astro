@@ -7,15 +7,6 @@
 </div>
 
 <style lang="less" is:global>
-// :root {
-//     color: blue;
-//     &:has(option[value="light"]:checked) {
-//         color: yellow;
-//     }
-//     &:has(option[value="dark"]:checked) {
-//         color: red;
-//     }
-// }
 
 :root > *, :root > * > *, :root > * > * > * {
     transition: background-color .7s, background-image .7s, color .2s;
@@ -44,7 +35,7 @@
         }
     }
     #theme-switcher {
-        @apply block p-1;
+        @apply inline-block p-1;
         font-size: 0.85em;
     }
     select#theme-select {
