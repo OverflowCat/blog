@@ -9,18 +9,18 @@ const { data } = comment;
 const { date } = data;
 const reply = data.reply
   ? {
-    ...comment,
-    data: {
-      id: comment.id + "r",
-      name: "猫猫",
-      date: date,
-      message: data.reply,
-      email: "",
-    },
-  }
+      ...comment,
+      data: {
+        id: comment.id + "r",
+        name: "猫猫",
+        date: date,
+        message: data.reply,
+        email: "",
+      },
+    }
   : undefined;
 
-const message = data.message? data.message : await comment.render();
+const message = data.message ? data.message : comment.rendered?.html;
 ---
 
 <li itemprop="comment" id={"comment-" + data.id}>
@@ -34,11 +34,7 @@ const message = data.message? data.message : await comment.render();
       itemprop="datePublished"
     />
   </hgroup>
-    {
-      typeof message === 'string' ?
-      <div class="message" set:html={message} /> :   
-      <div class="message"> <message.Content /> </div>
-    }
+  <div class="message" set:html={message} />
   {
     reply && (
       <div class="reply">
@@ -107,10 +103,10 @@ const message = data.message? data.message : await comment.render();
       align-items: self-end;
       h4 {
         font-size: 90%;
-        margin-block: .2rem;
+        margin-block: 0.2rem;
       }
       time {
-        font-size: .9rem;
+        font-size: 0.9rem;
         color: var(--text-secondary);
         margin-inline-start: 0.5rem;
         margin-block-end: 0.2rem;

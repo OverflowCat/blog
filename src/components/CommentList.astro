@@ -3,15 +3,9 @@ import { getAllComments } from "@/scripts/comments";
 import { truncate } from "@/scripts/intl";
 import { getBlogPosts } from "@/scripts/post";
 import "@/styles/a.less";
+import { render } from "astro:content";
 
-const comments = await Promise.all(
-  getAllComments()
-    .slice(0, 7)
-    .map(async (x) => ({
-      ...x,
-      message: (await x.render()),
-    }))
-);
+const comments = getAllComments().slice(0, 7);
 const posts = await getBlogPosts();
 const slugMap = new Map(posts.map((post) => [post.id, post.data]));
 function getTitle(id: string) {
@@ -28,8 +22,13 @@ function getTitle(id: string) {
         <date>
           {comment.data.date.getMonth() + 1} 月 {comment.data.date.getDate()} 日
         </date>
-        评论《<a href={`${comment.slug}/#comment-${comment.data.id}`} set:text={getTitle(comment.id)} />》说：
-        <comment.message.Content />
+        评论《
+        <a
+          href={`${comment.slug}/#comment-${comment.data.id}`}
+          set:text={getTitle(comment.id)}
+        />
+        》说：
+        <span set:html={comment.rendered.html} />
       </li>
     ))
   }
@@ -50,7 +49,7 @@ function getTitle(id: string) {
         overflow: hidden;
         width: 100%;
       }
-      padding-block: .2em;
+      padding-block: 0.2em;
       border-block-end: 1.8px solid var(--border-color);
       &:last-of-type {
         border-block-end: 1px solid transparent;
@@ -66,7 +65,7 @@ function getTitle(id: string) {
       font-style: italic;
     }
     a {
-      border-block-end: 1.5px solid var(--link-underline-color, #777)!important;
+      border-block-end: 1.5px solid var(--link-underline-color, #777) !important;
     }
   }
 </style>

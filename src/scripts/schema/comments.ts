@@ -3,7 +3,7 @@ import { z } from "astro:content";
 export const commentsSchema = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string(),
+  email: z.string().optional(),
   website: z.string().optional(),
   twitter: z.string().optional(),
   activitypub: z.string().optional(),

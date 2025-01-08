@@ -6,7 +6,7 @@ import rehypeMathRenderer from "rehype-mathjax/chtml";
 import rehypeTypst from "@myriaddreamin/rehype-typst";
 
 import type * as hast from "hast";
-import type { MarkdownVFile, RehypePlugin } from "@astrojs/markdown-remark";
+import type { RehypePlugin } from "@astrojs/markdown-remark";
 import type { Frontmatter } from "@/types";
 
 const rehypeMultiMath: RehypePlugin = () => {
@@ -33,7 +33,8 @@ const rehypeMultiMath: RehypePlugin = () => {
 	// init typst
 	const rehypeTypstHook = rehypeTypst();
 
-	return (tree: hast.Root, vfile: MarkdownVFile) => {
+	return (tree: hast.Root, vfile: object) => {
+		// @ts-ignore
 		const frontmatter = (vfile.data.astro as { frontmatter: Frontmatter })?.frontmatter;
 		const mathType = frontmatter?.math ?? "mathjax";
 		switch (mathType) {
