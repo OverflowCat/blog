@@ -13,16 +13,16 @@ article#post> :not(div),
     text-decoration: none;
     overflow-wrap: break-word;
 
-  &[target="_blank"]:not(:has(img))::after {
-    content: "↗";
-    text-decoration-color: transparent;
-    padding-left: 2px;
-    padding-right: 2px;
-    font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
-      "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
-      "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
-      "Arial", sans-serif;
-  }
+    &[target="_blank"]:not(:has(img))::after {
+      content: "↗";
+      text-decoration-color: transparent;
+      padding-left: 2px;
+      padding-right: 2px;
+      font-family: "Noto Sans", "PingFang SC", "Noto Sans CJK SC",
+        "Noto Sans CJK TC", "Noto Sans CJK JP", "Calibri", "Segoe UI Symbol",
+        "Segoe UI Emoji", ".LucidaGrandeUI-Bold", "Lucida Grande", "Segoe UI",
+        "Arial", sans-serif;
+    }
 
     &:hover {
       border-block-end-color: var(--link-underline-hover-color);
@@ -46,22 +46,29 @@ figcaption a {
   }
 }
 
-article#post {
-
-  h1, h2, h3, h4, h5, h6 {
-    a.anchor {
-      opacity: .5;
-      text-decoration: none;
-      border: none;
-    }
+@keyframes highlight {
+  0% {
+    background-color: rgba(160, 160, 160, 0.5);
   }
+  25% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(160, 160, 160, 0.4);
+  }
+  75% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(160, 160, 160, 0.3);
+  }
+}
 
-  a[href^="#"] {
+article#post, article.content {
+  h1 a[href^="#"] {
     display: none;
-    border: none !important;
   }
 
-  h1,
   h2,
   h3,
   h4,
@@ -76,10 +83,26 @@ article#post {
       left: -20px;
       top: 50%;
       transform: translateY(-50%);
-      margin-left: -20px;
-      }
+      margin-inline-start: -20px;
+    }
     */
+    &:target {
+      color: brown;
+      animation: highlight 1s ease-in-out;
+    }
+
+    a[href^="#"] {
+      display: none;
+      text-decoration: none !important;
+      border-block-end-width: 0px !important;
+      transition: opacity 0.1s ease-in-out;
+      &:focus {
+        opacity: .7;
+      }
+    }
+
     &:hover a[href^="#"] {
+      opacity: .9;
       display: inline;
       margin-inline-start: 0.25em;
     }

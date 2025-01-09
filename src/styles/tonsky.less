@@ -116,7 +116,11 @@ body {
   p[lang^="zh"] {
     line-height: 1.68;
   }
-  
+
+  [lang="en"] {
+    font-family: "IBM Plex Sans", "Noto Sans", sans-serif;
+  }
+
   [lang="zh-Hans"],
   [lang="zh-CN"],
   [lang="zh-SG"] {
@@ -164,12 +168,15 @@ body {
   margin: 0 0.5em 0 -1.5em;
 }
 
+sup > a {
+  border-block-end-width: 0 !important;
+}
 .main a,
 footer a,
 #comments a {
   color: inherit;
   text-decoration: none;
-  border-block-end: var(--border) solid var(--gray-line) !important;
+  border-block-end: var(--border) solid var(--gray-line);
   /** TODO: use var */
 
   &:has(img) {
