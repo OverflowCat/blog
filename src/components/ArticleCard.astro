@@ -35,7 +35,7 @@ const { photo } = data;
           }
         </span><a
           class="title"
-          transition:name={crc32base(post.data.title)}
+          transition:name={post.id}
           href={`/${post.id}/`}>{post.data.title || "No title"}</a
         >
         {

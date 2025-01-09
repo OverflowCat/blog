@@ -7,29 +7,29 @@ import type { AtomIconName } from "@/scripts/icons";
 import Image from "astro/components/Image.astro";
 import { getEntry } from "astro:content";
 export interface Props {
-  layoutProps: {
-    url?: string;
-    file?: string;
-    frontmatter?: Frontmatter;
-  }
-  icons?: {
-    calendar?: AtomIconName;
-    category?: AtomIconName;
-    tag?: AtomIconName;
-  }
+	layoutProps: {
+		url?: string;
+		file?: string;
+		frontmatter?: Frontmatter;
+	};
+	icons?: {
+		calendar?: AtomIconName;
+		category?: AtomIconName;
+		tag?: AtomIconName;
+	};
 }
 function arrify<T>(x: T | T[]): T[] {
-  return Array.isArray(x) ? x : [x];
+	return Array.isArray(x) ? x : [x];
 }
 
 const { icons, layoutProps } = Astro.props;
 const { url, file } = layoutProps;
 import { resolvePostId } from "@/scripts/post";
-const id = resolvePostId(url?? file ?? Astro.url.pathname);
+const id = resolvePostId(url ?? file ?? Astro.url.pathname);
 
 const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
-  throw new Error(`Post ${id} not found.`);
+	throw new Error(`Post ${id} not found.`);
 }
 const { vert, hant, date } = frontmatter;
 const cats = arrify(frontmatter.categories);
@@ -68,8 +68,9 @@ Astro.locals.vert = vert;
 {
   !frontmatter.hide_title && (
     <h1
-      transition:name={crc32base(frontmatter.title)}
+      transition:name={id}
       set:text={frontmatter.title}
+      style={`view-transition-name: ${id}`}
     />
   )
 }

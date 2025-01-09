@@ -4,8 +4,7 @@ import Page from "@/templates/zh/Page.astro";
 import { getBlogPosts } from "@/scripts/post";
 import SlotRenderer from "@/components/SlotRenderer.astro";
 
-// @ts-ignore
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+// import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
 import { getImage } from "astro:assets";
@@ -39,20 +38,21 @@ export type Props = {
 const post = await getEntry("blog", Astro.props.slug);
 if (!post) throw new Error(`Post ${Astro.params.slug} not found at ${Astro.props.slug}. Check if slug is correct.`);
 const isHant = Astro.props.hant;
-let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
-try {
-  Content = (await render(post)).Content;
-} catch (e) {
-  console.error(e);
-  throw e;
-}
+// let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
+// try {
+//   Content = (await render(post)).Content;
+// } catch (e) {
+//   console.error(e);
+//   throw e;
+// }
+const content = await render(post);
 
 let title = post.data.title;
 if (post.data.categories?.includes("译文")) {
   title = `（译）${title}`;
 }
 
-let lang = post.data.lang;
+const lang = post.data.lang;
 
 const metas: { [key: string]: string } = post.data.categories?.includes(
   "Tonsky",
@@ -104,10 +104,10 @@ Astro.locals.noscript = post.data.noscript;
           return res;
         }}
       >
-        <Content />
+        <content.Content />
       </SlotRenderer>
     ) : (
-      <Content />
+      <content.Content />
     )
   }
   </V5MdLayout>
