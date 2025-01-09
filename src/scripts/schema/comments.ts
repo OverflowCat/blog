@@ -4,7 +4,7 @@ export const commentsSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().optional(),
-  website: z.string().optional(),
+  url: z.string().optional(),
   twitter: z.string().optional(),
   activitypub: z.string().optional(),
   format: z.enum(["markdown", "html"]).optional(),

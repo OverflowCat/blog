@@ -2,12 +2,14 @@
 import nameGen from "@/scripts/name-gen";
 import { pick } from "@/scripts/serendipity.ts";
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
-const placeholder = pick([
-  "请洒潘江，各倾陆海云尔…",
-  "矮纸斜行闲作草，晴窗细乳戏分茶…",
-  "此意在人间，试听徽外三两弦…",
-  "给主人留下些什么吧～",
-]);
+const placeholder = `${pick([
+	"请洒潘江，各倾陆海云尔…",
+	"矮纸斜行闲作草，晴窗细乳戏分茶…",
+	"此意在人间，试听徽外三两弦…",
+	"给主人留下些什么吧～",
+])}
+
+（可以使用 Markdown 和任意 HTML）`;
 ---
 
 <form
@@ -16,33 +18,35 @@ const placeholder = pick([
   class="comment-form"
 >
   <div class="form-group">
-    <label for="fields[name]">昵称 *</label>
-    <input type="text" name="fields[name]" placeholder={nameGen()} required />
+    <label for="user[name]">昵称 *</label>
+    <input type="text" id="user[name]" name="user[name]" placeholder={nameGen()} required />
   </div>
 
   <div class="form-group">
-    <label for="fields[email]"><span class="h">Email</span><span class="vert">邮箱</span> *</label>
+    <label for="user[url]">主页链接 *</label>
     <input
-      type="email"
-      name="fields[email]"
-      placeholder="不会公开显示"
+      type="text"
+      id="user[url]"
+      name="user[url]"
+      placeholder="你的个人主页、博客、社交媒体等的 URL"
       required
     />
   </div>
 
   <div class="form-group">
-    <label for="fields[url]">主页链接</label>
+    <label for="user[email]"><span class="h">Email</span><span class="vert">邮箱</span></label>
     <input
-      type="text"
-      name="fields[url]"
-      placeholder="你的个人主页、博客、社交媒体等的 URL"
+      type="email"
+      id="user[email]"
+      name="user[email]"
+      placeholder="不会公开显示"
     />
   </div>
 
   <div class="form-group">
-    <label for="fields[message]">留言 *</label>
+    <label for="message">留言 *</label>
     <textarea
-      name="fields[message]"
+      name="message"
       id="message"
       rows="6"
       placeholder={placeholder}
@@ -51,10 +55,10 @@ const placeholder = pick([
   </div>
 
   <div class="form-group hidden">
-    <!-- <label for="options[captcha]">验证码，别勾选我！</label> -->
-    <!-- <input type="checkbox" name="fields[captcha]" /> -->
-    <label for="options[slug]">Slug</label>
-    <input type="hidden" name="options[slug]" value={slug} />
+    <label for="captcha">验证码，别勾选我！</label>
+    <input type="checkbox" id="captcha" name="captcha" />
+    <label for="slug">Slug</label>
+    <input type="hidden" name="slug" value={slug} />
   </div>
 
   <button type="submit" class="form-button">发送</button>
