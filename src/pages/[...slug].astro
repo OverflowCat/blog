@@ -12,7 +12,7 @@ import { render } from "astro:content";
 import "@/styles/manchu.less";
 
 export async function getStaticPaths() {
-  const posts = (await getBlogPosts()).map((post) => {
+  const posts = (await getBlogPosts(true)).map((post) => {
     const slug = post.id;
     return {
       params: { slug },
@@ -26,8 +26,7 @@ export async function getStaticPaths() {
       props: { slug, hant: true }
     }
   });
-  const slugs = [...posts, ...hantPosts];
-  return [...posts, ...hantPosts];
+  return posts.concat(hantPosts);
 }
 
 export type Props = {

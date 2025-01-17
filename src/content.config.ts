@@ -17,7 +17,7 @@ const blogCollection = defineCollection({
 });
 
 const neodbCollection = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/neodb/" }),
   schema: () => neoSchema,
 });
 

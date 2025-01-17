@@ -1,10 +1,16 @@
 import type { BlogPost } from "@/types";
 import { getCollection } from "astro:content";
-const posts = (await getCollection<"blog">("blog")).filter(
-	(post) => post.data.draft !== true,
-);
 
-export async function getBlogPosts() {
+export async function getBlogPosts(includeDrafts = false) {
+	const posts = (await getCollection<"blog">("blog")).sort((a, b) => {
+		b.data.date.getTime() - a.data.date.getTime();
+	});
+
+	if (!includeDrafts) {
+		return posts.filter(
+			(post) => post.data.draft !== true,
+		);
+	}
 	return posts;
 }
 
