@@ -75,7 +75,11 @@ categories:
 
 设计风格是新粗野主义。我最早见到用这种的是 [Glitch](https://glitch.com/)，一开始就是很粗糙的，后来迭代了一版看着更干净细腻的。
 
-具体是用了 [Neobrutalism components](https://neobrutalism.dev/) 的组件，是在 shadcn/ui 上套了一层，组件其实很少。Marquee 还不错，营造出一种信息的流动感。它的 ~pallette~ theme 同时只有一种色调，只是深浅变化；颜色看起来也相对没有那么<a href="https://zhuanlan.zhihu.com/p/663396871">挖抓</a>。（符合我描述的是类似本页面的这种，如果你在 RSS 阅读器里看到这的话建议打开原网页。颜色是从 [Izzy Muerte 的](https://izzys.casa/2024/04/i-had-to-redesign-this-site-again/) 抄来的。伊以一篇很长、很多[抓马](https://en.wiktionary.org/wiki/%E6%8A%93%E9%A6%AC#Chinese)的抨击 C++ 社区的[文章](https://izzys.casa/2024/11/on-safe-cxx/) 而被我所知。）
+具体是用了 [Neobrutalism components](https://neobrutalism.dev/) 的组件，是在 shadcn/ui
+上套了一层，组件其实很少。Marquee 还不错，营造出一种信息的流动感。它的 ~palette~ theme
+同时只有一种色调，只是深浅变化；颜色看起来也相对没有那么<a href="https://zhuanlan.zhihu.com/p/663396871">挖抓</a>。（符合我描述的是类似本页面的这种，如果你在 RSS 阅读器里看到这的话建议打开原网页。颜色是从
+[Izzy Muerte 的](https://izzys.casa/2024/04/i-had-to-redesign-this-site-again/) 抄来的。伊以一篇很长、很多[抓马](https://en.wiktionary.org/wiki/%E6%8A%93%E9%A6%AC#Chinese)的抨击
+C++ 社区的[文章](https://izzys.casa/2024/11/on-safe-cxx/) 而被我所知。）
 
 ## 站内搜索
 
@@ -113,6 +117,10 @@ initialValue。如果你要层层传递 onChange 的话，只用在最外层用 
 query 中含有 ``(`` 且以 ``)`` 结尾的，括号中的内容会被当作高级查询。输入后会触发载入 CodeMirror
 编缉模式。这里用的是 [React CodeMirror](https://uiwjs.github.io/react-codemirror)，没什么问题。加载了 
 SQL 的语法高亮和补全，不过 MeiliSearch 的查询语法不是 SQL，所以有些关键字或函数没有高亮、补全也正常。
+
+## 字体
+
+字体使用了 IBM Plex 系列，觉得风格很搭。中文部分（`@ibm/plex-sans-sc`）装了后 Next.js 哐哐报错，没想到 noExternal 之类的，加之字体本身就太大，所以将其 CSS 替换成 jsdelivr 上对应的资源，有 [`plex-sans-sc-cdn`](https://www.npmjs.com/package/plex-sans-sc-cdn)。
 
 ## 统计数据
 

@@ -44,9 +44,6 @@ importers:
       '@fontsource/noto-sans-mongolian':
         specifier: ^5.1.2
         version: 5.1.2
-      '@ibm/plex-sans-sc':
-        specifier: ^1.1.0
-        version: 1.1.0
       '@iconify-json/clarity':
         specifier: ^1.2.2
         version: 1.2.2
@@ -1034,13 +1031,6 @@ packages:
 
   '@fontsource/noto-sans-mongolian@5.1.2':
     resolution: {integrity: sha512-pw/Z/GCpgwHaMO8CY+7kq3TzOCrzGiHS4u8eAwxg3kcTwtFzMKLze+Cri9wPsl58AxsfhImwSGWz+Xy/xkBXaQ==}
-
-  '@ibm/plex-sans-sc@1.1.0':
-    resolution: {integrity: sha512-IkhORwgw/CrsUss7uW9Rj6KKSsGQoIyIaNWjjju/7sV7SYS3yk0c/DgZN/leIG3Co5lN/X4Or/sQaL+SdvmSIg==}
-
-  '@ibm/telemetry-js@1.8.0':
-    resolution: {integrity: sha512-1u/8f5TtDHXWNQe+YfIESesZGX2PmhEfyU0znlyFvATch+xc5fPYjXj2gWKMTmdKsDawqAm/BkJBQjx2CDlZww==}
-    hasBin: true
 
   '@iconify-json/clarity@1.2.2':
     resolution: {integrity: sha512-ShZVAWkcI/OYQSBdGPYKjyCrT1ApACYrenPmWD8VJKY8KGip+tSe0qv1c8+Jsfou8Jx71XS7x+rJQC1ydRygIA==}
@@ -5177,12 +5167,6 @@ snapshots:
   '@fontsource/ibm-plex-sans@5.1.1': {}
 
   '@fontsource/noto-sans-mongolian@5.1.2': {}
-
-  '@ibm/plex-sans-sc@1.1.0':
-    dependencies:
-      '@ibm/telemetry-js': 1.8.0
-
-  '@ibm/telemetry-js@1.8.0': {}
 
   '@iconify-json/clarity@1.2.2':
     dependencies:
