@@ -167,6 +167,9 @@ importers:
       opencc-js:
         specifier: ^1.0.5
         version: 1.0.5
+      plex-sans-sc-cdn:
+        specifier: ^1.0.0
+        version: 1.0.0
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -3464,6 +3467,9 @@ packages:
 
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
+
+  plex-sans-sc-cdn@1.0.0:
+    resolution: {integrity: sha512-R3rpUuBiAmYTdkFRBWk0Qoh0aJUqqoYr5Rgsx6m76jyIJV0duwZqmHUXaBYgabnEsTcD2o5nABPFvNVV/eW9Fg==}
 
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
@@ -8318,6 +8324,8 @@ snapshots:
       confbox: 0.1.8
       mlly: 1.7.3
       pathe: 1.1.2
+
+  plex-sans-sc-cdn@1.0.0: {}
 
   postcss@8.4.49:
     dependencies:

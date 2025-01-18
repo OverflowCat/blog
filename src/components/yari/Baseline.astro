@@ -12,7 +12,7 @@ export type Props = {
 }
 const { date, versions, feature, supports } = Astro.props;
 const id = `browser-supports-${feature}`;
-const baseline = date.getFullYear();
+const baseline = date.getUTCFullYear();
 const locDate = new Intl.DateTimeFormat('zh-Hans-CN', {
   year: 'numeric',
   month: 'numeric',

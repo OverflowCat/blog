@@ -150,7 +150,7 @@ export default defineConfig({
 			noExternal: [
 				"xp.css",
 				"98.css",
-				"@ibm/plex-sans-sc",
+				"plex-sans-sc-cdn",
 				"@shikijs/twoslash/style-rich.css",
 				"rehype-remnote/style/*",
 			],

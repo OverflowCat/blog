@@ -1,0 +1,134 @@
+---
+import Paper from "@/components/Paper.astro";
+import "@/styles/icon.less";
+import Comments from "@/components/comments/Comments.astro";
+// import "@/styles/snowy.css";
+import Common from "./Common.astro";
+import "@shikijs/twoslash/style-rich.css";
+const { frontmatter } = Astro.props;
+import Bar from "@/templates/Bar.astro";
+import "@/styles/form.less";
+import "plex-sans-sc-cdn/dist/min.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import type { Frontmatter } from "@/types";
+export type Props = {
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+	url: string;
+};
+
+const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
+---
+<style lang="less" is:global>
+  form input, form textarea {
+    @apply border-black! ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 text-pink-950 placeholder-color-gray-6 bg-#dabbb2;
+  }
+
+  button {
+    
+  }
+
+  :root {
+    --font-sans-en: "IBM Plex Sans", Lato, "PT Sans", "Noto Sans", "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --font-sans-ja: "IBM Plex Sans JP", "Noto Sans JP", "Noto Sans CJK JP", "MS Meiyo", "Meiryo",
+      "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo",
+      "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
+    --font-mono: "IBM Plex Mono",
+    "JetBrains Mono", "JetBrains Mono NF",
+    "JetBrainsMono NF",
+    "更纱等距黑体",
+    FiraCode, "Fira Code", "FiraCode NF",
+    "Noto Sans CJK Mono SC", "Source Code Pro",
+    "Noto Sans Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP",
+    "Noto Sans Mono CJK KR", "Noto Sans Mono CJK TC", "Lucida Console",
+    Liberation Mono, DejaVu Sans Mono, Consolas, Bitstream Vera Sans Mono,
+    "Courier New", "FiraCode NF", monospace;
+    --font-size-fig: 1.18rem;
+    --bg-tag: #83254f;
+    --bg-tag-hover: #c82c72;
+    --bg-tag-active: #b44b7a;
+    --text-tag: #f6ca1b;
+    --text-color: black;
+    --bg-code: #efe2ff;
+    color-scheme: light;
+    background-color: #edc089;
+  }
+
+  article#post {
+    font-size: 1.35rem;
+    p, li {
+      font-weight: 500;
+    }
+
+    h1, h1 {
+      font-weight: bolder;
+    }
+
+    p, h1, h2 {
+      font-family: "IBM Plex Sans SC", "Mi Sans", "Noto Sans", "Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC", system-ui, sans-serif;
+    }
+    
+    hr {
+      background-image: none;
+      block-size: 4px;
+      background-color: #2b2b2b;
+      border: none;
+    }
+  }
+  .paper {
+    background-color: rgb(214, 164, 183)!important;
+    border: 4px solid #131517;
+    box-shadow: #131517 4px 4px 0px 0px /* unlogical */;
+    margin: auto;
+    inline-size: 1024px;
+    max-inline-size: calc(100dvi - 2em);
+    min-inline-size: 380px;
+    overflow: hidden;
+  }
+
+  .resizable {
+    resize: inline;
+    /* overflow-x: hidden; */
+  }
+
+
+  @media (max-width: 480px) {
+    .resizable {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 100%;
+    }
+  }
+
+  section#comments {
+    margin-block: 1em;
+  }
+</style>
+
+{renderer === 'rss' ?
+  <Common layoutProps={Astro.props}></Common>
+  <slot />
+:
+
+<Bar lang="zh-Hans" />
+<Paper
+  transitionName="main"
+  padding={true}
+  paper={frontmatter?.paper ?? true}
+>
+{
+  frontmatter ?
+  <Common layoutProps={Astro.props}>
+    <slot />
+  </Common> : <slot />
+}
+</Paper>
+
+<section id="comments">
+  <Paper padding={true} paper={true}>
+    <Comments />
+  </Paper>
+</section>
+}

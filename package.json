@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.14.8",
+  "version": "2.15.0",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -80,6 +80,7 @@
     "logical-astro-tweet": "^0.0.5",
     "markdown-it": "^14.1.0",
     "opencc-js": "^1.0.5",
+    "plex-sans-sc-cdn": "^1.0.0",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
