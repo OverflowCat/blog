@@ -15,16 +15,12 @@ categories: "页面仔的自我修养"
 ---
 
 <style>
-article#post .table-container {
-  overflow-x: auto;
-  min-width: 450px;
-  max-width: 950px;
-  margin: auto;
+div.paper.resizable {
+  padding: 0;
 }
 
-.table-container table {
-  margin: 0!important;
-  width: 97%;
+table th {
+  min-width: 120px;
 }
 
 table a {
@@ -42,8 +38,7 @@ table a:hover {
 }
 </style>
 
-<section class="table-container">
-<table>
+<table class="wide">
   <tbody>
     <tr>
       <th colspan="2">平台</th>
@@ -213,4 +208,3 @@ table a:hover {
     </tr>
   </tbody>
 </table>
-</section>

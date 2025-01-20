@@ -15,11 +15,11 @@ ext: md
 ---
 
 <blockquote><i class="fa-solid fa-circle-info"></i> 这篇文章显然是经服务端渲染而呈现在你面前的。</blockquote>
-<table class="alignment-chart">
+<table class="wide alignment-chart">
   <thead>
     <tr>
       <th></th>
-      <th class="h">守序<div>一定要用 JS 框架渲染</div></th>
+      <th class="h">守序<div style="word-break: keep-all">一定要用 <wbr>JS<wbr> 框架渲染</div></th>
       <th class="h">中立<div>渲染出来的是 HTML 就行</div></th>
       <th class="h">混乱<div>渲染出来是图形就行</div></th>
     </tr>
@@ -83,10 +83,6 @@ ext: md
 <style>
   table.alignment-chart{
     text-align: center;
-    width: 100%;
-    margin: auto;
-    min-width: 648px;
-    overflow-x: scroll;
   }
   table.alignment-chart img {
     max-width: 120px;
@@ -99,6 +95,9 @@ ext: md
   table.alignment-chart td,
   table.alignment-chart th {
     width: 25%;
+  }
+  table.alignment-chart th {
+    min-width: 10ic;
   }
   th.h > div {
     font-weight: 400;

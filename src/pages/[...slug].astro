@@ -37,13 +37,6 @@ export type Props = {
 const post = await getEntry("blog", Astro.props.slug);
 if (!post) throw new Error(`Post ${Astro.params.slug} not found at ${Astro.props.slug}. Check if slug is correct.`);
 const isHant = Astro.props.hant;
-// let Content: AstroComponentFactory; //  = (() => <p>渲染失败</p>)()
-// try {
-//   Content = (await render(post)).Content;
-// } catch (e) {
-//   console.error(e);
-//   throw e;
-// }
 const content = await render(post);
 
 let title = post.data.title;
