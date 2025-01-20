@@ -29,7 +29,7 @@ const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
 	throw new Error(`Post ${id} not found.`);
 }
-const { vert, hant, date } = frontmatter;
+const { date } = frontmatter;
 const cats = arrify(frontmatter.categories);
 const tags = arrify(frontmatter.tags);
 const cover = frontmatter.photo?.hide ? undefined : frontmatter.photo;
@@ -38,8 +38,6 @@ const licence = frontmatter.licence ?? "CcByNc";
 import "@/styles/article.less";
 import { Picture } from "astro:assets";
 import { getCatSlug } from "@/scripts/tags";
-Astro.locals.hant = hant;
-Astro.locals.vert = vert;
 ---
 
 {

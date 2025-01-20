@@ -16,13 +16,14 @@ export interface Props {
 
 const { title, bar, og } = Astro.props;
 Astro.locals.noscript = true;
-Astro.locals.hant = false;
-Astro.locals.vert = true;
 ---
 
 <Page title={title} og={og} lang="zh-Hans">
-  <Bar {...bar} lang="zh-Hans" />
-  <!-- <Han hant={false} /> -->
+  <Bar
+    {...bar}
+    lang="zh-Hans"
+    mode={{ theme: true, hant: false, vert: true }}
+  />
   <main>
     <Sidebar><slot name="sidebar" slot="comments" /></Sidebar>
     <Paper id="page-main" transitionName="main">

@@ -66,7 +66,11 @@ export type Props = {
   }
 </style>
 
-<Bar lang="zh-Hans" />
+<Bar lang="zh-Hans" mode={{
+  hant: frontmatter?.hant,
+  vert: frontmatter?.vert,
+  theme: frontmatter?.theme,
+}} />
 <Paper
   transitionName="main"
   padding={true}

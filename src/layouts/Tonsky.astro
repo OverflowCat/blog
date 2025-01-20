@@ -6,7 +6,7 @@ import "@/styles/han.less";
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import Bar from "@/templates/Bar.astro";
-import Han from "@/components/Mode.astro";
+import Mode from "@/components/Mode.astro";
 import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
@@ -51,7 +51,11 @@ const html = $.html();
 Astro.locals.renderer == 'rss' ?
 <article set:html={html} />
 :
-<Bar theme="light" lang="en" />
+<Bar theme="auto" lang="en" mode={{
+  theme: false,
+  hant: true,
+  vert: true,
+}} />
 <div class="page">
   {!frontmatter.hide_title && <h1>{frontmatter.title}</h1>}
   <label for="show-en" class="btn">双语</label>
@@ -63,7 +67,7 @@ Astro.locals.renderer == 'rss' ?
     langs={frontmatter.langs}
     classList={["tonsky"]}
     />
-  <Han float={false} theme={false} hans={HANS} hant="漢語" />
+  <Mode float={false} theme={false} hans={HANS} hant="漢語" />
   <article class="content" set:html={html} />
   <Comments />
 </div>

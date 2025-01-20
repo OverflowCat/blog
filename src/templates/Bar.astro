@@ -3,6 +3,11 @@ export interface Props {
   index?: number;
   theme?: "transparent" | "auto";
   lang: "zh-Hans" | "zh-Hant" | "en";
+  mode: {
+    theme?: boolean;
+    hant?: boolean;
+    vert?: boolean;
+  };
 }
 
 import Logo from "@components/Logo.astro";
@@ -10,10 +15,9 @@ import slogans from "@scripts/slogans";
 import { pick } from "@/scripts/serendipity";
 import assert from "node:assert";
 
-import Han from "@/components/Mode.astro";
+import Mode from "@/components/Mode.astro";
+
 console.log(Astro.url.toString(), Astro.locals);
-const hant = Astro.locals.hant ?? false;
-const vert = Astro.locals.vert ?? false;
 
 const items = [
   ["主页", "Home", "/"],
@@ -22,7 +26,7 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-let { index, theme, lang } = Astro.props;
+let { index, theme, lang, mode } = Astro.props;
 if (!lang) lang = "zh-Hans";
 const slogan = pick(slogans.filter((s) => s[lang]))[lang];
 assert(slogan, "slogan is undefined");
@@ -54,12 +58,17 @@ assert(slogan, "slogan is undefined");
         ))
       }
     </ul>
-    <div class="edge min-inline-20">
-    {
-      (hant || vert) && (
-        <Han float={false} vert={vert} hant={hant === false ? false : undefined} />
-      )
-    }
+    <div class="edge min-inline-20 text-end">
+      {
+        (
+          <Mode
+            float={false}
+            vert={mode?.vert}
+            hant={mode?.hant}
+            theme={mode?.theme}
+          />
+        )
+      }
     </div>
   </div>
 </nav>
@@ -71,10 +80,8 @@ assert(slogan, "slogan is undefined");
   }
   nav#sticky {
     z-index: 1000;
-    left: 0;
-    top: 0;
     // width: fit-content;
-    @apply m-auto mbs--1 mbe-2 sticky min-block-10 pbe-2 inline-full left-0 top-0;
+    @apply m-auto mbs--1 mbe-2 sticky min-block-10 pbe-2 inline-full inset-bs-0 inset-is-0;
     align-items: space-between;
     .logo {
       @apply h-8 m-1;
@@ -105,14 +112,14 @@ assert(slogan, "slogan is undefined");
       opacity: 0;
     }
     3% {
-      opacity: .6;
+      opacity: 0.6;
     }
     100% {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
   .backdrop {
-    @apply flex absolute justify-center items-start w-full;
+    @apply flex absolute justify-center items-start inline-full;
     pointer-events: none;
     * {
       pointer-events: all;
@@ -121,7 +128,7 @@ assert(slogan, "slogan is undefined");
     inset: 0;
     /* Extend backdrop surface to the bottom */
     --extended-by: 250px;
-    bottom: calc(-1 * var(--extended-by));
+    inset-block-end: calc(-1 * var(--extended-by));
     /* Mask out the part falling outside the nav */
     --cutoff: calc(100% - var(--extended-by));
     -webkit-mask-image: linear-gradient(
@@ -178,7 +185,7 @@ assert(slogan, "slogan is undefined");
     }
   }
 
-/* 
+  /* 
   li:has(a:is(:hover, :focus-visible)),
   ul:not(:has(a:is(:hover, :focus-visible))) a.current {
     anchor-name: --indicator;
@@ -195,23 +202,23 @@ assert(slogan, "slogan is undefined");
     inline-size: anchor-size(--indicator);
   }
  */
- .edge {
-  display: none;
- }
- nav#sticky {
-  backdrop-filter: blur(15px);
- }
- @supports(scroll-timeline-name: --foo) and (container-type: inline-size) {
   .edge {
-    display: unset;
+    display: none;
   }
   nav#sticky {
-    backdrop-filter: none;
+    backdrop-filter: blur(15px);
   }
-  .backdrop {
-    @apply justify-between;
+  @supports (scroll-timeline-name: --foo) and (container-type: inline-size) {
+    .edge {
+      display: unset;
+    }
+    nav#sticky {
+      backdrop-filter: none;
+    }
+    .backdrop {
+      @apply justify-between;
+    }
   }
- }
   @container html (max-inline-size: 768px) {
     .separator {
       display: none;
