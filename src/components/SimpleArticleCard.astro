@@ -13,7 +13,7 @@ const { post } = Astro.props;
 const icon = getIconName(post);
 ---
 
-<code class="title-date" set:text={formatPostDate(post.data.date)} />
+<code class="title-date" set:html={formatPostDate(post.data.date)} />
 <span class="icon title-icon">
   {icon && <Icon name={icon} />}
 </span>

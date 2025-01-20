@@ -61,7 +61,7 @@ const _posts = posts.map((post) => {
         _posts.map((post) => (
           <>
             {year && post.isAnotherYear && (
-              <h2>{post.data.date.getFullYear()}</h2>
+              <h2>{post.data.date.getUTCFullYear()}</h2>
             )}
             <li>
               {simple ? (

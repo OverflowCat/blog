@@ -107,10 +107,11 @@ import Search from "@/components/sidebar/Search.astro";
 
 ## 框架
 
-用的 Next.js，初版以 [v0](https://v0.dev/) 写成。
+用的 Next.js，初版以 [v0](https://v0.dev/) 写成。因为太麻烦，这次不支持无
+JS 了，你可以用 v2 或 v1。不过，[谷歌也不支持](http://news.ycombinator.com/item?id=42747092)了，所以 $丑搜 \approx 谷歌$。
 
 输入框的输入法合成事件是用
-🦊[foxact 里的 `useCompositionInput`](https://foxact.skk.moe/use-composition-input)。这个东西非受控，所以要传个
+[🦊foxact 里的 `useCompositionInput`](https://foxact.skk.moe/use-composition-input)。这个东西非受控，所以要传个
 initialValue。如果你要层层传递 onChange 的话，只用在最外层用 `useState`hook
 并绑定 value 就好，最里层用 useCompositionInput 自己调 props 传来的 onChange。
 

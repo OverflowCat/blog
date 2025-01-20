@@ -167,15 +167,16 @@ Astro.locals.vert = vert;
       @apply no-underline border-none p-1 font-600;
       color: var(--text-tag) !important;
       margin-block: 3px;
-      margin-inline: 6px;
-      margin-inline: 5px;
-      transition: background-color 0.1s;
+      margin-inline: 3px;
+      margin-inline: 2px;
+      transition: background-color 0.1s, border 0.1s, color 0.1s;
       // border-radius: 0.5rem;
-      // border: 2px solid var(--bg-secondary);
+      border: 2px solid transparent;
       background-color: var(--bg-tag);
       color: var(--text-secondary);
       &:hover {
         background-color: var(--bg-tag-hover);
+        border: 2px solid var(--bg-secondary);
       }
       &:active {
         background-color: var(--bg-tag-active);

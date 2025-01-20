@@ -41,9 +41,9 @@ const { photo } = data;
         {
           !data.description && (
             <time
-              class="title-date"
+              class="title-date mono"
               datetime={data.date?.toISOString() || ""}
-              set:text={formatPostDate(data.date)}
+              set:html={formatPostDate(data.date)}
             />
           )
         }
@@ -62,7 +62,7 @@ const { photo } = data;
             <time
               class="title-date"
               datetime={data.date?.toISOString() || ""}
-              set:text={formatPostDate(data.date)}
+              set:html={formatPostDate(data.date)}
             />
           )
         }
