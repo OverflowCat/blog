@@ -26,7 +26,11 @@ Astro.locals.noscript = true;
 
 <!-- 2022-11-24 19:15:00 -->
 <Layout title="友链">
-  <Bar lang="zh-Hans" index={2} />
+  <Bar
+    lang="zh-Hans"
+    index={2}
+    mode={{ hant: false, vert: false, theme: false }}
+  />
   <h1 class="mbs-5">猫猫的<span class="text-gradient">朋友们</span></h1>
   <p class="info">可爱喵！以下友链按添加的时间顺序排列。</p>
   <ul role="list" class="link-card-grid">
@@ -214,6 +218,13 @@ Astro.locals.noscript = true;
       feed="https://blog.othing.xyz/feed/"
       desc="木有"
     />
+    <Card
+      link="axi404.top"
+      title="Axi's Blog"
+      avatar="https://pic.axi404.top/avatar.webp"
+      feed="https://axi404.top/rss.xml"
+      desc="一只可爱小猫"
+    />
   </ul>
 
   <h1 id="subscribe">订阅全部</h1>
@@ -234,9 +245,7 @@ Astro.locals.noscript = true;
       overflow: hidden;
     }
   </style>
-  <div
-    style="margin: auto; text-align: left; overflow-y: auto; background-color: transparent; border-radius: 4px;"
-  >
+  <div class="m-auto text-start mono overflow-y-auto bg-transparent rounded-1">
     <Code code={EXAMPLE} lang="yaml" theme="material-theme" />
   </div>
   <h2>你需要提供</h2>
@@ -268,6 +277,15 @@ Astro.locals.noscript = true;
   li {
     list-style: none;
   }
+  :root {
+    --accent: #8447ee;
+    --accent-gradient: linear-gradient(
+      45deg,
+      var(--accent),
+      #da62c4 30%,
+      white 60%
+    );
+  }
 </style>
 <style lang="less">
   img {
@@ -286,7 +304,6 @@ Astro.locals.noscript = true;
   }
   .info {
     @apply mb-4 p-4 rounded-md;
-    line-height: 1.6;
     border: 1px solid rgba(var(--accent), 25%);
     background-color: white;
     strong {
