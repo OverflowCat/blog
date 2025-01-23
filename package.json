@@ -109,7 +109,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.10.7",
     "@unocss/preset-icons": "^65.4.2",
-    "@unocss/transformer-directives": "^65.4.2",
+    "@unocss/transformer-directives": "^65.4.3",
     "npm-check-updates": "^17.1.14",
     "rehype-pretty-code": "^0.14.0",
     "rehype-twemoji": "^0.0.6",

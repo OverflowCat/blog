@@ -250,8 +250,8 @@ importers:
         specifier: ^65.4.2
         version: 65.4.2
       '@unocss/transformer-directives':
-        specifier: ^65.4.2
-        version: 65.4.2
+        specifier: ^65.4.3
+        version: 65.4.3
       npm-check-updates:
         specifier: ^17.1.14
         version: 17.1.14
@@ -415,6 +415,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.5':
+    resolution: {integrity: sha512-SRJ4jYmXRqV1/Xc+TIVG84WjHBXKlxO9sHQnA2Pf12QQEAp1LOh6kDzNHXcUnbH1QI0FDoPPVOt+vyUDucxpaw==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -441,6 +446,10 @@ packages:
 
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.5':
+    resolution: {integrity: sha512-L6mZmwFDK6Cjh1nRCLXpa6no13ZIioJDz7mdkzHv399pThrTa/k0nUlNaenOeh2kWu/iaOQYElEpKPUswUa9Vg==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1756,6 +1765,9 @@ packages:
   '@unocss/core@65.4.2':
     resolution: {integrity: sha512-VmXy5D25por+pt9LBlKZ3gk4rOE5ldm80MyVOEnLcpaFb9LqB0g/8qUU9/Dk3TSA+ZPeoGm53Juo0p8LMFIigA==}
 
+  '@unocss/core@65.4.3':
+    resolution: {integrity: sha512-luFgdcchSlNrYSaDvU2176T2PPQZdxqfREVbxEXNXlFEgyEFrx5hOSUXoJtJSZjRhAcE6zkWyLDf/JkQJ5Eeyw==}
+
   '@unocss/extractor-arbitrary-variants@65.4.2':
     resolution: {integrity: sha512-qm5JXfjbxgXqhQAeOfV1jFT1ThBTi1bP1m+Nu2p6tB9EUbAUp+AKY4sODueqDXoriUtOc7h0QzyW3Lm+s3fTGw==}
 
@@ -1799,6 +1811,10 @@ packages:
     resolution: {integrity: sha512-OdMSJZiZUr8XmLo3Bz3Wrw1nZLT1nTPnPOV8gdi4vZ+2RgCChua9o8Dz4IyeQ7mMhLXoqHIUpJ7jE5Nv+Uz1Fw==}
     engines: {node: '>=14'}
 
+  '@unocss/rule-utils@65.4.3':
+    resolution: {integrity: sha512-bzRRdb9mb82IvgOt3KiRyUh/njRfJC3hoV84lMyUPryT8YTEP/hl6kt2KQ2l1K3WDz7ZPQXVi2eqUbqc+AUpwg==}
+    engines: {node: '>=14'}
+
   '@unocss/transformer-attributify-jsx@65.4.2':
     resolution: {integrity: sha512-3jANN8pnOd3xX8PhkUMhRYEwT97HOYNLMiACpRb2x3MRxYjmpOPR/We31r/tYz23hMsbGkR0C5xvpuCkDj2QAA==}
 
@@ -1807,6 +1823,9 @@ packages:
 
   '@unocss/transformer-directives@65.4.2':
     resolution: {integrity: sha512-u/hbpRe/mEasRdzznGQnKmJqDHcoJ2MJJBLpDc2RisiAEokz73dno3JtT70HZVA+DN7Y9ddAKioxlvSU+iJxFA==}
+
+  '@unocss/transformer-directives@65.4.3':
+    resolution: {integrity: sha512-e3zZYjXqHSWb6YrC09/FnCsndhZdRzmYhPubTzOjnvb5K0ihIiLvHx9c2TRPWvMspXs0wHKQsLW5fAs8oyimeQ==}
 
   '@unocss/transformer-variant-group@65.4.2':
     resolution: {integrity: sha512-a5xjR9mPUo7n6wD3nO5tcEcH7j0ks25E3d100XdNUeVUJeszzMAeLZ/uYrkd6Z3amyLLxwVOkAdYcczGhKdsbA==}
@@ -4804,6 +4823,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
+  '@babel/parser@7.26.5':
+    dependencies:
+      '@babel/types': 7.26.5
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -4837,6 +4860,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.0':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.5':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5983,6 +6011,8 @@ snapshots:
 
   '@unocss/core@65.4.2': {}
 
+  '@unocss/core@65.4.3': {}
+
   '@unocss/extractor-arbitrary-variants@65.4.2':
     dependencies:
       '@unocss/core': 65.4.2
@@ -6058,7 +6088,12 @@ snapshots:
 
   '@unocss/rule-utils@65.4.2':
     dependencies:
-      '@unocss/core': 65.4.2
+      '@unocss/core': 65.4.3
+      magic-string: 0.30.17
+
+  '@unocss/rule-utils@65.4.3':
+    dependencies:
+      '@unocss/core': 65.4.3
       magic-string: 0.30.17
 
   '@unocss/transformer-attributify-jsx@65.4.2':
@@ -6073,6 +6108,12 @@ snapshots:
     dependencies:
       '@unocss/core': 65.4.2
       '@unocss/rule-utils': 65.4.2
+      css-tree: 3.1.0
+
+  '@unocss/transformer-directives@65.4.3':
+    dependencies:
+      '@unocss/core': 65.4.3
+      '@unocss/rule-utils': 65.4.3
       css-tree: 3.1.0
 
   '@unocss/transformer-variant-group@65.4.2':
@@ -6158,7 +6199,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.2
+      '@babel/parser': 7.26.5
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6171,7 +6212,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.2
+      '@babel/parser': 7.26.5
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
