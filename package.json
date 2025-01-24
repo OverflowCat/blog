@@ -113,7 +113,7 @@
     "npm-check-updates": "^17.1.14",
     "rehype-pretty-code": "^0.14.0",
     "rehype-twemoji": "^0.0.6",
-    "rollup": "^4.31.0",
+    "rollup": "^4.32.0",
     "sass": "^1.83.4",
     "shiki": "^2.0.3",
     "twoslash": "^0.2.12",
