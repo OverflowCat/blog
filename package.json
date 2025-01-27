@@ -95,7 +95,7 @@
     "remark-ruby": "^0.4.0",
     "remark-samp-kbd": "^0.1.2",
     "sharp": "^0.33.5",
-    "spoiled": "^0.3.3",
+    "spoiled": "^0.4.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
