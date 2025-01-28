@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes, HTMLTag } from "astro/types";
+import type { IntrinsicAttributes } from "node_modules/hastscript/lib/jsx-classic";
+
+export type Props = {
+  light: string; // URL for the light mode image
+  dark: string; // CSS color or gradient for the dark mode overlay
+  alt: string; // Alt text for the image
+  class?: string; // Additional classes for the image
+};
+
+const { light, dark, alt, class: className } = Astro.props;
+---
+
+<style
+  is:global
+  define:vars={{
+    "dark-image": `url(${dark})`,
+  }}
+>
+  @container style(--dark-scheme) {
+    .light-dark-img > img {
+      opacity: 0;
+    }
+    .light-dark-img {
+      background-image: var(--dark-image);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+  }
+</style>
+
+<figure class:list={["light-dark-img", className]}>
+  <img src={light} alt={alt + " (Light mode image)"} />
+</figure>

@@ -1,54 +1,83 @@
+---
+export type Props = {
+  value: "light" | "dark" | "auto";
+};
+const { value } = Astro.props;
+---
+
 <div id="theme-switcher">
-    <select id="theme-select" aria-label="切换主题">
-        <option value="light" selected>明</option>
-        <option value="dark">暗</option>
-        <option value="system">系统</option>
-    </select>
+  <select id="theme-select" aria-label="切换主题">
+    <option value="light" selected={value === "light"}>明</option>
+    <option value="dark" selected={value === "dark"}>暗</option>
+    <option value="system" selected={value === "auto"}>系统</option>
+  </select>
 </div>
 
 <style lang="less" is:global>
+  :root > *,
+  :root > * > *,
+  :root > * > * > * {
+    transition:
+      background-color 0.7s,
+      background-image 0.7s,
+      color 0.2s;
+  }
 
-:root > *, :root > * > *, :root > * > * > * {
-    transition: background-color .7s, background-image .7s, color .2s;
-}
-
-#theme-switcher {
+  #theme-switcher {
     display: none;
     color: var(--text-secondary);
     &:has(select:focus) {
-        outline: 2px solid light-dark(black, white);
+      outline: 2px solid light-dark(black, white);
     }
-}
+  }
 
-@supports (color: light-dark(black, white)) {
-    :root {
+  @supports (color: light-dark(black, white)) {
+    @media (prefers-color-scheme: dark) {
+      :root {
         &:has(option[value="system"]:checked) {
-            color-scheme: light dark;
-            --auto-scheme: 1;
+          color-scheme: light dark;
+          --dark-scheme: 1;
         }
-        &:has(option[value="light"]:checked) {
-            color-scheme: light;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        &:has(option[value="system"]:checked) {
+          color-scheme: light dark;
+          --light-scheme: 1;
         }
-        &:has(option[value="dark"]:checked) {
-            color-scheme: dark;
-            --logo-filter: invert(1);
-        }
+      }
+    }
+    :root {
+      &:has(option[value="system"]:checked) {
+        color-scheme: light dark;
+        --auto-scheme: 1;
+      }
+      &:has(option[value="light"]:checked) {
+        color-scheme: light;
+        --light-scheme: 1;
+      }
+      &:has(option[value="dark"]:checked) {
+        color-scheme: dark;
+        --dark-scheme: 1;
+        --logo-filter: invert(1);
+      }
     }
     #theme-switcher {
-        @apply inline-block p-1;
-        font-size: 0.85em;
+      @apply inline-block p-1;
+      font-size: 0.85em;
     }
     select#theme-select {
-        > option {
-            background-color: var(--bg-color);
-        }
-        @apply i-material-symbols:night-sight-auto;
-        &:has(option[value="light"]:checked) {
-            @apply i-material-symbols:light-mode-rounded;
-        }
-        &:has(option[value="dark"]:checked) {
-            @apply i-material-symbols:dark-mode-rounded;
-        }
+      > option {
+        background-color: var(--bg-color);
+      }
+      @apply i-material-symbols:night-sight-auto;
+      &:has(option[value="light"]:checked) {
+        @apply i-material-symbols:light-mode-rounded;
+      }
+      &:has(option[value="dark"]:checked) {
+        @apply i-material-symbols:dark-mode-rounded;
+      }
     }
-}
+  }
 </style>
