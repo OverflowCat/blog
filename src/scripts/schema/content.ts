@@ -72,7 +72,7 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 		resizable: z.boolean().default(true),
 		hant: z.boolean().optional(),
 		vert: z.boolean().optional(),
-		theme: z.boolean().optional(),
+		theme: z.boolean().or(z.string()).optional(),
 	})
 	// .refine((data) => !(data.math && data.vert), {
 	// 	message: "Math is not supported in vertical mode.",

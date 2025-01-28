@@ -10,7 +10,9 @@ licence: CcBySa
 description: 仙之人兮列如麻。
 layout: "@/layouts/Default.astro"
 ext: md
-tags: 小程序
+tags:
+  - 微信
+  - 小程序
 categories: "页面仔的自我修养"
 ---
 
@@ -160,8 +162,7 @@ table a:hover {
       <td><a href="https://opentools.95516.com/applet/#/docs/develop/framework/overview">JS</a></td>
     </tr>
     <tr>
-      <td>快应用联盟</td>
-      <td>&nbsp;</td>
+      <td colspan="2">快应用联盟</td>
       <td><a href="https://www.quickapp.cn/">快应用</a></td>
       <td colspan="3" class="text-center"><a href="https://www.quickapp.cn/document?menu=1,5">UX</a></td>
     </tr>

@@ -1,7 +1,7 @@
 ---
 export type Props = {
   float?: boolean;
-  theme?: boolean;
+  theme?: boolean | "auto";
   hans?: string;
   hant?: string | boolean;
   vert?: boolean;
@@ -55,7 +55,7 @@ import { Icon } from "astro-icon/components";
       </div>
     )
   }
-  {theme !== false && <Theme />}
+  {theme !== false && <Theme value={theme === "auto" ? "auto" : "light"} />}
 </div>
 <style lang="less">
   #han-float {

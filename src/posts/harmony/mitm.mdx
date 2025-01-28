@@ -1,0 +1,88 @@
+---
+title: 惊鸿一瞥 v5.0.0.123：MITM 和小而美
+date: 2025-01-28T14:08:25.666Z
+noscript: true
+photo:
+  src: "/photos/mate-70-pro-plus.jpg"
+  alt: "Mate 70 Pro+"
+licence: CcBy
+theme: auto
+layout: "@/layouts/Default.astro"
+tags:
+  - 微信
+categories:
+  - 惊鸿一瞥
+---
+
+import "./_style.less"
+
+## Android 容器
+
+关于卓易通和出境易这两个玩意:small[儿]，前人之述备矣，本质上是一个 [LXC](https://zh.wikipedia.org/wiki/LXC)。音频和蓝牙都是可用的。你可以在桌面上分别拉一个巨大的文件夹，但是不能把里面的应用拉出来。
+
+众所周知，虽然名义上不是同一个公司做的，但卓易通和出境易是互通的。甚至，应用商店甚至会显示 Android 应用的结果：
+
+import LightDarkImage from "@/components/LightDarkImage.astro"
+
+<LightDarkImage class="inline-md" light="/screenshots/appgallery.jpg" dark="/screenshots/appgallery-dark.jpg" />
+
+## MITM
+
+如果用 ArkTs 的 API，`RemoteCommunicationKit` 需要应用自己设置
+
+```js
+request.configuration = {
+  security: {
+    remoteValidation: selfDefinedRemoteValidation
+  }
+};
+```
+
+否则是默认 pin 了证书的。
+
+但是，鸿蒙加白了 Charles 的证书（？？？），所以，你可以用 Charles
+抓取鸿蒙的网络请求。如果要用 `mitmproxy`，则需要在 ``~/.mitmproxy/mitmproxy-ca-cert.pem``
+里加入 Charles 的证书。导出 Charles 的根证书后，需要把 Charles
+的证书转成 pem 格式：
+
+```sh
+openssl pkcs12 -in charles-ssl-proxying.p12 -out charles-ssl-proxying.pem -nodes
+```
+
+然后把 ``charles-ssl-proxying.pem`` 放到一个目录里，比如 ``./ca``，命名为 ``mitmproxy-ca.pem``。最后，写好
+script 后运行：
+
+```sh
+mitmproxy --listen-port 8888 --mode regular --set block_global=false --set confdir=./ca -s log_requests.py
+```
+
+要注意的是，鸿蒙有多种发送 HTTP 请求的 API。例如，`@ohos.net.http`<sup class="api">API 6+</sup>
+也提供 [`certificatePinning`<sup class="api">API 12+</sup>](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-http-V5#%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B)、`clientCert`<sup class='api'>API 11+</sup>，并且可以设置自己的指定证书用于验证，比如应用商店就不认 Charles 的证书；若使用 C API（NAPI），也不会使用 JS 的证书。
+
+## 输入法
+
+目前没有能用的输入法，各家的都很简陋。例如键盘只有 QWERTY，以及鲜少有双拼支持。
+
+## 回退
+
+回退是指从 NEXT 降级到 4.2。升级时，应用可以通过 `BackupExtensionAbility` 恢复 Android 中的数据，但这些数据降级就不会保留，需要从 Android 备份恢复。即，数据备份是为了后悔回退，而不是升级用的。
+
+在小红书中每天可以看见很多新鲜的鸿蒙笑话，一般是抱怨升级后再回退数据丢失的笔记。发布这些内容的用户常常会被评论说教升级到
+NEXT 是要手动加入内测（实际早就不用了），或者升级前有鸿蒙适配检测（和 M$
+一样也管这个叫易升），并且被责怪是自己的问题。而这些用户则会辩称：系统总有升级的红点提示；以为是正常的小升级；升级后发现什么功能都没有或缺少了好多应用；自己只是为了在小红书发实况图片结果发现评论里依然发不了；不成熟的系统不应该这样大规模拿出来给消费者用。有的发布者说被喷到连夜改描述；也有的丢失了聊天记录、上万张照片打电话给客服投诉，表示以后再也不会买华为的产品了云云。
+
+照理说，升级时会有一个很长的提示和强制的备份过程，华为还提供了限时的免费的云备份服务。我的估计是升级的时候备份应用数据可以取消勾选所有应用，所以导致用户存有侥幸心理，偷懒只备份了一部分的应用数据。
+
+Android 的微信其实在清单值里是不让备份的，不过各家厂商都开了洞。
+
+## 元服务
+
+有人说终于忍不住往钱包里加贷款功能了，不过实际上这只是一个元服务的入口。元服务是鸿蒙上的原生小程序，不需要安装，可以和主应用共用一个备案，甚至可以添加小组件到桌面。
+
+## 微信
+
+说到微信，就不得不说微信用了 Flutter，故列表之类的常常会出现滑动掉帧等性能很差的情况。有在微信置顶了两百多个工作聊天的用户反馈滑下去要半天——任何一个实现细节都可能被客户依赖，伊把置顶当作分组来用，说是这样可以通过未读消息数来判断有没有工作上的消息。
+
+微信小程序的兼容性在不断提高，基本的组件都不缺了，但是还是有很多布局问题，导致日常使用有时还是很难受。总之，微信的更新速度并不慢，有的其他应用只做了一个有基础功能的版本，便不再更新了。更新勤快的应用图穷匕见，广告提示着你这样的状态终究只是暂时的：
+
+> <span class='flip-inline inline-block'>考思度角个一另从果如</span>，现在的鸿蒙微信，大概率是你唯一一次机会用上真正小而美的微信。<img src={`https://count.xinshijiededa.men/harmony%2Fmitm/ending.svg`} alt='ending' class='inline-block vertical-mid' />
