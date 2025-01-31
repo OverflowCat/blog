@@ -62,7 +62,7 @@
     "@shikijs/twoslash": "^2.1.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "astro": "5.1.10",
+    "astro": "5.2.3",
     "astro-icon": "1.1.5",
     "astro-remote": "^0.3.3",
     "astro-typst": "0.7.0-beta.1",
