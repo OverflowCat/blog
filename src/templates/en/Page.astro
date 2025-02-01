@@ -23,7 +23,7 @@ if (!og) {
 }
 
 const metas = {
-  ...genOpenGraphMetas(og),
+  ...genOpenGraphMetas(og, Astro.site!),
   ...Astro.props.metas,
 };
 

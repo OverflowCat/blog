@@ -29,7 +29,7 @@ if (!og) {
 }
 
 const metas = {
-  ...genOpenGraphMetas(og),
+  ...genOpenGraphMetas(og, Astro.site!),
   ...Astro.props.metas,
   description: og.description ?? "新世界的大門 Blog",
 };
