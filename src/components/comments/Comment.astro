@@ -34,7 +34,7 @@ const message = data.message ? data.message : comment.rendered?.html;
       itemprop="datePublished"
     />
   </hgroup>
-  <div class="message" set:html={message} />
+  <article class="message" set:html={message} />
   {
     reply && (
       <div class="reply">
