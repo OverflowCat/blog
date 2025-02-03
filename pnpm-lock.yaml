@@ -54,8 +54,8 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
       '@iconify-json/fluent':
-        specifier: ^1.2.12
-        version: 1.2.12
+        specifier: ^1.2.13
+        version: 1.2.13
       '@iconify-json/gravity-ui':
         specifier: ^1.2.4
         version: 1.2.4
@@ -415,6 +415,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.7':
+    resolution: {integrity: sha512-kEvgGGgEjRUutvdVvZhbn/BxVt+5VSpwXz1j3WYXQbXDo8KzFOPNG2GQbdAiNq8g6wn1yKk7C/qrke03a84V+w==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -441,6 +446,10 @@ packages:
 
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.7':
+    resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1041,8 +1050,8 @@ packages:
   '@iconify-json/entypo-social@1.2.2':
     resolution: {integrity: sha512-70dql8kxhMh2JE7pnrBC83IPt9bRxsfOVVvPuEdgi7DbB62Im+VoAWVARSf3K7lIFNYL6VDlYUXuqIB/QdtR8A==}
 
-  '@iconify-json/fluent@1.2.12':
-    resolution: {integrity: sha512-0wIO9ff5Nsl6AzjpjNHkgwCTJTOUI1Ph2jwrL9KBbEXk/iMRdrtEtnlyp6wiKpnDtnzX9skHNsC2L2PN9aS6UA==}
+  '@iconify-json/fluent@1.2.13':
+    resolution: {integrity: sha512-U9GxkYqxav7A5ie7ityRpILrMA1uSZebYLuV757+lWrSJDTergU5tKHAO5haQd7+sbFNIRPhfUyq1ORvPOowmw==}
 
   '@iconify-json/gravity-ui@1.2.4':
     resolution: {integrity: sha512-8o8L0exFRA7a6U585bkYzxjAsMhx7WeUE2DsF/tkomqJLbcBZOlryLH6Sizk5xKRKLc8RMTj1LTfKQRKc7Jmew==}
@@ -4687,6 +4696,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
+  '@babel/parser@7.26.7':
+    dependencies:
+      '@babel/types': 7.26.7
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -4720,6 +4733,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.0':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.7':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5104,7 +5122,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.12':
+  '@iconify-json/fluent@1.2.13':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6008,7 +6026,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.2
+      '@babel/parser': 7.26.7
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6021,7 +6039,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.2
+      '@babel/parser': 7.26.7
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
