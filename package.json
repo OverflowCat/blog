@@ -114,7 +114,7 @@
     "rehype-twemoji": "^0.0.6",
     "rollup": "^4.32.0",
     "sass": "^1.83.4",
-    "shiki": "^2.1.0",
+    "shiki": "^2.3.2",
     "twoslash": "^0.2.12",
     "typescript": "^5.7.3",
     "unocss": "^65.4.3",
