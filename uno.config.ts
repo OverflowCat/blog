@@ -5,7 +5,7 @@ import transformerDirectives from "@unocss/transformer-directives";
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],
-  blocklist: ["b", "container"],
+  blocklist: ["b", "container", "me", "my"],
   rules: [
     // theme
     ["text-2nd", { color: "var(--text-secondary)" }],

@@ -32,7 +32,7 @@ Tsukimiya bot（[@tsukimiya_bot](https://t.me/tsukimiya_bot)）是一个 Telegra
 
 import Moon from "@/components/Moon.astro"
 
-<Moon client:visible initialContent={`fn sum(xs: @immut/list.T[Int]) -> Int {
+<Moon initialContent={`fn sum(xs: @immut/list.T[Int]) -> Int {
     loop xs, 0 {
         Nil, acc => break acc // break 可以省略
         Cons(x, rest), acc => continue rest, x + acc

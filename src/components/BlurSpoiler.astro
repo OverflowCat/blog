@@ -1,21 +1,29 @@
 ---
 export type Props = {
   classList?: string[];
-}
+  div?: boolean;
+};
 const classes = Astro.props.classList ?? [];
+const Tag = Astro.props.div ? "div" : "span";
 ---
 
-<div class:list={["blur-spoiler", ...classes]}>
-  <slot />
-</div>
-
-<style lang="less">
+<Tag class:list={["blur-spoiler", ...classes]}><slot /></Tag><style lang="less" is:global>
   .blur-spoiler {
     filter: blur(11px) brightness(0.8) saturate(0.7);
+    ruby rt {
+      opacity: 0;
+    }
     &:hover {
       transition: filter 1.4s cubic-bezier(0.7, 0, 1, 1);
       filter: blur(0);
+      ruby rt {
+        opacity: 1;
+        transition: opacity 0.4s;
+      }
+    }
+    &:is(span):hover {
+      transition: filter 0.3s;
     }
     transition: filter 0.4s;
   }
-  </style>
+</style>

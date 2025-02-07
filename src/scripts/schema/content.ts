@@ -57,8 +57,12 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 			.transform((x) => (x === undefined ? false : x)),
 		noscript: z.boolean(),
 		licence: z.union([
-			z.literal("CcByNc"),
+			z.literal("CcBy"),
 			z.literal("CcBySa"),
+			z.literal("CcByNc"),
+			z.literal("CcByNd"),
+			z.literal("CcByNcSa"),
+			z.literal("CcByNcNd"),
 			z.literal("Minzoku"),
 			z.literal("PD"),
 			z.string().nullable(),

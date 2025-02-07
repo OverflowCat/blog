@@ -1,0 +1,16 @@
+---
+export type Props = {
+  text: string;
+};
+
+const { text } = Astro.props;
+---
+
+<span class="stealth" data-stealth={text}></span><style
+  lang="less"
+>
+  .stealth::after {
+    content: attr(data-stealth);
+    display: inline-block;
+  }
+</style>

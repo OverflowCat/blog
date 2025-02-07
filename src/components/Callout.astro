@@ -1,0 +1,21 @@
+---
+type Props = {
+  icon: string;
+  align?: "center";
+  classList?: string[];
+};
+
+const { icon, align, classList } = Astro.props;
+const classes = ["callout", "flex", "gap-2"].concat(classList ?? []);
+---
+
+<blockquote class:list={classes}>
+  <span class="inline-block">{icon}</span>
+  <span
+    class:list={{
+      "inline-block": true,
+      "flex-grow": true,
+      "text-center": align === "center",
+    }}><slot /></span
+  >
+</blockquote>

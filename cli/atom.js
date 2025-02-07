@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 try {
   fs.rmSync("./dist/atom.xml", { recursive: true });
 } catch (_) {}

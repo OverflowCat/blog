@@ -11,6 +11,10 @@ const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 <subtitle>因此幻想是世界，谁若懂得，谁就会歌唱</subtitle>
 <id>https://blog.xinshijiededa.men/</id>
 <updated>${new Date().toISOString()}</updated>
+<follow_challenge>
+  <feedId>41473172365329408</feedId>
+  <userId>61810140015196160</userId>
+</follow_challenge>
 <link href="https://blog.xinshijiededa.men/atom.xml" rel="self" />
 <link href="https://blog.xinshijiededa.men/" />
 <generator uri="https://astro.build" version="${Astro.generator.split(" ").at(-1)}">Astro</generator>
@@ -67,15 +71,24 @@ function xhtmlify(s: string, link: string): string {
   });
   html = html.toWellFormed(); // requires Node.js 20.0.0+
   const $ = load(html);
+  html = "";
+  // console.log($('h1').html()?.slice(0, 500));
+  $('h1').remove();
   $('nav').remove();
   $('footer').remove();
   $('section#comments').remove();
+  $('.info').remove();
+  $('.licence').remove();
   $("svg.typst-doc path").remove();
-  const body = $("body").html();
-  if (body === null) {
-    throw new Error("html === null");
-  }
-  html = `<div id="atom-xml-wrapper">${body}</div>`;
+  // const stylesheets = $("link[rel=stylesheet]"); 
+  // const body = $("body").html();
+  // html = `<div id="atom-xml-wrapper">${body}</div>`;
+  // wrap the content in a div using cheerio instead of using a template string
+  const bodyWrapper = $("<div id='atom-xml-wrapper'></div>");
+  bodyWrapper.append($("body").contents());
+  // insert the stylesheets before the body
+  // bodyWrapper.prepend(stylesheets);
+  html = bodyWrapper.html() ?? "";
   html = html.replaceAll("&", "&amp;");
   html = html.replaceAll("<", "&lt;");
   return html;

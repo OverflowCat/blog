@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  name: "CcByNc" | "CcBySa" | "Minzoku" | "PDKR" | "PD" | string | false | undefined | null;
+  name: "Minzoku" | "PDKR" | "PD" | string | false | undefined | null;
 }
 
 import CreativeCommons from "./CreativeCommons.astro";
@@ -15,7 +15,11 @@ const { name } = Astro.props;
   {
     !!name &&
       (name.startsWith("Cc") ? (
-        <CreativeCommons>
+        <CreativeCommons
+          sa={name.includes("Sa")}
+          nc={name.includes("Nc")}
+          nd={name.includes("Nd")}
+        >
           <slot />
         </CreativeCommons>
       ) : name === "Minzoku" ? (
