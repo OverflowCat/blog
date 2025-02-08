@@ -52,6 +52,6 @@ const licence = `BY${nc ? "-NC" : ""}${nd ? "-ND" : ""}${sa ? "-SA" : ""}`;
     href={"https://creativecommons.org/licenses/" + licence.toLowerCase() + "/4.0/legalcode"}
     target="_blank">CC {licence} 4.0 International</a
   >）许可。阁下可自由地<b>共享</b>（复制、发行）{
-    nd && (<>和<b>演绎</b>（修改、转换或二次创作）</>)
+    !nd && (<>和<b>演绎</b>（修改、转换或二次创作）</>)
   }本作品，唯须遵守许可协议条款。
 </p>
