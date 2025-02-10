@@ -41,12 +41,11 @@ request.configuration = {
 
 否则是默认 pin 了证书的。
 
-但是，鸿蒙加白了 [Charles](https://www.charlesproxy.com/) 的（根？）证书（？？？），所以，你可以用 Charles
-抓取鸿蒙的网络请求。[^charles]如果要用 `mitmproxy`，则需要在 ``~/.mitmproxy/mitmproxy-ca-cert.pem``
+与高版本的 Android 一样，系统不会信任用户导入的证书。但是，鸿蒙加白了
+[Charles](https://www.charlesproxy.com/) 的（根？）证书（？？？），所以，你可以导入 Charles
+抓取鸿蒙的网络请求。如果要用 `mitmproxy`，则需要在 ``~/.mitmproxy/mitmproxy-ca-cert.pem``
 里加入 Charles 的证书。导出 Charles 的根证书后，需要把 Charles
 的证书转成 pem 格式：
-
-[^charles]: Charles 证书是 per 机器生成的，所以我目测是检测 CA 名字？
 
 ```sh
 openssl pkcs12 -in charles-ssl-proxying.p12 -out charles-ssl-proxying.pem -nodes
