@@ -34,7 +34,10 @@ function remParse(options = { ...DEFAULT_CONFIG, unwrapRoot: true, }) {
 
   function parser(doc: string, file: unknown) {
     doc = data;
-    return transformDoc(doc, options);
+    return transformDoc(doc, {
+      docMap: new Map(), // TODO: add docMap
+      config: options,
+    });
   }
 }
 

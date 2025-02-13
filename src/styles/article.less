@@ -86,8 +86,9 @@ article#post {
   }
 
   >img,
-  >figure>img,
-  >picture>img {
+  a>img,
+  figure>img,
+  picture>img {
     max-block-size: min(600px, 100%);
     max-inline-size: 100%;
     /* &[width][height] {} */
@@ -95,6 +96,14 @@ article#post {
     object-fit: contain;
     display: block;
     margin: auto;
+  }
+
+  a:has(img) {
+    display: block;
+    margin: auto;
+    &::after {
+      display: none;
+    }
   }
 
   table img {
