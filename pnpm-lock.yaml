@@ -16,7 +16,7 @@ importers:
         version: 6.1.0
       '@astrojs/mdx':
         specifier: 4.0.8
-        version: 4.0.8(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
+        version: 4.0.8(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
       '@astrojs/prism':
         specifier: 3.2.0
         version: 3.2.0
@@ -103,7 +103,7 @@ importers:
         version: 0.5.4
       '@qwikdev/astro':
         specifier: ^0.7.10
-        version: 0.7.10(@builder.io/qwik@1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
+        version: 0.7.10(@builder.io/qwik@1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
       '@shikijs/twoslash':
         specifier: ^2.3.2
         version: 2.3.2(typescript@5.7.3)
@@ -114,8 +114,8 @@ importers:
         specifier: ^19.0.3
         version: 19.0.3(@types/react@19.0.8)
       astro:
-        specifier: 5.2.6
-        version: 5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+        specifier: 5.3.0
+        version: 5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       astro-icon:
         specifier: 1.1.5
         version: 1.1.5
@@ -124,7 +124,7 @@ importers:
         version: 0.3.3
       astro-typst:
         specifier: 0.7.0-beta.1
-        version: 0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.4)(@types/node@22.13.2)(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)
+        version: 0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.4)(@types/node@22.13.2)(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -154,7 +154,7 @@ importers:
         version: 4.2.2
       logical-astro-tweet:
         specifier: ^0.0.5
-        version: 0.0.5(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
+        version: 0.0.5(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -1925,8 +1925,8 @@ packages:
       '@myriaddreamin/typst-ts-renderer': 0.5.0-rc9
       astro: '>= 3.0.0'
 
-  astro@5.2.6:
-    resolution: {integrity: sha512-CrTuJMwpWF9kmOhX+cl6uPqNbTRrHO7eXggFP9SK7+Bsen/7FpJtA6k1p/ALleuV5ndJLqn/9tpmP3qACHPjYA==}
+  astro@5.3.0:
+    resolution: {integrity: sha512-e88l/Yk/6enR/ZDddLbqtM+oblBFk5mneNSmNesyVYGL/6Dj4UA67GPAZOk79VxT5dbLlclZSyyw/wlxN1aj3A==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2140,8 +2140,8 @@ packages:
     resolution: {integrity: sha512-u+7xq68MAjIqvoEKrdgIEupKJNBeU8MSl/cpfPmJ3rm9yvxrgbMPr8TkZS9qnwCgiVC8BsEt9kDkeD7He2zmNA==}
     engines: {node: ^12.20 || >=14.13}
 
-  crossws@0.3.3:
-    resolution: {integrity: sha512-/71DJT3xJlqSnBr83uGJesmVHSzZEvgxHt/fIKxBAAngqMHmnBWQNxCphVxxJ2XL3xleu5+hJD6IQ3TglBedcw==}
+  crossws@0.3.4:
+    resolution: {integrity: sha512-uj0O1ETYX1Bh6uSgktfPvwDiPYGQ3aI4qVsaC/LWpkIzGj1nUYm5FK3K+t11oOlpN01lGbprFCH4wBlKdJjVgw==}
 
   css-select@5.1.0:
     resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
@@ -4355,6 +4355,9 @@ packages:
   zod@3.24.1:
     resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
+  zod@3.24.2:
+    resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -4446,12 +4449,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.8(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))':
+  '@astrojs/mdx@4.0.8(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.1.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.4
@@ -5403,11 +5406,11 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@qwikdev/astro@0.7.10(@builder.io/qwik@1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))':
+  '@qwikdev/astro@0.7.10(@builder.io/qwik@1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))':
     dependencies:
       '@builder.io/qwik': 1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
       '@inox-tools/inline-mod': 2.0.3(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
-      astro-integration-kit: 0.18.0(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
+      astro-integration-kit: 0.18.0(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))
     transitivePeerDependencies:
       - astro
       - supports-color
@@ -6018,9 +6021,9 @@ snapshots:
       - debug
       - supports-color
 
-  astro-integration-kit@0.18.0(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)):
+  astro-integration-kit@0.18.0(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:
-      astro: 5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       pathe: 1.1.2
       recast: 0.23.9
 
@@ -6032,12 +6035,12 @@ snapshots:
       marked-smartypants: 1.1.9(marked@12.0.2)
       ultrahtml: 1.5.3
 
-  astro-typst@0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.4)(@types/node@22.13.2)(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0):
+  astro-typst@0.7.0-beta.1(@myriaddreamin/typst-ts-node-compiler@0.5.4)(@types/node@22.13.2)(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.4
       '@myriaddreamin/typst.ts': 0.5.0-rc6
       '@rollup/plugin-node-resolve': 15.3.1(rollup@4.34.6)
-      astro: 5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       cheerio: 1.0.0-rc.12
       vite: 5.4.14(@types/node@22.13.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)
     transitivePeerDependencies:
@@ -6052,7 +6055,7 @@ snapshots:
       - sugarss
       - terser
 
-  astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0):
+  astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.4
       '@astrojs/internal-helpers': 0.5.1
@@ -6110,9 +6113,9 @@ snapshots:
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.0
-      zod: 3.24.1
-      zod-to-json-schema: 3.24.1(zod@3.24.1)
-      zod-to-ts: 1.2.0(typescript@5.7.3)(zod@3.24.1)
+      zod: 3.24.2
+      zod-to-json-schema: 3.24.1(zod@3.24.2)
+      zod-to-ts: 1.2.0(typescript@5.7.3)(zod@3.24.2)
     optionalDependencies:
       sharp: 0.33.5
     transitivePeerDependencies:
@@ -6352,7 +6355,7 @@ snapshots:
       blob-polyfill: 7.0.20220408
       fetch-blob: 3.2.0
 
-  crossws@0.3.3:
+  crossws@0.3.4:
     dependencies:
       uncrypto: 0.1.3
 
@@ -6762,7 +6765,7 @@ snapshots:
   h3@1.15.0:
     dependencies:
       cookie-es: 1.2.2
-      crossws: 0.3.3
+      crossws: 0.3.4
       defu: 6.1.4
       destr: 2.0.3
       iron-webcrypto: 1.2.1
@@ -7250,10 +7253,10 @@ snapshots:
 
   lodash@4.17.21: {}
 
-  logical-astro-tweet@0.0.5(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)):
+  logical-astro-tweet@0.0.5(astro@5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)):
     dependencies:
       '@astrojs/check': 0.2.1(typescript@5.7.3)
-      astro: 5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      astro: 5.3.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       clsx: 2.1.1
       date-fns: 2.30.0
       typescript: 5.7.3
@@ -9143,15 +9146,17 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-to-json-schema@3.24.1(zod@3.24.1):
+  zod-to-json-schema@3.24.1(zod@3.24.2):
     dependencies:
-      zod: 3.24.1
+      zod: 3.24.2
 
-  zod-to-ts@1.2.0(typescript@5.7.3)(zod@3.24.1):
+  zod-to-ts@1.2.0(typescript@5.7.3)(zod@3.24.2):
     dependencies:
       typescript: 5.7.3
-      zod: 3.24.1
+      zod: 3.24.2
 
   zod@3.24.1: {}
+
+  zod@3.24.2: {}
 
   zwitch@2.0.4: {}
