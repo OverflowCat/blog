@@ -107,7 +107,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.13.2",
-    "@unocss/preset-icons": "^65.4.3",
+    "@unocss/preset-icons": "^65.5.0",
     "@unocss/transformer-directives": "^65.4.3",
     "npm-check-updates": "^17.1.14",
     "rehype-pretty-code": "^0.14.0",
