@@ -105,8 +105,8 @@ importers:
         specifier: ^0.7.10
         version: 0.7.10(@builder.io/qwik@1.12.0(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.2.6(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.34.6)(sass@1.84.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(vite@6.1.0(@types/node@22.13.2)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
       '@shikijs/twoslash':
-        specifier: ^2.3.2
-        version: 2.3.2(typescript@5.7.3)
+        specifier: ^2.4.2
+        version: 2.4.2(typescript@5.7.3)
       '@types/react':
         specifier: ^19.0.8
         version: 19.0.8
@@ -409,6 +409,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.9':
+    resolution: {integrity: sha512-81NWa1njQblgZbQHxWHpxxCzNsa3ZwvFqpUg7P+NNUU6f3UU2jBEg4OlF/J6rl8+PQGh1q6/zWScd001YwcA5A==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -435,6 +440,10 @@ packages:
 
   '@babel/types@7.26.8':
     resolution: {integrity: sha512-eUuWapzEGWFEpHFxgEaBG8e3n6S8L3MSu0oda755rOfabWPnh0Our1AozNFVUxGFIhbKgd1ksprsoDGMinTOTA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.9':
+    resolution: {integrity: sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1552,17 +1561,26 @@ packages:
   '@shikijs/core@2.3.2':
     resolution: {integrity: sha512-s7vyL3LzUKm3Qwf36zRWlavX9BQMZTIq9B1almM63M5xBuSldnsTHCmsXzoF/Kyw4k7Xgas7yAyJz9VR/vcP1A==}
 
+  '@shikijs/core@2.4.2':
+    resolution: {integrity: sha512-V0kXYB/70xA3CO+b2Pz9kcSThaOUfObOEkGeHsKSFqV6rultaWPfeyZPpBlKHMUXO9Bt1ZGINDCctN90pQvnTg==}
+
   '@shikijs/engine-javascript@1.29.2':
     resolution: {integrity: sha512-iNEZv4IrLYPv64Q6k7EPpOCE/nuvGiKl7zxdq0WFuRPF5PAE9PRo2JGq/d8crLusM59BRemJ4eOqrFrC4wiQ+A==}
 
   '@shikijs/engine-javascript@2.3.2':
     resolution: {integrity: sha512-w3IEMu5HfL/OaJTsMbIfZ1HRPnWVYRANeDtmsdIIEgUOcLjzFJFQwlnkckGjKHekEzNqlMLbgB/twnfZ/EEAGg==}
 
+  '@shikijs/engine-javascript@2.4.2':
+    resolution: {integrity: sha512-WRg63Lfta+5RJ0y0/ns1e1NqSxo+jSQclMf9kBHvtchLhR/x3R/E3PSNFiCM+t7oo+d9/VCCp1kURqsSVTHWJg==}
+
   '@shikijs/engine-oniguruma@1.29.2':
     resolution: {integrity: sha512-7iiOx3SG8+g1MnlzZVDYiaeHe7Ez2Kf2HrJzdmGwkRisT7r4rak0e655AcM/tF9JG/kg5fMNYlLLKglbN7gBqA==}
 
   '@shikijs/engine-oniguruma@2.3.2':
     resolution: {integrity: sha512-vikMY1TroyZXUHIXbMnvY/mjtOxMn+tavcfAeQPgWS9FHcgFSUoEtywF5B5sOLb9NXb8P2vb7odkh3nj15/00A==}
+
+  '@shikijs/engine-oniguruma@2.4.2':
+    resolution: {integrity: sha512-YmvW7XcvT2f2pf1r1IvKd48fFYcsZRMMISRr2nY1fE2uOF4xcm+84R7+yg4jNAblrFcXU9tDrkllJKH2uD3mBQ==}
 
   '@shikijs/langs@1.29.2':
     resolution: {integrity: sha512-FIBA7N3LZ+223U7cJDUYd5shmciFQlYkFXlkKVaHsCPgfVLiO+e12FmQE6Tf9vuyEsFe3dIl8qGWKXgEHL9wmQ==}
@@ -1576,8 +1594,8 @@ packages:
   '@shikijs/themes@2.3.2':
     resolution: {integrity: sha512-QAh7D/hhfYKHibkG2tti8vxNt3ekAH5EqkXJeJbTh7FGvTCWEI7BHqNCtMdjFvZ0vav5nvUgdvA7/HI7pfsB4w==}
 
-  '@shikijs/twoslash@2.3.2':
-    resolution: {integrity: sha512-eYLSPNKH7qWpoStesZlDix+Mdppb/VUBc7LFZyOwTvTzZ6H+DS3OMUDH0wndc6ZWYUR27cyDMtFZoBjyzxRL0A==}
+  '@shikijs/twoslash@2.4.2':
+    resolution: {integrity: sha512-uW1ehqsU7CsE1vq5oWiSqPKnPD3INyHrAkxiGpu0hw0d7klfajzPlGxmMOLBgkl/BNyCUVuqFECQyY26geao4w==}
 
   '@shikijs/types@1.29.2':
     resolution: {integrity: sha512-VJjK0eIijTZf0QSTODEXCqinjBn0joAHQ+aPSBzrv4O2d/QSbsMw+ZeSRx03kV34Hy7NzUvV/7NqfYGRLrASmw==}
@@ -1585,8 +1603,14 @@ packages:
   '@shikijs/types@2.3.2':
     resolution: {integrity: sha512-CBaMY+a3pepyC4SETi7+bSzO0f6hxEQJUUuS4uD7zppzjmrN4ZRtBqxaT+wOan26CR9eeJ5iBhc4qvWEwn7Eeg==}
 
+  '@shikijs/types@2.4.2':
+    resolution: {integrity: sha512-e28aFDPwVgK8H2nPrEA5CexLa5yumBvb5aF6nN4SlmqaBFOuGQdxX/Cfh8rwRFALepJtlj0P3wvJ4oL+ndxgSA==}
+
   '@shikijs/vscode-textmate@10.0.1':
     resolution: {integrity: sha512-fTIQwLF+Qhuws31iw7Ncl1R3HUDtGwIipiJ9iU+UsDUwMhegFcQKQHd51nZjb7CArq0MvON8rbgCGQYWHUKAdg==}
+
+  '@shikijs/vscode-textmate@10.0.2':
+    resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -4592,6 +4616,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.8
 
+  '@babel/parser@7.26.9':
+    dependencies:
+      '@babel/types': 7.26.9
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.8)':
     dependencies:
       '@babel/core': 7.26.8
@@ -4625,6 +4653,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.8':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.9':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5506,6 +5539,15 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.4
 
+  '@shikijs/core@2.4.2':
+    dependencies:
+      '@shikijs/engine-javascript': 2.4.2
+      '@shikijs/engine-oniguruma': 2.4.2
+      '@shikijs/types': 2.4.2
+      '@shikijs/vscode-textmate': 10.0.2
+      '@types/hast': 3.0.4
+      hast-util-to-html: 9.0.4
+
   '@shikijs/engine-javascript@1.29.2':
     dependencies:
       '@shikijs/types': 1.29.2
@@ -5518,6 +5560,12 @@ snapshots:
       '@shikijs/vscode-textmate': 10.0.1
       oniguruma-to-es: 3.1.0
 
+  '@shikijs/engine-javascript@2.4.2':
+    dependencies:
+      '@shikijs/types': 2.4.2
+      '@shikijs/vscode-textmate': 10.0.2
+      oniguruma-to-es: 3.1.0
+
   '@shikijs/engine-oniguruma@1.29.2':
     dependencies:
       '@shikijs/types': 1.29.2
@@ -5527,6 +5575,11 @@ snapshots:
     dependencies:
       '@shikijs/types': 2.3.2
       '@shikijs/vscode-textmate': 10.0.1
+
+  '@shikijs/engine-oniguruma@2.4.2':
+    dependencies:
+      '@shikijs/types': 2.4.2
+      '@shikijs/vscode-textmate': 10.0.2
 
   '@shikijs/langs@1.29.2':
     dependencies:
@@ -5544,10 +5597,10 @@ snapshots:
     dependencies:
       '@shikijs/types': 2.3.2
 
-  '@shikijs/twoslash@2.3.2(typescript@5.7.3)':
+  '@shikijs/twoslash@2.4.2(typescript@5.7.3)':
     dependencies:
-      '@shikijs/core': 2.3.2
-      '@shikijs/types': 2.3.2
+      '@shikijs/core': 2.4.2
+      '@shikijs/types': 2.4.2
       twoslash: 0.2.12(typescript@5.7.3)
     transitivePeerDependencies:
       - supports-color
@@ -5563,7 +5616,14 @@ snapshots:
       '@shikijs/vscode-textmate': 10.0.1
       '@types/hast': 3.0.4
 
+  '@shikijs/types@2.4.2':
+    dependencies:
+      '@shikijs/vscode-textmate': 10.0.2
+      '@types/hast': 3.0.4
+
   '@shikijs/vscode-textmate@10.0.1': {}
+
+  '@shikijs/vscode-textmate@10.0.2': {}
 
   '@trysound/sax@0.2.0': {}
 
@@ -5905,7 +5965,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.9
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -5918,7 +5978,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.9
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
