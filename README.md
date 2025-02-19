@@ -11,11 +11,11 @@
 
 This is the blog by Overflow the Cat (@OverflowCat), containing my thoughts, translations, and other content. You may find posts on various topics, including but not limited to programming, engineering, linguistics, and life in general.
 
-这是 Overflow the Cat（@OverflowCat）的博客，包含我的思考、翻译和其他内容。您可能会在这里找到关于各种主题的文章，包括但不限于编程、工程、语言和生活。
+这是 Overflow the Cat（@OverflowCat）的博客，包含我的思考、翻译和其他内容。阁下可能会在这里找到关于各种主题的文章，包括但不限于编程、工程、语言和生活。
 
-The blog is written in Standard Mandarin, Lower Yangtze Mandarin, Szechuanese, Manchu and English.
+The blog is written in Standard Mandarin, Lower Yangtze Mandarin, Szechuanese, Manchu and English at the moment.
 
-博客使用标准普通话、淮语、四川话、满语和英语撰写。
+目前，本博客使用标准普通话、淮语、四川话、满语和英语撰写。
 
 ## Develop 开发
 
@@ -29,37 +29,45 @@ The blog is written in Standard Mandarin, Lower Yangtze Mandarin, Szechuanese, M
 
 ## Terms and Conditions 条款和条件
 
+**This blog** refers to `xinshijiededa.men` and its subdomains. **I** refers to the author of this blog, Overflow the Cat (@OverflowCat). **You** refers to the one somehow engaging with this blog, who should be informed of these terms and conditions.
+
+**本博客**指的是 `xinshijiededa.men` 及其子域名。**我**指的是本博客的作者 Overflow the Cat（@OverflowCat）。**阁下**指的是与本博客某种程度上有所交互的人，伊应知会这些条款和条件。
+
+This blog fully trusts your autonomy. I believes that you understand the Internet is a vast and disturbing place that gathers many users, that you can protect your privacy in various ways, that you are willing to use a browser that supports the CSS features of this blog, that you can enlarge images that are too small to view, that you can use generative artificial intelligence to understand the content of articles, that you can view the publication time of articles and verify the content, and that you can distinguish between the author's opinions and facts.
+
+童谣有云：「我会自己上厕所」。本博客充分信任阁下的自主性，确信阁下理解互联网是一个聚集众多用户、巨大且令人产生困扰的领域，且能够使用各种方式保护自己的隐私，愿意使用支持本博客 CSS 特性的浏览器访问本博客，会自行放大查看过小的图片，会自行使用生成式人工智能理解文章内容，会自行查看文章的发布时间并查证内容，会分辨哪些是作者的观点而非事实。
+
 ### Privacy 隐私
 
 **Using the blog** refers to when you access the content of this blog through a browser, terminal browser, RSS reader, etc., and send comments. When you use this blog, GitHub Pages and I collect your visit time, IP address, user agent, referer, browser language, and cookie (always null) if you choose to visit this blog. Currently, most pages on this site do not contain JavaScript, nor do they use any cookies or other technologies to track your behavior, unless you modify the cookie for fun.
 
-**使用**是指当您通过浏览器、终端浏览器、RSS 阅读器等访问本博客的内容以及发送评论。当您使用本博客时，我和 Github Pages 会收集您的访问时间、IP 地址、用户代理、referer<sup>[<i>sic</i>]</sup>、浏览器语言和 Cookie（总是 null）。目前，本站大部分页面不含有 JavaScript，同时也没有使用任何 Cookie 或其他技术来追踪您的行为，除非您自己觉得好玩修改了 Cookie。
+**使用**是指当阁下通过浏览器、终端浏览器、RSS 阅读器等访问本博客的内容以及发送评论。当阁下使用本博客时，我和 Github Pages 会收集阁下的访问时间、IP 地址、用户代理、referer<sup>[<i>sic</i>]</sup>、浏览器语言和 Cookie（总是 null）。目前，本站大部分页面不含有 JavaScript，同时也没有使用任何 Cookie 或其他技术来追踪阁下的行为，除非阁下自己觉得好玩修改了 Cookie。
 
-When you use the in-site search engine (neo-)uglysearch, the search queries are stored by the search engine provider STWP for auditing purposes.
+When you use the in-site search engine (neo-)uglysearch, the search queries are stored by the search engine provider STWP for auditing purposes. Some bad guy with a red avatar (not me) behind the scene may laugh and disclose some insane queries.
 
-当您使用站内搜索引擎（新）丑搜时，query 会被搜索引擎提供商 STWP 存储，用于审计目的。
+当阁下使用站内搜索引擎（新）丑搜时，query 会被搜索引擎提供商 STWP 存储，用于审计目的。某些人（不是我）可能会开示一些疯狂的 query。
 
 ### Comments 评论
 
 **Comments** are reviews posted by me and visitors under each article. They are moderated before being published, so you can use any HTML tags. I reserve the right to remove any comments that are deemed inappropriate. Comments are licensed under the [CC BY-ND 4.0 License](https://creativecommons.org/licenses/by-nd/4.0/). Comments will be submitted to this repository by creating a PR. You can request the removal of your comments at any time, but they may remain in the pull request and/or git history of this repository.
 
-**评论**是指我和访客在每篇文章下发表的内容。评论先审后发，因此您可以使用任意的 HTML 标记。我保留删除任何被视为不当的评论的权利。评论一经发表，即使用 [CC BY-ND 4.0 许可证](https://creativecommons.org/licenses/by-nd/4.0/)。评论将会通过创建 PR 的方式提交到本仓库。您可以随时要求删除您的评论，但他们可能会留在本仓库的 pull request 及/或 git 历史中。
+**评论**是指我和访客在每篇文章下发表的内容。评论先审后发，因此可以使用任意的 HTML 标记。我保留删除任何被视为不当的评论的权利。评论一经发表，即使用 [CC BY-ND 4.0 许可证](https://creativecommons.org/licenses/by-nd/4.0/)。评论将会通过创建 PR 的方式提交到本仓库。阁下可以随时要求删除阁下的评论，但他们可能会留在本仓库的 pull request 及/或 git 历史中。
 
 ### Contributions 贡献
 
 **Contributions** refer to the changes you make to the source code and content of this blog, including but not limited to pull requests, issues, and discussions. Contributions are licensed under the [MIT License](/LICENSE). By contributing to this blog, you agree to license your contributions under the MIT License.
 
-**贡献**指的是您对本博客的源代码和内容所做的更改，包括但不限于 pull request、issue 和讨论。贡献使用 [MIT 许可证](/LICENSE)。通过对本博客的贡献，您同意将您的贡献许可为 MIT 许可证。
+**贡献**指的是阁下对本博客的源代码和内容所做的更改，包括但不限于 pull request、issue 和讨论。贡献使用 [MIT 许可证](/LICENSE)。通过对本博客的贡献，阁下同意将阁下的贡献以上述协议释出。
 
 You are welcome to suggest any suggestions, questions, fixes, and improvements to this blog. You can usually find a link to the source code of the corresponding article at the bottom of each page.
 
-我欢迎您对本博客提出任何建议、问题、修复、改进。您通常可以在每个页面的最底部找到指向对应那篇文章的源代码的链接。
+我欢迎阁下对本博客提出任何建议、问题、修复、改进。阁下通常可以在每个页面的最底部找到指向对应那篇文章的源代码的链接。
 
 ## Licenses 许可证
 
 **Licenses** refers to the ways you can use the content of this blog granted by the author.
 
-**许可证**指的是作者授予您使用本博客内容的方式。
+**许可证**指的是作者授予阁下使用本博客内容的方式。
 
 **Articles** refers to the Markdown, MDX, Textile, Typst, org, etc. files under `src/posts`.
 Article contents **ususally** are licensed under one of the [CC](https://creativecommons.org/) licenses. You ought check the license section on each generated pages, or the corresponding article's frontmatter. Usually, following the most strict CC BY-NC-ND 4.0 license is always feasible.
@@ -78,7 +86,7 @@ The **source code** refers to those content in Astro, Vue, Qwik, Svelte, TSX, CS
 You can reach me out for help (and I'm happy to do so)if you do want to use this
 framework for your blog or copy some styles from it, though.
 
-**源代码**指的是 Astro、Vue、Qwik、Svelte、TSX、CSS、LESS、SCSS 等文件中的内容。源代码使用 [MIT 许可证](/LICENSE)。目前暂无封装为模板的打算，因为里面有许多专门为我的用例设计的奇妙自定义组件。不过，如果你确实想要为你的博客使用这个框架，或者抄一些样式，你可以联系我寻求帮助（我很乐意提供帮助）。
+**源代码**指的是 Astro、Vue、Qwik、Svelte、TSX、CSS、LESS、SCSS 等文件中的内容。源代码使用 [MIT 许可证](/LICENSE)。目前暂无封装为模板的打算，因为里面有许多专门为我的用例设计的奇妙自定义组件。不过，如果你确实想要为你的博客使用这个框架，或者抄一些样式，你可以联系我寻求帮助（我很乐意提供帮助，并且的确有人这么做过）。
 
 The aforementioned comments are files under `comments`. The comments are usually posted by visitors, and are licensed under the [CC BY-ND 4.0 License](https://creativecommons.org/licenses/by-nd/4.0/).
 
@@ -118,11 +126,11 @@ Remove postcss `inaccurate-pseudo-where`, as using classes is available in Astro
 
 Moving images from [`/public`](/public/) to the content collection.
 
-- [ ] Use `image()` in frontmatter
+- [x] Use `image()` in frontmatter
 
   Problem: Many covers are not local images.
 
-- [ ] Fix og image
+- [x] Fix og image
       https://docs.astro.build/en/guides/images/#generating-images-with-getimage
 
 #### RSS
