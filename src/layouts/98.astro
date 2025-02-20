@@ -28,15 +28,19 @@ Astro.locals.renderer == 'rss' ?
 <slot />
 :
 
-<Bar theme="light" lang="zh-Hans" />
+<Bar lang="zh-Hans" mode={{
+  hant: true,
+  vert: false,
+  theme: false,
+}} />
 
 <main id="theme">
   <aside id="toc" transition:name="aside-block" set:html={treeHtml} />
   <div id="common">
     <Common layoutProps={Astro.props} icons={{
-      calendar: "i-pixelarticons:calendar-text",
-      category: "i-pixelarticons:folder-plus",
-      tag: "i-pixelarticons:label",
+      calendar: "pixelarticons:calendar-text",
+      category: "pixelarticons:folder-plus",
+      tag: "pixelarticons:label",
     }}>
       <slot />
     </Common>

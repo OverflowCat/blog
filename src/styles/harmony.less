@@ -2,5 +2,28 @@
 
 :root {
     --font-sans: "HarmonyOS Sans SC", "HarmonyOS Sans TC", "Noto Sans", "Plangothic P1", "Plangothic P2", "Noto Sans SC",
-    "Noto Sans CJK SC", "Helvetica Neue", Helvetica, Arial, system-ui;
+        "Noto Sans CJK SC", "Helvetica Neue", Helvetica, Arial, system-ui;
+    --harmony-blue: #0a59f7;
+    --harmony-blue: light-dark(rgb(10, 89, 247), rgb(71, 154, 255));
+}
+
+nav ul li a:hover {
+    border-block-end: 2px solid var(--harmony-blue); /* indicator-20250221 */
+}
+
+.api {
+    @apply rounded-full bg-blue-200 p-inline-2;
+    background-color: light-dark(rgb(191, 219, 254), rgba(22, 45, 104));
+}
+
+p {
+    code {
+        color: #0b8e0b;
+        background-color: #24f7241d !important;
+    }
+
+    samp {
+        color: #c7254e;
+        background-color: #f8246025 !important;
+    }
 }

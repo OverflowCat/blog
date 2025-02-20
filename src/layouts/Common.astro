@@ -2,32 +2,46 @@
 import type { Frontmatter } from "@/types";
 import "@/styles/icon.less";
 import LicenceBox from "@/components/licences/LicenceBox.astro";
-import type { AtomIconName } from "@/scripts/icons";
+import type { IconName } from "@/scripts/icons";
+import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 export interface Props {
-	layoutProps: {
-		url?: string;
-		file?: string;
-		frontmatter?: Frontmatter;
-	};
-	icons?: {
-		calendar?: AtomIconName;
-		category?: AtomIconName;
-		tag?: AtomIconName;
-	};
+  layoutProps: {
+    url?: string;
+    file?: string;
+    frontmatter?: Frontmatter;
+  };
+  icons?: {
+    calendar: IconName;
+    category: IconName;
+    tag: IconName;
+  };
 }
 function arrify<T>(x: T | T[]): T[] {
-	return Array.isArray(x) ? x : [x];
+  return Array.isArray(x) ? x : [x];
 }
 
-const { icons, layoutProps } = Astro.props;
+let { icons, layoutProps } = Astro.props;
+if (String(layoutProps.frontmatter?.categories).includes("惊鸿一瞥")) {
+  icons = {
+    calendar: "harmony-calendar-badge-clock",
+    category: "harmony-folder-badge-plus",
+    tag: "harmony-label",
+  };
+} else if (!icons) {
+  icons = {
+    calendar: "mdi:date-range",
+    category: "pixelarticons:folder-plus",
+    tag: "pixelarticons:label",
+  };
+}
 const { url, file } = layoutProps;
 import { resolvePostId } from "@/scripts/post";
 const id = resolvePostId(url ?? file ?? Astro.url.pathname);
 
 const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
-	throw new Error(`Post ${id} not found.`);
+  throw new Error(`Post ${id} not found.`);
 }
 const { date } = frontmatter;
 const cats = arrify(frontmatter.categories);
@@ -43,21 +57,17 @@ import { getCatSlug } from "@/scripts/tags";
 {
   cover && (
     <figure class="cover">
-      {
-        (cover.img !== undefined) ? (
-          <Picture
-            id="cover"
-            src={cover.img}
-            alt={cover.alt ?? ""}
-            formats={["avif", "webp", "jpg"]}
-          />
-        ) : (
-          <img id="cover" src={cover.src} alt={cover.alt} />
-        )
-      }
-      {cover.caption && (
-        <figcaption set:html={cover.caption} />
+      {cover.img !== undefined ? (
+        <Picture
+          id="cover"
+          src={cover.img}
+          alt={cover.alt ?? ""}
+          formats={["avif", "webp", "jpg"]}
+        />
+      ) : (
+        <img id="cover" src={cover.src} alt={cover.alt} />
       )}
+      {cover.caption && <figcaption set:html={cover.caption} />}
     </figure>
   )
 }
@@ -72,7 +82,8 @@ import { getCatSlug } from "@/scripts/tags";
 }
 <div class="info">
   <div>
-    <div class:list={[icons?.calendar ?? 'i-mdi:date-range', 'icon']}></div>
+    <!-- <div class:list={[icons.calendar ?? 'i-mdi:date-range', 'icon']}></div> -->
+    <Icon name={icons.calendar} class="icon" />
     日期：
     <time
       datetime={date as unknown as string}
@@ -82,7 +93,8 @@ import { getCatSlug } from "@/scripts/tags";
   {
     !!cats.length && (
       <div>
-        <div class:list={[icons?.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div>
+        {/* <div class:list={[icons.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div> */}
+        <Icon name={icons.category} class="icon" />
         分类：
         {cats.map((cat) => (
           <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
@@ -95,7 +107,8 @@ import { getCatSlug } from "@/scripts/tags";
   {
     !!tags.length && (
       <div>
-        <div class:list={[icons?.tag ?? 'i-pixelarticons:label', 'icon']}></div>
+        {/* <div class:list={[icons.tag ?? 'i-pixelarticons:label', 'icon']}></div> */}
+        <Icon name={icons.tag} class="icon" />
         标签：
         {tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>
@@ -112,9 +125,6 @@ import { getCatSlug } from "@/scripts/tags";
 <LicenceBox name={licence} />
 
 <style is:global lang="less">
-  html {
-    scroll-timeline: --page-timeline block;
-  }
   .icon {
     @apply inline-block;
     vertical-align: sub;
@@ -129,21 +139,24 @@ import { getCatSlug } from "@/scripts/tags";
       inline-size: 100%;
       block-size: auto;
       border-radius: 4px;
-      animation-timeline: --page-timeline;
-      animation-name: cover-fade-and-zoom;
-      animation-duration: 1s;
-      transform-origin: center 90%;
+      :not(#vert:target) & {
+        animation-timeline: --page-timeline;
+        animation-name: cover-fade-and-zoom;
+        animation-duration: 1s;
+        transform-origin: center 90%;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {
       @keyframes cover-fade-and-zoom {
-        0%, 1% {
+        0%,
+        1% {
           opacity: 1;
           transform: scale(1);
         }
         100% {
           opacity: 0;
-          transform: scale(5);
+          transform: scale(3);
         }
       }
     }
@@ -167,7 +180,10 @@ import { getCatSlug } from "@/scripts/tags";
       margin-block: 3px;
       margin-inline: 3px;
       margin-inline: 2px;
-      transition: background-color 0.1s, border 0.1s, color 0.1s;
+      transition:
+        background-color 0.1s,
+        border 0.1s,
+        color 0.1s;
       // border-radius: 0.5rem;
       border: 2px solid transparent;
       background-color: var(--bg-tag);

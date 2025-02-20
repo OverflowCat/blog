@@ -31,7 +31,7 @@ The blog is written in Standard Mandarin, Lower Yangtze Mandarin, Szechuanese, M
 
 **This blog** refers to `xinshijiededa.men` and its subdomains. **I** refers to the author of this blog, Overflow the Cat (@OverflowCat). **You** refers to the one somehow engaging with this blog, who should be informed of these terms and conditions.
 
-**本博客**指的是 `xinshijiededa.men` 及其子域名。**我**指的是本博客的作者 Overflow the Cat（@OverflowCat）。**阁下**指的是与本博客某种程度上有所交互的人，伊应知会这些条款和条件。
+**本博客**指的是 `xinshijiededa.men` 及其子域名。**我**指的是本博客的作者 OverflowCat（@OverflowCat，也被称作「前端之猫」「溢出猫」）。**阁下**指的是与本博客某种程度上有所交互的人，伊应知会这些条款和条件。
 
 This blog fully trusts your autonomy. I believes that you understand the Internet is a vast and disturbing place that gathers many users, that you can protect your privacy in various ways, that you are willing to use a browser that supports the CSS features of this blog, that you can enlarge images that are too small to view, that you can use generative artificial intelligence to understand the content of articles, that you can view the publication time of articles and verify the content, and that you can distinguish between the author's opinions and facts.
 

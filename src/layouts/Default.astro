@@ -69,7 +69,7 @@ export type Props = {
 <Bar lang="zh-Hans" mode={{
   hant: frontmatter?.hant,
   vert: frontmatter?.vert,
-  theme: frontmatter?.theme,
+  theme: frontmatter?.theme as "auto" | boolean | undefined,
 }} />
 <Paper
   transitionName="main"

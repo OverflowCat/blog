@@ -25,10 +25,6 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
     @apply border-black! ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 text-pink-950 placeholder-color-gray-6 bg-#dabbb2;
   }
 
-  button {
-    
-  }
-
   :root {
     --font-sans-en: "IBM Plex Sans", Lato, "PT Sans", "Noto Sans", "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
@@ -69,7 +65,7 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
     p, h1, h2 {
       font-family: "IBM Plex Sans SC", "Mi Sans", "Noto Sans", "Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC", system-ui, sans-serif;
     }
-    
+
     hr {
       background-image: none;
       block-size: 4px;
@@ -112,7 +108,13 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
   <slot />
 :
 
-<Bar lang="zh-Hans" />
+<Bar lang="zh-Hans" mode={
+  {
+    theme: false,
+    hant: true,
+    vert: false,
+  }
+} />
 <Paper
   transitionName="main"
   padding={true}

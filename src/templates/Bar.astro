@@ -137,6 +137,14 @@ assert(slogan, "slogan is undefined");
       black var(--cutoff),
       transparent var(--cutoff)
     );
+    #vert:target & {
+      -webkit-mask-image: linear-gradient(
+        to left,
+        black 0,
+        black var(--cutoff),
+        transparent var(--cutoff)
+      );
+    }
 
     animation-name: navblur;
     animation-timeline: --page-timeline;
@@ -173,19 +181,20 @@ assert(slogan, "slogan is undefined");
   }
   a {
     line-height: 200%;
-    @apply inline-block decoration-none border-b-none!;
+    @apply inline-block decoration-none;
     outline: none;
     padding-inline-start: 0.7em;
     padding-inline-end: 0.7em;
     color: var(--hint-color, #434343);
     transition: background-color 0.3s ease;
+    border-block-end: 2px solid transparent; /* indicator-20250221 */
     &:hover,
     &:focus-visible {
       background-color: var(--bg-dim);
     }
   }
 
-  /* 
+  /*
   li:has(a:is(:hover, :focus-visible)),
   ul:not(:has(a:is(:hover, :focus-visible))) a.current {
     anchor-name: --indicator;
@@ -206,14 +215,14 @@ assert(slogan, "slogan is undefined");
     display: none;
   }
   nav#sticky {
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px); // fallback for browsers not supporting scroll-timeline
   }
-  @supports (scroll-timeline-name: --foo) and (container-type: inline-size) {
+  @supports (scroll-timeline-name: --page-timeline) and (container-type: inline-size) {
     .edge {
       display: unset;
     }
     nav#sticky {
-      backdrop-filter: none;
+      backdrop-filter: none; // overrides the fallback
     }
     .backdrop {
       @apply justify-between;

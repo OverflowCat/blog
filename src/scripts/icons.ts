@@ -18,26 +18,26 @@ export function getIconName(post: BlogPost) {
   }
 }
 
-export const ICON_PACKS = 	[
+export const ICON_PACKS = [
 	"clarity",
-	"codicon",
-	"entypo-social",
-	"fluent",
-	"gravity-ui",
-	"ic",
-	"icon-park",
+  "codicon",
+  "entypo-social",
+  "fluent",
+  "gravity-ui",
+  "ic",
+  "icon-park",
   "logos",
-	"material-symbols",
-	"mdi",
-	"ph",
-	"pixelarticons",
-	"ri",
-	"simple-icons",
-	"tabler"
+  "material-symbols",
+  "mdi",
+  "ph",
+  "pixelarticons",
+  "ri",
+  "simple-icons",
+  "tabler",
 ] as const;
 
 export const ICON_PACKS_SET = new Set(ICON_PACKS) as Set<string>;
 
 export type IconSet = typeof ICON_PACKS[number];
-export type IconName = `${IconSet}:${string}`;
+export type IconName = `${IconSet}:${string}` | `harmony-${string}`;
 export type AtomIconName = `i-${IconSet}:${string}`;
