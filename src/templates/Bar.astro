@@ -87,6 +87,7 @@ assert(slogan, "slogan is undefined");
       @apply h-8 m-1;
       animation-timeline: --page-timeline;
       animation-name: navlogo;
+      animation-range: 0px 120px;
       filter: var(--logo-filter, none);
     }
   }
@@ -94,11 +95,11 @@ assert(slogan, "slogan is undefined");
     0% {
       backdrop-filter: blur(0px);
     }
-    1.5% {
+    3% {
       backdrop-filter: blur(0px);
     }
-    3% {
-      backdrop-filter: blur(15px);
+    10% {
+      backdrop-filter: blur(12px);
     }
     100% {
       backdrop-filter: blur(15px);
@@ -108,10 +109,10 @@ assert(slogan, "slogan is undefined");
     0% {
       opacity: 0;
     }
-    1% {
+    80% {
       opacity: 0;
     }
-    3% {
+    97% {
       opacity: 0.6;
     }
     100% {
@@ -148,6 +149,8 @@ assert(slogan, "slogan is undefined");
 
     animation-name: navblur;
     animation-timeline: --page-timeline;
+    animation-range: 123px 155px;
+    animation-fill-mode: both;
   }
 </style>
 <style lang="less">
