@@ -106,7 +106,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@unocss/preset-icons": "^66.0.0",
     "@unocss/transformer-directives": "^66.0.0",
     "npm-check-updates": "^17.1.14",
