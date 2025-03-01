@@ -4,8 +4,10 @@ description: 眼睛作为一个光学系统
 photo:
   src: https://user-images.githubusercontent.com/20166026/244607878-b6545089-1788-4adc-bcde-c2bdaca67b1b.jpg
 date: 2023-06-09 13:04:03
-categories: 光学
-tags: 备忘
+categories:
+  - 笔记
+tags:
+  - 光学
 math: mathjax
 # icon: microscope-lens
 layout: "@/layouts/Default.astro"

@@ -13,7 +13,7 @@ photo:
     </details>
 categories: 光学
 tags:
-  - "备忘"
+  - "笔记"
 icon: "ri:camera-lens-line"
 layout: "@/layouts/Default.astro"
 noscript: true

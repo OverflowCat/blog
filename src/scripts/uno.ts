@@ -6,7 +6,7 @@ import unoConfig from "uno.config"; // 导入当前项目的 UnoCSS 配置
  * @param content HTML string
  * @returns CSS string
  */
-export async function generateUno(content: string, layer: string = 'default') {
+export async function generateUno(content: string, layer = 'default') {
   // @ts-ignore
   const generator = await createGenerator(unoConfig);
   // console.log({ generator, layer, content})

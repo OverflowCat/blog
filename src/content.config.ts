@@ -26,33 +26,6 @@ const commentsCollection = defineCollection({
   schema: () => commentsSchema,
 });
 
-/*
-import { readdir } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { glob } from "fs";
-
-const remnoteCollection = defineCollection({
-  type: "content_layer",
-  schema: () => remnoteSchema,
-  loader: async () => {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    const remsDir = join(__dirname, 'rems');
-    try {
-      const files = await readdir(remsDir);
-      console.log('Files in the directory:', files);
-    } catch (err) {
-      console.error('Error reading directory:', err);
-    }
-    const notes = await getRemnotes(remsDir);
-    console.info('RemNotes loaded:', notes);
-    return notes;
-  },
-  // loader: glob({ pattern: "**\/*.js", base: "./src/content/rems/" }),
-});
-*/
-
 const remnoteCollection = defineCollection({
   loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/rems/" }),
   schema: () => remnoteJsonSchema,

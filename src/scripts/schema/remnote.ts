@@ -6,6 +6,9 @@ type Rem = {
     ch: Rem[];
 }
 
+/**
+ * @deprecated
+ */
 export async function getRems(): Promise<{ id: string }[]> {
     const notes = await fs.readFile("./remnote.json", "utf-8");
     const rem: Rem = JSON.parse(notes);
@@ -41,9 +44,12 @@ export const remnoteSchema = z.object({
     content: z.string(),
 });
 
-export const remnoteJsonSchema = z.object({
+export const remnoteJsonSchema = z.any() /* object({
     val: z.any(),
     ch: z.any(),
-});
+}).or(z.object({
+    docs: z.array(z.any()),
+    documentRemToExportId: z.string(),
+})) */;
 
 export type Remnote = z.infer<typeof remnoteSchema>;

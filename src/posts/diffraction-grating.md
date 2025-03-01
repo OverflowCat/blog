@@ -2,8 +2,10 @@
 title: 光栅衍射
 description: 光栅是刻有平行等宽、等距狭缝的平面玻璃或金属片。
 date: 2022-12-26 01:49:21
-categories: 光学
-tags: 备忘
+categories:
+  - 笔记
+tags:
+  - 光学
 math: mathjax
 layout: "@/layouts/Default.astro"
 noscript: true

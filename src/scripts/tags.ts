@@ -34,7 +34,7 @@ export function getCatsInfo() {
 export const CAT_MAP = {
 	"周报": "weekly",
 	"页面仔的自我修养": "frontend",
-	"备忘": "memo",
+	"笔记": "note",
 	"Typst": "typst",
 	"译文": "translation",
 	"Tonsky": "tonsky",

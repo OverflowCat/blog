@@ -2,7 +2,7 @@
 import { unified, type Parser } from "unified";
 // import astroConfig from "astro.config";
 import { getEntry } from "astro:content";
-import { transformDoc, DEFAULT_CONFIG } from "rehype-remnote";
+import { transformDoc, DEFAULT_CONFIG, rem2Hast } from "rehype-remnote";
 import stringify from 'rehype-stringify';
 import type { Remnote } from "@/scripts/schema/remnote";
 import { rehypePipe } from "@/scripts/rehype/common";
@@ -25,19 +25,34 @@ export type Props = {
 
 const { id } = Astro.props;
 const entry = await getEntry("rems", id);
+if (!entry) {
+  throw new Error(`No Rem found for id: ${id}`);
+}
 const data = entry.data;
 
 function remParse(options = { ...DEFAULT_CONFIG, unwrapRoot: true, }) {
+  // @ts-ignore
   const self = this;
 
   self.parser = parser as Parser;
 
   function parser(doc: string, file: unknown) {
-    doc = data;
-    return transformDoc(doc, {
-      docMap: new Map(), // TODO: add docMap
-      config: options,
-    });
+    // @ts-expect-error
+    doc = data as Object;
+    // @ts-expect-error
+    if ("docs" in doc) {
+      var result = rem2Hast(doc, {
+        docMap: new Map(), // TODO: add docMap
+        config: options,
+      });
+    } else {
+      // @ts-expect-error
+      var result = transformDoc(doc, {
+        docMap: new Map(), // TODO: add docMap
+        config: options,
+      });
+    }
+    return result;
   }
 }
 
@@ -57,6 +72,7 @@ import "rehype-remnote/style/mini.css";
 import "rehype-remnote/style/cloze.css";
 import "rehype-remnote/style/math.css";
 import "@/styles/a.less";
+import { getEntries } from "astro:content";
 ---
 
 <style>
@@ -72,6 +88,10 @@ import "@/styles/a.less";
   figure:has(pre) {
     margin-block: 0!important;
     margin-inline: .5em!important;
+  }
+
+  .rem:has(details:only-child) { // new style
+    padding-inline-start: unset!important;
   }
 
   .rem, figcaption {

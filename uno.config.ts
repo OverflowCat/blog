@@ -1,11 +1,11 @@
 // uno.config.ts
-import { defineConfig, presetUno } from "unocss";
+import { defineConfig, presetWind3 } from "unocss";
 import presetIcons from "@unocss/preset-icons";
 import transformerDirectives from "@unocss/transformer-directives";
 
 export default defineConfig({
-  presets: [presetUno(), presetIcons()],
-  blocklist: ["b", "container", "me", "my"],
+  presets: [presetWind3(), presetIcons()],
+  blocklist: ["b", "container", "me", "my", "pl", "pr", "pt", "pb", "px"],
   rules: [
     // theme
     ["text-2nd", { color: "var(--text-secondary)" }],

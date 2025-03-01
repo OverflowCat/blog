@@ -3,7 +3,9 @@
     "astro-build.astro-vscode",
     "johnreemar.vscode-qwik-snippets",
     "antfu.unocss",
-    "myriad-dreamin.tinymist"
+    "myriad-dreamin.tinymist",
+    "unifiedjs.vscode-mdx",
+    "biomejs.biome"
   ],
   "unwantedRecommendations": []
 }
