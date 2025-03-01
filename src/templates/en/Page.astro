@@ -11,7 +11,7 @@ export interface Props {
 
 let { title, bar, og } = Astro.props;
 
-title = title ? title + " | 新世界的大门" : "新世界的大门";
+title = title ? `${title} | 新世界的大门` : "新世界的大门";
 
 if (!og) {
   og = {
@@ -22,8 +22,12 @@ if (!og) {
   };
 }
 
+
+if (!Astro.site) {
+  throw new Error("Astro.site is not defined");
+}
 const metas = {
-  ...genOpenGraphMetas(og, Astro.site!),
+  ...genOpenGraphMetas(og, Astro.site),
   ...Astro.props.metas,
 };
 
@@ -33,8 +37,12 @@ import Footer from "../zh/Footer.astro";
 import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
 ---
 
-<Base title={title} metas={metas}>
-  <Bar {...bar} lang="en" />
+<Base title={title} lang="en" metas={metas}>
+  <Bar {...bar} lang="en" mode={{
+    hant: false,
+    vert: false,
+    theme: true,
+  }} />
   <div class="main">
     <slot />
   </div>

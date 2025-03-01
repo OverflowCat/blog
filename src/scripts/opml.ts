@@ -5,7 +5,7 @@ interface Feed {
     desc: string;
 }
 
-let feeds = new Map<string, Feed>();
+const feeds = new Map<string, Feed>();
 
 function escapeXml(unsafe: string) {
     return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -22,6 +22,7 @@ function escapeXml(unsafe: string) {
 
 function u(input: string) {
     return Array.from(input).map(char => {
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const codepoint = char.codePointAt(0)!;
         if (codepoint < 0x80) return char;
         const hex = codepoint.toString(16).toUpperCase();
@@ -31,9 +32,8 @@ function u(input: string) {
 
 export function generateFeedOpml() {
     const feedList: string[] = [];
-    feeds.values()
-        .forEach(
-            (feed) => feedList.push(`
+    for (const feed of feeds.values()) {
+        feedList.push(`
 <outline
     text="${u(escapeXml(feed.title))}"
     title="${u(escapeXml(feed.title))}"
@@ -41,8 +41,8 @@ export function generateFeedOpml() {
     xmlUrl="${feed.url}"
     htmlUrl="${feed.href}"
     description="${u(escapeXml(feed.desc))}"
-/>`
-            ));
+/>`);
+    }
     if (feedList.length === 0) {
         throw new Error("No feeds collected");
     }

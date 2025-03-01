@@ -28,8 +28,12 @@ if (!og) {
   };
 }
 
+
+if (!Astro.site) {
+  throw new Error("Astro.site is not defined");
+}
 const metas = {
-  ...genOpenGraphMetas(og, Astro.site!),
+  ...genOpenGraphMetas(og, Astro.site),
   ...Astro.props.metas,
   description: og.description ?? "新世界的大門 Blog",
 };

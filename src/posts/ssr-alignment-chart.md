@@ -6,7 +6,7 @@ photo:
   aspect: "1806:881"
   alt: 正文截图：一个九宫格，每个格子里有一个图标，分别是 Next.js、PHP、RDP、Svelte、Cloudflare、OBS、Electron、WASM 和 Stable Diffusion。
   hide: true
-description: 你就说是不是渲染吧！
+desc: 你就说是不是渲染吧！
 tags: meme
 categories: 页面仔的自我修养
 layout: "@/layouts/Default.astro"

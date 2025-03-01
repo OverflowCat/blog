@@ -31,7 +31,7 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 		visibility: z
 			.union([z.literal("public"), z.literal("unlisted")])
 			.optional(),
-		description: z.string().optional(),
+		desc: z.string().optional(),
 		icon: z
 			.string()
 			.refine(

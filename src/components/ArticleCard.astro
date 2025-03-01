@@ -5,7 +5,7 @@ export interface Props {
 
 import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getIconName } from "@/scripts/icons";
 import { crc32base } from "@/scripts/serendipity";
@@ -15,6 +15,7 @@ import "@/styles/icon.less";
 const { post } = Astro.props;
 const { data } = post;
 const { photo } = data;
+console.log(data.desc);
 ---
 
 <table>
@@ -39,7 +40,7 @@ const { photo } = data;
           href={`/${post.id}/`}>{post.data.title || "No title"}</a
         >
         {
-          !data.description && (
+          !data.desc && (
             <time
               class="title-date mono"
               datetime={data.date?.toISOString() || ""}
@@ -49,16 +50,16 @@ const { photo } = data;
         }
       </div>
       <blockquote>
-        {data.description}
+        {data.desc}
         {
-          data.description && (
+          data.desc && (
             <a class="continue" href={`/${post.id}`}>
               阅读更多 →
             </a>
           )
         }
         {
-          data.description && (
+          data.desc && (
             <time
               class="title-date"
               datetime={data.date?.toISOString() || ""}
@@ -86,7 +87,7 @@ const { photo } = data;
       )
     }
     {
-      photo?.img  && !photo.img.hide && (
+      photo?.img  && !photo.hide && (
         <td class="title-img">
           <Picture
             class="title-img"

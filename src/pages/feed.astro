@@ -32,7 +32,7 @@ let items = await Promise.all(
     return {
       title: post.data.title,
       pubDate: post.data.date,
-      description: post.data.description ?? "",
+      desc: post.data.desc ?? "",
       link,
       content: await render(post),
     };
@@ -50,7 +50,7 @@ const result = items.map((post) => ({
 <title>${post.title}</title>
 <link href="${post.link}"></link>
 <id>${post.link}</id>
-<summary>${post.description || "by 新世界的大门"}</summary>
+<summary>${post.desc || "by 新世界的大门"}</summary>
 <published>${post.pubDate.toISOString()}</published>
 <updated>${post.pubDate.toISOString()}</updated>
 <author><name>ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</name></author>

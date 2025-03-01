@@ -7,7 +7,7 @@ photo:
   hide: true
 noscript: true
 licence: CcBySa
-description: 仙之人兮列如麻。
+desc: 仙之人兮列如麻。
 layout: "@/layouts/Default.astro"
 ext: md
 tags:

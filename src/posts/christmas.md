@@ -1,7 +1,7 @@
 ---
 title: 洋节
 date: 2020-12-25 22:39:48
-description: 应该是自从那年，能在公共场合看到圣诞树已是一件十分稀有的事情。
+desc: 应该是自从那年，能在公共场合看到圣诞树已是一件十分稀有的事情。
 tags: 碎碎念
 categories: 题隙碎笔
 layout: "@/layouts/Default.astro"

@@ -1,6 +1,6 @@
 ---
 title: 如何在 AutoCAD 中标注公差
-description: 在 AutoCAD 2014 中，有两种标注公差的方式。
+desc: 在 AutoCAD 2014 中，有两种标注公差的方式。
 date: 2022-11-24 17:53:08
 tags:
 - AutoCAD
