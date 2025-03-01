@@ -1,5 +1,3 @@
-import type { Frontmatter } from "@/types";
-
 export interface OpenGraphData {
   title: string;
   description: string;

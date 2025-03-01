@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 export async function getBlogPosts(includeDrafts = false) {
 	const posts = (await getCollection<"blog">("blog")).sort((a, b) => {
-		b.data.date.getTime() - a.data.date.getTime();
+		return b.data.date.getTime() - a.data.date.getTime();
 	});
 
 	if (!includeDrafts) {
