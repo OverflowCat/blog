@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  post: CollectionEntry<"blog">;
+	post: CollectionEntry<"blog">;
 }
 
 import type { CollectionEntry } from "astro:content";
@@ -12,10 +12,24 @@ import { crc32base } from "@/scripts/serendipity";
 import "@/styles/title.less";
 import "@/styles/icon.less";
 
+function htmlEscape(str: string) {
+	return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 const { post } = Astro.props;
 const { data } = post;
 const { photo } = data;
-console.log(data.desc);
+let title = data.title;
+if (data.series) {
+	const [series, main] = title.split("：");
+	title = `<span class="series font-semibold text-.95em rounded-md p-inline-2 p-block-1 ring-inset ring-1 transition hover:text-shadow-sm ${
+		data.series === "harmony"
+			? "bg-red-50/70 text-red-600 ring-red-600/10 hover:text-shadow-color-pink"
+			: "bg-green-50/70 text-green-700 ring-green-600/20 hover:text-shadow-color-emerald"
+	}">${htmlEscape(series)}</span> ${htmlEscape(main)}`;
+} else {
+	title = htmlEscape(title);
+}
 ---
 
 <table>
@@ -37,8 +51,7 @@ console.log(data.desc);
         </span><a
           class="title"
           transition:name={post.id}
-          href={`/${post.id}/`}>{post.data.title || "No title"}</a
-        >
+          href={`/${post.id}/`} set:html={title} />
         {
           !data.desc && (
             <time
@@ -53,7 +66,7 @@ console.log(data.desc);
         {data.desc}
         {
           data.desc && (
-            <a class="continue" href={`/${post.id}`}>
+            <a class="continue text-.95em select-none no-underline" href={`/${post.id}`}>
               阅读更多 →
             </a>
           )
@@ -118,16 +131,13 @@ console.log(data.desc);
 </style>
 <style lang="less">
   .continue {
-    font-size: 90%;
     margin: 0;
     margin-inline-start: 4px;
     margin-inline-end: 4px;
     color: #6d6d6d;
-    user-select: none;
-    text-decoration: none;
   }
   blockquote {
-    margin-block-start: 6px;
+    margin-block-start: .5rem;
     margin-block-end: 6px;
     color: var(--link-visited-color);
     border-inline-start: 4px solid #ddd;

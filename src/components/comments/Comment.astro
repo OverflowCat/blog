@@ -11,7 +11,7 @@ const reply = data.reply
   ? {
       ...comment,
       data: {
-        id: comment.id + "r",
+        id: `${comment.id}r`,
         name: "猫猫",
         date: date,
         message: data.reply,

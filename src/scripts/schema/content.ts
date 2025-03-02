@@ -17,11 +17,17 @@ const TAG_TYPE = z
 	.nullish()
 	.transform(transform2arr);
 
+const SERIES_TYPE = z.union([
+	z.literal("weekly"),
+	z.literal("harmony"),
+]).nullish();
+
 export const postSchemaGen = (ctx: SchemaContext) => z
 	.object({
 		title: z.string(),
 		categories: TAG_TYPE,
 		tags: TAG_TYPE,
+		series: SERIES_TYPE,
 		photo: photo(ctx.image).optional(),
 		date: z.coerce.date(),
 		draft: z

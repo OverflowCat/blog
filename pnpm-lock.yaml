@@ -33,17 +33,17 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
       '@fontsource/ibm-plex-mono':
-        specifier: ^5.1.1
-        version: 5.1.1
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/ibm-plex-sans':
-        specifier: ^5.1.1
-        version: 5.1.1
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/ibm-plex-sans-kr':
-        specifier: ^5.1.1
-        version: 5.1.1
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/noto-sans-mongolian':
-        specifier: ^5.1.2
-        version: 5.1.2
+        specifier: ^5.2.5
+        version: 5.2.5
       '@iconify-json/clarity':
         specifier: ^1.2.2
         version: 1.2.2
@@ -54,8 +54,8 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
       '@iconify-json/fluent':
-        specifier: ^1.2.14
-        version: 1.2.14
+        specifier: ^1.2.15
+        version: 1.2.15
       '@iconify-json/gravity-ui':
         specifier: ^1.2.5
         version: 1.2.5
@@ -84,8 +84,8 @@ importers:
         specifier: ^1.2.5
         version: 1.2.5
       '@iconify-json/simple-icons':
-        specifier: ^1.2.26
-        version: 1.2.26
+        specifier: ^1.2.27
+        version: 1.2.27
       '@iconify-json/tabler':
         specifier: ^1.2.16
         version: 1.2.16
@@ -1009,17 +1009,17 @@ packages:
     resolution: {integrity: sha512-NDkYZgj/FCqsrmG8p7oYWU1Ye4qFtEb1NcGlxQMJUN9vkqrrVxoTMJYpsWXFEhEdm2QTSoY1Bkk3l/NRxjpbgA==}
     engines: {node: '>=15.0.0'}
 
-  '@fontsource/ibm-plex-mono@5.1.1':
-    resolution: {integrity: sha512-1aayqPe/ZkD3MlvqpmOHecfA3f2B8g+fAEkgvcCd3lkPP0pS1T0xG5Zmn2EsJQqr1JURtugPUH+5NqvKyfFZMQ==}
+  '@fontsource/ibm-plex-mono@5.2.5':
+    resolution: {integrity: sha512-G09N3GfuT9qj3Ax2FDZvKqZttzM3v+cco2l8uXamhKyXLdmlaUDH5o88/C3vtTHj2oT7yRKsvxz9F+BXbWKMYA==}
 
-  '@fontsource/ibm-plex-sans-kr@5.1.1':
-    resolution: {integrity: sha512-JCleqBIbHFKWoSB+PKr9wz/0DU2SU7ClH0wkPiZRx0E6LptmOe0N7V+MB3YrDNYmb2Sp/ATbuKIz8UBGCFR+xg==}
+  '@fontsource/ibm-plex-sans-kr@5.2.5':
+    resolution: {integrity: sha512-ZvjkZL0FFB5656JMeVHUtVoHCJlA264uHeErYJvAPX/hG94XSTgkvgwqBcE0cfdKFA2inzjRrdjBte5yqieIWw==}
 
-  '@fontsource/ibm-plex-sans@5.1.1':
-    resolution: {integrity: sha512-s6xHuHCYxZbIZV0Qchw+EoucPYWCP3PgLs9+oF3u1kLQKwabWaUC3Fm30y6n3VIMCqR89dpkcS8LTqH/IGTDDQ==}
+  '@fontsource/ibm-plex-sans@5.2.5':
+    resolution: {integrity: sha512-W1kkC/fpDuoKQ5pNSQt/Bg0rpV9AATreA9ABwZf678AlwSCY2TQBT1YwAxxB65E9jcT/ysDrU1sGVNUyWCBXRw==}
 
-  '@fontsource/noto-sans-mongolian@5.1.2':
-    resolution: {integrity: sha512-pw/Z/GCpgwHaMO8CY+7kq3TzOCrzGiHS4u8eAwxg3kcTwtFzMKLze+Cri9wPsl58AxsfhImwSGWz+Xy/xkBXaQ==}
+  '@fontsource/noto-sans-mongolian@5.2.5':
+    resolution: {integrity: sha512-0Nxx8JkVj2bLSe/C5LyVHBYQoZCtWQMpaAbs6Z1CizGMry9zxfOh6P1ID0eUwenW11s8RJHp6qfnt3xhyO2+mw==}
 
   '@iconify-json/clarity@1.2.2':
     resolution: {integrity: sha512-ShZVAWkcI/OYQSBdGPYKjyCrT1ApACYrenPmWD8VJKY8KGip+tSe0qv1c8+Jsfou8Jx71XS7x+rJQC1ydRygIA==}
@@ -1030,8 +1030,8 @@ packages:
   '@iconify-json/entypo-social@1.2.2':
     resolution: {integrity: sha512-70dql8kxhMh2JE7pnrBC83IPt9bRxsfOVVvPuEdgi7DbB62Im+VoAWVARSf3K7lIFNYL6VDlYUXuqIB/QdtR8A==}
 
-  '@iconify-json/fluent@1.2.14':
-    resolution: {integrity: sha512-0t+EzHn8wqWG7ZbbWlMBBNM1hcGyaEJqBbneTk98uUR03akf3JAvIsXuMYpGrPnK5LNQ0qZfcc2axnxj2TwQAA==}
+  '@iconify-json/fluent@1.2.15':
+    resolution: {integrity: sha512-Xxbq0c7y+nGim6zgv+ZRh9MAAEsjXAYqUOvAZnwcTdXTdplGleLVM1d/xAuAje9CKFdbQN6zlfcfqJ26X39MPA==}
 
   '@iconify-json/gravity-ui@1.2.5':
     resolution: {integrity: sha512-7uf4xG2ijmcte4AqPpzNTqnEBqxvHBKW/gI0VTZeP0nLtZSvoCybNt5QsJ7f/xyrIQDgCJ4usEmRaX7G86NueA==}
@@ -1060,8 +1060,8 @@ packages:
   '@iconify-json/ri@1.2.5':
     resolution: {integrity: sha512-kWGimOXMZrlYusjBKKXYOWcKhbOHusFsmrmRGmjS7rH0BpML5A9/fy8KHZqFOwZfC4M6amObQYbh8BqO5cMC3w==}
 
-  '@iconify-json/simple-icons@1.2.26':
-    resolution: {integrity: sha512-NvqRuE+5h/tp4boPlnvfs0alD0CvnRE7oeG9Li5NGmZRx2/rhwlNjW/vEVTyhZcR9zqvRPAVh2GXR+PTEpzV+A==}
+  '@iconify-json/simple-icons@1.2.27':
+    resolution: {integrity: sha512-FtZwp/H7ih5rY9FPfDR+k6toOo/cuwpHWY8faNhxLs5O5uW6Q8TeqdNWfjVfgFtrs5tUUzWysjqNGL234v8EMA==}
 
   '@iconify-json/tabler@1.2.16':
     resolution: {integrity: sha512-gjvKz38+aOxfZtRvycYrASYipCsHRbCZ/Df49T0tfPntT0ur+qsgJ7PxCM4JF/Xs6+n3JkaFdiUz/N4ZZxDKdQ==}
@@ -5013,13 +5013,13 @@ snapshots:
       lottie-web: 5.12.2
       qwik: 1.0.57
 
-  '@fontsource/ibm-plex-mono@5.1.1': {}
+  '@fontsource/ibm-plex-mono@5.2.5': {}
 
-  '@fontsource/ibm-plex-sans-kr@5.1.1': {}
+  '@fontsource/ibm-plex-sans-kr@5.2.5': {}
 
-  '@fontsource/ibm-plex-sans@5.1.1': {}
+  '@fontsource/ibm-plex-sans@5.2.5': {}
 
-  '@fontsource/noto-sans-mongolian@5.1.2': {}
+  '@fontsource/noto-sans-mongolian@5.2.5': {}
 
   '@iconify-json/clarity@1.2.2':
     dependencies:
@@ -5033,7 +5033,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.14':
+  '@iconify-json/fluent@1.2.15':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -5073,7 +5073,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.26':
+  '@iconify-json/simple-icons@1.2.27':
     dependencies:
       '@iconify/types': 2.0.0
 

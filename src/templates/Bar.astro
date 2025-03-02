@@ -46,7 +46,7 @@ assert(slogan, "slogan is undefined");
     <ul class="block">
       {
         items.map((item, i) => (
-          <li transition:name={`navbar-${i}`}>
+          <li transition:name={`navbar-${i}`} id={`nav-${i}`}>
             <a
               href={item[2]}
               data-replace={index === i ? "本页" : item[0]}
@@ -240,8 +240,13 @@ assert(slogan, "slogan is undefined");
     }
   }
   @container html (max-inline-size: 520px) {
-    .edge:first-child {
+    .edge:first-child, #nav-3 {
+      // hide RSS when screen is too narrow
       display: none;
+    }
+    a {
+      padding-inline-start: 0.5em;
+      padding-inline-end: 0.5em;
     }
   }
 </style>

@@ -1,4 +1,7 @@
 {
     "editor.defaultFormatter": "biomejs.biome",
-    "tinymist.formatterMode": "typstyle"
+    "tinymist.formatterMode": "typstyle",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

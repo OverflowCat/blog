@@ -81,9 +81,6 @@ import { getEntries } from "astro:content";
 <div class="rem" set:html={html}></div>
 <style set:html={style} is:global />
 <style lang="less" is:global>
-  .rem details[open]:before {
-    z-index: initial!important;
-  }
 
   figure:has(pre) {
     margin-block: 0!important;
@@ -99,6 +96,11 @@ import { getEntries } from "astro:content";
   }
 
   .rem {
+    details[open]:before {
+      z-index: initial!important;
+      border-inline-start-color: #909090;
+      border-inline-start-color: light-dark(#7070708e, #9393938e);
+    }
     a {
       border-radius: 0!important;
     }

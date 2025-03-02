@@ -42,6 +42,7 @@ function getTitle(id: string) {
       -webkit-line-clamp: 4;
       overflow: hidden;
       box-sizing: content-box;
+      color: var(--text-secondary);
       * {
         display: inline;
         overflow: hidden;
@@ -55,6 +56,7 @@ function getTitle(id: string) {
       &:hover {
         border-block-end: 1px solid transparent;
         background-color: #e2e2e2;
+        background-color: light-dark(#e2e2e2, #272727);
       }
       transition: all 0.2s;
     }
