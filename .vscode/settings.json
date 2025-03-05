@@ -3,5 +3,8 @@
     "tinymist.formatterMode": "typstyle",
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typst]": {
+        "editor.defaultFormatter": "myriad-dreamin.tinymist"
     }
 }

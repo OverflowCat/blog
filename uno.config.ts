@@ -15,6 +15,17 @@ export default defineConfig({
     ["upright", { "text-combine-upright": "all" }],
     ["yoko", { "text-combine-upright": "all" }],
 
+    // overflow
+    [/overflow-(inline|block)-(hidden|auto|scroll)/, function* ([, axis, type]) {
+      yield {
+        overflow: type
+      }
+      yield {
+        [`overflow-${axis}`]: type
+      }
+    }
+    ],
+
     // transform
     [/flip-(x|y)/, ([, axis]) => ({
       transform: `scale${axis.toUpperCase()}(-1)`

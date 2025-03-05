@@ -127,8 +127,11 @@ $ b_0 = overline(y) - b overline(x) = #num(rxy(b_0)) YU $
 
 $ hat(y) = #num(r(b_0)) YU + (#num(r(b)) YXU) x, $
 
-[如图所示。]
+[如图所示。
 
+由于升级 typst 0.13，`plotst` 图表暂不可用。]
+
+/* 0.13
 import "@preview/plotst:0.2.0": *
 let xs = range(0, 900, step: 50)
 let ys = xs.map(x => b_0 + b * x)
@@ -139,7 +142,7 @@ let y_axis = axis(min: 0, max: 2.2, step: 0.2, location: "left", helper_lines: t
 
 let pl = plot(data: data, axes: (x_axis, y_axis))
 figure(caption: "回归直线", graph_plot(pl, (36em, 20em), caption: none))
-
+*/
 
 [== 方差分析]
 
@@ -229,17 +232,16 @@ let sigma2 = Q / (N - 2)
 let dash = [#line(length: .9em)]
 table(
   align: center,
-  columns: (auto, auto, auto, auto, 1fr, auto),
+  columns: (auto, auto, 2fr, 2.5fr, auto, auto),
   table.header([来源], [平方和], [自由度], [方差], $F$, $F_alpha$),
-  [回归], $U = #c(U)$, $v_U=#vU$, $U"/"V_U \
-  = #c(UvU)$, $F = #F$, $F_alpha (1, N(m-1))\ = 7.56$,
+  [回归], $U = #c(U)$, $v_U=#vU$, $U"/"V_U = #c(UvU)$,
+  $F = #F$, $F_alpha (1, N(m-1))\ = 7.56$,
   // [残余], $Q = #c(Q)$, $#v_Q$,
   [失拟], $Q_L=#c(QL)$, $v_L &= N-2 \
-  &= #vL$, $Q_L"/"V_L \
-  = #c(QLvL)$, $F_1 = F1$, $F_alpha (v_L, v_E) = 4.51$,
+  &= #vL$, $Q_L"/"V_L = #c(QLvL)$,
+  $F_1 = F1$, $F_alpha (v_L, v_E) = 4.51$,
   [误差], $Q_E=#c(QE)$, $v_E &= N(m-1) \
-  &= #vE$, $Q_E"/"V_E \
-  = #c(QEvE)$, dash, dash,
+  &= #vE$, $Q_E"/"V_E = #c(QEvE)$, dash, dash,
   [总计], $S = #c(S)$, $v_S &= N m-1 \
   &= #vS $, dash, $F_2 = F2$, dash
 )

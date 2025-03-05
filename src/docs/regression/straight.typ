@@ -14,6 +14,7 @@
   $ln y$, ..lny.map(c).map(str)
 )
 
+/* 0.13
 #import "@preview/plotst:0.2.0": *
 #{
 let data = lnx.zip(lny)
@@ -27,3 +28,6 @@ let pl = plot(data: data, axes: (x_axis, y_axis))
 graph_plot(pl, (100%, 25%))
 graph_plot(pl, (100%, 25%), rounding: 30%, caption: "Graph Plot with rounding")
 }
+*/
+
+由于升级 typst 0.13，`plotst` 图表暂不可用。

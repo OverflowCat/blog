@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.16.4",
+  "version": "2.17.0",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -65,7 +65,7 @@
     "astro": "5.4.1",
     "astro-icon": "1.1.5",
     "astro-remote": "^0.3.3",
-    "astro-typst": "0.7.0-beta.1",
+    "astro-typst": "0.7.3",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0",
     "cross-blob": "^3.0.2",
