@@ -28,8 +28,8 @@ feed &&
       <div class="link">
         <p id="link">
           <code>{link}</code>
-          {feed && <i class="has-feed" />}
-          {script && <i class="require-js" />}
+          {feed && <i class="inline-block has-feed" />}
+          {script && <i class="inline-block require-js" />}
         </p>
       </div>
       <div class="main">
@@ -53,11 +53,10 @@ feed &&
 </li>
 <style>
   .has-feed {
-    @apply i-mdi:rss inline-block opacity-70 vertical-top;
-    transform: translateY(40%);
+    @apply i-mdi:rss opacity-70 vertical-mid;
   }
   .require-js {
-    @apply inline-block opacity-0 i-ic:round-javascript;
+    @apply opacity-0 i-ic:round-javascript;
   }
   .link-card:hover .require-js {
     transform: scale(2) translateY(40%);
