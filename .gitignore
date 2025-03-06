@@ -28,3 +28,5 @@ pnpm-debug.log*
 public/lsp-server.js
 
 public/huai
+src/docs/regression/main.html
+test.html

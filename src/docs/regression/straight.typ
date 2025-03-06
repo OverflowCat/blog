@@ -30,4 +30,4 @@ graph_plot(pl, (100%, 25%), rounding: 30%, caption: "Graph Plot with rounding")
 }
 */
 
-由于升级 typst 0.13，`plotst` 图表暂不可用。
+由于升级 typst 0.13，plotst 图表暂不可用。

@@ -98,25 +98,26 @@
 
 #let alpha = .05
 #let y_ = y
+#[
+  #show math.equation: it => {
+    let out = html.frame(box(it))
+    html.elem("span", out)
+  }
+  由于重复测量的数据组数小于10，数据不一定符合正态分布，无法使用 3sigma。
+  使用Romanovsky剔除粗大误差。选取显著度水平 $#sym.alpha=#alpha$。
 
-#html.frame(
-  box(width: 15cm)[
-    由于重复测量的数据组数小于10，数据不一定符合正态分布，无法使用 3sigma。
-    使用 Romanovsky 剔除粗大误差。选取显著度水平 $#sym.alpha=#alpha$。
+  每组数据都是等精度独立测量。
+  #"\n\n"
+  #hr
 
-    每组数据都是等精度独立测量。
-    #"\n\n"
-    #hr
-
-    #for (i, (x, group)) in x.zip(y).enumerate() {
-      [当放电量为 #qty(x, "pC") 时，]
-      let (content, group_) = roman(group, alpha)
-      content
-      y_.at(i) = group_
-      hr
-    }
-  ],
-)
+  #for (i, (x, group)) in x.zip(y).enumerate() {
+    [当放电量为 #qty(x, "pC") 时，]
+    let (content, group_) = roman(group, alpha)
+    content
+    y_.at(i) = group_
+    hr
+  }
+]
 
 == 剔除粗大误差后的数据
 
@@ -141,17 +142,13 @@
   ),
 )
 
-#html.frame(
-  box(
-    regression(
-      x,
-      y_,
-      x_unit: "pC",
-      y_unit: $upright(V)$, // https://github.com/typst/typst/issues/366#issuecomment-1868963477
-    ),
-    width: 16cm,
-  ),
+#regression(
+  x,
+  y_,
+  x_unit: "pC",
+  y_unit: $upright(V)$, // https://github.com/typst/typst/issues/366#issuecomment-1868963477
 )
+
 
 == 误差源分析
 
@@ -179,7 +176,7 @@
 
 由于环境中的电磁干扰带来的噪声影响，如果滤波器并未完全消除噪声，放大器将会增大噪声对于所测数据的影响，导致误差增大。
 
-=== ADC模数转换器
+=== ADC 模数转换器
 
 在采样过程中，由于采样频率低，采样周期长，对于电压信号的测量范围的覆盖不够全面，也会导致测量不到电压峰值，使测量值偏低。
 

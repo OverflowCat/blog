@@ -1,6 +1,7 @@
 #import "./vendor/lib.typ": round
 
-#let hr = line(stroke: black.lighten(70%), length: 100%)
+// #let hr = line(stroke: black.lighten(70%), length: 100%)
+#let hr = html.elem("hr")
 #let r0 = n => round(n, if str(n).starts-with("0.") {2} else {3})
 #let r = n => round(n, 4)
 #let rx = n => round(n, 5)

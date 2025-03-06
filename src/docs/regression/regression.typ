@@ -15,6 +15,10 @@
 }
 
 #let regression(x, _y, x_unit: "", y_unit: "", estimate: none, control: none) = {
+show math.equation: it => {
+  let out = html.frame(box(it))
+  html.elem("span", out)
+}
 let N = x.len()
 let y = ()
 let REP = false
@@ -129,7 +133,7 @@ $ hat(y) = #num(r(b_0)) YU + (#num(r(b)) YXU) x, $
 
 [如图所示。
 
-由于升级 typst 0.13，`plotst` 图表暂不可用。]
+由于升级 typst 0.13，plotst 图表暂不可用。]
 
 /* 0.13
 import "@preview/plotst:0.2.0": *
@@ -229,7 +233,8 @@ $
 ]
 
 let sigma2 = Q / (N - 2)
-let dash = [#line(length: .9em)]
+// let dash = [#line(length: .9em)]
+let dash = "N/A" // HTML export
 table(
   align: center,
   columns: (auto, auto, 2fr, 2.5fr, auto, auto),
