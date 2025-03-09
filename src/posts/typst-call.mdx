@@ -1,0 +1,33 @@
+---
+title: Typst 2025 社区通话
+date: 2025-03-09T19:24:52.281Z
+noscript: false
+licence: false
+layout: "@/layouts/Default.astro"
+tags:
+categories:
+  - typst
+---
+
+import Transcription from "@/components/transcription/Index.svelte";
+import data from "@/speech/typst-call.json";
+import translation from "@/speech/typst-call-trans.json";
+
+<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="typst_zh/2963" data-width="100%" data-userpic="true" data-color="239DAE"></script>
+
+<Transcription
+  data={data}
+  speakers={{
+    c2: ["Laur", "bg-cyan-100"],
+    c3: ["Reknih", "bg-red-200"],
+    c4: ["PgSuper", "bg-lime-200"],
+    c5: ["SillyFreak", "bg-teal-100"],
+    c6: ["Pachi", "bg-orange-200"],
+    c7: ["Ana", "bg-amber-200"],
+    c8: ["Lord", "bg-green-200"],
+    c9: ["Adrik Ivanov", "bg-stone-300"],
+    c10: ["Shockjaw", "bg-purple-200"],
+  }}
+  translations={translation}
+  client:load
+/>

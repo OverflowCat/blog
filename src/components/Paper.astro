@@ -32,7 +32,9 @@ if (paper !== false) {
 
 <style>
   .vpaper {
-    @apply drop-shadow-lg box-border;
+    @apply shadow-lg box-border;
+    /* drop-shadow makes inner fixed relative to parent!
+    See https://stackoverflow.com/a/52937920 */
     background-color: var(--paper-bg);
   }
   .padding {

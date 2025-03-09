@@ -116,6 +116,7 @@ import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflas
 // Atomic CSS
 import unocss from "unocss/astro";
 import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
 // import qwik from "@qwikdev/astro";
 
 import { rehypePipe } from "./src/scripts/rehype/common.ts";
@@ -195,6 +196,7 @@ export default defineConfig({
 		react(
 			// { include: ["**/react/*", "**/*.tsx*", "spoiled"] }
 		),
+		svelte(),
 		mdx(),
 		typst(),
 		sitemap(),
