@@ -1,10 +1,15 @@
 @import url("https://chinese-fonts-cdn.deno.dev/packages/syst/dist/SourceHanSerifCN/result.css");
 @import url("https://fonts.cdnfonts.com/css/libertinus-serif");
 
-article#post {
-	font-family: "Libertinus Serif Display", "Libertinus Serif", "Noto Serif",
+.typst-doc, section.speech {
+	--font-sans-en: "Libertinus Serif Display", "Libertinus Serif", "Noto Serif",
 		"Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN VF",
 		"STSong", "SimSun", "SimSun-ExtB", serif;
+}
+
+article#post,
+article#post[lang="en"] {
+	font-family: var(--font-sans-en);
 	font-size: 1em;
 }
 

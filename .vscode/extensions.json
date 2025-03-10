@@ -5,7 +5,8 @@
     "antfu.unocss",
     "myriad-dreamin.tinymist",
     "unifiedjs.vscode-mdx",
-    "biomejs.biome"
+    "biomejs.biome",
+    "svelte.svelte-vscode"
   ],
   "unwantedRecommendations": []
 }
