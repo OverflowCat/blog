@@ -27,8 +27,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       '@astrojs/svelte':
-        specifier: ^7.0.5
-        version: 7.0.5(@types/node@22.13.10)(astro@5.4.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.35.0)(sass@1.85.1)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(svelte@5.22.6)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
+        specifier: ^7.0.6
+        version: 7.0.6(@types/node@22.13.10)(astro@5.4.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.35.0)(sass@1.85.1)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(svelte@5.22.6)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
       '@builder.io/qwik':
         specifier: ^1.12.1
         version: 1.12.1(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
@@ -353,8 +353,8 @@ packages:
   '@astrojs/sitemap@3.2.1':
     resolution: {integrity: sha512-uxMfO8f7pALq0ADL6Lk68UV6dNYjJ2xGUzyjjVj60JLBs5a6smtlkBYv3tQ0DzoqwS7c9n4FUx5lgv0yPo/fgA==}
 
-  '@astrojs/svelte@7.0.5':
-    resolution: {integrity: sha512-fk+zKhe98RJw8QJLpH+dG80PoxSO21U8W3qFUQ7EDEA77qBFu+/MqxVcs2rmRFEcLDpEsK0cBBEGbHBtIDvIOw==}
+  '@astrojs/svelte@7.0.6':
+    resolution: {integrity: sha512-YW1s9yN4ihN7u2z6JZtiWJHk7pXHu8e1D+yyKOuvV/6XkVi1bBHMytF0a4BvlM1/cRTLywPUwxYCVfg6hNcyjw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -418,6 +418,11 @@ packages:
     resolution: {integrity: sha512-8NHiL98vsi0mbPQmYAGWwfcFaOy4j2HY49fXJCfuDcdE7fMIsH9a7GdaeXpIBsbT7307WU8KCMp5pUVDNL4f9A==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/parser@7.26.10':
+    resolution: {integrity: sha512-6aQR2zGE/QFi8JpDLjUZEPYOs7+mhKXm86VaKFiLP35JQwQb6bwUE+XbvkH0EptsYhbNBSUGaUBLKqxH1xSgsA==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/parser@7.26.8':
     resolution: {integrity: sha512-TZIQ25pkSoaKEYYaHbbxkfL36GNsQ6iFiBbeuzAkLnXayKR1yP1zFe+NxuZWWsUyvt8icPU9CCq0sgWGXR1GEw==}
     engines: {node: '>=6.0.0'}
@@ -445,6 +450,10 @@ packages:
 
   '@babel/traverse@7.26.8':
     resolution: {integrity: sha512-nic9tRkjYH0oB2dzr/JoGIm+4Q6SuYeLEiIiZDwBscRMYFJ+tMAz98fuel9ZnbXViA2I0HVSSRRK8DW5fjXStA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.10':
+    resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/types@7.26.8':
@@ -4245,14 +4254,6 @@ packages:
       yaml:
         optional: true
 
-  vitefu@1.0.5:
-    resolution: {integrity: sha512-h4Vflt9gxODPFNGPwp4zAMZRpZR7eslzwH2c5hn5kNZ5rhnKyRJ50U+yGCdc2IRaBs8O4haIgLNGrV5CrpMsCA==}
-    peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
-    peerDependenciesMeta:
-      vite:
-        optional: true
-
   vitefu@1.0.6:
     resolution: {integrity: sha512-+Rex1GlappUyNN6UfwbVZne/9cYC4+R2XDk9xkNXBKMw6HQagdX9PgZ8V2v1WUSK1wfBLp7qbI1+XSNIlB1xmA==}
     peerDependencies:
@@ -4679,7 +4680,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.1
 
-  '@astrojs/svelte@7.0.5(@types/node@22.13.10)(astro@5.4.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.35.0)(sass@1.85.1)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(svelte@5.22.6)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)':
+  '@astrojs/svelte@7.0.6(@types/node@22.13.10)(astro@5.4.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.35.0)(sass@1.85.1)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(svelte@5.22.6)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.22.6)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
       astro: 5.4.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.35.0)(sass@1.85.1)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
@@ -4791,6 +4792,10 @@ snapshots:
       '@babel/template': 7.26.8
       '@babel/types': 7.26.8
 
+  '@babel/parser@7.26.10':
+    dependencies:
+      '@babel/types': 7.26.10
+
   '@babel/parser@7.26.8':
     dependencies:
       '@babel/types': 7.26.8
@@ -4826,6 +4831,11 @@ snapshots:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
+
+  '@babel/types@7.26.10':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
 
   '@babel/types@7.26.8':
     dependencies:
@@ -5855,7 +5865,7 @@ snapshots:
       magic-string: 0.30.17
       svelte: 5.22.6
       vite: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
-      vitefu: 1.0.5(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
+      vitefu: 1.0.6(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -6192,7 +6202,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.10
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6205,7 +6215,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.10
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -9267,10 +9277,6 @@ snapshots:
       sass: 1.85.1
       tsx: 4.19.2
       yaml: 2.7.0
-
-  vitefu@1.0.5(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)):
-    optionalDependencies:
-      vite: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)
 
   vitefu@1.0.6(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.85.1)(tsx@4.19.2)(yaml@2.7.0)):
     optionalDependencies:
