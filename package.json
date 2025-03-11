@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "98.css": "^0.1.20",
-    "@astrojs/markdown-remark": "6.2.0",
+    "@astrojs/markdown-remark": "6.2.1",
     "@astrojs/mdx": "4.1.0",
     "@astrojs/prism": "3.2.0",
     "@astrojs/react": "^4.2.1",
