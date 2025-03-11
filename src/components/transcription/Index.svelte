@@ -18,7 +18,6 @@ if (translations) {
 		console.warn("Translations must match the number of parts");
 	}
 }
-let audioElem: HTMLAudioElement;
 let currentTime = 0;
 let nowPlaying: HTMLSpanElement;
 // biome-ignore lint/style/useConst: binded to another component
@@ -54,7 +53,6 @@ function scrollTo() {
     <audio
       class="inline-full drop-shadow-md"
       controls
-      bind:this={audioElem}
       on:seeked={scrollTo}
       bind:currentTime
     >
@@ -155,6 +153,15 @@ function scrollTo() {
         &:hover {
           background-color: #7b7b7b58;
         }
+        &:target {
+          background-color: rgb(255, 242, 0);
+          color: rgb(0, 112, 103);
+          text-decoration: underline;
+          scroll-margin-block-start: 30vb;
+        }
+      }
+      &:has(span:target) {
+        animation: highlight 2s ease-in-out;
       }
       blockquote {
         margin-block-start: 0.8em;

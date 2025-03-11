@@ -1,8 +1,10 @@
 ---
 export type Props = {
-  value: "light" | "dark" | "auto";
+	value: "light" | "dark" | "auto";
 };
 const { value } = Astro.props;
+// const scheme = value === "auto" ? "light dark" : value;
+// <meta name="color-scheme" content={scheme} slot="head" />
 ---
 
 <div id="theme-switcher">
@@ -33,21 +35,16 @@ const { value } = Astro.props;
 
   @supports (color: light-dark(black, white)) {
     @media (prefers-color-scheme: dark) {
-      :root {
-        &:has(option[value="system"]:checked) {
-          color-scheme: light dark;
+      :root:has(option[value="system"]:checked) {
           --dark-scheme: 1;
         }
       }
-    }
     @media (prefers-color-scheme: light) {
-      :root {
-        &:has(option[value="system"]:checked) {
-          color-scheme: light dark;
+      :root:has(option[value="system"]:checked) {
           --light-scheme: 1;
-        }
       }
     }
+
     :root {
       &:has(option[value="system"]:checked) {
         color-scheme: light dark;

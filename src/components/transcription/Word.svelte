@@ -6,7 +6,7 @@
     bt: number,
     et: number,
     offset: number,
-    total: number
+    total: number,
   ) => void;
   export let playHook: (elem: HTMLSpanElement) => void;
   let span: HTMLSpanElement;
@@ -18,11 +18,15 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
-  class={[{ "o": !played, "text-cyan-600": playing }]}
+  id={"t" + beginTime.toString()}
+  class={[{ o: !played, "text-cyan-600": playing }]}
   bind:this={span}
-  on:click={() => {
+  on:click={(e) => {
     const total = text.length;
-    const offset = window.getSelection().anchorOffset;
+    const offset = window.getSelection()?.anchorOffset ?? 0;
+    // window.location.hash = `t${beginTime.toString()}`
+    e.preventDefault();
+    history.pushState({}, "", "#t" + beginTime.toString());
     click(beginTime, endTime, offset, total);
   }}
 >
