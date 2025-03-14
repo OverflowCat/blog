@@ -25,6 +25,7 @@ const rehypeMultiMath: RehypePlugin = () => {
 				j: ["\\mathrm{j}"],
 				i: ["\\mathrm{i}"],
 				cloze: ["\\color{blue}"],
+				bm: ["\\boldsymbol{#1}", 1],
 			},
 		},
 	} satisfies Parameters<typeof rehypeMathRenderer>[0]);
