@@ -3,7 +3,7 @@ import { unified, type Parser } from "unified";
 // import astroConfig from "astro.config";
 import { getEntry } from "astro:content";
 import { transformDoc, DEFAULT_CONFIG, rem2Hast } from "rehype-remnote";
-import stringify from 'rehype-stringify';
+import stringify from "rehype-stringify";
 import type { Remnote } from "@/scripts/schema/remnote";
 import { rehypePipe } from "@/scripts/rehype/common";
 import { generateUno } from "@/scripts/uno";
@@ -20,48 +20,45 @@ export async function getStaticPaths() {
 */
 
 export type Props = {
-  id: string;
+	id: string;
 };
 
 const { id } = Astro.props;
 const entry = await getEntry("rems", id);
 if (!entry) {
-  throw new Error(`No Rem found for id: ${id}`);
+	throw new Error(`No Rem found for id: ${id}`);
 }
 const data = entry.data;
 
-function remParse(options = { ...DEFAULT_CONFIG, unwrapRoot: true, }) {
-  // @ts-ignore
-  const self = this;
+function remParse(
+	options = { ...DEFAULT_CONFIG, unwrapRoot: true, openLevel: 15 },
+) {
+	// @ts-ignore
+	this.parser = parser as Parser;
 
-  self.parser = parser as Parser;
-
-  function parser(doc: string, file: unknown) {
-    // @ts-expect-error
-    doc = data as Object;
-    // @ts-expect-error
-    if ("docs" in doc) {
-      var result = rem2Hast(doc, {
-        docMap: new Map(), // TODO: add docMap
-        config: options,
-      });
-    } else {
-      // @ts-expect-error
-      var result = transformDoc(doc, {
-        docMap: new Map(), // TODO: add docMap
-        config: options,
-      });
-    }
-    return result;
-  }
+	function parser(doc: string, file: unknown) {
+		doc = data as Object;
+		var result;
+		// @ts-expect-error
+		if ("docs" in doc) {
+			result = rem2Hast(doc, {
+				docMap: new Map(), // TODO: add docMap
+				config: options,
+			});
+		} else {
+			result = transformDoc(doc, {
+				docMap: new Map(), // TODO: add docMap
+				config: options,
+			});
+		}
+		return result;
+	}
 }
 
 let processor = unified().use(remParse);
 for (const plugin of rehypePipe) {
-  if (Array.isArray(plugin))
-    processor = processor.use(...plugin);
-  else
-    processor = processor.use(plugin);
+	if (Array.isArray(plugin)) processor = processor.use(...plugin);
+	else processor = processor.use(plugin);
 }
 // @ts-expect-error
 processor = processor.use(stringify);
@@ -72,7 +69,6 @@ import "rehype-remnote/style/mini.css";
 import "rehype-remnote/style/cloze.css";
 import "rehype-remnote/style/math.css";
 import "@/styles/a.less";
-import { getEntries } from "astro:content";
 ---
 
 <style>
@@ -81,6 +77,16 @@ import { getEntries } from "astro:content";
 <div class="rem" set:html={html}></div>
 <style set:html={style} is:global />
 <style lang="less" is:global>
+  article#post summary {
+    h2,h3,h4,h5 {
+      display:inline!important;
+      margin: 0;
+    }
+  }
+
+  a[target="_blank"]:has(+a)::after {
+    content: ""!important;
+  }
 
   figure:has(pre) {
     margin-block: 0!important;
