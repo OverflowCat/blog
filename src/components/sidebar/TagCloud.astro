@@ -8,23 +8,17 @@ function generateRandomColor() {
   const [r, g, b] = ["r", "g", "b"].map(
     () =>
       Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
-      MIN_RGB_VALUE
+      MIN_RGB_VALUE,
   );
   return `rgb(${r}, ${g}, ${b})`;
 }
 ---
 
-<div class="tag-cloud">
+<div class="tag-cloud" id="tag-cloud">
   {
     Array.from(await getTagsInfo()).map(([k, v]) => (
-      <a
-        href={`/tags/${k}`}
-        style={`font-size: ${Math.min(
-          22.5,
-          1.8 * v + 13
-        )}px; color: ${generateRandomColor()}`}
-      >
-        {k}
+      <a href={`/tags/${k}`} style={`color: ${generateRandomColor()}`}>
+        {k + (v > 1 ? `(${v})` : "")}
       </a>
     ))
   }

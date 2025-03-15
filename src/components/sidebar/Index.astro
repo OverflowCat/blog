@@ -11,7 +11,7 @@ import Search from "./Search.astro";
 <aside id="sidebar">
   <style is:inline>
     aside#sidebar > .paper:first-of-type {
-      min-height: 295px;
+      min-block-size: 295px;
     } /* prevent CLS */
   </style>
   <Paper padding={true} transitionName="aside-block">
@@ -86,7 +86,6 @@ import Search from "./Search.astro";
     align-items: center;
     justify-items: stretch;
     gap: 16px;
-    flex-basis: 0;
   }
   .other-platforms {
     margin: 6px auto;

@@ -44,8 +44,6 @@ Astro.locals.noscript = true;
     inline-size: 100%;
   }
   .inhalt {
-    max-inline-size: 750px;
-    inline-size: 100dvi;
     padding: 0;
     padding-inline: 0.75rem;
   }
@@ -66,11 +64,12 @@ Astro.locals.noscript = true;
 
   @container html (min-inline-size: 1000px) {
     .inhalt {
-    }
-    main {
+      inline-size: 100%;
+      max-inline-size: 800px;
     }
     aside#sidebar {
       align-self: start;
+      flex-basis: 0;
     }
   }
 </style>
