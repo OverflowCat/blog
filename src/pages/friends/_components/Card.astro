@@ -1,29 +1,33 @@
 ---
 export interface Props {
-  id?: string;
-  title: string;
-  link: string;
-  /** RSS 订阅地址 */
-  feed: string | false | null;
-  avatar: string;
-  /** 网站自己的描述 */
-  desc?: string;
-  /** 网站的基本功能需要 JavaScript 才能正常工作 */
-  script?: boolean;
+	id?: string;
+	title: string;
+	link: string;
+	/** RSS 订阅地址 */
+	feed: string | false | null;
+	avatar: string;
+	/** 网站自己的描述 */
+	desc?: string;
+	/** 网站的基本功能需要 JavaScript 才能正常工作 */
+	script?: boolean;
+	/** 书写模式 */
+	dir?: "rtl";
 }
 
-const { id, link, title, avatar, desc, feed, script } = Astro.props;
-const href = "https://" + link;
+const { id, link, title, avatar, desc, feed, script, dir } = Astro.props;
+const href = `https://${link}`;
 
 import { collect, generateFeedOpml } from "@/scripts/opml";
 feed &&
-  collect({ title, href: "https://" + href, url: feed, desc: desc ?? "" });
+	collect({ title, href: `https://${href}`, url: feed, desc: desc ?? "" });
 ---
 
 <li class="link-card drop-shadow-sm" id={id}>
   <a href={href}>
-    <div class="grid-container">
-      <div class="title"><h2>{title}</h2></div>
+    <div class="grid-container" dir={dir === "rtl" ? "rtl" : undefined}>
+      <div class="title">
+        <h2 class={dir === "rtl" ? "text-right" : undefined}>{title}</h2>
+      </div>
       <img class="avatar" loading="lazy" src={avatar} />
       <div class="link">
         <p id="link">
@@ -88,7 +92,6 @@ feed &&
   h2 {
     margin: 0;
     font-size: 1.25rem;
-    text-align: left;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   p {
@@ -120,7 +123,7 @@ feed &&
     text-align: start;
     margin: 0rem;
     background: #f9f9f9;
-    border-left: 8px solid #ccc;
+    border-inline-start: 8px solid #ccc;
     padding-block: 0.2em;
     padding-inline: 6px;
     /* quotes: "\201C""\201D""\2018""\2019"; */
