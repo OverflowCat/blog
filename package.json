@@ -33,7 +33,7 @@
     "@astrojs/prism": "3.2.0",
     "@astrojs/react": "^4.2.1",
     "@astrojs/sitemap": "^3.3.0",
-    "@astrojs/svelte": "^7.0.6",
+    "@astrojs/svelte": "^7.0.7",
     "@builder.io/qwik": "^1.12.1",
     "@flla/qwik-lottie": "^0.2.0",
     "@fontsource/ibm-plex-mono": "^5.2.5",

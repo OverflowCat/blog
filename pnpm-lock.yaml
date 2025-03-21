@@ -27,8 +27,8 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0
       '@astrojs/svelte':
-        specifier: ^7.0.6
-        version: 7.0.6(@types/node@22.13.10)(astro@5.5.3(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.36.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(svelte@5.23.2)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
+        specifier: ^7.0.7
+        version: 7.0.7(@types/node@22.13.10)(astro@5.5.3(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.36.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(svelte@5.23.2)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
       '@builder.io/qwik':
         specifier: ^1.12.1
         version: 1.12.1(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
@@ -356,8 +356,8 @@ packages:
   '@astrojs/sitemap@3.3.0':
     resolution: {integrity: sha512-nYE4lKQtk+Kbrw/w0G0TTgT724co0jUsU4tPlHY9au5HmTBKbwiCLwO/15b1/y13aZ4Kr9ZbMeMHlXuwn0ty4Q==}
 
-  '@astrojs/svelte@7.0.6':
-    resolution: {integrity: sha512-YW1s9yN4ihN7u2z6JZtiWJHk7pXHu8e1D+yyKOuvV/6XkVi1bBHMytF0a4BvlM1/cRTLywPUwxYCVfg6hNcyjw==}
+  '@astrojs/svelte@7.0.7':
+    resolution: {integrity: sha512-ax+xk1ayUw30kdtDHjSN2js5Y1jxj1HvyPjlrRQwB/W2O3v3p/Fjreaqzyll7gAKUjgpincsXqZONGTNaKM7aw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -421,6 +421,11 @@ packages:
     resolution: {integrity: sha512-8NHiL98vsi0mbPQmYAGWwfcFaOy4j2HY49fXJCfuDcdE7fMIsH9a7GdaeXpIBsbT7307WU8KCMp5pUVDNL4f9A==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/parser@7.26.10':
+    resolution: {integrity: sha512-6aQR2zGE/QFi8JpDLjUZEPYOs7+mhKXm86VaKFiLP35JQwQb6bwUE+XbvkH0EptsYhbNBSUGaUBLKqxH1xSgsA==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/parser@7.26.8':
     resolution: {integrity: sha512-TZIQ25pkSoaKEYYaHbbxkfL36GNsQ6iFiBbeuzAkLnXayKR1yP1zFe+NxuZWWsUyvt8icPU9CCq0sgWGXR1GEw==}
     engines: {node: '>=6.0.0'}
@@ -448,6 +453,10 @@ packages:
 
   '@babel/traverse@7.26.8':
     resolution: {integrity: sha512-nic9tRkjYH0oB2dzr/JoGIm+4Q6SuYeLEiIiZDwBscRMYFJ+tMAz98fuel9ZnbXViA2I0HVSSRRK8DW5fjXStA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.10':
+    resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/types@7.26.8':
@@ -4579,7 +4588,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/svelte@7.0.6(@types/node@22.13.10)(astro@5.5.3(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.36.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(svelte@5.23.2)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)':
+  '@astrojs/svelte@7.0.7(@types/node@22.13.10)(astro@5.5.3(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.36.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(svelte@5.23.2)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.23.2)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
       astro: 5.5.3(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.36.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0)
@@ -4691,6 +4700,10 @@ snapshots:
       '@babel/template': 7.26.8
       '@babel/types': 7.26.8
 
+  '@babel/parser@7.26.10':
+    dependencies:
+      '@babel/types': 7.26.10
+
   '@babel/parser@7.26.8':
     dependencies:
       '@babel/types': 7.26.8
@@ -4726,6 +4739,11 @@ snapshots:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
+
+  '@babel/types@7.26.10':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
 
   '@babel/types@7.26.8':
     dependencies:
@@ -6045,7 +6063,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.10
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6058,7 +6076,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.8
+      '@babel/parser': 7.26.10
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
