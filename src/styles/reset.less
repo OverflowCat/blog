@@ -192,6 +192,16 @@ img[data-twemoji] {
   margin-block-end: 0; // tonsky-fig-old
 }
 
+@media (prefers-color-scheme: dark) {
+  .logowrapper {
+    filter: invert(var(--auto-scheme, 0));
+  }
+}
+
+.logowrapper {
+  filter: var(--logo-filter, none);
+}
+
 @media (prefers-reduced-motion) {
   @view-transition {
     navigation: none;

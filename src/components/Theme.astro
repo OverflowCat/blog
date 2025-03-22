@@ -7,7 +7,7 @@ const { value } = Astro.props;
 // <meta name="color-scheme" content={scheme} slot="head" />
 ---
 
-<div id="theme-switcher">
+<div id="theme-switcher" title="切换主题">
   <select id="theme-select" aria-label="切换主题">
     <option value="light" selected={value === "light"}>明</option>
     <option value="dark" selected={value === "dark"}>暗</option>

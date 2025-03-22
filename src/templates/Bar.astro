@@ -20,7 +20,7 @@ import Mode from "@/components/Mode.astro";
 console.log(Astro.url.toString(), Astro.locals);
 
 const items = [
-  ["主页", "Home", "/"],
+  ["文章", "Home", "/"],
   ["归档", "Archives", "/archives"],
   ["友链", "Friends", "/friends"],
   ["订阅", "RSS", "/atom.xml"],
@@ -41,7 +41,7 @@ assert(slogan, "slogan is undefined");
 <nav id="sticky">
   <div class="backdrop">
     <div class="logowrapper edge min-inline-20">
-      <img class="logo" src="/logo.svg" alt="logo" />
+      <img class="logo" src="/new-logo.svg" alt="logo" />
     </div>
     <ul class="block">
       {
@@ -73,11 +73,6 @@ assert(slogan, "slogan is undefined");
   </div>
 </nav>
 <style is:global lang="less">
-  @media (prefers-color-scheme: dark) {
-    nav#sticky .logowrapper {
-      filter: invert(var(--auto-scheme, 0));
-    }
-  }
   nav#sticky {
     z-index: 1000;
     // width: fit-content;
@@ -88,7 +83,6 @@ assert(slogan, "slogan is undefined");
       animation-timeline: --page-timeline;
       animation-name: navlogo;
       animation-range: 0px 120px;
-      filter: var(--logo-filter, none);
     }
   }
   @keyframes navblur {
@@ -240,8 +234,8 @@ assert(slogan, "slogan is undefined");
     }
   }
   @container html (max-inline-size: 520px) {
-    .edge:first-child, #nav-3 {
-      // hide RSS when screen is too narrow
+    .edge:first-child {
+      // hide when screen is too narrow
       display: none;
     }
     a {

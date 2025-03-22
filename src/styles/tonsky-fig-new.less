@@ -1,6 +1,9 @@
 /* FIGURES */
 .content {
-  & > figure {
+  & > a:has(figure) {
+    border: none;
+  }
+  & > figure, & > a > figure {
     width: unset;
     max-inline-size: 96vw;
     display: flex;
