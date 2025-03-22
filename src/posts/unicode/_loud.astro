@@ -11,13 +11,15 @@ const { en } = Astro.props;
 </p>
 <style lang="less">
   .loud {
-    max-width: calc(var(--width) + 60px);
+    // max-width: calc(var(--width) + 60px);
     font-weight: 600;
     line-height: 1.25;
     text-wrap: balance;
     border: var(--border) solid var(--gray-line);
     padding: calc(2 * var(--gap));
-    margin: var(--gap) 0;
+    // margin: var(--gap) 0;
+    margin-inline: 0;
+    margin-block: var(--gap);
     font-size: 1.4em;
     text-align: center;
     border-radius: var(--radius);
