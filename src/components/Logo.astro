@@ -2,13 +2,10 @@
 export interface Props {
 	theme?: "transparent" | "auto";
 }
-
-const theme = Astro.props.theme || "light";
-const src = theme === "light" ? "/new-logo.svg" : "/logo-white.svg";
 ---
 
 <div class="logowrapper">
-  <img src={src} alt="新世界的大門" id="logo"/>
+  <img src="/new-logo.svg" alt="新世界的大門" id="logo"/>
 </div>
 
 <style>
