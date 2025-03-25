@@ -1,17 +1,36 @@
 ---
 export interface Props {
 	theme?: "transparent" | "auto";
+	decoration?: "planet" | "binary" | "world" | "langs" | "none";
+}
+
+let src = "/new-logo.svg";
+let { decoration } = Astro.props;
+let inlineSize = "";
+if (Astro.url.pathname.includes("unicode")) {
+  src = "https://tong.xinshijiededa.men/logo-yellow.svg";
+	decoration = "langs";
+  inlineSize = "inline-full overflow-x-clip";
 }
 ---
 
-<div class="logowrapper">
-  <img src="/new-logo.svg" alt="新世界的大門" id="logo" />
-  <div class="absolute floating opacity-40" style="inset-block-start: -300px; inset-inline-start: -220px;"> 
-    <img src="/planet.svg" class="rotating" width="450" height="450" alt="planet" id="planet"/>
-  </div>
-  <i class="i-mdi:satellite-variant absolute inset-bs-0 inset-is-50 w-12! h-12! text-lg opacity-40 hover:opacity-100"></i>
-  <i class="i-mdi:satellite-variant absolute inset-bs-20 inset-is-65 w-10! h-10! rotate-90 text-lg opacity-40 hover:opacity-100"></i>
-  <i class="floating i-mdi:rocket hover:i-mdi:rocket-launch absolute inset-bs-12 inset-is-25 w-10! h-10! rotate-50 text-lg opacity-40 hover:opacity-100"></i>
+<div class={`logowrapper relative ${inlineSize} select-none`}>
+  <img class="relative z-10" src={src} alt="新世界的大門" id="logo" />
+  {decoration === "langs" ? (
+    <div class="absolute inset-is-0 mbs--24 opacity-30 inline-100vi"> 
+        <img src="https://tong.xinshijiededa.men/langs.svg" height="22" alt="typography" id="typography"/>
+        <img class="mis" src="https://tong.xinshijiededa.men/langs2.svg" height="22" alt="typography" id="typography"/>
+        <img class="mis--120" src="https://tong.xinshijiededa.men/langs2.svg" height="22" alt="typography" id="typography"/>
+        <img class="mis--50" src="https://tong.xinshijiededa.men/langs.svg" height="22" alt="typography" id="typography"/>
+    </div>
+  ) : (
+    <div class="absolute floating opacity-40" style="inset-block-start: -300px; inset-inline-start: -220px;"> 
+      <img src="/decorations/planet.svg" class="rotating" width="450" height="450" alt="planet" id="planet"/>
+    </div>
+    <i class="i-mdi:satellite-variant absolute inset-bs-0 inset-is-50 w-12! h-12! text-lg opacity-40 hover:opacity-100"></i>
+    <i class="i-mdi:satellite-variant absolute inset-bs-20 inset-is-65 w-10! h-10! rotate-90 text-lg opacity-40 hover:opacity-100"></i>
+    <i class="floating i-mdi:rocket hover:i-mdi:rocket-launch absolute inset-bs-12 inset-is-25 w-10! h-10! rotate-50 text-lg opacity-40 hover:opacity-100"></i>
+  )}
 </div>
 
 <style lang="less">
@@ -46,7 +65,6 @@ export interface Props {
     block-size: 72px;
   }
   .logowrapper {
-    position: relative;
     * {
       transition: opacity 0.2s ease;
     }
