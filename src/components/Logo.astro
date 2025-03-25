@@ -5,16 +5,50 @@ export interface Props {
 ---
 
 <div class="logowrapper">
-  <img src="/new-logo.svg" alt="新世界的大門" id="logo"/>
+  <img src="/new-logo.svg" alt="新世界的大門" id="logo" />
+  <div class="absolute floating opacity-40" style="inset-block-start: -300px; inset-inline-start: -220px;"> 
+    <img src="/planet.svg" class="rotating" width="450" height="450" alt="planet" id="planet"/>
+  </div>
+  <i class="i-mdi:satellite-variant absolute inset-bs-0 inset-is-50 w-12! h-12! text-lg opacity-40 hover:opacity-100"></i>
+  <i class="i-mdi:satellite-variant absolute inset-bs-20 inset-is-65 w-10! h-10! rotate-90 text-lg opacity-40 hover:opacity-100"></i>
+  <i class="floating i-mdi:rocket hover:i-mdi:rocket-launch absolute inset-bs-12 inset-is-25 w-10! h-10! rotate-50 text-lg opacity-40 hover:opacity-100"></i>
 </div>
 
-<style>
+<style lang="less">
+  @keyframes rotating {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+      rotate: 360deg;
+    }
+  }
+  @keyframes floating {
+    0% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 9px;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+  .rotating {
+    animation: rotating 100s ease-in-out infinite;
+  }
+  .floating {
+    animation: floating 8s ease-in-out infinite;
+  }
   #logo {
     display: block;
     margin: auto;
     block-size: 72px;
   }
   .logowrapper {
-    z-index: 1000;
+    position: relative;
+    * {
+      transition: opacity 0.2s ease;
+    }
   }
 </style>
