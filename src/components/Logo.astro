@@ -1,5 +1,6 @@
 ---
 import type { Decoration } from "@/scripts/decoration";
+import Harmony from "./Harmony.astro";
 
 export interface Props {
 	theme?: "transparent" | "auto";
@@ -13,10 +14,14 @@ if (decoration === "langs") {
 	src = "https://tong.xinshijiededa.men/logo-yellow.svg";
 	inlineSize = "inline-full overflow-x-clip";
 }
+
+if (decoration === "harmony") {
+	inlineSize = "inline-full";
+}
 ---
 
 <div class={`logowrapper relative ${inlineSize} select-none`}>
-  <img class="relative z-10" src={src} alt="新世界的大門" id="logo" />
+  <img class="relative z-100" src={src} alt="新世界的大門" id="logo" />
   {decoration === "langs" ? (
     <div class="vert-hide absolute inset-is-0 mbs--24 opacity-30 inline-100vi"> 
         <img src="https://tong.xinshijiededa.men/langs.svg" height="22" alt="typography" id="typography"/>
@@ -24,6 +29,8 @@ if (decoration === "langs") {
         <img class="mis--120" src="https://tong.xinshijiededa.men/langs2.svg" height="22" alt="typography" id="typography"/>
         <img class="mis--50" src="https://tong.xinshijiededa.men/langs.svg" height="22" alt="typography" id="typography"/>
     </div>
+  ) : decoration === "harmony" ? (
+    <Harmony />
   ) : (
     <div class="vert-hide absolute floating opacity-40" style="inset-block-start: -300px; inset-inline-start: -220px;"> 
       <img src="/decorations/planet.svg" class="rotating" width="450" height="450" alt="planet" id="planet"/>
