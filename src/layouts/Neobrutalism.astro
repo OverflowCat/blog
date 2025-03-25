@@ -106,7 +106,7 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
   <slot />
 :
 
-<Bar lang="zh-Hans" mode={
+<Bar lang="zh-Hans" decoration={frontmatter?.decoration} mode={
   {
     theme: false,
     hant: true,

@@ -1,6 +1,7 @@
 import { z, type SchemaContext } from "astro:content";
 import { ICON_PACKS_SET } from "../icons";
 import photo from "./photo";
+import { decoration } from "../decoration";
 
 // 2. Define a `type` and `schema` for each collection
 function transform2arr(val: null | undefined | string | string[]) {
@@ -44,6 +45,7 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 				(x: string) => !x.includes(":") || ICON_PACKS_SET.has(x.split(":")[0]),
 			)
 			.optional(),
+		decoration: decoration.optional(),
 		lang: z.union([
 			// 汉语
 			z.literal("cmn"),

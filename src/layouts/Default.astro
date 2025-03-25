@@ -64,7 +64,10 @@ export type Props = {
   }
 </style>
 
-<Bar lang="zh-Hans" mode={{
+<Bar
+  lang="zh-Hans" 
+  decoration={frontmatter?.decoration}
+  mode={{
   hant: frontmatter?.hant,
   vert: frontmatter?.vert,
   theme: frontmatter?.theme as "auto" | boolean | undefined,

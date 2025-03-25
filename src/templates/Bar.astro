@@ -1,8 +1,11 @@
 ---
+import type { Decoration } from "@/scripts/decoration";
+
 export interface Props {
   index?: number;
   theme?: "transparent" | "auto";
   lang: "zh-Hans" | "zh-Hant" | "en";
+  decoration?: Decoration;
   mode: {
     theme?: boolean | "auto";
     hant?: boolean;
@@ -26,7 +29,7 @@ const items = [
   ["订阅", "RSS", "/atom.xml"],
   ["关于", "About", "/about"],
 ];
-let { index, theme, lang, mode } = Astro.props;
+let { index, theme, lang, mode, decoration } = Astro.props;
 if (!lang) lang = "zh-Hans";
 const slogan = pick(slogans.filter((s) => s[lang]))[lang];
 assert(slogan, "slogan is undefined");
@@ -34,13 +37,13 @@ assert(slogan, "slogan is undefined");
 
 <nav>
   <div id="logo">
-    <Logo theme={theme} />
+    <Logo theme={theme} decoration={decoration} />
   </div>
   <div id="slogan" set:text={typeof slogan === "string" ? slogan : slogan[0]} />
 </nav>
 <nav id="sticky">
   <div class="backdrop">
-    <div class="logowrapper edge min-inline-20">
+    <div class="logowrapper edge min-inline-20 vert-hide">
       <img class="logo" src="/new-logo.svg" alt="logo" />
     </div>
     <ul class="block">
