@@ -105,8 +105,8 @@ importers:
         specifier: ^0.5.4
         version: 0.5.4(@myriaddreamin/typst-ts-renderer@0.5.5-rc7)
       '@qwikdev/astro':
-        specifier: ^0.7.10
-        version: 0.7.10(@builder.io/qwik@1.12.1(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.5.4(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.37.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
+        specifier: ^0.7.11
+        version: 0.7.11(@builder.io/qwik@1.12.1(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.5.4(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.37.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
       '@shikijs/twoslash':
         specifier: ^3.2.1
         version: 3.2.1(typescript@5.8.2)
@@ -423,6 +423,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.27.0':
+    resolution: {integrity: sha512-iaepho73/2Pz7w2eMS0Q5f83+0RKI7i4xmiYeBmDzfRVbQtTOG7Ts0S4HzJVsTMGI9keU8rNfuZr8DKfSt7Yyg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -449,6 +454,10 @@ packages:
 
   '@babel/types@7.26.10':
     resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.27.0':
+    resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1515,8 +1524,8 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@qwikdev/astro@0.7.10':
-    resolution: {integrity: sha512-F0ZJX13txor3Ulw6YZOy4wF4zmeBwzPFTArCG7zOIIZr3aHaZW9byKi8nP21pigzBw5mj8I/M3IcOW87C0alJQ==}
+  '@qwikdev/astro@0.7.11':
+    resolution: {integrity: sha512-N7yne+Xbxy3Xg6NO7jCbEYP0JAx5pt0n2gffKqKSdmiFnq8WGVwOZziZ1pUoM3MG4WhZIokQM3sv6OkcvLCQsA==}
     peerDependencies:
       '@builder.io/qwik': '>=1.9.0'
 
@@ -4729,6 +4738,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.10
 
+  '@babel/parser@7.27.0':
+    dependencies:
+      '@babel/types': 7.27.0
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
@@ -4762,6 +4775,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.10':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.27.0':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5593,7 +5611,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@qwikdev/astro@0.7.10(@builder.io/qwik@1.12.1(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.5.4(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.37.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))':
+  '@qwikdev/astro@0.7.11(@builder.io/qwik@1.12.1(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0)))(astro@5.5.4(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.37.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.0))(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))':
     dependencies:
       '@builder.io/qwik': 1.12.1(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
       '@inox-tools/inline-mod': 2.0.3(vite@6.2.3(@types/node@22.13.13)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.0))
@@ -6078,7 +6096,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6091,7 +6109,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
