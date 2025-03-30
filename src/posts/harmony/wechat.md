@@ -211,4 +211,4 @@ v5.0.0.135 SP5 的更新记录里写，小艺搜索
 
 负一屏可以添加卡片了。
 
-最近写了一些仓颉，不出意外下一篇文章是这个。
+最近写了一些仓颉，不出意外下一篇文章是这个。<img src="https://count.xinshijiededa.men/harmony%2Fwechat/ending.svg" alt='&copy; 新世界的大门' title='&copy; 新世界的大门。这是一个 Tombstone' class='inline-block vertical-mid' />
