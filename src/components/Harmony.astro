@@ -5,7 +5,7 @@
 <section class="absolute mbs--25 mis--4">
     <div class="g-container relative z-0">
         <div class="g-top">
-            <div class="line"></div>
+            <div class="line bottom--25 relative"></div>
         </div>
         <div class="g-bottom"></div>
     </div>
@@ -37,17 +37,27 @@
 </section>
 
 <style lang="less">
+    section {
+        transition: all 1s ease-out;
+        opacity: 1;
+    }
+    @starting-style {
+        section {
+            opacity: 0;
+            margin-top: 0!important;
+        }
+        .line {
+            opacity: 0;
+        }
+    }
+
     .g-container {
         margin: auto;
         --harmony-height: 100px;
     }
 
-    svg, line {
-        position: absolute;
-    }
-
     .line {
-        bottom: -8px;
+        opacity: 1;
         left: 50%;
         width: 500px;
         height: 6px;

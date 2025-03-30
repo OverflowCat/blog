@@ -1,6 +1,6 @@
 // math
 import rehypeMathRenderer from "rehype-mathjax/chtml";
-// import rehypeKatex from 'rehype-katex'
+import rehypeKatex from 'rehype-katex'
 // typst
 // @ts-ignore
 import rehypeTypst from "@myriaddreamin/rehype-typst";
@@ -30,7 +30,7 @@ const rehypeMultiMath: RehypePlugin = () => {
 		},
 	} satisfies Parameters<typeof rehypeMathRenderer>[0]);
 	// init katex
-	// const rehypeKatexHook = rehypeKatex();
+	const rehypeKatexHook = rehypeKatex();
 	// init typst
 	const rehypeTypstHook = rehypeTypst();
 
@@ -45,9 +45,9 @@ const rehypeMultiMath: RehypePlugin = () => {
 			case "typst":
 				// @ts-ignore
 				return rehypeTypstHook(tree, vfile);
-			// case "katex":
-			// 	// @ts-ignore
-			// 	return rehypeKatexHook(tree, vfile);
+			case "katex":
+				// @ts-ignore
+				return rehypeKatexHook(tree, vfile);
 			default:
 				// handle default case here
 				break;

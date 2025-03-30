@@ -22,6 +22,7 @@ const { photo } = data;
 let title = data.title;
 if (data.series) {
 	const [series, main] = title.split("：");
+  if (!main || !series) throw new Error("Invalid title format. Expected 'Series: Main Title'.");
 	title = `<span class="series font-semibold text-.95em rounded-md p-inline-2 p-block-1 ring-inset ring-1 transition hover:text-shadow-sm ${
 		data.series === "harmony"
 			? "bg-red-50/70 text-red-600 ring-red-600/10 hover:text-shadow-color-pink"
