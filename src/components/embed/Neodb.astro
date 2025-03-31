@@ -37,7 +37,7 @@ if (category === "game") {
     var date = data.year.toString();
     authors = director.concat(actor, playwright);
 } else if (category === "book") {
-    let 作编译者 = new Set(data.author);
+    const 作编译者 = new Set(data.author);
     作编译者.add(data.translator.map((t) => t + "（译）").join("、"));
     authors = Array.from(作编译者);
     var date = data.pub_year.toString();

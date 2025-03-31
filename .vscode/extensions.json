@@ -6,6 +6,7 @@
     "myriad-dreamin.tinymist",
     "unifiedjs.vscode-mdx",
     "biomejs.biome",
+    "stylelint.vscode-stylelint",
     "svelte.svelte-vscode"
   ],
   "unwantedRecommendations": []

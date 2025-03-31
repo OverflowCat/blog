@@ -60,7 +60,7 @@ const Bilibili: React.FC<BilibiliProps> = ({ autoplay, thumbnail, av, bv }) => {
             alt={`${avNumber} 视频封面`}
           />
           视频 <code>AV{avNumber}</code> / <code>{bvString}</code>：
-          <button onClick={loadVid}>从哔哩哔哩加载</button>
+          <button onClick={loadVid} type="button">从哔哩哔哩加载</button>
           <a href={`https://www.bilibili.com/video/${bvString}`}>去哔哩哔哩观看</a>
           <small>
             也可以点击视频封面加载视频。注意哔哩哔哩弹幕网可能会收集您的信息，这与本站无关。在阁下进行操作前，网页不会与哔哩哔哩弹幕网建立连接。

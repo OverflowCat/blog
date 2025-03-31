@@ -1,3 +1,4 @@
+/* stylelint-disable csstools/use-logical */
 @font-face {
     font-family: 'Departure Mono';
     src: url('https://cdn.jsdelivr.net/gh/OverflowCat/blog@test_a/font/departure-mono/DepartureMono-Regular.woff2') format('woff2'),
@@ -10,18 +11,19 @@
 
 @font-face {
     font-family: "Fusion Pixel P 12px SC";
-    src        : url(/fonts/fusion-pixel-12px-proportional-zh_hans.woff2) format("woff2");
+    src        : url("/fonts/fusion-pixel-12px-proportional-zh_hans.woff2") format("woff2");
 }
 
 body {
     --font-mono: "Departure Mono", "Fusion Pixel P 12px SC", monospace;
+
     color-scheme: light;
     background  : #ddd !important;
 }
 
 * {
     font-size  : 1rem;
-    font-family: "Fusion Pixel P 12px SC", Arial !important;
+    font-family: "Fusion Pixel P 12px SC", Arial, sans-serif !important;
 }
 
 *::before,
@@ -40,7 +42,7 @@ select,
 table,
 textarea,
 ul.tree-view {
-    font-family: "Pixelated MS Sans Serif", "Fusion Pixel P 12px SC", Arial !important;
+    font-family: "Pixelated MS Sans Serif", "Fusion Pixel P 12px SC", Arial, sans-serif !important;
     font-size  : 16px !important;
 }
 

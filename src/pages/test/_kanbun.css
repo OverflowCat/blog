@@ -20,6 +20,7 @@
 }
 
 .kanbun .kaeriten ~ .ellipsis {
+  /* stylelint-disable-next-line csstools/use-logical */
   margin-top: 0.5em;
 }
 
@@ -221,7 +222,7 @@
   color: transparent;
 }
 
-.kanbun .dash:after {
+.kanbun .dash::after {
   content: "";
   background: black;
   width: 0.04em;
@@ -235,7 +236,7 @@
   font-size: 50%;
 }
 
-.kanbun.betagumi .dash:after {
+.kanbun.betagumi .dash::after {
   left: 1em;
 }
 
