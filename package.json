@@ -62,7 +62,7 @@
     "@qwikdev/astro": "^0.7.11",
     "@shikijs/twoslash": "^3.2.1",
     "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/react-dom": "^19.1.1",
     "astro": "5.5.5",
     "astro-icon": "1.1.5",
     "astro-remote": "^0.3.4",
