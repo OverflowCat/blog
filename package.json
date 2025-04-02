@@ -34,7 +34,7 @@
     "@astrojs/react": "^4.2.2",
     "@astrojs/sitemap": "^3.3.0",
     "@astrojs/svelte": "^7.0.8",
-    "@builder.io/qwik": "^1.12.1",
+    "@builder.io/qwik": "^1.13.0",
     "@flla/qwik-lottie": "^0.2.0",
     "@fontsource/ibm-plex-mono": "^5.2.5",
     "@fontsource/ibm-plex-sans": "^5.2.5",
