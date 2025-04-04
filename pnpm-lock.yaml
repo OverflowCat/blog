@@ -126,8 +126,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       astro-typst:
-        specifier: 0.7.4
-        version: 0.7.4(@types/node@22.13.14)(astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.1)
+        specifier: 0.8.1
+        version: 0.8.1(astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))(rollup@4.38.0)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -423,6 +423,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.27.0':
+    resolution: {integrity: sha512-iaepho73/2Pz7w2eMS0Q5f83+0RKI7i4xmiYeBmDzfRVbQtTOG7Ts0S4HzJVsTMGI9keU8rNfuZr8DKfSt7Yyg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -449,6 +454,10 @@ packages:
 
   '@babel/types@7.26.10':
     resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.27.0':
+    resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1873,8 +1882,8 @@ packages:
     resolution: {integrity: sha512-jL5skNQLA0YBc1R3bVGXyHew3FqGqsT7AgLzWAVeTLzFkwVMUYvs4/lKJSmS7ygcF1GnHnoKG6++8GL9VtWwGQ==}
     engines: {node: '>=18.14.1'}
 
-  astro-typst@0.7.4:
-    resolution: {integrity: sha512-IOFFsg12Bp4ZS5l7+1WSeivReBxLeNYfvdwniFTTct8mCM07669Zsx2ojXV/x1ZOpnSgbEKBQiR7tB4TjD6Pzw==}
+  astro-typst@0.8.1:
+    resolution: {integrity: sha512-A+vCLByBIf9EED9RS+DhK518+HJ6d60AC3Y1tt2auTHHWQMvOw4l7Pp16WoDl9EQEb+VqSdFSk/XbWt6JUKYzA==}
     peerDependencies:
       astro: '>= 3.0.0'
 
@@ -1983,10 +1992,6 @@ packages:
   cheerio@1.0.0:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
-
-  cheerio@1.0.0-rc.12:
-    resolution: {integrity: sha512-VqR8m68vM46BNnuZ5NtnGBKIE/DfN0cRIzg9n40EIq9NOv90ayxLBXA8fXC5gquFRGJSTRqBq25Jt2ECLR431Q==}
-    engines: {node: '>= 6'}
 
   chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
@@ -2556,9 +2561,6 @@ packages:
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
-
-  htmlparser2@8.0.2:
-    resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
 
   htmlparser2@9.1.0:
     resolution: {integrity: sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==}
@@ -4558,6 +4560,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.10
 
+  '@babel/parser@7.27.0':
+    dependencies:
+      '@babel/types': 7.27.0
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
@@ -4591,6 +4597,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.10':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.27.0':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5840,7 +5851,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -5853,7 +5864,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -5963,29 +5974,18 @@ snapshots:
       marked-smartypants: 1.1.9(marked@12.0.2)
       ultrahtml: 1.5.3
 
-  astro-typst@0.7.4(@types/node@22.13.14)(astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.1):
+  astro-typst@0.8.1(astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))(rollup@4.38.0):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.5.5-rc4
       '@myriaddreamin/typst-ts-renderer': 0.5.5-rc7
       '@myriaddreamin/typst.ts': 0.5.5-rc7(@myriaddreamin/typst-ts-renderer@0.5.5-rc7)
       '@rollup/plugin-node-resolve': 15.3.1(rollup@4.38.0)
       astro: 5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1)
-      cheerio: 1.0.0-rc.12
-      vite: 6.2.3(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(sass@1.86.0)(tsx@4.19.2)(yaml@2.7.1)
+      astro-integration-kit: 0.18.0(astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))
+      cheerio: 1.0.0
     transitivePeerDependencies:
       - '@myriaddreamin/typst-ts-web-compiler'
-      - '@types/node'
-      - jiti
-      - less
-      - lightningcss
       - rollup
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - yaml
 
   astro@5.5.5(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.2)(lightningcss@1.27.0)(rollup@4.38.0)(sass@1.86.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1):
     dependencies:
@@ -6185,16 +6185,6 @@ snapshots:
       parse5-parser-stream: 7.1.2
       undici: 6.21.2
       whatwg-mimetype: 4.0.0
-
-  cheerio@1.0.0-rc.12:
-    dependencies:
-      cheerio-select: 2.1.0
-      dom-serializer: 2.0.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      htmlparser2: 8.0.2
-      parse5: 7.2.1
-      parse5-htmlparser2-tree-adapter: 7.1.0
 
   chokidar@3.6.0:
     dependencies:
@@ -6902,13 +6892,6 @@ snapshots:
   html-escaper@3.0.3: {}
 
   html-void-elements@3.0.0: {}
-
-  htmlparser2@8.0.2:
-    dependencies:
-      domelementtype: 2.3.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      entities: 4.5.0
 
   htmlparser2@9.1.0:
     dependencies:
