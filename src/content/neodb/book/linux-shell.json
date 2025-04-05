@@ -1,0 +1,49 @@
+{
+	"id": "https://neodb.social/book/0Z7hiwjXadxJUpvjeaGaPY",
+	"type": "Edition",
+	"uuid": "0Z7hiwjXadxJUpvjeaGaPY",
+	"url": "/book/0Z7hiwjXadxJUpvjeaGaPY",
+	"api_url": "/api/book/0Z7hiwjXadxJUpvjeaGaPY",
+	"category": "book",
+	"parent_uuid": null,
+	"display_title": "Linux Shell命令行及脚本编程实例详解（第2版）",
+	"external_resources": [
+		{
+			"url": "https://www.books.com.tw/products/CN11973295"
+		}
+	],
+	"title": "Linux Shell命令行及脚本编程实例详解（第2版）",
+	"description": "《Linux Shell命令行及脚本编程实例详解（第2版）》是获得大量读者好评的“Linux典藏大系”中的经典畅销书《Linux Shell命令行及脚本编程实例详解》的第2版。本书第1版累计13次印刷，销量超过2万册，被ChinaUnix技术社区大力推荐。本书理论结合实践，全面、系统地介绍Linux Shell（Bash）脚本编程的语法、命令和技巧等内容。本书偏重于实践，在讲解理论知识时结合大量典型实例让读者了解理论知识在实际环境中的应用，并对易混淆和较难理解的知识点做了重点分析，以加深读者对知识的理解。本书提供教学视频、实例源程序、思维导图、教学PPT和习题参考答案等超值配套资源，以帮助读者高效、直观地学习。\n《Linux Shell命令行及脚本编程实例详解（第2版）》共15章，分为2篇。第1篇“Linux Shell基础知识与命令”，主要内容包括Linux和Linux Shell简介、初识Linux Shell、常用的Shell（Bash）命令、Shell命令进阶；第2篇“Shell脚本编程”，主要内容包括Shell编程基础、Shell的条件执行、Bash循环、Shell函数、正则表达式、脚本输入处理、Shell重定向、管道和过滤器、捕获、sed和awk、其他Linux Shell概述。\n《Linux Shell命令行及脚本编程实例详解（第2版）》非常适合初次接触Linux Shell命令行和脚本编程的入门读者阅读，也适合有一定基础而想进一步提升的进阶读者阅读，还适合作为高等院校和Linux培训机构的教材。对于基于Linux平台的开发人员而言，本书还是一本不可多得的案头查询手册。\n刘艳涛，就职于一家全球500强通信公司，从事公司无线产品研发中心的Linux／Unix操作系统的管理和技术支持。有超过15年的Linux系统管理与运维经验，擅长用Shell等脚本语言实现自动化运维管理，以及配置Nagios与Ganglia集成的自动化监控和故障报警平台，对Linux系统性能优化有深入的研究。",
+	"localized_title": [
+		{
+			"lang": "zh-cn",
+			"text": "Linux Shell命令行及脚本编程实例详解（第2版）"
+		}
+	],
+	"localized_description": [
+		{
+			"lang": "zh-cn",
+			"text": "《Linux Shell命令行及脚本编程实例详解（第2版）》是获得大量读者好评的“Linux典藏大系”中的经典畅销书《Linux Shell命令行及脚本编程实例详解》的第2版。本书第1版累计13次印刷，销量超过2万册，被ChinaUnix技术社区大力推荐。本书理论结合实践，全面、系统地介绍Linux Shell（Bash）脚本编程的语法、命令和技巧等内容。本书偏重于实践，在讲解理论知识时结合大量典型实例让读者了解理论知识在实际环境中的应用，并对易混淆和较难理解的知识点做了重点分析，以加深读者对知识的理解。本书提供教学视频、实例源程序、思维导图、教学PPT和习题参考答案等超值配套资源，以帮助读者高效、直观地学习。\n《Linux Shell命令行及脚本编程实例详解（第2版）》共15章，分为2篇。第1篇“Linux Shell基础知识与命令”，主要内容包括Linux和Linux Shell简介、初识Linux Shell、常用的Shell（Bash）命令、Shell命令进阶；第2篇“Shell脚本编程”，主要内容包括Shell编程基础、Shell的条件执行、Bash循环、Shell函数、正则表达式、脚本输入处理、Shell重定向、管道和过滤器、捕获、sed和awk、其他Linux Shell概述。\n《Linux Shell命令行及脚本编程实例详解（第2版）》非常适合初次接触Linux Shell命令行和脚本编程的入门读者阅读，也适合有一定基础而想进一步提升的进阶读者阅读，还适合作为高等院校和Linux培训机构的教材。对于基于Linux平台的开发人员而言，本书还是一本不可多得的案头查询手册。\n刘艳涛，就职于一家全球500强通信公司，从事公司无线产品研发中心的Linux／Unix操作系统的管理和技术支持。有超过15年的Linux系统管理与运维经验，擅长用Shell等脚本语言实现自动化运维管理，以及配置Nagios与Ganglia集成的自动化监控和故障报警平台，对Linux系统性能优化有深入的研究。"
+		}
+	],
+	"cover_image_url": "https://neodb.social/m/item/bookstw/2025/04/05/7aff7820-c752-4f21-8834-170ac70c2b52.webp",
+	"rating": null,
+	"rating_count": 0,
+	"rating_distribution": [0, 0, 0, 0, 0],
+	"tags": [],
+	"brief": "《Linux Shell命令行及脚本编程实例详解（第2版）》是获得大量读者好评的“Linux典藏大系”中的经典畅销书《Linux Shell命令行及脚本编程实例详解》的第2版。本书第1版累计13次印刷，销量超过2万册，被ChinaUnix技术社区大力推荐。本书理论结合实践，全面、系统地介绍Linux Shell（Bash）脚本编程的语法、命令和技巧等内容。本书偏重于实践，在讲解理论知识时结合大量典型实例让读者了解理论知识在实际环境中的应用，并对易混淆和较难理解的知识点做了重点分析，以加深读者对知识的理解。本书提供教学视频、实例源程序、思维导图、教学PPT和习题参考答案等超值配套资源，以帮助读者高效、直观地学习。\n《Linux Shell命令行及脚本编程实例详解（第2版）》共15章，分为2篇。第1篇“Linux Shell基础知识与命令”，主要内容包括Linux和Linux Shell简介、初识Linux Shell、常用的Shell（Bash）命令、Shell命令进阶；第2篇“Shell脚本编程”，主要内容包括Shell编程基础、Shell的条件执行、Bash循环、Shell函数、正则表达式、脚本输入处理、Shell重定向、管道和过滤器、捕获、sed和awk、其他Linux Shell概述。\n《Linux Shell命令行及脚本编程实例详解（第2版）》非常适合初次接触Linux Shell命令行和脚本编程的入门读者阅读，也适合有一定基础而想进一步提升的进阶读者阅读，还适合作为高等院校和Linux培训机构的教材。对于基于Linux平台的开发人员而言，本书还是一本不可多得的案头查询手册。\n刘艳涛，就职于一家全球500强通信公司，从事公司无线产品研发中心的Linux／Unix操作系统的管理和技术支持。有超过15年的Linux系统管理与运维经验，擅长用Shell等脚本语言实现自动化运维管理，以及配置Nagios与Ganglia集成的自动化监控和故障报警平台，对Linux系统性能优化有深入的研究。",
+	"subtitle": null,
+	"orig_title": null,
+	"author": ["刘艳涛"],
+	"translator": [],
+	"language": ["简体中文"],
+	"pub_house": "清华大学出版社",
+	"pub_year": 2024,
+	"pub_month": 4,
+	"binding": "平裝",
+	"price": "99.80 CNY",
+	"pages": 380,
+	"series": null,
+	"imprint": null,
+	"isbn": "9787302660194"
+}

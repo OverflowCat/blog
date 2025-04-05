@@ -37,6 +37,7 @@ const { value } = Astro.props;
     @media (prefers-color-scheme: dark) {
       :root:has(option[value="system"]:checked) {
           --dark-scheme: 1;
+          --logo-filter: invert(1);
         }
       }
     @media (prefers-color-scheme: light) {

@@ -148,7 +148,7 @@ cat file4>>result' > command
 
 == 难点分析
 
-+ Makefile 调用子目录下的 Makefile：```makefile $(MAKE) -C subdir```。实测 `cd` 后目录不会发生改变。
++ Makefile 调用子目录下的 Makefile：```makefile $(MAKE) -C subdir```。
 + sed 替换文本时可使用不同的分隔符，如 ```sh sed 's|/|\\|g'```。
 + bash 里从完整路径提取不含扩展名的文件名：
   ```sh

@@ -5,17 +5,22 @@
 // -H 'accept: application/json'
 // and save the json to ./src/content/neodb/movie/1O3OM5a0GELT6BtF7KEtUp.json
 
-import fs from "fs";
-import path from "path";
-// import fetch from "node-fetch";
+import fs from "node:fs";
+import path from "node:path";
 
 async function fetchItem(slug) {
-  const res = await fetch(`https://neodb.social/api/${slug}`, {
-    headers: {
-      accept: "application/json",
-    },
-  });
-  return res.json();
+  const url = `https://neodb.social/api/${slug}`;
+  try {
+    const res = await fetch(url, {
+      headers: {
+        accept: "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.error(`Error fetching ${url}:`, error);
+    return null;
+  }
 }
 
 const args = process.argv.slice(2);

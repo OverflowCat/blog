@@ -1,6 +1,6 @@
 ---
-title: BUAA-OS Lab0 报告和笔记
-date: 2025-03-31T08:35:51.582Z
+title: BUAA-OS Lab0
+date: 2025-04-05T12:35:51.582Z
 noscript: true
 photo:
   src: "https://remnote-user-data.s3.amazonaws.com/7ilQrmUCw6thZ0oBpHwC5pW1-trdqV3eueBi63LZ65QE8PPqxAQ1iqMl6rigKbvXXNVWD-xMdSPlQeAdElOjr8--lRAbGBA54mkbeq2AWhCO2XEF-zoopd3WoMYhbO4i.jpeg"
@@ -8,17 +8,81 @@ licence: false
 layout: "@/layouts/Default.astro"
 tags:
   - BUAA-OO
+math: mathjax
+vert: false
+hant: false
 categories: []
 ---
 
 import "@/styles/terminal.css";
+import Neodb from "@/components/embed/Neodb.astro";
 
 ## lab0
+
+Lab 0 主要就是一个 Makefile 和 Linux shell 的练习。你可以从这里获取今年实验的公开[指导书](https://os.buaa.edu.cn/public/guide-book.pdf)（[截至发稿时的版本](https://web.archive.org/web/20250405124048/https://os.buaa.edu.cn/public/guide-book.pdf)，存于互联网档案馆）。
+
+### 练习题
+
+#### Exercise 0.1
+
+好久没写 C。虽然连 palindrome 都不会写了，但是好像懂得比以前多了很多）
+
+剩下 3 问没什么难度。唯须注意的是：
+
+> [Makefile 中] 有一点尤为需要注意，每一个命令 (command) 之前必须用一个制表符（Tab）缩进。这里必须使用制表符而不能是空格，否则 make 会报错。
+
+考试的时候被坑了。
+
+#### Exercise 0.2
+
+Shell 的条件和循环。
+
+```sh
+a=1
+while [ $a -le 100 ]
+do
+        if [ $a -gt 70 ]
+        then
+                rm -r "file$a"
+        elif [ $a -gt 40 ]
+        then
+                mv "file$a" "newfile$a"
+        fi
+        # ((a++))
+        a=$((a+1))
+        # don't forget change the loop variable
+done
+```
+
+#### Exercise 0.3
+
+```sh
+# First you can use grep (-n) to find the number of lines of string.
+# Then you can use awk to separate the answer.
+
+grep -n "$2" "$1" | cut -d: -f1 > "$3"
+```
+
+`cut -d` 后面是分隔符，`-f1` 是第一个字段，即行号。
+
+#### Exercise 0.4
+
+```sh title="./csc/code/modify.sh"
+sed -i "s|$2|$3|g" "$1"
+```
+
+需要 include 头文件。
+
+```makefile title="./csc/code/Makefile"
+all:
+        bash modify.sh fibo.c char int
+        gcc -c fibo.c main.c -I../include
+```
 
 import Report from "@/docs/lab0/report.typ";
 
 <Report />
-<style>.typst-doc \{ height: auto; width: 100%; }  </style>
+<style>svg.typst-doc \{ height: auto; width: 95%; max-width: 40rem; margin: auto; display: block; filter: var(--logo-filter, none); }  </style>
 
 ## lab0-exam
 
@@ -38,11 +102,13 @@ import Report from "@/docs/lab0/report.typ";
 
 ### GCC & Bash Quiz
 
-完成初始化后，仓库根目录下已经生成了 exam_1.sh 至 exam_9.sh（从1开始的连续整命令名的.sh文件，共9个）、run_exam.sh、stderr.txt 和 origin 文件夹。
+> 完成初始化后，仓库根目录下已经生成了 exam_1.sh 至 exam_9.sh（从1开始的连续整命令名的.sh文件，共9个）、run_exam.sh、stderr.txt 和 origin 文件夹。
 
-在仓库根目录（如 ~/23xxxxx ）下编写 exam_1.sh 至 exam_9.sh。要求实现且仅实现以下第x点功能。
+> 在仓库根目录（如 ~/23xxxxx ）下编写 exam_1.sh 至 exam_9.sh。要求实现且仅实现以下第x点功能。
 
-这些脚本将被 run_exam.sh 调用执行。使用 `run_exam.sh` 的命令格式为 `bash run_exam.sh [n] [s] [t]`，其中 n 为小于等于9 的整数，表示将按顺序执行 `exam_1.sh` 至 `exam_n.sh`。若 n 未给出，将默认是 9。可选的 s 和 t 用于传递给 `exam_9.sh`，具体要求见第 9 点功能。（注意：根据命令格式，若要指定 s 和 t，必须先指定 n）
+> 这些脚本将被 run_exam.sh 调用执行。使用 `run_exam.sh` 的命令格式为 `bash run_exam.sh [n] [s] [t]`，其中 n 为小于等于9 的整数，表示将按顺序执行 `exam_1.sh` 至 `exam_n.sh`。若 n 未给出，将默认是 9。可选的 s 和 t 用于传递给 `exam_9.sh`，具体要求见第 9 点功能。（注意：根据命令格式，若要指定 s 和 t，必须先指定 n）
+
+这个部分讨厌的是评测点是累进的，由于后面的操作依赖于前面的操作，所以如果前面的操作没有正确实现，写完提交一看才十几分比较虚。不过文件操作的话，后面的操作可以作为前面的提示。
 
 1. 创建一个新的目录，名为 result。再在 result 目录下创建两个新的目录，名为 code 和 backup。
     ```sh title="exam_1.sh"
@@ -63,6 +129,7 @@ import Report from "@/docs/lab0/report.typ";
     cp -r origin/code result/backup/code
     cp origin/code/* result/backup/
     ```
+    不知道具体要求的是哪一种，似乎第一次尝试时没过评测。
 5. 将 origin/code 目录下的 ``0.c 1.c 2.c …… 20.c``（从0开始的连续整数命名的 ``.c`` 文件，共21个）文件中的所有 `REPLACE`（区分大小写）替换为文件名（不含扩展名），替换的结果保存到 ``result/code`` 目录下的同名文件中。
 
     > 如对于这样的 origin/code/1.c：
@@ -80,6 +147,12 @@ import Report from "@/docs/lab0/report.typ";
     >     return 1;
     > }
     > ```
+
+    这里麻烦的是如何从路径提取不含后缀的文件名。之前打 Hackgergame 的时候研究过一番 shell 字符串处理（欠了两年题解没写:），但是都忘了。是次考前从图书馆借了两本 Linux Shell 编程的书，从例子部分偷到了用法。
+
+
+    <Neodb item="book/linux-shell">第 104 页</Neodb>
+
     ```sh title="exam_5.sh"
     for file in `ls origin/code/*.c`
     do
@@ -90,6 +163,13 @@ import Report from "@/docs/lab0/report.typ";
         # sed 's/REPLACE//g' $file >
     done
     ```
+
+    - 从开头删除最短匹配的模式：`var#`
+    - 从开头删除最长匹配的模式：`var##`
+    - 从结尾删除最短匹配的模式：`var%`
+    - 从结尾删除最长匹配的模式：`var%%`
+
+    用 ``basename`` 的话，`$(basename "$file" .${file##*.})`。
 6. 将 result/code 目录下的全部 .c 文件一起编译为可执行文件 result/verify。
     ```sh title="exam_6.sh"
     gcc result/code/*.c -o result/verify
@@ -121,10 +201,19 @@ import Report from "@/docs/lab0/report.typ";
     fi
     ```
 
-### 提示
-- 下发文件中包含一个初始化脚本 `init.sh`，如果你想将你的工作目录下除了 Makefile 和 exam_1.sh 至 exam_9.sh 之外的所有文件恢复到题目下发时的状态，可以使用命令 `bash init.sh` 执行该脚本。
-- 将多个文件一起编译，可以借助通配符 `*`。如强制删除当前目录下的所有扩展名为 `.txt` 的文件可以使用 `rm -f *.txt`。
+    这块需要需要注意的是，`sed` 的 `p` 命令打印的行数从 1 开始，且包含结束行。`head` 和 `tail` 组合也可以，但是仍然需要 $-1$。
 
-### 参考输出
+> ### 提示
+> - 下发文件中包含一个初始化脚本 `init.sh`，如果你想将你的工作目录下除了 Makefile 和 exam_1.sh 至 exam_9.sh 之外的所有文件恢复到题目下发时的状态，可以使用命令 `bash init.sh` 执行该脚本。
+> - 将多个文件一起编译，可以借助通配符 `*`。如强制删除当前目录下的所有扩展名为 `.txt` 的文件可以使用 `rm -f *.txt`。
+> ### 参考输出
+> 使用下发的 `init.sh` 初始化后，执行 `make` 后再执行 `make run` 的参考结果为：
 
-使用下发的 `init.sh` 初始化后，执行 `make` 后再执行 `make run` 的参考结果为：
+## See also
+
+1. [BUAA-OS Lab0 实验总结 - 北航操作系统 | Test Blog](https://flyinglandlord.github.io/2022/06/15/BUAA-OS-2022/lab0-lab2/doc-lab0/)
+2. [BUAA OS Lab0 - 鹿杂物阁](http://www.lyhtool.com/p23/buaa-os-lab0/)
+3. [BUAA OS——Lab0实验报告 - Fight扬尘 - 博客园](https://www.cnblogs.com/ycg1209/p/15143962.html)
+4. [北航操作系统课程lab0实验报告 - 南风北辰 - 博客园](https://www.cnblogs.com/emodiary121/p/16061270.html)
+5. [BUAA-OS-2023-Lab0-Report | sin (cookedbear.top)](https://cookedbear.top/p/90ed62b0.html)
+6. [【BUAA-OS】lab0_linux基础](http://volcaxiao.top/2023/03/10/BUAA-OS-lab0-linux%E5%9F%BA%E7%A1%80/)

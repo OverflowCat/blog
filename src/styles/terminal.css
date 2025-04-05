@@ -1,7 +1,17 @@
-:root {
+/* stylelint-disable declaration-block-no-duplicate-custom-properties */
+:root,
+article {
 	--background: #000;
+	--background: light-dark(#fff, #000);
+	--foreground: #fff;
+	--foreground: light-dark(#000, #4eee85);
+	--accent: #000;
+	--accent: light-dark(#000, #4eee86);
+	--bg-code: transparent;
+
+	/* --background: #000;
 	--foreground: #4eee85;
-	--accent: #4eee85;
+	--accent: #4eee85; */
 	--radius: 0;
 	--line-height: 1.54em;
 }
@@ -26,44 +36,6 @@ body {
 	text-size-adjust: 100%;
 }
 
-h1 {
-	font-size: calc(var(--font-size) * 1.45);
-	letter-spacing: 0;
-}
-
-h2 {
-	font-size: calc(var(--font-size) * 1.35);
-	letter-spacing: 0;
-}
-
-h3 {
-	font-size: calc(var(--font-size) * 1.15);
-	letter-spacing: 0;
-}
-
-h4,
-h5,
-h6 {
-	font-size: calc(var(--font-size) * 1);
-	letter-spacing: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-img,
-figure,
-video,
-table {
-	margin: 25px 0;
-}
-
 a {
 	color: var(--accent);
 }
@@ -77,7 +49,7 @@ button {
 	background: transparent;
 	color: var(--accent);
 	padding: 5px 18px;
-	border: 4px solid var(--accent);
+	border: 4px solid var(--accent) !important;
 	border-radius: var(--radius);
 	transition: background 0.15s linear;
 	appearance: none;
@@ -95,23 +67,16 @@ a:focus-visible {
 	outline-offset: 2px;
 }
 
-input,
-textarea,
-select {
+form input,
+form textarea,
+form select {
 	background: transparent;
 	color: var(--foreground);
-	border: 1px solid var(--foreground);
+	border: 1px solid var(--foreground) !important;
 	border-radius: var(--radius);
 	padding: 10px;
 	font: inherit;
 	appearance: none;
-}
-
-input[type="checkbox"] {
-	inline-size: auto;
-}
-
-select {
 	background-image: linear-gradient(
 			45deg,
 			transparent 50%,
@@ -123,7 +88,11 @@ select {
 	padding-inline-end: 40px;
 }
 
-select option {
+form input[type="checkbox"] {
+	inline-size: auto;
+}
+
+form select option {
 	background: var(--background);
 }
 
@@ -138,7 +107,6 @@ fieldset *:first-child {
 	margin-block-start: 0;
 }
 
-
 label {
 	display: inline-block;
 }
@@ -152,67 +120,52 @@ fieldset select,
 fieldset textarea,
 fieldset label,
 /* stylelint-disable-next-line no-descending-specificity */
-fieldset button {
+	fieldset
+	button {
 	margin-block-start: calc(var(--line-height) * 0.5);
 	inline-size: 100%;
 }
 
-
-input:focus-visible,
-input:active,
-textarea:focus-visible,
-textarea:active,
-select:focus-visible,
-select:active {
+form input:focus-visible,
+form input:active,
+form textarea:focus-visible,
+form textarea:active,
+form select:focus-visible,
+form select:active {
 	border-color: var(--accent);
 	outline: 1px solid var(--accent);
 	outline-offset: 2px;
 }
 
-input:active,
-textarea:active,
-select:active {
+form input:active,
+form textarea:active,
+form select:active {
 	box-shadow: none;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+form input[type="checkbox"],
+form input[type="radio"] {
 	vertical-align: middle;
 	padding: 10px;
 	box-shadow: inset 0 0 0 3px var(--background);
 }
 
-input[type="radio"] {
+form input[type="radio"] {
 	display: inline-block;
 	inline-size: 10px !important;
 	block-size: 10px !important;
 	border-radius: 20px;
 }
 
-input[type="checkbox"]:checked,
-input[type="radio"]:checked {
+form input[type="checkbox"]:checked,
+form input[type="radio"]:checked {
 	background: var(--accent);
-}
-
-img {
-	display: block;
-	max-inline-size: 100%;
-	border: 8px solid var(--accent);
-	border-radius: var(--radius);
-	padding: 8px;
-	overflow: hidden;
-}
-
-figure img,
-figure video {
-	margin-block-end: 0;
 }
 
 figure figcaption {
 	background: var(--accent);
 	color: var(--background);
 	text-align: center;
-	font-size: 1em;
 	font-weight: normal;
 	margin-block-start: -8px;
 	border-radius: 0 0 var(--radius) var(--radius);
@@ -242,14 +195,13 @@ ol li {
 
 code,
 kbd {
-	font-family: "Fira Code", "JetBrains Mono", Monaco, Consolas, "Ubuntu Mono",
+	font-family: "Fira Code", "JetBrains Mono", "Ubuntu Mono", Monaco, Consolas,
 		monospace !important;
 	font-feature-settings: normal;
 	background: color-mix(in srgb, var(--foreground) 5%, transparent);
 	color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
 	padding: 0 6px;
 	margin: 0 2px;
-	font-size: 0.95em;
 }
 
 code {
@@ -271,12 +223,10 @@ code code {
 	margin: 0;
 }
 
-pre {
+pre:has(code) {
 	tab-size: 4;
 	background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
 	color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
-	padding: 20px 10px;
-	font-size: 0.95em !important;
 	overflow: auto;
 	border-radius: var(--radius);
 	border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
@@ -286,7 +236,6 @@ pre code {
 	background: none !important;
 	margin: 0;
 	padding: 0;
-	font-size: inherit;
 	border: none;
 }
 
@@ -342,7 +291,7 @@ table {
 table,
 th,
 td {
-	border: 2px solid var(--foreground);
+	border: 2px solid var(--foreground)!important;
 	padding: 10px;
 }
 
@@ -355,7 +304,7 @@ th {
 }
 
 hr {
-	inline-size: 100%;
+	inline-size: 90%;
 	border: none;
 	background: var(--accent);
 	block-size: 2px;

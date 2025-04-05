@@ -85,7 +85,7 @@ export const bookSchema = z.object({
   rating_count: z.number(),
   brief: z.string(),
   subtitle: z.string().nullable(),
-  orig_title: z.string(),
+  orig_title: z.string().nullable(),
   author: z.array(z.string()),
   translator: z.array(z.string()),
   language: z.array(z.string()),
@@ -96,7 +96,7 @@ export const bookSchema = z.object({
   price: z.string(),
   pages: z.number(),
   series: z.string().nullable(),
-  imprint: z.string(),
+  imprint: z.string().nullable(),
   isbn: z.string(),
 });
 export type Book = z.infer<typeof bookSchema>;
