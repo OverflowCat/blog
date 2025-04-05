@@ -115,7 +115,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
     "rollup": "^4.38.0",
-    "sass": "^1.86.0",
+    "sass": "^1.86.3",
     "shiki": "^3.2.1",
     "stylelint": "^16.17.0",
     "stylelint-config-standard": "^37.0.0",
