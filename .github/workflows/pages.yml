@@ -29,7 +29,7 @@ jobs:
           curl -L https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip -o ibm-plex-sans-sc.zip
           unzip ibm-plex-sans-sc.zip -d ./fonts
           sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
-          sudo cp ./fonts/*.ttf /usr/share/fonts/truetype/ibm-plex/
+          find ./fonts/ibm-plex-sans-sc/fonts/complete/ttf -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/ibm-plex/ \;
           sudo fc-cache -f -v
           fc-list | grep -i "IBM Plex"
       - name: Install, build, and upload my site
