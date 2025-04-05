@@ -1,0 +1,130 @@
+---
+title: BUAA-OS Lab0 报告和笔记
+date: 2025-03-31T08:35:51.582Z
+noscript: true
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/7ilQrmUCw6thZ0oBpHwC5pW1-trdqV3eueBi63LZ65QE8PPqxAQ1iqMl6rigKbvXXNVWD-xMdSPlQeAdElOjr8--lRAbGBA54mkbeq2AWhCO2XEF-zoopd3WoMYhbO4i.jpeg"
+licence: false
+layout: "@/layouts/Default.astro"
+tags:
+  - BUAA-OO
+categories: []
+---
+
+import "@/styles/terminal.css";
+
+## lab0
+
+import Report from "@/docs/lab0/report.typ";
+
+<Report />
+<style>.typst-doc \{ height: auto; width: 100%; }  </style>
+
+## lab0-exam
+
+### GCC & Makefile Quiz
+
+完成初始化后，仓库根目录下已经生成了 Makefile、check.c、src 文件夹和 out 文件夹。
+
+在仓库根目录（如 ~/23xxxxx ）下编写 Makefile。要求实现的功能如下：
+
+| 执行命令         | 实现功能                                               |
+| ---------------- | ------------------------------------------------------ |
+| `make check`     | 利用 gcc 将同目录下的 check.c 编译成名为 check.o 的未链接的目标文件，并放在同目录下。 |
+| `make`           | 完成 `make check` 要求的功能。然后利用 gcc 将 src 下的 main.c、output.c 编译成名为 main 的可执行文件，并放在 out 目录下。 |
+| `make run`       | 直接运行可执行文件 out/main。                           |
+| `make clean`     | 删除目标文件 check.o、可执行文件 out/main。           |
+
+
+### GCC & Bash Quiz
+
+完成初始化后，仓库根目录下已经生成了 exam_1.sh 至 exam_9.sh（从1开始的连续整命令名的.sh文件，共9个）、run_exam.sh、stderr.txt 和 origin 文件夹。
+
+在仓库根目录（如 ~/23xxxxx ）下编写 exam_1.sh 至 exam_9.sh。要求实现且仅实现以下第x点功能。
+
+这些脚本将被 run_exam.sh 调用执行。使用 `run_exam.sh` 的命令格式为 `bash run_exam.sh [n] [s] [t]`，其中 n 为小于等于9 的整数，表示将按顺序执行 `exam_1.sh` 至 `exam_n.sh`。若 n 未给出，将默认是 9。可选的 s 和 t 用于传递给 `exam_9.sh`，具体要求见第 9 点功能。（注意：根据命令格式，若要指定 s 和 t，必须先指定 n）
+
+1. 创建一个新的目录，名为 result。再在 result 目录下创建两个新的目录，名为 code 和 backup。
+    ```sh title="exam_1.sh"
+    mkdir result
+    mkdir result/code
+    mkdir result/backup
+    ```
+2. 将 origin 目录下的 basic.c 的文件中包含 hello（区分大小写）的行输出。
+    ```sh title="exam_2.sh"
+    grep "hello" origin/basic.c
+    ```
+3. 将 origin 目录下的 basic.c 文件移动到 result 目录下。
+    ```sh title="exam_3.sh"
+    mv origin/basic.c result/basic.c
+    ```
+4. 将 origin 目录下的 code 目录及其内容复制到 result/backup 目录下。
+    ```sh title="exam_4.sh"
+    cp -r origin/code result/backup/code
+    cp origin/code/* result/backup/
+    ```
+5. 将 origin/code 目录下的 ``0.c 1.c 2.c …… 20.c``（从0开始的连续整数命名的 ``.c`` 文件，共21个）文件中的所有 `REPLACE`（区分大小写）替换为文件名（不含扩展名），替换的结果保存到 ``result/code`` 目录下的同名文件中。
+
+    > 如对于这样的 origin/code/1.c：
+    > 
+    > ```c
+    > int main() {
+    >     return REPLACE;
+    > }
+    > ```
+    > 
+    > 替换的结果如下，并且这个结果保存在 ``result/code/1.c`` 中：
+    > 
+    > ```c
+    > int main() {
+    >     return 1;
+    > }
+    > ```
+    ```sh title="exam_5.sh"
+    for file in `ls origin/code/*.c`
+    do
+        filename=${file##*/}
+        # echo $filename
+        # echo ${filename%.*}
+        sed "s/REPLACE/${filename%.*}/g" $file > "result/code/${filename}"
+        # sed 's/REPLACE//g' $file >
+    done
+    ```
+6. 将 result/code 目录下的全部 .c 文件一起编译为可执行文件 result/verify。
+    ```sh title="exam_6.sh"
+    gcc result/code/*.c -o result/verify
+    ```
+7. 运行可执行文件 result/verify，将其标准错误输出的内容追加到仓库根目录下的 stderr.txt 文件。
+    ```sh title="exam_7.sh"
+    ./result/verify 2>>stderr.txt
+    ```
+8. 将 stderr.txt 文件的权限修改为 ``r--r-----``。
+    ```sh title="exam_8.sh"
+    chmod 440 stderr.txt
+    ```
+9. ``run_exam.sh`` 以 ``bash `exam_9.sh [s] [t]` `` 的格式向 ``exam_9.sh`` 传入两个参数 s, t（整数且 s < t）。
+   > - 两个参数缺省时，输出 stderr.txt 的所有内容。
+   > - 仅缺省 t 时，输出 stderr.txt 自行开始（行号从 1 开始编译，输出自第 s 行）至结尾的内容。
+   > - 两个参数指定时，输出 stderr.txt 自第 s 行至第 t 行的内容（输出包含第 s 行，不含第 t 行）。
+    ```sh title="exam_9.sh"
+    if [ -n "$1" ]; then
+      if [ -n "$2" ]; then
+        # echo "a"
+        # echo "$(($2 - 1))"
+        sed -n "$1,$(($2 - 1))p" stderr.txt
+      else
+        # echo "b"
+        sed -n "$1,\$p" stderr.txt
+      fi
+    else
+      cat stderr.txt
+    fi
+    ```
+
+### 提示
+- 下发文件中包含一个初始化脚本 `init.sh`，如果你想将你的工作目录下除了 Makefile 和 exam_1.sh 至 exam_9.sh 之外的所有文件恢复到题目下发时的状态，可以使用命令 `bash init.sh` 执行该脚本。
+- 将多个文件一起编译，可以借助通配符 `*`。如强制删除当前目录下的所有扩展名为 `.txt` 的文件可以使用 `rm -f *.txt`。
+
+### 参考输出
+
+使用下发的 `init.sh` 初始化后，执行 `make` 后再执行 `make run` 的参考结果为：

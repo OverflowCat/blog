@@ -20,10 +20,20 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install Noto fonts
-        run: sudo apt-get install -y fonts-noto-cjk-extra
+      - name: Enable Universe repository # for lmodern fonts
+        run: sudo add-apt-repository universe -y
+      - name: Install Noto fonts and Latin Modern Sans
+        run: sudo apt-get install -y fonts-noto-cjk-extra fonts-lmodern
+      - name: Install IBM Plex Sans SC font
+        run: |
+          curl -L https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip -o ibm-plex-sans-sc.zip
+          unzip ibm-plex-sans-sc.zip -d ./fonts
+          sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
+          sudo cp ./fonts/*.ttf /usr/share/fonts/truetype/ibm-plex/
+          sudo fc-cache -f -v
+          fc-list | grep -i "IBM Plex"
       - name: Install, build, and upload my site
-        uses: withastro/action@v2
+        uses: withastro/action@v4
         with:
           # path: . # The root location of your Astro project inside the repository. (optional)
           node-version: 22 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)

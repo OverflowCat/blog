@@ -158,6 +158,7 @@ export default defineConfig({
 		},
 	},
 	markdown: {
+		smartypants: false,
 		remarkRehype: {
 			footnoteLabel: "---",
 			footnoteBackLabel: "返回内容",

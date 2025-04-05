@@ -22,7 +22,7 @@ const {
     cover_image_url: img,
     localized_title: altTitles,
 } = data;
-let genre = "genre" in data ? data.genre : [];
+const genre = "genre" in data ? data.genre : [];
 let authors: string[];
 let platforms: string[] = [];
 let pub_house = "";
