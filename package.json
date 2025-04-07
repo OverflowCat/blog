@@ -94,7 +94,7 @@
     "remark-math": "^6.0.0",
     "remark-ruby": "^0.4.0",
     "remark-samp-kbd": "^0.1.2",
-    "sharp": "^0.34.0",
+    "sharp": "^0.34.1",
     "spoiled": "^0.4.0",
     "svelte": "^5.25.6",
     "unified": "^11.0.5",
