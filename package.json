@@ -60,7 +60,7 @@
     "@myriaddreamin/typst-ts-node-compiler": "0.5.4",
     "@myriaddreamin/typst.ts": "^0.5.4",
     "@qwikdev/astro": "^0.7.11",
-    "@shikijs/twoslash": "^3.2.1",
+    "@shikijs/twoslash": "^3.2.2",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "astro": "5.6.1",
