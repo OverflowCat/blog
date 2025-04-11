@@ -263,15 +263,14 @@ blockquote {
 	position: relative;
 	border-block-start: 1px solid var(--accent);
 	border-block-end: 1px solid var(--accent);
-	margin: 0;
-	padding: 25px;
+	padding-inline-start: 2ch!important;
 }
 
 blockquote::before {
 	content: ">";
 	display: block;
 	position: absolute;
-	inset-inline-start: 0;
+	inset-inline-start: .5ch;
 	color: var(--accent);
 }
 

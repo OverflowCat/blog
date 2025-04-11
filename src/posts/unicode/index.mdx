@@ -385,7 +385,7 @@ Remember, we are talking about code points here. Even in the widest encoding, UT
 
 If the analogy helps, we can think of the Unicode itself (without any encodings) as being variable-length.
 
-如果这个类比有帮助的话，我们可以认为 Unicode 本身（没有任何编码）是变长的。
+如果打个比方能帮你理解的话，可以把 Unicode 本身（抛开任何编码方式）看作是变长的。
 
 <Loud
 en={`An Extended Grapheme Cluster is a sequence of one or more Unicode code points that must be treated as a single, unbreakable character.`}
@@ -937,13 +937,13 @@ To sum it up:
 - To detect grapheme boundaries, you need Unicode tables.
 - 要检测字位的边界，你需要转换表。
 - Use a Unicode library for everything Unicode, even boring stuff like `strlen`, `indexOf` and `substring`.
-- 对于所有 Unicode 相关的东西，甚至是像 `strlen`、`indexOf` 和 `substring` 这样的无聊的东西，都要使用 Unicode 库。
+- 对于所有 Unicode 相关的东西，哪怕是像 `strlen`、`indexOf` 和 `substring` 这样的无聊的东西，都要使用 Unicode 库。
 - Unicode updates every year, and rules sometimes change.
 - Unicode 每年更新一次，规则有时会改变。
 - Unicode strings need to be normalized before they can be compared.
 - Unicode 字符串在比较之前需要进行归一化。
 - Unicode depends on locale for some operations and for rendering.
-- Unicode 在某些操作和渲染中依赖于区域设置。
+- 某些操作和渲染效果会因区域设置的不同而受 Unicode 影响。
 - All this is important even for pure English text.
 - 即使是纯英文文本，这些都很重要。
 
