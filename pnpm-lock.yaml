@@ -22,7 +22,7 @@ importers:
         version: 3.2.0
       '@astrojs/react':
         specifier: ^4.2.3
-        version: 4.2.3(@types/node@22.14.0)(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)(tsx@4.19.2)(yaml@2.7.1)
+        version: 4.2.3(@types/node@22.14.0)(@types/react-dom@19.1.2(@types/react@19.1.1))(@types/react@19.1.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)(tsx@4.19.2)(yaml@2.7.1)
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.3.0
@@ -111,11 +111,11 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(typescript@5.8.3)
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       '@types/react-dom':
         specifier: ^19.1.2
-        version: 19.1.2(@types/react@19.1.0)
+        version: 19.1.2(@types/react@19.1.1)
       astro:
         specifier: 5.6.1
         version: 5.6.1(@types/node@22.14.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.39.0)(sass@1.86.3)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1)
@@ -441,6 +441,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.27.0':
+    resolution: {integrity: sha512-iaepho73/2Pz7w2eMS0Q5f83+0RKI7i4xmiYeBmDzfRVbQtTOG7Ts0S4HzJVsTMGI9keU8rNfuZr8DKfSt7Yyg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -467,6 +472,10 @@ packages:
 
   '@babel/types@7.26.10':
     resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.27.0':
+    resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
 
   '@biomejs/biome@1.9.4':
@@ -1771,8 +1780,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.1.0':
-    resolution: {integrity: sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==}
+  '@types/react@19.1.1':
+    resolution: {integrity: sha512-ePapxDL7qrgqSF67s0h9m412d9DbXyC1n59O2st+9rjuuamWsZuD2w55rqY12CbzsZ7uVXb5Nw0gEp9Z8MMutQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -4824,10 +4833,10 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@4.2.3(@types/node@22.14.0)(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)(tsx@4.19.2)(yaml@2.7.1)':
+  '@astrojs/react@4.2.3(@types/node@22.14.0)(@types/react-dom@19.1.2(@types/react@19.1.1))(@types/react@19.1.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)(tsx@4.19.2)(yaml@2.7.1)':
     dependencies:
-      '@types/react': 19.1.0
-      '@types/react-dom': 19.1.2(@types/react@19.1.0)
+      '@types/react': 19.1.1
+      '@types/react-dom': 19.1.2(@types/react@19.1.1)
       '@vitejs/plugin-react': 4.3.4(vite@6.2.6(@types/node@22.14.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.86.3)(tsx@4.19.2)(yaml@2.7.1))
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -4968,6 +4977,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.10
 
+  '@babel/parser@7.27.0':
+    dependencies:
+      '@babel/types': 7.27.0
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
@@ -5001,6 +5014,11 @@ snapshots:
       - supports-color
 
   '@babel/types@7.26.10':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.27.0':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -6099,11 +6117,11 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/react-dom@19.1.2(@types/react@19.1.0)':
+  '@types/react-dom@19.1.2(@types/react@19.1.1)':
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.1
 
-  '@types/react@19.1.0':
+  '@types/react@19.1.1':
     dependencies:
       csstype: 3.1.3
 
@@ -6346,7 +6364,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6359,7 +6377,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.0
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
