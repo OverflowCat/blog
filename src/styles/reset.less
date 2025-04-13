@@ -207,3 +207,23 @@ img[data-twemoji] {
     navigation: none;
   }
 }
+
+span.h + span.vert {
+  display: none;
+}
+#vert:target span.h, [lang="mnc"] span.h {
+  display: none;
+  & + span.vert {
+    display: inline;
+  }
+}
+#vert:target .vert-hide {
+  display: none;
+}
+
+.vert-block {
+  display: none;
+  #vert:target & {
+    display: block;
+  }
+}

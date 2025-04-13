@@ -43,8 +43,9 @@ assert(slogan, "slogan is undefined");
 </nav>
 <nav id="sticky">
   <div class="backdrop">
-    <div class="logowrapper edge min-inline-20 vert-hide">
-      <img class="logo" src="/new-logo.svg" alt="logo" />
+    <div class="logowrapper edge min-inline-20">
+      <img class="logo vert-hide" src="/new-logo.svg" alt="logo" />
+      <img class="logo vert-block" src="/logo-vert.svg" alt="vertical logo" />
     </div>
     <ul class="block">
       {
@@ -82,7 +83,10 @@ assert(slogan, "slogan is undefined");
     @apply m-auto mbs--1 mbe-2 sticky min-block-10 pbe-2 inline-full inset-bs-0 inset-is-0;
     align-items: space-between;
     .logo {
-      @apply h-8 m-1;
+      @apply block-8 m-1;
+      #vert:target & {
+        @apply block-7 m-6px;
+      }
       animation-timeline: --page-timeline;
       animation-name: navlogo;
       animation-range: 0px 120px;

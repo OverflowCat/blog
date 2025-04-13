@@ -21,7 +21,8 @@ if (decoration === "harmony") {
 ---
 
 <div class={`logowrapper relative ${inlineSize} select-none`}>
-  <img class="relative z-100" src={src} alt="新世界的大門" id="logo" />
+  <img class="logo block vert-hide" src={src} alt="新世界的大門" id="logo" />
+  <img class="logo vert-block max-inline-72" src="/logo-vert.svg"  alt="新世界的大門" />
   {decoration === "langs" ? (
     <div class="vert-hide absolute inset-is-0 mbs--24 opacity-30 inline-100vi"> 
         <img src="https://tong.xinshijiededa.men/langs.svg" height="22" alt="typography" id="typography"/>
@@ -67,9 +68,8 @@ if (decoration === "harmony") {
   .floating {
     animation: floating 8s ease-in-out infinite;
   }
-  #logo {
-    display: block;
-    margin: auto;
+  .logo {
+    @apply relative z-100 m-auto;
     block-size: 72px;
   }
   .logowrapper {
