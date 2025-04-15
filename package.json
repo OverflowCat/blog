@@ -96,7 +96,7 @@
     "remark-samp-kbd": "^0.1.2",
     "sharp": "^0.34.1",
     "spoiled": "^0.4.0",
-    "svelte": "^5.26.2",
+    "svelte": "^5.27.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
