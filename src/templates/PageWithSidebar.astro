@@ -24,33 +24,15 @@ Astro.locals.noscript = true;
     lang="zh-Hans"
     mode={{ theme: true, hant: false, vert: true }}
   />
-  <main>
+  <main class="flex flex-wrap inline-full gap-4 justify-center items-center">
     <Sidebar><slot name="sidebar" slot="comments" /></Sidebar>
     <Paper id="page-main" transitionName="main">
-      <section class="inhalt">
+      <section class="inhalt p-0 p-inline-3">
         <slot />
       </section>
     </Paper>
   </main>
 </Page>
-
-<style>
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    inline-size: 100%;
-  }
-  .inhalt {
-    padding: 0;
-    padding-inline: 0.75rem;
-  }
-  #main-page {
-    flex: 1;
-  }
-</style>
 
 <style is:global>
   @container html (max-inline-size: 1000px) {

@@ -123,9 +123,11 @@ a, u {
   text-decoration-skip-ink: all;
 }
 
-::selection {
-  background-color: var(--sel-bg);
-  color: #fff;
+@supports (margin: 1vi) {
+  ::selection {
+    background-color: var(--sel-bg);
+    color: #fff;
+  }
 }
 
 figure {
@@ -225,6 +227,15 @@ span.h + span.vert {
   display: none;
   #vert:target & {
     display: block;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  [class*="i:"] {
+    display: none;
+  }
+  .inline-full {
+    width: 100%;
   }
 }
 

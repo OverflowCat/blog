@@ -43,6 +43,11 @@ if (decoration === "harmony") {
 </div>
 
 <style lang="less">
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .logowrapper div, .logowrapper .vert-block {
+      display: none;
+    }
+  }
   @keyframes rotating {
     0% {
       rotate: 0deg;

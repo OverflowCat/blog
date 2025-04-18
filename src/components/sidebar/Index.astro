@@ -87,6 +87,11 @@ import Search from "./Search.astro";
     justify-items: stretch;
     gap: 16px;
   }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    aside#sidebar {
+      width: 95%;
+    }
+  }
   .other-platforms {
     margin: 6px auto;
     inline-size: 100%;
