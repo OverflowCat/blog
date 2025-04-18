@@ -88,8 +88,7 @@ html {
 }
 
 body {
-  margin-block: 0;
-  margin-inline: 0;
+  margin: 0;
   padding: 0px;
   box-sizing: content-box;
   position: relative;
@@ -219,7 +218,7 @@ span.h + span.vert {
     display: inline;
   }
 }
-#vert:target .vert-hide {
+#vert:target .vert-hide, html[lang="mnc"] .vert-hide {
   display: none;
 }
 
@@ -229,13 +228,26 @@ span.h + span.vert {
     display: block;
   }
 }
-
+html[lang="mnc"] {
+  writing-mode: vertical-lr;
+  inline-size: 100dvi;
+  max-inline-size: 100dvi;
+}
+@view-transition {
+  navigation: auto; /* enabled! */
+}
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   [class*="i:"] {
     display: none;
   }
   .inline-full {
     width: 100%;
+  }
+  .write-vertical-left, html[lang="mnc"] {
+    writing-mode: tb-lr;
+  }
+  .write-vertical-right {
+    writing-mode: tb-rl;
   }
 }
 

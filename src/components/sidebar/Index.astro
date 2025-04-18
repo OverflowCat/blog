@@ -16,7 +16,7 @@ import Search from "./Search.astro";
   </style>
   <Paper padding={true} transitionName="aside-block">
     <div
-      class="site-author"
+      class="site-author write-vertical-left"
       itemprop="author"
       itemtype="http://schema.org/Person"
     >
@@ -30,12 +30,12 @@ import Search from "./Search.astro";
           formats={["avif", "webp", "png"]}
         />
       </div>
-      <p class="site-author-name vertical-mid" itemprop="name" lang="mnc">
+      <p class="site-author-name write-vertical-left vertical-mid" itemprop="name" lang="mnc">
         ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh">猫</span>
       </p>
       <div class="site-description" itemprop="description">猫猫的博客</div>
     </div>
-    <div class="other-platforms">
+    <div class="other-platforms inline-full m-auto m-block-1.5 grid">
       <OtherPlatfromItem
         href="https://github.com/OverflowCat"
         icon="ri:github-fill"
@@ -93,18 +93,12 @@ import Search from "./Search.astro";
     }
   }
   .other-platforms {
-    margin: 6px auto;
-    inline-size: 100%;
-  }
-  .other-platforms {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2px;
   }
   .site-author,
   .site-author-name {
     text-align: center;
-    writing-mode: vertical-lr;
     vertical-align: middle;
   }
   .site-author {

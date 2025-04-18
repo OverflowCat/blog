@@ -123,8 +123,9 @@ if (data.series) {
       vertical-align: top;
     }
     &.title-img {
-      inline-size: 175px;
+      width: 175px;
       #vert:target & {
+        width: unset;
         inline-size: 0; // WTF???
       }
     }
@@ -146,7 +147,7 @@ if (data.series) {
     padding-inline-start: 11px;
   }
   .title-date {
-    float: right;
+    float: end;
     inset-block-end: 2px;
   }
 

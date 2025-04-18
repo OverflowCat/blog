@@ -147,6 +147,14 @@ assert(slogan, "slogan is undefined");
         transparent var(--cutoff)
       );
     }
+    html[lang="mnc"] & {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        black 0,
+        black var(--cutoff),
+        transparent var(--cutoff)
+      );
+    }
 
     animation-name: navblur;
     animation-timeline: --page-timeline;
