@@ -137,6 +137,9 @@ importers:
       cross-blob:
         specifier: ^3.0.2
         version: 3.0.2
+      dial-data:
+        specifier: ^0.0.1
+        version: 0.0.1
       gridsome-remark-figure-caption:
         specifier: ^1.2.2
         version: 1.2.2
@@ -2393,6 +2396,9 @@ packages:
 
   dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
+
+  dial-data@0.0.1:
+    resolution: {integrity: sha512-3iQx69fovVDTv/lwpz6Y9prEJufV0jNKYZdzM0x714V3IrW6FMVI1eGA9svUs6t/LxTuA5Dlg+htIltx95TCxg==}
 
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
@@ -6977,6 +6983,8 @@ snapshots:
       dequal: 2.0.3
 
   dfa@1.2.0: {}
+
+  dial-data@0.0.1: {}
 
   diff@5.2.0: {}
 

@@ -20,26 +20,6 @@ if (!entry) {
 }
 const { list, wiki } = entry.data;
 // Define the grouping of dialect families and their regions (in the desired order)
-const families = [
-    { name: "書面語", regions: ["Formal"] },
-    { name: "燕京官話", regions: ["Beijing", "Taiwan", "Singapore-M"] },
-    { name: "冀魯官話", regions: ["Jinan"] },
-    { name: "中原官話", regions: ["Xi'an"] },
-    { name: "西南官話", regions: ["Chengdu", "Wuhan"] },
-    { name: "江淮官話", regions: ["Yangzhou", "Hefei"] },
-    { name: "粵語", regions: ["Guangzhou", "Hong Kong", "Yangjiang"] },
-    { name: "贛語", regions: ["Nanchang"] },
-    { name: "客家語", regions: ["Meixian"] },
-    { name: "晉語", regions: ["Taiyuan"] },
-    { name: "閩北語", regions: ["Jian'ou"] },
-    { name: "閩東語", regions: ["Fuzhou"] },
-    {
-        name: "閩南語",
-        regions: ["Xiamen", "Quanzhou", "Zhangzhou", "Tainan", "Chaozhou"],
-    },
-    { name: "吳語", regions: ["Suzhou", "Wenzhou"] },
-    { name: "湘語", regions: ["Changsha", "Shuangfeng"] },
-];
 // Metadata for each region: display label and Wikipedia link
 const regionMeta = new Map(VARIETY_DATA.map(({ key, ...item }) => [key, item]));
 
@@ -54,8 +34,8 @@ regionMeta.set("Classical", {
 regionMeta.set("Formal", {
     group: "Formal",
     chinese: "書面語",
-    english: "Formal",
-    link: "Written Standard Chinese",
+    english: "Written Standard Chinese",
+    link: "Standard Chinese",
     lat: 0,
     long: 0,
 });
@@ -73,6 +53,58 @@ function wikiLink(entry: string) {
     if (entry.startsWith("zh:")) return zhWiki(entry.slice(3));
     return enWiki(entry);
 }
+function getChineseRegion(region: string) {
+    switch (region) {
+        case "Mandarin":
+            return "官話";
+        case "Central Plains Mandarin":
+            return "中原官話";
+        case "Jianghuai Mandarin":
+            return "江淮官話";
+        case "Southwestern Mandarin":
+            return "西南官話";
+        case "Northeastern Mandarin":
+            return "東北官話";
+        case "Northwestern Mandarin":
+            return "西北官話";
+        case "Jilu Mandarin":
+            return "冀魯官話";
+        case "Other":
+            return "其他";
+        case "Cantonese":
+            return "粵語";
+        case "Wu":
+            return "吳語";
+        case "Min":
+            return "閩語";
+        case "Southern Min":
+            return "閩南語";
+        case "Eastern Min":
+            return "閩東語";
+        case "Northern Min":
+            return "閩北語";
+        case "Xiang":
+            return "湘語";
+        case "Gan":
+            return "贛語";
+        case "Hakka":
+            return "客家話";
+        case "Hui":
+            return "徽語";
+        case "Jin":
+            return "晉語";
+    }
+}
+const families = new Map<string, [string, string[]][]>();
+for (const [key, value] of Object.entries(list)) {
+    const metaData = regionMeta.get(key);
+    const region = metaData?.group ?? "Other";
+    if (!families.has(region)) {
+        families.set(region, []);
+    }
+    families.get(region)?.push([key, value]);
+}
+console.log(families);
 ---
 
 <table class="wikitable inline-auto max-inline-2xl!">
@@ -105,32 +137,33 @@ function wikiLink(entry: string) {
     </thead>
     <tbody>
         {
-            families.map((fam) => {
-                const rows = fam.regions.map((key, idx) => {
-                    const syns = list[key] || [];
+            families.entries().map(([region, dialects]) => {
+                return dialects.map(([key, value], idx) => {
                     const meta = regionMeta.get(key);
                     if (!meta) throw new Error(`No meta for ${key}`);
                     return (
                         <tr>
-                            {idx === 0 && fam.name === "書面語" ? (
+                            {region === "Formal" ? (
                                 <th colspan="2">
-                                    {fam.name}
+                                    Formal
                                     <small>
-                                        (
                                         <a
                                             class="extiw"
                                             href={wikiLink(meta.link || "")}
                                             title={meta.link?.split(":").at(-1)}
                                         >
-                                            白話文
+                                            白話文（Standard Chinese）
                                         </a>
-                                        )
                                     </small>
                                 </th>
-                            ) : idx === 0 ? (
-                                <th rowspan={fam.regions.length}>{fam.name}</th>
+                            ) : (idx === 0 && region !== "Formal") ? (
+                                <th rowspan={dialects.length}>
+                                    {getChineseRegion(region)}
+                                    <br />
+                                    {region}
+                                </th>
                             ) : null}
-                            {fam.name !== "書面語" && (
+                            {region !== "Formal" && (
                                 <td>
                                     <a
                                         href={wikiLink(meta.link || "")}
@@ -144,7 +177,7 @@ function wikiLink(entry: string) {
                                 </td>
                             )}
                             <td>
-                                {syns.map((syn: string, i: number) => (
+                                {value.map((syn: string, i: number) => (
                                     <span>
                                         {isHead(syn) ? (
                                             <strong class="selflink">
@@ -155,14 +188,13 @@ function wikiLink(entry: string) {
                                                 {syn}
                                             </a>
                                         )}
-                                        {i < syns.length - 1 && "、"}
+                                        {i < value.length - 1 && "、"}
                                     </span>
                                 ))}
                             </td>
                         </tr>
                     );
                 });
-                return rows;
             })
         }
     </tbody>
