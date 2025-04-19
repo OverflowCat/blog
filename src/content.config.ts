@@ -6,6 +6,7 @@ import { remnoteJsonSchema } from "@/scripts/schema/remnote";
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import fs from "node:fs";
+import { dialData } from "./scripts/schema/dialmap";
 
 // 2. Define a collection using `defineCollection`
 const postDir = "./src/posts/";
@@ -14,6 +15,11 @@ if (!fs.existsSync(postDir))
 const blogCollection = defineCollection({
   loader: glob({ pattern: "**/[^_]*.(md|mdx)", base: postDir }),
   schema: postSchemaGen,
+});
+
+const dialCollection = defineCollection({
+  type: "data",
+  schema: () => dialData,
 });
 
 const neodbCollection = defineCollection({
@@ -37,4 +43,5 @@ export const collections = {
   comments: commentsCollection,
   rems: remnoteCollection,
   neodb: neodbCollection,
+  dial: dialCollection,
 };

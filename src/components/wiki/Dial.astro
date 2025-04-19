@@ -1,0 +1,169 @@
+---
+import { dialData } from "@/scripts/schema/dialmap";
+import { getEntry } from "astro:content";
+import { VARIETY_DATA } from "dial-data";
+
+export type Props = {
+    // list: Record<string, string[]>;
+    name: string;
+    head: string;
+    /** English meaning of the headword */
+    // meaning: string;
+    /** Mandarin formal form */
+    // wiki: string;
+};
+
+const { head, name } = Astro.props;
+const entry = await getEntry("dial", name);
+if (!entry) {
+    throw new Error(`Dial map not found: ${name}`);
+}
+const { list, wiki } = entry.data;
+// Define the grouping of dialect families and their regions (in the desired order)
+const families = [
+    { name: "書面語", regions: ["Formal"] },
+    { name: "燕京官話", regions: ["Beijing", "Taiwan", "Singapore-M"] },
+    { name: "冀魯官話", regions: ["Jinan"] },
+    { name: "中原官話", regions: ["Xi'an"] },
+    { name: "西南官話", regions: ["Chengdu", "Wuhan"] },
+    { name: "江淮官話", regions: ["Yangzhou", "Hefei"] },
+    { name: "粵語", regions: ["Guangzhou", "Hong Kong", "Yangjiang"] },
+    { name: "贛語", regions: ["Nanchang"] },
+    { name: "客家語", regions: ["Meixian"] },
+    { name: "晉語", regions: ["Taiyuan"] },
+    { name: "閩北語", regions: ["Jian'ou"] },
+    { name: "閩東語", regions: ["Fuzhou"] },
+    {
+        name: "閩南語",
+        regions: ["Xiamen", "Quanzhou", "Zhangzhou", "Tainan", "Chaozhou"],
+    },
+    { name: "吳語", regions: ["Suzhou", "Wenzhou"] },
+    { name: "湘語", regions: ["Changsha", "Shuangfeng"] },
+];
+// Metadata for each region: display label and Wikipedia link
+const regionMeta = new Map(VARIETY_DATA.map(({ key, ...item }) => [key, item]));
+
+regionMeta.set("Classical", {
+    group: "Classical",
+    chinese: "文言文",
+    english: "Classical Chinese",
+    link: "Classical Chinese",
+    lat: 0,
+    long: 0,
+});
+regionMeta.set("Formal", {
+    group: "Formal",
+    chinese: "書面語",
+    english: "Formal",
+    link: "Written Standard Chinese",
+    lat: 0,
+    long: 0,
+});
+const isHead = (syn: any) => syn === head;
+function zhWiki(entry: string) {
+    return `https://zh.wikipedia.org/wiki/${encodeURIComponent(entry)}`;
+}
+function enWiki(entry: string) {
+    return `https://en.wikipedia.org/wiki/${encodeURIComponent(entry)}`;
+}
+function enWikt(entry: string, hash?: string) {
+    return `https://en.wiktionary.org/wiki/${encodeURIComponent(entry)}${hash ? `#${hash}` : ""}`;
+}
+function wikiLink(entry: string) {
+    if (entry.startsWith("zh:")) return zhWiki(entry.slice(3));
+    return enWiki(entry);
+}
+---
+
+<table class="wikitable inline-auto max-inline-2xl!">
+    <caption>
+        <h5 class="NavHead text-1em! text-center">
+            <span class="Hani" lang="zh">
+                <a href={enWikt(head)} title={head}>{head}</a></span
+            >的各地方言用詞
+            <a href={enWikt(`Template:zh-dial-map/${wiki}`, "Map")}
+                ><small>[地圖]</small></a
+            >
+        </h5>
+    </caption>
+    <thead>
+        <tr>
+            <th>語言</th>
+            <th>地區</th>
+            <th
+                >詞<sup class="edit-link">
+                    <a
+                        href={`https://zh.wiktionary.org/w/index.php?title=Module%3AZh%2Fdata%2Fdial-syn%2F${encodeURIComponent(wiki)}&action=edit`}
+                        >編</a
+                    >/<a
+                        href={`https://en.wiktionary.org/w/index.php?title=Module%3AZh%2Fdata%2Fdial-syn%2F${encodeURIComponent(wiki)}&action=edit`}
+                        >edit</a
+                    >
+                </sup>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {
+            families.map((fam) => {
+                const rows = fam.regions.map((key, idx) => {
+                    const syns = list[key] || [];
+                    const meta = regionMeta.get(key);
+                    if (!meta) throw new Error(`No meta for ${key}`);
+                    return (
+                        <tr>
+                            {idx === 0 && fam.name === "書面語" ? (
+                                <th colspan="2">
+                                    {fam.name}
+                                    <small>
+                                        (
+                                        <a
+                                            class="extiw"
+                                            href={wikiLink(meta.link || "")}
+                                            title={meta.link?.split(":").at(-1)}
+                                        >
+                                            白話文
+                                        </a>
+                                        )
+                                    </small>
+                                </th>
+                            ) : idx === 0 ? (
+                                <th rowspan={fam.regions.length}>{fam.name}</th>
+                            ) : null}
+                            {fam.name !== "書面語" && (
+                                <td>
+                                    <a
+                                        href={wikiLink(meta.link || "")}
+                                        title={meta.link?.split(":").at(-1)}
+                                    >
+                                        {meta.chinese}{" "}
+                                        <small class="vert-hide">
+                                            {meta.english ?? key}
+                                        </small>
+                                    </a>
+                                </td>
+                            )}
+                            <td>
+                                {syns.map((syn: string, i: number) => (
+                                    <span>
+                                        {isHead(syn) ? (
+                                            <strong class="selflink">
+                                                {syn}
+                                            </strong>
+                                        ) : (
+                                            <a href={enWikt(syn)} title={syn}>
+                                                {syn}
+                                            </a>
+                                        )}
+                                        {i < syns.length - 1 && "、"}
+                                    </span>
+                                ))}
+                            </td>
+                        </tr>
+                    );
+                });
+                return rows;
+            })
+        }
+    </tbody>
+</table>
