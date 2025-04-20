@@ -138,8 +138,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       dial-data:
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: ^0.0.4
+        version: 0.0.4
       gridsome-remark-figure-caption:
         specifier: ^1.2.2
         version: 1.2.2
@@ -2397,8 +2397,8 @@ packages:
   dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
 
-  dial-data@0.0.1:
-    resolution: {integrity: sha512-3iQx69fovVDTv/lwpz6Y9prEJufV0jNKYZdzM0x714V3IrW6FMVI1eGA9svUs6t/LxTuA5Dlg+htIltx95TCxg==}
+  dial-data@0.0.4:
+    resolution: {integrity: sha512-wM2yBf8ut6tzp6Kk5Vj6T5+oCjIgOk9rcM5mdk4ELLQE55alDqHhwKiOlFJldbalYSLzPLjoYh8SkrD5WMLHRA==}
 
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
@@ -6984,7 +6984,7 @@ snapshots:
 
   dfa@1.2.0: {}
 
-  dial-data@0.0.1: {}
+  dial-data@0.0.4: {}
 
   diff@5.2.0: {}
 

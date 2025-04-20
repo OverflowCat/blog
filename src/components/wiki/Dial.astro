@@ -1,16 +1,11 @@
 ---
-import { dialData } from "@/scripts/schema/dialmap";
 import { getEntry } from "astro:content";
-import { VARIETY_DATA } from "dial-data";
+import { GROUP_MAP, VARIETY_DATA } from "dial-data";
+import { enWikt, wikiLink } from "@/scripts/wiki.ts";
 
 export type Props = {
-    // list: Record<string, string[]>;
     name: string;
     head: string;
-    /** English meaning of the headword */
-    // meaning: string;
-    /** Mandarin formal form */
-    // wiki: string;
 };
 
 const { head, name } = Astro.props;
@@ -23,88 +18,23 @@ const { list, wiki } = entry.data;
 // Metadata for each region: display label and Wikipedia link
 const regionMeta = new Map(VARIETY_DATA.map(({ key, ...item }) => [key, item]));
 
-regionMeta.set("Classical", {
-    group: "Classical",
-    chinese: "文言文",
-    english: "Classical Chinese",
-    link: "Classical Chinese",
-    lat: 0,
-    long: 0,
-});
-regionMeta.set("Formal", {
-    group: "Formal",
-    chinese: "書面語",
-    english: "Written Standard Chinese",
-    link: "Standard Chinese",
-    lat: 0,
-    long: 0,
-});
-const isHead = (syn: any) => syn === head;
-function zhWiki(entry: string) {
-    return `https://zh.wikipedia.org/wiki/${encodeURIComponent(entry)}`;
+const isHead = (syn: string) => syn === head;
+
+type GroupName = keyof typeof GROUP_MAP;
+
+function zhGroupName(region: GroupName) {
+    return GROUP_MAP[region];
 }
-function enWiki(entry: string) {
-    return `https://en.wikipedia.org/wiki/${encodeURIComponent(entry)}`;
-}
-function enWikt(entry: string, hash?: string) {
-    return `https://en.wiktionary.org/wiki/${encodeURIComponent(entry)}${hash ? `#${hash}` : ""}`;
-}
-function wikiLink(entry: string) {
-    if (entry.startsWith("zh:")) return zhWiki(entry.slice(3));
-    return enWiki(entry);
-}
-function getChineseRegion(region: string) {
-    switch (region) {
-        case "Mandarin":
-            return "官話";
-        case "Central Plains Mandarin":
-            return "中原官話";
-        case "Jianghuai Mandarin":
-            return "江淮官話";
-        case "Southwestern Mandarin":
-            return "西南官話";
-        case "Northeastern Mandarin":
-            return "東北官話";
-        case "Northwestern Mandarin":
-            return "西北官話";
-        case "Jilu Mandarin":
-            return "冀魯官話";
-        case "Other":
-            return "其他";
-        case "Cantonese":
-            return "粵語";
-        case "Wu":
-            return "吳語";
-        case "Min":
-            return "閩語";
-        case "Southern Min":
-            return "閩南語";
-        case "Eastern Min":
-            return "閩東語";
-        case "Northern Min":
-            return "閩北語";
-        case "Xiang":
-            return "湘語";
-        case "Gan":
-            return "贛語";
-        case "Hakka":
-            return "客家話";
-        case "Hui":
-            return "徽語";
-        case "Jin":
-            return "晉語";
-    }
-}
-const families = new Map<string, [string, string[]][]>();
+
+const families = new Map<GroupName, [string, string[]][]>();
 for (const [key, value] of Object.entries(list)) {
     const metaData = regionMeta.get(key);
     const region = metaData?.group ?? "Other";
-    if (!families.has(region)) {
-        families.set(region, []);
+    if (!families.has(region as GroupName)) {
+        families.set(region as GroupName, []);
     }
-    families.get(region)?.push([key, value]);
+    families.get(region as GroupName)?.push([key, value]);
 }
-console.log(families);
 ---
 
 <table class="wikitable inline-auto max-inline-2xl!">
@@ -156,9 +86,9 @@ console.log(families);
                                         </a>
                                     </small>
                                 </th>
-                            ) : (idx === 0 && region !== "Formal") ? (
+                            ) : (idx === 0) ? (
                                 <th rowspan={dialects.length}>
-                                    {getChineseRegion(region)}
+                                    {zhGroupName(region)}
                                     <br />
                                     {region}
                                 </th>
