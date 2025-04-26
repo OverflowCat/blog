@@ -128,6 +128,12 @@ pre.astro-code {
     padding-right: 1rem;
     position: relative;
     word-break: break-all;
+    &.diff.add {
+      background-color: rgba(67, 218, 64, 0.3);
+    }
+    &.diff.remove {
+      background-color: rgba(229, 38, 38, 0.3);
+    }
   }
 
   code>[data-line]::before {

@@ -47,6 +47,11 @@ for (const [key, value] of Object.entries(list)) {
                 ><small>[地圖]</small></a
             >
         </h5>
+        <p>
+            數據來自<a href={enWikt("Module:zh/data/dial#Naming_conventions")}
+                >維基詞典</a
+            >，CC BY-SA 3.0
+        </p>
     </caption>
     <thead>
         <tr>
@@ -86,7 +91,7 @@ for (const [key, value] of Object.entries(list)) {
                                         </a>
                                     </small>
                                 </th>
-                            ) : (idx === 0) ? (
+                            ) : idx === 0 ? (
                                 <th rowspan={dialects.length}>
                                     {zhGroupName(region)}
                                     <br />

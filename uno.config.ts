@@ -5,6 +5,13 @@ import transformerDirectives from "@unocss/transformer-directives";
 
 export default defineConfig({
   presets: [presetWind3(), presetIcons()],
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+      ]
+    }
+  },
   blocklist: ["b", "container", "me", "my", "pl", "pr", "pt", "pb", "px"],
   rules: [
     // theme

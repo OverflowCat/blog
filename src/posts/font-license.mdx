@@ -1,0 +1,133 @@
+---
+title: 从 HarmonyOS Sans 谈起：免商字体的协议问题
+date: 2025-04-26T15:43:59.124Z
+noscript: true
+licence: CcBySa
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/wAZNJU-isu5i18CydHL8_VmfHvKoWNfwtcO8arksoLeGxvp1LN67A_akQQYFJoVpklakK1OoXmEakVP1RJdJ72pJcU9qHfhCGO1-RwxIOepE7435SaEfRURdmHfu0TVs.png"
+  alt: "HarmonyOS Sans Symbols 陈列"
+layout: "@/layouts/Default.astro"
+decoration: harmony
+tags:
+  - 字体
+categories: []
+---
+
+
+> HarmonyOS Symbol 图标库包含 1500+ 矢量图标，采用分层结构，支持独立设置颜色和灰度。HarmonyOS Symbol 还提供 7 种动态效果，可与用户操作匹配，实现更丰富的交互体验。这是国内首个以字库形式封装的Symbol资源……其可变字体特性允许图标粗细随字体调整同步变化。
+
+OK，新闻稿上说的看起来很棒，让我看看怎么在 iconify 使用这套图标……等等，看样子是除了 [华为开发者联盟](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol) 上需要每个手动选择下载的图标库，只以字体的形式提供了？
+
+## 语焉不详
+
+我于是便在这一网页上寻找；未果，又在开发者论坛上找相关讨论：
+
+- [HarmonyOS Symbol 图标库里的资源可否免费商用？协议在哪里？
+](https://developer.huawei.com/consumer/cn/forum/topic/0202166570846680285)（无回答） 
+- [图标、版权、商用。](https://developer.huawei.com/consumer/cn/forum/topic/0203938080524160011)（回答称免费可商用）
+- [华为开发者问答 | 华为开发者联盟](https://developer.huawei.com/consumer/cn/forum/topic/0201847053400580128)（无回答）
+- [HarmonyOS字体企业商用使用范围以及授权？](https://developer.huawei.com/consumer/cn/forum/topic/0203168535986256642)（怎么还有金币悬赏……用户回答，援引百度百科）
+- [鸿蒙HarmonyOS Sans字体可以申请授权使用吗？](https://developer.huawei.com/consumer/cn/forum/topic/0202587890674780111)（无回答）
+- [鸿蒙字体免费可商用细则是什么？](https://developer.huawei.com/consumer/cn/forum/topic/0204102167078205104)（与协议一致）
+
+接着，我试图从开源项目中找到协议。由于 OpenHarmony 与 HarmonyOS NEXT 在 UI 框架上的差异并不多，图标系统可能也和方舟 UI 框架（ArkUI）一样开源了。
+
+翻了半天发现果然有个 ttf，以及一个 Apache 协议——Gitee 组织操作很麻烦。正确的搜索方式是从 [OpenHarmony 组织主页](https://gitee.com/openharmony)的任务（issues）tab 下方的搜索框中搜索，可以找到 `OpenHarmony/global_system_resources` 仓中的 [HMSymbolVF.ttf](https://gitee.com/openharmony/global_system_resources/blob/master/fonts/HMSymbolVF.ttf)——再一看，仓库中同时有 LICENSE 和 LICENSE_Fonts，后者才是字体专用的协议：（协议只有英文，并且其中有一处逗号是全角逗号，以及序号后没空格，实在是有点搞笑）
+
+import HarmonyOSSans from "@/icons/harmony-LICENSE?raw";
+
+<blockquote><pre class="text-base">
+{HarmonyOSSans}
+</pre></blockquote>
+
+## 无独有偶
+
+观察行业现状，类似限制性条款并非孤例。MiSans 的授权条款就和华为高度相似，均有禁止单独分发、在软件中需要显著提及使用等限制，其模板高度相似，考虑到两套字体都由汉仪参与制作，协议可能也只是统一的模板。
+
+import MiSans from "@/vendor/MI-SANS-LICENSE?raw";
+
+<blockquote><pre class="text-base">
+{MiSans}
+</pre></blockquote>
+
+那么，这样的限制性协议有什么问题呢？
+
+## 显著说明
+
+> 你应该在软件中显著地声明使用了 HarmonyOS Sans 字体。
+
+好吧，我很乐意这么做，但是——
+    
+- 对于设计软件，如果提供一个字体列表供选呢？且不说这是否是再次分发，单就显著说明可能就有问题——字体列表里的名称是不是「显著」？难道要比其他字体都大一号吗？还是专门写一个致谢的页面？
+    
+- 对于其他软件，放到常见第三方开源库列表中，是否又能算是显著说明？
+
+Photopea 的 issues 里就出了纰漏。有用户[想加](https://github.com/photopea/photopea/issues/6792) HarmonyOS Sans，但不在 Google Fonts 之类的网站上。社区里有人翻出华为的[英文官方博客](https://consumer.huawei.com/za/community/details/Huawei-HarmonyOS-Sans-font-is-available-for-free-commercial-use/topicId_145064/)说没问题，但又有人附上许可证条款。最后提议者自己怂了，默默关了讨论帖—— 
+
+> It might be better to include only fonts licensed under well-known licenses like OFL, in Photopea, to keep things simple and reduce potential issues.
+
+对开发者来说，与其折腾法律条文，不如直接绕道。毕竟对于可选的、锦上添花的字体，没人想惹上官司的麻烦。
+
+## 禁止修改
+
+更值得推敲的是协议中的第四条：
+
+> 您不得对 HarmonyOS Sans 字体或其任何 _单独组件_ 进行任何修改。
+
+「individual components」的定义边界是什么？条款禁止修改「字体或其任何组成部分」，但未界定组件是字体的单个字形（glyph）、轮廓数据（outline），还是其他，以及是否包含字重文件、轮廓数据等元素，抑或是将修改后的字形嵌入到作品中。这种模糊性可能导致，调整字宽、伪粗体是否属于「修改组件」都存在解释空间。不过 Mi Sans 做得不错，在其 [FAQ](https://hyperos.mi.com/font/zh/faq/) 中解释了：
+
+> 您可以自由调节字体的粗细、间距等。但您不得单独将 MiSans 字体或其组件进行外观上的更改。
+
+以及，虽然禁止修改，但又允许用户用字体创作作品并自由分发这些作品。那如果我在设计一个 logo 时，对字体的某些部分进行了艺术性调整，这算不算修改？
+
+此外，对于多文种字体，禁止修改会对字体造成很大的限制。[Digital Tibetan 中写道](https://digitaltibetan.github.io/DigitalTibetan/docs/tibetan_fonts.html)：
+
+> 藏文虽然只有一套定义明确的「标准」藏文音节，但由于梵文转写（如[曼怛罗](https://zh.wikipedia.org/zh-cn/%E6%9B%BC%E6%80%9B%E7%BE%85)、汉语转写和宗喀语略语），存在许多扩展，因此通过提供所有可能的字形来生成「完整」的藏文字体实际上几乎不可能。
+>
+> 微软曾开发了一个可以动态渲染新的字形变体的系统，但无法在非 Windows 平台上运行，并且缺乏预先设计的字形的审美情趣。因此，藏文字体要么看起来不自然，要么不完整。如果需要录入此类文本，那么就会出现给定字体无法正确渲染所需堆叠的情况。
+
+Mi Sans 作为目前屈指可数的藏文无衬线体，无法分发添加所需字形而对字体所做的任何更改，实在是遗憾。
+
+修改字体本身常常是使用中不得不做的事情，甚至是因为字体提供方本身的原因，比如[群友反馈](https://t.me/TypeChat/128398)，丁卯点阵体提供的 7px 版本浏览器无法正常解析。其实条款写成禁止再分发（无论是否修改的）字体，可能会更加合理。
+
+## 再次分发
+
+此外，禁止单独分发的规定对设计中同样令人困惑。
+
+> HarmonyOS Sans 字体及其任何单独组件都不得以独立形式重新分发或出售。
+
+协议允许将字体嵌入应用软件或用于物料设计，但「单独分发」的定义却模糊不清。不能出售好说，防止二道贩子转卖；但分发则很广泛。例如将字体嵌入网页时，开发者常需通过 Webfont 分包的形式提供支持，但这是否构成「单独分发」？商业字体一般限制用户自行使用 Webfont，转而提供有页面浏览量限制的 CDN 服务。例如，[丁卯点阵体](https://3type.cn/fonts/dinkie_bitmap/index.html)虽然 boast itself as below：
+
+<blockquote style='font-family: "Fusion Pixel P 12px SC";'>
+由于「丁卯点阵体」字形大幅简化、文件体积小，适合用作 Webfont（网页字体），这在中文字体中是极其难得的。
+</blockquote>
+
+但文末却写「个人不可以将字体直接应用于……以 webfonts 的形式嵌入商业网站」。另外，提供服务的做法亦有问题——这些服务提供的常常没有分包，而前端技术日新月异，不喜欢 JavaScript 的前端之猫也有自己的想法。
+
+实际下载下来，你却会发现 Mi Sans 提供了 WOFF(2) 格式的文件，如果不希望用在 Webfont 上，为什么要提供这一格式？另外哔哩哔哩也确实就将 HarmonyOS Sans 用在了 Web 端，还做了 webfont，但这种做法如果不是私下里有沟通过，是否完全合规仍不可知。
+
+![](https://remnote-user-data.s3.amazonaws.com/_xa3aqR56oh0lW1qYly_74OtbAZgn87rPXTx8yGCLb7dJwFqAk--L2-E0JM0D-wUAzU9DPZgHwY2pX_iOb3oZ2C3h_2bk9MCL0PrHjw7ZgJ5mleBe0lTnalceEsr1QXY.webp)
+
+## 应用软件
+
+另一个问题出在 application software 的界定上。协议允许将字体嵌入到应用软件中，但什么是“应用软件”？Wikipedia 将其定义为“面向最终用户的软件”，但这种定义在法律语境中是否足够严谨？假设我写了一个简单的“Hello, World!”程序并嵌入 HarmonyOS Sans，这算不算“应用软件”？如果算，我就可以分发这个程序；如果不算，界限又在哪里？
+
+有趣的是，自由软件基金会（FSF）在评估 SIL OFL-1.1 时[提到](http://florenceko.me/?p=2122)，虽然 SIL OFL 不允许单独分发字体及欺任何一部分单独的元件，但
+
+<blockquote lang="zh-TW">
+…字型軟體只要依附於任何一個軟體中，就可以滿足這個條件，即使是一個像 “Hello, World!” 般簡單的小程式也可以，而在不收取費用的狀況下使用者一樣可以自由散布字型軟體，因此 OFL-1. 這樣的規定不會實質地限制字型軟體的自由散布，OFL-1.1 仍被 FSF 判定是符合四大自由內涵的自由軟體授權條款。
+</blockquote>
+
+不过这里 SIL OFL 并没有说 application software，而是 any software。
+
+## 结语
+
+私有协议导致字体的应用常面临技术和法律负担。即使是 OSI 认证过的 Mulan PSL 也会因使用较少而[引发顾虑](https://github.com/osslab-pku/OpenSourceLicense-FQA/issues/4)。DeepSeek 曾使用过私有协议，后来[更换](https://siliconangle.com/2025/03/24/deepseek-releases-improved-deepseek-v3-model-mit-license/)为 MIT，使用更通用的协议也是为了避免私有协议对使用者带来的理解成本。
+
+开源字体生态的发展仍然值得借鉴。思源字体家族族采用 SIL OFL，明确允许字体嵌套于任意软件的条款，如今的使用不可谓不广泛。手机厂商花钱定制字体，但似乎又并不打算从定制字体上牟利，却在私有协议中采用这样不明确的表述，反而不利于字体作为数字基础设施的传播作用。
+
+当然，这篇文章想表达的并不是诸如伪君子不如真小人之类的观点。除了作为一个对想使用这些字体的人的提醒，也是希望字体的版权方，不管是否有志于开源——如果想限制用户仅能在自家操作系统上使用，可以学 Apple 的苹方；如果有 branding 之虞，不希望用户再分发，也不妨避免一下自相矛盾，说得更清楚一点。
+
+---
+
+2025 年 3 月 5 日动笔，写于 RemNote。新世界的大门不提供法律建议。
