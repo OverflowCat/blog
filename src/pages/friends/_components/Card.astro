@@ -17,7 +17,8 @@ export interface Props {
 const { id, link, title, avatar, desc, feed, script, dir } = Astro.props;
 const href = `https://${link}`;
 
-import { collect, generateFeedOpml } from "@/scripts/opml";
+import { collect } from "@/scripts/opml-store";
+
 feed &&
 	collect({ title, href: `https://${href}`, url: feed, desc: desc ?? "" });
 ---

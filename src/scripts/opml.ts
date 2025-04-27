@@ -1,11 +1,4 @@
-interface Feed {
-    title: string;
-    url: string;
-    href: string;
-    desc: string;
-}
-
-const feeds = new Map<string, Feed>();
+import { experimental_AstroContainer } from "astro/container";
 
 function escapeXml(unsafe: string) {
     return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -30,9 +23,19 @@ function u(input: string) {
     }).join('');
 }
 
-export function generateFeedOpml() {
+import Friends from "@/pages/friends/index.astro";
+import { get } from "./opml-store";
+export async function generateFeedOpml() {
+    const container = await experimental_AstroContainer.create();
+
     const feedList: string[] = [];
-    for (const feed of feeds.values()) {
+    if (get().length === 0) {
+        const _ = await container.renderToResponse(Friends);
+    }
+    if (get().length === 0) {
+        throw new Error("No feeds collected");
+    }
+    for (const feed of get()) {
         feedList.push(`
 <outline
     text="${u(escapeXml(feed.title))}"
@@ -42,9 +45,6 @@ export function generateFeedOpml() {
     htmlUrl="${feed.href}"
     description="${u(escapeXml(feed.desc))}"
 />`);
-    }
-    if (feedList.length === 0) {
-        // throw new Error("No feeds collected");
     }
     return `<?xml version="1.0" encoding="UTF-8"?>
 <opml version="1.0">
@@ -57,7 +57,3 @@ export function generateFeedOpml() {
 </opml>`;
 }
 
-
-export function collect(feed: Feed) {
-    feeds.set(feed.url, feed);
-}
