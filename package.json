@@ -27,7 +27,7 @@
     "a": "astro"
   },
   "dependencies": {
-    "98.css": "^0.1.20",
+    "98.css": "^0.1.21",
     "@astrojs/markdown-remark": "6.3.1",
     "@astrojs/mdx": "4.2.5",
     "@astrojs/prism": "3.2.0",
