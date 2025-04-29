@@ -70,9 +70,9 @@ function myRemarkPlugin() {
 						}
 						*/
 						// @ts-ignore
-						node.children?.forEach((child) => {
+						for (child of node?.children) {
 							if (child.type === "text") child.value = manjuify(child.value);
-						});
+						}
 						// console.log(node);
 						props = {
 							lang: "mnc",
@@ -130,8 +130,8 @@ export default defineConfig({
 	},
 	// output: "server",
 	// adapter: node({
-  //   mode: 'standalone',
-  // }),
+	//   mode: 'standalone',
+	// }),
 	image: {
 		domains: [
 			"github.com",
@@ -139,6 +139,10 @@ export default defineConfig({
 			"wikimedia.org",
 			"xkcd.in",
 		],
+		experimentalLayout: "constrained",
+	},
+	experimental: {
+		responsiveImages: true,
 	},
 	vite: {
 		server: {
@@ -202,5 +206,6 @@ export default defineConfig({
 		typst(),
 		sitemap(),
 		icon(),
+		// neko,
 	],
 });
