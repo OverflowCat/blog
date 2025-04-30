@@ -58,7 +58,7 @@
     "@moonbit/moonpad": "^0.0.9",
     "@myriaddreamin/rehype-typst": "0.5.4",
     "@myriaddreamin/typst-ts-node-compiler": "0.6.0-rc1",
-    "@myriaddreamin/typst.ts": "0.6.0-rc1",
+    "@myriaddreamin/typst.ts": "0.6.0",
     "@qwikdev/astro": "^0.7.12",
     "@shikijs/twoslash": "^3.3.0",
     "@types/react": "^19.1.2",
