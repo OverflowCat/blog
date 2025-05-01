@@ -14,9 +14,10 @@ export type TocNode = {
 export function genTocTree(toc: any[]): TocNode {
   const root: any = { slug: "", depth: 1, text: "文章", children: [] };
   let node = root;
-  let parents = [root];
+  const parents = [root];
   for (const item of toc) {
     while (item.depth <= node.depth) {
+      // biome-ignore lint/style/noNonNullAssertion: can prove
       node = parents.pop()!;
     }
     if (node.children === undefined) node.children = [];

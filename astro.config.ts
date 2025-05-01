@@ -70,7 +70,7 @@ function myRemarkPlugin() {
 						}
 						*/
 						// @ts-ignore
-						for (child of node?.children) {
+						for (const child of node.children) {
 							if (child.type === "text") child.value = manjuify(child.value);
 						}
 						// console.log(node);
@@ -153,6 +153,7 @@ export default defineConfig({
 		ssr: {
 			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler", "astro-icon"],
 			noExternal: [
+				"7.css",
 				"xp.css",
 				"98.css",
 				"plex-sans-sc-cdn",
@@ -199,7 +200,7 @@ export default defineConfig({
 		unocss(),
 		// qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
 		react(
-			// { include: ["**/react/*", "**/*.tsx*", "spoiled"] }
+			{ include: ["**/react/*", "**/*.tsx*", "spoiled"] }
 		),
 		svelte(),
 		mdx(),
