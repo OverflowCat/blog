@@ -4,7 +4,7 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 import { getBlogPosts } from "@/scripts/post";
 import { render } from "astro:content";
 import { load } from "cheerio";
-Astro.locals.renderer = 'rss';
+Astro.locals.renderer = "rss";
 const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xml:lang="zh-CN" xmlns="http://www.w3.org/2005/Atom">
 <title>新世界的大门</title>
@@ -36,7 +36,7 @@ let items = await Promise.all(
       link,
       content: await render(post),
     };
-  }),
+  })
 );
 items = items.sort((a, b) => {
   return b.pubDate.valueOf() - a.pubDate.valueOf();
@@ -63,6 +63,7 @@ function xhtmlify(s: string, link: string): string {
   const url_relative_base = link.split("/").slice(0, -1).join("/");
   let html = s.replaceAll("src=&quot;./", `src="${url_relative_base}/`);
   html = html.replaceAll("src=&quot;/", `src="https://blog.xinshijiededa.men/`);
+  html = html.replaceAll(`href="#`, `href="${link}#`);
   // This page contains the following errors:
   // error on line 20 at column 51: Specification mandates value for attribute data-astro-cid-m7ys62bo
   html = html.replace(/ data-astro-cid-[a-z0-9]+/g, (match) => {
@@ -80,7 +81,7 @@ function xhtmlify(s: string, link: string): string {
   $('.info').remove();
   $('.licence').remove();
   $("svg.typst-doc path").remove();
-  // const stylesheets = $("link[rel=stylesheet]"); 
+  // const stylesheets = $("link[rel=stylesheet]");
   // const body = $("body").html();
   // html = `<div id="atom-xml-wrapper">${body}</div>`;
   // wrap the content in a div using cheerio instead of using a template string
