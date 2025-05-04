@@ -1,0 +1,91 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { readFile } from "node:fs/promises";
+import type { ExtendedIconifyIcon } from "@iconify/types";
+import { iconToSVG, iconToHTML, getIconData } from "@iconify/utils";
+import { locate } from "@iconify/json";
+
+export type Props = HTMLAttributes<"svg"> &
+  (
+    | {
+        name: string;
+      }
+    | {
+        set: string;
+        icon: string;
+      }
+  ) & {
+    "is:inline"?: boolean;
+    title?: string;
+    desc?: string;
+    size?: number | string;
+    width?: number | string;
+    height?: number | string;
+  };
+
+const fsCache = new Map<string, string>();
+async function readFileCached(path: string) {
+  let res = fsCache.get(path);
+  if (res) return res;
+  res = await readFile(path, "utf8");
+  fsCache.set(path, res);
+  return res;
+}
+
+async function generateSVG(
+  prefix: string,
+  name: string,
+  customisations: Record<string, unknown> = {}
+) {
+  let data: ExtendedIconifyIcon | null = null;
+  if (prefix) {
+    const filename = locate(prefix);
+
+    /** @type {import("@iconify/types").IconifyJSON} */
+    const iconSet = JSON.parse(await readFileCached(filename));
+
+    data = getIconData(iconSet, name);
+  } else {
+    const body = await readFileCached(`./src/icons/${name}.svg`);
+    // extract width and height from the SVG: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+    data = {
+      body,
+      width: Number.parseInt(body.match(/ width="(\d+)(px)?"/)?.[1] ?? "32"),
+      height: Number.parseInt(body.match(/ height="(\d+)(px)?"/)?.[1] ?? "32"),
+    };
+  }
+  if (!data) {
+    throw new Error(`Icon not found: ${prefix}:${name}`);
+  }
+
+  /**
+   * Default dimensions of generated SVG:
+   * - '1em' -> 1em, easy to resize icons with font-size.
+   * - 'auto' -> same as icon's viewBox.
+   * - 'unset' -> no width/height in generated icons. You'll need to assign width and height in CSS.
+   */
+  const height = customisations?.height ?? "1em";
+  const { attributes, body } = iconToSVG(data, {
+    height,
+  });
+  return iconToHTML(body, attributes);
+}
+
+let prefix = "";
+let name = "";
+if (Astro.props.name) {
+  const namen = Astro.props.name;
+  if (namen.includes(":")) [prefix, name] = namen.split(":");
+  else [prefix, name] = ["", namen];
+} else if ("set" in Astro.props) {
+  prefix = Astro.props.set;
+  name = Astro.props.icon;
+} else {
+  throw new Error("Icon name or set and icon must be provided.");
+}
+const svg = await generateSVG(prefix, name, {
+  height: Astro.props.height ?? "1em",
+});
+---
+
+<Fragment set:html={svg} />

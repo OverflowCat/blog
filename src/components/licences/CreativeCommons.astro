@@ -7,7 +7,7 @@ export interface Props {
   /** 是否允许演绎 */
   nd?: boolean;
 }
-import { Icon } from "astro-icon/components";
+import Icon from "@/components/Icon.astro";
 import "@/styles/icon.less";
 const { nc, sa, nd } = Astro.props;
 if (sa && nd) {

@@ -3,7 +3,7 @@ export type Props = {
   comment: TransformedComment & { data: { message?: string } };
 };
 import type { TransformedComment } from "@/scripts/comments";
-import { Icon } from "astro-icon/components";
+import Icon from "@/components/Icon.astro";
 const { comment } = Astro.props;
 const { data } = comment;
 const { date } = data;

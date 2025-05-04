@@ -6,9 +6,6 @@ import { defineConfig } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 
-// icon
-import icon from "astro-icon";
-
 // frameworks
 
 import mdx from "@astrojs/mdx";
@@ -206,7 +203,5 @@ export default defineConfig({
 		mdx(),
 		typst(),
 		sitemap(),
-		icon(),
-		// neko,
 	],
 });

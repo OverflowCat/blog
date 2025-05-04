@@ -34,7 +34,7 @@ const prettyCodeOptions: Options = {
     transformers: [
         transformerTwoslash(),
         shikiGitDiff({
-            condition: s => s?.endsWith("diff")
+            condition: s => /diff/.test(s),
         }),
     ],
     getHighlighter: (options) => getSingletonHighlighter({
