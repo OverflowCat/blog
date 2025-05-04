@@ -64,11 +64,18 @@ async function generateSVG(
    * - 'auto' -> same as icon's viewBox.
    * - 'unset' -> no width/height in generated icons. You'll need to assign width and height in CSS.
    */
-  const height = customisations?.height ?? "1em";
+  const height = (customisations?.height as string | undefined) ?? "1em";
   const { attributes, body } = iconToSVG(data, {
     height,
   });
   return iconToHTML(body, attributes);
+}
+
+function generateAPIimg(prefix: string, name: string) {
+  if (prefix === "") {
+    return `/icons/${name}.svg`;
+  }
+  return `https://api.iconify.design/${prefix}:${name}.svg`;
 }
 
 let prefix = "";
@@ -83,9 +90,21 @@ if (Astro.props.name) {
 } else {
   throw new Error("Icon name or set and icon must be provided.");
 }
-const svg = await generateSVG(prefix, name, {
-  height: Astro.props.height ?? "1em",
-});
 ---
 
-<Fragment set:html={svg} />
+{
+  Astro.locals.renderer === "rss" ? (
+    <img
+      src={generateAPIimg(prefix, name)}
+      width={Astro.props.width ?? Astro.props.size ?? "1em"}
+      height={Astro.props.height ?? Astro.props.size ?? "1em"}
+      alt={name}
+    />
+  ) : (
+    <Fragment
+      set:html={await generateSVG(prefix, name, {
+        height: Astro.props.height ?? "1em",
+      })}
+    />
+  )
+}

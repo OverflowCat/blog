@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { hydrate } from "rehype-remnote";
 // read filename from cli
 const filename = process.argv[2];
