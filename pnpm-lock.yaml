@@ -253,8 +253,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(postcss@8.5.3)(stylelint@16.19.1(typescript@5.8.3))
       stylelint-scss:
-        specifier: ^6.11.1
-        version: 6.11.1(stylelint@16.19.1(typescript@5.8.3))
+        specifier: ^6.12.0
+        version: 6.12.0(stylelint@16.19.1(typescript@5.8.3))
       stylelint-use-logical:
         specifier: ^2.1.2
         version: 2.1.2(stylelint@16.19.1(typescript@5.8.3))
@@ -2870,9 +2870,6 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  known-css-properties@0.35.0:
-    resolution: {integrity: sha512-a/RAk2BfKk+WFGhhOCAYqSiFLc34k8Mt/6NWRI4joER0EYUzXIcFivjjnoD3+XU1DggLn/tZc3DOAgke7l8a4A==}
-
   known-css-properties@0.36.0:
     resolution: {integrity: sha512-A+9jP+IUmuQsNdsLdcg6Yt7voiMF/D4K83ew0OpJtpu+l34ef7LaohWV0Rc6KNvzw6ZDizkqfyB5JznZnzuKQA==}
 
@@ -3867,8 +3864,8 @@ packages:
       postcss: ^8.4.31
       stylelint: ^16.0.2
 
-  stylelint-scss@6.11.1:
-    resolution: {integrity: sha512-e4rYo0UY+BIMtGeGanghrvHTjcryxgZbyFxUedp8dLFqC4P70aawNdYjRrQxbnKhu3BNr4+lt5e/53tcKXiwFA==}
+  stylelint-scss@6.12.0:
+    resolution: {integrity: sha512-U7CKhi1YNkM1pXUXl/GMUXi8xKdhl4Ayxdyceie1nZ1XNIdaUgMV6OArpooWcDzEggwgYD0HP/xIgVJo9a655w==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
       stylelint: ^16.0.2
@@ -7328,8 +7325,6 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  known-css-properties@0.35.0: {}
-
   known-css-properties@0.36.0: {}
 
   kolorist@1.8.0: {}
@@ -8815,11 +8810,11 @@ snapshots:
       postcss-value-parser: 4.2.0
       stylelint: 16.19.1(typescript@5.8.3)
 
-  stylelint-scss@6.11.1(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-scss@6.12.0(stylelint@16.19.1(typescript@5.8.3)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
-      known-css-properties: 0.35.0
+      known-css-properties: 0.36.0
       mdn-data: 2.21.0
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.6
