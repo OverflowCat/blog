@@ -196,8 +196,8 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@iconify/json':
-        specifier: ^2.2.334
-        version: 2.2.334
+        specifier: ^2.2.335
+        version: 2.2.335
       '@iconify/utils':
         specifier: ^2.3.0
         version: 2.3.0
@@ -904,8 +904,8 @@ packages:
   '@fontsource/noto-sans-mongolian@5.2.5':
     resolution: {integrity: sha512-0Nxx8JkVj2bLSe/C5LyVHBYQoZCtWQMpaAbs6Z1CizGMry9zxfOh6P1ID0eUwenW11s8RJHp6qfnt3xhyO2+mw==}
 
-  '@iconify/json@2.2.334':
-    resolution: {integrity: sha512-VcnEHMZs1VT8QvU5dzT1Eau35nGSZdIcJlBRHkxe/HLS1kKkyuFFrsA5aIaHeM7vvU6Y8rPS4DDD2xDmnNgP3g==}
+  '@iconify/json@2.2.335':
+    resolution: {integrity: sha512-EOUM9843cxiwA19cORaz6t+fpn1LhZr5la+Oot7gzt8M5SRjOqvXfMZKcc/VkytRHaaNd2y0dKhA8H7/sP1stQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5126,7 +5126,7 @@ snapshots:
 
   '@fontsource/noto-sans-mongolian@5.2.5': {}
 
-  '@iconify/json@2.2.334':
+  '@iconify/json@2.2.335':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
