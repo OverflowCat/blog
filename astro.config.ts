@@ -201,7 +201,22 @@ export default defineConfig({
 		),
 		svelte(),
 		mdx(),
-		typst(),
+		typst({
+			options: {
+				remPx: 14
+			},
+			mode: {
+				default: "svg" as "html" | "svg",
+				detect: function (id: string): "html" | "svg" {
+					console.debug(`Detecting ${id}`);
+					if (id.endsWith('.html.typ') || id.includes('/html/'))
+						return "html";
+					if (id.endsWith('.svg.typ') || id.includes('/svg/'))
+						return "svg";
+					return this.default;
+				}
+			}
+		}),
 		sitemap(),
 	],
 });

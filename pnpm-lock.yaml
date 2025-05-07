@@ -81,8 +81,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       astro-typst:
-        specifier: 0.8.2
-        version: 0.8.2(astro@5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(rollup@4.40.1)
+        specifier: 0.9.0-rc1
+        version: 0.9.0-rc1(astro@5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(rollup@4.40.1)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -1461,8 +1461,8 @@ packages:
     peerDependencies:
       '@builder.io/qwik': '>=1.9.0'
 
-  '@rollup/plugin-node-resolve@15.3.1':
-    resolution: {integrity: sha512-tgg6b91pAybXHJQMAAwW9VuWBO6Thi+q7BCNARLwSqlmsHz0XYURtGvh/AuwSADXSI4h/2uHbs7s4FzlZDGSGA==}
+  '@rollup/plugin-node-resolve@16.0.1':
+    resolution: {integrity: sha512-tk5YCxJWIG81umIvNkSod2qK5KyQW19qcBF/B78n1bjtOON6gzKoVeSzAE8yHCZEDmqkHKkxplExA8KzdJLJpA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
@@ -1951,8 +1951,8 @@ packages:
     resolution: {integrity: sha512-jL5skNQLA0YBc1R3bVGXyHew3FqGqsT7AgLzWAVeTLzFkwVMUYvs4/lKJSmS7ygcF1GnHnoKG6++8GL9VtWwGQ==}
     engines: {node: '>=18.14.1'}
 
-  astro-typst@0.8.2:
-    resolution: {integrity: sha512-E6tvQ8V6ytq71FlsED/5ZSdu0mbzR3Z+FU19KTk5PdGEQ/EB7QVm15ufgAVlZgIdEJXRGmxxmyhLp0/oM3ZWew==}
+  astro-typst@0.9.0-rc1:
+    resolution: {integrity: sha512-FbQ2FuKZ/7yEXUcI+lLruJeYNGkB47Z3zhribgfm04fRZl8EYI4u5M7a4bmOzlaqu5REXGwCABhQPnqexd9zlg==}
     peerDependencies:
       astro: '>= 3.0.0'
 
@@ -5609,7 +5609,7 @@ snapshots:
       - supports-color
       - vite
 
-  '@rollup/plugin-node-resolve@15.3.1(rollup@4.40.1)':
+  '@rollup/plugin-node-resolve@16.0.1(rollup@4.40.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.40.1)
       '@types/resolve': 1.20.2
@@ -6199,12 +6199,12 @@ snapshots:
       marked-smartypants: 1.1.9(marked@12.0.2)
       ultrahtml: 1.6.0
 
-  astro-typst@0.8.2(astro@5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(rollup@4.40.1):
+  astro-typst@0.9.0-rc1(astro@5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(rollup@4.40.1):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.6.0-rc1
       '@myriaddreamin/typst-ts-renderer': 0.6.0-rc1
       '@myriaddreamin/typst.ts': 0.6.0-rc1(@myriaddreamin/typst-ts-renderer@0.6.0-rc1)
-      '@rollup/plugin-node-resolve': 15.3.1(rollup@4.40.1)
+      '@rollup/plugin-node-resolve': 16.0.1(rollup@4.40.1)
       astro: 5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1)
       astro-integration-kit: 0.18.0(astro@5.7.10(@types/node@22.15.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.40.1)(sass@1.87.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))
       cheerio: 1.0.0
