@@ -97,7 +97,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.15.15",
     "@unocss/preset-icons": "^66.1.0",
     "@unocss/transformer-directives": "^66.1.0",
     "npm-check-updates": "^18.0.1",
