@@ -217,8 +217,8 @@ importers:
         specifier: ^22.15.3
         version: 22.15.3
       '@unocss/preset-icons':
-        specifier: ^66.1.0
-        version: 66.1.0
+        specifier: ^66.1.1
+        version: 66.1.1
       '@unocss/transformer-directives':
         specifier: ^66.1.0
         version: 66.1.0
@@ -408,6 +408,11 @@ packages:
 
   '@babel/parser@7.27.1':
     resolution: {integrity: sha512-I0dZ3ZpCrJ1c04OqlNsQcKiZlsrXf/kkE4FXzID9rIOYICsAbA8mMDzhW/luRNAHdCNt7os/u8wenklZDlUVUQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  '@babel/parser@7.27.2':
+    resolution: {integrity: sha512-QYLs8299NA7WM/bZAdp+CviYYkVoYXlDW2rzliy3chxd1PQjej7JORuMJDJXJUb9g0TT+B99EwaVLKmX+sPXWw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -1742,6 +1747,9 @@ packages:
   '@unocss/core@66.1.0':
     resolution: {integrity: sha512-BKnWrzy05uACXfkE/rqQegj5cvXcIP+eE7CHwSwKpyWNlY9bRsPa7BA5t4WOQMGxhYeVJnZ1ELp8PqzYD6TtWg==}
 
+  '@unocss/core@66.1.1':
+    resolution: {integrity: sha512-EOewEnipyB7Y6ne0YQmxdCG1hbMjYJ7oPMeHKfQuCZz60DPzkYwV6zVMa35ySMs1xljb/vFTHVFcJA8du3i8XA==}
+
   '@unocss/extractor-arbitrary-variants@66.1.0':
     resolution: {integrity: sha512-Xv5484j0aPERkPxY2j5V5pzGSVOp+/rsweKr6UFKnhAQSfSc0b4Z8FJhliNehZCLIzpVwzRrh6JIb3LzwHcJSw==}
 
@@ -1759,6 +1767,9 @@ packages:
 
   '@unocss/preset-icons@66.1.0':
     resolution: {integrity: sha512-vyC5X0bPUCHs9lDJA40yoaCz6V4vQVOzt86hly46VVMIsW59xgfoTnHWEzxOeS8+UoMuBSN8WZO+CeCTToaaWQ==}
+
+  '@unocss/preset-icons@66.1.1':
+    resolution: {integrity: sha512-F8NZKJfGzlv7tCxbo5cDXouxm1azKMzGOV11zbDTuZFDacyH5WprQ9zNMffUdUuVDy+rwAN+OoR0GEyggt4zww==}
 
   '@unocss/preset-mini@66.1.0':
     resolution: {integrity: sha512-UqdRWNaUOMOM4eAYYvAR0bqiqVZv/5t4wtlTNjLNpyIjJ1KLmVxSmcyyuxMbktcG5I6U6WIB3lTrqxMd0xmEyw==}
@@ -4773,6 +4784,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.27.1
 
+  '@babel/parser@7.27.2':
+    dependencies:
+      '@babel/types': 7.27.1
+
   '@babel/plugin-transform-react-jsx-self@7.27.1(@babel/core@7.27.1)':
     dependencies:
       '@babel/core': 7.27.1
@@ -5897,6 +5912,8 @@ snapshots:
 
   '@unocss/core@66.1.0': {}
 
+  '@unocss/core@66.1.1': {}
+
   '@unocss/extractor-arbitrary-variants@66.1.0':
     dependencies:
       '@unocss/core': 66.1.0
@@ -5929,6 +5946,14 @@ snapshots:
     dependencies:
       '@iconify/utils': 2.3.0
       '@unocss/core': 66.1.0
+      ofetch: 1.4.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@unocss/preset-icons@66.1.1':
+    dependencies:
+      '@iconify/utils': 2.3.0
+      '@unocss/core': 66.1.1
       ofetch: 1.4.1
     transitivePeerDependencies:
       - supports-color
@@ -5980,7 +6005,7 @@ snapshots:
 
   '@unocss/rule-utils@66.1.0':
     dependencies:
-      '@unocss/core': 66.1.0
+      '@unocss/core': 66.1.1
       magic-string: 0.30.17
 
   '@unocss/transformer-attributify-jsx@66.1.0':
@@ -6079,7 +6104,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6092,7 +6117,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
