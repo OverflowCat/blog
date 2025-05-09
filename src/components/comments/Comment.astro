@@ -21,11 +21,19 @@ const reply = data.reply
   : undefined;
 
 const message = data.message ? data.message : comment.rendered?.html;
+
+let url: URL | undefined = undefined;
+if (data.url)
+  try {
+    url = new URL(data.url);
+  } catch (e) {}
 ---
 
 <li itemprop="comment" id={"comment-" + data.id}>
   <hgroup>
-    <h4 set:html={data.name} itemprop="name" />
+    <h4 itemprop="name">
+      {url ? <a href={url} set:text={data.name} /> : data.name}
+    </h4>
     &nbsp;
     <time
       class="monospace"

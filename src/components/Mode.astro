@@ -73,21 +73,15 @@ import Icon from "@/components/Icon.astro";
   }
 
   a {
-    display: inline-flex;
-    block-size: 90%;
+    @apply inline-flex border-none! justify-center items-center;
     text-decoration: none;
-    border: none !important;
-    color: var(--text, #a2a2a2);
-    align-items: center;
-    justify-content: center;
+    color: var(--text-secondary);
   }
   #han-cc,
   a {
-    padding-inline-start: 4px;
-    padding-inline-end: 4px;
-    border-radius: 2px;
+    @apply pis-1 pie-1 rounded-2px;
     &:hover {
-      filter: invert(1);
+      color: var(--accent-color);
     }
   }
 </style>

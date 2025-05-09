@@ -76,12 +76,16 @@ assert(slogan, "slogan is undefined");
     </div>
   </div>
 </nav>
-<style is:global lang="less">
+<style lang="less">
   nav#sticky {
-    z-index: 1000;
-    // width: fit-content;
-    @apply m-auto mbs--1 mbe-2 sticky min-block-10 pbe-2 inline-full inset-bs-0 inset-is-0;
+    min-inline-size: 20rem;
+    max-inline-size: max(30vi, 22rem);
+    border-radius: 2em;
+    @apply z-1000 m-auto sticky min-block-10 inset-bs-2 inset-is-0 border-solid border-2 border-gray-300;
     align-items: space-between;
+    backdrop-filter: blur(
+      15px
+    ); // fallback for browsers not supporting scroll-timeline
     .logo {
       @apply block-8 m-1;
       #vert:target & {
@@ -121,48 +125,12 @@ assert(slogan, "slogan is undefined");
     }
   }
   .backdrop {
-    @apply flex absolute justify-center items-start inline-full;
+    @apply flex justify-center items-start inline-full;
     pointer-events: none;
     * {
       pointer-events: all;
     }
-    z-index: 0;
-    inset: 0;
-    /* Extend backdrop surface to the bottom */
-    --extended-by: 250px;
-    inset-block-end: calc(-1 * var(--extended-by));
-    /* Mask out the part falling outside the nav */
-    --cutoff: calc(100% - var(--extended-by));
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0,
-      black var(--cutoff),
-      transparent var(--cutoff)
-    );
-    #vert:target & {
-      -webkit-mask-image: linear-gradient(
-        to left,
-        black 0,
-        black var(--cutoff),
-        transparent var(--cutoff)
-      );
-    }
-    html[lang="mnc"] & {
-      -webkit-mask-image: linear-gradient(
-        to right,
-        black 0,
-        black var(--cutoff),
-        transparent var(--cutoff)
-      );
-    }
-
-    animation-name: navblur;
-    animation-timeline: --page-timeline;
-    animation-range: 123px 155px;
-    animation-fill-mode: both;
   }
-</style>
-<style lang="less">
   :root {
     --indicator-size: 0.15em;
   }
@@ -226,18 +194,48 @@ assert(slogan, "slogan is undefined");
   .edge {
     display: none;
   }
-  nav#sticky {
-    backdrop-filter: blur(15px); // fallback for browsers not supporting scroll-timeline
-  }
-  @supports (scroll-timeline-name: --page-timeline) and (container-type: inline-size) {
+  @supports (scroll-timeline-name: --page-timeline) and
+    (container-type: inline-size) {
     .edge {
       display: unset;
     }
     nav#sticky {
       backdrop-filter: none; // overrides the fallback
+      @apply pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
     }
     .backdrop {
-      @apply justify-between;
+      @apply justify-between absolute inset-0 z-0;
+      animation-name: navblur;
+      animation-timeline: --page-timeline;
+      animation-range: 123px 155px;
+      animation-fill-mode: both;
+      /* Extend backdrop surface to the bottom */
+      --extended-by: 250px;
+      inset-block-end: calc(-1 * var(--extended-by));
+      /* Mask out the part falling outside the nav */
+      --cutoff: calc(100% - var(--extended-by));
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0,
+        black var(--cutoff),
+        transparent var(--cutoff)
+      );
+      html#vert:target & { // html#vert 而不是直接写 #vert 是为了避免 scoped CSS
+        -webkit-mask-image: linear-gradient(
+          to left,
+          black 0,
+          black var(--cutoff),
+          transparent var(--cutoff)
+        );
+      }
+      html[lang="mnc"] & {
+        -webkit-mask-image: linear-gradient(
+          to right,
+          black 0,
+          black var(--cutoff),
+          transparent var(--cutoff)
+        );
+      }
     }
   }
   @container html (max-inline-size: 768px) {
@@ -249,7 +247,8 @@ assert(slogan, "slogan is undefined");
     }
   }
   @container html (max-inline-size: 520px) {
-    .edge:first-child, #nav-1 {
+    .edge:first-child,
+    #nav-1 {
       // hide when screen is too narrow
       display: none;
     }
