@@ -8,8 +8,9 @@ pre {
 .twoslash-popup-container {
   width: clamp(200px, 360px, 90vw);
 }
+
 .twoslash .twoslash-error-line {
-  width: unset!important;
+  width: unset !important;
 }
 
 [data-rehype-pretty-code-figure],
@@ -128,9 +129,11 @@ pre.astro-code {
     padding-right: 1rem;
     position: relative;
     word-break: break-all;
+
     &.diff.add {
       background-color: rgba(67, 218, 64, 0.3);
     }
+
     &.diff.remove {
       background-color: rgba(229, 38, 38, 0.3);
     }
@@ -161,5 +164,31 @@ pre.astro-code {
   .word {
     background-color: #90cdf4;
     color: #fff;
+  }
+
+
+
+  [data-chars-id=v],
+  [data-chars-id=v] * {
+    border-bottom-color: rgb(219, 39, 119);
+    background-color: #920a3080;
+    font-weight: 700;
+    color: rgb(249, 168, 212) !important
+  }
+
+  [data-chars-id=s],
+  [data-chars-id=s] * {
+    border-bottom-color: rgb(174, 119, 0);
+    background-color: #74400580;
+    font-weight: 700;
+    color: rgb(253, 224, 71) !important
+  }
+
+  [data-chars-id=i],
+  [data-chars-id=i] * {
+    border-bottom-color: rgb(147, 51, 234);
+    background-color: #310c4e80;
+    font-weight: 700;
+    color: rgb(233, 213, 255) !important
   }
 }

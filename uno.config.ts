@@ -18,6 +18,8 @@ export default defineConfig({
     ["text-2nd", { color: "var(--text-secondary)" }],
     ["text-hint", { color: "var(--text-hint)" }],
 
+    ["resizable", { resize: "inline"}],
+
     // vertical
     ["upright", { "text-combine-upright": "all" }],
     ["yoko", { "text-combine-upright": "all" }],

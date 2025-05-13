@@ -1,8 +1,6 @@
 ---
 import Paper from "@/components/Paper.astro";
 import "@/styles/icon.less";
-import Comments from "@/components/comments/Comments.astro";
-// import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import "@shikijs/twoslash/style-rich.css";
 const { frontmatter } = Astro.props;
@@ -46,31 +44,17 @@ export type Props = {
   }
 </style>
 
-<Bar
-  lang="zh-Hans" 
-  decoration={frontmatter?.decoration}
-  mode={{
-  hant: frontmatter?.hant,
-  vert: frontmatter?.vert,
-  theme: frontmatter?.theme as "auto" | boolean | undefined,
-}} />
-<Paper
-  transitionName="main"
-  padding={true}
-  paper={frontmatter?.paper ?? true}
-  classes={classes}
->
-{
-  frontmatter ?
+
   <Common layoutProps={Astro.props}>
     <slot />
-  </Common> : <slot />
-}
+  </Common>
 </Paper>
 
-<section id="comments">
-  <Paper padding={true} paper={true} classes={classes}>
-    <Comments />
-  </Paper>
-</section>
-}
+<style>
+  article#post {
+    @apply relative overflow-none!;
+ }
+  h2, h3 {
+    @apply sticky! inset-bs-0 red;
+  }
+</style>

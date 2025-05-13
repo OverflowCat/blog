@@ -1,0 +1,412 @@
+---
+title: 仓颉语言的 AST 操作
+date: 2025-05-11T17:42:18.491Z
+noscript: false
+licence: false
+layout: "@/layouts/Dual.astro"
+draft: true
+tags: []
+categories: []
+---
+
+{/* ![架构图](./archi.svg) */}
+
+## 前端
+
+{/* ![](./image1.png) */}
+
+## HttpServer
+
+### 同步机制
+
+`std.ast.cangjieLex(){:cj}` 不是线程安全的
+
+### CORS
+
+```cj
+func sendRes(httpContext: HttpContext, output: String) {
+    let headers = HttpHeaders()
+    // cors
+    headers.add("Access-Control-Allow-Origin", "*")
+    headers.add("Access-Control-Allow-Methods", "POST, GET")
+    headers.add("Access-Control-Allow-Headers", "Content-Type")
+    // 设置 content-type
+    headers.add("Content-Type", "text/plain")
+    httpContext.responseBuilder.addHeaders(headers).body(output)
+}
+```
+
+## (a) `generateCodeSignature` 函数 
+
+> 该函数的功能是生成代码文件的签名。此处的“签名”包含“函数签名”和“类（接口）签名”，具体到仓颉语言，可以理解为定义接口时使用的无实现成员函数。而类签名则包含了类的声明语句以及它内部成员（包括属性，变量，函数）的签
+名。
+
+
+### 模式匹配类型的语法
+
+```cj {1-2} /case d: FuncDecl/#i /case d: ClassDecl/#i /case d: InterfaceDecl/#i "{"#s
+class CJCodeTool {
+    static func generateCodeSignature(code: String): String {
+        let tokens = cangjieLex(code)
+        // 任何一个仓颉源码文件都可以被解析为一个 Program 类型。
+        let program = parseProgram(tokens)
+        let sig = quote()
+        for (decl in program.decls) {
+            let result = match (decl) {
+                case d: FuncDecl => genFuncSig(d)
+                case d: ClassDecl => genClassSig(d)
+                case d: InterfaceDecl => genInterfaceSig(d)
+                case _ => throw Exception("Unexpected Decl")
+            } |> sig.append
+        }
+        return trimTokensEnd(sig).toString()
+    }
+```
+
+### 直接截断
+
+```cj /genBodySig/#v /classDecl.body/#v /interfaceDecl.body/#v /genBlockSig/#i /funcDecl.block/#i "{"#s {1} {7} {13}
+public func genFuncSig(funcDecl: FuncDecl): Tokens {
+    let tokens = funcDecl.toTokens()
+    let blockSig = genBlockSig(funcDecl.block)
+    return genSig(tokens, funcDecl.block.lBrace, funcDecl.block.rBrace, blockSig)
+}
+
+public func genClassSig(classDecl: ClassDecl): Tokens {
+    let tokens = classDecl.toTokens()
+    let bodySig = genBodySig(classDecl.body)
+    return genSig(tokens, classDecl.body.lBrace, classDecl.body.rBrace, bodySig)
+}
+
+public func genInterfaceSig(interfaceDecl: InterfaceDecl): Tokens {
+    let tokens = interfaceDecl.toTokens()
+    let bodySig = genBodySig(interfaceDecl.body)
+    return genSig(tokens, interfaceDecl.body.lBrace, interfaceDecl.body.rBrace, bodySig)
+}
+```
+
+### 相等的条件：完全一致
+
+```cj /token == lParen/#v /token == rParen/#s
+func genSig(tokens: Tokens, lParen: Token, rParen: Token, innerSig: Tokens): Tokens {
+    let sig = quote()
+    var isInBlock = false
+    for ((index, token) in enumerate(tokens)) {
+        if (token == lParen) {
+            sig.append(token)
+            isInBlock = true
+            sig.append(genNewLines(1))
+            sig.append(innerSig)
+        } else if (token == rParen) {
+            sig.append(genNewLines(1))
+            sig.append(token)
+            isInBlock = false
+        } else if (!isInBlock) {
+            sig.append(token)
+        }
+    }
+    sig.append(genNewLines(1))
+}
+```
+
+## (b) `refactorVariable` 函数
+
+> 该函数的功能是通过path 参数指定代码中的一个类或者函数，然后将其作用域内的某个标识符（oldName）全部替换为另一个标识符（newName）。对于函数，
+作用域是函数签名和函数体这个整体，对于类也完全类似。
+
+
+"词法单元之间的空格和换行规范不做要求（但要保证语法正确性）"，
+因此可以直接修改语法树，然后再将语法树转换为词法单元。这样虽然会丢掉原来的空格和换行，但是比直接替换 tokens 要方便得多。
+
+```cj
+    static func refactorVariable(code: String, path: String, oldName: String, newName: String): String {
+        let tokens = cangjieLex(code)
+        let program = parseProgram(tokens)
+        let pathParts = path.split(".")
+        for (i in 0..program.decls.size) {
+            let decl = program.decls[i]
+            if (decl.identifier.toTokens().toString() == pathParts[0]) {
+                let replaced = refactorByPath(decl, path, oldName, newName)
+                let newDecl = parseDecl(replaced)
+                program.decls[i] = newDecl // 词法单元之间的空格和换行规范不做要求（但要保证语法正确性）
+                let result = program.toTokens().toString()
+                // let result = replaced
+                println(result)
+                return result
+            }
+        }
+        throw Exception("Variable not found")
+    }
+```
+
+### 一些假设
+
+1. 路径唯一且合法
+2. 作用域明确且无变量遮蔽，不考虑形参与内部变量冲突  
+3. 不会重载函数  
+4. 仅通过词法替换实现重构  
+5. 被替换的 `oldName` 出现在语法树中 `toTokens()` 的结果中  
+
+```cj /classDecl.body.decls/#v /classDecl.toTokens()/#s
+public func refactorByPath(decl: Decl, path: String, oldName: String, newName: String): Tokens {
+    var tokens = decl.toTokens()
+    if (let Some(index) <- path.indexOf(".")) {
+        let parts = path.split(".")
+        let funcName = parts[1]
+        let replaced = quote()
+        let classDecl = (decl as ClassDecl).getOrThrow()
+        let innerDecls = classDecl.body.decls
+        for (i in 0..innerDecls.size) {
+            let innerDecl = innerDecls[i]
+            if (innerDecl.identifier.toTokens().toString() == funcName) {
+                let replaced = refactorByPath(innerDecl, funcName, oldName, newName)
+                let newDecl = parseDecl(replaced)
+                classDecl.body.decls[i] = newDecl
+                tokens = classDecl.toTokens()
+                return tokens
+            }
+        }
+        throw Exception("No method found")
+    } else {
+        let replaced = quote()
+        for (token in tokens) {
+            if (token.kind == TokenKind.IDENTIFIER && token.value == oldName) {
+                replaced.append(Token(TokenKind.IDENTIFIER, newName))
+            } else {
+                replaced.append(token)
+            }
+        }
+        replaced
+    }
+}
+```
+
+## (c) `generateDocument` 函数
+
+> 该函数的功能是通过path 参数指定代码中的一个类或者函数，然后为其生成解释文档（以块注释的形式展示），用于解释该类或者函数的功能。
+
+```cj
+import magic.dsl.*
+import magic.prelude.*
+import magic.config.Config
+
+@agent[model: "siliconflow:deepseek-ai/DeepSeek-V3"]
+class DocStringAgent {
+    @prompt(
+        "你是一个经验丰富的程序员，擅长根据代码生成文档字符串"
+        "当用户输入一段仓颉语言代码后，你需要根据代码生成文档字符串"
+    )
+}
+
+@tool[description: "查看代码", parameters: { path: String}]
+func view_code(path: String): String {
+    ...
+}
+```
+
+## (d) `foldConstant` 函数
+
+> 该函数的功能是将代码中可直接计算的常量进行折叠，不考虑常量传播。例如，如果代码中存在一句 `let a = 3 + 2`，则折叠之后这句代码就变为 `let a = 5`。
+
+---
+
+### 使用 `visitor` 访问节点
+```cj /override/#s /result/#v /func isConstExpr(expr: /#i /parenthesizedExpr/#s
+
+class MyVisitor <: Visitor {
+    public var result = ArrayList<BinaryExpr>()
+
+    private func isConstExpr(expr: BinaryExpr): Bool {
+        let isLeftConst = match (expr.leftExpr) {
+            case left: LitConstExpr => true
+            case left: BinaryExpr => isConstExpr(left)
+            case left: ParenExpr => isConstExpr(left)
+            case left: UnaryExpr => isConstExpr(left)
+            case _ => false
+        }
+        if (!isLeftConst) { // early return
+            return false
+        }
+        let isRightConst = match (expr.rightExpr) {
+            case right: LitConstExpr => true
+            case right: BinaryExpr => isConstExpr(right)
+            case right: ParenExpr => isConstExpr(right)
+            case right: UnaryExpr => isConstExpr(right)
+            case _ => false
+        }
+        isRightConst
+    }
+
+    private func isConstExpr(expr: UnaryExpr): Bool {
+        match (expr.op) {
+            ...
+        }
+    }
+
+    private func isConstExpr(expr: ParenExpr): Bool {
+        match (expr.parenthesizedExpr) {
+            case inner: BinaryExpr => isConstExpr(inner)
+            case inner: LitConstExpr => true
+            case inner: ParenExpr => isConstExpr(inner)
+            case inner: UnaryExpr => isConstExpr(inner)
+            case _ => false
+        }
+    }
+
+    public override func visit(expr: BinaryExpr) {
+        if (isConstExpr(expr)) {
+            result.append(expr)
+            breakTraverse() // 不会继续遍历子节点
+        }
+        return
+    }
+}
+```
+```
+...
+let program = parseProgram(tokens)
+program.traverse(visitor)
+```
+- 解析为 AST（抽象语法树）后，使用 `visitor` 访问节点
+- 定位所有 `BinaryExpr`，确保只处理结构合法且可折叠的目标
+- 终止的条件是 `BinaryExpr` 递归到所有子节点没有变量等标识符
+- 仓颉不支持边访问边替换，将结果收集起来
+
+### 处理不同数值类型
+```cj /enum ConstLit/#s
+enum ConstLit <: ToString {
+    Float(Float64) | Int(BigInt)
+
+    public func toToken(): Token { ... }
+    ...
+}
+...
+    match ((left, right)) {
+      case (ConstLit.Float, ConstLit.Float) => ...
+      case (ConstLit.Int, ConstLit.Int) => ...
+    }
+```
+- 整数和浮点数分别使用 `BigInt` 和 `Float64` 类型，避免精度丢失或类型错误。
+- 用 `ConstLit` 枚举包裹值类型，统一抽象、便于扩展。
+
+### 递归计算收集的常量表达式
+```cj /func calculateExpr/#i /calculateExpr/#s
+private func calculateLit(left: ConstLit, op: Token, right: ConstLit): ConstLit {
+    match ((left, right)) {
+        case (ConstLit.Float(left), ConstLit.Float(right)) => ConstLit.Float(calculateFloat(left, op, right))
+        case (ConstLit.Int(left), ConstLit.Int(right)) => ConstLit.Int(calculateInteger(left, op, right))
+        case _ => throw Exception("Unexpected ConstLit")
+    }
+}
+
+private func calculateExpr(expr: LitConstExpr): ConstLit {
+    let token = expr.toTokens()[0]
+    match (token.kind) {
+        case TokenKind.FLOAT_LITERAL => ConstLit.Float(Float64.parse(token.value))
+        case TokenKind.INTEGER_LITERAL => ConstLit.Int(BigInt(token.value))
+        case _ => throw Exception("Unexpected ConstLit")
+    }
+}
+
+private func calculateExpr(expr: Expr): ConstLit {
+    match (expr) {
+        case expr: LitConstExpr => calculateExpr(expr)
+        case expr: BinaryExpr => calculateExpr(expr)
+        case _ => throw Exception("Unexpected Expr")
+    }
+}
+
+private func calculateExpr(expr: BinaryExpr): ConstLit {
+    let left = calculateExpr(expr.leftExpr)
+    let right = calculateExpr(expr.rightExpr)
+    calculateLit(left, expr.op, right)
+}
+```
+
+### 在原始 token 流中直接定位并替换
+
+Tokens 类不是 Array，缺少很多功能
+
+```swift
+let startIndex = findTokenIndex(tokens, left)
+let endIndex = findTokenIndex(tokens, right)
+newTokens = replaceTokensByRange(newTokens, startIndex..endIndex, foldedToken)
+```
+
+通过逆序处理避免 token 替换错位：
+```cj
+public func comparePos(a: Position, b: Position): Ordering {
+    match (a.line.compare(b.line)) {
+        case Ordering.EQ => a.column.compare(b.column)
+        case notEq => notEq
+    }
+}
+...
+exprs.sortBy(stable: false) {
+  b: BinaryExpr, a: BinaryExpr => comparePos(a.beginPos, b.beginPos)
+}
+```
+
+## (e) `generateJsonAst` 自定义功能
+
+在仓颉编程语言中，所有的泛型都是不型变的。这意味着如果A是B的子类型，`ClassName<A>{:cj}`
+和 `ClassName<B>{:cj}`之间没有子类型关系。我们禁止这样的行为以保证运行时的安全。
+
+```cj
+func toJson(decls: ArrayList<Decl>): JsonArray {
+    let arr = JsonArray()
+    for (decl in decls) {
+        let res = match (decl) {
+            case d: ClassDecl => toJson(d)
+            case d: EnumDecl => toJson(d)
+            case d: ExtendDecl => toJson(d)
+            case d: FuncDecl => toJson(d)
+            case d: FuncParam => toJson(d)
+            case d: InterfaceDecl => toJson(d)
+            case d: MacroExpandDecl => toJson(d)
+            case d: MacroDecl => toJson(d)
+            case d: MainDecl => toJson(d)
+            case d: PrimaryCtorDecl => toJson(d)
+            case d: PropDecl => toJson(d)
+            case d: StructDecl => toJson(d)
+            case d: VarDecl => toJson(d)
+            case d: TypeAliasDecl => toJson(d)
+            case d: Decl => return arr
+        }
+        arr.add(res)
+    }
+    arr
+}
+```
+
+### 生成代码
+
+{/* ![](./image.png) */}
+
+- 编译时间 + 800%
+- 放到单独的包里
+
+### astexplorer
+
+```js
+  nodeToRange(node) {
+    if (node.beginPos && node.endPos) {
+      console.log('nodeToRange', node);
+      const start = node.beginPos;
+      const end = node.endPos;
+      const startOffset = this.getOffset(start);
+      const endOffset = this.getOffset(end);
+      return [startOffset, endOffset];
+    } else if (node.pos && node.value) {
+      const start = node.pos;
+      const end = node.pos + node.value.length;
+      const startOffset = this.getOffset(start);
+      const endOffset = this.getOffset(end);
+      return [startOffset, endOffset];
+    }
+  },
+
+  opensByDefault(node, key) {
+    return node._type || Array.isArray(node);
+  },
+```

@@ -21,7 +21,7 @@ const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 const rssFooterXml = "</feed>";
 
-const posts = (await getBlogPosts()).filter((post) => post.data.draft !== true);
+const posts = await getBlogPosts();
 let items = await Promise.all(
   posts.map(async (post) => {
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
@@ -74,12 +74,12 @@ function xhtmlify(s: string, link: string): string {
   const $ = load(html);
   html = "";
   // console.log($('h1').html()?.slice(0, 500));
-  $('h1').remove();
-  $('nav').remove();
-  $('footer').remove();
-  $('section#comments').remove();
-  $('.info').remove();
-  $('.licence').remove();
+  $("h1").remove();
+  $("nav").remove();
+  $("footer").remove();
+  $("section#comments").remove();
+  $(".info").remove();
+  $(".licence").remove();
   $("svg.typst-doc path").remove();
   // const stylesheets = $("link[rel=stylesheet]");
   // const body = $("body").html();

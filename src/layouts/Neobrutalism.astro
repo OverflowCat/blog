@@ -28,19 +28,6 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
   :root {
     --font-sans-en: "IBM Plex Sans", Lato, "PT Sans", "Noto Sans", "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
-    --font-sans-ja: "IBM Plex Sans JP", "Noto Sans JP", "Noto Sans CJK JP", "MS Meiyo", "Meiryo",
-      "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo",
-      "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
-    --font-mono: "IBM Plex Mono",
-    "JetBrains Mono", "JetBrains Mono NF",
-    "JetBrainsMono NF",
-    "更纱等距黑体",
-    FiraCode, "Fira Code", "FiraCode NF",
-    "Noto Sans CJK Mono SC", "Source Code Pro",
-    "Noto Sans Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP",
-    "Noto Sans Mono CJK KR", "Noto Sans Mono CJK TC", "Lucida Console",
-    Liberation Mono, DejaVu Sans Mono, Consolas, Bitstream Vera Sans Mono,
-    "Courier New", "FiraCode NF", monospace;
     --font-size-fig: 1.12rem;
     --bg-tag: #83254f;
     --bg-tag-hover: #c82c72;
@@ -82,11 +69,6 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
     max-inline-size: calc(100dvi - 2em);
     min-inline-size: 320px;
   }
-
-  .resizable {
-    resize: inline;
-  }
-
 
   @media (max-width: 480px) {
     .resizable {
