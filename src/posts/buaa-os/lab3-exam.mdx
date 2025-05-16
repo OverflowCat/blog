@@ -1,0 +1,297 @@
+---
+title: BUAA OS Lab3 Exam
+date: 2025-04-24T14:27:58.304Z
+noscript: true
+licence: false
+layout: "@/layouts/Default.astro"
+tags:
+  - BUAA-OS
+math: mathjax
+categories: []
+vert: false
+draft: true
+---
+
+import Callout from "@/components/Callout.astro";
+
+## 题目描述
+
+课下我们在 MOS 系统中实现了时间片轮转算法（Round-Robin，RR）用于进程调度。在本题中，我们将实现最早截止时间优先算法（Earliest Deadline First，EDF），用于调度周期性进程。
+
+## 题目要求
+
+在本题中，你需要实现函数 `env_create_edf` 用于创建周期性进程，并返回指向被创建进程的进程控制块的指针。该函数声明如下：
+
+```c
+struct Env *env_create_edf(const void *binary, size_t size, int runtime, int period);
+```
+
+其中，参数 `binary`、`size` 与 `env_create` 函数中的定义相同，`runtime`、`period` 为 EDF 调度参数，以时间片为单位：
+
+- `runtime` 表示进程在每个周期中需要运行的时间
+- `period` 表示进程的运行周期
+
+在本题中，我们将 MOS 系统两次时钟中断之间的间隔定义为一个时间片，将 MOS 首次调用 `schedule` 函数直至下次时钟中断前的间隔作为第 0 个时间片，再次调用 `schedule` 函数直至下次时钟中断前的间隔作为第 1 个时间片， 以此类推。
+
+对于一个运行周期为 `period` 的进程来说，其第 \( t \) 个周期（从 0 开始计数）的范围为 MOS 的第
+`[period * t, period * (t + 1) )`
+个时间片，相应地，进程的截止时间即为该周期结束时间。
+
+对于每个使用 `env_create_edf` 创建的进程，你需要使用 EDF 算法来**可能保证**进程在每个周期内运行 `runtime` 个时间片，但**不一定连续**，也**不一定运行完**（详见调度规则和示例）。
+
+### 调度规则
+
+1. 新增的 EDF 算法与 MOS 原有的 RR 算法拥有**各自独立**的调度队列。EDF 调度队列中包含所有使用 `env_create_edf` 创建的进程，而 RR 调度队列（MOS 原有的调度队列）中包含所有使用 `env_create` 创建的进程。
+2. 当时钟中断产生时，若 EDF 调度队列中存在尚未运行完当前周期时间片的进程，**则选择截止时间最早**的进程调度。如果多个进程的截止时间相同，则选择 `env_id` 最小的进程调度。
+3. 从 EDF 调度队列选取进程后，**仅需使其运行一个时间片**，并在下个时钟中断产生时使用第二条规则，重新选择进程调度。本题中要求实现的 EDF 调度算法不受 `yield` 参数和优先级的影响，只与进程的**截止时间**有关。
+4. 如果 EDF 调度队列为空，或其中的所有进程均已运行完当前周期的时间片，则使用默认实现的 RR 算法调度 RR 调度队列中的进程。需要注意的是，EDF 调度的进程可以在**任何时刻**抢占 RR 调度的进程，且 RR 调度的进程运行的时间**不会被复用**，**不会发生挤占**。  
+   例如，如果 RR 算法选择调度一个优先级为 5 的进程 A，A 已经使其运行了 3 个时间片，此时 EDF 队列中产生了可以被调度的进程 B，则进程 B 会抢占进程 A 的运行，直到进程 B 运行完当前周期的时间片后，进程 A 继续运行剩余的 2 个时间片。
+   > 我被这条给坑了，以为是说 RR 算法的进程在被 EDF 调度的进程切出去之后，resume 时还接着上次选择的 RR 算法的进程运行。
+5. 此外，如果在某个周期内，使用 EDF 算法**未能保证进程运行完 `runtime` 个时间片**，则剩余的时间片**不会被保留至下周期**，而是**直接作废**。
+
+### 示例
+
+进程按照下表的顺序依次加入 RR 调度队列和 EDF 调度队列：
+
+| 进程名 | 优先级 | 每个周期内需要运行的时间片 | 执行周期 |
+| ------ | ------ | ------------------------ | -------- |
+| A      | 1      | -                        | -        |
+| B      | 3      | -                        | -        |
+| C      | -      | 1                        | 5        |
+| D      | -      | 2                        | 7        |
+
+注：由于课下代码中进程总是插入调度链表的头部，因此 RR 调度队列中的实际顺序为 B、A。
+
+- 第 0 个时间片，进程C、D 均位于第 0 个运行周期，未运行完当前周期的时间片，进程 C 截止时间为 5，进程 D 截止时间为 7，选择截止时间最早的进程 C 运行；
+- 第 1 个时间片，进程 C 已运行完当前周期的时间片，而进程 D 未运行完，选择进程 D 运行；
+- 第 2 个时间片，进程 C 已运行完当前周期的时间片，而进程 D 未运行完，选择进程 D 运行；
+- 第 3 个时间片，进程 C、D 已运行完当前周期的时间片，因此选择 RR 调度队列中的进程 B 运行三个时间片
+- 第 4 个时间片，进程 C、D 已运行完当前周期的时间片，因此继续选择进程 B 运行剩余的两个时间片；
+- 第 5 个时间片，进程 D 已运行完当前周期的时间片，而进程 C 进入第 1 个运行周期，未运行完当前周期的时间片，截止时间为 10，选择进程 C 运行；
+- 第 6 个时间片，进程 C、D 已运行完当前周期的时间片，因此继续选择进程 B 运行剩余的一个时间片；
+- 第 7 个时间片，进程 C 已运行完当前周期的时间片，而进程 D 进入第 1 个运行周期，未运行完当前周期的时间片，截止时间为 14，选择进程 D 运行；
+- 第 8 个时间片，进程 C 已运行完当前周期的时间片，而进程 D 未运行完，选择进程 D 运行；
+- 第 9 个时间片，进程 C、D 已运行完当前周期的时间片，RR 调度队列中的进程 B 已运行完分配的时间片，被移动至调度队列尾部，因此选择进程 A 运行一个时间片；
+
+### 参考实现思路
+
+1. 在 `include/env.h` 中添加以下声明：
+    ```c
+    LIST_HEAD(Env_edf_sched_list, Env);
+
+    extern struct Env_edf_sched_list env_edf_sched_list; // EDF 调度队列
+
+    struct Env *env_create_edf(const void *binary, size_t size, int runtime, int period);
+    ```
+    注：由于 EDF 算法不需要在队尾插入或取出的操作，因此我们推荐使用 LIST 结构实现 EDF 调度队列。
+
+2. 在 `kern/env.c` 中添加 `env_edf_sched_list` 的定义，并在 `env_init` 函数中初始化 `env_edf_sched_list`。
+
+    ```c
+    struct Env_edf_sched_list env_edf_sched_list; // EDF 调度队列
+    ```
+
+> 注意我们只需要这一个，不用像作业一样区分 `env_sched_list` 和 `env_free_list`。
+
+3. 在 `include/env.h` 的 `Env` 结构体中添加以下字段：
+
+    ```c
+    LIST_ENTRY(Env) env_edf_sched_link; // 构造 env_edf_sched_list 的链表项
+    u_int env_edf_runtime;              // EDF 调度参数：进程在每个周期内需要运行的时间片
+    u_int env_edf_period;               // EDF 调度参数：进程的运行周期
+    u_int env_period_deadline;          // 进程当前周期的截止时间
+    u_int env_runtime_left;             // 进程当前周期剩余的时间片
+    ```
+
+4. 在 `kern/env.c` 中按照 `env_create` 实现 `env_create_edf` 函数，其中需要初始化进程控制块的相关字段，参考如下：
+
+```c
+struct Env *env_create_edf(const void *binary, size_t size, int runtime, int period);
+...
+``` 
+
+```c diff
+// diff --git a/kern/env.c b/kern/env.c
+@@ -15,6 +15,9 @@ static struct Env_list env_free_list; // Free list
+  // Invariant: 'env' in 'env_sched_list' iff. 'env->env_status' is 'RUNNABLE'.
+  struct Env_sched_list env_sched_list; // Runnable list
+ 
++ // 注：由于 EDF 算法不需要在队尾插入或取出的操作，因此我们推荐使用 LIST 结构实现 EDF 调度队列。
++ struct Env_edf_sched_list env_edf_sched_list; // EDF 调度队列
++ 
+  static Pde *base_pgdir;
+  
+  static uint32_t asid_bitmap[NASID / 32] = {0};
+@@ -402,6 +405,31 @@ struct Env *env_create(const void *binary, size_t size, int priority) {
+  	return e;
+  }
+ 
++ struct Env *env_create_edf(
++     // 其中，参数 binary、size 与 env_create 函数中的定义相同
++     const void *binary, size_t size,
++     // runtime、period 为 EDF 调度参数，以时间片为单位：
++     // runtime 表示进程在每个周期内需要运行的时间
++     int runtime,
++     // period 表示进程的运行周期。
++     int period) {
++   struct Env *e;
++   /* ... */
++   env_alloc(&e, 0);
++ 
++   e->env_edf_runtime = runtime;
++   e->env_edf_period = period;
++   e->env_period_deadline = 0; // 初始化为 0，使进程在首次调用 schedule
++                               // 函数时触发条件判断，进入首个运行周期
++   e->env_status = ENV_RUNNABLE;
++ 
++   /* ... */
++ 	load_icode(e, binary, size);
++ 	LIST_INSERT_HEAD(&env_edf_sched_list, e, env_edf_sched_link);
++ 
++ 	return e;
++ }
++ 
+```
+
+```c diff
+  #include <pmap.h>
+  #include <printk.h>
+
++ struct Env *last_rr_env;
+
+  /* Overview:
+   *   Implement a round-robin scheduling to select a runnable env and schedule it
+   * using 'env_run'.
+   * 'noreturn'.
+   */
+  void schedule(int yield) {
+    static int count = 0; // remaining time slices of current env
+-   struct Env *e = curenv;
+
+    static int clock = -1; // 当前时间片，从 0 开始计数
++   clock++;
++   /* 在本题中，我们将 MOS 系统两次时钟中断之间的间隔定义为一个时间片，
++    * 将 MOS 首次调用 schedule 函数直至下次时钟中断前的间隔作为第 0 个时间片，
++    * 再次调用 schedule 函数直至下次时钟中断前的间隔作为第 1 个时间片，以此类推。
++    */
++ 
++   /* (1) 遍历 env_edf_sched_list，
++    * 如果进程进入了新的运行周期（可通过 clock == env_period_deadline 判断），
++    * 则更新 env_period_deadline，
++    * 并将 env_runtime_left 设置为 env_edf_runtime。 */
++   /* 在此实现你的代码 */
++   struct Env *env; // 循环变量
++   LIST_FOREACH(env, &env_edf_sched_list, env_edf_sched_link) {
++     // 在这里对 env 进行操作
++     // 此外，如果在某个周期内，
++     // 使用 EDF 算法未能保证某进程运行完 runtime 个时间片，
++     // 则剩余的时间片不会被保留至下一周期，而是直接作废。
++     if (env->env_period_deadline == clock) {
++       env->env_period_deadline = clock + env->env_edf_period;
++       env->env_runtime_left = env->env_edf_runtime;
++     }
++   }
++ 
++   /* (2) 遍历 env_edf_sched_list，
++    * 选取 env_runtime_left 大于 0 且 env_period_deadline 最小的进程调度
++    * （若相同，则选择 env_id 最小的进程）。
++    * 如果不存在这样的进程，则不进行调度。 */
++   /* 在此实现你的代码 */
++   u_int min_deadline = 11451419;
++   u_int curr_deadline;
++   struct Env *selected_env = NULL;
++   LIST_FOREACH(env, &env_edf_sched_list, env_edf_sched_link) {
++     // 在这里对 env 进行操作
++     if (env->env_runtime_left > 0) {
++       curr_deadline = env->env_period_deadline;
++       if (curr_deadline < min_deadline) {
++         selected_env = env;
++       } else if (curr_deadline == min_deadline) {
++         // then selected_env is not NULL
++         if (selected_env->env_id > env->env_id)
++           selected_env = env;
++       }
++     }
++   }
++   /* printk("min_deadline %u\n", min_deadline); */
+
++   struct Env *e = last_rr_env;
++   struct Env *e_to_run;
++   // 请根据提示修改这行代码
++   /* We always decrease the 'count' by 1.
++    *
++    * If 'yield' is set, or 'count' has been decreased to 0, or 'e' (previous
++    * You may want to use macros below:
++    *   'TAILQ_FIRST', 'TAILQ_REMOVE', 'TAILQ_INSERT_TAIL'
++    */
++   /* 请将 Exercise 3.12 中的代码粘贴至此 */
++   // 如果 EDF 调度队列为空，或其中的所有进程均已运行完当前周期的时间片，
++   // 则使用课下实现的 RR 算法调度 RR 调度队列中的进程。
++   // 需要注意的是，EDF 调度的进程可以在任何时刻抢占 RR 调度的进程，
++   // 且 RR 调度的进程运行的时间片在被 EDF 抢占后不发生变化。
++   // 例如，如果 RR 算法选择调度一个优先级为 5 的进程 A，
++   // 并已经使其运行了 3 个时间片，此时 EDF 队列中产生了
++   // 可以被调度的进程 B，则进程 B 会抢占进程 A 的运行，
++   // 直至进程 B 运行完当前周期的时间片后，进程 A 继续运行剩余的 2 个时间片。
++   if (selected_env != NULL) {
++     /* printk("b1: selected! \n"); */
++     /* printk("selected_env %u\n", selected_env->env_id); */
++     // 从 EDF 调度队列选取进程后，你仅需使其运行一个时间片，
++     // 并在下个时钟中断产生时使用第二条规则，重新选择进程调度。
++     // 本题中要实现的 EDF 调度算法不受 yield 参数和进程优先级的影响，
++     // 只与进程的截止时间有关。
++     e_to_run = selected_env;
++     selected_env->env_runtime_left -= 1;
++   }
+    /* Exercise 3.12: Your code here. */
+    // 判断是否需要切换进程：
++   else {
+     /* if (e != NULL) { */
+     /* printk("b2: last rr is not NULL! \n"); */
+     /* e_to_run = e; */
+     /* count--; */
+     /* ran_last = 1; */
+     if (yield != 0 ||
+         //     显式请求让出
+         count == 0 ||
+         //     时间片耗尽、
+         e == NULL ||
+         //     历史没有进程运行过、
+         e->env_status != ENV_RUNNABLE
+         //     当前进程已经不处于就绪状态
+     ) {
+       /* printk("b3/n"); */
+       // （4）如果当前进程 e 仍然“就绪”，则把它从队列头移到队列尾，实现“轮转”
+       if (e != NULL && e->env_status == ENV_RUNNABLE) {
+         TAILQ_REMOVE(&env_sched_list, e, env_sched_link);
+         TAILQ_INSERT_TAIL(&env_sched_list, e, env_sched_link);
+       }
+       // （5）从调度队列头取下一个就绪进程
+       e = TAILQ_FIRST(&env_sched_list);
+       // （6）如果队列为空，则没有可运行的进程，直接 panic
+       if (e == NULL) {
+         panic("schedule: no runnable envs\n");
+       }
+       // （7）将新选中进程的时间片数初始化为其优先级值
+       count = e->env_pri;
+       last_rr_env = e;
+     }
+     // （5）从调度队列头取下一个就绪进程
+     e = TAILQ_FIRST(&env_sched_list);
+     // （6）如果队列为空，则没有可运行的进程，直接 panic
+     if (e == NULL) {
+       panic("schedule: no runnable envs\n");
+     }
+     // （7）将新选中进程的时间片数初始化为其优先级值
++    count = e->env_pri;
++    count--;
++    e_to_run = e;
+   }
+   // （8）消费一个时间片
+   count--;
+ 
+   // （9）真正切换执行到进程 e（这个调用不会返回）
+-   env_run(e);
++   env_run(e_to_run);
+  }
+```

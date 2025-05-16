@@ -1,0 +1,28 @@
+---
+title: 手写一个 astro-icon
+date: 2025-05-06T12:02:37.871Z
+noscript: true
+licence: false
+layout: "@/layouts/Default.astro"
+categories:
+  - Changelog
+  - 页面仔的自我修养
+tags:
+  - "Astro"
+vert: false
+draft: true
+---
+
+一直以来我的博客的开发体验都不是很好：即使不是依赖变更后的冷启动，仅是在有缓存的情况下，Astro 的 ``dev`` 在
+ready 前和渲染出第一个页面这两个过程之间，都需要十几秒以上的时间。最近再次心血来潮，想看看到底是谁干的好事。
+
+照例 `dev`，然后发现，在 [astro-icon] 的输出后整个卡住了。遂以
+`--verbose` 模式启动，然后看到下面两行 +23s 和 +22s： 
+
+![`dev --verbose` 的输出](https://remnote-user-data.s3.amazonaws.com/1mSx_BAni4gRtmvBtSQTzEpBKSIItNDqFGxRo44fO-npmBt9gySDv0LHlQxDVCHQatUi8llfNfCjMm-gXUIVjbNxDhg2r1aewMqVD-uIRTclP7y4dzv4tC9CzvxPLq2W.png)
+
+import code from "@/components/Icon.astro?raw";
+
+import { Code } from "astro:components";
+
+<Code lang="astro" code={code} theme="rose-pine-dawn" />
