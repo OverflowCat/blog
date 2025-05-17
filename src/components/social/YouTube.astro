@@ -1,17 +1,25 @@
 ---
 export type Props = {
-    id: string;
-}
+  id: string;
+  "class:list": string[] | string;
+};
 const { id } = Astro.props;
 ---
 
-<script defer is:inline
-    src="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.js"
+<script
+  defer
+  is:inline
+  src="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.js"
 ></script>
 <link
-    rel="stylesheet"
-    href="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.css"
+  rel="stylesheet"
+  href="https://paulirish.github.io/lite-youtube-embed/src/lite-yt-embed.css"
 />
-<div class="yt">
-    <lite-youtube videoid={id}></lite-youtube>
+<div class:list={Astro.props['class:list'] || "yt"}>
+  <img
+    class="hidden"
+    src=`https://i.ytimg.com/vi_webp/${id}/sddefault.webp`
+    alt="YouTube video player"
+  />
+  <lite-youtube videoid={id}> </lite-youtube>
 </div>

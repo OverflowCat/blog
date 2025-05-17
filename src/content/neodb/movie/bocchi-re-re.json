@@ -1,0 +1,79 @@
+{
+"id": "https://neodb.social/movie/2OZY3PuhyBar8Os53mFvsK",
+"type": "Movie",
+"uuid": "2OZY3PuhyBar8Os53mFvsK",
+"url": "/movie/2OZY3PuhyBar8Os53mFvsK",
+"api_url": "/api/movie/2OZY3PuhyBar8Os53mFvsK",
+"category": "movie",
+"parent_uuid": null,
+"display_title": "剧场总集篇 『孤独摇滚！』 Re:Re:",
+"external_resources": [
+{
+"url": "https://movie.douban.com/subject/36613553/"
+},
+{
+"url": "https://www.themoviedb.org/movie/1201387"
+}
+],
+"title": "剧场总集篇 『孤独摇滚！』 Re:Re:",
+"description": "",
+"localized_title": [
+{
+"lang": "zh-cn",
+"text": "剧场总集篇 『孤独摇滚！』 Re:Re:"
+},
+{
+"lang": "ja",
+"text": "劇場総集編ぼっち・ざ・ろっく！ Re:Re:"
+},
+{
+"lang": "ja",
+"text": "劇場総集編 ぼっち・ざ・ろっく！后編‎"
+}
+],
+"localized_description": [],
+"cover_image_url": "https://neodb.social/m/item/doubanmovie/2024/03/21/f76abc6a-aee8-4f7c-9c41-c1f368bed4a4.webp",
+"rating": 7.6,
+"rating_count": 8,
+"rating_distribution": [
+0,
+12,
+0,
+50,
+37
+],
+"tags": [
+"电影院"
+],
+"brief": "",
+"orig_title": "劇場総集編ぼっち・ざ・ろっく！ Re:Re:",
+"director": [
+"斋藤圭一郎"
+],
+"playwright": [
+"吉田惠里香"
+],
+"actor": [
+"青山吉能",
+"铃代纱弓",
+"水野朔",
+"长谷川育美",
+"内田真礼",
+"千本木彩花"
+],
+"genre": [
+"剧情",
+"动画",
+"音乐"
+],
+"language": [
+"日语"
+],
+"area": [
+"日本"
+],
+"year": 2024,
+"site": "",
+"duration": "",
+"imdb": null
+}

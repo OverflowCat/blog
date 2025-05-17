@@ -1,0 +1,234 @@
+{
+"id": "https://neodb.social/movie/1UKRbng4exUWF9VlZlsxR4",
+"type": "Movie",
+"uuid": "1UKRbng4exUWF9VlZlsxR4",
+"url": "/movie/1UKRbng4exUWF9VlZlsxR4",
+"api_url": "/api/movie/1UKRbng4exUWF9VlZlsxR4",
+"category": "movie",
+"parent_uuid": null,
+"display_title": "猫猫的奇幻漂流",
+"external_resources": [
+	{
+		"url": "https://minreol.dk/movie/63h06CjJfb7ZdFk1c5xRba"
+	},
+	{
+		"url": "https://www.themoviedb.org/movie/823219"
+	},
+	{
+		"url": "https://www.imdb.com/title/tt4772188/"
+	},
+	{
+		"url": "https://eggplant.place/movie/2fOGh6h70ar3LJnAkUNEUY"
+	},
+	{
+		"url": "https://movie.douban.com/subject/35603727/"
+	},
+	{
+		"url": "https://bgm.tv/subject/496916"
+	}
+],
+"title": "猫猫的奇幻漂流",
+"description": "世界似乎即将毁灭，到处都是人类的遗迹。一只猫的家园被一场大洪水摧毁，它在一艘载满了不同动物的船上找到了避难所。尽管它们之间存在差异，但它必须与它们合作，面临各种未知的挑战。",
+"localized_title": [
+	{
+		"lang": "ko",
+		"text": "플로우"
+	},
+	{
+		"lang": "ja",
+		"text": "Straume"
+	},
+	{
+		"lang": "pt",
+		"text": "Straume"
+	},
+	{
+		"lang": "de",
+		"text": "Straume"
+	},
+	{
+		"lang": "fr",
+		"text": "Flow, le chat qui n'avait plus peur de l'eau"
+	},
+	{
+		"lang": "es",
+		"text": "Flow, un mundo que salvar"
+	},
+	{
+		"lang": "en",
+		"text": "Flow"
+	},
+	{
+		"lang": "zh-hk",
+		"text": "貓貓的奇幻漂流"
+	},
+	{
+		"lang": "zh-tw",
+		"text": "喵的奇幻漂流"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "猫猫的奇幻漂流"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "漂流"
+	},
+	{
+		"lang": "en",
+		"text": "Straume"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "黑猫的奇幻漂流"
+	},
+	{
+		"lang": "pt",
+		"text": "Flow - À Deriva"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "喵的奇幻漂流"
+	},
+	{
+		"lang": "nn",
+		"text": "Straume"
+	},
+	{
+		"lang": "nb",
+		"text": "Straume"
+	},
+	{
+		"lang": "no",
+		"text": "Straume"
+	},
+	{
+		"lang": "sv",
+		"text": "Flow - katten som slutade vara rädd för vatten"
+	},
+	{
+		"lang": "da",
+		"text": "Straume"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "喵的奇幻漂流(台)"
+	},
+	{
+		"lang": "de",
+		"text": "Flow"
+	}
+],
+"localized_description": [
+	{
+		"lang": "ko",
+		"text": "대홍수가 세상을 덮친 뒤, 유일한 피난처가 된 배 한 척을 타고 다양한 동물 친구들과 항해를 시작한 ‘고양이’의 눈부신 모험담"
+	},
+	{
+		"lang": "fr",
+		"text": "Un chat se réveille dans un univers envahi par l’eau où toute vie humaine semble avoir disparu. Il trouve refuge sur un bateau avec un groupe d’autres animaux. Mais s’entendre avec eux s’avère un défi encore plus grand que de surmonter sa peur de l'eau ! Tous devront désormais apprendre à surmonter leurs différences et à s’adapter au nouveau monde qui s’impose à eux."
+	},
+	{
+		"lang": "es",
+		"text": "El mundo parece estar llegando a su fin, repleto de vestigios de presencia humana. Gato es un animal solitario, pero como su hogar es arrasado por una gran inundación, encuentra refugio en un barco poblado por varias especies, y tendrá que hacer equipo con ellas a pesar de sus diferencias. En el solitario barco que navega por místicos paisajes desbordados, navegan por los desafíos y peligros de adaptarse a este nuevo mundo.."
+	},
+	{
+		"lang": "en",
+		"text": "A solitary cat, displaced by a great flood, finds refuge on a boat with various species and must navigate the challenges of adapting to a transformed world together."
+	},
+	{
+		"lang": "zh-hk",
+		"text": "拉脫維亞新銳導演Gints Zilbalodis繼一鳴驚人的首作《Away》後，帶來第二部動畫長片。這次以3D動畫捕捉貓貓探索沒有人類、沒有語言的新世界，橫掃安錫國際動畫影展評審團獎等四項大獎。  一場大洪水沖毀了黑貓的安居之所，孤獨的牠登上一艘由不同動物組成的挪亞方舟，成為了牠的避難所。於一個寧靜世界漂流歷險的貓貓，在如夢似幻的旅途上互相扶持，與其他動物同伴面對災難後帶來的挑戰與危險。"
+	},
+	{
+		"lang": "zh-tw",
+		"text": "當世界即將走向末日，卻充斥著人類存在的痕跡。而當一隻黑貓的家園被大洪水摧毀後， 登上一艘小船當作牠的避難所，卻發現船上住著各式各樣的動物，儘管牠們無法溝通，但 牠們仍必須合作，穿梭於神秘的漂流世界，面對各種挑戰和危險。"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "世界似乎即将毁灭，到处都是人类的遗迹。一只猫的家园被一场大洪水摧毁，它在一艘载满了不同动物的船上找到了避难所。尽管它们之间存在差异，但它必须与它们合作，面临各种未知的挑战。"
+	},
+	{
+		"lang": "zh-cn",
+		"text": "世界似乎即将毁灭，到处都是人类的遗迹。一只猫的家园被一场大洪水摧毁，它在一艘载满了不同动物的船上找到了避难所。尽管它们之间存在差异，但它必须与它们合作，面临各种未知的挑战。金兹·兹巴洛迪斯在创作《漂流》的故事时，借鉴了公路电影中不断变化的视角，从一只猫的视角出发，带领观众见证洪水袭来时的众生相。作为宫崎骏资深影迷的同时，兹巴洛迪斯还从库布里克、希区柯克以及阿方索·卡隆的作品中汲取了不少养分。独特的叙事视角和强有力的影视积累，让他的第二部动画长片《漂流》入围2024年戛纳电影节一种关注单元。"
+	},
+	{
+		"lang": "pt",
+		"text": "O gato é um animal solitário, mas quando a sua casa é devastada por uma grande inundação, encontra refúgio num barco povoado por várias espécies, e terá de se juntar a elas apesar das suas diferenças."
+	},
+	{
+		"lang": "zh-cn",
+		"text": "　　一只略带个性主义和焦虑的猫面对水势上涨，遇到了一只狐猴、一只拉布拉多、一只水豚和一只鸟，面对逆境，他们别无选择，只能合作。"
+	},
+	{
+		"lang": "sv",
+		"text": "En modig katt råkar ut för en stor flodvåg. Katten räddar sig upp på en båt tillsammans med en glad hund, en trött kapybara, en busig lemur och en stram fågel. Djuren gör en äventyrlig färd genom underbar natur och övergivna städer - en ny, främmande värld där samarbete och vänskap är viktigast av allt."
+	},
+	{
+		"lang": "zh-cn",
+		"text": "影片讲述洪水淹没世界，猫猫爬上了一艘帆船，由此开启了一段非凡的旅程。在旅途中，它先后邂逅了水豚、狗狗、狐猴、蛇鹫等动物。性格迥异的它们从彼此看不顺眼到并肩作战，共同面对波涛汹涌的大海和重重困难。"
+	},
+	{
+		"lang": "de",
+		"text": "Kaum hat sich die kleine schwarze Katze den Schlaf aus den Augen gerieben, muss sie erschrocken feststellen, dass eine gewaltige Flut die alte Welt unter sich begräbt. Gerade noch so rettet sie sich auf ein Segelboot, wo nach und nach auch ein diebisches Äffchen, ein gutmütiger Labrador, ein schläfriges Wasserschwein und ein stolzer Sekretärvogel Zuflucht finden. Schon bald wird klar: Ihre Verschiedenheit ist ihre Stärke und gemeinsam stellen sie sich den Herausforderungen der neuen Welt."
+	}
+],
+"cover_image_url": "https://neodb.social/m/item/doubanmovie/2024/06/23/566914c0-b514-4cc7-bea4-f5d90945a704.webp",
+"rating": 8.3,
+"rating_count": 317,
+"rating_distribution": [
+	0,
+	0,
+	11,
+	44,
+	43
+],
+"tags": [
+	"2020s",
+	"2024",
+	"2025",
+	"公路",
+	"冒险",
+	"动物",
+	"动画",
+	"动画电影",
+	"動畫",
+	"可愛",
+	"哲理",
+	"地区 法国",
+	"奇幻",
+	"奥斯卡",
+	"拉脱维亚",
+	"比利时",
+	"法国",
+	"猫",
+	"电影",
+	"诙谐"
+],
+"brief": "世界似乎即将毁灭，到处都是人类的遗迹。一只猫的家园被一场大洪水摧毁，它在一艘载满了不同动物的船上找到了避难所。尽管它们之间存在差异，但它必须与它们合作，面临各种未知的挑战。",
+"orig_title": "Straume",
+"director": [
+	"金兹·兹巴洛迪斯"
+],
+"playwright": [
+	"金兹·兹巴洛迪斯"
+],
+"actor": [],
+"genre": [
+	"动画",
+	"奇幻",
+	"冒险"
+],
+"language": [
+	"无对白"
+],
+"area": [
+	"拉脱维亚",
+	"法国",
+	"比利时"
+],
+"year": 2024,
+"site": "",
+"duration": "85分钟",
+"imdb": "tt4772188"
+}
