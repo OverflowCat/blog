@@ -5,6 +5,7 @@ export const decoration = z.union([
     z.literal("world"),
     z.literal("langs"),
     z.literal("harmony"),
+    z.null(),
 ]);
 
 export type Decoration = typeof decoration._type;
