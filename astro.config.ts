@@ -1,6 +1,4 @@
 import { defineConfig } from "astro/config";
-// astro
-// import node from '@astrojs/node';
 
 // heading ids
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
@@ -22,90 +20,8 @@ import { typst } from "astro-typst";
 import remarkSampKbd from "remark-samp-kbd";
 // https://sat0shi.dev/posts/highlight-line-on-codeblock-with-astro/
 
-import { manjuify } from "./src/scripts/manju.ts";
 import remarkRuby from "remark-ruby";
 import remarkDirect from "remark-directive";
-import { h } from "hastscript";
-import { visit } from "unist-util-visit";
-import type { Node } from "mdast";
-function myRemarkPlugin() {
-	return (tree: Node) => {
-		visit(tree, (node) => {
-			if (
-				node.type === "containerDirective" ||
-				node.type === "leafDirective" ||
-				node.type === "textDirective"
-			) {
-				const data = node.data || (node.data = {});
-				const hast = h(node.name, node.attributes || {});
-				let name = hast.tagName;
-				let props = hast.properties;
-				switch (name) {
-					case "j":
-						if (props) {
-							name = "abbr";
-							props = {
-								title: props.m || props.e || props.p,
-								lang: "zh-juai",
-							};
-						}
-						break;
-					case "m": // Möllendorff
-						name = "span";
-						// console.log(node);
-						/*
-						{
-						type: 'textDirective',
-						name: 'm',
-						attributes: {},
-						children: [ { type: 'text', value: 'ilha -i', position: [Object] } ],
-						position: {
-							start: { line: 18, column: 87, offset: 1237 },
-							end: { line: 18, column: 98, offset: 1248 }
-						},
-						data: {}
-						}
-						*/
-						// @ts-ignore
-						for (const child of node.children) {
-							if (child.type === "text") child.value = manjuify(child.value);
-						}
-						// console.log(node);
-						props = {
-							lang: "mnc",
-						};
-						break;
-					case "de":
-						name = "span";
-						props = {
-							lang: "de",
-						};
-						break;
-					case "en":
-						name = "span";
-						props = {
-							lang: "en",
-						};
-						break;
-					case "up":
-						name = "span";
-						props = {
-							className: ["upright"],
-						};
-						break;
-					case "yoko":
-						name = "span";
-						props = {
-							className: ["yoko"],
-						};
-						break;
-				}
-				data.hName = name;
-				data.hProperties = props;
-			}
-		});
-	};
-}
 
 // @ts-ignore
 import remarkFigureCaption from "gridsome-remark-figure-caption"; // "@microflash/remark-figure-caption";
@@ -117,6 +33,7 @@ import svelte from "@astrojs/svelte";
 // import qwik from "@qwikdev/astro";
 
 import { rehypePipe } from "./src/scripts/rehype/common.ts";
+import { myRemarkPlugin } from "./src/scripts/remark/custom.ts";
 
 // https://astro.build/config
 export default defineConfig({

@@ -85,6 +85,7 @@ export const postSchemaGen = (ctx: SchemaContext) => z
 		hant: z.boolean().optional(),
 		vert: z.boolean().optional(),
 		theme: z.boolean().or(z.string()).optional(),
+		base: z.string().url().optional(), // base URL for URL-only img
 	})
 	// .refine((data) => !(data.math && data.vert), {
 	// 	message: "Math is not supported in vertical mode.",
