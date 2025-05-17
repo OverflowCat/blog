@@ -7,6 +7,8 @@ import Pn from "@/components/Pn.astro";
 import { Code } from "astro:components";
 import Bar from "@/templates/Bar.astro";
 import "@/styles/monospace.less";
+import "@/styles/article.less";
+import Conditions from "./conditions.md";
 
 const EXAMPLE = `title: 新世界的大门
 href: https://blog.xinshijiededa.men
@@ -252,16 +254,18 @@ Astro.locals.noscript = true;
     />
     <!-- avatar="https://avatars.githubusercontent.com/u/8687182?v=4" -->
   </ul>
-
-  <h1 id="subscribe">订阅全部</h1>
-  <p class="info line-height-loose">
-    你可以使用此 <a
-      id="opml"
-      class="rounded bg-amber text-black p-2 m-inline-2 decoration-none"
-      href="/friends.opml">OPML 文件</a
-    >订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
-  </p>
-  <h1 id="exchange">交换友链</h1>
+  <article id="post">
+    <h1 id="subscribe">订阅全部</h1>
+    <p class="info line-height-loose">
+      你可以使用此 <a
+        id="opml"
+        class="rounded bg-amber text-black p-2 m-inline-2 decoration-none"
+        href="/friends.opml">OPML 文件</a
+      >订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
+    </p>
+    <h1 id="exchange">交换友链</h1>
+    <Conditions />
+  </article>
   <h2 id="self">本站信息</h2>
   <style is:global>
     .astro-code {
