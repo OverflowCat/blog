@@ -33,8 +33,8 @@ importers:
         specifier: ^7.0.13
         version: 7.0.13(@types/node@22.15.19)(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(svelte@5.31.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       '@builder.io/qwik':
-        specifier: ^1.13.0
-        version: 1.13.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
+        specifier: ^1.14.1
+        version: 1.14.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
       '@flla/qwik-lottie':
         specifier: ^0.2.0
         version: 0.2.0
@@ -64,7 +64,7 @@ importers:
         version: 0.6.0(@myriaddreamin/typst-ts-renderer@0.6.0-rc1)
       '@qwikdev/astro':
         specifier: ^0.7.12
-        version: 0.7.12(@builder.io/qwik@1.13.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
+        version: 0.7.12(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
       '@shikijs/twoslash':
         specifier: ^3.4.2
         version: 3.4.2(typescript@5.8.3)
@@ -411,6 +411,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.27.2':
+    resolution: {integrity: sha512-QYLs8299NA7WM/bZAdp+CviYYkVoYXlDW2rzliy3chxd1PQjej7JORuMJDJXJUb9g0TT+B99EwaVLKmX+sPXWw==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.27.1':
     resolution: {integrity: sha512-6UzkCs+ejGdZ5mFFC/OCUrv028ab2fp1znZmCZjAOBKiBK2jXD1O+BPSfX8X2qjJ75fZBMSnQn3Rq2mrBJK2mw==}
     engines: {node: '>=6.9.0'}
@@ -492,8 +497,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@builder.io/qwik@1.13.0':
-    resolution: {integrity: sha512-dElfs3V91h+x12ftGWzAKO0pbO36kohfDd9ukr+YFSb/CP66WnTgjTTXJjlzkmFw18O9Bh9ObjqShpkEz02+Kg==}
+  '@builder.io/qwik@1.14.1':
+    resolution: {integrity: sha512-bq1fkt8RhjkENQOs/bxh8i1IuQ0DIfIZ1RgyoZYmADxcyKjhVRcCx+6kaRUkjovb5sR06pqH96YaHjI7iI/CMw==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     hasBin: true
     peerDependencies:
@@ -2502,8 +2507,8 @@ packages:
     resolution: {integrity: sha512-vpeMIQKxczTD/0s2CdEWHcb0eeJe6TFjxb+J5xgX7hScxqrGuyjmv4c1D4A/gelKfyox0gJJwIHF+fLjeaM8kQ==}
     engines: {node: '>=18'}
 
-  get-tsconfig@4.10.0:
-    resolution: {integrity: sha512-kGzZ3LWWQcGIAmg6iWvXn0ei6WDtV26wzHRMwDSzmAbcXrTEXxHy6IehI6/4eT6VRKyMP1eF1VqwrVUmE/LR7A==}
+  get-tsconfig@4.10.1:
+    resolution: {integrity: sha512-auHyJ4AgMz7vgS8Hp3N6HXSmlMdUyhSUrfBF16w153rxtLIEOE+HGqaBppczZvnHLqQJfiHotCYpNhl0lUROFQ==}
 
   github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
@@ -4776,6 +4781,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.27.1
 
+  '@babel/parser@7.27.2':
+    dependencies:
+      '@babel/types': 7.27.1
+
   '@babel/plugin-transform-react-jsx-self@7.27.1(@babel/core@7.27.1)':
     dependencies:
       '@babel/core': 7.27.1
@@ -4846,9 +4855,10 @@ snapshots:
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
 
-  '@builder.io/qwik@1.13.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))':
+  '@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
       csstype: 3.1.3
+      rollup: 4.41.0
       vite: 6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0)
 
   '@capsizecss/unpack@2.4.0':
@@ -5602,9 +5612,9 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
-  '@qwikdev/astro@0.7.12(@builder.io/qwik@1.13.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))':
+  '@qwikdev/astro@0.7.12(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
-      '@builder.io/qwik': 1.13.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
+      '@builder.io/qwik': 1.14.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
       '@inox-tools/inline-mod': 2.0.3(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.0)(tsx@4.19.2)(yaml@2.8.0))
       astro-integration-kit: 0.18.0(astro@5.7.13(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
     transitivePeerDependencies:
@@ -6086,7 +6096,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6099,7 +6109,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -6879,7 +6889,7 @@ snapshots:
 
   get-east-asian-width@1.3.0: {}
 
-  get-tsconfig@4.10.0:
+  get-tsconfig@4.10.1:
     dependencies:
       resolve-pkg-maps: 1.0.0
     optional: true
@@ -8981,7 +8991,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.10.0
+      get-tsconfig: 4.10.1
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
