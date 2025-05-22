@@ -53,7 +53,7 @@ assert(slogan, "slogan is undefined");
 <nav id="sticky">
   <div class="backdrop">
     <div class="logowrapper edge min-inline-20">
-      <img class="logo vert-hide" src="/new-logo.svg" alt="logo" />
+      <img class="logo vert-hide block block-8 mbs-.7" src="/new-logo.svg" alt="logo" />
       <img class="logo vert-block" src="/logo-vert.svg" alt="vertical logo" />
     </div>
     <ul class="block">
@@ -89,7 +89,7 @@ assert(slogan, "slogan is undefined");
 <style lang="less">
   nav#sticky {
     min-inline-size: 20rem;
-    max-inline-size: max(30vi, 22rem);
+    max-inline-size: max(60vi, 32rem);
     border-radius: 2em;
     @apply z-1000 m-auto sticky min-block-10 inset-bs-2 inset-is-0 border-solid border-2 border-gray-300;
     align-items: space-between;
@@ -97,7 +97,6 @@ assert(slogan, "slogan is undefined");
       15px
     ); // fallback for browsers not supporting scroll-timeline
     .logo {
-      @apply block-8 m-1;
       #vert:target & {
         @apply block-7 m-6px;
       }
@@ -201,14 +200,8 @@ assert(slogan, "slogan is undefined");
     inline-size: anchor-size(--indicator);
   }
  */
-  .edge {
-    display: none;
-  }
   @supports (scroll-timeline-name: --page-timeline) and
     (container-type: inline-size) {
-    .edge {
-      display: unset;
-    }
     nav#sticky {
       backdrop-filter: none; // overrides the fallback
       @apply pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
