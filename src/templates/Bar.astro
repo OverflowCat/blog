@@ -53,8 +53,9 @@ assert(slogan, "slogan is undefined");
 <nav id="sticky">
   <div class="backdrop">
     <div class="logowrapper edge min-inline-20">
-      <img class="logo vert-hide block block-8 mbs-.7" src="/new-logo.svg" alt="logo" />
-      <img class="logo vert-block" src="/logo-vert.svg" alt="vertical logo" />
+      <img class="logo vert-hide block h-8 mbs-.7" src="/new-logo.svg" alt="logo" />
+      <img class="logo hidden block-8 mbs-.7" src="/logo-vert.svg" alt="vertical logo" />
+      <img class="logo-icon vert-block mbs-1.4 block-7" src="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png" alt="icon" />
     </div>
     <ul class="block">
       {
@@ -205,6 +206,12 @@ assert(slogan, "slogan is undefined");
     nav#sticky {
       backdrop-filter: none; // overrides the fallback
       @apply pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
+    }
+    .logo.vert-block {
+      display: block;
+    }
+    .logo-icon {
+      display: none!important;
     }
     .backdrop {
       @apply justify-between absolute inset-0 z-0;
