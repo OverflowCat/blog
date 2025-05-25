@@ -1,0 +1,16 @@
+---
+import { generateUno } from '@/scripts/uno';
+
+const r = `<span class="text-red-600">红色</span>`;
+const y = atob('PHNwYW4gY2xhc3M9InRleHQteWVsbG93LTYwMCI+eWVsbG93PC9zcGFuPg==');
+
+const style = await generateUno(y);
+
+export type Props = {};
+---
+
+<style is:global is:inline is:raw set:html={style} />
+
+<div set:html={r} />
+<div set:html={y} />
+<div class="text-blue-600">蓝色</div>

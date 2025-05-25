@@ -87,17 +87,19 @@ dfn[lang="zh"] {
 
 article {
   blockquote {
-    &:not(:lang(zh)):not(:lang(ja)) {
-      font-family: Georgia, "Times New Roman", "Han Kaiti", cursive, serif;
-    }
-
     &:lang(ja) {
       font-family: "Yakumono Serif", "Numeral LF Serif", Georgia,
         "Times New Roman", cursive, serif;
     }
 
+    &:lang(ko) {
+      // Gungseo, use cursive & serif; do no use sans
+      font-family: cursive, serif;
+    }
+
     &:lang(zh),
-    &:lang(zh-Hant) {
+    &:lang(zh-Hant),
+    &[lang*="Hani"] {
       font-family: "Biaodian Pro Serif CNS", "Numeral LF Serif", Georgia,
         "Times New Roman", "Zhuyin Kaiti", "Han Kaiti", cursive, serif;
     }
