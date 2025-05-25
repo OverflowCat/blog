@@ -89,6 +89,9 @@ importers:
       cheerio:
         specifier: 1.0.0
         version: 1.0.0
+      cjk-regex:
+        specifier: ^3.3.0
+        version: 3.3.0
       cross-blob:
         specifier: ^3.0.2
         version: 3.0.2
@@ -155,6 +158,12 @@ importers:
       rehype-stringify:
         specifier: ^10.0.1
         version: 10.0.1
+      remark-cjk-friendly:
+        specifier: ^1.2.0
+        version: 1.2.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5)
+      remark-cjk-friendly-gfm-strikethrough:
+        specifier: ^1.2.0
+        version: 1.2.0(@types/mdast@4.0.4)(micromark-extension-cjk-friendly-util@2.0.0(micromark-util-types@2.0.2))(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5)
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0
@@ -2081,6 +2090,10 @@ packages:
     resolution: {integrity: sha512-cYY9mypksY8NRqgDB1XD1RiJL338v/551niynFTGkZOO2LHuB2OmOYxDIe/ttN9AHwrqdum1360G3ald0W9kCg==}
     engines: {node: '>=8'}
 
+  cjk-regex@3.3.0:
+    resolution: {integrity: sha512-o9QeA4DIiljRGO3mXzkQXBttzE6XRGZG99V9F8uqrdqKo5RHTFe8w+pk1aOMB/wxQ7qQ8J7WoTagabTabPgl8A==}
+    engines: {node: '>=16'}
+
   cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
     engines: {node: '>=10'}
@@ -3124,6 +3137,36 @@ packages:
   micromark-core-commonmark@2.0.3:
     resolution: {integrity: sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==}
 
+  micromark-extension-cjk-friendly-gfm-strikethrough@1.2.0:
+    resolution: {integrity: sha512-xjkemVQ03p2CNHy8q4l0hWXmbful4feaCWGk/vWk3QcVfnJbPNzIKWhAp7ScLs+DAYdvhG4MASw5dOFRuygThw==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      micromark: ^4.0.0
+      micromark-extension-cjk-friendly-util: ^2.0.0
+      micromark-util-types: ^2.0.0
+    peerDependenciesMeta:
+      micromark-util-types:
+        optional: true
+
+  micromark-extension-cjk-friendly-util@2.0.0:
+    resolution: {integrity: sha512-ja7nO9mnuuJybrw5oQmiRB9O/o/si2VQgPRG4Tn4KuTqFtC7+2KTZYRDsCuzGqROUqXUdPumDHCaAiT/wq/lTg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      micromark-util-types: '*'
+    peerDependenciesMeta:
+      micromark-util-types:
+        optional: true
+
+  micromark-extension-cjk-friendly@1.2.0:
+    resolution: {integrity: sha512-vG7B6132bIovDquZTyuBNk7nfS4ZfJ53w7tv5ik2vGI4A/xXMxbzfc9pvCrhQ17enTVsApO6RZIHnwHTgo88Pw==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      micromark: ^4.0.0
+      micromark-util-types: ^2.0.0
+    peerDependenciesMeta:
+      micromark-util-types:
+        optional: true
+
   micromark-extension-directive@4.0.0:
     resolution: {integrity: sha512-/C2nqVmXXmiseSSuCdItCMho7ybwwop6RrrRPk0KbOHW21JKoCldC+8rFOaundDoRBUWBnJJcxeA/Kvi34WQXg==}
 
@@ -3560,6 +3603,10 @@ packages:
   regex@6.0.1:
     resolution: {integrity: sha512-uorlqlzAKjKQZ5P+kTJr3eeJGSVroLKoHmquUj4zHWuR+hEyNqlXsSKlYYF5F4NI6nl7tWCs0apKJ0lmfsXAPA==}
 
+  regexp-util@2.0.3:
+    resolution: {integrity: sha512-GP6h9OgJmhAZpb3dbNbXTfRWVnGcoMhWRZv/HxgM4/qCVqs1P9ukQdYxaUhjWBSAs9oJ/uPXUUvGT1VMe0Bs0Q==}
+    engines: {node: '>=16'}
+
   rehype-autolink-headings@7.1.0:
     resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
 
@@ -3599,6 +3646,26 @@ packages:
 
   rehype@13.0.2:
     resolution: {integrity: sha512-j31mdaRFrwFRUIlxGeuPXXKWQxet52RBQRvCmzl5eCefn/KGbomK5GMHNMsOJf55fgo3qw5tST5neDuarDYR2A==}
+
+  remark-cjk-friendly-gfm-strikethrough@1.2.0:
+    resolution: {integrity: sha512-LcgRwwkNnJ78g3PgfaswkHF9nfjYlzpX9NHZM/7CySl7ZCqqeyhOHeyThMiRYMrTFdz3ScqL5dQOJktpea8XIQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@types/mdast': ^4.0.0
+      unified: ^11.0.0
+    peerDependenciesMeta:
+      '@types/mdast':
+        optional: true
+
+  remark-cjk-friendly@1.2.0:
+    resolution: {integrity: sha512-ZLAjlNPJyM3EVIJUNvtQ3ncETucevMfQtdHrdfoYkcbj41rwDuC9GM13gaCHU6eeFQrL2zNL6zKSmH2vJa8cXg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@types/mdast': ^4.0.0
+      unified: ^11.0.0
+    peerDependenciesMeta:
+      '@types/mdast':
+        optional: true
 
   remark-directive@4.0.0:
     resolution: {integrity: sha512-7sxn4RfF1o3izevPV1DheyGDD6X4c9hrGpfdUpm7uC++dqrnJxIZVkk7CoKqcLm0VUMAuOol7Mno3m6g8cfMuA==}
@@ -4038,6 +4105,10 @@ packages:
 
   unicode-properties@1.4.1:
     resolution: {integrity: sha512-CLjCCLQ6UuMxWnbIylkisbRj31qxHPAurvena/0iwSVbQ2G1VY5/HjV0IRabOEbDHlzZlRdCrD4NhB0JtU40Pg==}
+
+  unicode-regex@4.1.2:
+    resolution: {integrity: sha512-30Y3tQ8OUxceQjsEJHzNh20lLYZX6ZwQyUOHBUdN1UPKQWH3AvH20aUADWa1gEz2lQPTSQ/l2ZqdM4FjFNMJsQ==}
+    engines: {node: '>=16'}
 
   unicode-trie@2.0.0:
     resolution: {integrity: sha512-x7bc76x0bm4prf1VLg79uhAzKw8DVboClSN5VxJuQ+LKDOVEW9CdH+VY7SP+vX7xCYQqzzgQpFqz15zeLvAtZQ==}
@@ -6435,6 +6506,11 @@ snapshots:
 
   ci-info@4.2.0: {}
 
+  cjk-regex@3.3.0:
+    dependencies:
+      regexp-util: 2.0.3
+      unicode-regex: 4.1.2
+
   cli-boxes@3.0.0: {}
 
   cliui@8.0.1:
@@ -7733,6 +7809,38 @@ snapshots:
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.2
 
+  micromark-extension-cjk-friendly-gfm-strikethrough@1.2.0(micromark-extension-cjk-friendly-util@2.0.0(micromark-util-types@2.0.2))(micromark-util-types@2.0.2)(micromark@4.0.2):
+    dependencies:
+      devlop: 1.1.0
+      get-east-asian-width: 1.3.0
+      micromark: 4.0.2
+      micromark-extension-cjk-friendly-util: 2.0.0(micromark-util-types@2.0.2)
+      micromark-util-character: 2.1.1
+      micromark-util-chunked: 2.0.1
+      micromark-util-resolve-all: 2.0.1
+      micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      micromark-util-types: 2.0.2
+
+  micromark-extension-cjk-friendly-util@2.0.0(micromark-util-types@2.0.2):
+    dependencies:
+      get-east-asian-width: 1.3.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      micromark-util-types: 2.0.2
+
+  micromark-extension-cjk-friendly@1.2.0(micromark-util-types@2.0.2)(micromark@4.0.2):
+    dependencies:
+      devlop: 1.1.0
+      micromark: 4.0.2
+      micromark-extension-cjk-friendly-util: 2.0.0(micromark-util-types@2.0.2)
+      micromark-util-chunked: 2.0.1
+      micromark-util-resolve-all: 2.0.1
+      micromark-util-symbol: 2.0.1
+    optionalDependencies:
+      micromark-util-types: 2.0.2
+
   micromark-extension-directive@4.0.0:
     dependencies:
       devlop: 1.1.0
@@ -8334,6 +8442,8 @@ snapshots:
     dependencies:
       regex-utilities: 2.3.0
 
+  regexp-util@2.0.3: {}
+
   rehype-autolink-headings@7.1.0:
     dependencies:
       '@types/hast': 3.0.4
@@ -8435,6 +8545,27 @@ snapshots:
       rehype-parse: 9.0.1
       rehype-stringify: 10.0.1
       unified: 11.0.5
+
+  remark-cjk-friendly-gfm-strikethrough@1.2.0(@types/mdast@4.0.4)(micromark-extension-cjk-friendly-util@2.0.0(micromark-util-types@2.0.2))(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5):
+    dependencies:
+      micromark-extension-cjk-friendly-gfm-strikethrough: 1.2.0(micromark-extension-cjk-friendly-util@2.0.0(micromark-util-types@2.0.2))(micromark-util-types@2.0.2)(micromark@4.0.2)
+      unified: 11.0.5
+    optionalDependencies:
+      '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark
+      - micromark-extension-cjk-friendly-util
+      - micromark-util-types
+
+  remark-cjk-friendly@1.2.0(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(unified@11.0.5):
+    dependencies:
+      micromark-extension-cjk-friendly: 1.2.0(micromark-util-types@2.0.2)(micromark@4.0.2)
+      unified: 11.0.5
+    optionalDependencies:
+      '@types/mdast': 4.0.4
+    transitivePeerDependencies:
+      - micromark
+      - micromark-util-types
 
   remark-directive@4.0.0:
     dependencies:
@@ -9031,6 +9162,10 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       unicode-trie: 2.0.0
+
+  unicode-regex@4.1.2:
+    dependencies:
+      regexp-util: 2.0.3
 
   unicode-trie@2.0.0:
     dependencies:

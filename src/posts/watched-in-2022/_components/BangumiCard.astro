@@ -56,7 +56,7 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
     </h2>
     {
       sticker && (
-        <div class="sticker">
+        <div class="sticker m-2 text-center">
           {sticker.endsWith(".mp4") || sticker.endsWith(".webm") ? (
             <VideoSticker src={sticker} width="168px" />
           ) : (
@@ -85,7 +85,7 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
             <span class="watched">已观看</span>
           </div>
         ) : (
-          <div class="episodes">
+          <div class="episodes pis-4">
             <b>观看进度</b>：
             {episodes.progress
               ? `${episodes.progress} / ${episodes.list}`
@@ -156,38 +156,17 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
   }
   span.watched {
     background-color: rgb(59, 146, 8);
-    color: white;
-    margin: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 4px;
   }
   span.watching {
     background-color: rgb(134, 52, 1);
-    color: white;
-    margin: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 4px;
   }
   span.unwatched {
     background-color: rgb(157, 5, 60);
-    color: white;
-    margin: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 4px;
   }
   span.watcing,
   span.unwatched,
   span.watched {
-    user-select: none;
+    @apply p-block-.5 p-inline-1 m-1 rounded-1 text-white select-none;
   }
   .link-card {
     list-style: none;
@@ -253,10 +232,6 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
     background-color: rgba(200, 200, 200, 0.2);
     border-radius: 0.5rem;
   }
-  .sticker {
-    margin: 8px;
-    text-align: center;
-  }
   h2 {
     line-height: 150%;
     font-size: 28px;
@@ -264,17 +239,14 @@ const { title_ja, title_en, title_zh, sticker, ongoing, episodes, rating } =
   .slash {
     color: #888;
   }
-  ol.episodes {
-    padding-left: 16px;
-  }
   h2 {
     margin: 0;
     font-size: 1.25rem;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   p {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
+    margin-block-start: 0.5rem;
+    margin-block-end: 0;
     color: #444;
   }
   a {

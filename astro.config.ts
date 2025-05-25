@@ -8,6 +8,9 @@ import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 
 import mdx from "@astrojs/mdx";
 
+import remarkCjk from "remark-cjk-friendly";
+import remarkCjkGfm from "remark-cjk-friendly-gfm-strikethrough";
+
 // sitemap
 import sitemap from "@astrojs/sitemap";
 
@@ -86,6 +89,8 @@ export default defineConfig({
 		remarkPlugins: [
 			remarkMath,
 			remarkRuby,
+			remarkCjk,
+			remarkCjkGfm,
 			remarkFigureCaption,
 			remarkSampKbd,
 			remarkDirect,

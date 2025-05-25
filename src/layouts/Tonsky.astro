@@ -6,8 +6,8 @@ import "@/styles/han.less";
 import * as cheerio from "cheerio";
 import Languages from "@/components/lang/Languages.astro";
 import Bar from "@/templates/Bar.astro";
-import { hasChinese } from "@/components/lang/zh";
 import Comments from "@/components/comments/Comments.astro";
+import { all as hasChinese } from "cjk-regex";
 import "@fontsource/ibm-plex-mono/latin-ext-400.css";
 import "@fontsource/ibm-plex-mono/cyrillic-400.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
@@ -23,6 +23,7 @@ const HANS = "&#x6C49;&#35821;";
 const slug = Astro.url.pathname;
 const zhLocale = slug.endsWith("/hant") ? "zh-Hant" : "zh-Hans";
 
+const cjkPattern = hasChinese().toRegExp();
 const $ = cheerio.load(await Astro.slots.render("default"));
 $(
 	"li, p:not(table p):not(pre p), h1, h2, h3, h4, h5, h6, blockquote, thead",
@@ -30,7 +31,7 @@ $(
 	if ($(this).attr("lang") || $(this).attr("data-bilingual")) return;
 	const text = $(this).text();
 	if (!text.trim()) return;
-	const lang = hasChinese(text) ? zhLocale : "en";
+	const lang = cjkPattern.test(text) ? zhLocale : "en";
 	$(this).attr("lang", lang);
 });
 

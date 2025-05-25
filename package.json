@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.20.11",
+  "version": "2.20.15",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -54,6 +54,7 @@
     "astro-typst": "0.9.0",
     "bilibili-bv-av-convert": "^1.0.0",
     "cheerio": "1.0.0",
+    "cjk-regex": "^3.3.0",
     "cross-blob": "^3.0.2",
     "dial-data": "^0.0.4",
     "gridsome-remark-figure-caption": "^1.2.2",
@@ -76,6 +77,8 @@
     "rehype-mathjax": "^7.1.0",
     "rehype-remnote": "^0.3.7",
     "rehype-stringify": "^10.0.1",
+    "remark-cjk-friendly": "^1.2.0",
+    "remark-cjk-friendly-gfm-strikethrough": "^1.2.0",
     "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
     "remark-ruby": "^0.4.0",

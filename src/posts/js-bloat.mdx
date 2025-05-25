@@ -1,0 +1,562 @@
+---
+title: 2024 年 JavaScript 的臃肿状况
+date: 2025-05-25T18:26:11.840Z
+# date: 2025-05-17T12:13:00.314Z
+noscript: true
+licence: false
+layout: "@/layouts/Tonsky.astro"
+desc: "一个网站平均要下载多少JavaScript代码？让我们一探究竟！"
+photo:
+  src: "https://dynogee.com/gen?id=nm509093bpj50lv&title=(zh+translation+by+overflowcat)+JavaScript+Bloat+in+2024"
+  alt: "JavaScript Bloat in 2024"
+  hide: true
+categories:
+  - 译文
+  - Tonsky
+langs:
+  en: "https://tonsky.me/blog/js-bloat/"
+  ko: "https://velog.io/@sehyunny/js-bloat-in-2024"
+  ru: "https://habr.com/ru/companies/ruvds/articles/796595/"
+base: "https://tonsky.me/blog/js-bloat/"
+---
+
+<div style="font-size: 150%; text-align: left; font-weight: 600;">
+  JavaScript Bloat in 2024
+</div>
+
+<address style="text-align: right; margin-bottom: .7em;">
+  作者：<a href="https://tonsky.me/" rel="author"><strong>Niki</strong></a> (@tonsky)
+</address>
+
+I was a bit out of touch with modern front-end development. I also remembered articles about web bloat, how the average web page size was approaching several megabytes!
+
+我有点与现代前端开发脱节了。记得以前看过一些讲 Web 臃肿的文章，说平均网页大小都快接近好几 MB 了！
+
+So all this time I was living under impression that, for example, if the average web page size is 3 MB, then JavaScript bundle should be around 1 MB. Surely content should still take the majority, no?
+
+所以我一直以为是这样：比如平均网页大小要是 3MB，那 JavaScript 包大小估计也就 1MB 左右。内容肯定还是占大头，对吧？
+
+Well, the only way to find out is to fuck around. Let’s do a reality check!
+
+好吧，唯一能搞清楚的方法就是亲自动手折腾一番。我们来看看实际情况！
+
+I’m writing this in 2024, so maybe do a sequel in a few years?
+
+我现在是在 2024 年写的这篇文章，所以也许几年后再写个后续？
+
+<blockquote style="display: none">阁下可能在使用不支持 CSS 的浏览器或阅读器。使用现代浏览器访问该文章，可查看单/双语、汉/漢語、横/直排版本。</blockquote>
+
+## Method
+
+## 测试方法
+
+- Firefox on macOS (but should be the same in any browser)
+- macOS 上的 Firefox（但在任何浏览器中结果应该都一样）
+- Not incognito (I want to see numbers _inside_ the app, and there’s a better chance it will resemble actual everyday experience)
+- 非隐身模式（我想看看应用*实际运行*时的加载数据，这样更接近真实的日常使用体验）
+- All extensions disabled
+- 所有扩展禁用
+- JavaScript only
+- 仅统计 JavaScript
+- Uncompressed
+- 未压缩大小
+- Service Workers enabled (again, more real-life)
+- Service Workers 启用（同样，为了更贴近真实使用场景）
+- All caching disabled (cold load)
+- 所有缓存禁用（即冷加载）
+
+Why only JavaScript? Content varies a lot from site to site (surely videos on YouTube are heavier than text messages on Slack), but JavaScript is a universal metric for “complexity of interactions”.
+
+为什么只看 JavaScript？不同网站的内容差异很大（YouTube 上的视频肯定比 Slack 上的文本消息更占地方），但 JavaScript 是衡量「交互复杂度」的通用指标。
+
+The main goal is to evaluate how much work the browser has to do to parse and execute code.
+
+主要目标是评估浏览器为了解析和执行这些代码需要做多少工作。
+
+To set some baseline, let’s start with this blog:
+
+为了设定一个基准，我们从本博客[^1]开始：
+
+[^1]: 译者注：指[原作者的博客](https://tonsky.me/blog/js-bloat/)。你现在所在的<img class="vert-hide h-1.2em" src="/new-logo.svg" alt="logo" /><img class="hidden vert-inline" style="width: 1.2em;" src="/logo-vert.svg" />译文页面的 JavaScript 的体积是 0 KB。
+
+tonsky@2x.webp
+
+The number here would be 0.004 MB. I also highlighted all the important bits you need to set if you decide to reproduce this at home.
+
+这里的数据是 0.004 MB。我还高亮了所有重要的设置项，如果你想自己动手复现这个过程的话。
+
+## Landings
+
+## 着陆页
+
+Okay, let’s start with something simple, like landing pages/non-interactive apps.
+
+好吧，让我们从一些简单的东西开始，比如着陆页或基本没什么交互的应用。
+
+A normal slightly interactive page looks like this — Wikipedia, 0.2 MB:
+
+一个正常的、略带交互的页面大概是这样——维基百科，0.2 MB：
+
+wikipedia@2x.webp
+
+Slightly bloated — like this — Linear, 3 MB:
+
+稍微有点臃肿的——比如这个——Linear，3 MB：
+
+linear@2x.webp
+
+Remember: that’s without images, or videos, or even styles! Just JS code.
+
+记住：这还不包括图片、视频，甚至样式！仅仅是 JS 代码。
+
+A bad landing page looks like this — Zoom, 6 MB:
+
+一个糟糕的着陆页大概是这样——Zoom，6 MB：
+
+zoom@2x.webp
+
+or like Vercel, 6 MB:
+
+或者像 Vercel，6 MB：
+
+vercel@2x.webp
+
+Yes, this is just a landing page. No app, no functionality, no calls. 6 MB of JavaScript just for that.
+
+是的，这仅仅是一个着陆页。没有应用本身，没有实际功能，也没有后台调用。就为了这个，要 6 MB 的 JavaScript。
+
+You can do a lot worse, though — Gitlab, 13 MB:
+
+不过，还有更离谱的——Gitlab，13 MB：
+
+gitlab@2x.webp
+
+Still just the landing.
+
+这也仅仅是个着陆页。
+
+## Mostly static websites
+
+## 大部分是静态内容的网站
+
+Nothing simpler than showing a static wall of text. Medium needs 3 MB just to do that:
+
+没什么比显示满屏幕的静态文字更简单了吧。Medium 就为了这个需要 3 MB：
+
+medium@2x.webp
+
+Substack needs 4 MB:
+
+Substack 需要 4 MB：
+
+substack@2x.webp
+
+Progress?
+
+有进步吗？
+
+Quora, 4.5 MB:
+
+Quora，4.5 MB：
+
+quora@2x.webp
+
+Pinterest, 10 MB:
+
+Pinterest，10 MB：
+
+pinterest@2x.webp
+
+Patreon, 11 MB:
+
+Patreon，11 MB：
+
+patreon@2x.webp
+
+And all this could’ve been a static page...
+
+而所有这些，本可以只是一个静态页面……
+
+## Search
+
+## 搜索功能
+
+When your app’s interactivity is limited to mostly search. Type the query — show the list of results. How heavy is that?
+
+当你的应用交互主要就是搜索。输入查询语句——显示结果列表。这种的需要多重？
+
+StackOverflow, 3.5 MB:
+
+StackOverflow，3.5 MB：
+
+stackoverflow@2x.webp
+
+NPM, 4 MB:
+
+NPM，4 MB：
+
+npmjs@2x.webp
+
+Airbnb, 7 MB:
+
+爱彼迎，7 MB：
+
+airbnb@2x.webp
+
+Booking.com, 12 MB:
+
+Booking.com，12 MB：
+
+booking@2x.webp
+
+But Niki, booking is complicated! Look at all this UI! All these filters. All these popups about people near you stealing your vacation!
+
+但是，Tonsky，订票页面很复杂啊！看看这满屏的 UI！这么多筛选器！还有那些告诉你手慢无的烦人弹窗！
+
+Okay, okay. Something simpler then. Google. How about Google? One text field, list of links. Right?
+
+好吧，好吧。那来个简单点的。谷歌。谷歌搜索怎么样？一个输入框，然后一个链接列表。对吧？
+
+Well, it’ll cost you whooping 9 MB:
+
+嗯，这就要你足足 9 MB：
+
+google@2x.webp
+
+Just to show a list of links.
+
+仅仅是为了显示一个链接列表。
+
+## Simple one-interaction apps
+
+## 简单交互型应用
+
+Google Translate is just two text boxes. For that, you need 2.5 MB:
+
+谷歌翻译就俩文本框。就这个，你需要 2.5 MB：
+
+google_translate@2x.webp
+
+ChatGPT is _one_ text box. 7 MB:
+
+ChatGPT 就*一个*文本框。7 MB：
+
+openai@2x.webp
+
+I mean, surely, ChatGPT is complex. But on the server, not in the browser!
+
+我的意思是，诚然，ChatGPT 本身很复杂。但复杂的是后端，不是前端啊！
+
+## Videos
+
+## 视频网站
+
+Loom — 7 MB:
+
+Loom — 7 MB：
+
+loom@2x.webp
+
+YouTube — 12 MB:
+
+YouTube — 12 MB：
+
+youtube@2x.webp
+
+Compare it to people who really care about performance — Pornhub, 1.4 MB:
+
+跟那些真正关心性能的网站比比——Pornhub，1.4 MB：
+
+pornhub@2x.webp
+
+## Audio
+
+## 音频网站
+
+I guess audio just requires 12 MB no matter what:
+
+我猜音频网站起步价横竖是 12 MB：
+
+SoundCloud:
+
+SoundCloud：
+
+soundcloud@2x.webp
+
+Spotify:
+
+Spotify：
+
+spotify@2x.webp
+
+## Email
+
+## 邮箱
+
+Okay, video and audio are probably heavy stuff (even though we are not measuring content, just JS, remember!). Let’s move to simpler office tasks.
+
+好吧，视频和音频可能确实是大家伙（但是还是想强调，我们测量的可不是内容，只是 JS 代码！）。让我们转向更简单的办公任务。
+
+Google Mail is just (just!) 20 MB:
+
+谷歌邮箱只有（仅仅只有！）20 MB：
+
+gmail@2x.webp
+
+It’s a freaking mailbox!!! How on earth is it almost as big as Figma, who ships entire custom C++/OpenGL rendering for their app?
+
+这特喵的是个邮箱！！！它到底是怎么做到几乎和 Figma 一样大的？Figma 可是内置了一整套定制的 C++/OpenGL 渲染引擎的啊！
+
+figma@2x.webp
+
+And if you are thinking: mail is complicated, too. Lots of UI, lots of interactivity. Maybe 20 MB is okay?
+
+如果你在想：邮箱也很复杂啊，那么多界面，那么多交互。也许 20MB 也还行？
+
+No!
+
+不！
+
+Just no. See, FastMail, same deal, but only 2 MB. 10× less!
+
+绝不可能。看，FastMail，干着同样的活<small>儿</small>，但只有 2 MB。少了整整 10 倍！
+
+fastmail@2x.webp
+
+## Productivity
+
+## 生产力工具
+
+Okay, maybe e-mail is too complicated? How about something even simpler? Like a TODO list?
+
+好吧，也许邮箱还是太复杂了？那来点更简单的怎么样？比如一个待办事项清单？
+
+Well, meet Todoist, 9 MB:
+
+那么，来看看 Todoist，9 MB：
+
+todoist@2x.webp
+
+Showing you a list of files in folders requires 10 MB in Dropbox:
+
+在 Dropbox 中显示文件夹里的文件列表，需要 10 MB：
+
+dropbox@2x.webp
+
+List of passwords? That’ll be 13 MB on 1Password:
+
+密码列表？1Password 上需要 13 MB：
+
+1password@2x.webp
+
+Cards? Add 0.5 MB more, up to 13.5 MB. Trello:
+
+一些卡片？再加 0.5 MB，高达 13.5 MB。说的是 Trello：
+
+trello@2x.webp
+
+Okay, maybe TODO lists are too complex, too? How about chatting?
+
+好吧，也许待办事项清单也太复杂了？那聊天软件呢？
+
+Well, Discord needs 21 MB to do that:
+
+嗯，Discord 需要 21 MB 来实现聊天功能：
+
+discord@2x.webp
+
+## Document editing
+
+## 文档编辑
+
+Okay, document editing is hard, right? You have to implement cursor movement, synchronization, etc.
+
+好吧，文档编辑是挺难的，对吧？你必须实现光标移动、内容同步等等。
+
+Google Docs, 13.5 MB:
+
+谷歌文档（Google Docs），13.5 MB：
+
+google_docs@2x.webp
+
+Something simpler? Notion, 16 MB:
+
+功能简单点的？Notion，16 MB：
+
+notion@2x.webp
+
+## Social Networks
+
+## 社交网络
+
+The typical size of code that social networks need for like buttons to go brrr is 12 MB.
+
+社交网络为了让点赞量咻咻咻地涨起来，通常需要 12 MB 的代码。
+
+Twitter, 11 MB:
+
+Twitter (X)，11 MB：
+
+twitter@2x.webp
+
+Facebook, 12 MB:
+
+Facebook，12 MB：
+
+facebook@2x.webp
+
+TikTok, 12.5 MB:
+
+TikTok，12.5 MB：
+
+tiktok@2x.webp
+
+Instagram is somehow bigger than Facebook, despite having like 10× less functions. 16 MB:
+
+Instagram 不知怎么的比 Facebook 还大，尽管功能少了大概 10 倍。16 MB：
+
+instagram@2x.webp
+
+LinkedIn. Is it a blog? A platform? It has search, it has messaging, it has social functions. Anyways, that’ll be 31 MB:
+
+领英。它算博客？还是平台？它有搜索，有消息，还有社交功能。不管怎么说，这是 31 MB：
+
+linkedin@2x.webp
+
+By the way, I'd like to add you to my professional network on LinkedIn.
+
+顺便说一句，我想在领英上加您为好友来拓展我的人脉圈。
+
+## Elephants — its own category
+
+## 大象级应用——自成一档
+
+Sometimes websites are so stupidly, absurdly large that they deserve their own category.
+
+有些网站大到愚蠢、荒谬的程度，简直应该单独给它们分一类。
+
+Here, Jira, a task management software. Almost 50 MB!
+
+比如，Jira，一个任务管理软件。差不多 50 MB！
+
+jira@2x.webp
+
+Do they ship the entire Electron compiled WASM or what?
+
+他们是把整个 Electron 编译的 WASM 都给打包进来了，还是怎么了？
+
+But that’s not the limit! Slack adds 5 more MB, up to 55 MB:
+
+但这还不是极限！Slack 又多了 5 MB，高达 55 MB：
+
+slack@2x.webp
+
+Yes, it’s a chat. You know, list of users, messages, reactions. Stuff we did on raw HTML, even before JS was invented?
+
+是的，它就是个聊天软件。你想想，用户列表、消息、表情回应。这些玩意<small>儿</small>，我们以前用纯 HTML 都能实现，甚至在 JavaScript 发明之前就可以！
+
+That’s 55 MB in today’s world. It’s almost like they are trying to see how much more bullshit can they put in a browser before it breaks.
+
+在今天这个时代要 55 MB。简直就像是他们在想试试看到底能往浏览器里塞多少垃圾代码才会让它崩溃。
+
+Finally, this blew my mind. Somehow [react.dev](https://react.dev/blog/2023/03/16/introducing-react-dev) starts with a modest 2 MB but as you scroll back and forth, it grows indefinitely. Just for fun, I got it to 100 MB (of JavaScript!), but you can go as far as you like:
+
+最后，这个操作惊掉我的下巴。不知怎的 [react.dev](https://react.dev/blog/2023/03/16/introducing-react-dev) 网站一开始只有区区 2 MB，但当你来回滚动页面时，它的大小会无限增长。纯粹为了好玩，我把它搞到了 100 MB（的 JavaScript！），但你想搞多大就能搞多大：
+
+react@2x.mp4
+
+What is going on there? Even if it unloads and downloads parts of that blog post, how is it growing so quickly? The text itself is probably only 50 KB (0.05 MB).
+
+这到底是什么鬼？就算它会卸载并重新加载博文的某些部分，它怎么能增长得这么快？文章本身的文本可能也就 50 KB（0.05 MB）。
+
+UPD: It has been brought to my attention that this behavior is not, in fact, representative of normal user experience. Normally embedded code editors will be cached after first load and subsequent loads will be served from disk cache. So as you scroll, you will see no network traffic, but these 100 MB of JS will still be parsed, evaluated and initialized over and over as you scroll.
+
+更新：有人提醒我，这种行为实际上并不代表典型的用户体验。通常情况下，嵌入式代码编辑器在首次加载后会被缓存，后续加载会从磁盘缓存中读取。所以当你滚动时，你不会看到网络流量，但这 100MB 的 JS 仍然会在你滚动时一遍又一遍地被解析、求值和初始化。
+
+## How fast are we degrading?
+
+## 我们这是在以多快的速度开倒车？
+
+Look how cute! In 2015 average web page size was approaching shareware version of Doom 1 (2.5 MB):
+
+瞧瞧这个，多可爱啊！2015 年的时候，平均网页大小快赶上《毁灭战士Ⅰ》共享版的大小了（2.5 MB）：
+
+bloat_2015@2x.webp
+
+[Source](https://twitter.com/xbs/status/626781529054834688)
+
+Well, in 2024, Slack pulls up 55 MB, the size of the original Quake 1 with all the resources. But now it’s just in JavaScript alone.
+
+好吧，到了 2024 年，Slack 一个应用就干到了 55 MB，这都赶上初代《雷神之锤》完整版的大小了。但现在，这仅仅是 JavaScript 代码的大小。
+
+For a chat app!
+
+单就为一个聊天应用！
+
+## How big is 10 MB anyway?
+
+## 10 MB 到底有多大？
+
+To be honest, after typing all these numbers, 10 MB doesn’t even feel that big or special. Seems like shipping 10 MB of *code* is normal now.
+
+讲真，在敲了这么多数字之后，10 MB 感觉已经不那么大或者特别了。现在看来，动不动就上 10 MB 的*代码*体积，似乎是家常便饭了。
+
+If we assume that the average code line is about 65 characters, that would mean we are shipping ~150,000 lines of code. With every website! Sometimes just to show static content!
+
+如果我们假设平均每行代码大约 65 个字符，那就意味着我们给每个网站都塞了约 15 万行代码。每个网站都这样！有时仅仅是为了显示一些静态内容！
+
+And that code is minified already. So it’s more like 300K+ LoC just for one website.
+
+而且那些代码已经是压缩过的了。所以一个网站实际的代码行数更可能超过 30 万行。
+
+But are modern websites really _that_ complex? The poster child of SPAs, Google Maps, is quite modest by modern standards — is _still_ just 4.5 MB:
+
+但是，现代网站真的有*那么*复杂吗？作为单页应用（SPA）的标杆，谷歌地图按现在的标准来看算是相当克制的了——*仍然*只有 4.5 MB：
+
+Maps@2x.webp
+
+Somebody at Google is seriously falling behind. Written with modern front-end technologies, it should be at least 20 MB.
+
+谷歌的人可真是严重掉队了。要是用现代前端技术来写，它至少也得 20 MB 起步。
+
+And if you, like me, thought that “Figma is a really complex front-end app, so it must have a huge javascript download size”, well, that’s correct, but then Gmail is about as complex as Figma, LinkedIn is 1.5× more complex and Slack is 2.5× more ¯\\\_(ツ)\_/¯
+
+如果你和我一样，曾以为「Figma 是个非常复杂的前端应用，所以它的 JavaScript 下载体积肯定很大」，嗯，这想法没错。但照这么说，Gmail 跟 Figma 差不多复杂，领英比它复杂 1.5 倍，Slack 则复杂 2.5 倍 ¯\\\_(ツ)\_/¯
+
+## Conclusion
+
+## 结论
+
+It’s not just about download sizes. I welcome high-speed internet as much as the next guy. But code — JavaScript — is something that your browser has to parse, keep in memory, execute. It’s not free. And these people talk about performance and battery life...
+
+这不仅仅是下载大小的问题。我和其他人一样拥抱高速互联网。但是代码——JavaScript——是你的浏览器必须解析、驻留内存、然后执行的东西。这些都不是零成本的。而那些家伙们还在大谈特谈性能和电池续航……
+
+Call me old-fashioned, but I firmly believe content should outweigh code size. If you are writing a blog post for 10K characters, you don’t need 1000× more JavaScript to render it.
+
+你可以骂我老古董，但我坚信内容本身应该比代码体积重要得多。如果你写的是一篇万字博文，你并不需要用比内容多一千倍的 JavaScript 来渲染它。
+
+This site is doing it right:
+
+这个网站就做对了：
+
+jquery@2x.webp
+
+That’s 0.1 MB. And that’s enough!
+
+这才 0.1 MB。这就够了！
+
+And yet, on the same internet, in the same timeline, Gitlab needs 13 MB of code, 500K+ LoC of JS, just to display a static landing page.
+
+然而，在同一个互联网上，在同一个时代背景下，Gitlab 仅仅为了显示一个静态着陆页，就需要 13 MB 的代码，超过 50 万行的 JS 代码。
+
+Fuck me.
+
+日了狗了。<img src="https://count.xinshijiededa.men/js-bloat/ending.svg" alt='&copy; 新世界的大门' title='&copy; 新世界的大门。这是一个 Tombstone' class='inline-block vertical-mid' />
+
+<div class="footer">
+
+· :up[2024] 年 :up[2] 月 :up[22] 日
+· 在 [HackerNews](https://news.ycombinator.com/item?id=39471221) 上讨论
+· 翻译于 <time itemprop="pubDate" datetime={frontmatter.date}>2025 年 5 月 17 日</time>
+
+</div>

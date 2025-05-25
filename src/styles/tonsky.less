@@ -206,17 +206,17 @@ footer a,
 }
 
 /* CONTENT */
+.content > *, h1 {
+  inline-size: 96vi;
+  max-inline-size: var(--width);
+}
+
 .content {
   text-align: initial; // start
   display: flex;
   flex-direction: column;
   gap: var(--gap);
   align-items: center;
-
-  & > * {
-    inline-size: 96vi;
-    max-inline-size: var(--width);
-  }
 
   & > img,
   & > video,
@@ -291,12 +291,14 @@ strong {
 h1 {
   font-size: 1.82em;
   text-align: left;
+  margin: auto;
 
   &[lang^="zh"] {
-    margin-block-end: 0.1em;
+    margin-block-end: 0.2em;
   }
 
   margin-block-start: 0.4em;
+  margin-block-end: 0.6em;
 }
 
 h3 {
@@ -396,7 +398,7 @@ sub,
 sup,
 .note-ref,
 .note-number {
-  bottom: 1.4ex;
+  inset-block-end: 1.4ex;
 }
 
 sub {

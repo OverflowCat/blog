@@ -43,7 +43,6 @@ export const CAT_MAP = {
 	"题解": "solution",
 	"满语": "manchu",
 	"Selected": "selected",
-	"编程": "programming",
 	"Python": "python",
 	'读书笔记': "book",
 	'年终总结': "wrapped",

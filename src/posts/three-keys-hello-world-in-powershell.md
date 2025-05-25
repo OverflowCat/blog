@@ -7,8 +7,8 @@ photo:
 desc: "三键成码一项编程比赛，要求参赛者仅用三个字母或数字以及任意数量的符号编码输出 Hello, World!，并且文件体积最小者获胜——为什么不试试 M$ 的功率壳呢？"
 tags:
 - PowerShell
-categories:
 - 编程
+categories:
 - Selected
 icon: "codicon:terminal-powershell"
 layout: "@/layouts/Default.astro"
