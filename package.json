@@ -86,7 +86,7 @@
     "sharp": "^0.34.2",
     "shiki-git-diff": "^0.0.4",
     "spoiled": "^0.4.0",
-    "svelte": "^5.33.1",
+    "svelte": "^5.33.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
