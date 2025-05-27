@@ -74,6 +74,7 @@ function unwrapTonskyImage(node: Paragraph, base: string) {
 	if (!(node.children.length === 1 && node.children[0].type === "link")) return;
 	const link = node.children[0].url;
 	if (!link.startsWith("mailto:")) return;
+	if (!link.endsWith(".webp")) return;
 	(node as unknown as Image).type = "image";
 	(node as unknown as Image).title = null;
 	(node as unknown as Image).url = `${base}${link.slice(7)}`;
