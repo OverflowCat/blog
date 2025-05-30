@@ -563,61 +563,10 @@ public func chats(input: String, task!: (String) -> Unit = {o => print(o)}) {
 
 仓颉的 `Visitor{:cj}` 类体现了重载的方便之处：只需要实现想要处理的类型的函数实现即可。
 
-```cj /override/#s /result/#v /func isConstExpr(expr: /#i /parenthesizedExpr/#s
+import Visitor from "./_visitor.md";
 
-class MyVisitor <: Visitor {
-    public var result = ArrayList<BinaryExpr>()
+<Visitor />
 
-    private func isConstExpr(expr: BinaryExpr): Bool {
-        let isLeftConst = match (expr.leftExpr) {
-            case left: LitConstExpr => true
-            case left: BinaryExpr => isConstExpr(left)
-            case left: ParenExpr => isConstExpr(left)
-            case left: UnaryExpr => isConstExpr(left)
-            case _ => false
-        }
-        if (!isLeftConst) { // early return
-            return false
-        }
-        let isRightConst = match (expr.rightExpr) {
-            case right: LitConstExpr => true
-            case right: BinaryExpr => isConstExpr(right)
-            case right: ParenExpr => isConstExpr(right)
-            case right: UnaryExpr => isConstExpr(right)
-            case _ => false
-        }
-        isRightConst
-    }
-
-    private func isConstExpr(expr: UnaryExpr): Bool {
-        match (expr.op) {
-            ...
-        }
-    }
-
-    private func isConstExpr(expr: ParenExpr): Bool {
-        match (expr.parenthesizedExpr) {
-            case inner: BinaryExpr => isConstExpr(inner)
-            case inner: LitConstExpr => true
-            case inner: ParenExpr => isConstExpr(inner)
-            case inner: UnaryExpr => isConstExpr(inner)
-            case _ => false
-        }
-    }
-
-    public override func visit(expr: BinaryExpr) {
-        if (isConstExpr(expr)) {
-            result.append(expr)
-            breakTraverse() // 不会继续遍历子节点
-        }
-        return
-    }
-}
-
-...
-let program = parseProgram(tokens)
-program.traverse(visitor)
-```
 - 解析为 AST（抽象语法树）后，使用 `visitor` 访问节点
 - 定位所有 `BinaryExpr`，确保只处理结构合法且可折叠的目标
 - 终止的条件是 `BinaryExpr` 递归到所有子节点没有变量等标识符
@@ -944,3 +893,7 @@ export default {
   },
 };
 ```
+
+{/* ## 总结与体会 */}
+
+{/* 本次实验报告深入探讨了仓颉语言的特性实践与编译原理知识的应用，并初步探索了现代 IDE 功能的模拟与 LLM 的集成。在仓颉语言特性方面，核心在于对抽象语法树（AST）的操作。在编译原理知识应用方面，虽然直接使用了标准库的解析器，但通过实践，更深刻地理解了从词法分析、语法分析到生成抽象语法树（AST）的过程，并体会到 AST 在代码分析、格式化、重构和优化中的核心地位。本次作业实现的各项功能，如代码转换和分析，本质上都是静态分析的具体应用。通过实现这些简化的 IDE 功能，例如代码结构查看和简单的转换，对现代 IDE 如何辅助开发者提升代码质量和开发效率有了更直观的感受。最后，首次尝试将大语言模型应用于代码辅助工具（文档生成），初步体验了 AI 在软件开发领域的巨大潜力。 */}

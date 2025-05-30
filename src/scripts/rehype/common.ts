@@ -7,6 +7,12 @@ import { rehypeTwemoji, type RehypeTwemojiOptions } from 'rehype-twemoji'
 import { getSingletonHighlighter } from "shiki";
 import { shikiGitDiff } from "shiki-git-diff";
 import CangjieLanguage from "./cangjie.tmLanguage.json";
+export const myLangs = {
+	langs: [CangjieLanguage],
+	langAlias: {
+		cj: "cangjie",
+	},
+};
 
 type PrettyCodeNodePositionPoint = {
     line: number;
@@ -39,12 +45,7 @@ const prettyCodeOptions: Options = {
     ],
     getHighlighter: (options) => getSingletonHighlighter({
         ...options,
-        langs: [
-            CangjieLanguage,
-        ],
-        langAlias: {
-            cj: "cangjie",
-        },
+        ...myLangs,
     }),
     onVisitLine(node) {
         if (node.children.length === 0) {

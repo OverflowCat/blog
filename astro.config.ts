@@ -35,8 +35,9 @@ import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 // import qwik from "@qwikdev/astro";
 
-import { rehypePipe } from "./src/scripts/rehype/common.ts";
+import { /* myLangs,  */rehypePipe } from "./src/scripts/rehype/common.ts";
 import { myRemarkPlugin } from "./src/scripts/remark/custom.ts";
+// import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -68,7 +69,11 @@ export default defineConfig({
 			},
 		},
 		ssr: {
-			external: ["prismjs", "@myriaddreamin/typst-ts-node-compiler", "astro-icon"],
+			external: [
+				"prismjs",
+				"@myriaddreamin/typst-ts-node-compiler",
+				"astro-icon",
+			],
 			noExternal: [
 				"7.css",
 				"xp.css",
@@ -118,26 +123,20 @@ export default defineConfig({
 	integrations: [
 		unocss(),
 		// qwik({ include: ["**/qwik/*", "**/*.qwik.*sx"] }),
-		react(
-			{ include: ["**/react/*", "**/*.tsx*", "spoiled"] }
-		),
+		react({ include: ["**/react/*", "**/*.tsx*", "spoiled"] }),
 		svelte(),
+		// expressiveCode({ shiki: myLangs }),
 		mdx(),
 		typst({
-			options: {
-				remPx: 14
+            options: {
+                remPx: 14,
 			},
-			mode: {
-				default: "svg" as "html" | "svg",
-				detect: function (id: string): "html" | "svg" {
-					console.debug(`Detecting ${id}`);
-					if (id.endsWith('.html.typ') || id.includes('/html/'))
-						return "html";
-					if (id.endsWith('.svg.typ') || id.includes('/svg/'))
-						return "svg";
-					return this.default;
-				}
-			}
+			target: (id: string): "html" | "svg" => {
+                console.debug(`Detecting ${id}`);
+				if (id.endsWith(".html.typ") || id.includes("/html/")) return "html";
+				if (id.endsWith(".svg.typ") || id.includes("/svg/")) return "svg";
+				return "html";
+			},
 		}),
 		sitemap(),
 	],
