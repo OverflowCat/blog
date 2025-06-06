@@ -1,19 +1,159 @@
 ---
-title: 仓颉语言的 AST 操作
-date: 2025-05-11T17:42:18.491Z
+title: 惊鸿一瞥：仓颉语言的 AST 操作
+# date: 2025-05-11T17:42:18.491Z
+date: 2025-06-06T19:49:53.547Z
+desc: 使用仓颉语言开发一个运行在服务端的仓颉代码工具，实现对仓颉程序的简单语法和语义分析，同时使用前端语言设计一个简单的图形界面，在浏览器实现对代码工具的调用。
+photo:
+  src: https://remnote-user-data.s3.amazonaws.com/I2fYKPgvCfefCB6vUBhW3tAmnTlMeq_YW9mRp16IGZXtsqM-TTAg0dQHtIW26hIgfpv1XpKckMi0kHZ-jT9Uai73TOo8S7elJKS9XRZkxvOqrAOhRwN9x-iILqX5JLbS.png
+  alt: 前端界面
+  aspect: "2160:1440"
 noscript: false
+vert: false
 licence: false
-layout: "@/layouts/Dual.astro"
-draft: true
-tags: []
-categories: []
+layout: "@/layouts/Default.astro"
+decoration: harmony
+series: harmony
+tags:
+  - 仓颉编程语言
+categories:
+  - 惊鸿一瞥
 ---
 
-{/* ![架构图](./archi.svg) */}
+这是《仓颉语言程序设计》课程的大作业的实现。大作业要求使用仓颉语言开发一个运行在服务端的仓颉代码工具，实现对仓颉程序的简单语法和语义分析，同时使用前端语言设计一个简单的图形界面，在浏览器实现对代码工具的调用。这个作业主要内容就是操作仓颉代码的 AST。
+
+<div class="hidden">您的浏览器或阅读器可能不支持良好渲染仓颉语言代码高亮，请移玉至原文查看。</div>
+
+## 功能需求
+
+以下内容为作业要求摘录，有改动。脚注为要求原文所加。
+
+### 后端功能需求
+
+#### 1. 功能接口
+
+创建一个仓颉项目，在源代码根目录（`src`）下创建 `CJCodeTool` 类，编写代码实现该类中的四个静态函数。每一个静态函数代表一个基础的代码分析/修改功能，它们都接受一个代表单文件代码文本的字符串类型参数 `code`，经过一系列处理之后返回处理结果字符串[^1]。
+
+除了这四种功能以外，你可以至多额外添加一种自定义功能，该功能的复杂度和实现效果会被纳入评分考量。
+
+##### (a) `generateCodeSignature` 函数
+
+该函数的功能是生成代码文件的签名。此处的“签名”包含“函数签名”和“类（接口）签名”[^2]，具体到仓颉语言，可以理解为定义接口时使用的无实现成员函数。而类签名则包含了类的声明语句以及它内部成员（包括属性，变量，函数）的签名。
+
+**具体来说，对于变量、属性、函数、类和接口，签名按次序包含以下内容：**
+
+i. 修饰符（如 `public`）。注意：修饰符可能不存在。  
+ii. 关键字（如 `func`）。  
+iii. 标识符，即命名。  
+iv. （对于类和接口）以 `<:` 开头的父接口/类序列，使用 `&` 连接。注意：该部分可能不存在。  
+v. （对于函数）参数列表。该部分和源代码保持一致即可。  
+vi. （对于变量、属性和函数）以冒号开头的返回类型。如果源代码中未显式声明返回类型，则签名中同样不用包含。  
+vii. （对于类和接口）内部声明的签名。
+
+**数据限制：**
+
+- 文件中的一级声明（即最外层的声明）只包含函数（`FuncDecl` 类）、类（`ClassDecl` 类）和接口（`InterfaceDecl` 类）声明；
+- 类和接口内部只包含变量（`VarDecl` 类）、属性（`PropDecl` 类）和函数（`FuncDecl` 类）声明；
+- 函数内部只包含变量声明；
+- 不将形参声明（`FuncParam` 类）视为声明，也就是不必将其纳入是否满足数据限制的考虑；
+- 不存在泛型类、接口和函数声明；
+- 不存在操作符重载函数声明。
+
+**输出要求：**
+
+- 按顺序输出文件中所有函数、类和接口的签名（即图2右图的格式）。对于不符合数据限制的输入，返回字符串 `'ILLEGAL INPUT'`。
+- 单次缩进为四个空格，每一个签名之间有一个空行。
+- 词法单元之间的空格规范不做要求（但要保证语法正确性）。
+
+##### (b) `refactorVariable` 函数
+
+该函数的功能是通过 `path` 参数指定代码中的一个类或者函数，然后将其作用域内的某个标识符（`oldName`）全部替换为另一个标识符（`newName`）。对于函数，作用域是函数签名和函数体这个整体，对于类也完全类似。
+
+**输入规范：**
+
+- `path`：形如 `'函数名'`、`'类名'`、`'类名.函数名'` 的格式。第一种是最外层的函数（不属于任何类的函数）。
+
+**数据限制：**
+
+- 不存在内层变量覆盖、重载等影响重构作用域和路径搜索的特殊情况；
+- 标识符都是合法的普通标识符，并且不会和内置类型标识符重名；
+- 使用 `std.ast` 包解析之后的语法树只存在如下类型的节点：  
+  `AssignExpr`, `BinaryExpr`, `Block`, `Body`, `ClassDecl`, `Decl`, `Expr`, `ForInExpr`,  
+  `FuncDecl`, `FuncParam`, `IfExpr`, `ImportContent`, `ImportList`, `LitConstExpr`,  
+  `Modifier`, `Node`, `PackageHeader`, `ParenExpr`, `Pattern`, `PrimitiveType`,  
+  `RangeExpr`, `RefExpr`, `RefType`, `ReturnExpr`, `Token`, `Tokens`, `TypeNode`,  
+  `UnaryExpr`, `VarDecl`, `VarPattern`。
+
+**输出要求：**
+
+- 输出重构后的完整代码。对于不符合数据限制的输入，返回字符串 `'ILLEGAL INPUT'`。
+- 词法单元之间的空格和换行规范不做要求（但要保证语法正确性）。
+
+##### (c) `generateDocument` 函数
+
+该函数的功能是通过 `path` 参数指定代码中的一个类或者函数，然后为其生成解释文档（以块注释的形式展示），用于解释该类或者函数的功能。
+
+**输入规范：**
+
+- `path`：形如 `'函数名'`、`'类名'`、`'类名.函数名'` 的格式。第一种是最外层的函数（不属于任何类的函数）。
+
+**数据限制：**
+
+- 同上（路径仅为三种形式，且必须存在）。
+
+**输出要求：**
+
+- 输出生成文档后的完整代码。对于不符合数据限制的输入，返回字符串 `'ILLEGAL INPUT'`；
+- 除了插入的文档所在的行，其他行的内容与格式应当与源文件完全相同。
+
+##### (d) `foldConstant` 函数
+
+该函数的功能是将代码中可直接计算的常量进行折叠[^3]，不考虑常量传播。
+
+**输入规范：**
+
+- 代码中的常量运算一定合法；
+- 不存在不同字面量类型之间的类型转换；
+- 不存在计算溢出情况。
+
+**数据限制：**
+
+- 同上，与 `refactorVariable` 相同；
+- 字面量只包含 `Float64` 和 `Int64`，无前后缀；
+- 运算只包含加/减/乘/除/模和取负。
+
+**输出要求：**
+
+- 输出重构后的完整代码。对于不符合数据限制的输入，返回字符串 `'ILLEGAL INPUT'`；
+- 常量必须被完全折叠；
+- 类型保持不变，浮点数保留位数不做限制；
+- 空格和换行不做要求（保证语法正确性）；
+- 不考虑常量传播。
+
+#### 2. HTTP 服务器
+
+使用仓颉语言的网络编程接口自行设计一个 HTTP 服务器，根据请求路径和报文数据调用相应的功能函数，然后将返回值添加到响应报文中进行响应。
+### 前端功能需求
+
+自行设计并用前端编程语言（html，css，js 等）或前端框架（vue，react 等）编写一个网页，实现对后端各功能接口的调用，页面操作逻辑形式不限。
+
+一种简单的实现思路是：网页仅包含一个文本输入框和一个提交按钮，将调用的功能接口和除 code 以外参数写在第一行，剩余行输入待处理的代码。点击按钮之后，将文本框内容提交至后端进行处理，最后将返回内容以 html 段落的形式展示出来。
+
+本大作业重点在于仓颉语言的综合运用，故无需在前端耗费过多工作量。
+
+## 实现方式限制
+
+- 对于后端的所有代码处理函数，请使用仓颉的 `std.ast` 标准库进行处理。正则表达式或序列处理很难完全实现预期功能；
+- 对于 `generateDocument` 函数中的文档生成，必须调用 LLM API 来完成，建议使用 DeepSeek；
+- 对于文档的插入，由于仓颉语法树中不存在注释类型节点，建议通过语法树获取类/函数签名所在行列数之后直接使用字符串方法进行插入；
+- 请将主函数单独放在源代码根目录（`src`）下的 `main.cj` 文件中。
+
+---
+
+[^1]: 代码文本可在[北航云盘](https://bhpan.buaa.edu.cn/link/AAAB688AB28E16499AB8E92F8508EEE527)获取  
+[^2]: 函数签名的定义可以参考[维基百科](https://zh.wikipedia.org/wiki/%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B)
+[^3]: 常量折叠的定义可以参考[维基百科](https://zh.wikipedia.org/wiki/%E5%B8%B8%E9%87%8F%E6%8A%98%E5%8F%A0)
 
 ## 前端
-
-{/* ![](./screenshot.png) */}
 
 前端部分使用 React 搭建界面。
 
@@ -33,7 +173,7 @@ categories: []
 ### 主要踩的坑
 
 `std.ast.cangjieLex(){:cj}`、`parseProgram` 甚至部分结构体的 `toTokens()`
-都不是线程安全的。最好的办法是调用 `CJCodeTool` 类中的方法时 `spawn{:cj}`：
+都不是线程安全的，需要调用 `CJCodeTool` 类中的方法时 `spawn{:cj}`：
 
 ```cj
 let output = spawn { CJCodeTool.generateDocument(...) }.get()
@@ -46,7 +186,11 @@ let output = spawn { CJCodeTool.generateDocument(...) }.get()
 现代浏览器在进行网络请求时，会遵循同源策略（Same-Origin Policy），不允许跨域请求，即对于
 $(\text{协议, 域名, 端口})$ 这一三元组，如果两个请求的这一三元组不同，则不允许跨域请求。
 
-因此，如果需要跨域请求，最好的方法是在服务器端设置 CORS 头。
+<Character sticker="inquisitive" name="前端之猫">
+这是一段经典的前端八股。
+</Character>
+
+因此，如果需要跨域请求，*最好*的方法是在服务器端设置 CORS 头。
 
 ```cj
 func sendRes(httpContext: HttpContext, output: String) {
@@ -61,6 +205,10 @@ func sendRes(httpContext: HttpContext, output: String) {
 }
 ```
 
+当然，还有下策：
+
+![我草 CORS 怎么这么坏啊](./cors.webp)
+
 ## (a) `generateCodeSignature` 函数 
 
 > 该函数的功能是生成代码文件的签名。此处的“签名”包含“函数签名”和“类（接口）签名”，具体到仓颉语言，可以理解为定义接口时使用的无实现成员函数。而类签名则包含了类的声明语句以及它内部成员（包括属性，变量，函数）的签
@@ -72,9 +220,9 @@ func sendRes(httpContext: HttpContext, output: String) {
 2. 使用 `parseProgram(tokens)` 将 `Tokens` 解析为抽象语法树（AST），根节点为 `Program` 类型。
 3. 遍历 `program.decls` 中的顶层声明。通过模式匹配（`match` 表达式）区分 `FuncDecl`（函数声明）、`ClassDecl`（类声明）和 `InterfaceDecl`（接口声明）。
 4. 对于 `FuncDecl`：直接提取其函数体起始花括号之前的所有 token。
-5. 对于 `ClassDecl` 和 `InterfaceDecl`：提取其修饰符、`class`/`interface`关键字、名称、父接口/类序列（如果存在）。然后递归处理其内部成员（`VarDecl`、`PropDecl`、`FuncDecl`），提取这些成员的签名，并进行适当的缩进。类/接口的实现体被省略，仅保留签名的嵌套结构。
+5. 对于 `ClassDecl` 和 `InterfaceDecl`：提取其修饰符、`class / interface{:cj}` 关键字、名称、父接口/类序列（如果存在）。然后递归处理其内部成员（`VarDecl`、`PropDecl`、`FuncDecl`），提取这些成员的签名，并进行适当的缩进。类/接口的实现体被省略，仅保留签名的嵌套结构。
 6. 实现中，通过获取声明节点的 `toTokens()`，然后有选择地拼接或替换部分 Token（例如，将类或函数体的 `{...}` 替换为仅包含成员签名的 `{...}`）来构造最终的签名字符串。
-7. 输出时，确保每个签名之间有空行，缩进使用四个空格。这部分是根据序列化后的实现行为手动加入空行。
+7. 输出时，确保每个签名之间有空行，缩进使用四个空格。**这部分是根据序列化后的实现行为手动加入空行。**
 8. 若输入不符合数据限制（如顶层声明包含非函数、类、接口，或内部声明不符合要求），则返回 "ILLEGAL INPUT"。
 
 ### 模式匹配类型的语法
@@ -390,7 +538,7 @@ class DocumentReq <: Serializable < DocumentReq > {
 
 ### 测试用例
 
-{/* ![](./llm.png) */}
+![](./llm.png)
 
 ```cj title="输入"
 package final
@@ -625,7 +773,7 @@ private func calculateExpr(expr: BinaryExpr): ConstLit {
 
 ### 在原始 token 流中直接定位并替换
 
-Tokens 类不是 Array，缺少很多功能
+Tokens 类不是 Array，缺少很多功能，不知道怎么想的。
 
 ```swift
 let startIndex = findTokenIndex(tokens, left)
@@ -725,23 +873,81 @@ public func testC() {
 
 ## (e) `generateJsonAst` 自定义功能
 
-将仓颉代码解析后的 AST 转换为 JSON 格式的字符串。
+将仓颉代码解析后的 AST 转换为 JSON 格式的字符串。此功能有助于理解 AST 结构，也可用于与其他 AST 可视化工具（如 astexplorer.net 的自定义解析器）集成。
+
+### 实现思路
 
 1. 使用 `cangjieLex(code)` 和 `parseProgram(tokens)` 得到 AST (`Program` 类型)。
-2. 设计一系列递归的 `toJson` 转换函数，每个函数对应一种 AST 节点类型（如 `toJson(decl: FuncDecl): JsonObject`，`toJson(expr: BinaryExpr): JsonObject` 等）。
+2. 设计一系列递归的 `toJson` 转换函数，每个函数对应一种 AST 节点类型。
 3. 每个 `toJson` 函数会创建一个 `JsonObject`。将节点类型和节点的属性作为键值对添加到 `JsonObject` 中。
-4. 如果节点的属性本身也是 AST 节点（如函数体 `Block` 是一个节点，它包含一系列 `Stmt` 节点组成的数组），则递归调用相应的 `toJson` 函数处理这些子节点，并将结果（可能是 `JsonObject` 或 `JsonArray`）作为父对象的属性值。
+4. 如果节点的属性本身也是 AST 节点（如函数体 `Block` 是一个节点，它包含一系列 `Stmt` 节点组成的数组），则递归调用相应的 `toJson` 函数处理这些子节点，并将结果（`JsonObject | JsonArray{:cj}`）作为父对象的属性值。
 5. 基本类型的属性直接作为 JSON 值。`Token` 类型的信息，如位置（`beginPos`, `endPos`），也一并转换为 JSON 对象。
 7. `program.decls{:cj}` 是一个 `ArrayList<Decl>{:cj}`，会被转换成一个 `JsonArray{:cj}`，数组中的每个元素是对应 `Decl` 节点转换后的 `JsonObject{:cj}`。
-8. 最终，整个 `Program` AST 被转换为一个顶层的 `JsonObject{:cj}` 或 `JsonArray{:cj}`（取决于设计，通常是代表 `Program` 的 `JsonObject`，其包含一个 `decls` 数组），然后将其序列化为 JSON 字符串。
-9. 此功能有助于理解 AST 结构，也可用于与其他 AST 可视化工具（如 astexplorer.net 的自定义解析器）集成。实现时注意到，为所有 AST 节点类型编写转换函数会导致代码量较大，编译时间也相应增加。
+8. 最终，整个 `Program` AST 被转换为一个顶层的 `JsonObject{:cj}` 或 `JsonArray{:cj}`，然后序列化为 JSON。
 
-即使用了宏，代码量也达到了惊人的上千行（不过也是一种元编程，用 Python 根据网页文档自动生成的）。这是因为文档里说：
+为所有 AST 节点类型编写转换函数会导致代码量较大，编译时间也相应增加。即使用了宏，代码量也达到了惊人的上千行。这堆宏具体也是在网页文档中 `document.querySelectorAll(){:js}` 所有标题后复制出来，批量编辑了后写了个 Python 生成的😄。
+
+import Character from "@/components/Character.astro";
+
+<Character sticker="rolling" name="前端之猫">
+
+代码生成也是一种元编程。
+
+</Character>
+
+为什么这么想不开呢？这是因为文档里说：
 
 > 在仓颉编程语言中，所有的泛型都是不型变的。这意味着如果 A 是 B 的子类型，`ClassName<A>{:cj}`
 > 和 `ClassName<B>{:cj}`之间没有子类型关系。我们禁止这样的行为以保证运行时的安全。
 
-因此，我们无法判断 `ArrayList<Decl>{:cj}` 中的 `Decl` 是 `ClassDecl` 还是 `FuncDecl` 等。所以需要手动进行类型判断，如下：
+因此，我们无法通过反射判断 `ArrayList<Decl>{:cj}` 中的 `Decl` 是 `ClassDecl` 还是 `FuncDecl` 之类。虽然我们可以写出
+
+```cj
+func toJson(node: Node): JsonObject {
+    ...
+    let typeinfo = TypeInfo.of(node)
+    for (property in typeinfo.instanceProperties) {
+        let name = property.name
+        let valueInfo = typeinfo.getInstanceProperty(name)
+        if (valueInfo.typeInfo.qualifiedName.startsWith("std.collection.ArrayList")) {
+            obj.put(name, castArray(node, valueInfo))
+        } else {
+            let value = valueInfo.getValue(node)
+            if (let Some(value) <- value as Node) {
+                obj.put(name, toJson(value))
+            } else {
+                println("No value for ${name} ${valueInfo.typeInfo.qualifiedName}")
+            }
+        }
+    }
+    obj
+}
+
+func toJson<T>(value: ArrayList<T>): JsonArray where T <: Node {
+    let arr = JsonArray()Add commentMore actions
+    for (elem in value) {Add commentMore actions
+        arr.add(toJson(elem))
+    }
+    arr
+}
+```
+
+但 `castArray` 还是都需要判断一遍：
+
+```cj
+func castArray(node: Node, valueInfo: InstancePropertyInfo): JsonArray {
+    if (let Some(value) <- valueInfo.getValue(node) as ArrayList<ast.Annotation>) {
+        toJson<ast.Annotation>(value)
+    } else if (let Some(value) <- valueInfo.getValue(node) as ArrayList<Argument>) {
+        toJson<Argument>(value)
+    } else if (let Some(value) <- valueInfo.getValue(node) as ArrayList<ArrayLiteral>) {
+        toJson<ArrayLiteral>(value)
+    } else if (let Some(value) <- valueInfo.getValue(node) as ArrayList<AsExpr>) {
+        toJson<AsExpr>(value)
+    } else ...
+```
+
+编译时间过长，完全不可用。所以最后还是手动对允许继承的类进行类型判断，如下：
 
 ```cj
 func toJson(decls: ArrayList<Decl>): JsonArray {
@@ -784,13 +990,13 @@ let nl = quote(
 )
 ```
 
-嵌入变量使用 `$(变量名)` 的形式。但是，对于在一个变量名外加双引号作为字符串，就比较麻烦了：
+嵌入变量使用 `$(变量名){:cj}` 的形式。但是，对于在一个变量名外加双引号作为字符串，就比较麻烦了：
 
 ```cj
 quote(obj.put($("tokens"), toJson(token.$(tokens))))
 ```
 
-这样只会生成 `obj.put("tokens", toJson(token.变量名))`，而不是 `obj.put("变量名", toJson(token.$("变量名")))`。因此，我采取的做法是
+这样只会生成 `obj.put("tokens", toJson(token.变量名)){:cj}`，而不是 `obj.put("变量名", toJson(token.$("变量名"))){:cj}`。因此，我采取的做法是
 
 ```cj
 public macro put(tokens: Tokens): Tokens {
@@ -893,7 +1099,4 @@ export default {
   },
 };
 ```
-
-{/* ## 总结与体会 */}
-
-{/* 本次实验报告深入探讨了仓颉语言的特性实践与编译原理知识的应用，并初步探索了现代 IDE 功能的模拟与 LLM 的集成。在仓颉语言特性方面，核心在于对抽象语法树（AST）的操作。在编译原理知识应用方面，虽然直接使用了标准库的解析器，但通过实践，更深刻地理解了从词法分析、语法分析到生成抽象语法树（AST）的过程，并体会到 AST 在代码分析、格式化、重构和优化中的核心地位。本次作业实现的各项功能，如代码转换和分析，本质上都是静态分析的具体应用。通过实现这些简化的 IDE 功能，例如代码结构查看和简单的转换，对现代 IDE 如何辅助开发者提升代码质量和开发效率有了更直观的感受。最后，首次尝试将大语言模型应用于代码辅助工具（文档生成），初步体验了 AI 在软件开发领域的巨大潜力。 */}
+修改后的代码见 [OverflowCat/astexplorer](https://github.com/OverflowCat/astexplorer)。

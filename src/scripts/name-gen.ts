@@ -126,11 +126,12 @@ const el1 = [
   "奇妙",
   "魔法",
   "蒸汽",
-  "极限",
-  "无聊",
+  "赛博",
+  "切尔诺贝利",
   "鄂温克",
   "满洲",
   "奉天",
+  "赛夏",
 ];
 const el2 = [
   "小丑",
@@ -162,6 +163,8 @@ const el2 = [
   "虚构",
   "乱码",
   "碳水",
+  "极限",
+  "无聊",
   "含糖",
   "粗野主义",
   "血管",
@@ -286,15 +289,17 @@ const el3 = [
   "屑",
   "垢",
   "污渍",
-  "废人",
+  "野人",
   "毛血旺",
+  "香锅",
   "醋鱼",
   "怪人",
   "肉",
   "河豚",
   "豚",
   "藻类",
-  "唾沫",
+  "蕨类",
+  // "唾沫",
   "咒语",
   "建筑",
   "小狗",
@@ -308,6 +313,8 @@ const el3 = [
   "男娘",
   "模型",
   "大模型",
+  "LLM",
+  "agent",
   "激活函数",
   "中间件",
   "变量",
@@ -325,5 +332,14 @@ const el3 = [
 ];
 
 export default function nameGen() {
-  return pick(el1) + pick(el2) + pick(el3);
+  // return pick(el1) + pick(el2) + pick(el3);
+  let a: string;
+  let b: string;
+  let c: string;
+  do {
+    a = pick(el1);
+    b = pick(el2);
+    c = pick(el3);
+  } while (a === b || b === c || a === c);
+  return a + b + c;
 }
