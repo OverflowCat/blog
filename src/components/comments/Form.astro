@@ -42,8 +42,8 @@ const placeholder = `${pick([
 
   <div class="form-group">
     <label for="user[email]"
-      ><span class="h">Email</span><span class="vert">邮箱</span></label
-    >
+      ><span class="h">Email</span><span class="vert">邮箱</span>
+    </label>
     <input
       type="email"
       id="user[email]"
@@ -51,6 +51,7 @@ const placeholder = `${pick([
       class="mono"
       placeholder="公开显示"
     />
+    <div class="hidden text-red-500" id="dont-fill-warning">请勿填写，会被当作 spam！</div>
   </div>
 
   <div class="form-group">
@@ -88,6 +89,9 @@ const placeholder = `${pick([
     br {
       display: none;
     }
+  }
+  input[type="email"]:focus-within + #dont-fill-warning {
+    display: block;
   }
   @media (max-width: 938px) {
     .info {
@@ -137,7 +141,8 @@ const placeholder = `${pick([
     }
 
     textarea {
-      resize: vertical; // TODO: Chrome 118 supports `block`
+      resize: vertical; // Chrome 118 supports `block`
+      resize: block;
       min-block-size: 180px;
       max-block-size: 500px;
     }
