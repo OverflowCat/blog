@@ -21,6 +21,7 @@ export type Props = HTMLAttributes<"svg"> &
     size?: number | string;
     width?: number | string;
     height?: number | string;
+    class?: string;
   };
 
 const fsCache = new Map<string, string>();
@@ -99,6 +100,7 @@ if (Astro.props.name) {
       width={Astro.props.width ?? Astro.props.size ?? "1em"}
       height={Astro.props.height ?? Astro.props.size ?? "1em"}
       alt={name}
+      class={Astro.props.class}
     />
   ) : (
     <Fragment

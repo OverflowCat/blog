@@ -13,6 +13,11 @@ article#post> :not(div),
     text-decoration: none;
     overflow-wrap: break-word;
 
+    &.unset-a {
+      --link-underline-color: transparent;
+      border-block-end: none;
+    }
+
     &[target="_blank"]:not(:has(img))::after {
       content: "↗";
       text-decoration-color: transparent;

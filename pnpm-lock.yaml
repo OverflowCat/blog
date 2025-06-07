@@ -98,6 +98,9 @@ importers:
       dial-data:
         specifier: ^0.0.4
         version: 0.0.4
+      digua:
+        specifier: ^0.0.3
+        version: 0.0.3
       gridsome-remark-figure-caption:
         specifier: ^1.2.2
         version: 1.2.2
@@ -2216,6 +2219,9 @@ packages:
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
     engines: {node: '>=0.3.1'}
+
+  digua@0.0.3:
+    resolution: {integrity: sha512-fMy7Is9KI5jwBGnyr4k2bpvmofKENzBEaZ9fScGBc5a8B4x+xjx4n5FPYTQbEssjsuJIadGn+wHazMyBGalJAg==}
 
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -6545,6 +6551,8 @@ snapshots:
   dial-data@0.0.4: {}
 
   diff@5.2.0: {}
+
+  digua@0.0.3: {}
 
   dir-glob@3.0.1:
     dependencies:

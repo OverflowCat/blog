@@ -9,6 +9,7 @@ export const commentsSchema = z.object({
   activitypub: z.string().optional(),
   format: z.enum(["markdown", "html"]).optional(),
   // date: z.string().pipe(z.coerce.date()),
+  ua: z.string().optional(),
   date: z.coerce.date(),
   reply: z.string().optional(),
 });

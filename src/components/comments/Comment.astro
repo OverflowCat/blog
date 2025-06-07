@@ -1,32 +1,67 @@
 ---
 export type Props = {
-  comment: TransformedComment & { data: { message?: string } };
+	comment: TransformedComment & { data: { message?: string } };
 };
+import { detect } from "digua";
 import type { TransformedComment } from "@/scripts/comments";
 import Icon from "@/components/Icon.astro";
 const { comment } = Astro.props;
 const { data } = comment;
 const { date } = data;
 const reply = data.reply
-  ? {
-      ...comment,
-      data: {
-        id: `${comment.id}r`,
-        name: "猫猫",
-        date: date,
-        message: data.reply,
-        email: "",
-      },
-    }
-  : undefined;
+	? {
+			...comment,
+			data: {
+				id: `${comment.id}r`,
+				name: "猫猫",
+				date: date,
+				message: data.reply,
+				email: "",
+			},
+		}
+	: undefined;
 
 const message = data.message ? data.message : comment.rendered?.html;
+const ua = data.ua ? detect(data.ua) : null;
+const deviceIcon = (device: string) => {
+  switch (device) {
+    case "Mobile":
+      return "mdi:cellphone"
+    case "PC":
+      // return "material-symbols:computer-outline-rounded"
+      return "mdi:computer"
+    case "Tablet":
+      return "mdi:tablet"
+    default:
+      return "ic:outline-device-unknown"
+  }
+}
+
+const osIcon = (os: string) => {
+  switch (os) {
+    case "HarmonyOS":
+    case "OpenHarmony":
+      return "simple-icons:harmonyos"
+    case "Windows":
+      return "simple-icons:windows"
+    case "macOS":
+      return "simple-icons:macos"
+    case "Linux":
+      return "teenyicons:linux-alt-outline"
+    case "Android":
+      return "icon-park-outline:android"
+    case "iOS":
+      return "mdi:apple-ios"
+    default:
+      return "carbon:unknown"
+  }
+}
 
 let url: URL | undefined = undefined;
 if (data.url)
-  try {
-    url = new URL(data.url);
-  } catch (e) {}
+	try {
+		url = new URL(data.url);
+	} catch (e) {}
 ---
 
 <li itemprop="comment" id={"comment-" + data.id}>
@@ -35,12 +70,26 @@ if (data.url)
       {url ? <a href={url} set:text={data.name} /> : data.name}
     </h4>
     &nbsp;
-    <time
+    {
+      ua && (
+        <span class="ua">
+          <Icon name={osIcon(ua.os)} size={14} />
+          {ua.os === "OpenHarmony" ? "鸿蒙" : ua.os} {ua.osVersion}
+        </span>
+        <span class="ua">
+          <Icon name={deviceIcon(ua.device)} size={14} />
+          {ua.browser} {ua.version}
+        </span>
+      )
+    }
+    <a href={`#comment-${data.id}`} class="monospace unset-a">
+      <time
       class="monospace"
       datetime={date.toISOString()}
       set:text={date.toLocaleDateString("zh")}
       itemprop="datePublished"
-    />
+      />
+    </a>
   </hgroup>
   <article class="message" set:html={message} />
   {
@@ -58,6 +107,12 @@ if (data.url)
 </li>
 
 <style lang="less" is:global>
+  span.ua {
+    @apply bg-gray-200 m-auto vertical-mid rounded-md m-inline-1 p-inline-1 text-sm;
+    svg {
+      @apply vertical-mid pbe-.2;
+    }
+  }
   .reply {
     margin-block-start: 8px;
     padding-inline: 1em;
@@ -107,10 +162,8 @@ if (data.url)
     }
 
     hgroup {
-      display: flex;
-      align-items: self-end;
       h4 {
-        font-size: 90%;
+        display: inline;
         margin-block: 0.2rem;
       }
       time {
