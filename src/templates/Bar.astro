@@ -59,7 +59,7 @@ assert(slogan, "slogan is undefined");
     </div>
     <ul class="block">
       {
-        items.map((item, i) => (
+        items.map(async (item, i) => (
           <li transition:name={`navbar-${i}`} id={`nav-${i}`}>
             {icons && <i class={item[3]} />}
             <a
