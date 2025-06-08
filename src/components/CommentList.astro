@@ -20,7 +20,7 @@ function getTitle(id: string) {
       <li>
         <strong>{comment.data.name}</strong> 在
         <date>
-          {comment.data.date.getUTCMonth() + 1} 月 {comment.data.date.getUTCDay()} 日
+          {comment.data.date.getUTCMonth() + 1} 月 {comment.data.date.getUTCDate()} 日
         </date>
         评论《<a
           href={`${comment.slug}/#comment-${comment.data.id}`}
