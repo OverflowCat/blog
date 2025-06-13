@@ -2,13 +2,17 @@
 import { defineConfig, presetWind3 } from "unocss";
 import presetIcons from "@unocss/preset-icons";
 import transformerDirectives from "@unocss/transformer-directives";
+// import extractorPug from '@unocss/extractor-pug'
 
 export default defineConfig({
   presets: [presetWind3(), presetIcons()],
+  extractors: [
+    // extractorPug(),
+  ],
   content: {
     pipeline: {
       include: [
-        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|typ|html)($|\?)/,
       ]
     }
   },
