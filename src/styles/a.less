@@ -72,7 +72,7 @@ figcaption a {
 
 article#post, article.content {
   h1 a[href^="#"] {
-    display: none;
+    visibility: hidden;
   }
 
   h2,
@@ -80,18 +80,6 @@ article#post, article.content {
   h4,
   h5,
   h6 {
-
-    /*
-    position: relative;
-    &:hover a[href^="#"] {
-      display: flex;
-      position: absolute;
-      left: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-inline-start: -20px;
-    }
-    */
     &:target {
       color: brown;
       animation: highlight 1s ease-in-out;
@@ -99,7 +87,7 @@ article#post, article.content {
     }
 
     a[href^="#"] {
-      display: none;
+      visibility: hidden;
       text-decoration: none !important;
       border-block-end-width: 0px !important;
       transition: opacity 0.1s ease-in-out;
@@ -110,7 +98,7 @@ article#post, article.content {
 
     &:hover a[href^="#"] {
       opacity: .9;
-      display: inline;
+      visibility: visible;
       margin-inline-start: 0.25em;
     }
   }
