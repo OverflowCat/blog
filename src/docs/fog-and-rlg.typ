@@ -2,10 +2,12 @@
 #show heading: set text(1.3em)
 #import "@preview/hyperscript:0.1.0": h as htmlelem
 #let h = (s, it) => htmlelem(s.replace(regex(" "), "."), it)
-#show math.equation.where(block: false): x => box(html.frame(x))
+#show math.equation.where(block: false): x => box(
+  h("span invert", html.frame(x)),
+)
 #show math.equation.where(block: true): x => h(
   "div m-block-2 flex flex-row justify-center inline-full",
-  html.frame(x),
+  h("span invert", html.frame(x)),
 )
 
 #let q(content) = {
