@@ -45,20 +45,6 @@ article#post {
   line-height: 175%;
   color: var(--text-color);
 
-  @media (min-width: 800px) {
-    margin-block: 10px;
-    margin-inline: 5px;
-    padding-block: 8px;
-    padding-inline: 24px;
-  }
-
-  @media (min-width: 1200px) {
-    margin-block: 14px;
-    margin-inline: 7px;
-    padding-block: 8px;
-    padding-inline: 32px;
-  }
-
   :not(pre)>code {
     font-size: 94%;
     // word-break: break-all;
@@ -244,6 +230,24 @@ article#post {
   img,
   video {
     border-radius: 4px;
+  }
+}
+
+@container html (min-inline-size: 800px) {
+  article#post {
+    margin-block: 10px;
+    margin-inline: 5px;
+    padding-block: 8px;
+    padding-inline: 24px;
+  }
+}
+
+@container html (min-inline-size: 1200px) {
+  article#post {
+    margin-block: 14px;
+    margin-inline: 7px;
+    padding-block: 8px;
+    padding-inline: 32px;
   }
 }
 
