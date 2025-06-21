@@ -89,6 +89,7 @@ if (Astro.props.name) {
   prefix = Astro.props.set;
   name = Astro.props.icon;
 } else {
+  console.log(Astro.props);
   throw new Error("Icon name or set and icon must be provided.");
 }
 ---
