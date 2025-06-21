@@ -27,12 +27,21 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							};
 						}
 						break;
+					// biome-ignore lint/suspicious/noFallthroughSwitchClause: fallthrough is intended
 					case "m": // Möllendorff
-						name = "span";
 						for (const child of node.children) {
 							if (child.type === "text") child.value = manjuify(child.value);
 						}
+					case "mnc": // Manchu
+						name = "span";
 						props = {
+							lang: "mnc",
+						};
+						break;
+					case "mv": // Manchu and vertical
+						name = "span";
+						props = {
+							className: "write-vertical-left",
 							lang: "mnc",
 						};
 						break;

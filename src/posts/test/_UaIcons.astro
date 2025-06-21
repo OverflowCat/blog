@@ -1,14 +1,19 @@
 ---
 import Icon from "@/components/Icon.astro";
-import { browserIcon, BROWSER_ICONS_MAP } from "@/scripts/ua-icons";
+import { BROWSER_ICONS_MAP } from "@/scripts/ua-icons";
 ---
 
 <ul class="ua-icons">
   {
-    Object.entries(BROWSER_ICONS_MAP).map(([name, icon]) => (
+    Object.entries(BROWSER_ICONS_MAP).map(([name, browser]) => (
       <li>
         <span>{name}</span>:
-        <Icon name={icon ?? "carbon:unknown"} size={24} />
+        {browser &&
+          (browser?.startsWith("http") ? (
+            <img src={browser} alt={browser} width={14} height={14} />
+          ) : (
+            <Icon name={browser} size={14} />
+          ))}
       </li>
     ))
   }
