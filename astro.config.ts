@@ -59,9 +59,6 @@ export default defineConfig({
 		],
 		experimentalLayout: "constrained",
 	},
-	experimental: {
-		responsiveImages: true,
-	},
 	vite: {
 		server: {
 			hmr: {

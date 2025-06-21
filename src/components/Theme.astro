@@ -53,11 +53,13 @@ const { value } = Astro.props;
       }
       &:has(option[value="light"]:checked) {
         color-scheme: light;
+        --light-none: none;
         --light-scheme: 1;
       }
       &:has(option[value="dark"]:checked) {
         color-scheme: dark;
         --dark-scheme: 1;
+        --dark-none: none;
         --logo-filter: invert(1);
       }
     }
