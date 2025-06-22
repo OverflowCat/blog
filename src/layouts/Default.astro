@@ -16,6 +16,7 @@ export type Props = {
 	file: string;
 	url: string;
 };
+
 ---
 
 {Astro.locals.renderer === 'rss' ?
@@ -61,7 +62,7 @@ export type Props = {
   classes={classes}
 >
 {
-  frontmatter ?
+  (frontmatter && Astro.props.url !== "/about") ?
   <Common layoutProps={Astro.props}>
     <slot />
   </Common> : <slot />

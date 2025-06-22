@@ -1,31 +1,38 @@
 ---
 title: About
 date: 2019-07-31 17:19:17
-layout: "@templates/en/Article.astro"
+layout: "@/templates/en/Article.astro"
 bar_index: 4
 noscript: true
 ---
 
-import Add from "@components/diff/Add.astro";
-import Del from "@components/diff/Del.astro";
+import Add from "@/components/diff/Add.astro";
+import Del from "@/components/diff/Del.astro";
+import Pn from "@/components/Pn.astro";
+
+import "@/styles/a.less";
+
+{/* <Article> */}
+{/* <article class="text-1.3em!" id="post"> */}
 
 # 关于
 
 欢迎打开新世界的大门！这里是 [OverflowCat](https://github.com/OverflowCat) 的博客。我在这里分享编程、光学、测控、语言和生活。
 
 <br />
-<div class="write-vertical-right max-h-60ch overflow-x-auto w-full">
+<section class="write-vertical-right max-h-57ch overflow-x-auto w-full">
 
 ## 自云
 
-長於淮左，負笈京畿。身兼南北之氣，血承燕蜀之風。廣陵音韻，川北言語，略通一二。能操珠申遗响，间作東瀛弦歌。學在北航，行將卒業。性耽前端之術，欲築賽博蘭臺；偶窺機巧之微，或躬耕於方寸。若見如左之屬，皆某化形耳：曰 :en[OverflowCat]，曰前端之貓，曰溢出貓，曰:mnc[ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ]。
+長於<Pn>淮左</Pn>，負笈<Pn>京畿</Pn>。身兼南北之氣，血承<Pn>燕</Pn><Pn>蜀</Pn>之風。<Pn>廣陵</Pn>音韻，<Pn>川北</Pn>言語，略通一二。能操<Pn>珠申</Pn>遺響，間作<Pn>東瀛</Pn>弦歌。學在<Pn>北航</Pn>，行將卒業。性耽前端之術，欲築賽博<Pn>蘭臺</Pn>；偶窺機巧之微，或躬耕於方寸。若見如左之屬，皆某化形耳：曰 <Pn>:en[OverflowCat]</Pn>，曰<Pn>前端之貓</Pn>，曰<Pn>溢出貓</Pn>，曰<Pn>:mnc[ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ]</Pn>。
 
 ## 此间
 
 觀吾域名之玄，乃藏字於其中，是爲 domain hack。所謂「<span lang="zh"><ruby>新<rt>xīn</rt></ruby><ruby>世<rt>shì</rt></ruby><ruby>界<rt>jiè</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>門<rt>mén</rt></ruby></span>」者，非獨新異之途，亦啓牖之鑰。冀拙文若晨星點夜，微光可照君懷。髫年惯听叩首之机声，今铸字为碑，恍闻铿然。若欲覽新墨，當循 RSS。新篇既就，自當飛驛相報。
 
 斯棧以{天星}^(Astro)爲基，託身於 GitHub 之頁。源碼盡藏[「部落格」之倉](https://github.com/OverflowCat/blog)。篇末可按圖索驥，抵各文章本源。有疑竇則啓{疑敘}^(issue)，或{復刻}^(fork)呈樣，或灑潘江於篇末，或魚傳尺素，皆見納焉。
-</div>
+</section>
+<br />
 
 ## 关于本站（白话文版）
 
@@ -39,3 +46,6 @@ import Del from "@components/diff/Del.astro";
 The blog system <Del>will be changed in the near future</Del> <Del>is under construction</Del>
 <Add>has been <a href="/astro/migration">fully migrated to Astro</a></Add>, and comments <Del>will be added later</Del> <Add>has been added</Add>.
 */}
+
+{/* </article> */}
+{/* </Article> */}
