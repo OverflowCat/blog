@@ -19,7 +19,7 @@ importers:
         version: 6.3.2
       '@astrojs/mdx':
         specifier: 4.3.0
-        version: 4.3.0(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+        version: 4.3.0(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
       '@astrojs/prism':
         specifier: 3.3.0
         version: 3.3.0
@@ -31,7 +31,7 @@ importers:
         version: 3.4.1
       '@astrojs/svelte':
         specifier: ^7.1.0
-        version: 7.1.0(@types/node@24.0.3)(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(svelte@5.34.7)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+        version: 7.1.0(@types/node@24.0.3)(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(svelte@5.34.7)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       '@builder.io/qwik':
         specifier: ^1.14.1
         version: 1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
@@ -64,7 +64,7 @@ importers:
         version: 0.6.0(@myriaddreamin/typst-ts-renderer@0.6.0)
       '@qwikdev/astro':
         specifier: ^0.8.0
-        version: 0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+        version: 0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
       '@shikijs/twoslash':
         specifier: ^3.7.0
         version: 3.7.0(typescript@5.8.3)
@@ -75,14 +75,14 @@ importers:
         specifier: ^19.1.6
         version: 19.1.6(@types/react@19.1.8)
       astro:
-        specifier: 5.10.0
-        version: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: 5.10.1
+        version: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       astro-remote:
         specifier: ^0.3.4
         version: 0.3.4
       astro-typst:
         specifier: 0.9.2
-        version: 0.9.2(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@4.44.0)
+        version: 0.9.2(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@4.44.0)
       bilibili-bv-av-convert:
         specifier: ^1.0.0
         version: 1.0.0
@@ -121,7 +121,7 @@ importers:
         version: 4.3.0
       logical-astro-tweet:
         specifier: ^0.0.5
-        version: 0.0.5(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+        version: 0.0.5(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -205,8 +205,8 @@ importers:
         version: 2.8.0
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.0.4
-        version: 2.0.4
+        specifier: ^2.0.5
+        version: 2.0.5
       '@iconify/json':
         specifier: ^2.2.351
         version: 2.2.351
@@ -454,55 +454,55 @@ packages:
     resolution: {integrity: sha512-ETyHEk2VHHvl9b9jZP5IHPavHYk57EhanlRRuae9XCpb/j5bDCbPPMOBfCWhnl/7EDJz0jEMCi/RhccCE8r1+Q==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.0.4':
-    resolution: {integrity: sha512-DNA++xe+E7UugTvI/HhzSFl6OwrVgU8SIV0Mb2fPtWPk2/oTr4eOSA5xy1JECrvgJeYxurmUBOS49qxv/OUkrQ==}
+  '@biomejs/biome@2.0.5':
+    resolution: {integrity: sha512-MztFGhE6cVjf3QmomWu83GpTFyWY8KIcskgRf2AqVEMSH4qI4rNdBLdpAQ11TNK9pUfLGz3IIOC1ZYwgBePtig==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.0.4':
-    resolution: {integrity: sha512-r5McIUMMiedwJ2rltuXhj0+w0W7IJLpkOS+OGCVZQQOOcrGY9gUSUmOo7O6Z7P0vlv5YYZkPbi+qR9MDDWRBSw==}
+  '@biomejs/cli-darwin-arm64@2.0.5':
+    resolution: {integrity: sha512-VIIWQv9Rcj9XresjCf3isBFfWjFStsdGZvm8SmwJzKs/22YQj167ge7DkxuaaZbNf2kmYif0AcjAKvtNedEoEw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.0.4':
-    resolution: {integrity: sha512-aV5Zc/3E3aXFbrjK1IgCMEQc+6PCkBL+NS+vtjoNM2VPFeM5OL5Q82BI4YZyPnebj+k42BPIoYtz0jJ95PGRRg==}
+  '@biomejs/cli-darwin-x64@2.0.5':
+    resolution: {integrity: sha512-DRpGxBgf5Z7HUFcNUB6n66UiD4VlBlMpngNf32wPraxX8vYU6N9cb3xQWOXIQVBBQ64QfsSLJnjNu79i/LNmSg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.0.4':
-    resolution: {integrity: sha512-cNukq2PthoOa7quqaKoEFz4Zd1pDPJGfTR5jVyk9Z9iFHEm6TI7+7eeIs3aYcEuuJPNFR9xhJ4Uj3E2iUWkV3A==}
+  '@biomejs/cli-linux-arm64-musl@2.0.5':
+    resolution: {integrity: sha512-OpflTCOw/ElEs7QZqN/HFaSViPHjAsAPxFJ22LhWUWvuJgcy/Z8+hRV0/3mk/ZRWy5A6fCDKHZqAxU+xB6W4mA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-arm64@2.0.4':
-    resolution: {integrity: sha512-nlJhf7DyuajMj+S7Ygum59cbrHvI/nSRvedfJcEIx4X7SsiZjpRUiC5XtEn77kg7NIKq/KqG5roQIHkmjuFHCw==}
+  '@biomejs/cli-linux-arm64@2.0.5':
+    resolution: {integrity: sha512-FQTfDNMXOknf8+g9Eede2daaduRjTC2SNbfWPNFMadN9K3UKjeZ62jwiYxztPaz9zQQsZU8VbddQIaeQY5CmIA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64-musl@2.0.4':
-    resolution: {integrity: sha512-oWQALSbp8xF0t/wiHU2zdkZOpIHyaI9QxQv0Ytty9GAKsCGP6pczp8qyKD/P49iGJdDozHp5KiuQPxs33APhyA==}
+  '@biomejs/cli-linux-x64-musl@2.0.5':
+    resolution: {integrity: sha512-9lmjCnajAzpZXbav2P6D87ugkhnaDpJtDvOH5uQbY2RXeW6Rq18uOUltxgacGBP+d8GusTr+s3IFOu7SN0Ok8g==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64@2.0.4':
-    resolution: {integrity: sha512-jlzrNZ+OzN9wvp2RL3cl5Y4NiV7xSU+QV5A8bWXke1on3jKy7QbXajybSjVQ6aFw1gdrqkO/W8xV5HODhIMT4g==}
+  '@biomejs/cli-linux-x64@2.0.5':
+    resolution: {integrity: sha512-znpfydUDPuDkyBTulnODrQVK2FaG/4hIOPcQSsF2GeauQOYrBAOplj0etGB0NUrr0dFsvaQ15nzDXYb60ACoiw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-win32-arm64@2.0.4':
-    resolution: {integrity: sha512-/PbNhMJo9ONja7hOxLlifM/qgeHpRD9bF2flTz5KIrXnQqpuegaRuwP/HYdJ9TFkTKFjHkPLoE4onOz3HIT5CQ==}
+  '@biomejs/cli-win32-arm64@2.0.5':
+    resolution: {integrity: sha512-CP2wKQB+gh8HdJTFKYRFETqReAjxlcN9AlYDEoye8v2eQp+L9v+PUeDql/wsbaUhSsLR0sjj3PtbBtt+02AN3A==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.0.4':
-    resolution: {integrity: sha512-dIM4SgO4/Rmsb4X7fwKtciQ682SZDSC1lm42uSM9gt8zNqBIeTaqsMc6eO1DpxYWMlAb/n2SML9+HUHmCib7NA==}
+  '@biomejs/cli-win32-x64@2.0.5':
+    resolution: {integrity: sha512-Sw3rz2m6bBADeQpr3+MD7Ch4E1l15DTt/+dfqKnwkm3cn4BrYwnArmvKeZdVsFRDjMyjlKIP88bw1r7o+9aqzw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -1894,8 +1894,8 @@ packages:
     peerDependencies:
       astro: '>= 3.0.0'
 
-  astro@5.10.0:
-    resolution: {integrity: sha512-g/t54kVzQnFVijs+GbbbX/NBAFTl/3yNAEA/AQYq4FumLLVv7n4BIF+jKhcPGn9iFGyT1Cjvr7KB/qYyNvHEIg==}
+  astro@5.10.1:
+    resolution: {integrity: sha512-DJVmt+51jU1xmgmAHCDwuUgcG/5aVFSU+tcX694acAZqPVt8EMUAmUZcJDX36Z7/EztnPph9HR3pm72jS2EgHQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -4618,12 +4618,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
+  '@astrojs/mdx@4.3.0(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4670,10 +4670,10 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.51
 
-  '@astrojs/svelte@7.1.0(@types/node@24.0.3)(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(svelte@5.34.7)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)':
+  '@astrojs/svelte@7.1.0(@types/node@24.0.3)(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(svelte@5.34.7)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.1.0(svelte@5.34.7)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
-      astro: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       svelte: 5.34.7
       svelte2tsx: 0.7.39(svelte@5.34.7)(typescript@5.8.3)
       typescript: 5.8.3
@@ -4820,39 +4820,39 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@biomejs/biome@2.0.4':
+  '@biomejs/biome@2.0.5':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.0.4
-      '@biomejs/cli-darwin-x64': 2.0.4
-      '@biomejs/cli-linux-arm64': 2.0.4
-      '@biomejs/cli-linux-arm64-musl': 2.0.4
-      '@biomejs/cli-linux-x64': 2.0.4
-      '@biomejs/cli-linux-x64-musl': 2.0.4
-      '@biomejs/cli-win32-arm64': 2.0.4
-      '@biomejs/cli-win32-x64': 2.0.4
+      '@biomejs/cli-darwin-arm64': 2.0.5
+      '@biomejs/cli-darwin-x64': 2.0.5
+      '@biomejs/cli-linux-arm64': 2.0.5
+      '@biomejs/cli-linux-arm64-musl': 2.0.5
+      '@biomejs/cli-linux-x64': 2.0.5
+      '@biomejs/cli-linux-x64-musl': 2.0.5
+      '@biomejs/cli-win32-arm64': 2.0.5
+      '@biomejs/cli-win32-x64': 2.0.5
 
-  '@biomejs/cli-darwin-arm64@2.0.4':
+  '@biomejs/cli-darwin-arm64@2.0.5':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.0.4':
+  '@biomejs/cli-darwin-x64@2.0.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.0.4':
+  '@biomejs/cli-linux-arm64-musl@2.0.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.0.4':
+  '@biomejs/cli-linux-arm64@2.0.5':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.0.4':
+  '@biomejs/cli-linux-x64-musl@2.0.5':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.0.4':
+  '@biomejs/cli-linux-x64@2.0.5':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.0.4':
+  '@biomejs/cli-win32-arm64@2.0.5':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.0.4':
+  '@biomejs/cli-win32-x64@2.0.5':
     optional: true
 
   '@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))':
@@ -5551,10 +5551,10 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
-  '@qwikdev/astro@0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
+  '@qwikdev/astro@0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
     dependencies:
       '@builder.io/qwik': 1.14.1(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
-      astro-integration-kit: 0.18.0(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+      astro-integration-kit: 0.18.0(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
     transitivePeerDependencies:
       - astro
 
@@ -6143,9 +6143,9 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-integration-kit@0.18.0(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)):
+  astro-integration-kit@0.18.0(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
-      astro: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       pathe: 1.1.2
       recast: 0.23.11
 
@@ -6157,20 +6157,20 @@ snapshots:
       marked-smartypants: 1.1.9(marked@12.0.2)
       ultrahtml: 1.6.0
 
-  astro-typst@0.9.2(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@4.44.0):
+  astro-typst@0.9.2(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@4.44.0):
     dependencies:
       '@myriaddreamin/typst-ts-node-compiler': 0.6.0
       '@myriaddreamin/typst-ts-renderer': 0.6.0
       '@myriaddreamin/typst.ts': 0.6.0(@myriaddreamin/typst-ts-renderer@0.6.0)
       '@rollup/plugin-node-resolve': 16.0.1(rollup@4.44.0)
-      astro: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
-      astro-integration-kit: 0.18.0(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+      astro: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro-integration-kit: 0.18.0(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
       cheerio: 1.1.0
     transitivePeerDependencies:
       - '@myriaddreamin/typst-ts-web-compiler'
       - rollup
 
-  astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -7388,10 +7388,10 @@ snapshots:
 
   lodash@4.17.21: {}
 
-  logical-astro-tweet@0.0.5(astro@5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)):
+  logical-astro-tweet@0.0.5(astro@5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
       '@astrojs/check': 0.2.1(typescript@5.8.3)
-      astro: 5.10.0(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@24.0.3)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.44.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       clsx: 2.1.1
       date-fns: 2.30.0
       typescript: 5.8.3

@@ -21,6 +21,7 @@ const TAG_TYPE = z
 const SERIES_TYPE = z.union([
 	z.literal("weekly"),
 	z.literal("harmony"),
+	z.literal("六不答對"),
 ]).nullish();
 
 export const postSchemaGen = (ctx: SchemaContext) => z

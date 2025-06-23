@@ -1,0 +1,66 @@
+---
+export type Props = {
+  t: string;
+  a: string;
+  segmenter?: string;
+};
+
+const { t, a } = Astro.props;
+
+const segmenter = Astro.props?.segmenter ?? " ";
+const textParts = t.split(segmenter);
+const annoParts = a.split(segmenter);
+---
+
+<div class="hover-map-text">
+  {
+    textParts.map((text, i) => (
+      <span tabindex="0" class="hmt" data-hm={i + 1} set:html={text} />
+    ))
+  }
+</div>
+<div class="hover-map-annotation">
+  {
+    annoParts.map((anno, i) => (
+      <span tabindex="0" class="hma" data-hm={i + 1}>
+        {anno}
+      </span>
+    ))
+  }
+</div>
+
+<style lang="less">
+  .hmt:hover,
+  .hmt:focus {
+    background-color: rgba(180, 180, 25, 0.517);
+  }
+  .hma:hover,
+  .hma:focus {
+    background-color: rgba(54, 255, 67, 0.58);
+  }
+  .generate-hover-map(@i) when (@i > 0) {
+    .generate-hover-map(@i - 1); // 递归
+
+    .hover-map-text:has(.hmt[data-hm="@{i}"]:hover)
+      + .hover-map-annotation
+      > .hma[data-hm="@{i}"],
+    .hover-map-text:has(.hmt[data-hm="@{i}"]:focus)
+      + .hover-map-annotation
+      > .hma[data-hm="@{i}"] {
+      background-color: rgba(227, 227, 31, 0.672);
+      border: 2px solid rgba(203, 95, 28, 0.578);
+      box-sizing: border-box;
+    }
+
+    .hover-map-text:has(+ .hover-map-annotation > .hma[data-hm="@{i}"]:hover)
+      > .hmt[data-hm="@{i}"],
+    .hover-map-text:has(+ .hover-map-annotation > .hma[data-hm="@{i}"]:focus)
+      > .hmt[data-hm="@{i}"] {
+      background-color: rgba(54, 255, 67, 0.662);
+      border: 2px solid rgba(0, 145, 255, 0.781);
+      box-sizing: border-box;
+    }
+  }
+
+  .generate-hover-map(20);
+</style>
