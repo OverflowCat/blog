@@ -45,26 +45,25 @@ export const BROWSER_ICONS_MAP = {
     TheWorld: "",
     MIUI: "simple-icons:xiaomi",
     HuaweiBrowser: "simple-icons:huawei",
-    Quark: "",
+    Quark: "arcticons:quark-browser",
     Qiyu: "",
     '360Browser': "",
     Wechat: "tdesign:logo-wechat-stroke-filled",
-    Taobao: "",
-    Alipay: "",
-    Weibo: "",
+    Taobao: "ri:taobao-line",
+    Alipay: "tdesign:logo-alipay",
+    Weibo: "fa6-brands:weibo",
     Douban: "",
     Suning: "",
     iQiYi: "",
   }
 
-export const browserIcon = (browser: string) => {
-  if (BROWSER_ICONS_MAP[browser]) {
-    return BROWSER_ICONS_MAP[browser]
-  }
-  return false
+export type SupportedBrowser = keyof typeof BROWSER_ICONS_MAP
+export const browserIcon = (browser: SupportedBrowser) => {
+  return BROWSER_ICONS_MAP[browser]
 }
 
-export const osIcon = (os: string) => {
+export type SupportedOS = "HarmonyOS" | "OpenHarmony" | "Windows" | "macOS" | "Linux" | "Android" | "iOS"
+export const osIcon = (os: SupportedOS) => {
   switch (os) {
     case "HarmonyOS":
     case "OpenHarmony":

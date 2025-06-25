@@ -1,8 +1,7 @@
 ---
 title: 期中
 date: 2020-11-13T23:08:00+08:00
-noscript: false
-licence: false
+noscript: true
 layout: "@/layouts/Default.astro"
 categories: [题隙碎笔]
 vert: true
