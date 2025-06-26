@@ -52,7 +52,7 @@ assert(slogan, "slogan is undefined");
 }
 <nav id="sticky">
   <div class="backdrop">
-    <div class="logowrapper edge min-inline-20">
+    <div id="small-logo" class="logowrapper edge min-inline-20">
       <img class="logo vert-hide block h-8 mbs-.7" src="https://remnote-user-data.s3.amazonaws.com/f8gKx0Gme6bMH6i0C1u9WMvu0a_FrROFO69-uwow3_q5XAMN7sy-G77NUEkAk1Z3SkWyXijliwe9rWifldNdycmhnM8y2fvxH6t6InSoPCDDklhW0aiDFLfMq3O1JRd4.svg" alt="logo" />
       <img class="logo hidden block-8 mbs-.7" src="/logo-vert.svg" alt="vertical logo" />
       <img class="logo-icon vert-block mbs-1.4 block-7" src="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png" alt="icon" />
@@ -266,6 +266,30 @@ assert(slogan, "slogan is undefined");
     a {
       padding-inline-start: 0.5em;
       padding-inline-end: 0.5em;
+    }
+  }
+</style>
+<style is:raw>
+  @container html not (scroll-state(scrollable: block-start)) {
+    #small-logo {
+      transform: scaleX(0);
+      transform-origin: left;
+      #vert:target & {
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+      transition: all 1s;
+    }
+  }
+  @container html scroll-state(scrollable: block-start) {
+    #small-logo {
+      transform: scaleX(1);
+      transform-origin: left;
+      #vert:target & {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+      transition: all 1s;
     }
   }
 </style>

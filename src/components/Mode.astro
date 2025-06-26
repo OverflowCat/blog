@@ -18,10 +18,7 @@ import Theme from "./Theme.astro";
 import Icon from "@/components/Icon.astro";
 ---
 
-<div
-  id="han-float"
-  class:list={[{ float }, "flex", "block-8", "flex-col"]}
->
+<div id="han-float" class:list={[{ float }, "flex", "block-8", "flex-col"]}>
   {
     hant !== false && (
       <div id="han-cc" class="inline">
@@ -49,14 +46,23 @@ import Icon from "@/components/Icon.astro";
       <div id="veho" class="inline-flex flex-row v-sub">
         <a href="#vert" class="text-xl" title="直排">
           <Icon name="fluent:text-direction-vertical-24-filled" />
+          <span class="first-tooltip">直排显示</span>
         </a>
         <a href="#" class="text-xl" title="横排">
           <Icon name="fluent:text-direction-horizontal-ltr-24-filled" />
+          <span class="first-tooltip">横排显示</span>
         </a>
       </div>
     )
   }
-  {theme !== false && <Theme value={theme === "auto" ? "auto" : "light"} />}
+  {
+    theme !== false && (
+      <>
+        <Theme value={theme === "auto" ? "auto" : "light"} />
+        <div class="first-tooltip">切换主题</div>
+      </>
+    )
+  }
 </div>
 <style lang="less">
   #han-float {
@@ -98,6 +104,32 @@ import Icon from "@/components/Icon.astro";
     writing-mode: vertical-lr;
     #vert:target {
       writing-mode: vertical-lr;
+    }
+  }
+  .first-tooltip {
+    display: none;
+    transition: all 1s;
+    transform-origin: right;
+    #vert:target & {
+      transform-origin: bottom;
+    }
+    opacity: 1;
+    margin-inline-start: 0;
+  }
+  @container html not (scroll-state(scrollable: block-start)) {
+    .first-tooltip {
+      display: block;
+    }
+  }
+  @container html scroll-state(scrollable: block-start) {
+    .first-tooltip {
+      display: block;
+      transform: scaleX(0);
+      #vert:target & {
+        transform: scaleY(0);
+      }
+      opacity: 0;
+      margin-inline-start: -4em;
     }
   }
 </style>
