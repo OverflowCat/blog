@@ -45,12 +45,12 @@ pnpm -v
 npm init
 ```
 
-NPM Universe 和 Typst Universe 一样，提供了一个 host 社区仓库的入口，用户可以在[这里](https://www.npmjs.com/search?q=keywords:typst
+NPM Universe 和 Typst Universe 一样，提供了一个 社区仓库的入口，用户可以在[这里](https://www.npmjs.com/search?q=keywords:typst
 )检索和查阅。
 
 ![](https://remnote-user-data.s3.amazonaws.com/Lt0I9QM7FpurdpkOPnWNNMhR0T8Taw2P8Q2pXEBJihWoafxvRf2ifAdR0oLnphveRO3xYbuWnVU4ZXuBXotFCO62XyK22BCwLFRgWzw6rQTALCs31gDJCXY1IyV6BrbI.png)
 
-为了维护各个依赖的版本信息，现在我们不再需要记住特定的版本号，而是直接使用 `npm install` 就可以安装最新版本了。比如，你可以安装我写的 `sigfig` 包，来实现科学计数法。
+为了维护各个依赖的版本信息，现在我们不再需要记住特定的版本号，而是直接使用 `npm install{:js}` 就可以安装最新版本了。比如，你可以安装我写的 [`sigfig`](https://github.com/OverflowCat/sigfig) 包来处理不确定度。
 
 ```bash
 npm install typst-sigfig
@@ -84,7 +84,7 @@ import LightDarkImage from "@/components/LightDarkImage.astro"
   <figcaption>一个不支持 typst 0.13 的包</figcaption>
 </LightDarkImage>
 
-更棒的是，NPM Universe 甚至还支持查看 typst 包的源码，以及完善的代码高亮。这是上一代 Typst Universe 都没做到的功能！
+更棒的是，NPM Universe 甚至还支持查看 typst 包的源码，还提供完善的代码高亮。这是上一代 Typst Universe 都没做到的功能！
 
 ![astro-typst 的源码](https://remnote-user-data.s3.amazonaws.com/RFvHAWGCUiKMPJ7Aygljgmlfgt3t4eQeR9ihY-Ynf0wqOf3NsN8voQVQJPwXM4rf-XuQEusmeYVaQpxdxxE2Z9shMmyW0rmdXe1FtvhBIhxEmerWNNA6dubifyGk-ESE.png)
 
@@ -95,7 +95,7 @@ import LightDarkImage from "@/components/LightDarkImage.astro"
   ...,
   "scripts": {
     ...,
-    "pub": "typst compile --features html --format html README.typ README.md"
+    "pub": "typst compile --features html --format html README.typ README.md && npm publish"
   }
 }
 ```

@@ -1,5 +1,4 @@
-<svg width="1000" height="750" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 400 300">
-<rect width="400" height="300" x="0" y="0" fill="none"></rect>
+<svg class="inline-full" width="1000" height="750" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 400 300">
 <path d="M40 230.5L360 230.5" fill="none" pointer-events="visible" stroke="#E0E6F1" class="zr0-cls-0"></path>
 <path d="M40 201.5L360 201.5" fill="none" pointer-events="visible" stroke="#E0E6F1" class="zr0-cls-0"></path>
 <path d="M40 173.5L360 173.5" fill="none" pointer-events="visible" stroke="#E0E6F1" class="zr0-cls-0"></path>
