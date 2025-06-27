@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
+  # Using a different branch name? Replace `main` with your branch's name
   push:
     branches: [src]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
@@ -20,18 +20,32 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Enable Universe repository # for lmodern fonts
-        run: sudo add-apt-repository universe -y
-      - name: Install Noto fonts and Latin Modern Sans
-        run: sudo apt-get install -y fonts-noto-cjk-extra fonts-lmodern
-      - name: Install IBM Plex Sans SC font
+      - name: Install all fonts (concurrent)
         run: |
-          curl -L https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip -o ibm-plex-sans-sc.zip
-          unzip ibm-plex-sans-sc.zip -d ./fonts
-          sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
-          find ./fonts/ibm-plex-sans-sc/fonts/complete/ttf -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/ibm-plex/ \;
+          sudo add-apt-repository universe -y
+          sudo apt-get update
+
+          # APT 装系统包
+          sudo apt-get install -y fonts-noto-cjk-extra fonts-lmodern &
+
+          # IBM Plex
+          (
+            curl -L https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip -o ibm-plex-sans-sc.zip
+            unzip ibm-plex-sans-sc.zip -d ./fonts
+            sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
+            find ./fonts/ibm-plex-sans-sc/fonts/complete/ttf -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/ibm-plex/ \;
+          ) &
+
+          # HarmonyOS Sans
+          (
+            git clone --depth=1 https://gitee.com/openharmony/utils_system_resources.git
+            cd utils_system_resources/fonts
+            sudo mkdir -p /usr/share/fonts/truetype/harmonyos
+            find . -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/harmonyos/ \;
+          ) &
+
+          wait            # 等三条后台任务全部结束
           sudo fc-cache -f -v
-          fc-list | grep -i "IBM Plex"
       - name: Install, build, and upload my site
         uses: withastro/action@v4
         with:
