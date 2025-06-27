@@ -1,8 +1,9 @@
 import { getBlogPosts } from "@/scripts/post";
 const posts = await getBlogPosts();
 
-export async function getTagsInfo() {
-	const tagsInfo = new Map<string, number>();
+const tagsInfo = new Map<string, number>();
+export function getTagsInfo() {
+	if (tagsInfo.size > 0) return tagsInfo;
 	posts.map((post) => {
 		if (!post.data.tags) return;
 		if (typeof post.data.tags === "string") {
@@ -15,8 +16,9 @@ export async function getTagsInfo() {
 	return tagsInfo;
 }
 
+const catsInfo = new Map<string, number>();
 export function getCatsInfo() {
-	const catsInfo = new Map<string, number>();
+	if (catsInfo.size > 0) return catsInfo;
 	posts.map((post) => {
 		if (!post.data.categories) return;
 		if (typeof post.data.categories === "string")

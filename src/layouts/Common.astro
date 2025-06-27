@@ -5,6 +5,7 @@ import LicenceBox from "@/components/licences/LicenceBox.astro";
 import type { IconName } from "@/scripts/icons";
 import Icon from "@/components/Icon.astro";
 import { getEntry } from "astro:content";
+import { getCatsInfo, getTagsInfo } from "@/scripts/tags";
 export interface Props {
   layoutProps: {
     url?: string;
@@ -98,7 +99,7 @@ import { getCatSlug } from "@/scripts/tags";
         分类：
         {cats.map((cat) => (
           <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
-            {cat}
+            {cat} <sup>{getCatsInfo().get(cat)}</sup>
           </a>
         ))}
       </div>
@@ -112,7 +113,7 @@ import { getCatSlug } from "@/scripts/tags";
         标签：
         {tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>
-            {tag}
+            {tag} <sup>{getTagsInfo().get(tag)}</sup>
           </a>
         ))}
       </div>
