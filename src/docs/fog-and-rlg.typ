@@ -1,21 +1,12 @@
 #set text(lang: "zh", region: "CN")
 #show heading: set text(1.3em)
-#import "@preview/hyperscript:0.1.0": h as htmlelem
-#let h = (s, it) => htmlelem(s.replace(regex(" "), "."), it)
-#show math.equation.where(block: false): x => box(
-  h("span eq", html.frame(x)),
-)
-#show math.equation.where(block: true): x => h(
-  "div m-block-2 flex flex-row justify-center inline-full",
-  h("span eq", html.frame(x)),
-)
-
+#set math.equation(numbering: "(1)")
+#import "./html-template.typ": *
 #let q(content) = {
   h("blockquote text-lg mbs-6! mbe-2! p-2 rounded-md", content)
 }
 
-#set math.equation(numbering: "(1)")
-
+#template[
 == Sagnac 效应和基本表达式
 
 #q[阐述 Sagnac 效应，写出其基本表达式并描述各符号物理意义，由基本表达式推导激光陀螺和光纤陀螺表达式。]
@@ -95,3 +86,4 @@ $ Phi_S = (8 Omega pi c L D) / (4 lambda c^2) = (2 Omega L D) / (lambda c). $
 #q[进一步查资料，总结#link("https://en.m.wiktionary.org/wiki/%E5%85%A9%E5%85%89%E9%99%80%E8%9E%BA", "「两光」陀螺")发明和发展历程。]
 
 1913 年，法国科学家萨格奈克论证了采用无运动部件的光学系统同样能检测相对惯性空间的旋转。得益于连续激光器的发明，1962年作为第二代陀螺的环形激光陀螺诞生。1963 年美国 #link("https://en.wikipedia.org/wiki/Sperry_Corporation", "Sperry") 公司采用气体激光器建立了激光陀螺装置。1964年，美国 Honeywell 公司得到空军资助开始研制激光陀螺产品，1974 年在飞机上试验成功。1976年美国犹他州立大学 V. Vali 和 R. Shorthill 教授成功进行了第三代陀螺-光纤陀螺的实验演示。90 年代，中高精度的光纤陀螺技术取得了重大突破，出现了谐振式光纤陀螺和布里渊散射式光纤陀螺。
+]

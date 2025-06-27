@@ -33,4 +33,5 @@ const { light, dark, alt, class: className } = Astro.props;
 
 <figure class:list={["light-dark-img", className]}>
   <img src={light} alt={alt + " (Light mode image)"} />
+  <slot />
 </figure>

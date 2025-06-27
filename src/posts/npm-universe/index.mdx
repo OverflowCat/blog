@@ -1,0 +1,245 @@
+---
+title: 下一代 typst 包管理器
+date: 2025-06-27T06:47:48.730Z
+desc: "向大家介绍新一代的 typst 包管理：NPM Universe。顾名思义，就是使用一个名叫「npm」的命令行工具的 Typst Universe 替代品。"
+noscript: true
+photo:
+  src: https://remnote-user-data.s3.amazonaws.com/Syg45Rr8DpkeNmjrnT0kz4o0b0WuVopTWHiO_0bS2WUr84m3uGJX8cEDA9MPtdMCuk4nht3ghGhTShLFxtoLSA2BVxqo-LRR-onjjKcwvW69uCUcy2Y2FTb7MzkXDKP5.png
+  alt: 狂暴 typst 轰入 npm 宇宙
+layout: "@/layouts/Default.astro"
+tags:
+  - Astro
+  - meme
+categories:
+  - typst
+---
+
+众所周知，[Typst Universe](https://typst.app/universe/) 是 typst 生态中的三方包 registry。在 2025 年的年中，向大家介绍新一代的 typst 包管理和三方包仓库：NPM Universe。顾名思义，就是使用一个名叫「npm」的命令行工具的 Typst Universe 替代品。
+
+NPM Universe 如此重要，甚至被许多运行时捆绑。例如，在你的包管理器上安装 `nodejs`，即可获取一份 `npm` 的副本。
+
+```sh
+pacman -S nodejs # Arch Linux
+brew install nodejs # macOS
+scoop install nodejs # Windows
+
+npm -v
+10.9.2
+```
+
+当然，只有一种实现的标准并不健康。你也可以使用速度更快的 `pnpm` 作为替代品：
+
+```sh
+pacman -S pnpm # Arch Linux
+brew install pnpm # macOS
+scoop install pnpm # Windows
+npm install -g pnpm # Already installed npm
+
+pnpm -v
+10.11.0
+```
+
+与以往的简约风格不同，我们开创性地引入了项目的概念，这有助于我们确定我们的 typst 文稿的依赖版本，以及定义常用的配置。执行下面的命令后，会在当前目录生成一个 `package.json` 文件。
+
+```bash
+npm init
+```
+
+NPM Universe 和 Typst Universe 一样，提供了一个 host 社区仓库的入口，用户可以在[这里](https://www.npmjs.com/search?q=keywords:typst
+)检索和查阅。
+
+![](https://remnote-user-data.s3.amazonaws.com/Lt0I9QM7FpurdpkOPnWNNMhR0T8Taw2P8Q2pXEBJihWoafxvRf2ifAdR0oLnphveRO3xYbuWnVU4ZXuBXotFCO62XyK22BCwLFRgWzw6rQTALCs31gDJCXY1IyV6BrbI.png)
+
+为了维护各个依赖的版本信息，现在我们不再需要记住特定的版本号，而是直接使用 `npm install` 就可以安装最新版本了。比如，你可以安装我写的 `sigfig` 包，来实现科学计数法。
+
+```bash
+npm install typst-sigfig
+```
+
+与导入 Typst Universe 的 `@preview` 类似，我们还需要一个特定的前缀：`node_modules`。这是 NPM Universe 开创性的「节点模块」架构，每个 typst 包是一个单独的文件夹。
+
+```typ
+// Pre
+// #import "@preview/sigfig:0.1.0": *
+
+// Post
+#import "node_modules/typst-sigfig/sigfig.typ": *
+```
+
+之所以叫作 Universe，实际上是因为这个包管理器将 typst 包存储在 ``node_modules`` 中。互联网上流传了这样一张图片，说明了 typst 生态的繁荣：
+
+![](https://remnote-user-data.s3.amazonaws.com/XQ4c7szZ4yv-EbP4E-HDfrp329DIRWtAadkZs7m2k6e3S6E5N2xS7CBA8s-k0zzCgNrH3tpoyyOI9lyzcoCLMciwh5FUgn9T2Ns_aYpukyvBv10nZRYefyG67iozLCEN.png)
+
+此外，NPM Universe 无需经过繁琐的审核流程，`init` 好之后，几分钟内即可上传你的代码：
+
+```bash
+npm publish # 初次使用需要注册账号
+```
+
+NPM Universe 还支持命名空间，这意味着当 typst 升级时，你可以自己将 fork 发版，不必苦苦等待作者适配发版，或者让删掉 `styles` 的库源码污染你的 git 历史。
+
+import LightDarkImage from "@/components/LightDarkImage.astro"
+
+<LightDarkImage dark="https://remnote-user-data.s3.amazonaws.com/CFDqVVBuHaOAy2qVlPo8F0KGDThvgsKly7TLrzUOvIBoHY0-zKauwa67fmWG2Fa9AQsd-lZx5C1SwKaxgMh9qT5pXIQKzPn4NAiE8yi-4nuXWOlv2kd9fkUj9BY_V3oJ.png" light="https://remnote-user-data.s3.amazonaws.com/gYEkPFFEQ0JHRL4X5uVLU7Kda7rUeAxlJbAb3B-eQDtUOKiQOVOh0xlHbzTqg9EV2QyxKo_Yy5eJpfZqy3P_rUbeRBy7ev1Da6IG8PxdHBl-pSw2IWEE1Y2NacKR7-E3.png" alt="OverflowCat commented on Mar 4 / Would you be willing to release a new version on Universe? Currently, there's no good way to easily import packages, and the old version is unusable on 0.13.">
+  <figcaption>一个不支持 typst 0.13 的包</figcaption>
+</LightDarkImage>
+
+更棒的是，NPM Universe 甚至还支持查看 typst 包的源码，以及完善的代码高亮。这是上一代 Typst Universe 都没做到的功能！
+
+![astro-typst 的源码](https://remnote-user-data.s3.amazonaws.com/RFvHAWGCUiKMPJ7Aygljgmlfgt3t4eQeR9ihY-Ynf0wqOf3NsN8voQVQJPwXM4rf-XuQEusmeYVaQpxdxxE2Z9shMmyW0rmdXe1FtvhBIhxEmerWNNA6dubifyGk-ESE.png)
+
+如果你稍加设置，甚至可以在 README 中展示 typst 片段的渲染结果！
+
+```json title="package.json"
+{
+  ...,
+  "scripts": {
+    ...,
+    "pub": "typst compile --features html --format html README.typ README.md"
+  }
+}
+```
+
+当然，NPM Universe 不仅改善了 typst 生态的体验，还意外惠及了前端生态。NPM Universe
+慷慨地允许前端开发者分享 Typst 的技术红利——如果你也在使用 [astro-typst](https://github.com/OverflowCat/astro-typst)，可以直接在
+``.astro`` 或 ``.mdx`` 文件中导入来自 NPM Universe 的包。就以 astro-typst 中的示例来说：
+
+```jsx
+import Simple from "node_modules/astro-typst/src/pages/simp.typ?svg"
+
+<Simple />
+```
+
+
+import Simple from "node_modules/astro-typst/src/pages/simp.typ?svg"
+
+<Simple />
+
+NPM Universe 不仅向我们展现了开源软件千帆竞发、共建共享的繁荣与崛起，更体现了其海纳百川、兼容并蓄的自由与开放。跨语言的互操作不再是梦想——最后，谨此献上 NPM Universe 的赞歌：
+
+````typ title="jueqi.typ" /echarts/#s /崛起/#v
+#import "@preview/jogs:0.2.4": *
+#set text(font: "Sart Sans", weight: 300)
+#let lib = "let global = {}, setTimeout = (f, _) => {}; " + read("node_modules/echarts/dist/echarts.min.js")
+#let code = ```js
+const option = {
+  textStyle: { fontFamily: "Sart Sans" },
+  title: {
+    left: "center",
+    text: "Typst & 前端已经崛起了，这人还没收到通知吗？",
+  },
+  tooltip: { trigger: "axis" },
+  legend: {
+    data: ["typst/typst", "withastro/astro"],
+    top: "bottom",
+  },
+  xAxis: {
+    type: "time",
+    axisLabel: {
+      formatter: (value) => echarts.format.formatTime("yyyy-MM", value),
+    },
+  },
+  yAxis: {
+    type: "value",
+    name: "Star Count",
+  },
+  series: [
+    {
+      name: "typst/typst",
+      type: "line",
+      smooth: true,
+      itemStyle: {
+        color: "rgb(0, 119, 255)",
+      },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: "rgb(0, 191, 255)",
+          },
+          {
+            offset: 1,
+            color: "rgb(0, 119, 255)",
+          },
+        ]),
+      },
+      data: [
+        [1679421679000, 0],
+        [1679525567000, 5280],
+        [1679672355000, 7950],
+        [1679931973000, 10620],
+        [1680520762000, 13290],
+        [1682716282000, 15960],
+        [1689665289000, 18630],
+        [1698574915000, 21270],
+        [1704566769000, 23940],
+        [1711434638000, 26610],
+        [1720157331000, 29280],
+        [1725329624000, 31950],
+        [1731535220000, 34620],
+        [1739888574000, 37290],
+        [1746624740000, 39960],
+        [1751012293000, 43295],
+      ],
+    },
+    {
+      name: "withastro/astro",
+      type: "line",
+      smooth: true,
+      itemStyle: {
+        color: "rgb(255, 70, 131)",
+      },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: "rgb(255, 158, 68)",
+          },
+          {
+            offset: 1,
+            color: "rgb(255, 70, 131)",
+          },
+        ]),
+      },
+      data: [
+        [1627474805000, 5280],
+        [1639346595000, 7950],
+        [1650301136000, 10620],
+        [1660134580000, 13290],
+        [1660937362000, 15960],
+        [1663527602000, 18630],
+        [1668506551000, 21270],
+        [1674623974000, 23940],
+        [1678214898000, 26610],
+        [1685431037000, 29280],
+        [1693493029000, 31950],
+        [1697513567000, 34620],
+        [1704893954000, 37290],
+        [1710336916000, 39960],
+        [1751012349000, 51919],
+      ],
+    },
+  ],
+};
+
+function generateSVG() {
+  const chart = echarts.init(null, null, {
+    renderer: "svg",
+    ssr: true,
+    width: 400,
+    height: 300,
+  });
+
+  chart.setOption(option);
+  const svg = chart.renderToSVGString();
+  chart.dispose();
+  return svg;
+}
+```
+#let result = eval-js(lib + code.text + "\ngenerateSVG()")
+#image(bytes(result))
+````
+
+import Jueqi from "./jueqi.svg"
+
+<Jueqi />
