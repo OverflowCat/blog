@@ -92,6 +92,13 @@ const slogan = [
 			"毛子",
 		],
 	},
+	{
+		"zh-Hans": [
+			"我要你为这个世界软弱",
+			"无题",
+			"cm"
+		]
+	},
 	// {
 	// 	"zh-Hans": "世界流去，所有的世界，每个都比前一个更美",
 	// 	en: "And the world goes by, all the worlds, each more beautiful than the last",
