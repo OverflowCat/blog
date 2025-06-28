@@ -46,6 +46,8 @@ jobs:
 
           wait            # 等三条后台任务全部结束
           sudo fc-cache -f -v
+          fc-list | grep -i "IBM Plex"
+          fc-list | grep -i "Harmony"
       - name: Install, build, and upload my site
         uses: withastro/action@v4
         with:
