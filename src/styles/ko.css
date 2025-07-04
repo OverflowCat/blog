@@ -26,6 +26,10 @@
     font-style: normal;
 }
 
+article>p {
+    text-autospace: no-autospace;
+}
+
 article>p:nth-of-type(odd) {
     font-weight: 600;
     line-height: 1.7;

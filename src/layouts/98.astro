@@ -35,7 +35,7 @@ Astro.locals.renderer == 'rss' ?
 }} />
 
 <main id="theme">
-  <aside id="toc" transition:name="aside-block" set:html={treeHtml} />
+  <aside id="toc" transition:name="aside-block" transition:animate="initial" set:html={treeHtml} />
   <div id="common">
     <Common layoutProps={Astro.props} icons={{
       calendar: "pixelarticons:calendar-text",

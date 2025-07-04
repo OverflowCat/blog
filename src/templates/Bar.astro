@@ -53,14 +53,16 @@ assert(slogan, "slogan is undefined");
 <nav id="sticky">
   <div class="backdrop">
     <div id="small-logo" class="logowrapper edge min-inline-20">
-      <img class="logo vert-hide block h-8 mbs-.7" src="https://remnote-user-data.s3.amazonaws.com/f8gKx0Gme6bMH6i0C1u9WMvu0a_FrROFO69-uwow3_q5XAMN7sy-G77NUEkAk1Z3SkWyXijliwe9rWifldNdycmhnM8y2fvxH6t6InSoPCDDklhW0aiDFLfMq3O1JRd4.svg" alt="logo" />
-      <img class="logo hidden block-8 mbs-.7" src="/logo-vert.svg" alt="vertical logo" />
-      <img class="logo-icon vert-block mbs-1.4 block-7" src="https://user-images.githubusercontent.com/20166026/235318317-7fb2fe2f-ebd9-4e20-b24a-474611e3738f.png" alt="icon" />
+      <img class="logo block block-8 m-1" src="/门-v2z2.svg" alt="logo" />
     </div>
     <ul class="block">
       {
         items.map(async (item, i) => (
-          <li transition:name={`navbar-${i}`} id={`nav-${i}`}>
+          <li 
+            id={`nav-${i}`}
+            transition:name={`navbar-${i}`} 
+            transition:animate="initial"
+          >
             {icons && <i class={item[3]} />}
             <a
               href={item[2]}

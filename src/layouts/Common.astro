@@ -76,6 +76,7 @@ import { getCatSlug } from "@/scripts/tags";
   !frontmatter.hide_title && (
     <h1
       transition:name={id}
+      transition:animate="initial"
       set:text={frontmatter.title}
       style={`view-transition-name: ${id}`}
     />
@@ -123,7 +124,7 @@ import { getCatSlug } from "@/scripts/tags";
 <article id="post">
   <slot />
 </article>
-<LicenceBox name={licence} />
+<LicenceBox parts={licence} />
 
 <style is:global lang="less">
   .icon {

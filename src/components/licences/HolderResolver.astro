@@ -1,0 +1,30 @@
+---
+import type { LicencePartType } from "@/scripts/schema/content";
+
+export type Props = {
+  type: LicencePartType["type"];
+  author?: string;
+  source?: string;
+};
+
+const { type, author, source } = Astro.props;
+---
+
+{
+  type === "own" ? (
+    <>本作品</>
+  ) : (
+    <>
+      {author && <cite>{author}</cite>}
+      {type === "use" ? (
+        <>
+          的<a href={source}>原作品</a>
+        </>
+      ) : (
+        <>
+          的<a href={source}>被翻译的原作品</a>
+        </>
+      )}
+    </>
+  )
+}

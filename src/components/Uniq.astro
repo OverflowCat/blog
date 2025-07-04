@@ -9,4 +9,4 @@ const Element = Astro.props.tag;
 const ident = crc32base(Astro.props.text);
 ---
 
-<Element set:text={Astro.props.text} transition:name={ident} />
+<Element set:text={Astro.props.text} transition:name={ident} transition:animate="initial" />

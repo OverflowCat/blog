@@ -1,0 +1,43 @@
+---
+export interface Props {
+  part: LicencePartType;
+}
+
+const { part } = Astro.props;
+const { licence: name, type, author, source, usage } = part;
+
+import CreativeCommons from "./CreativeCommons.astro";
+import PublicDomain from "./PublicDomain.astro";
+import Minzoku from "./Minzoku.astro";
+import HolderResolver from "./HolderResolver.astro";
+import Korea from "./Korea.astro";
+---
+
+<li>
+  {
+    name.startsWith("Cc") ? (
+      <CreativeCommons
+        sa={name.includes("Sa")}
+        nc={name.includes("Nc")}
+        nd={name.includes("Nd")}
+        who={type === "own" ? "阁下" : "任何人"}
+      >
+        <HolderResolver type={type} author={author} source={source} />
+      </CreativeCommons>
+    ) : name === "Minzoku" ? (
+      <Minzoku>
+        <HolderResolver type={type} author={author} source={source} />
+      </Minzoku>
+    ) : name === "PD" || name === "PDKR" ? (
+      <PublicDomain kind={name}>
+        <HolderResolver type={type} author={author} source={source} />
+      </PublicDomain>
+    ) : name === "KOGL" ? (
+      <Korea>
+        <HolderResolver type={type} author={author} source={source} />
+      </Korea>
+    ) : (
+      <slot />
+    )
+  }{usage && <strong>{usage}</strong>}
+</li>

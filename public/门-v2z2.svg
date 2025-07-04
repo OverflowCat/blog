@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="DAMEN" viewBox="0 0 283.46 283.46">
+<defs><style>
+.m{fill:#fff}
+</style></defs>
+<path d="M0 0h283.46v283.46H0z" style="fill:#dd2f3e"/>
+<path d="m237.02 283.46-38.27-91.93c.38-.4 2.46-2.82 2.83-2.55l36.16 67.38V88.5h-59.38v-8.15h59.38v-7.92h22.74v211.04h-23.46ZM127.13 117.75h22.27v165.71h-22.27z" class="m"/>
+<path d="M158.97 124.22c-4.49-21.23-12.59-41.7-24.38-59.89v-.5l2.75-2.18a209.28 209.28 0 0 1 44.13 41.11l-22.5 21.46Z" class="m"/>
+</svg>

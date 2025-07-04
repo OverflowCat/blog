@@ -1,39 +1,31 @@
 ---
+import type { LicenceType, LicencePartType } from "@/scripts/schema/content";
 export interface Props {
-  name: "Minzoku" | "PDKR" | "PD" | string | false | undefined | null;
+	parts: LicenceType | LicencePartType[];
 }
 
-import CreativeCommons from "./CreativeCommons.astro";
-import PublicDomain from "./PublicDomain.astro";
-import Minzoku from "./Minzoku.astro";
-const { name } = Astro.props;
+import LicencePart from "./LicencePart.astro";
+const licence = Astro.props.parts;
+const parts = Array.isArray(licence) ? licence : [licence];
+console.log(parts);
 ---
 
 {
-  name ?
-    (<div class="licence">
-  {
-    !!name &&
-      (name.startsWith("Cc") ? (
-        <CreativeCommons
-          sa={name.includes("Sa")}
-          nc={name.includes("Nc")}
-          nd={name.includes("Nd")}
-        >
-          <slot />
-        </CreativeCommons>
-      ) : name === "Minzoku" ? (
-        <Minzoku />
-      ) : (name === "PD" || name === "PDKR") ? (
-        <PublicDomain kind={name}>
-          <slot />
-        </PublicDomain>
-      ) : (
-        <slot />
+  parts ?
+    (
+    <h2>版权许可</h2>
+    <ol class="licence">
+    {
+      parts.map(part => (
+        typeof part === "string" ? 
+        <LicencePart part={{ licence: part, type: "own" }} /> : <LicencePart part={part} />
       ))
-  }
-</div>)
-:(<></>)
+    }
+    </ol>
+  )
+: (
+  <></>
+)
 }
 
 <style lang="less" is:global>

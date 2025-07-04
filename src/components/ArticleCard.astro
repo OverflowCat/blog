@@ -92,6 +92,7 @@ if (data.series) {
             transition:name={crc32base(
               typeof photo === "string" ? photo : photo?.src
             )}
+            transition:animate="initial"
             width={photo.aspect ? photo.aspect.split(":")[0] : ""}
             height={photo.aspect ? photo.aspect.split(":")[1] : ""}
             src={photo.src}

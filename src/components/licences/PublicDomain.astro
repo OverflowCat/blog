@@ -6,15 +6,25 @@ export interface Props {
 }
 ---
 
-<p>
-  <span class="icon">
-    <Icon name="public-domain" />
-  </span>
-  <slot />
-  {Astro.props.kind === "PDKR" && (
+<span class="icon">
+  <Icon name="public-domain" />
+</span>
+<slot />
+{
+  Astro.props.kind === "PDKR" ? (
     <>
-      根据<a href="https://ko.wikisource.org/wiki/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95_(%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD)">《大韩民国版权法》</a>第 7 条，本作品为国家或地方政府的通知、公告、指示及其他类似事项，可作为不受保护的作品进行传播。任何人都可以自由使用。
+      根据
+      <a href="https://ko.wikisource.org/wiki/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95_(%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD)">
+        《大韩民国版权法》
+      </a>
+      第 7 条，
+      <slot />
+      为国家或地方政府的通知、公告、指示及其他类似事项，可作为不受保护的作品进行传播。任何人都可以自由使用。
     </>
-  )}
-  本作品释出到公有领域。
-</p>
+  ) : (
+    <>
+      <slot />
+      释出到公有领域。
+    </>
+  )
+}
