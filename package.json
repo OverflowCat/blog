@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.22.0",
+  "version": "2.22.1",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -37,6 +37,7 @@
     "@astrojs/svelte": "^7.1.0",
     "@builder.io/qwik": "^1.14.1",
     "@flla/qwik-lottie": "^0.2.0",
+    "@fontsource/architects-daughter": "^5.2.6",
     "@fontsource/ibm-plex-mono": "^5.2.6",
     "@fontsource/ibm-plex-sans": "^5.2.6",
     "@fontsource/ibm-plex-sans-kr": "^5.2.6",

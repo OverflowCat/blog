@@ -28,7 +28,7 @@ import Korea from "./Korea.astro";
       <Minzoku>
         <HolderResolver type={type} author={author} source={source} />
       </Minzoku>
-    ) : name === "PD" || name === "PDKR" ? (
+    ) : name?.startsWith("PD") ? (
       <PublicDomain kind={name}>
         <HolderResolver type={type} author={author} source={source} />
       </PublicDomain>

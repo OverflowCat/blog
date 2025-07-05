@@ -2,17 +2,19 @@
 import Icon from "@/components/Icon.astro";
 import "@/styles/icon.less";
 export interface Props {
-  kind: "PD" | "PDKR";
+  kind: "PD" | "PDKR" | "PD-self";
 }
+
+const { kind } = Astro.props;
 ---
 
 <span class="icon">
   <Icon name="public-domain" />
 </span>
-<slot />
 {
-  Astro.props.kind === "PDKR" ? (
+  kind === "PDKR" ? (
     <>
+      <slot />
       根据
       <a href="https://ko.wikisource.org/wiki/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95_(%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD)">
         《大韩民国版权法》
@@ -20,6 +22,10 @@ export interface Props {
       第 7 条，
       <slot />
       为国家或地方政府的通知、公告、指示及其他类似事项，可作为不受保护的作品进行传播。任何人都可以自由使用。
+    </>
+  ) : kind === "PD-self" ? (
+    <>
+      本人，此作品之作者，在此将本作品释入公共领域。此授权适用于全世界。如果前述授权于个别法律不适用时，授权条款则为：我将本作品之使用权授予任何人，不问任何目的，除法律所需之限制外不受任何限制。
     </>
   ) : (
     <>

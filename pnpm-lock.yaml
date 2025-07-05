@@ -38,6 +38,9 @@ importers:
       '@flla/qwik-lottie':
         specifier: ^0.2.0
         version: 0.2.0
+      '@fontsource/architects-daughter':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.6
         version: 5.2.6
@@ -910,6 +913,9 @@ packages:
   '@flla/qwik-lottie@0.2.0':
     resolution: {integrity: sha512-NDkYZgj/FCqsrmG8p7oYWU1Ye4qFtEb1NcGlxQMJUN9vkqrrVxoTMJYpsWXFEhEdm2QTSoY1Bkk3l/NRxjpbgA==}
     engines: {node: '>=15.0.0'}
+
+  '@fontsource/architects-daughter@5.2.6':
+    resolution: {integrity: sha512-QVkA+1gvHKwixPqIA62AeEU6RJGiuwKAau0aX5rR9YL/Mmw8g6V/J7W/ptu2QbhmTGvDriwXXrFXpgYTkKZPow==}
 
   '@fontsource/ibm-plex-mono@5.2.6':
     resolution: {integrity: sha512-LTZJNTcpoT19fmwERZNMDI+ljHueuyhF2Qn+bICJ4Y4hxBLAAoJ2MRsGnyp0QNutW6t/25eyZpvaUK1LDrCo7Q==}
@@ -5162,6 +5168,8 @@ snapshots:
     dependencies:
       lottie-web: 5.13.0
       qwik: 1.0.57
+
+  '@fontsource/architects-daughter@5.2.6': {}
 
   '@fontsource/ibm-plex-mono@5.2.6': {}
 
