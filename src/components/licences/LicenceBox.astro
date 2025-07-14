@@ -7,7 +7,6 @@ export interface Props {
 import LicencePart from "./LicencePart.astro";
 const licence = Astro.props.parts;
 const parts = Array.isArray(licence) ? licence : licence ? [licence] : licence;
-console.log(parts);
 ---
 
 {
