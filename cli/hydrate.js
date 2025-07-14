@@ -1,7 +1,10 @@
 import fs from "node:fs";
 import { hydrate } from "rehype-remnote";
 // read filename from cli
-const filename = process.argv[2];
+let filename = process.argv[2];
+if (!filename.includes("/")) {
+    filename = "./src/content/rems/" + filename;
+}
 
 // read file
 const file = fs.readFileSync(filename, "utf8");

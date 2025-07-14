@@ -1,0 +1,121 @@
+---
+title: "自新世界 #0x10：Link Blog"
+# date: 2025-05-27T18:10:16.965Z
+date: 2025-07-14T14:37:21.004Z
+desc: 又拖了一个半月才发的周报
+photo:
+  src: https://remnote-user-data.s3.amazonaws.com/k1n5Vk5aDyWbF_83MsDsScOltl9_Hqqoo8g3MvmXz8fPLbo-nkdRBVPm5x-_0-BKfHqN-8IBlvLK8HjFg13HEDFtGQASE_gazhWwthvrgnJh8lWfCS0NTmzjNk1haFTI.jpeg
+noscript: true
+licence: false
+layout: "@/layouts/Default.astro"
+series: weekly
+tags:
+  - RemNote
+  - Rust
+  - CSS
+  - VS Code
+categories:
+  - 周报
+---
+
+import Rem from "@/components/Rem.astro";
+
+<style set:html=".link-card:only-child { float: inline-end; } .rem img { max-width: 200px; max-height: 200px; }"></style>
+
+<Rem id="link-blog" />
+
+说说最近遇到的 CSS 问题。
+
+#### UnoCSS
+
+一两个月前发现的 bug：
+
+```css
+.aaa {
+  @apply text-blue-500;
+  font-size: 1.5em;
+  /* {} ← empty curly brace in comment will lead to wrong parsing */
+  font-weight: 900;
+}
+```
+
+生成了
+
+```css
+/* layer: playground */
+.aaa {← empty curly brace in comment will lead to wrong parsing */
+font-weight: 900;
+}
+```
+
+Reproduction 在 [https://unocss.dev/play/~](https://unocss.dev/play/#html=DwEwlgbgBAxgNgQwM5ILwCIFfQPgC4AWYSUSBA9gK5whQBGAplIgE4DmTCAdrXXJQ2AB6cBBwAoYAAccdSnijkuMJoQYtOGqEIDeAHSQBqPQF8hUMFygBhAMq3xMcgFtnDLniQAaKGtjkQJkYAM3ItPydXdwUELWdiJEs2ADpJIRkgA&config=JYWwDg9gTgLgBAbwFBzgEwKYDNgDsMDCEuOA5gDQpxhQYDOGMAsnsJQL5xZQQhwDkAV1wQAxnTr8koSLDgwoAQ1x0s0EBigARYLVExgAN3pceffgAFhYiQHoFy1es0BaNLoz6j9KUgwAPWXhMLEVBABtg7DxCYjIACmRUGnpGOgAuOABtFIZmVniASgBdSlQHFTUoDSgM7Iqnas0dPQNjOiLipHZCpCA&css=HQQzAIG8Ch3ABEAHJAbAnuALgUwB5YC0ARqgK46ECsADDQNyzgBmA9gHZEDOAlgF44AXOACMwKjgC2jOAHoAVFAC%2B4ebKZtOhAO44eAcwAWWYQE46jJdCA&options=N4IgLgTghgdgzgMwPYQLYGECucxIwZXxAC4EoAbOAUwBpxp5k0AJMVcksyqgXyA&version=66.1.0)。
+
+<video width="946" height="1368" controls>
+  <source src="https://github.com/user-attachments/assets/c0b30efd-b96f-4c72-8bb5-d3ad4aad91cc" type="video/mp4" />
+</video>
+
+另外提交了一个 [PR](https://github.com/unocss/unocss/pull/4637/files/1627d0cd992380683c1099758014b0846821dfcf)，支持了 Tailwind 4.1 新增的 `@noscript{:css}` 指令。发现 Unocss 的 mini 和 tailwind 两个 preset 有很多功能是重复的，并非继承关系。
+
+```html
+<div class="text-blue-500 @noscript:text-red-500">
+  新世界的大门
+</div>
+```
+
+如果你禁用了 JavaScript，下面这行字应该是红色的。
+
+<section set:html='<div class="text-blue-500 @noscript:text-red-500">新世界的大门</div>' />
+
+#### VS Code
+
+写 Zeno 的[桥桥](https://blog.othing.xyz/)给了我一段[GitHub 登录页的 CSS 文件](https://github.githubassets.com/assets/landing-pages-6fbc3e78c091.css) 中发现的代码，是以 --数字开头的 CSS 变量 `--7-grid-columns-minus-last-gap{:css}`。我并不知道这是合法的 CSS，结果 VS Code 也没法正常高亮出这个来。
+
+![目前 VS Code 的语法高亮无法正确地识别](https://github.com/user-attachments/assets/170edbc5-bb83-485b-8111-3c9946fcaced)
+
+查找了一番，发现根据 spec，一个标识符（`<ident-token>`）不能以数字开头。但是，对于以双破折号 `--` 开头的变量（CSS 自定义属性），紧跟在后面的名称*可以*以数字开头。
+
+![](https://github.com/user-attachments/assets/14bcdf20-05e6-4e36-a201-ae3268e8a237)
+
+翻岁月屎书，这个对词法语法的改动是在 2014，然后 W3C 搞偷袭，还没有清晰说明：
+
+> Change the definition of ident-like tokens to allow `"--"` to start an ident. As part of this, rearrange the ordering of the clauses in the `"-"` step of [consume a token](https://www.w3.org/TR/css-syntax-3/#consume-a-token) so that [`<CDC-token>`](https://www.w3.org/TR/css-syntax-3/#typedef-cdc-token)s are recognized as such instead of becoming a -- [`<ident-token>`](https://www.w3.org/TR/css-syntax-3/#typedef-ident-token).
+
+旧的形式语言如下：
+
+![](https://github.com/user-attachments/assets/f0be6962-888c-4d83-93b3-ab5cb9b9e7ed)
+
+于是便着手修复水 PR。VS Code 的 grammar 是我们的老熟人 tmLanguage.json，之前在[《仓颉语言的 AST 操作》](/harmony/cangjie/ast/)里讲过。内置的语法是在额外仓库 [microsoft/vscode-css](https://github.com/microsoft/vscode-css) 维护的。但还不是 JSON，而是 cson，是 CoffeeScript 的语法。不过无妨，似乎有字符串的糖会 trim 掉多行之间的 whitespace，方便分隔正则表达式的不同部分。
+
+```coffee
+  (?:[-a-zA-Z_]    | [^\\x00-\\x7F])     # First letter
+  (?:[-a-zA-Z0-9_] | [^\\x00-\\x7F]      # Remainder of identifier
+    |\\\\(?:[0-9a-fA-F]{1,6}|.)
+  )*
+```
+
+把它的 First letter 行删了然后把末尾的 `*` 改成 `+`。这个变量的语法还有两处，一个是定义时，一个是使用时，后者直接是固连着 `var(` 的。
+
+然后是写测试。这个测试也只是检测 token 的第若干个 token 是否是我们想要的：
+
+```js
+it('tokenizes custom variables with a leading digit', function () {
+  var tokens;
+  tokens = testGrammar.tokenizeLine('.flex { grid-template-columns: var(--7-grid-columns-minus-last-gap) var(--4-grid-columns); }').tokens;
+  assert.deepStrictEqual(tokens[10], { scopes: ['source.css', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.variable.css', 'variable.argument.css'], value: '--7-grid-columns-minus-last-gap' });
+  assert.deepStrictEqual(tokens[15], { scopes: ['source.css', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.variable.css', 'variable.argument.css'], value: '--4-grid-columns' });
+});
+```
+
+提交 [PR](https://github.com/microsoft/vscode-css/pull/43) + 解释，然后签 CLA，收到的反馈很好：
+
+> Thank you for the detailed description and fix!
+>
+> LGTM
+
+结果发现两个 approved 的人只是有 read-only 权限的，还需要一个 maintainer approve，现在还卡在这里。唉大企业
+
+### Servo
+
+在 macOS 上尝试构建 FireFox，一切正常，非常顺利（里面有个 servo 文件夹），但构建 Servo 遇到问题，开了个 PR [#37811](https://github.com/servo/servo/issues/37811)。感觉挺搞笑的，servo 自己 rust-analyzer 可以正常工作，但构建不起来；FF 则是反过来，r-a 不行，但构建正常。前述的问题后来被 maintainer [修好了](https://github.com/servo/servo/pull/37903)。除此之外本身没什么说头，不过我发现这位同时是 [ohrs](https://github.com/openharmony-rs) 的维护者……
+
+![Servo 运行在 macOS 上](https://github.com/user-attachments/assets/6ecbd1d1-c390-49c0-913b-ba2dc7f3d3e5)

@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.22.1",
+  "version": "2.22.2",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -78,7 +78,7 @@
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "^7.0.1",
     "rehype-mathjax": "^7.1.0",
-    "rehype-remnote": "^0.3.9",
+    "rehype-remnote": "0.4.0",
     "rehype-stringify": "^10.0.1",
     "remark-cjk-friendly": "^1.2.0",
     "remark-cjk-friendly-gfm-strikethrough": "^1.2.0",
