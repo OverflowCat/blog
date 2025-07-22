@@ -22,6 +22,9 @@ const {
     cover_image_url: img,
     localized_title: altTitles,
 } = data;
+if (altTitles.length > 5) {
+    altTitles.splice(5, altTitles.length - 5);
+}
 const genre = "genre" in data ? data.genre : [];
 let authors: string[];
 let platforms: string[] = [];

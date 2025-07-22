@@ -1,0 +1,248 @@
+{
+  "id": "https://neodb.social/movie/3pzmdXn8JRf4xIulfvb9Ef",
+  "type": "Movie",
+  "uuid": "3pzmdXn8JRf4xIulfvb9Ef",
+  "url": "/movie/3pzmdXn8JRf4xIulfvb9Ef",
+  "api_url": "/api/movie/3pzmdXn8JRf4xIulfvb9Ef",
+  "category": "movie",
+  "parent_uuid": null,
+  "display_title": "F1：狂飙飞车",
+  "external_resources": [
+    {
+      "url": "https://movie.douban.com/subject/35689244/"
+    },
+    {
+      "url": "https://eggplant.place/movie/1NGR3O57N2sCtuArJKcmaQ"
+    },
+    {
+      "url": "https://www.imdb.com/title/tt16311594/"
+    },
+    {
+      "url": "https://www.themoviedb.org/movie/911430"
+    },
+    {
+      "url": "https://fantastika.social/movie/2BvfdovjkQJmNqUuEhjLbE"
+    }
+  ],
+  "title": "F1：狂飙飞车",
+  "description": "桑尼·海耶斯曾经是F1赛场上最具潜力的天才新星，但一场意外葬送了他的职业生涯，从此他沦为人们口中最生不逢时的“沧海遗珠”。三十年后的如今，桑尼是一名自由职业的落魄赛车手，他的前队友——如今是濒临破产的F1车队老板鲁本·塞万提斯却突然找上门来。鲁本说服桑尼重返F1赛场，这不仅是拯救他车队的最后希望，更是桑尼向世界证明自己仍是顶尖车手的最佳契机。桑尼将与车队的热门新秀乔舒亚·皮尔斯并肩前行，这位年轻的车手也渴望在赛道上书写自己的传奇。然而伴随着引擎开始轰鸣，桑尼过去的创伤也如影随形，他同时意识到在F1的世界里，并肩作战的队友也会是最强劲的对手，而通往自我救赎的道路，绝非孤身一人能够走完。",
+  "localized_title": [
+    {
+      "lang": "ko",
+      "text": "F1 더 무비"
+    },
+    {
+      "lang": "ja",
+      "text": "F1／エフワン"
+    },
+    {
+      "lang": "pt",
+      "text": "F1 - O Filme"
+    },
+    {
+      "lang": "de",
+      "text": "F1"
+    },
+    {
+      "lang": "fr",
+      "text": "F1® Le Film"
+    },
+    {
+      "lang": "es",
+      "text": "F1 la película"
+    },
+    {
+      "lang": "en",
+      "text": "F1 The Movie"
+    },
+    {
+      "lang": "zh-hk",
+      "text": "F1電影"
+    },
+    {
+      "lang": "zh-tw",
+      "text": "F1電影"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "F1：狂飙飞车"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "弯心"
+    },
+    {
+      "lang": "en",
+      "text": "F1"
+    },
+    {
+      "lang": "en",
+      "text": "F1: The Movie"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "弯道峰点"
+    },
+    {
+      "lang": "en",
+      "text": "Apex‎"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "一级方程式"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "F1电影(台)"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "F1：赛道风云"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "布莱德彼特之F1(台)"
+    },
+    {
+      "lang": "it",
+      "text": "F1"
+    },
+    {
+      "lang": "da",
+      "text": "F1"
+    },
+    {
+      "lang": "pt",
+      "text": "F1"
+    },
+    {
+      "lang": "fr",
+      "text": "F1"
+    },
+    {
+      "lang": "es",
+      "text": "F1"
+    }
+  ],
+  "localized_description": [
+    {
+      "lang": "ko",
+      "text": "한때 주목받는 유망주였지만 끔찍한 사고로 F1®에서 우승하지 못하고 한순간에 추락한 드라이버 소니 헤이스. 그의 오랜 동료인 루벤 세르반테스에게 레이싱 복귀를 제안받으며 최하위 팀인 APXGP에 합류한다.  그러나 팀 내 떠오르는 천재 드라이버 조슈아 피어스와 소니 헤이스의 갈등은 날이 갈수록 심해지고. 설상가상 우승을 향한 APXGP 팀의 전략 또한 번번이 실패하며 최하위권을 벗어나지 못하고 고전하는데···"
+    },
+    {
+      "lang": "ja",
+      "text": "引退していたレース界のレジェンド、ソニー･ヘイズが現役に呼び戻され、低迷するＦ１チームを率いて、若き天才ドライバーを指導しながら、再び栄光をつかむチャンスを追い求める。"
+    },
+    {
+      "lang": "pt",
+      "text": "Sonny Hayes, uma lenda do automobilismo, é convidado a sair da reforma para liderar uma equipa de Fórmula 1 em dificuldades - e orientar um jovem piloto de sucesso - enquanto persegue mais uma oportunidade de glória."
+    },
+    {
+      "lang": "de",
+      "text": "Der ehemals erfolgreiche Formel-1-Pilot Sonny Hayes musste seine Karriere nach einem Unfall beenden. Sein Ruhestand findet ein Ende, als er vom Teamchef des Rennstalls APXGP kontaktiert wird, um das Nachwuchstalent Joshua Pearce zu unterstützen. Für Hayes ist dies die letzte Chance auf Erfolg."
+    },
+    {
+      "lang": "fr",
+      "text": "Sonny Hayes était le prodige de la F1 des années 90 jusqu’à son terrible accident. Trente ans plus tard, devenu un pilote indépendant, il est contacté par Ruben Cervantes, patron d’une écurie en faillite qui le convainc de revenir pour sauver l’équipe et prouver qu’il est toujours le meilleur. Aux côtés de Joshua Pearce, diamant brut prêt à devenir le numéro 1, Sonny réalise vite qu'en F1, son coéquipier est aussi son plus grand rival, que le danger est partout et qu'il risque de tout perdre."
+    },
+    {
+      "lang": "es",
+      "text": "El mítico piloto Sonny Hayes vuelve de su retiro, persuadido para liderar un equipo de Fórmula 1 en apuros y guiar a su joven promesa, en busca de una nueva oportunidad de éxito."
+    },
+    {
+      "lang": "en",
+      "text": "Racing legend Sonny Hayes is coaxed out of retirement to lead a struggling Formula 1 team—and mentor a young hotshot driver—while chasing one more chance at glory."
+    },
+    {
+      "lang": "zh-hk",
+      "text": "90年代風光一時的賽車手 Sonny Hayes（畢彼特 飾）嚴重意外後退隱F1車壇，直到某日F1 車隊老闆兼Sonny老友Ruben（查維爾巴頓 飾）力邀他重返賽場，指導年輕F1新星車手 Joshua Pearce（丹姆森伊卓斯 飾）為「APXGP車隊」出賽。師徒傳承，會否再創賽車壇上的神話？"
+    },
+    {
+      "lang": "zh-tw",
+      "text": "布萊德彼特在片中飾演退役後復出的賽車手，達姆森伊卓瑞斯則飾演他在虛構車隊「APXGP」中的隊友；強大的卡司陣容還包含獲奧斯卡金像獎提名的凱莉肯頓、奧斯卡金像獎得主哈維爾巴登、艾美獎得主和獲金球獎提名的托比亞曼齊司、莎拉奈爾斯、金波德尼亞和山姆森卡優。"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "桑尼·海耶斯曾经是F1赛场上最具潜力的天才新星，但一场意外葬送了他的职业生涯，从此他沦为人们口中最生不逢时的“沧海遗珠”。三十年后的如今，桑尼是一名自由职业的落魄赛车手，他的前队友——如今是濒临破产的F1车队老板鲁本·塞万提斯却突然找上门来。鲁本说服桑尼重返F1赛场，这不仅是拯救他车队的最后希望，更是桑尼向世界证明自己仍是顶尖车手的最佳契机。桑尼将与车队的热门新秀乔舒亚·皮尔斯并肩前行，这位年轻的车手也渴望在赛道上书写自己的传奇。然而伴随着引擎开始轰鸣，桑尼过去的创伤也如影随形，他同时意识到在F1的世界里，并肩作战的队友也会是最强劲的对手，而通往自我救赎的道路，绝非孤身一人能够走完。"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "桑尼·海耶斯（布拉德·皮特 饰）曾经是F1赛场上最具潜力的天才新星，但一场意外葬送了他的职业生涯，从此他沦为人们口中最生不逢时的“沧海遗珠”。三十年后的如今，桑尼是一名自由职业的落魄赛车手，他的前队友——如今是濒临破产的F1车队老板鲁本·塞万提斯（哈维尔·巴登 饰）却突然找上门来。鲁本说服桑尼重返F1赛场，这不仅是拯救他车队的最后希望，更是桑尼向世界证明自己仍是顶尖车手的最佳契机。桑尼将与车队的热门新秀乔舒亚·皮尔斯（达姆森·伊德瑞斯 饰）并肩前行，这位年轻的车手也渴望在赛道上书写自己的传奇。然而伴随着引擎开始轰鸣，桑尼过去的创伤也如影随形，他同时意识到在F1的世界里，并肩作战的队友也会是最强劲的对手，而通往自我救赎的道路，绝非孤身一人能够走完。"
+    },
+    {
+      "lang": "zh-cn",
+      "text": "退役车手Sonny Hayes（布拉德·皮特 Brad Pitt 饰）复出，作为导师辅助年轻车手Joshua Pearce（戴姆森·伊德瑞斯 Damson Idris 饰），并与他组队最后一次在赛道上争取荣誉。"
+    },
+    {
+      "lang": "it",
+      "text": "La leggenda delle corse automobilistiche Sonny Hayes viene convinto a uscire dal ritiro per guidare un team di Formula 1 in difficoltà e fare da mentore a un giovane pilota promettente, mentre insegue un'altra possibilità di gloria."
+    },
+    {
+      "lang": "fr",
+      "text": "Un pilote vétéran sort de sa retraite pour entraîner un jeune coureur et réaliser son dernier coup vers la gloire."
+    },
+    {
+      "lang": "es",
+      "text": "Protagonizada por Brad Pitt como un ex-piloto que regresa a la Fórmula 1, junto a Damson Idris como su compañero en APXGP, un equipo ficticio en la parrilla, la película se ha rodado durante los fines de semana de los Grandes Premios, ya que el equipo compite contra los titanes reales del deporte."
+    }
+  ],
+  "cover_image_url": "https://neodb.social/m/item/movie/2025/06/29/25c2c55a-78f4-4693-b21c-34c0e881473b.webp",
+  "rating": 7.5,
+  "rating_count": 118,
+  "rating_distribution": [
+    0,
+    1,
+    23,
+    52,
+    22
+  ],
+  "tags": [
+    "2025",
+    "c 2025",
+    "c us",
+    "c 运动",
+    "josephkosinski",
+    "体育",
+    "冒险",
+    "动作",
+    "励志",
+    "布拉德皮特",
+    "欧美电影",
+    "电影",
+    "美国",
+    "美国电影",
+    "赛车",
+    "运动",
+    "鈣看"
+  ],
+  "brief": "桑尼·海耶斯曾经是F1赛场上最具潜力的天才新星，但一场意外葬送了他的职业生涯，从此他沦为人们口中最生不逢时的“沧海遗珠”。三十年后的如今，桑尼是一名自由职业的落魄赛车手，他的前队友——如今是濒临破产的F1车队老板鲁本·塞万提斯却突然找上门来。鲁本说服桑尼重返F1赛场，这不仅是拯救他车队的最后希望，更是桑尼向世界证明自己仍是顶尖车手的最佳契机。桑尼将与车队的热门新秀乔舒亚·皮尔斯并肩前行，这位年轻的车手也渴望在赛道上书写自己的传奇。然而伴随着引擎开始轰鸣，桑尼过去的创伤也如影随形，他同时意识到在F1的世界里，并肩作战的队友也会是最强劲的对手，而通往自我救赎的道路，绝非孤身一人能够走完。",
+  "orig_title": "Apex",
+  "director": [
+    "Joseph Kosinski"
+  ],
+  "playwright": [
+    "Ehren Kruger"
+  ],
+  "actor": [
+    "Brad Pitt",
+    "Damson Idris",
+    "Kerry Condon",
+    "Tobias Menzies",
+    "Lewis Hamilton",
+    "Javier Bardem"
+  ],
+  "genre": [
+    "动作",
+    "剧情"
+  ],
+  "language": [
+    "en"
+  ],
+  "area": [
+    "美国"
+  ],
+  "year": 2025,
+  "site": null,
+  "duration": "156分钟",
+  "imdb": "tt16311594"
+}
