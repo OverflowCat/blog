@@ -4,6 +4,7 @@ export interface Props {
 }
 
 import Noscript from "@/components/boxes/Noscript.astro";
+import YesScript from "@/components/YesScript.astro";
 import Icon from "@/components/Icon.astro";
 import "@/styles/icon.less";
 
@@ -37,7 +38,7 @@ const slug =
     />
   </div>
   }
-  {noscript && <Noscript />}
+  {noscript ? <Noscript /> : <YesScript />}
   <div data-build={Date.now()}>
     使用 <a href="https://astro.build/"
       ><span class="icon"><Icon name="simple-icons:astro" /></span>{
