@@ -109,7 +109,7 @@
     "npm-check-updates": "^18.0.1",
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
-    "rollup": "^4.45.0",
+    "rollup": "^4.46.2",
     "sass": "^1.89.2",
     "shiki": "^3.8.0",
     "stylelint": "^16.21.1",
