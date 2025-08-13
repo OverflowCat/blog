@@ -46,7 +46,7 @@
     "@myriaddreamin/rehype-typst": "0.6.0",
     "@myriaddreamin/typst-ts-node-compiler": "0.6.0",
     "@myriaddreamin/typst.ts": "0.6.0",
-    "@qwikdev/astro": "^0.8.0",
+    "@qwikdev/astro": "^0.8.2",
     "@shikijs/twoslash": "^3.8.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

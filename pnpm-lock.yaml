@@ -66,8 +66,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(@myriaddreamin/typst-ts-renderer@0.6.0)
       '@qwikdev/astro':
-        specifier: ^0.8.0
-        version: 0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+        specifier: ^0.8.2
+        version: 0.8.2(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
       '@shikijs/twoslash':
         specifier: ^3.8.0
         version: 3.8.0(typescript@5.8.3)
@@ -1177,6 +1177,23 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@inox-tools/aik-mod@0.11.0':
+    resolution: {integrity: sha512-0mFOrKPa2jz23g4caa7+MsxitiKMgyzn/4e+mLdpEzlWnB0HZP50AeL2rX6CioKw+Pi2zgo96mYDc1skh0/Otg==}
+    peerDependencies:
+      astro: ^5
+      astro-integration-kit: ~0.17 || ~0.18
+
+  '@inox-tools/inline-mod@2.2.0':
+    resolution: {integrity: sha512-d2hA6Ggy1fjVZEgO/an6DtYB9mkF9aWApJoeGBaARrjouJ6Tkle3F1+ULc1pq+94xc3gXav7Wa8zu5FJXSLPMA==}
+    peerDependencies:
+      vite: ^4 || ^5 || ^6
+    peerDependenciesMeta:
+      vite:
+        optional: true
+
+  '@inox-tools/utils@0.6.0':
+    resolution: {integrity: sha512-R8sYd4G+SA7Jy1YLmIZkKnE9UKx+0lzmn3uEfOXvzNWXjJAKTad1/9G1p19KY/AhkwfcATupyiKayueH6mlnfA==}
+
   '@jridgewell/gen-mapping@0.3.12':
     resolution: {integrity: sha512-OuLGC46TjB5BbN1dH8JULVVZY4WTdkF7tV9Ys6wLL1rubZnCMstOhNHueU5bLCrnRuDhKPDM4g6sw4Bel5Gzqg==}
 
@@ -1408,8 +1425,8 @@ packages:
     resolution: {integrity: sha512-G0OnZbMWEs5LhDyqy2UL17vGhSVHkQIfVojMtEWVenvj0V5S84VBgy86kJIuNsGDp2p7sTKlpSIpBUWdC35OKg==}
     engines: {node: '>=20.0.0'}
 
-  '@qwikdev/astro@0.8.0':
-    resolution: {integrity: sha512-EXET8TYsQX8dyUNs97pXWAILRWcZJDlU8kt4E0PXBdNtkR4kWXmisj2b/CpJN6dYN2IZH2j82WFZq8nk2raaKQ==}
+  '@qwikdev/astro@0.8.2':
+    resolution: {integrity: sha512-jour1tIwuhzcQBdsQyIxUQXfQUVJAHptH7AoTJkWyZk8x4hbYIj2wNYuNoxiGZaI+j9r1lvoZfsT3zQivljL8w==}
     peerDependencies:
       '@builder.io/qwik': '>=1.14.1'
 
@@ -5383,6 +5400,28 @@ snapshots:
   '@img/sharp-win32-x64@0.34.3':
     optional: true
 
+  '@inox-tools/aik-mod@0.11.0(astro-integration-kit@0.18.0(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))':
+    dependencies:
+      '@inox-tools/inline-mod': 2.2.0(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
+      astro: 5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro-integration-kit: 0.18.0(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+      debug: 4.4.1
+    transitivePeerDependencies:
+      - supports-color
+      - vite
+
+  '@inox-tools/inline-mod@2.2.0(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))':
+    dependencies:
+      '@inox-tools/utils': 0.6.0
+      debug: 4.4.1
+      typescript: 5.8.3
+    optionalDependencies:
+      vite: 6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@inox-tools/utils@0.6.0': {}
+
   '@jridgewell/gen-mapping@0.3.12':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.4
@@ -5615,12 +5654,15 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
-  '@qwikdev/astro@0.8.0(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
+  '@qwikdev/astro@0.8.2(@builder.io/qwik@1.14.1(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
       '@builder.io/qwik': 1.14.1(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
+      '@inox-tools/aik-mod': 0.11.0(astro-integration-kit@0.18.0(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)))(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(sass@1.89.2)(tsx@4.19.2)(yaml@2.8.0))
       astro-integration-kit: 0.18.0(astro@5.12.8(@types/node@24.0.13)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.27.0)(rollup@4.45.0)(sass@1.89.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
     transitivePeerDependencies:
       - astro
+      - supports-color
+      - vite
 
   '@rolldown/pluginutils@1.0.0-beta.19': {}
 
