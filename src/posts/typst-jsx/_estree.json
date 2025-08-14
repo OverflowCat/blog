@@ -1,0 +1,510 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tagName": "h1",
+      "properties": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Welcome to MDX"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "mdxjsEsm",
+      "value": "import Counter from \"@/components/Counter.tsx\";",
+      "data": {
+        "estree": {
+          "type": "Program",
+          "start": 18,
+          "end": 65,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0,
+              "offset": 18
+            },
+            "end": {
+              "line": 3,
+              "column": 47,
+              "offset": 65
+            }
+          },
+          "body": [
+            {
+              "type": "ImportDeclaration",
+              "start": 18,
+              "end": 65,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 0,
+                  "offset": 18
+                },
+                "end": {
+                  "line": 3,
+                  "column": 47,
+                  "offset": 65
+                }
+              },
+              "specifiers": [
+                {
+                  "type": "ImportDefaultSpecifier",
+                  "start": 25,
+                  "end": 32,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 7,
+                      "offset": 25
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 14,
+                      "offset": 32
+                    }
+                  },
+                  "local": {
+                    "type": "Identifier",
+                    "start": 25,
+                    "end": 32,
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 7,
+                        "offset": 25
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 14,
+                        "offset": 32
+                      }
+                    },
+                    "name": "Counter",
+                    "range": [
+                      25,
+                      32
+                    ]
+                  },
+                  "range": [
+                    25,
+                    32
+                  ]
+                }
+              ],
+              "source": {
+                "type": "Literal",
+                "start": 38,
+                "end": 64,
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 20,
+                    "offset": 38
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 46,
+                    "offset": 64
+                  }
+                },
+                "value": "@/components/Counter.tsx",
+                "raw": "\"@/components/Counter.tsx\"",
+                "range": [
+                  38,
+                  64
+                ]
+              },
+              "range": [
+                18,
+                65
+              ]
+            }
+          ],
+          "sourceType": "module",
+          "comments": [],
+          "range": [
+            18,
+            65
+          ]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "element",
+      "tagName": "p",
+      "properties": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's a React component embedded in MDX:"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "mdxJsxFlowElement",
+      "name": "Counter",
+      "attributes": [
+        {
+          "type": "mdxJsxAttribute",
+          "name": "initialValue",
+          "value": {
+            "type": "mdxJsxAttributeValueExpression",
+            "value": "5",
+            "data": {
+              "estree": {
+                "type": "Program",
+                "start": 133,
+                "end": 134,
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "Literal",
+                      "start": 133,
+                      "end": 134,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 23,
+                          "offset": 133
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 24,
+                          "offset": 134
+                        }
+                      },
+                      "value": 5,
+                      "raw": "5",
+                      "range": [
+                        133,
+                        134
+                      ]
+                    },
+                    "start": 133,
+                    "end": 134,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 23,
+                        "offset": 133
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 24,
+                        "offset": 134
+                      }
+                    },
+                    "range": [
+                      133,
+                      134
+                    ]
+                  }
+                ],
+                "sourceType": "module",
+                "comments": [],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 23,
+                    "offset": 133
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 24,
+                    "offset": 134
+                  }
+                },
+                "range": [
+                  133,
+                  134
+                ]
+              }
+            }
+          }
+        },
+        {
+          "type": "mdxJsxAttribute",
+          "name": "step",
+          "value": {
+            "type": "mdxJsxAttributeValueExpression",
+            "value": "2",
+            "data": {
+              "estree": {
+                "type": "Program",
+                "start": 142,
+                "end": 143,
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "Literal",
+                      "start": 142,
+                      "end": 143,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 32,
+                          "offset": 142
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 33,
+                          "offset": 143
+                        }
+                      },
+                      "value": 2,
+                      "raw": "2",
+                      "range": [
+                        142,
+                        143
+                      ]
+                    },
+                    "start": 142,
+                    "end": 143,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 32,
+                        "offset": 142
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 33,
+                        "offset": 143
+                      }
+                    },
+                    "range": [
+                      142,
+                      143
+                    ]
+                  }
+                ],
+                "sourceType": "module",
+                "comments": [],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 32,
+                    "offset": 142
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 33,
+                    "offset": 143
+                  }
+                },
+                "range": [
+                  142,
+                  143
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "data": {
+        "_mdxExplicitJsx": true
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "mdxjsEsm",
+      "value": "import Jueqi from \"@/components/Jueqi.tsx\";",
+      "data": {
+        "estree": {
+          "type": "Program",
+          "start": 149,
+          "end": 192,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0,
+              "offset": 149
+            },
+            "end": {
+              "line": 9,
+              "column": 43,
+              "offset": 192
+            }
+          },
+          "body": [
+            {
+              "type": "ImportDeclaration",
+              "start": 149,
+              "end": 192,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 0,
+                  "offset": 149
+                },
+                "end": {
+                  "line": 9,
+                  "column": 43,
+                  "offset": 192
+                }
+              },
+              "specifiers": [
+                {
+                  "type": "ImportDefaultSpecifier",
+                  "start": 156,
+                  "end": 161,
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 7,
+                      "offset": 156
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 12,
+                      "offset": 161
+                    }
+                  },
+                  "local": {
+                    "type": "Identifier",
+                    "start": 156,
+                    "end": 161,
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 7,
+                        "offset": 156
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 12,
+                        "offset": 161
+                      }
+                    },
+                    "name": "Jueqi",
+                    "range": [
+                      156,
+                      161
+                    ]
+                  },
+                  "range": [
+                    156,
+                    161
+                  ]
+                }
+              ],
+              "source": {
+                "type": "Literal",
+                "start": 167,
+                "end": 191,
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 18,
+                    "offset": 167
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 42,
+                    "offset": 191
+                  }
+                },
+                "value": "@/components/Jueqi.tsx",
+                "raw": "\"@/components/Jueqi.tsx\"",
+                "range": [
+                  167,
+                  191
+                ]
+              },
+              "range": [
+                149,
+                192
+              ]
+            }
+          ],
+          "sourceType": "module",
+          "comments": [],
+          "range": [
+            149,
+            192
+          ]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "mdxJsxFlowElement",
+      "name": "Jueqi",
+      "attributes": [],
+      "data": {
+        "_mdxExplicitJsx": true
+      },
+      "children": [
+        {
+          "type": "text",
+          "value": "已经崛起了！"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "element",
+      "tagName": "h2",
+      "properties": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Code Block Example"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "\n"
+    },
+    {
+      "type": "element",
+      "tagName": "pre",
+      "properties": {},
+      "children": [
+        {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+            "className": [
+              "language-javascript"
+            ]
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "const greeting = \"Hello, MDX!\";\nconsole.log(greeting);\n"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+---
+title: 如何为 typst 加入 JSX
+date: 2025-08-14T11:19:36.693Z
+desc: ……或者任何你喜欢的标记语言。
+photo:
+  src: "https://blog.overflow.cat/_astro/confetti.CYqJtWSf_Z2hAK45.png"
+  hide: true
+  alt: "Typst + react-confetti-explosion"
+noscript: false
+licence: CcBySa
+layout: "@/layouts/Default.astro"
+tags:
+  - Astro
+categories:
+  - Typst
+---
+
+<figure>
+<video width="3358" height="2014" controls poster="https://remnote-user-data.s3.amazonaws.com/-YIdkWI5rTGJ07x5il3Sy6Z3hYgOlReMLQHZhWaz7cwoDTVyL5RF5t9MclNYnzmJOuf4u5K3cPjyiKwOQX0eDxqiaI_t8w5Bnfu1tpK3ndvrPGbits_ny-ZivOvwMbCE.png">
+  <source src="https://tong.xinshijiededa.men/typst-jsx.mp4" type="video/mp4" />
+  你的浏览器不支持视频。请移步至原文查看。
+</video>
+<figcaption class="text-end mbs-0">
+  Typst + `react-confetti-explosion`
+</figcaption>
+</figure>
+
+> 本文最初以英文发布于 [我新开的英文博客](https://blog.overflow.cat/posts/typst-jsx/)。
+
+[Astro](https://astro.build/) 是一个 Web 元框架，它非常擅长构建以内容为中心的快速静态网站，比如本博客以及[我的英文博客](https://blog.overflow.cat)。其最强大的功能之一是 Integrations，借助它我们可以在同一个项目中使用各种前端框架，如 React、Vue 和 Svelte。虽然 Typst 也能导出 HTML，但手写 HTML 从来都不是一件愉快的事。
+所以，最好还是把前端的事情交给前端工具来处理——这也是我创建 `astro-typst` 这个 Astro 插件的原因之一。
+
+更棒的是，作为一个内容优先的框架，Astro 支持 MDX，这意味着你可以直接在 Markdown 文件中导入和嵌入动态组件。那么，我们如何将这种能力带到像 Typst 这样的其他标记语言中呢？
+
+## 在 Typst 中嵌入组件
+
+先来展示一下最终的 API。欲在 Typst 文档中嵌入一个组件，需要添加一个简单的辅助函数：
+
+```typ
+#let jsx = s => html.elem("script", attrs: ("data-jsx": s))
+```
+
+你可以随心所欲地定制语法，只要确保它返回下面这种格式就行：
+
+```typ
+// 比如，用代码块的格式
+#let jsx2 = cb => html.elem("script", attrs: ("data-jsx": cb.text))
+```
+
+然后，要向页面中添加一个交互式的计数器组件，你只需这样写：
+
+````typ
+#jsx("import Counter from '../components/Counter.astro'")
+#jsx("<Counter client:load />")
+
+// 或者：
+
+#jsx2[```jsx
+<Counter initialCount={10} message='typst' />
+```]
+````
+
+这就是你需要知道的全部 API 了。接下来发生的事情才是真正神奇的地方。
+
+## 渲染管线
+
+我们先来看看 Astro 的 MD(X) 渲染流程 —— 它使用了 Unified 生态系统的处理管线，通过 `remark`、`rehype` 和 `recma` 三个阶段将内容转换为 HTML。
+
+```js
+MDX
+├ remark-parse
+├ remark-mdx
+├ remark-mark-and-unravel
+├ ...settings.remarkPlugins
+├ remark-rehype
+├ ...settings.rehypePlugins
+├ rehype-remove-raw
+├ rehype-recma
+├ recma-document
+├ recma-jsx-rewrite
+├ recma-build-jsx
+├ recma-build-jsx-transform
+├ recma-jsx
+├ recma-stringify
+├ ...settings.recmaPlugins
+JS
+```
+
+多亏了[纸夜](https://i.myriad-dreamin.com/) 的工作，她为自己的 [typst.ts](https://github.com/myriad-dreamin/typst.ts) 项目添加了 hᴀsᴛ（`rehype` 使用的抽象语法树）输出。这使得为 Typst 实现同样的功能变得水到渠成。
+我们只需要确保 JSX 的部分存在于 hᴀsᴛ 中。
+然后我们可以添加一个 `rehype` 插件，将这个 hᴀsᴛ 转换成和 MDX 产物完全相同的结构。再将这个结果送入 Astro 管线的其余部分，我们就能有效地替换掉标记语言，同时达到相同的效果。
+
+## `script` 标签
+
+现在，回到我们之前的 `html.elem`。当 Typst 编译器处理你的文档时，`#jsx{:typ}` 函数会在中间产物 hᴀsᴛ 中生成一个 `<script>` 标签：
+
+```html
+<script data-jsx="<Counter client:load />"></script>
+```
+
+这个特殊的标签起到了一个标记的作用。
+
+但是，这个标签要如何被处理呢？首先想到的是是伪造一个与 MDX 解析器相似的结构。
+于是，我用 `Proxy{:js}` 实现了一个简单的函数来劫持对一个对象的属性访问，看看哪些属性被实际访问了，并添加了一个插件来打印出 AST：
+
+```js
+function rehypeStealMdxhast() {
+  return function (tree: any, file: any) {
+    // 将语法树存储在 file.data 中以便后续检索
+    file.data.mdxhast = JSON.parse(JSON.stringify(tree));
+  };
+}
+
+...
+
+await compile(mdxContent, {
+    outputFormat: 'function-body',
+    development: false,
+    rehypePlugins: [rehypeStealMdxhast],
+});
+```
+
+通过调整插件的位置，我们可以在恰当的时机获取到 AST。
+
+下面是一个 AST 的例子：
+
+<script src="https://unpkg.com/@alenaksu/json-viewer@2.1.0/dist/json-viewer.bundle.js"></script>
+
+import esTree from "./\_estree.json?raw";
+
+<json-viewer style='--font-family: JetBrains Mono,SFMono-Regular,ui-monospace,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace' data={esTree} />
+
+然后我发现，`estree` 数据早在 remark 阶段就已经被填充了。此路不通，还是得手动解析 JSX 字符串。
+
+## 逐个解析
+
+从这里开始，我们的自定义处理器 **`typstx`**（它是我
+[fork](https://github.com/OverflowCat/hastx/blob/main/packages/mdx/lib/core.js)
+的 MDX 插件）接管了工作。它会遍历 hᴀsᴛ 查找这些特定的 `<script data-jsx="...">`
+标签。每找到一个标签，`typstx` 就会初始化一个新的、独立的 MDX 解析器来处理 `data-jsx` 属性内的 JSX 字符串。
+
+```js
+const createJsxProcessor = () => {
+  const pipelineJsx = unified()
+    .use(remarkParse)
+    .use(remarkMdx)
+    .use(remarkMarkAndUnravel)
+    .use(remarkRehype, {
+      allowDangerousHtml: true,
+      passThrough: [...nodeTypes]
+    })
+    .use(hastHastify)
+
+  return pipelineJsx
+}
+```
+
+这种方法简单直接，尽管这意味着页面上的每个动态组件都会触发一次独立的解析过程。该解析器将 JSX 字符串转换为一个代表该组件的 hᴀsᴛ 片段。
+
+上面的管线被包裹在另一个转换器 `rehypeTransformJsxInTypst` 中：
+
+```js
+export const rehypeTransformJsxInTypst = () => {
+  // 找到所有 html.elem("script", attrs: ("data-jsx": "import Button from 'Button.jsx;'"))
+  // 并将它们转换为 html.elem("script", attrs: ("data-jsx": "import Button from 'Button.jsx;'"))
+  function compileJsx(node) {
+    if (node.type === 'element' && node.tagName === 'script') {
+      let hast = jsx2hast(node.properties['data-jsx'])
+      hast = hast.children[0]
+      ...
+      return hast
+    }
+    if (node.children) {
+      node.children = node.children.map(compileJsx)
+    }
+    return node
+  }
+
+  return function (tree, file) {
+    return compileJsx(tree)
+  }
+}
+```
+
+通过递归调用 `compileJsx`，我们可以确保所有的 `<script>` 标签都被处理。这个新的组件片段随后会替换掉主 hᴀsᴛ 树中原来的 `<script>` 标签。
+
+## 没有魔法，只有字符串
+
+在所有标签被替换后，`typstx` 会将 AST 转换成一个可供执行的 JavaScript 模块字符串。
+Astro 并不读取依赖列表，而是直接接收这个生成的完整脚本，并用其服务器端 JavaScript 运行时来执行。
+这个运行时自带的模块加载器会解析这些 `import` 语句，就像处理任何标准的 `.js` 或 `.ts` 文件一样。
+你的组件就是这样被定位和打包的。
+
+此外，为了确保组件能在 Astro 生态系统中正确渲染，`typstx` 接受一个 `jsxImportSource` 选项。
+我们将其设置为 `'astro'`，这会告诉编译器生成调用 Astro 特定的渲染函数（例如，来自 `'astro/jsx-runtime'`）的代码，而不是其他框架的。
+
+为了进一步提升性能，这种重复的解析逻辑应该被消除，比如可以使用 rehype
+插件将不同的 import 语句直接转换为一个已经包含 `estree` 数据的 AST
+对象。但我认为目前的实现更加灵活，也已经足够好用了。
+
+```js
+if (node.type === 'mdxjsEsm' ||
+    node.type === 'mdxTextExpression' ||
+    node.type === 'mdxFlowExpression' ||
+    node.type === 'mdxJsxAttribute' ||
+    node.type === 'mdxJsxAttributeValueExpression' ||
+    node.type === 'mdxJsxExpressionAttribute') { ... }
+```
+
+## `unist` 的错误假设
+
+另一个实现上的细节是，复用 `unist` 的 pipeline 并不是那么的容易。一个常规的 MDX 流程是从 Markdown 文件到 HTML / JSX，输入输出都是文件或字符串（即 `VFile`）。但在我们的例子中，输入是由 typst.ts 在 Rust 中通过 N-API 创建的 JavaScript 对象 hᴀsᴛ 树。此外，在创建 MDX parser 时，我们需要的输出是一个 `estree` 对象，它不是字符串也不是 `VFile`。
+
+从 VFile 到 AST，或者从 AST 到字符串，这两个过程分别是 `Parser` 和 `Compiler` 的工作。
+你可能以前用过 `remark-parse` 和 `rehype-stringify` 这两个。我之前也在[周报](/weekly/0x06/#all-or-none)里放过这张图：
+
+```
+| ........................ process ........................... |
+| .......... parse ... | ... run ... | ... stringify ..........|
+
+        +--------+                     +----------+
+Input ->- | Parser | ->- Syntax Tree ->- | Compiler | ->- Output
+        +--------+          |          +----------+
+                            X
+                            |
+                     +--------------+
+                     | Transformers |
+                     +--------------+
+```
+
+所以手动伪造了一个 `Parser` 和一个 `Compiler` 来处理 hᴀsᴛ 树：
+
+<figure>
+
+```js
+let __hast = null
+function tryParse() {
+  // @ts-ignore
+  this.parser = parser
+  function parser(_doc, file) {
+    if (body) {
+      __hast = __hast.children.filter((x) => x.tagName === 'body')
+      __hast = __hast.at(0)
+    }
+    return __hast
+  }
+}
+```
+
+<figcaption class="text-end mbs-0">没错，因为代码不是异步的，我们每次调用 `tryParse` 时都会修改 `__hast`。</figcaption>
+</figure>
+
+以及一个假的 `Compiler` 来让 unified 以为它已经把 `estree` 对象转换成了字符串：
+
+```js
+export default function hastHastify() {
+  /** @type {Processor<undefined, undefined, undefined, Root, string>} */
+  const self = this
+
+  self.compiler = compiler
+
+  function compiler(tree) {
+    return tree
+  }
+}
+```
+
+## 前端生态
+
+通过这样做，我们就能享受到前端生态系统带来的强大能力：
+
+  - 虽然有些前端框架本身不使用 JSX 语法，但 Astro 能很方便地把它们的输出转换为 JSX。
+
+  - 我们现在可以（重新）使用 rehype 插件而不是到处写 `html.elem`。这是一种非侵入式地增强 HTML 输出的方式。例如，为标题添加类似 GitHub 的锚点链接是这样做的：
+
+    ```ts
+    import rehypeAutolinkHeadings, { type Options } from "rehype-autolink-headings";
+    export default [
+      rehypeAutolinkHeadings,
+      {
+        content: [
+           {
+             type: "element",
+             tagName: "span",
+             properties: { className: ["anchor"] },
+             children: [{ type: "text", value: "#" }],
+           },
+        ],
+        behavior: "append",
+      } satisfies Options,
+    ];
+    ```
+
+更妙的是，你可以直接导入带有动画和交互的 ECharts 组件，而无需通过 WASM 渲染，这样性能也更好。如果你愿意，你甚至可以检查输出的 `target`，并使用 `json()` 在 [echarm](https://typst.app/universe/package/echarm/)（用于 PDF 输出）和你的前端组件（用于 HTML 输出）之间共享代码。有无限可能！
+
+## 立即尝试
+
+你可以在[这里](https://typst.overflow.cat)看到一个实际的演示。虽然这个功能已经被合并到了 `master` 分支，但一个完全基于 hᴀsᴛ 的方案可能会有性能上的影响，而且还没有经过充分的测试。
+
+理论上，同样的方法也可以应用于其他标记语言，只要它们有相应的 hᴀsᴛ 生成器。此外，支持其他 JSX 运行时也是可能的，但我还没有测试过。
+
+如果你想尝尝鲜，可以安装 npm 上的 beta 版本。欢迎提供反馈！
