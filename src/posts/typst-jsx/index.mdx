@@ -134,7 +134,7 @@ import esTree from "./\_estree.json?raw";
 
 ## 逐个解析
 
-从这里开始，我们的自定义处理器 **`typstx`**（它是我
+从这里开始，我们的自定义处理器 **`typstx`**（随便起的名字，它是我
 [fork](https://github.com/OverflowCat/hastx/blob/main/packages/mdx/lib/core.js)
 的 MDX 插件）接管了工作。它会遍历 hᴀsᴛ 查找这些特定的 `<script data-jsx="...">`
 标签。每找到一个标签，`typstx` 就会初始化一个新的、独立的 MDX 解析器来处理 `data-jsx` 属性内的 JSX 字符串。
@@ -218,9 +218,9 @@ if (node.type === 'mdxjsEsm' ||
 | ........................ process ........................... |
 | .......... parse ... | ... run ... | ... stringify ..........|
 
-        +--------+                     +----------+
+          +--------+                     +----------+
 Input ->- | Parser | ->- Syntax Tree ->- | Compiler | ->- Output
-        +--------+          |          +----------+
+          +--------+          |          +----------+
                             X
                             |
                      +--------------+
