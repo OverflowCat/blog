@@ -25,13 +25,13 @@ categories:
 
 ## 升级
 
-<img class="float-end" src="https://remnote-user-data.s3.amazonaws.com/Vn1JQfwO7Wb7sZRIBPoR5gtueb1muWqqHcxUB1BAk4LuYpL3Pv5LQV-EwqfkoDGwXUxWKLlcWucF_FWzvh3thD8FroE5DiLgyHmRd-W0jVHQ8gXUDPCuZ8gbIGM-lnPx.jpeg" width="286" height="647" />
-
 - 简而言之：升级前务必备份数据到本机，回退时才能恢复这部分数据。
 - 从杂种鸿蒙升级到纯血鸿蒙，应用数据的保留是通过[应用数据迁移](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/app-data-migration-overview-V14)实现，具体来说，是升级时 APK 沙箱数据前会被放到中间目录，然后 NEXT 调用 HAP 的 `BackupExtensionAbility` 处理数
 据，保存到鸿蒙应用的沙箱。
 
 ![](https://remnote-user-data.s3.amazonaws.com/MfB6beE3-entfolr1IFBFkveMM32Wio7Momq6Hz3eS2yVyuIdj63sxPfYADpEZLwuwITbiKDcgZEy-VJfRSpEtaoD-SmJz5ZMvUsotdjjJbej1XdBdcI4NmGW2xCs9Y6.png)
+
+<img class="float-end" src="https://remnote-user-data.s3.amazonaws.com/Vn1JQfwO7Wb7sZRIBPoR5gtueb1muWqqHcxUB1BAk4LuYpL3Pv5LQV-EwqfkoDGwXUxWKLlcWucF_FWzvh3thD8FroE5DiLgyHmRd-W0jVHQ8gXUDPCuZ8gbIGM-lnPx.jpeg" width="286" height="647" />
 
 - 升级前会有一个强制你<span class="mark" remnotemark="true" style="color: green;">备份</span>的流程。这是唯一允许备份数据到本机的地方。
   - 然而，安卓应用有一清单值。至少在 2024 年，如果禁止备份，则降级恢复时只能恢复应用本体。
@@ -105,7 +105,7 @@ categories:
 
 ## 克隆
 
-<img class="float-end" src="https://remnote-user-data.s3.amazonaws.com/gHkn816t2n29S822UqPwuvVJ4RnJvx4oozCO2G1EmIpsEOu0lofV4Ocm45hCbIZgVPuIFcz5K8b9NT8MMDbs7KIa3xGeXyir12nQ99kxGbXTjbnj9-DOjA5PkRdWFS-p.webp" width="326" height="705" />
+<img src="https://remnote-user-data.s3.amazonaws.com/gHkn816t2n29S822UqPwuvVJ4RnJvx4oozCO2G1EmIpsEOu0lofV4Ocm45hCbIZgVPuIFcz5K8b9NT8MMDbs7KIa3xGeXyir12nQ99kxGbXTjbnj9-DOjA5PkRdWFS-p.webp" width="326" height="705" />
 
 - 如果你像我一样，有两台同类型设备处在纯血鸿蒙，那么可以通过<span class="mark" remnotemark="true" style="color: green;">数据克隆</span>来在手机间拷贝应用数据，相对比较方便快捷。这也是唯一不太需要其他系统设备的备份纯血鸿蒙的方法。
   - 由于我没有相关设备，尚不知道能否跨设备类型迁移（手机、平板以及

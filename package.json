@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.22.3",
+  "version": "2.22.5",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -27,7 +27,7 @@
     "a": "astro"
   },
   "dependencies": {
-    "7.css": "^0.19.0",
+    "7.css": "^0.21.1",
     "98.css": "^0.1.21",
     "@astrojs/markdown-remark": "6.3.6",
     "@astrojs/mdx": "4.3.4",
@@ -47,7 +47,7 @@
     "@myriaddreamin/typst-ts-node-compiler": "0.6.0",
     "@myriaddreamin/typst.ts": "0.6.0",
     "@qwikdev/astro": "^0.8.0",
-    "@shikijs/twoslash": "^3.8.0",
+    "@shikijs/twoslash": "^3.12.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "astro": "5.13.5",
@@ -56,7 +56,7 @@
     "bilibili-bv-av-convert": "^1.0.0",
     "buaa-digital-image-processing": "^0.0.3",
     "cheerio": "1.1.0",
-    "cjk-regex": "^3.3.0",
+    "cjk-regex": "^3.4.0",
     "cross-blob": "^3.0.2",
     "dial-data": "^0.0.4",
     "digua": "^0.0.3",
@@ -93,10 +93,10 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.1",
+    "@biomejs/biome": "^2.2.3",
     "@iconify/json": "^2.2.381",
     "@iconify/utils": "^3.0.1",
     "@types/hast": "^3.0.4",
@@ -110,15 +110,15 @@
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
     "rollup": "^4.45.0",
-    "sass": "^1.89.2",
+    "sass": "^1.92.1",
     "shiki": "^3.12.2",
-    "stylelint": "^16.21.1",
-    "stylelint-config-standard": "^38.0.0",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard": "^39.0.0",
     "stylelint-csstree-validator": "^3.0.0",
     "stylelint-less": "^3.0.1",
     "stylelint-scss": "^6.12.1",
     "stylelint-use-logical": "^2.1.2",
-    "twoslash": "^0.3.2",
+    "twoslash": "^0.3.4",
     "typescript": "^5.8.3",
     "unocss": "^66.5.0"
   },
