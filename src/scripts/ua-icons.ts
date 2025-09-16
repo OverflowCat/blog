@@ -63,7 +63,7 @@ export const browserIcon = (browser: SupportedBrowser) => {
 }
 
 export type SupportedOS = "HarmonyOS" | "OpenHarmony" | "Windows" | "macOS" | "Linux" | "Android" | "iOS"
-export const osIcon = (os: SupportedOS) => {
+export const osIcon = (os: SupportedOS | string) => {
   switch (os) {
     case "HarmonyOS":
     case "OpenHarmony":
