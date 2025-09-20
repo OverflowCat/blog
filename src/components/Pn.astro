@@ -1,14 +1,22 @@
 ---
 // 专名号（Proper Name/Noun）
+export type Props = {
+  title?: string;
+}
+
+const { title = "专名号" } = Astro.props;
 ---
 
-<span class="proper-noun outer"><span class="inner"><slot /></span></span><style lang="less">
+<u class="proper-noun outer" title={title}><span class="inner"><slot /></span></u><style lang="less">
   .proper-noun.outer {
+    // discard u
+    text-decoration: none;
+    text-decoration-style: none;
     // margin-inline: 0.5px;
     > .inner {
       margin-inline: -1px;
     }
-    border-block-end: 1px solid;
+    border-block-end: 1.6px solid;
     border-inline: 0;
     box-sizing: content-box;
     & + & {

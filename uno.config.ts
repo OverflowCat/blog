@@ -12,7 +12,7 @@ export default defineConfig({
   content: {
     pipeline: {
       include: [
-        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|typ|html)($|\?)/,
+        /\.(vue|svelte|[jt]sx?|mdx?|astro|elm|php|typ|html)($|\?)/,
       ]
     }
   },
@@ -27,6 +27,8 @@ export default defineConfig({
     // vertical
     ["upright", { "text-combine-upright": "all" }],
     ["yoko", { "text-combine-upright": "all" }],
+
+    ["bn", { "text-decoration-style": "wavy", "text-decoration-line": "underline" }],
 
     // overflow
     [/overflow-(inline|block)-(hidden|auto|scroll)/, function* ([, axis, type]) {

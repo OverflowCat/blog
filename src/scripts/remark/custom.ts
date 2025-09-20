@@ -45,6 +45,12 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							lang: "mnc",
 						};
 						break;
+					case "bn":
+						name = "span";
+						props = {
+							className: ["bn"],
+						};
+						break;
 					case "up":
 						name = "span";
 						props = {
