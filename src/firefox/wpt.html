@@ -1,0 +1,491 @@
+<div style="color: #000000; background-color: #ffffff;">
+<div>neko@Nekos-Mac-mini firefox % ./mach wpt --log-wptreport wptreport.json testing/web-platform/tests/css</div>
+<div>/css-text/parsing</div>
+<div><span style="color: #56adbc;"> 0:00.07</span> <span style="color: #6a7ec8;">INFO</span> Skipping manifest download because existing file is recent</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_buildid: 20251002102916</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_display_name: Nightly</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_id: {ec8030f7-c20a-464f-9b0e-13a3a9e97384}</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_name: Firefox</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_remotingname: firefox-default</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_vendor: Mozilla</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> application_version: 145.0a1</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> platform_buildid: 20251002102916</div>
+<div><span style="color: #56adbc;"> 0:15.12</span> mozversion <span style="color: #6a7ec8;">INFO</span> platform_version: 145.0a1</div>
+<div><span style="color: #56adbc;"> 0:20.83</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting http server on http://127.0.0.1:8000</div>
+<div><span style="color: #56adbc;"> 0:20.88</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting http server on http://127.0.0.1:8003</div>
+<div><span style="color: #56adbc;"> 0:20.93</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting http server on http://127.0.0.1:8001</div>
+<div><span style="color: #56adbc;"> 0:20.93</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting http server on http://127.0.0.1:8002</div>
+<div><span style="color: #56adbc;"> 0:20.96</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting https server on https://127.0.0.1:8445</div>
+<div><span style="color: #56adbc;"> 0:20.98</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting https server on https://127.0.0.1:8443</div>
+<div><span style="color: #56adbc;"> 0:21.05</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting http2 server on https://127.0.0.1:9000</div>
+<div><span style="color: #56adbc;"> 0:21.06</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting https server on https://127.0.0.1:8444</div>
+<div><span style="color: #56adbc;"> 0:21.07</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting https server on https://127.0.0.1:8446</div>
+<div><span style="color: #56adbc;"> 0:21.08</span> wptserve <span style="color: #6a7ec8;">INFO</span> Create socket on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6,</div>
+<div>'', ('127.0.0.1', 8888))</div>
+<div><span style="color: #56adbc;"> 0:21.08</span> wptserve <span style="color: #6a7ec8;">INFO</span> Bind on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('127</div>
+<div>.0.0.1', 8888))</div>
+<div><span style="color: #56adbc;"> 0:21.08</span> wptserve <span style="color: #6a7ec8;">INFO</span> Listen on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('1</div>
+<div>27.0.0.1', 8888))</div>
+<div><span style="color: #56adbc;"> 0:21.08</span> wptserve <span style="color: #6a7ec8;">INFO</span> Create socket on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6,</div>
+<div>'', ('127.0.0.1', 8889))</div>
+<div><span style="color: #56adbc;"> 0:21.10</span> wptserve <span style="color: #6a7ec8;">INFO</span> Bind on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('127</div>
+<div>.0.0.1', 8889))</div>
+<div><span style="color: #56adbc;"> 0:21.10</span> wptserve <span style="color: #6a7ec8;">INFO</span> Listen on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('1</div>
+<div>27.0.0.1', 8889))</div>
+<div><span style="color: #56adbc;"> 0:21.22</span> wptserve <span style="color: #6a7ec8;">INFO</span> Starting WebTransport over HTTP/3 server on 127.0.0.1:11000</div>
+<div><span style="color: #56adbc;"> 0:22.13</span> <span style="color: #b3b42b;">SUITE_START</span>: web-platform-test - running 82 tests</div>
+<div><span style="color: #56adbc;"> 0:22.15</span> <span style="color: #6a7ec8;">INFO</span> Using 1 child processes</div>
+<div><span style="color: #56adbc;"> 0:22.20</span> <span style="color: #6a7ec8;">INFO</span> Setting up ssl</div>
+<div><span style="color: #56adbc;"> 0:22.71</span> <span style="color: #56adbc;">certutil</span> Full command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin24.</div>
+<div>0.0/dist/Nightly.app/Contents/MacOS/certutil -N -d /var/folders/ll/yvc_thd911v6ltm1kby4jxk80000gn/T/tm</div>
+<div>pswps_b7y.mozrunner -f /var/folders/ll/yvc_thd911v6ltm1kby4jxk80000gn/T/tmpswps_b7y.mozrunner/.crtdbpw</div>
+<div><span style="color: #56adbc;">certutil</span> b''</div>
+<div><span style="color: #56adbc;"> 0:22.75</span> <span style="color: #56adbc;">certutil</span> b''</div>
+<div><span style="color: #56adbc;"> 0:22.78</span> <span style="color: #56adbc;">certutil</span> b'\nCertificate Nickname Trust Attributes\n</div>
+<div>SSL,S/MIME,JAR/XPI\n\nweb-platform-tests</div>
+<div>CT,, \n'</div>
+<div><span style="color: #56adbc;"> 0:22.79</span> <span style="color: #6a7ec8;">INFO</span> Application command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin</div>
+<div>24.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank -</div>
+<div>foreground -profile /var/folders/ll/yvc_thd911v6ltm1kby4jxk80000gn/T/tmpysvgztal</div>
+<div><span style="color: #56adbc;"> 0:22.80</span> <span style="color: #6a7ec8;">INFO</span> Starting runner</div>
+<div><span style="color: #56adbc;"> 0:25.12</span> <span style="color: #56adbc;">pid:10088</span> Full command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin24</div>
+<div>.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank</div>
+<div><span style="color: #56adbc;">pid:10088</span> 1759378828569 Marionette INFO Marionette enabled</div>
+<div><span style="color: #56adbc;"> 0:25.55</span> <span style="color: #56adbc;">pid:10088</span> 1759378829001 Marionette INFO Listening on port 51119</div>
+<div><span style="color: #56adbc;"> 0:25.94</span> <span style="color: #56adbc;">pid:10088</span> 2025-10-02 12:20:29.391 firefox[10088:860331] +[IMKClient subclass]: chose IMKClien</div>
+<div>t_Legacy</div>
+<div><span style="color: #56adbc;"> 0:25.94</span> <span style="color: #56adbc;">pid:10088</span> 2025-10-02 12:20:29.391 firefox[10088:860331] +[IMKInputSession subclass]: chose IM</div>
+<div>KInputSession_Legacy</div>
+<div><span style="color: #56adbc;"> 0:27.82</span> <span style="color: #56adbc;">pid:10088</span> UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable a</div>
+<div>nd bound to sampler type (Float) - using zero texture because texture unloadable</div>
+<div><span style="color: #56adbc;"> 0:29.84</span> <span style="color: #56adbc;">pid:10088</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 0:29.84</span> <span style="color: #56adbc;">pid:10088</span> Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synce</div>
+<div>d yet</div>
+<div><span style="color: #56adbc;"> 0:29.84</span> <span style="color: #56adbc;">pid:10088</span> Stack:</div>
+<div><span style="color: #56adbc;"> 0:29.84</span> <span style="color: #56adbc;">pid:10088</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 0:29.84</span> <span style="color: #56adbc;">pid:10088</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 0:29.87</span> <span style="color: #56adbc;">pid:10088</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 0:29.87</span> <span style="color: #56adbc;">pid:10088</span> Message: EmptyDatabaseError: "main/nimbus-secure-experiments" has not been synced</div>
+<div>yet</div>
+<div><span style="color: #56adbc;"> 0:29.87</span> <span style="color: #56adbc;">pid:10088</span> Stack:</div>
+<div><span style="color: #56adbc;"> 0:29.87</span> <span style="color: #56adbc;">pid:10088</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 0:29.87</span> <span style="color: #56adbc;">pid:10088</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 0:30.56</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hanging-punctuation-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:30.57</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to true</div>
+<div><span style="color: #56adbc;"> 0:30.58</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.59</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.60</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.60</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.61</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.61</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to false</div>
+<div><span style="color: #56adbc;"> 0:30.61</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:30.73</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:30.73</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hanging-punctuation-valid.html</div>
+<div><span style="color: #56adbc;"> 0:30.74</span> <span style="color: #6a7ec8;">INFO</span> Closing window bf45753c-eb4a-4f9a-8763-33122c08591e</div>
+<div><span style="color: #56adbc;"> 0:31.23</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/17. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:31.23</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-character-computed.html</div>
+<div><span style="color: #56adbc;"> 0:31.23</span> <span style="color: #6a7ec8;">INFO</span> Closing window d8022e38-ffc8-4d9b-9f7c-277e93d40016</div>
+<div><span style="color: #56adbc;"> 0:31.94</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:31.94</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-character-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:31.96</span> <span style="color: #6a7ec8;">INFO</span> Closing window 3520d9bf-5675-4c9c-a557-09f98393e76b</div>
+<div><span style="color: #56adbc;"> 0:32.51</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:32.51</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-character-valid.html</div>
+<div><span style="color: #56adbc;"> 0:32.52</span> <span style="color: #6a7ec8;">INFO</span> Closing window 88da5f75-c808-4dd7-b3a8-db6dd32aa353</div>
+<div><span style="color: #56adbc;"> 0:32.73</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:32.73</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-limit-chars-computed.html</div>
+<div><span style="color: #56adbc;"> 0:32.73</span> <span style="color: #6a7ec8;">INFO</span> Closing window 2a504cff-4a10-470c-b369-ddd6182c8370</div>
+<div><span style="color: #56adbc;"> 0:33.07</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 11/11. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:33.07</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-limit-chars-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:33.11</span> <span style="color: #6a7ec8;">INFO</span> Closing window 4b4a7ed7-2bc0-42f3-8795-2018915b5f6c</div>
+<div><span style="color: #56adbc;"> 0:33.33</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 8/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:33.34</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphenate-limit-chars-valid.html</div>
+<div><span style="color: #56adbc;"> 0:33.34</span> <span style="color: #6a7ec8;">INFO</span> Closing window fee9cb48-1992-401a-981b-f27a219c7b7c</div>
+<div><span style="color: #56adbc;"> 0:33.63</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 11/11. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:33.63</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphens-computed.html</div>
+<div><span style="color: #56adbc;"> 0:33.63</span> <span style="color: #6a7ec8;">INFO</span> Closing window 5a752574-569b-4155-8813-20bcb64f378f</div>
+<div><span style="color: #56adbc;"> 0:34.38</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:34.38</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphens-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:34.38</span> <span style="color: #6a7ec8;">INFO</span> Closing window 565a6ff7-e7af-41c3-9c59-271862dc87e6</div>
+<div><span style="color: #56adbc;"> 0:34.80</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:34.80</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/hyphens-valid.html</div>
+<div><span style="color: #56adbc;"> 0:34.81</span> <span style="color: #6a7ec8;">INFO</span> Closing window 30b85b65-45a3-419b-8a71-0b00d6ab9cb7</div>
+<div><span style="color: #56adbc;"> 0:34.90</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:34.90</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/letter-spacing-computed.html</div>
+<div><span style="color: #56adbc;"> 0:34.91</span> <span style="color: #6a7ec8;">INFO</span> Closing window 70be75c2-d0d0-4d12-8b2f-c4e132ecd497</div>
+<div><span style="color: #56adbc;"> 0:35.30</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:35.30</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/letter-spacing-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:35.30</span> <span style="color: #6a7ec8;">INFO</span> Closing window 6c4c37b4-f9e3-4a9c-b046-004c45b83af1</div>
+<div><span style="color: #56adbc;"> 0:35.45</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/4. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:35.45</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/letter-spacing-valid.html</div>
+<div><span style="color: #56adbc;"> 0:35.45</span> <span style="color: #6a7ec8;">INFO</span> Closing window bbea041c-8f5c-40a9-9176-95d00f5a0808</div>
+<div><span style="color: #56adbc;"> 0:35.72</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:35.72</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/line-break-computed.html</div>
+<div><span style="color: #56adbc;"> 0:35.73</span> <span style="color: #6a7ec8;">INFO</span> Closing window 234d7bd9-cae9-469e-a9a8-53e6dc7c2b33</div>
+<div><span style="color: #56adbc;"> 0:36.36</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:36.40</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/line-break-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:36.41</span> <span style="color: #6a7ec8;">INFO</span> Closing window 3e7355b8-fdc8-4811-84ee-549978aa9fc0</div>
+<div><span style="color: #56adbc;"> 0:36.73</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:36.73</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/line-break-valid.html</div>
+<div><span style="color: #56adbc;"> 0:36.73</span> <span style="color: #6a7ec8;">INFO</span> Closing window 52e206cb-a954-4318-a830-0bcdcb49e17b</div>
+<div><span style="color: #56adbc;"> 0:37.19</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:37.19</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/overflow-wrap-computed.html</div>
+<div><span style="color: #56adbc;"> 0:37.19</span> <span style="color: #6a7ec8;">INFO</span> Closing window a2d4106f-acbb-492d-9331-c3afea063fb5</div>
+<div><span style="color: #56adbc;"> 0:37.31</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:37.31</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/overflow-wrap-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:37.31</span> <span style="color: #6a7ec8;">INFO</span> Closing window 97667279-c667-4aba-af46-5f8b460fc2cd</div>
+<div><span style="color: #56adbc;"> 0:37.61</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:37.61</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/overflow-wrap-valid.html</div>
+<div><span style="color: #56adbc;"> 0:37.61</span> <span style="color: #6a7ec8;">INFO</span> Closing window 05083f9b-5678-4698-a3d1-8104b815cdc2</div>
+<div><span style="color: #56adbc;"> 0:37.98</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:37.98</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/tab-size-computed.html</div>
+<div><span style="color: #56adbc;"> 0:37.99</span> <span style="color: #6a7ec8;">INFO</span> Closing window 2d9b0c3b-2028-4683-937a-565bc141b9a7</div>
+<div><span style="color: #56adbc;"> 0:38.75</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/10. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:38.75</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/tab-size-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:38.76</span> <span style="color: #6a7ec8;">INFO</span> Closing window 7772ab1a-cca4-4587-b974-b2f100dc7b5c</div>
+<div><span style="color: #56adbc;"> 0:39.13</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/4. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:39.13</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/tab-size-valid.html</div>
+<div><span style="color: #56adbc;"> 0:39.13</span> <span style="color: #6a7ec8;">INFO</span> Closing window 64d95b94-83b7-4d85-9798-f5808e0ab433</div>
+<div><span style="color: #56adbc;"> 0:39.22</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:39.22</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-all-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:39.22</span> <span style="color: #6a7ec8;">INFO</span> Closing window d5ce5ae9-1d4c-400f-86bb-0b27e7e4aee6</div>
+<div><span style="color: #56adbc;"> 0:39.88</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:39.88</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-all-valid.html</div>
+<div><span style="color: #56adbc;"> 0:39.89</span> <span style="color: #6a7ec8;">INFO</span> Closing window bce695f1-40a5-405f-bbb9-e5e9c8941dbe</div>
+<div><span style="color: #56adbc;"> 0:40.34</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:40.34</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-computed.html</div>
+<div><span style="color: #56adbc;"> 0:40.34</span> <span style="color: #6a7ec8;">INFO</span> Closing window 0e647d08-da42-43af-91ec-686cd4a3145f</div>
+<div><span style="color: #56adbc;"> 0:40.78</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:40.78</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:40.78</span> <span style="color: #6a7ec8;">INFO</span> Closing window b50ebe87-3991-47d2-8ca6-32009583d5ca</div>
+<div><span style="color: #56adbc;"> 0:41.14</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:41.14</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-last-computed.html</div>
+<div><span style="color: #56adbc;"> 0:41.15</span> <span style="color: #6a7ec8;">INFO</span> Closing window 1b3ae75f-2608-4c9c-a613-148ef14c4b22</div>
+<div><span style="color: #56adbc;"> 0:41.31</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:41.31</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-last-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:41.31</span> <span style="color: #6a7ec8;">INFO</span> Closing window 4cc8fe56-1ff4-4685-9b57-1fa35dd58b50</div>
+<div><span style="color: #56adbc;"> 0:41.59</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 5/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:41.59</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-last-valid.html</div>
+<div><span style="color: #56adbc;"> 0:41.59</span> <span style="color: #6a7ec8;">INFO</span> Closing window 37c654f1-5edf-49e1-bfb9-7a897d045436</div>
+<div><span style="color: #56adbc;"> 0:41.72</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:41.72</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-align-valid.html</div>
+<div><span style="color: #56adbc;"> 0:41.72</span> <span style="color: #6a7ec8;">INFO</span> Closing window 74d32dbe-efab-4ca3-80a3-541703d0c078</div>
+<div><span style="color: #56adbc;"> 0:41.95</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:41.95</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-autospace-computed.html</div>
+<div><span style="color: #56adbc;"> 0:41.95</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to false</div>
+<div><span style="color: #56adbc;"> 0:41.96</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:41.96</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:41.96</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to false</div>
+<div><span style="color: #56adbc;"> 0:41.97</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:41.97</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:41.97</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to true</div>
+<div><span style="color: #56adbc;"> 0:41.97</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:41.98</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to true</div>
+<div><span style="color: #56adbc;"> 0:41.98</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.02</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.03</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.04</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.05</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.06</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to false</div>
+<div><span style="color: #56adbc;"> 0:42.06</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.07</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.text-autospace.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:42.07</span> <span style="color: #6a7ec8;">INFO</span> Closing window 5c63ab3e-45cd-438f-9716-49bdc384a479</div>
+<div><span style="color: #56adbc;"> 0:42.23</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 13/32. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:42.23</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-autospace-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:42.24</span> <span style="color: #6a7ec8;">INFO</span> Closing window 6ccb3a2b-3263-4689-ad48-3b7a669d23d3</div>
+<div><span style="color: #56adbc;"> 0:42.97</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 15/15. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:42.97</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-autospace-valid.html</div>
+<div><span style="color: #56adbc;"> 0:43.00</span> <span style="color: #6a7ec8;">INFO</span> Closing window 1461f10f-80af-4422-a642-a9117834b0e3</div>
+<div><span style="color: #56adbc;"> 0:43.23</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 12/31. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:43.23</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-group-align-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:43.24</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to false</div>
+<div><span style="color: #56adbc;"> 0:43.24</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.25</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.25</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to false</div>
+<div><span style="color: #56adbc;"> 0:43.27</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.31</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.33</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to true</div>
+<div><span style="color: #56adbc;"> 0:43.33</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.34</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.text-autospace.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.35</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to true</div>
+<div><span style="color: #56adbc;"> 0:43.36</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.37</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.38</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.38</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.39</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.40</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to false</div>
+<div><span style="color: #56adbc;"> 0:43.43</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:43.44</span> <span style="color: #6a7ec8;">INFO</span> Closing window 9db13846-22b6-4605-b066-e409325d6159</div>
+<div><span style="color: #56adbc;"> 0:43.56</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 11/11. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:43.56</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-group-align-valid.html</div>
+<div><span style="color: #56adbc;"> 0:43.56</span> <span style="color: #6a7ec8;">INFO</span> Closing window b76c9f92-c90a-4c0c-9a2f-6beee5b5f5d6</div>
+<div><span style="color: #56adbc;"> 0:43.88</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/11. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:43.88</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-indent-computed.html</div>
+<div><span style="color: #56adbc;"> 0:43.88</span> <span style="color: #6a7ec8;">INFO</span> Closing window f2417d8d-38e1-452e-82a1-84703787165b</div>
+<div><span style="color: #56adbc;"> 0:44.48</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 10/10. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:44.48</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-indent-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:44.49</span> <span style="color: #6a7ec8;">INFO</span> Closing window 267fb3e4-4d55-4aa8-8e67-4aa9d1860bcd</div>
+<div><span style="color: #56adbc;"> 0:45.19</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:45.20</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-indent-valid.html</div>
+<div><span style="color: #56adbc;"> 0:45.20</span> <span style="color: #6a7ec8;">INFO</span> Closing window 68048c34-1a58-40f3-a370-46784b68dc69</div>
+<div><span style="color: #56adbc;"> 0:45.37</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 14/14. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:45.37</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-justify-computed-legacy.html</div>
+<div><span style="color: #56adbc;"> 0:45.37</span> <span style="color: #6a7ec8;">INFO</span> Closing window ef654e70-71ec-4ed3-8b7c-b3998d3370c3</div>
+<div><span style="color: #56adbc;"> 0:45.92</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 1/1. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:45.92</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-justify-computed.html</div>
+<div><span style="color: #56adbc;"> 0:45.93</span> <span style="color: #6a7ec8;">INFO</span> Closing window c7588afd-f225-4390-bd6a-1c1f147b64a9</div>
+<div><span style="color: #56adbc;"> 0:46.31</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/4. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:46.31</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-justify-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:46.31</span> <span style="color: #6a7ec8;">INFO</span> Closing window d79ef82d-4fca-4761-869f-70db59345845</div>
+<div><span style="color: #56adbc;"> 0:46.44</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:46.44</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-justify-valid.html</div>
+<div><span style="color: #56adbc;"> 0:46.46</span> <span style="color: #6a7ec8;">INFO</span> Closing window 344278eb-1db2-46aa-b520-b9588122782f</div>
+<div><span style="color: #56adbc;"> 0:46.73</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/4. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:46.73</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-computed.html</div>
+<div><span style="color: #56adbc;"> 0:46.74</span> <span style="color: #6a7ec8;">INFO</span> Closing window 919815aa-d557-4625-9c3c-e4266f4373e9</div>
+<div><span style="color: #56adbc;"> 0:46.88</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/16. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:46.88</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:46.89</span> <span style="color: #6a7ec8;">INFO</span> Closing window 518ffe01-9b0b-434d-9334-fa7ad0d1ca97</div>
+<div><span style="color: #56adbc;"> 0:47.81</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 11/11. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:47.81</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-trim-computed.html</div>
+<div><span style="color: #56adbc;"> 0:47.81</span> <span style="color: #6a7ec8;">INFO</span> Closing window 8219adcf-a3ac-480e-88b3-3f8f4b1c45ac</div>
+<div><span style="color: #56adbc;"> 0:48.16</span> <span style="color: #c4265e;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 7</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'auto'<span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim valu</div>
+<div>e 'normal'<span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'space-all'<span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-sp</div>
+<div>acing-trim value 'trim-both'<span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'trim-all'<span style="color: #c4265e;">UNEXPECTED-PASS</span></div>
+<div>Property text-spacing-trim value 'trim-start'<span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'space-</div>
+<div>first'</div>
+<div><span style="color: #56adbc;"> 0:48.17</span> <span style="color: #56adbc;">pid:10088</span> 1759378851614 Marionette INFO Stopped listening on port 51119</div>
+<div><span style="color: #56adbc;"> 0:49.27</span> <span style="color: #6a7ec8;">INFO</span> Browser exited with return code -15</div>
+<div><span style="color: #56adbc;"> 0:49.01</span> <span style="color: #6a7ec8;">INFO</span> Closing logging queue</div>
+<div><span style="color: #56adbc;"> 0:49.02</span> <span style="color: #6a7ec8;">INFO</span> queue closed</div>
+<div><span style="color: #56adbc;"> 0:49.32</span> <span style="color: #6a7ec8;">INFO</span> Application command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin</div>
+<div>24.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank -</div>
+<div>foreground -profile /var/folders/ll/yvc_thd911v6ltm1kby4jxk80000gn/T/tmpvshf19tv</div>
+<div><span style="color: #56adbc;"> 0:49.33</span> <span style="color: #6a7ec8;">INFO</span> Starting runner</div>
+<div><span style="color: #56adbc;"> 0:51.25</span> <span style="color: #56adbc;">pid:10566</span> Full command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin24</div>
+<div>.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank</div>
+<div><span style="color: #56adbc;">pid:10566</span> 1759378854687 Marionette INFO Marionette enabled</div>
+<div><span style="color: #56adbc;"> 0:51.74</span> <span style="color: #56adbc;">pid:10566</span> 1759378855183 Marionette INFO Listening on port 51324</div>
+<div><span style="color: #56adbc;"> 0:54.49</span> <span style="color: #56adbc;">pid:10566</span> UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable a</div>
+<div>nd bound to sampler type (Float) - using zero texture because texture unloadable</div>
+<div><span style="color: #56adbc;"> 0:56.21</span> <span style="color: #56adbc;">pid:10566</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 0:56.21</span> <span style="color: #56adbc;">pid:10566</span> Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synce</div>
+<div>d yet</div>
+<div><span style="color: #56adbc;"> 0:56.21</span> <span style="color: #56adbc;">pid:10566</span> Stack:</div>
+<div><span style="color: #56adbc;"> 0:56.21</span> <span style="color: #56adbc;">pid:10566</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 0:56.21</span> <span style="color: #56adbc;">pid:10566</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 0:56.23</span> <span style="color: #56adbc;">pid:10566</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 0:56.23</span> <span style="color: #56adbc;">pid:10566</span> Message: EmptyDatabaseError: "main/nimbus-secure-experiments" has not been synced</div>
+<div>yet</div>
+<div><span style="color: #56adbc;"> 0:56.23</span> <span style="color: #56adbc;">pid:10566</span> Stack:</div>
+<div><span style="color: #56adbc;"> 0:56.23</span> <span style="color: #56adbc;">pid:10566</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 0:56.23</span> <span style="color: #56adbc;">pid:10566</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 0:57.09</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-trim-invalid.html</div>
+<div><span style="color: #56adbc;"> 0:57.12</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to true</div>
+<div><span style="color: #56adbc;"> 0:57.15</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.17</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.20</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.22</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.22</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.23</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to false</div>
+<div><span style="color: #56adbc;"> 0:57.24</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 0:57.46</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 0:57.46</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-trim-valid.html</div>
+<div><span style="color: #56adbc;"> 0:57.46</span> <span style="color: #6a7ec8;">INFO</span> Closing window 04de1223-d5de-4ea4-ae11-87c2c2a6bbc4</div>
+<div><span style="color: #56adbc;"> 0:58.20</span> <span style="color: #c4265e;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 7</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "normal" should set the property value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e</div>
+<div>.style['text-spacing-trim'] = "auto" should set the property value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacin</div>
+<div>g-trim'] = "space-all" should set the property value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "tr</div>
+<div>im-both" should set the property value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "trim-all" should</div>
+<div>set the property value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "trim-start" should set the prop</div>
+<div>erty value<span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "space-first" should set the property value</div>
+<div><span style="color: #56adbc;"> 0:58.22</span> <span style="color: #56adbc;">pid:10566</span> 1759378861667 Marionette INFO Stopped listening on port 51324</div>
+<div><span style="color: #56adbc;"> 0:58.68</span> <span style="color: #56adbc;">pid:10566</span> JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEG</div>
+<div>AL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.rem</div>
+<div>oveObserver]</div>
+<div><span style="color: #56adbc;"> 0:58.80</span> <span style="color: #56adbc;">pid:10566</span> JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can</div>
+<div>'t access property "toJSONSafe", this._data is null</div>
+<div><span style="color: #56adbc;"> 0:58.86</span> <span style="color: #6a7ec8;">INFO</span> Browser exited with return code -15</div>
+<div><span style="color: #56adbc;"> 0:58.66</span> <span style="color: #6a7ec8;">INFO</span> Closing logging queue</div>
+<div><span style="color: #56adbc;"> 0:58.66</span> <span style="color: #6a7ec8;">INFO</span> queue closed</div>
+<div><span style="color: #56adbc;"> 0:58.88</span> <span style="color: #6a7ec8;">INFO</span> Application command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin</div>
+<div>24.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank -</div>
+<div>foreground -profile /var/folders/ll/yvc_thd911v6ltm1kby4jxk80000gn/T/tmpoonilk3t</div>
+<div><span style="color: #56adbc;"> 0:58.93</span> <span style="color: #6a7ec8;">INFO</span> Starting runner</div>
+<div><span style="color: #56adbc;"> 1:00.31</span> <span style="color: #56adbc;">pid:10724</span> Full command: /Volumes/Neko/Users/neko/Documents/firefox/obj-aarch64-apple-darwin24</div>
+<div>.0.0/dist/Nightly.app/Contents/MacOS/firefox --marionette --remote-allow-system-access about:blank</div>
+<div><span style="color: #56adbc;">pid:10724</span> 1759378863749 Marionette INFO Marionette enabled</div>
+<div><span style="color: #56adbc;"> 1:00.63</span> <span style="color: #56adbc;">pid:10724</span> 1759378864081 Marionette INFO Listening on port 51393</div>
+<div><span style="color: #56adbc;"> 1:02.55</span> <span style="color: #56adbc;">pid:10724</span> UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable a</div>
+<div>nd bound to sampler type (Float) - using zero texture because texture unloadable</div>
+<div><span style="color: #56adbc;"> 1:04.38</span> <span style="color: #56adbc;">pid:10724</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 1:04.39</span> <span style="color: #56adbc;">pid:10724</span> Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synce</div>
+<div>d yet</div>
+<div><span style="color: #56adbc;"> 1:04.39</span> <span style="color: #56adbc;">pid:10724</span> Stack:</div>
+<div><span style="color: #56adbc;"> 1:04.39</span> <span style="color: #56adbc;">pid:10724</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 1:04.39</span> <span style="color: #56adbc;">pid:10724</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 1:04.43</span> <span style="color: #56adbc;">pid:10724</span> console.error: services.settings:</div>
+<div><span style="color: #56adbc;"> 1:04.43</span> <span style="color: #56adbc;">pid:10724</span> Message: EmptyDatabaseError: "main/nimbus-secure-experiments" has not been synced</div>
+<div>yet</div>
+<div><span style="color: #56adbc;"> 1:04.43</span> <span style="color: #56adbc;">pid:10724</span> Stack:</div>
+<div><span style="color: #56adbc;"> 1:04.43</span> <span style="color: #56adbc;">pid:10724</span> EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5</div>
+<div><span style="color: #56adbc;"> 1:04.43</span> <span style="color: #56adbc;">pid:10724</span> list@resource://services-settings/Database.sys.mjs:96:13</div>
+<div><span style="color: #56adbc;"> 1:05.18</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-spacing-valid.html</div>
+<div><span style="color: #56adbc;"> 1:05.20</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.disable-pixel-alignment to true</div>
+<div><span style="color: #56adbc;"> 1:05.22</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.customHighlightAPI.enabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.23</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.basic-shape-shape.enabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.23</span> <span style="color: #6a7ec8;">INFO</span> Setting pref layout.css.style-queries.enabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.24</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.hidden_until_found.enabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.25</span> <span style="color: #6a7ec8;">INFO</span> Setting pref dom.viewTransitions.enabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.25</span> <span style="color: #6a7ec8;">INFO</span> Setting pref gfx.font_rendering.fallback.async to false</div>
+<div><span style="color: #56adbc;"> 1:05.27</span> <span style="color: #6a7ec8;">INFO</span> Setting pref mathml.legacy_mathvariant_attribute.disabled to true</div>
+<div><span style="color: #56adbc;"> 1:05.48</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/15. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:05.48</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-transform-computed.html</div>
+<div><span style="color: #56adbc;"> 1:05.48</span> <span style="color: #6a7ec8;">INFO</span> Closing window 45f423ac-c958-4fd5-8bdc-528826975803</div>
+<div><span style="color: #56adbc;"> 1:05.93</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 10/10. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:05.93</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-transform-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:05.94</span> <span style="color: #6a7ec8;">INFO</span> Closing window 35065ed8-ca05-4095-8fa8-1bd5989a184f</div>
+<div><span style="color: #56adbc;"> 1:06.36</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 19/19. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:06.36</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-transform-valid.html</div>
+<div><span style="color: #56adbc;"> 1:06.36</span> <span style="color: #6a7ec8;">INFO</span> Closing window 04f6d552-b0d7-4bf5-a052-be4f0f564cb3</div>
+<div><span style="color: #56adbc;"> 1:06.75</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 19/19. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:06.75</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-computed.html</div>
+<div><span style="color: #56adbc;"> 1:06.76</span> <span style="color: #6a7ec8;">INFO</span> Closing window c760ac03-f9f7-4561-b94c-4a0c680eba31</div>
+<div><span style="color: #56adbc;"> 1:07.12</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 17/17. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:07.12</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:07.12</span> <span style="color: #6a7ec8;">INFO</span> Closing window 53eca71b-555b-44a6-85ad-7341b82f03e8</div>
+<div><span style="color: #56adbc;"> 1:07.25</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 8/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:07.25</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-mode-computed.html</div>
+<div><span style="color: #56adbc;"> 1:07.27</span> <span style="color: #6a7ec8;">INFO</span> Closing window 14325983-a90b-4b44-9469-767eaa7fbfbd</div>
+<div><span style="color: #56adbc;"> 1:07.57</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 2/2. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:07.58</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-mode-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:07.58</span> <span style="color: #6a7ec8;">INFO</span> Closing window 679dba48-8ef8-48ae-8fc9-e74d93f7037f</div>
+<div><span style="color: #56adbc;"> 1:07.76</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 18/18. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:07.76</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-mode-valid.html</div>
+<div><span style="color: #56adbc;"> 1:07.76</span> <span style="color: #6a7ec8;">INFO</span> Closing window ed4fbd0e-b9e7-4dcf-9621-a1a2409fdec5</div>
+<div><span style="color: #56adbc;"> 1:07.98</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 7/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:07.98</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-pretty.html</div>
+<div><span style="color: #56adbc;"> 1:07.98</span> <span style="color: #6a7ec8;">INFO</span> Closing window 25281b89-2579-4e06-b65e-b360c292d14d</div>
+<div><span style="color: #56adbc;"> 1:08.10</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 2/14. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:08.10</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-style-computed.html</div>
+<div><span style="color: #56adbc;"> 1:08.10</span> <span style="color: #6a7ec8;">INFO</span> Closing window 2aac4fed-abd2-4ea4-8028-853e54810eea</div>
+<div><span style="color: #56adbc;"> 1:08.46</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:08.46</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-style-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:08.47</span> <span style="color: #6a7ec8;">INFO</span> Closing window fc60aa35-1ced-4f1c-aca8-cf6d2e6d7d08</div>
+<div><span style="color: #56adbc;"> 1:08.58</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 12/12. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:08.58</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-style-valid.html</div>
+<div><span style="color: #56adbc;"> 1:08.58</span> <span style="color: #6a7ec8;">INFO</span> Closing window 6b7991e0-31aa-4325-8542-e8aac9c5afd3</div>
+<div><span style="color: #56adbc;"> 1:08.88</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 8/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:08.88</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/text-wrap-valid.html</div>
+<div><span style="color: #56adbc;"> 1:08.90</span> <span style="color: #6a7ec8;">INFO</span> Closing window d697ddbd-e14a-4691-93bc-1d954a8dfacf</div>
+<div><span style="color: #56adbc;"> 1:09.00</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 22/22. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:09.00</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-collapse-computed.html</div>
+<div><span style="color: #56adbc;"> 1:09.01</span> <span style="color: #6a7ec8;">INFO</span> Closing window 75ca6e22-17f5-43c2-97ca-f6b0c837b6f5</div>
+<div><span style="color: #56adbc;"> 1:09.65</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/4. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:09.65</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-collapse-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:09.66</span> <span style="color: #6a7ec8;">INFO</span> Closing window 94efec93-3639-4394-9785-e3146d64f815</div>
+<div><span style="color: #56adbc;"> 1:09.82</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:09.82</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-collapse-valid.html</div>
+<div><span style="color: #56adbc;"> 1:09.83</span> <span style="color: #6a7ec8;">INFO</span> Closing window 22bc2ea2-3648-4aa0-a394-e44ca3dea48f</div>
+<div><span style="color: #56adbc;"> 1:10.23</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:10.23</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-computed.html</div>
+<div><span style="color: #56adbc;"> 1:10.24</span> <span style="color: #6a7ec8;">INFO</span> Closing window 1cd1c57f-c4cf-49d7-950d-8bdd07aa351e</div>
+<div><span style="color: #56adbc;"> 1:10.41</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:10.41</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:10.41</span> <span style="color: #6a7ec8;">INFO</span> Closing window 9191df07-8e30-4d02-9bad-bfb46a3df825</div>
+<div><span style="color: #56adbc;"> 1:11.70</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:11.70</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-shorthand-text-wrap.html</div>
+<div><span style="color: #56adbc;"> 1:11.72</span> <span style="color: #6a7ec8;">INFO</span> Closing window 3a9b55ee-6f5f-4235-bfd1-4092d1d4ddc8</div>
+<div><span style="color: #56adbc;"> 1:11.88</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:11.88</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-shorthand.html</div>
+<div><span style="color: #56adbc;"> 1:11.88</span> <span style="color: #6a7ec8;">INFO</span> Closing window 604e3933-6a0e-4dfb-8cab-289095c74c36</div>
+<div><span style="color: #56adbc;"> 1:12.23</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 45/45. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:12.23</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/white-space-valid.html</div>
+<div><span style="color: #56adbc;"> 1:12.24</span> <span style="color: #6a7ec8;">INFO</span> Closing window 566e5a3e-5a4e-43a2-a674-e2706b6aceb0</div>
+<div><span style="color: #56adbc;"> 1:12.95</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:12.95</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-break-computed.html</div>
+<div><span style="color: #56adbc;"> 1:12.96</span> <span style="color: #6a7ec8;">INFO</span> Closing window f4a3d00c-1ffc-42ab-be07-22d620e583cd</div>
+<div><span style="color: #56adbc;"> 1:13.59</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:13.59</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-break-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:13.59</span> <span style="color: #6a7ec8;">INFO</span> Closing window 495bc8f3-5f8d-4de2-88b5-eaead18124b5</div>
+<div><span style="color: #56adbc;"> 1:13.73</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 8/8. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:13.73</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-break-valid.html</div>
+<div><span style="color: #56adbc;"> 1:13.74</span> <span style="color: #6a7ec8;">INFO</span> Closing window 1d1742b4-6a2b-435b-bd86-cb8eb462e178</div>
+<div><span style="color: #56adbc;"> 1:13.98</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 4/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:13.98</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-space-transform-computed.html</div>
+<div><span style="color: #56adbc;"> 1:13.99</span> <span style="color: #6a7ec8;">INFO</span> Closing window 8bff1d67-cff2-4324-811e-887e4c1db66e</div>
+<div><span style="color: #56adbc;"> 1:14.37</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/5. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:14.37</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-space-transform-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:14.38</span> <span style="color: #6a7ec8;">INFO</span> Closing window 2906d307-8c84-4f19-b9e2-1b3ffbb96d38</div>
+<div><span style="color: #56adbc;"> 1:14.87</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 6/6. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:14.87</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-space-transform-valid.html</div>
+<div><span style="color: #56adbc;"> 1:14.87</span> <span style="color: #6a7ec8;">INFO</span> Closing window f1c5d08b-9a12-427f-97b6-b757e9df18b7</div>
+<div><span style="color: #56adbc;"> 1:15.51</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 0/7. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:15.51</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-spacing-computed.html</div>
+<div><span style="color: #56adbc;"> 1:15.55</span> <span style="color: #6a7ec8;">INFO</span> Closing window 65751aeb-4d7f-4683-9bdd-2a0128d8cebe</div>
+<div><span style="color: #56adbc;"> 1:15.92</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:15.92</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-spacing-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:15.93</span> <span style="color: #6a7ec8;">INFO</span> Closing window ad77a256-a7b8-4c61-86ae-10e8cc1d3c8b</div>
+<div><span style="color: #56adbc;"> 1:16.27</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:16.27</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-spacing-valid.html</div>
+<div><span style="color: #56adbc;"> 1:16.28</span> <span style="color: #6a7ec8;">INFO</span> Closing window b77a8f9e-1632-4b19-a610-01ac68bb5e24</div>
+<div><span style="color: #56adbc;"> 1:16.70</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 9/9. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:16.70</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-wrap-computed.html</div>
+<div><span style="color: #56adbc;"> 1:16.70</span> <span style="color: #6a7ec8;">INFO</span> Closing window 707a0cc1-3f49-45c4-8222-2e33a8a462ce</div>
+<div><span style="color: #56adbc;"> 1:17.25</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:17.25</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-wrap-invalid.html</div>
+<div><span style="color: #56adbc;"> 1:17.25</span> <span style="color: #6a7ec8;">INFO</span> Closing window bbdfbf2e-e992-4efc-ae74-4c59f72d7aac</div>
+<div><span style="color: #56adbc;"> 1:17.48</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:17.48</span> <span style="color: #b3b42b;">TEST_START</span>: /css/css-text/parsing/word-wrap-valid.html</div>
+<div><span style="color: #56adbc;"> 1:17.48</span> <span style="color: #6a7ec8;">INFO</span> Closing window c39e7a6f-096b-4705-9507-3d84ae9b2ce1</div>
+<div><span style="color: #56adbc;"> 1:17.83</span> <span style="color: #86b42b;">TEST_END</span>: Test OK. Subtests passed 3/3. Unexpected 0</div>
+<div><span style="color: #56adbc;"> 1:17.83</span> <span style="color: #6a7ec8;">INFO</span> No more tests</div>
+<div><span style="color: #56adbc;"> 1:17.83</span> <span style="color: #56adbc;">pid:10724</span> 1759378881276 Marionette INFO Stopped listening on port 51393</div>
+<div><span style="color: #56adbc;"> 1:18.35</span> <span style="color: #6a7ec8;">INFO</span> Browser exited with return code -15</div>
+<div><span style="color: #56adbc;"> 1:18.22</span> <span style="color: #6a7ec8;">INFO</span> Closing logging queue</div>
+<div><span style="color: #56adbc;"> 1:18.22</span> <span style="color: #6a7ec8;">INFO</span> queue closed</div>
+<div><span style="color: #56adbc;"> 1:18.38</span> <span style="color: #b3b42b;">SUITE_END</span></div>
+<div>&nbsp;</div>
+<div><span style="color: #b3b42b;">web-platform-test</span></div>
+<div><span style="color: #b3b42b;">~~~~~~~~~~~~~~~~~</span></div>
+<div>Ran 802 checks (720 subtests, 82 tests)</div>
+<div>Expected results: 788</div>
+<div>Unexpected results: 14</div>
+<div>subtest: 14 (14 pass)</div>
+<div>&nbsp;</div>
+<div><span style="color: #b3b42b; font-weight: bold;">Error Summary</span></div>
+<div><span style="color: #b3b42b; font-weight: bold;">-------------</span></div>
+<div><span style="font-weight: bold;">/css/css-text/parsing/text-spacing-trim-computed.html</span></div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'auto'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'normal'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'space-all'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'trim-both'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'trim-all'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'trim-start'</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> Property text-spacing-trim value 'space-first'</div>
+<div><span style="font-weight: bold;">/css/css-text/parsing/text-spacing-trim-valid.html</span></div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "normal" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "auto" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "space-all" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "trim-both" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "trim-all" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "trim-start" should set the property value</div>
+<div><span style="color: #c4265e;">UNEXPECTED-PASS</span> e.style['text-spacing-trim'] = "space-first" should set the property value</div>
+<div><span style="color: #56adbc;"> 1:18.39</span> <span style="color: #6a7ec8;">INFO</span> Got 2 unexpected results, with 2 unexpected passes</div>
+<div><span style="color: #56adbc;"> 1:18.43</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped WebTransport over HTTP/3 server on 127.0.0.1:11000</div>
+<div><span style="color: #56adbc;"> 1:18.53</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8003</div>
+<div><span style="color: #56adbc;"> 1:18.54</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:9000</div>
+<div><span style="color: #56adbc;"> 1:18.54</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8001</div>
+<div><span style="color: #56adbc;"> 1:18.57</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8443</div>
+<div><span style="color: #56adbc;"> 1:18.60</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8446</div>
+<div><span style="color: #56adbc;"> 1:18.61</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8002</div>
+<div><span style="color: #56adbc;"> 1:18.61</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8445</div>
+<div><span style="color: #56adbc;"> 1:18.62</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8444</div>
+<div><span style="color: #56adbc;"> 1:18.80</span> wptserve <span style="color: #6a7ec8;">INFO</span> Stopped http server on 127.0.0.1:8000</div>
+<div><span style="color: #56adbc;"> 1:18.85</span> wptserve <span style="color: #6a7ec8;">INFO</span> Close on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('12</div>
+<div>7.0.0.1', 8888))</div>
+<div><span style="color: #56adbc;"> 1:18.89</span> wptserve <span style="color: #6a7ec8;">INFO</span> Close on: (&lt;AddressFamily.AF_INET: 2&gt;, &lt;SocketKind.SOCK_STREAM: 1&gt;, 6, '', ('12</div>
+<div>7.0.0.1', 8889))</div>
+<div><span style="color: #56adbc;"> 1:19.00</span> <span style="color: #6a7ec8;">INFO</span> Closing logging queue</div>
+<div><span style="color: #56adbc;"> 1:19.00</span> <span style="color: #6a7ec8;">INFO</span> queue closed</div>
+</div>
