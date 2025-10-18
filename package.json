@@ -29,8 +29,8 @@
   "dependencies": {
     "7.css": "^0.21.1",
     "98.css": "^0.1.21",
-    "@astrojs/markdown-remark": "6.3.7",
-    "@astrojs/mdx": "4.3.6",
+    "@astrojs/markdown-remark": "6.3.8",
+    "@astrojs/mdx": "4.3.7",
     "@astrojs/prism": "3.3.0",
     "@astrojs/react": "^4.4.0",
     "@astrojs/sitemap": "^3.6.0",
@@ -50,7 +50,7 @@
     "@shikijs/twoslash": "^3.12.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "astro": "5.14.1",
+    "astro": "5.14.6",
     "astro-remote": "^0.3.4",
     "astro-typst": "0.12.1",
     "bilibili-bv-av-convert": "^1.0.0",
@@ -97,15 +97,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
-    "@iconify/json": "^2.2.386",
+    "@iconify/json": "^2.2.397",
     "@iconify/utils": "^3.0.2",
     "@types/hast": "^3.0.4",
-    "@types/jsdom": "^21.1.7",
+    "@types/jsdom": "^27.0.0",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.0.13",
-    "@unocss/preset-icons": "^66.5.2",
-    "@unocss/transformer-directives": "^66.5.2",
+    "@unocss/preset-icons": "^66.5.4",
+    "@unocss/transformer-directives": "^66.5.4",
     "npm-check-updates": "^18.0.1",
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
@@ -120,7 +120,7 @@
     "stylelint-use-logical": "^2.1.2",
     "twoslash": "^0.3.4",
     "typescript": "^5.9.2",
-    "unocss": "^66.5.2"
+    "unocss": "^66.5.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

@@ -1,0 +1,49 @@
+---
+title: "自新世界 #0x11：入職第一周"
+date: 2025-10-18T17:11:46.529Z
+desc: 前端之猫，不事前端。
+noscript: true
+licence: false
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/bcormLygavrVoY6bgfFTHFvrqnim6YOhoj-UAUPbIR5YrNI1om-Z4NexltRt4Ud5JQNFPV_MawMNkyJRaBKlZPE7XrNzTHS2Adba0RSSdTT9ic_272tQDGnJGRS07nC0.jpeg"
+layout: "@/layouts/Default.astro"
+tags:
+  - 揚州話
+categories:
+  - 周报
+series: weekly
+---
+
+這咔 Baecyuêcjiêc都過tec了, 前端之貓總算是工作了.
+
+<h3 id="2025-10-12"><time datetime="2025-10-12">2025 liến 10 yuêc 12 lec</time></h3>
+
+Kì socxìi. 上個 xìiyẽu dsènyò baendsẽu; 還有個 tsuectsê kì了.
+
+<h3 id="2025-10-13"><time datetime="2025-10-13">2025 liến 10 yuêc 13 lec</time></h3>
+
+和兩個 lyũxiá'dsê 一起 bòdò. Dãenwì好多都是 xicmicyồng的不能 sàngwãng的 Win 7. 工位不得電腦.
+
+<h3 id="2025-10-14"><time datetime="2025-10-14">2025 liến 10 yuêc 14 lec</time></h3>
+
+Leader jiòỗyồng C++ / C# 寫 jìimiền, 還講以後可能會要用 Android, 讓我有空 kàenhà jãen lòng. Là dangyáen是選 Avalonia. Dsông'buôn'tiên kì sangtsãng wáen, 不過下次還是要 sò'dii'geu. Xiàwãen'si'heu bo圓tec.
+
+<h3 id="2025-10-15"><time datetime="2025-10-15">2025 liến 10 yuêc 15 lec</time></h3>
+
+Póngtéulaxi'di kì了 dãenwì. 畫 Visio 圖, yồ 做個運行狀態的動畫放 jìimiền 上. Avalonia 官方[提供](https://github.com/AvaloniaUI/Avalonia.Lottie#:~:text=Avalonia.Lottie-,Moved,-to%20https%3A//github) Lòti 庫 `Avalonia.Labs.Lottie`, 能跑.
+
+連接設備到一個五口 gohuàenji, 4個是 PoE 供電; 但是不曉得 IP 地址跟 port. Qíngdò tsãngga的軟件, 能 pìng 通. Tsãngga的庫里向雖然有 pdb 之類的dông'dsê, 但是 DLL 報錯, 一調就 throw tec, láenwáen. 補全是好的.
+
+<h3 id="2025-10-16"><time datetime="2025-10-16">2025 liến 10 yuêc 16 lec</time></h3>
+
+開會, jìisò了 hà 部門情況. 講產品修好到現場 yèu壞tec, 跟負責 desc'guec的在lec'kuec baen 是哪個的責任, gang了 wù'qi'lê了. Leader 把他的 C 代碼的 dêmo 把我了, 縮進都 locbecdàduìi的. Xiõdsông sí'heu, 把 Claude 望望瞧問題, 改了也不得yồng. 到中了 xiêc so, qí jiõtaecqii kì he-Látic.
+
+Fàenhèu, yồng ILSpy decompile tec, 發現是 .net framework 3.5, M$ 網站上都下載不到 dev pack. 然後yồng Copilot 摩登-ization agent 升到 .NET 9, 換了個算 MD5 的 háensoc 後, 好像就一diigèu 問題都不得. 可以看到 tsuốn huílế的 JSON, 字段名還是 UTF-8 的中文.
+
+然後 yèulàngsì 能不能連個新的網絡繼電器, 結果呢外頭不得diigèu label. 另一位同事説是三無產品. 好 becyóngyì 拿到 manual, 發現這個也yồng JSON 傳數據了, lési.
+
+<h3 id="2025-10-17"><time datetime="2025-10-17">2025 liến 10 yuêc 17 lec</time></h3>
+
+嘗試開 .NET AOT 編譯, 失敗tec.
+
+發現 dsá'geu的 數據有不得 value 對應的 key, 還真不是 JSON. 哪個 tsaqiò的人寫的?! 個 dsuôc'dii'lii.
