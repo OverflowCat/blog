@@ -1,6 +1,14 @@
 ---
 import nameGen from "@/scripts/name-gen";
-import { pick } from "@/scripts/serendipity.ts";
+import { pick } from "@/scripts/serendipity";
+
+export type Props = {
+  lang: string;
+};
+
+import { _t } from "@/scripts/i18n";
+const t = _t(Astro.props.lang);
+
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 const placeholder = `${pick([
   "请洒潘江，各倾陆海云尔…",
@@ -9,7 +17,7 @@ const placeholder = `${pick([
   "给主人留下些什么吧～",
 ])}
 
-（可以使用 Markdown 和任意 HTML）`;
+${t("comments.placeholder")}`;
 ---
 
 <form
@@ -18,7 +26,7 @@ const placeholder = `${pick([
   class="comment-form"
 >
   <div class="form-group">
-    <label for="user[name]">昵称 *</label>
+    <label for="user[name]">{t("comments.nickname")} *</label>
     <input
       type="text"
       id="user[name]"
@@ -29,7 +37,7 @@ const placeholder = `${pick([
   </div>
 
   <div class="form-group">
-    <label for="user[url]">主页链接 *</label>
+    <label for="user[url]">{t("comments.homepage_url")} *</label>
     <input
       type="text"
       id="user[url]"

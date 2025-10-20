@@ -110,7 +110,7 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
 
 <section id="comments">
   <Paper padding={true} paper={true}>
-    <Comments />
+    <Comments lang={frontmatter.lang} />
   </Paper>
 </section>
 }
