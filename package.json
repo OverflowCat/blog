@@ -103,7 +103,7 @@
     "@types/jsdom": "^27.0.0",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.9.1",
     "@unocss/preset-icons": "^66.5.4",
     "@unocss/transformer-directives": "^66.5.4",
     "npm-check-updates": "^18.0.1",
