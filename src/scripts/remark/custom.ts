@@ -3,7 +3,7 @@ import { manjuify } from "../manju.ts";
 import { h } from "hastscript";
 import type { RemarkPlugin } from "@astrojs/markdown-remark";
 import type { Image, Paragraph } from "mdast";
-const langsSet = new Set(["zh", "de", "es", "en", "fr"]);
+const langsSet = new Set(["zh", "de", "es", "en", "fr", "vi", "bo"]);
 export const myRemarkPlugin: RemarkPlugin = () => {
 	return (tree, file) => {
 		visit(tree, (node) => {
