@@ -58,9 +58,9 @@ assert(slogan, "slogan is undefined");
     <ul class="block">
       {
         items.map(async (item, i) => (
-          <li 
+          <li
             id={`nav-${i}`}
-            transition:name={`navbar-${i}`} 
+            transition:name={`navbar-${i}`}
             transition:animate="initial"
           >
             {icons && <i class={item[3]} />}
@@ -204,7 +204,7 @@ assert(slogan, "slogan is undefined");
   }
  */
   @supports (scroll-timeline-name: --page-timeline) and
-    (container-type: inline-size) {
+    (container-type: inline-size) and (not (-webkit-touch-callout: none)) {
     nav#sticky {
       backdrop-filter: none; // overrides the fallback
       @apply pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
@@ -213,7 +213,7 @@ assert(slogan, "slogan is undefined");
       display: block;
     }
     .logo-icon {
-      display: none!important;
+      display: none !important;
     }
     .backdrop {
       @apply justify-between absolute inset-0 z-0;
