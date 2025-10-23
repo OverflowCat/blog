@@ -119,7 +119,7 @@
     "stylelint-scss": "^6.12.1",
     "stylelint-use-logical": "^2.1.2",
     "twoslash": "^0.3.4",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "unocss": "^66.5.4"
   },
   "pnpm": {
