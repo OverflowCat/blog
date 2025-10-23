@@ -1,7 +1,7 @@
 {
   "name": "neko-astro-blog",
   "type": "module",
-  "version": "2.24.0",
+  "version": "2.24.1",
   "private": true,
   "engines": {
     "node": ">=20"
@@ -30,7 +30,7 @@
     "7.css": "^0.21.1",
     "98.css": "^0.1.21",
     "@astrojs/markdown-remark": "6.3.8",
-    "@astrojs/mdx": "4.3.7",
+    "@astrojs/mdx": "4.3.8",
     "@astrojs/prism": "3.3.0",
     "@astrojs/react": "^4.4.0",
     "@astrojs/sitemap": "^3.6.0",
@@ -50,7 +50,7 @@
     "@shikijs/twoslash": "^3.12.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "astro": "5.14.6",
+    "astro": "5.15.1",
     "astro-remote": "^0.3.4",
     "astro-typst": "0.12.1",
     "bilibili-bv-av-convert": "^1.0.0",
