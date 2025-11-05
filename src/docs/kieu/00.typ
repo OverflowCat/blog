@@ -34,7 +34,7 @@
   Jialesn becsif dof Qieesntasng,
   buoofnsif yeenhua dseef wuif tsasng.
 
-  Yocmieefn qixying mees suixguoc,
+  Yocmieefn qixying mees suixgoc,
   bingxing dsifkexu dufi Jing lasng.
 
   Duoofntsasng moofnglixi genyueesn liox,
@@ -71,7 +71,7 @@
 
 #s[ Giai-nhân bất thị đáo Tiền-đường, ][ Jialesn becsif dof Qieesntasng,]
 #s[ Bán thế yên-hoa trái vị thường. ][ buoofnsif yeenhua dseef wuif tsasng.]
-#s[ Ngọc diện khởi ưng mai thủy-quốc, ][ Yocmieefn qixying mees suixguoc,]
+#s[ Ngọc diện khởi ưng mai thủy-quốc, ][ Yocmieefn qixying mees suixgoc,]
 #s[ Băng-tâm tự khả đối Kim-lang. ][ bingxing dsifkexu dufi Jing lasng.]
 #s[ Đoạn trường mộng lý căn duyên liễu, ][ Duoofntsasng moofnglixi genyueesn liox,]
 #s[ _Bạc mệnh_ cầm chung oán-hận trường. ][ _Bac Mifng_ qisng dsoong yueefnhefn tsasng.]

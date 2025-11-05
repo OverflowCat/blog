@@ -35,7 +35,7 @@
   "y": "yỳỷỹýỵ",
 )
 
-#let pattern = regex("(?i)(([aeuio]|ee|oo|ui|ii)[sxf0-4]|ee|oo)")
+#let pattern = regex("(?i)(([aeuio]|ee|oo|aen?|ui|eu|ii|ang)[sxf0-4]|ee|oo)")
 
 #let yang = (c, highlighting: true) => {
   show pattern: it => {
