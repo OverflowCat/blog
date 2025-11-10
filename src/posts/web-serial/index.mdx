@@ -34,7 +34,7 @@ import Tweet from "logical-astro-tweet";
 2. 需要拿一个 reader 和 writer，并且只能有唯一的 reader 和唯一的 writer。必须要在写入数据前拿到 reader，否则可能拿不到写入后立即返回的数据。
 3. 读写的都是字节流（`Uint8Array`），这个很好理解。
 4. 写完数据记得调用 `writer.releaseLock()`。
-5. 读数据返回的是 `Promise<ReadableStreamReadResult<R>>`，有 `value` 和 `done`。注意如果 `done` 为 `true` 可能 `value` 还是有内容，注意不要忘记处理。
+5. 读数据返回的是 `Promise<ReadableStreamReadResult<R>>`，有 `value` 和 `done`。注意即使 `done` 为 `true`，`value` 可能还是有内容的，不要忘记处理。
 6. 你需要在循环里一直 `read`。鉴于串口的协议一般都是 ASCII，JavaScript 也不对字符串作出校验，所以在拿到每一次 chunk 后立即转换成文本也无妨。或者，把 reader `pipeTo` 一个 `TextDecoderStream`。
 7. 由于 JavaScript 一贯的事件驱动的 API 设计，不可避免地用到异步。所以为了避免竞态条件，建议你使用 [`async-mutex`](https://www.npmjs.com/package/async-mutex)，创建一个 Mutex 然后把每次的读取和写入放在 `.runExclusive(async () => { return ... }) ` 里，并且 `await` 其结果。
 

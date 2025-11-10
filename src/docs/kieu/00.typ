@@ -1,5 +1,5 @@
 #set page(width: auto, height: auto, margin: 1cm)
-#import "./yang.typ": *
+#import "../yang.typ": *
 #let han = (
   ```
   佳人不是到錢塘，
