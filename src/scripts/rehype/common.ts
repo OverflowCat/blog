@@ -1,7 +1,6 @@
 import rehypeMultiMath from "./math.ts";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
-// @ts-ignore
 import { transformerTwoslash } from '@shikijs/twoslash';
 import { rehypeTwemoji, type RehypeTwemojiOptions } from 'rehype-twemoji'
 import { getSingletonHighlighter } from "shiki";
@@ -40,6 +39,7 @@ const prettyCodeOptions: Options = {
     transformers: [
         transformerTwoslash(),
         shikiGitDiff({
+            // @ts-expect-error: hidden type
             condition: ctx => /\bdiff\b/.test(ctx?.options?.meta?.__raw),
         }),
     ],

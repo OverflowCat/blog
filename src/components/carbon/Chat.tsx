@@ -4,6 +4,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Static */
 /** biome-ignore-all assist/source/organizeImports: AIGC */
 
+import { useMemo } from "react";
 import {
 	Tile,
 	ExpandableTile,
@@ -29,6 +30,11 @@ import {
 	Folders,
 	Checkmark,
 } from "@carbon/icons-react";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeReact from "rehype-react";
+import * as jsxRuntime from "react/jsx-runtime";
 import "./Chat.scss";
 
 interface Message {
@@ -274,6 +280,31 @@ const CHAT_LOG: Message[] = [
 export default function Chat() {
 	const messages = CHAT_LOG;
 
+	// Create markdown processor
+	const markdownProcessor = useMemo(
+		() =>
+			unified()
+				.use(remarkParse)
+				.use(remarkRehype)
+				.use(rehypeReact, {
+					Fragment: jsxRuntime.Fragment,
+					jsx: jsxRuntime.jsx,
+					jsxs: jsxRuntime.jsxs,
+				}),
+		[],
+	);
+
+	// Convert markdown string to React elements
+	const renderMarkdown = (markdown: string) => {
+		try {
+			const result = markdownProcessor.processSync(markdown);
+			return result.result;
+		} catch (error) {
+			console.error("Error rendering markdown:", error);
+			return markdown;
+		}
+	};
+
 	const renderUserMessage = (message: Message) => {
 		// Parse user message to extract @mentions
 		const parseUserMessage = (content: string) => {
@@ -455,9 +486,9 @@ export default function Chat() {
 									{message.author}
 								</Tag>
 							</div>
-							<p className="message-content">
-								{message.digest || message.content}
-							</p>
+							<div className="message-content">
+								{message.digest ? renderMarkdown(message.digest) : renderMarkdown(message.content)}
+							</div>
 						</TileAboveTheFoldContent>
 						<TileBelowTheFoldContent>
 							{message.digest && (
@@ -467,9 +498,9 @@ export default function Chat() {
 										{contentItems.map((item, idx) => {
 											if (item.type === "text") {
 												return (
-													<p key={idx} className="message-content">
-														{item.content}
-													</p>
+													<div key={idx} className="message-content">
+														{renderMarkdown(item.content)}
+													</div>
 												);
 											} else if (item.type === "tool") {
 												return (
@@ -521,7 +552,7 @@ export default function Chat() {
 							{message.author}
 						</Tag>
 					</div>
-					<p className="message-content">{message.content}</p>
+					<div className="message-content">{renderMarkdown(message.content)}</div>
 					{message.confidence && (
 						<div className="message-stats">
 							<div className="stat-item">
