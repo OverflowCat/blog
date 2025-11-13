@@ -57,6 +57,28 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							className: ["upright"],
 						};
 						break;
+					case "Q":
+					case "q":
+						console.log("Wikidata directive found:", node);
+						if (
+							node.children.length === 1 &&
+							node.children[0].type === "text" &&
+							/^Q\d+$/i.test(node.children[0].value.trim())
+						) {
+							name = "sup";
+							const wikidataId = node.children[0].value.trim();
+							data.hChildren = [
+								h(
+									"a",
+									{
+										className: "wikidata mono",
+										href: `https://www.wikidata.org/wiki/${wikidataId}`,
+									},
+									wikidataId,
+								),
+							];
+						}
+						break;
 					case "yoko":
 						name = "span";
 						props = {

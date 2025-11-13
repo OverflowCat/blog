@@ -7,9 +7,14 @@ export interface Props {
 	decoration?: Decoration;
 }
 
-let src = "https://remnote-user-data.s3.amazonaws.com/f8gKx0Gme6bMH6i0C1u9WMvu0a_FrROFO69-uwow3_q5XAMN7sy-G77NUEkAk1Z3SkWyXijliwe9rWifldNdycmhnM8y2fvxH6t6InSoPCDDklhW0aiDFLfMq3O1JRd4.svg" // "/new-logo.svg";
+let src = "/new-logo.svg"; // "https://remnote-user-data.s3.amazonaws.com/f8gKx0Gme6bMH6i0C1u9WMvu0a_FrROFO69-uwow3_q5XAMN7sy-G77NUEkAk1Z3SkWyXijliwe9rWifldNdycmhnM8y2fvxH6t6InSoPCDDklhW0aiDFLfMq3O1JRd4.svg"
 const { decoration } = Astro.props;
 let inlineSize = "";
+
+if (decoration === "isekai") {
+  src = "/isekai-damen.svg";
+}
+
 if (decoration === "langs") {
 	src = "https://tong.xinshijiededa.men/logo-yellow.svg";
 	inlineSize = "inline-full overflow-x-clip";
