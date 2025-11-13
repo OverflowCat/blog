@@ -1,0 +1,48 @@
+<script>
+    let hash = "尚未发布，仅供" + location.hash.replace("#", "") + "参阅。       ";
+    for (let i = 0; i < 4; i++) {
+        hash += hash;
+    }
+    const container = document.querySelector(".watermark-container");
+
+    if (container) {
+        const rowSpacing = 1000; // vertical spacing between rows
+        const rows = 20;
+
+        // Generate watermark elements
+        for (let row = 0; row < rows; row++) {
+            const mark = document.createElement("div");
+            mark.className = "watermark-item";
+            mark.textContent = hash;
+            mark.style.top = `${row * rowSpacing}px`;
+            container.appendChild(mark);
+        }
+    }
+</script>
+
+<div class="watermark-container"></div>
+<style>
+    .watermark-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+        transform: rotate(-45deg);
+        transform-origin: center;
+        opacity: 0.2;
+        font-size: 20px;
+        user-select: none;
+    }
+
+    .watermark-item {
+        position: absolute;
+        color: rgba(0, 0, 0, 0.08);
+        font-weight: 400;
+        white-space: nowrap;
+        user-select: none;
+    }
+</style>

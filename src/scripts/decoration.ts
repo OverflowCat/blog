@@ -5,6 +5,7 @@ export const decoration = z.union([
     z.literal("world"),
     z.literal("langs"),
     z.literal("harmony"),
+    z.literal("isekai"),
     z.null(),
 ]);
 
