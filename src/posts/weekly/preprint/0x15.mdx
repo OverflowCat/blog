@@ -1,20 +1,92 @@
 ---
-title: "自新世界 #0x15：Prompt engineering"
-date: 2025-11-10T15:18:10.867Z
+title: "自新世界 #0x15：制度性失忆"
+# date: 2025-11-10T15:18:10.867Z
+date: 2025-11-19T15:18:10.867Z
 noscript: false
-licence: false
+draft: true
 layout: "@/layouts/Default.astro"
-tags: []
+licence: CcBySa
 math: mathjax
-categories: []
+categories:
+  - 周报
+series: weekly
 ---
 
-// import AIChat from "@/components/carbon/Chat"
-// import "@/components/carbon/Chat.scss"
+import Watermark from "@/components/Watermark.astro";
+import Chat from "@/components/chat/Chat.astro";
+
+<Watermark />
+
+## 2025 年 11 月 10 日
+
+同事掏出一个老旧设备和一个有 Android 2 时代截图的说明书，说配对不上了。还说这个
+APK 有好几个版本，都是随着安卓升级而改上去的，只有最新的一个版本才能安装上，但是还是会提示"此应用专为旧版 Android 打造"。
 
 ## 2025 年 11 月 11 日
 
-{/* <AIChat client:load /> */}
+于是我现在要逆向自己公司的 APK。
+
+<Chat users={[
+{
+  id: "neko",
+  name: "前端之猫",
+  you: true,
+},
+{
+  id: "yzqzss",
+  name: "*座桥在水上",
+},
+{
+  id: "rikumi",
+  name: "*kumi",
+}
+]}
+  messages={[
+{
+  id: "1",
+  text: "Android resource compilation failed 是什么意思？",
+  time: "2025/11/11 16:14",
+  sender: "neko"
+},
+{
+  id: "2",
+  text: "前端猫不会不知道安卓里的 /res 吧。",
+  time: "2025/11/11 16:16",
+  sender: "yzqzss"
+},
+{
+  id: "2",
+  text: "但是，为什么 res 还要编译",
+  time: "2025/11/11 16:18",
+  sender: "neko"
+},
+{
+  id: "4",
+  text: "小毛驴变成二进制小毛驴",
+  time: "2025/11/11 16:18",
+  sender: "rikumi"
+},
+{
+  id: "5",
+  text: "id 变成 int",
+  time: "2025/11/11 16:18",
+  sender: "rikumi"
+},
+{
+  id: "6",
+  text: "听说过 resources.arsc 吗？",
+  time: "2025/11/11 16:19",
+  sender: "yzqzss"
+},
+{
+  id: "7",
+  text: "看来前端之猫没有反编译过安卓爱啪啪。哎，前端。",
+  time: "2025/11/11 16:21",
+  sender: "yzqzss"
+}
+]} />
+
+（为保护群友隐私，ID 已隐去一个字）
 
 ## 2025 年 11 月 12 日
 
@@ -40,8 +112,24 @@ Eclipse。于是我们终于找到了 layout 目录下面的 XML。
 
 让大语言模型用 Kotlin 重写了一版，还是 View 的，但是只包含设备列表和蓝牙连接的部分。但是始终连不上，还闪退了。
 
-再用各种蓝牙调试助手，尝试和设备通信，但是都无法建立连接。卓易通里的似乎可能有用，但是我不知道它是不是因为卓易通的 bug。用鸿蒙原生的蓝牙调试助手，有一个甚至都没办法正常授予权限；我用了其中一个，但光 UI 上状态管理的 bug 就挺多的，这让我觉得是软件在蓝牙连接结果显示上有问题。
+再用各种蓝牙调试助手，尝试和设备通信，但是都卡在到蓝牙 SPP 建立 socket
+连接上。卓易通里的似乎可能有用，但是我不知道它是不是因为卓易通的
+bug。用鸿蒙原生的蓝牙调试助手，有一个甚至都没办法正常授予权限；我用了其中一个，但光 UI 上状态管理的 bug 就挺多的，这让我觉得是软件在蓝牙连接结果显示上有问题。
 
 还有两台备用的设备，这个设备的名称会间歇性地从一个比较长的一个长串的代号变成一个简单的只有两个字符的，我不知道是什么时期要连接它，而且它的说明书上说需要 $2\sim 3$ 分钟等芯片预热了之后再尝试连接，然后每次测量完了以后需要先关闭软件再关闭设备，否则会出现问题。
 
 实验室的落日余晖照在瓶瓶罐罐上很好看。
+
+## 2025 年 11 月 14 日
+
+发现用蓝牙调试助手都没法正常连接。让做硬件的一看发现蓝牙的设备名称都不是伊以前改过的名字，可能是蓝牙模块的主从模式设置错了，后来修好了，就的应用也能用了，就不需要我再管了。回家看动画片。
+
+## 2025 年 11 月 15 日
+
+在电视上看动画片。
+
+## 2025 年 11 月 16 日
+
+在鸿蒙电脑上看动画片。
+
+## 脚注
