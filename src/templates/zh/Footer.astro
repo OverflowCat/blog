@@ -21,6 +21,7 @@ const slug =
       Astro.url.hostname === "localhost"
       || Astro.url.hostname === "127.0.0.1"
       || Astro.url.hostname.startsWith("192.168.")
+      || Astro.url.hostname.startsWith("172.16.")
       || Astro.url.hostname.startsWith("10.")
       ?
   <div>

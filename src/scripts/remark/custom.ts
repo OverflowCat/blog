@@ -91,6 +91,18 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 								lang: name,
 							};
 							name = "span";
+						} else if (name.endsWith("wiki")) {
+							const wikilang = name.slice(0, -4);
+							if (node.children.length === 1 &&
+								node.children[0].type === "text") {
+								const term = node.children[0].value.trim();
+								name = "a";
+								props = {
+									className: `wiki`,
+									lang: wikilang,
+									href: `https://${wikilang}.wikipedia.org/wiki/${encodeURIComponent(term.replace(/ /g, "_"))}`,
+								};
+							}
 						}
 				}
 				data.hName = name;
