@@ -1,4 +1,6 @@
 /** biome-ignore-all lint/suspicious/noReactSpecificProps: Astro */
+/** biome-ignore-all lint/security/noDangerouslySetInnerHtml: <explanation> */
+/** biome-ignore-all lint/correctness/useUniqueElementIds: Astro */
 import { useState } from "react";
 import {
 	ComposedModal,
@@ -9,9 +11,16 @@ import {
 	TextArea,
 	Button,
 	InlineNotification,
+	Stack,
+	Grid,
+	Column,
+	Tile,
+	AILabel,
+	AILabelContent,
 } from "@carbon/react";
-import { User, Email, Link, Chat } from "@carbon/icons-react";
+import { User, Email, Link, Chat, Reply } from "@carbon/icons-react";
 import "./CarbonComments.scss";
+import nameGen from "@/scripts/name-gen";
 
 interface Comment {
 	id: string;
@@ -60,36 +69,74 @@ function CarbonCommentItem({ comment }: CarbonCommentItemProps) {
 		: undefined;
 
 	return (
-		<div className="carbon-comment-item" id={`comment-${data.id}`}>
-			<div className="comment-header">
-				<h4 className="comment-author">
-					{url ? (
-						<a href={url.toString()} target="_blank" rel="noopener noreferrer">
-							{data.name}
-						</a>
-					) : (
-						data.name
-					)}
-				</h4>
-				<a href={`#comment-${data.id}`} className="comment-date">
-					<time dateTime={data.date.toISOString()}>
-						{data.date.toLocaleDateString("zh")}
-					</time>
-				</a>
-			</div>
-			<div
-				className="comment-message"
-				dangerouslySetInnerHTML={{ __html: message || "" }}
-			/>
-			{reply && (
-				<div className="comment-reply">
-					<Tag type="purple" size="sm" renderIcon={Chat}>
-						回复
-					</Tag>
-					<CarbonCommentItem comment={reply} />
+		<Tile id={`comment-${data.id}`} className="carbon-comment-item">
+			<Stack gap={4}>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+						flexWrap: "wrap",
+						gap: "0.5rem",
+					}}
+				>
+					<h4
+						style={{
+							margin: 0,
+							fontSize: "var(--cds-productive-heading-02-font-size)",
+							fontWeight: 400,
+						}}
+					>
+						{url ? (
+							<a
+								href={url.toString()}
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{
+									color: "var(--cds-link-primary)",
+									textDecoration: "none",
+								}}
+							>
+								{data.name}
+							</a>
+						) : (
+							data.name
+						)}
+					</h4>
+					<a
+						href={`#comment-${data.id}`}
+						style={{
+							fontSize: "0.875rem",
+							color: "var(--cds-text-secondary)",
+							textDecoration: "none",
+							fontFamily: "'IBM Plex Mono', monospace",
+						}}
+					>
+						<time dateTime={data.date.toISOString()}>
+							{data.date.toLocaleDateString("zh")}
+						</time>
+					</a>
 				</div>
-			)}
-		</div>
+				<div
+					className="comment-message"
+					dangerouslySetInnerHTML={{ __html: message || "" }}
+				/>
+				{reply && (
+					<div
+						style={{
+							marginLeft: "var(--cds-spacing-05)",
+							paddingLeft: "var(--cds-spacing-05)",
+							borderLeft: "2px solid var(--cds-border-subtle)",
+						}}
+					>
+						<Stack gap={2}>
+							<Tag renderIcon={Reply}>回复</Tag>
+							<CarbonCommentItem comment={reply} />
+						</Stack>
+					</div>
+				)}
+			</Stack>
+		</Tile>
 	);
 }
 
@@ -132,36 +179,44 @@ export default function CarbonComments({
 	};
 
 	return (
-		<div id="carbon-comments" className="carbon-comments">
-			<h2>{t.title}</h2>
+		<>
+			<Grid fullWidth narrow>
+				<Column lg={16} md={8} sm={4}>
+					<Stack gap={7}>
+						<h2
+							style={{
+								textAlign: "center",
+								fontSize: "var(--cds-productive-heading-04-font-size)",
+								fontWeight: 400,
+								margin: 0,
+							}}
+						>
+							{t.title}
+						</h2>
 
-			{comments.length >= 1 && (
-				<section className="carbon-comment-list">
-					{comments.map((comment) => (
-						<CarbonCommentItem key={comment.id} comment={comment} />
-					))}
-				</section>
-			)}
+						{comments.length >= 1 && (
+							<Stack gap={5}>
+								{comments.map((comment) => (
+									<CarbonCommentItem key={comment.id} comment={comment} />
+								))}
+							</Stack>
+						)}
 
-			<div className="carbon-comment-form-trigger">
-				<Button
-					kind="primary"
-					onClick={() => setIsFormOpen(true)}
-					renderIcon={Chat}
-				>
-					{t.writeComment}
-				</Button>
-			</div>
+						<div style={{ textAlign: "center" }}>
+							<Button kind="primary" onClick={() => setIsFormOpen(true)}>
+								{t.writeComment}
+							</Button>
+						</div>
+					</Stack>
+				</Column>
+			</Grid>
 
 			<ComposedModal
 				open={isFormOpen}
 				onClose={() => setIsFormOpen(false)}
 				preventCloseOnClickOutside
 			>
-				<ModalHeader
-					title={t.writeComment}
-					closeButtonLabel="Close"
-				/>
+				<ModalHeader title={t.writeComment} />
 				<ModalBody>
 					<form
 						action="https://gudugada.xinshijiededa.men/comment"
@@ -172,13 +227,17 @@ export default function CarbonComments({
 							id="user-name"
 							name="user[name]"
 							labelText={`${t.nickname} *`}
-							placeholder="阁下的称呼"
+							placeholder={nameGen()}
 							value={formData.name}
 							onChange={(e) =>
 								setFormData({ ...formData, name: e.target.value })
 							}
+							decorator={
+								<AILabel className="ai-label-container">
+									<AILabelContent>随机生成的</AILabelContent>
+								</AILabel>
+							}
 							required
-							renderIcon={User}
 						/>
 
 						<TextInput
@@ -191,7 +250,6 @@ export default function CarbonComments({
 								setFormData({ ...formData, url: e.target.value })
 							}
 							required
-							renderIcon={Link}
 						/>
 
 						<TextInput
@@ -206,7 +264,6 @@ export default function CarbonComments({
 							}
 							onFocus={() => setShowWarning(true)}
 							onBlur={() => setShowWarning(false)}
-							renderIcon={Email}
 						/>
 
 						{showWarning && (
@@ -261,6 +318,6 @@ export default function CarbonComments({
 					</form>
 				</ModalBody>
 			</ComposedModal>
-		</div>
+		</>
 	);
 }

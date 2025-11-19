@@ -1,0 +1,61 @@
+.carbon-toc {
+	position: sticky;
+	top: 3rem;
+	align-self: flex-start;
+	max-height: calc(100vh - 4rem);
+	overflow-y: auto;
+	padding: 1rem;
+	
+	.toc-controls {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.toc-link {
+		color: inherit;
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	// Override Carbon TreeView styles for better TOC appearance
+	.cds--tree-node__label {
+		padding-left: 0;
+	}
+}
+
+// Layout styles for TOC sidebar
+.carbon-layout-with-toc {
+	display: flex;
+	gap: 2rem;
+	max-width: 1584px;
+	margin: 0 auto;
+
+	.carbon-main-content {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.carbon-toc-sidebar {
+		flex: 0 0 280px;
+		min-width: 280px;
+	}
+
+	@media (max-width: 1056px) {
+		flex-direction: column;
+
+		.carbon-toc-sidebar {
+			order: -1;
+			flex: 1 1 auto;
+		}
+
+		.carbon-toc {
+			position: static;
+			max-height: none;
+		}
+	}
+}

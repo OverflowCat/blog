@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noReactSpecificProps: Astro interop */
 /** biome-ignore-all lint/security/noDangerouslySetInnerHtml: Astro interop */
 /** biome-ignore-all lint/correctness/useUniqueElementIds: article.css */
-import { Tag } from "@carbon/react";
+import { Tag, Grid, Column, Stack } from "@carbon/react";
 import { Calendar, Folder, Tag as TagIcon } from "@carbon/icons-react";
 import "./CarbonCommon.scss";
 
@@ -44,77 +44,93 @@ export default function CarbonCommon({
 	const getCatSlug = (cat: string) => cat.toLowerCase().replace(/\s+/g, "-");
 
 	return (
-		<div className="carbon-common-container">
-			{cover && (
-				<figure className="cover">
-					<img
-						id="cover"
-						src={cover.src}
-						alt={cover.alt || ""}
-						className="cover-image"
-					/>
-					{cover.caption && (
-						<figcaption dangerouslySetInnerHTML={{ __html: cover.caption }} />
+		<Grid fullWidth narrow>
+			<Column lg={16} md={8} sm={4}>
+				<Stack gap={6}>
+					{cover && (
+						<figure style={{ margin: 0 }}>
+							<img
+								id="cover"
+								src={cover.src}
+								alt={cover.alt || ""}
+								style={{ width: "100%", height: "auto", display: "block" }}
+							/>
+							{cover.caption && (
+								<figcaption
+									style={{
+										marginTop: "0.5rem",
+										color: "var(--cds-text-secondary)",
+										fontSize: "0.875rem",
+										textAlign: "center",
+									}}
+									dangerouslySetInnerHTML={{ __html: cover.caption }}
+								/>
+							)}
+						</figure>
 					)}
-				</figure>
-			)}
 
-			{!frontmatter.hide_title && frontmatter.title && (
-				<h1 className="post-title" data-transition-name={postId}>
-					{frontmatter.title}
-				</h1>
-			)}
+					{!frontmatter.hide_title && frontmatter.title && (
+						<h1 data-transition-name={postId} style={{ marginBottom: 0 }}>
+							{frontmatter.title}
+						</h1>
+					)}
 
-			<div className="info-section">
-				<div className="info-item">
-					<Calendar size={20} className="info-icon" />
-					<span>日期：</span>
-					<time dateTime={frontmatter.date as string}>
-						{new Date(frontmatter.date).toLocaleDateString("zh")}
-					</time>
-				</div>
-
-				{cats.length > 0 && (
-					<div className="info-item">
-						<Folder size={20} className="info-icon" />
-						<span>分类：</span>
-						<div className="tags-container">
-							{cats.map((cat) => (
-								<Tag key={cat} type="blue" size="sm" renderIcon={Folder}>
-									<a
-										href={`/categories/${getCatSlug(cat)}/`}
-										className="tag-link"
-									>
-										{cat}
-										{catsInfo.has(cat) && <sup>{catsInfo.get(cat)}</sup>}
-									</a>
-								</Tag>
-							))}
+					<Stack gap={4} className="info-section">
+						<div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+							<Calendar size={16} />
+							<span style={{ fontSize: "0.875rem" }}>日期：</span>
+							<time
+								dateTime={frontmatter.date as string}
+								style={{ fontSize: "0.875rem" }}
+							>
+								{new Date(frontmatter.date).toLocaleDateString("zh")}
+							</time>
 						</div>
-					</div>
-				)}
 
-				{tags.length > 0 && (
-					<div className="info-item">
-						<TagIcon size={20} className="info-icon" />
-						<span>标签：</span>
-						<div className="tags-container">
-							{tags.map((tag) => (
-								<Tag key={tag} type="purple" size="sm" renderIcon={TagIcon}>
-									<a href={`/tags/${tag}/`} className="tag-link">
-										{tag}
-										{tagsInfo.has(tag) && <sup>{tagsInfo.get(tag)}</sup>}
+						{cats.length > 0 && (
+							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+								<Folder size={16} />
+								<span style={{ fontSize: "0.875rem" }}>分类：</span>
+								{cats.map((cat) => (
+									<a key={cat} href={`/categories/${getCatSlug(cat)}/`} style={{ textDecoration: "none" }}>
+										<Tag type="blue" size="sm">
+											{cat}
+											{catsInfo.has(cat) && (
+												<span style={{ marginLeft: "0.25rem", opacity: 0.7 }}>
+													{catsInfo.get(cat)}
+												</span>
+											)}
+										</Tag>
 									</a>
-								</Tag>
-							))}
-						</div>
-					</div>
-				)}
-			</div>
+								))}
+							</div>
+						)}
 
-			<article id="post" className="post-content">
-				{children}
-			</article>
-		</div>
+						{tags.length > 0 && (
+							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+								<TagIcon size={16} />
+								<span style={{ fontSize: "0.875rem" }}>标签：</span>
+								{tags.map((tag) => (
+									<a key={tag} href={`/tags/${tag}/`} style={{ textDecoration: "none" }}>
+										<Tag type="purple" size="sm">
+											{tag}
+											{tagsInfo.has(tag) && (
+												<span style={{ marginLeft: "0.25rem", opacity: 0.7 }}>
+													{tagsInfo.get(tag)}
+												</span>
+											)}
+										</Tag>
+									</a>
+								))}
+							</div>
+						)}
+					</Stack>
+
+					<article id="post" className="post-content">
+						{children}
+					</article>
+				</Stack>
+			</Column>
+		</Grid>
 	);
 }

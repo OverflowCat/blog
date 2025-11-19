@@ -23,11 +23,11 @@ article#post p {
 }
 
 h1,
-article#post>h2,
-article#post>h3,
-article#post>h4,
-article#post>h5,
-article#post>h6 {
+article#post>h2, article#post>*>h2,
+article#post>h3, article#post>*>h3,
+article#post>h4, article#post>*>h4,
+article#post>h5, article#post>*>h5,
+article#post>h6, article#post>*>h6 {
   font-family: var(--font-serif), serif;
   font-weight: bold;
   line-height: 140%;
@@ -35,15 +35,17 @@ article#post>h6 {
   margin-block-end: 1em;
 }
 
-article#post {
-  font-family: var(--font-sans, "Noto Sans",
-      "Noto Sans CJK SC", "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
-      "Plangothic P1", "Plangothic P2",
-      "Open Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
-  font-size: 1.13rem;
-  text-align: start;
-  line-height: 175%;
-  color: var(--text-color);
+article#post, article#post>astro-slot {
+  &, &>p {
+    font-family: var(--font-sans, "Noto Sans",
+    "Noto Sans CJK SC", "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
+    "Plangothic P1", "Plangothic P2",
+    "Open Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
+    font-size: 1.13rem;
+    text-align: start;
+    line-height: 175%;
+    color: var(--text-color);
+  }
 
   :not(pre)>code {
     font-size: 94%;

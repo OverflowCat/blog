@@ -1,35 +1,33 @@
 .carbon-header-logo-section {
 	text-align: center;
-	padding: 2rem 0;
+	padding: var(--cds-spacing-07) 0;
 	background: var(--cds-background);
 }
 
 .logo-container {
 	margin: 0 auto;
-	max-inline-size: 200px;
+	max-width: 200px;
 }
 
 .main-logo {
-	inline-size: 100%;
-	block-size: auto;
+	width: 100%;
+	height: auto;
 }
 
 .slogan {
-	margin-block-start: 1rem;
-	font-size: 1.25rem;
+	margin-top: var(--cds-spacing-05);
+	font-size: var(--cds-heading-03-font-size);
 	color: var(--cds-text-primary);
 	font-weight: 300;
 }
 
 .carbon-bar-header {
-	position: sticky;
-	inset-block-start: 0;
+	// Carbon Header 已经处理了 sticky 定位
 	z-index: 8000;
-	backdrop-filter: blur(15px);
 }
 
 .header-logo-small {
-	inline-size: 2rem;
-	block-size: 2rem;
-	margin-inline-end: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+	margin-right: var(--cds-spacing-03);
 }

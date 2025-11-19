@@ -26,6 +26,7 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
   }
 
   :root {
+    --font-sans: "IBM Plex Sans SC", "Mi Sans", "Noto Sans", "Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC", system-ui, sans-serif;
     --font-sans-en: "IBM Plex Sans", Lato, "PT Sans", "Noto Sans", "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
     --font-size-fig: 1.12rem;
@@ -39,18 +40,18 @@ const renderer = ("renderer" in Astro.locals) ? Astro.locals.renderer : "html";
     background-color: #edc089;
   }
 
+  p, h1, h2 {
+    font-family: "IBM Plex Sans SC", "Mi Sans", "Noto Sans", "Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC", system-ui, sans-serif;
+  }
+
   article#post {
     font-size: 1.2rem;
     p, li {
       font-weight: 500;
     }
 
-    h1, h1 {
+    h1 {
       font-weight: bolder;
-    }
-
-    p, h1, h2 {
-      font-family: "IBM Plex Sans SC", "Mi Sans", "Noto Sans", "Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC", system-ui, sans-serif;
     }
 
     hr {

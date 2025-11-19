@@ -1,11 +1,11 @@
 /** biome-ignore-all lint/suspicious/noReactSpecificProps: Astro */
 import {
 	Header,
-	HeaderName,
-	HeaderNavigation,
-	HeaderMenuItem,
 	HeaderGlobalBar,
 	HeaderGlobalAction,
+	HeaderMenuItem,
+	HeaderName,
+	HeaderNavigation,
 } from "@carbon/react";
 import { UserAvatar, Asleep, Catalog, Rss } from "@carbon/icons-react";
 import "./CarbonBar.scss";
@@ -43,7 +43,7 @@ export default function CarbonBar({
 			{logo && (
 				<div className="carbon-header-logo-section">
 					<div className="logo-container">
-						<img src="/门-v2z2.svg" alt="logo" className="main-logo" />
+						{/* <img src="/门-v2z2.svg" alt="logo" className="main-logo" /> */}
 					</div>
 					<div className="slogan" data-text={slogan}>
 						{slogan}
@@ -56,20 +56,13 @@ export default function CarbonBar({
 				</HeaderName>
 				<HeaderNavigation aria-label="Main Navigation">
 					{items.map((item, i) => (
-						<HeaderMenuItem
-							key={i}
-							href={item[2]}
-							isCurrentPage={index === i}
-						>
+						<HeaderMenuItem key={i} href={item[2]} isCurrentPage={index === i}>
 							{item[0]}
 						</HeaderMenuItem>
 					))}
 				</HeaderNavigation>
 				<HeaderGlobalBar>
-					<HeaderGlobalAction
-						aria-label="User settings"
-						tooltipAlignment="end"
-					>
+					<HeaderGlobalAction aria-label="User settings" tooltipAlignment="end">
 						<UserAvatar size={20} />
 					</HeaderGlobalAction>
 				</HeaderGlobalBar>
