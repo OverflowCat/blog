@@ -1,13 +1,1 @@
 @use '@carbon/react';
-
-.carbon-layout-content {
-	padding: 0;
-	min-block-size: 100vh;
-	background: var(--cds-background);
-}
-
-@media (max-width: 672px) {
-	.carbon-layout-content {
-		padding: 0;
-	}
-}

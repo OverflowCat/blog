@@ -1,7 +1,7 @@
 ---
 title: 在 Tauri 中实现鼠标穿透和透明窗口
 date: 2022-12-29 21:18:34
-tags: Tauri
+tags: tauri
 categories: 页面仔的自我修养
 layout: "@/layouts/Default.astro"
 vert: false

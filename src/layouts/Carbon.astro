@@ -7,8 +7,10 @@ import { getCatsInfo, getTagsInfo } from "@/scripts/tags";
 import slogans from "@/scripts/slogans";
 import { pick } from "@/scripts/serendipity";
 import { getComments } from "@/scripts/comments";
+import { genTocTree, type Heading } from "@/components/98/98.ts";
+import "plex-sans-sc-cdn/dist/min.css"; // https://cdn.jsdelivr.net/npm/plex-sans-sc-cdn@1.0.0/dist/min.css
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 
 export type Props = {
 	frontmatter?: Frontmatter;
@@ -16,6 +18,7 @@ export type Props = {
 	file: string;
 	url: string;
 	index?: number;
+	headings?: Heading[];
 };
 
 // Get random slogan
@@ -32,22 +35,10 @@ const classes = frontmatter?.resizable !== false ? ["resizable"] : [];
 // Get comments for this page
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 const comments = getComments(slug);
+
+// Generate TOC tree from headings
+const tocTree = headings && headings.length > 0 ? genTocTree(headings) : null;
 ---
-
-<style is:global is:inline>
-	:root {
-		color-scheme: light dark;
-	}
-
-	body {
-		margin: 0;
-		padding: 0;
-	}
-
-	section#comments {
-		margin-block: 2rem;
-	}
-</style>
 
 <CarbonLayout
 	client:load
@@ -60,17 +51,13 @@ const comments = getComments(slug);
 	showCommon={!!(frontmatter && Astro.props.url !== "/about")}
 	catsInfo={catsInfo}
 	tagsInfo={tagsInfo}
+	tocTree={tocTree}
 >
 	<slot />
 </CarbonLayout>
 
 <section id="comments">
-	<CarbonPaper
-		client:load
-		padding={true}
-		paper={true}
-		classes={classes}
-	>
+	<CarbonPaper client:load padding={true} paper={true} classes={classes}>
 		<CarbonComments
 			client:load
 			comments={comments}
@@ -79,3 +66,37 @@ const comments = getComments(slug);
 		/>
 	</CarbonPaper>
 </section>
+
+<style is:inline is:global lang="less">
+	article#post > * > * {
+		color-scheme: light dark;
+		--font-sans: "IBM Plex Sans SC", "Mi Sans", "Noto Sans",
+			"Noto Sans CJK SC", "Plangothic P1", "Plangothic P2", "PingFang SC",
+			system-ui, sans-serif;
+		--font-sans-en: "IBM Plex Sans", Lato, "PT Sans", "Noto Sans",
+			"Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
+			sans-serif;
+		--font-size-fig: 1.12rem;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	section#comments {
+		margin-block: 2rem;
+	}
+
+	.carbon-layout-content {
+		padding: 0;
+		min-block-size: 100vh;
+		background: var(--cds-background);
+	}
+
+	@media (max-width: 672px) {
+		.carbon-layout-content {
+			padding: 0;
+		}
+	}
+</style>

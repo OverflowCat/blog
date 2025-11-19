@@ -1,24 +1,13 @@
 .carbon-paper {
-	box-sizing: border-box;
-	margin: auto;
-	inline-size: 1024px;
-	max-inline-size: calc(100dvi - 2em);
-	min-inline-size: 320px;
+	// Carbon Tile 已经提供了基础样式，只需要覆盖特殊情况
 }
 
 .vpaper {
-	background-color: var(--cds-layer-01);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	// 使用 Carbon 的 layer 系统
+	background-color: var(--cds-layer);
 }
 
 .padding {
-	padding: 1rem;
-}
-
-@container html (max-inline-size: 560px) {
-	.carbon-paper.resizable {
-		inline-size: 100%;
-		max-inline-size: 100%;
-		min-inline-size: 100%;
-	}
+	// Carbon spacing tokens
+	padding: var(--cds-spacing-05);
 }
