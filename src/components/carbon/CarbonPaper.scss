@@ -1,0 +1,24 @@
+.carbon-paper {
+	box-sizing: border-box;
+	margin: auto;
+	inline-size: 1024px;
+	max-inline-size: calc(100dvi - 2em);
+	min-inline-size: 320px;
+}
+
+.vpaper {
+	background-color: var(--cds-layer-01);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.padding {
+	padding: 1rem;
+}
+
+@container html (max-inline-size: 560px) {
+	.carbon-paper.resizable {
+		inline-size: 100%;
+		max-inline-size: 100%;
+		min-inline-size: 100%;
+	}
+}

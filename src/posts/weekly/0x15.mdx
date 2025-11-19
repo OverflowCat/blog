@@ -1,0 +1,28 @@
+---
+title: "自新世界 #0x15：Prompt Engineering"
+date: 2025-11-19T10:25:47.561Z
+# photo:
+noscript: false
+licence: false
+layout: "@/layouts/Carbon.astro"
+tags:
+  - tauri
+  - 串口
+categories:
+  - 周报
+series: weekly
+---
+
+最近又有新的需求，决定拿 tauri 糊。[serialport](https://docs.rs/serialport/latest/serialport/) 用着没啥问题。
+
+tauri 有个 `tauri::ipc::Channel` 可以直接作为 `#[tauri::command]` 的参数，前端那里放个 event handler 就行。至于单次的串口读写/polling之间，照例还是 Mutex，方便解耦 & 在读写前后写点处理数据的代码。
+
+前端准备还是用点其他的框架（指非 Svelte）。尝试了 Carbon Design System 的 Vue 库 `@carbon/vue3`，“文档”仅有个[故事书](https://vue.carbondesignsystem.com/)，怎么写都渲染不出来，感觉是漏了 CSS 什么的。这个设计系统是以前用 Svelte 时为数不多的选择——其他要么需要 install package per component 如 [Svelte Material UI](https://sveltematerialui.com/)，要么是 atomic 的需要 Tailwind（如图）。
+
+![](https://remnote-user-data.s3.amazonaws.com/JDpHHV3c729RDDhqmmMBd3lZoHmLjglnvmHauie5VPmw84kYB2FQ2TUpXCul-a5js7we-76VkMexQpp1tqUsRca-t-Lr3qvXS33UtuzsifLmxM2NQqIB9otoEr4tikiu.png)
+
+而且 Carbon 不愧是老牌 IBM 厂设计的，配合着自家的 IBM Plex Sans (SC) / Mono，给人朴实、硬朗的感觉，非常清爽。虽然看着可能没有什么细节上的动效，但是总比隔壁天天在 YT 上拿[渲染出来的概念动画](https://www.youtube.com/playlist?list=PL6VNrQ4S3EEits1McNSlpSDR-oR8JRN9F)发 Shorts 务实——后者的实际体验完全不是那么一回事。
+{/* 
+import Chat from "@/components/carbon/Chat";
+
+<Chat client:visible /> */}

@@ -1,0 +1,35 @@
+.carbon-header-logo-section {
+	text-align: center;
+	padding: 2rem 0;
+	background: var(--cds-background);
+}
+
+.logo-container {
+	margin: 0 auto;
+	max-inline-size: 200px;
+}
+
+.main-logo {
+	inline-size: 100%;
+	block-size: auto;
+}
+
+.slogan {
+	margin-block-start: 1rem;
+	font-size: 1.25rem;
+	color: var(--cds-text-primary);
+	font-weight: 300;
+}
+
+.carbon-bar-header {
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 8000;
+	backdrop-filter: blur(15px);
+}
+
+.header-logo-small {
+	inline-size: 2rem;
+	block-size: 2rem;
+	margin-inline-end: 0.5rem;
+}
