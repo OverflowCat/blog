@@ -1,0 +1,81 @@
+---
+import CarbonLayout from "./Carbon.tsx";
+import CarbonPaper from "@/components/carbon/CarbonPaper.tsx";
+import CarbonComments from "@/components/carbon/CarbonComments.tsx";
+import type { Frontmatter } from "@/types";
+import { getCatsInfo, getTagsInfo } from "@/scripts/tags";
+import slogans from "@/scripts/slogans";
+import { pick } from "@/scripts/serendipity";
+import { getComments } from "@/scripts/comments";
+
+const { frontmatter } = Astro.props;
+
+export type Props = {
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+	url: string;
+	index?: number;
+};
+
+// Get random slogan
+const lang = "zh-Hans";
+const slogan = pick(slogans.filter((s) => s[lang]))?.[lang] || "溢出的猫";
+const sloganText = typeof slogan === "string" ? slogan : slogan[0];
+
+// Get category and tag info
+const catsInfo = getCatsInfo();
+const tagsInfo = getTagsInfo();
+
+const classes = frontmatter?.resizable !== false ? ["resizable"] : [];
+
+// Get comments for this page
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const comments = getComments(slug);
+---
+
+<style is:global is:inline>
+	:root {
+		color-scheme: light dark;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	section#comments {
+		margin-block: 2rem;
+	}
+</style>
+
+<CarbonLayout
+	client:load
+	frontmatter={frontmatter}
+	content={Astro.props.content}
+	file={Astro.props.file}
+	url={Astro.props.url}
+	index={Astro.props.index}
+	slogan={sloganText}
+	showCommon={!!(frontmatter && Astro.props.url !== "/about")}
+	catsInfo={catsInfo}
+	tagsInfo={tagsInfo}
+>
+	<slot />
+</CarbonLayout>
+
+<section id="comments">
+	<CarbonPaper
+		client:load
+		padding={true}
+		paper={true}
+		classes={classes}
+	>
+		<CarbonComments
+			client:load
+			comments={comments}
+			lang={frontmatter?.lang}
+			slug={slug}
+		/>
+	</CarbonPaper>
+</section>
