@@ -30,7 +30,7 @@
     "7.css": "^0.21.1",
     "98.css": "^0.1.21",
     "@astrojs/markdown-remark": "6.3.9",
-    "@astrojs/mdx": "4.3.11",
+    "@astrojs/mdx": "4.3.12",
     "@astrojs/prism": "3.3.0",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
@@ -52,7 +52,7 @@
     "@shikijs/twoslash": "^3.15.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "astro": "5.15.9",
+    "astro": "5.16.0",
     "astro-remote": "^0.3.4",
     "astro-typst": "0.12.1",
     "bilibili-bv-av-convert": "^1.0.0",
@@ -94,7 +94,7 @@
     "sharp": "^0.34.4",
     "shiki-git-diff": "^0.0.4",
     "spoiled": "^0.4.0",
-    "svelte": "^5.38.10",
+    "svelte": "^5.43.13",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "xp.css": "^0.2.6",
@@ -109,8 +109,8 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.0.13",
-    "@unocss/preset-icons": "^66.5.7",
-    "@unocss/transformer-directives": "^66.5.7",
+    "@unocss/preset-icons": "^66.5.9",
+    "@unocss/transformer-directives": "^66.5.9",
     "npm-check-updates": "^19.1.2",
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
@@ -125,7 +125,7 @@
     "stylelint-use-logical": "^2.1.2",
     "twoslash": "^0.3.4",
     "typescript": "^5.9.2",
-    "unocss": "^66.5.7"
+    "unocss": "^66.5.9"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
