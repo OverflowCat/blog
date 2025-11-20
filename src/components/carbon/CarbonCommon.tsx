@@ -21,8 +21,6 @@ interface CarbonCommonProps {
 	};
 	children: React.ReactNode;
 	postId?: string;
-	catsInfo?: Map<string, number>;
-	tagsInfo?: Map<string, number>;
 }
 
 function arrify<T>(x: T | T[] | undefined): T[] {
@@ -34,8 +32,6 @@ export default function CarbonCommon({
 	frontmatter,
 	children,
 	postId,
-	catsInfo = new Map(),
-	tagsInfo = new Map(),
 }: CarbonCommonProps) {
 	const cats = arrify(frontmatter.categories);
 	const tags = arrify(frontmatter.tags);
@@ -95,11 +91,6 @@ export default function CarbonCommon({
 									<a key={cat} href={`/categories/${getCatSlug(cat)}/`} style={{ textDecoration: "none" }}>
 										<Tag type="blue" size="sm">
 											{cat}
-											{catsInfo.has(cat) && (
-												<span style={{ marginLeft: "0.25rem", opacity: 0.7 }}>
-													{catsInfo.get(cat)}
-												</span>
-											)}
 										</Tag>
 									</a>
 								))}
@@ -114,11 +105,6 @@ export default function CarbonCommon({
 									<a key={tag} href={`/tags/${tag}/`} style={{ textDecoration: "none" }}>
 										<Tag type="purple" size="sm">
 											{tag}
-											{tagsInfo.has(tag) && (
-												<span style={{ marginLeft: "0.25rem", opacity: 0.7 }}>
-													{tagsInfo.get(tag)}
-												</span>
-											)}
 										</Tag>
 									</a>
 								))}

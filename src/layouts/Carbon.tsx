@@ -19,8 +19,6 @@ interface CarbonLayoutProps {
 	index?: number;
 	slogan?: string;
 	showCommon?: boolean;
-	catsInfo?: Map<string, number>;
-	tagsInfo?: Map<string, number>;
 	tocTree?: TocNode | null;
 }
 
@@ -63,8 +61,6 @@ export default function CarbonLayout({
 									<CarbonCommon
 										frontmatter={frontmatter}
 										postId={postId}
-										catsInfo={catsInfo}
-										tagsInfo={tagsInfo}
 									>
 										{children}
 									</CarbonCommon>
@@ -88,8 +84,6 @@ export default function CarbonLayout({
 							<CarbonCommon
 								frontmatter={frontmatter}
 								postId={postId}
-								catsInfo={catsInfo}
-								tagsInfo={tagsInfo}
 							>
 								{children}
 							</CarbonCommon>

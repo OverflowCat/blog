@@ -48,9 +48,7 @@ const tocTree = headings && headings.length > 0 ? genTocTree(headings) : null;
 	url={Astro.props.url}
 	index={Astro.props.index}
 	slogan={sloganText}
-	showCommon={!!(frontmatter && Astro.props.url !== "/about")}
-	catsInfo={catsInfo}
-	tagsInfo={tagsInfo}
+	showCommon={!!frontmatter}
 	tocTree={tocTree}
 >
 	<slot />
