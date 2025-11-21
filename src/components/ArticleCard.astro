@@ -84,7 +84,7 @@ if (data.series) {
       </blockquote>
     </td>
     {
-      photo && photo.src && !photo.hide && (
+      photo && photo.src && !photo.hide && photo.list !== false && (
         <td class="title-img">
           <img
             class="title-img"

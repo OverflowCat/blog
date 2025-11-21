@@ -101,8 +101,8 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.4",
-    "@iconify/json": "^2.2.403",
+    "@biomejs/biome": "^2.3.7",
+    "@iconify/json": "^2.2.409",
     "@iconify/utils": "^3.0.2",
     "@types/hast": "^3.0.4",
     "@types/jsdom": "^27.0.0",
@@ -116,7 +116,7 @@
     "rehype-twemoji": "^0.0.6",
     "rollup": "^4.45.0",
     "sass": "^1.94.2",
-    "shiki": "^3.12.2",
+    "shiki": "^3.15.0",
     "stylelint": "^16.24.0",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-csstree-validator": "^3.0.0",

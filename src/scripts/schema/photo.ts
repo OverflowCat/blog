@@ -13,4 +13,5 @@ export default (image: SchemaContext['image']) => z.object({
         .boolean()
         .optional()
         .transform((x) => (x === undefined ? false : x)),
+    list: z.boolean().optional(),
 });

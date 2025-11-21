@@ -17,8 +17,8 @@ const { message } = Astro.props;
 const isYou = message.sender.you;
 ---
 
-<div class={`grid ${isYou ? 'ml-auto' : ''}`}>
-    <div class={`p-inline-3 p-block-2 ${isYou ? 'bg-orange-700' : 'bg-gray-100'} rounded justify-start items-center gap-3 inline-flex`}>
+<div class={`grid${isYou ? ' ml-auto' : ''}`}>
+    <div class={`p-inline-3 p-block-2 ${isYou ? 'bg-orange-700' : 'bg-gray-100 bubble-other'} rounded justify-start items-center gap-3 inline-flex`}>
       <article class={`${isYou ? 'text-white' : 'text-gray-900'} leading-snug`}>
         {message.quote && <blockquote class="m-block-2!" set:html={message.quote} />}
         <p class="m-block-2" set:html={message.text} />

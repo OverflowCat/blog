@@ -7,9 +7,7 @@ export interface OpenGraphData {
 }
 
 export function genOpenGraphMetas(data: OpenGraphData, site: URL) {
-  const pngLogo =
-    "https://user-images.githubusercontent.com/20166026/252747732-d43d721d-1aea-4762-bd9e-7e48f7186bce.png";
-  let ogImage = pngLogo;
+  let ogImage = "";
   if (data.image) {
     ogImage = data.image;
     if (ogImage.startsWith("/")) ogImage = site + data.image;
@@ -24,6 +22,6 @@ export function genOpenGraphMetas(data: OpenGraphData, site: URL) {
     "twitter:site": "@lazy_static",
     "twitter:creator": "@lazy_static",
     "twitter:description": data.description,
-    "twitter:image": data.image || pngLogo,
+    "twitter:image": data.image ?? "",
   };
 }

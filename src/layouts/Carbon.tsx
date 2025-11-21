@@ -47,7 +47,9 @@ export default function CarbonLayout({
 				lang="zh-Hans"
 				slogan={slogan}
 			/>
-			<Content className="carbon-layout-content">
+			<Content className="carbon-layout-content" style={{
+				marginInlineStart: 0,
+			}}>
 				{hasToc ? (
 					<div className="carbon-layout-with-toc">
 						<div className="carbon-main-content">

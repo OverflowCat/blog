@@ -1,7 +1,13 @@
 ---
-title: "自新世界 #0x15：Prompt Engineering"
-date: 2025-11-19T10:25:47.561Z
-draft: true
+title: "自新世界 #0x15：Carbon Design System"
+# date: 2025-11-19T10:25:47.561Z
+date: 2025-11-21T18:35:29.186Z
+desc: IBM 可能还在用自己的大型机，所以没有被 MACos 腐蚀脑子
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/hdOJdWlxwEp4kdy-jCVMEP6Xv2lrTzKoyv6dz0ZoBz9nPdLbeDMKsc7oAjGXvnYspmpeAzcdyDSLrXRpKkSinXhkvgda96tvH6n-XNQII1-CEhfZ3IVXVuENjO1Xz1db.jpeg"
+  aspect: 2000:1500
+  alt: "设备界面"
+  list: false
 noscript: false
 licence: false
 layout: "@/layouts/Carbon.astro"
@@ -31,7 +37,68 @@ tauri 有个 `tauri::ipc::Channel` 可以直接作为 `#[tauri::command]` 的参
 
 群友阅读本文的预印本后，说：
 
-> IBM 可能还在用自己的大型机，所以没有被 MACos 腐蚀脑子
+import TgChat from "@/components/chat/Chat.astro";
+
+<style set:html=".bubble-other {background: rgb(0, 0, 0, .05)}" />
+
+<TgChat users={[
+{
+  "you": true,
+  "id": "前端之猫",
+  "name": "前端之猫"
+},
+{
+  "id": "y****",
+  "name": "y****"
+},
+{
+  "id": "mingw",
+  "name": "mingw"
+}
+]} messages={[
+{
+  "id": "1",
+  "text": "隔壁是谁",
+  "time": "2025/11/19 16:45",
+  "sender": "y****"
+},
+{
+  "id": "2",
+  "text": "M$",
+  "time": "2025/11/19 16:45",
+  "sender": "前端之猫"
+},
+{
+  "id": "3",
+  "text": "可惜现在 LLM 只会用 tailwind，没救了",
+  "time": "2025/11/19 16:45",
+  "sender": "y****"
+},
+{
+  "id": "4",
+  "text": "从新版 office 图标来看，这家公司已经彻底没救了",
+  "time": "2025/11/19 16:46",
+  "sender": "y****"
+},
+{
+  "id": "6",
+  "text": "IBM 可能还在用自己的大型机，所以没有被 MACos 腐蚀脑子",
+  "time": "2025/11/19 16:47",
+  "sender": "y****"
+},
+{
+  "id": "5",
+  "text": "我觉得新图标挺好的",
+  "time": "2025/11/19 16:47",
+  "sender": "mingw"
+},
+{
+  "id": "7",
+  "text": "自觉退群吧",
+  "time": "2025/11/19 16:47",
+  "sender": "y****"
+}
+]} />
 
 ### Vibe Coding
 
@@ -51,13 +118,17 @@ import Chat from "@/components/carbon/Chat";
 ## 我在看什么
 
 - [回顾 Claude Code 的成功：天时地利人和+大道至简](https://xxchan.me/zh/blog/2025-09-27-cc-reflection/)：
-
   > RAG 是 chat 时代的产物，是因为没有 agent 所以搞来的轮椅。并不是轮椅不好，但是轮椅坐久了可能大家就忽略了其实可以用脚走路的。
   >
   > 只有 RAG 不行，但 RAG 本身大概还是有用的。现在会走路了之后还是可以坐高级电动轮椅，说不定可以更加起飞。
 
 - [Owning a Cat Could Double Your Risk of Schizophrenia, Research Suggests](https://www.sciencealert.com/owning-a-cat-could-double-your-risk-of-schizophrenia-research-suggests)
-
   不过注意，
-
   > This kind of research can't show cause and effect, and it often doesn't account for factors that may have affected both the exposure and the outcome.
+
+- [AI 不是裁员的原因，巨额 AI 支出才是](https://www.solidot.org/story?sid=82767)，Solidot
+
+- [Tim Bray on Grokipedia](https://daringfireball.net/linked/2025/10/31/bray-grokipedia) linked in Daring Fireball:
+  > No encyclopedia in history has been written with less time or effort than Musk’s LLM-generated vanity project. Verbosity is not the worst of Grokipedia’s deficiencies, but it’s one of them.
+  
+  - [[[维基百科不是不经筛选的信息收集处]]](https://zh.wikipedia.org/wiki/Wikipedia:%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E4%B8%8D%E6%98%AF%E4%BB%80%E4%B9%88#%E7%B6%AD%E5%9F%BA%E7%99%BE%E7%A7%91%E4%B8%8D%E6%98%AF%E4%B8%8D%E7%B6%93%E7%AF%A9%E9%81%B8%E7%9A%84%E8%B3%87%E8%A8%8A%E6%94%B6%E9%9B%86%E8%99%95)。

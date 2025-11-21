@@ -58,7 +58,7 @@ const userMap: Map<string, User> = new Map(
         {!isYou && sender.avatar && (
           <img src={sender.avatar} alt={`${sender.name} avatar`} class="w-10 h-11" />
         )}
-        <div class={`grid ${isYou ? 'items-end' : ''}`}>
+        <div class={`grid${isYou ? ' items-end' : ''}`}>
           <div class={`text-sm text-2nd font-semibold leading-snug pb-1 ${isYou ? 'text-right' : ''}`}>
             {sender.name}
           </div>
