@@ -31,7 +31,7 @@ export default defineConfig({
     ["bn", { "text-decoration-style": "wavy", "text-decoration-line": "underline" }],
 
     // overflow
-    [/overflow-(inline|block)-(hidden|auto|scroll)/, function* ([, axis, type]) {
+    [/overflow-(inline|block)-(hidden|auto|scroll|clip)/, function* ([, axis, type]) {
       yield {
         overflow: type
       }
