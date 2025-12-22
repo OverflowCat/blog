@@ -38,7 +38,7 @@ jobs:
 
           # HarmonyOS Sans
           (
-            git clone --depth=1 https://gitee.com/openharmony/utils_system_resources.git
+            git clone --depth=1 https://gitcode.com/lijuan124/utils_system_resources.git
             cd utils_system_resources/fonts
             sudo mkdir -p /usr/share/fonts/truetype/harmonyos
             find . -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/harmonyos/ \;
