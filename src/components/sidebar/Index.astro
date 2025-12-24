@@ -4,7 +4,8 @@ import OtherPlatfromItem from "./OtherPlatfromItem.astro";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
 import { Picture } from "astro:assets";
-import avatar from "@/assets/avatar.png";
+// import avatar from "@/assets/avatar.png";
+const avatar = "https://tong.xinshijiededa.men/avatar/xmas-2025-avatar.svg";
 import Search from "./Search.astro";
 ---
 
@@ -21,14 +22,15 @@ import Search from "./Search.astro";
       itemtype="http://schema.org/Person"
     >
       <div id="site-author-image">
-        <Picture
+        <!-- <Picture
           loading="eager"
           class="site-author-image"
           itemprop="avatar"
           alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
           src={avatar}
           formats={["avif", "webp", "png"]}
-        />
+        /> -->
+        <img src={avatar} alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫" class="site-author-image" itemprop="avatar" />
       </div>
       <p class="site-author-name write-vertical-left vertical-mid" itemprop="name" lang="mnc">
         ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh">猫</span>
@@ -125,7 +127,8 @@ import Search from "./Search.astro";
     border: 1px solid #eee;
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    transform: scaleX(-1);
     transition: transform 1s ease-out;
   }
   #site-author-image {
@@ -137,6 +140,7 @@ import Search from "./Search.astro";
     margin: 0px;
   }
   .site-author-image:hover {
-    transform: rotateZ(360deg);
+    /* transform: rotateZ(360deg); */
+    transform: scaleX(1);
   }
 </style>

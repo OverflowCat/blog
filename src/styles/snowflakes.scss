@@ -8,12 +8,39 @@
   @return $random_range;
 }
 
+.main {
+  filter: brightness(0.95) saturate(1.1);
+    text-shadow:
+    0 0 1px #fff,
+    0 0 2px #ebebeb,
+    0 0 3px #b9b9b9;
+}
+
+body {
+  background-image: url("https://remnote-user-data.s3.amazonaws.com/2fkaCqjyo5c_vBnTuvfev6zA_CGNNwC8T06mm_dB1v6RtXUT8R8JABHzDjbwTaFgQrL7q_w82XqD9mW9aE8KP1ShiaP91UmkJPTxygfo-_uZzMlPaxl6ntrmzz4GZWym.jpeg")!important;
+  background-blend-mode: luminosity;
+  background-size: cover!important;
+  background-attachment: fixed!important;
+}
+
+@container style(--dark-scheme) {
+  body {
+    background-image: url("https://remnote-user-data.s3.amazonaws.com/r_tz5f_Khz-iLtRyuF-Z2E2VPC7YNGgThKJt2NOBmJ_4y9C3aSF8RBrsQ9zCsY9q8_PbbNfrIrtP1pZtIA_mgAEVDDGt8tfgr5IHCUaS2lasVdXPXFRAyKVuoQaewrpj.jpeg")!important;
+  }
+}
+
 .snow {
   $total: 200;
-  position: absolute;
+  position: fixed;
   width: 10px;
   height: 10px;
+  z-index: 1111;
   background: white;
+  // shadow
+  box-shadow:
+    0 0 5px 2px rgba(255, 255, 255, 0.8),
+    0 0 10px 4px rgba(255, 255, 255, 0.6),
+    0 0 15px 6px rgba(255, 255, 255, 0.4);
   border-radius: 50%;
 
   @for $i from 1 through $total {
