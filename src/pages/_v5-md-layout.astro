@@ -15,7 +15,7 @@ const { ext } = Astro.props;
 ---
 
 {
-    ext == "md" ? (
+    ext == "md" || ext == "typ" ? (
         <Default {...Astro.props.props}>
             <slot />
         </Default>

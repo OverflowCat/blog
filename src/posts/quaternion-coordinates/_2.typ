@@ -1,6 +1,6 @@
 #set page(width: 34em, height: auto, margin: (top: 1em, rest: 0em))
 #set text(font: "Noto Serif CJK SC", lang: "zh", cjk-latin-spacing: auto, size: .95em)
-#import "util.typ": *
+#import "_util.typ": *
 
 第二次旋转是绕与 #long(0)、#long(180) 经线平面垂直的过地心的直线旋转，从 #lat(60) 处变至 #lat(30) 处，旋转了 $30 degree$。
 

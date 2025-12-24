@@ -1,6 +1,6 @@
 #set page(width: 34em, height: auto, margin: (top: 1em, rest: 0em))
 #set text(font: "Noto Serif CJK SC", lang: "zh", cjk-latin-spacing: auto, size: .95em)
-#import "util.typ": *
+#import "_util.typ": *
 
 地理坐标系（g 系）原点为载体质心，#xg;在当地水平面内沿当地纬线指向正东，#yg;沿当地子午线指向正北，#zg;沿当地参考椭球的法线指向天顶。
 
