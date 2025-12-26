@@ -30,10 +30,11 @@ if (!og) {
 
 
 if (!Astro.site) {
-  throw new Error("Astro.site is not defined");
+  console.log({Astro}); // TODO: why?
+  console.warn("Astro.site is not defined");
 }
 const metas = {
-  ...genOpenGraphMetas(og, Astro.site),
+  ...genOpenGraphMetas(og, Astro.site ?? new URL("https://blog.xinshijiededa.men")),
   ...Astro.props.metas,
   description: og.description ?? "新世界的大門 Blog",
 };
