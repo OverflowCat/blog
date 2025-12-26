@@ -57,7 +57,6 @@ export default defineConfig({
 			"wikimedia.org",
 			"xkcd.in",
 		],
-		experimentalLayout: "constrained",
 	},
 	vite: {
 		server: {

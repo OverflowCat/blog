@@ -15,7 +15,7 @@
     ext: "typ",
     vert: false,
     theme: false,
-    draft: true,
+    // draft: true,
   ),
 )<frontmatter>
 
