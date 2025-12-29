@@ -3,7 +3,7 @@ export type Props = {
 	comment: TransformedComment & { data: { message?: string } };
 };
 import { detect } from "digua";
-import { deviceIcon, osIcon, browserIcon } from "@/scripts/ua-icons";
+import { deviceIcon, osIcon, browserIcon, type SupportedBrowser } from "@/scripts/ua-icons";
 import type { TransformedComment } from "@/scripts/comments";
 import Icon from "@/components/Icon.astro";
 const { comment } = Astro.props;
@@ -26,12 +26,19 @@ const message = data.message ? data.message : comment.rendered?.html;
 const ua = data.ua ? detect(data.ua) : null;
 
 let url: URL | undefined = undefined;
-if (data.url)
+if (data.url) {
 	try {
-		url = new URL(data.url);
-	} catch (e) {}
+		url = new URL(
+			data.url.startsWith("http://") || data.url.startsWith("https://")
+				? data.url
+				: `https://${data.url}`
+		);
+	} catch (e) {
+		console.warn("Invalid URL in comment:", data.url);
+	}
+}
 
-const browser = browserIcon(ua?.browser ?? "Unknown") ?? "";
+const browser = browserIcon(ua?.browser as SupportedBrowser ?? "Unknown") ?? "";
 ---
 
 <li itemprop="comment" id={"comment-" + data.id}>
