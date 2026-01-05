@@ -6,12 +6,12 @@
 
   let in-table = state("in-table", false)
   let in-stack = state("in-stack", false)
-  show table: it => {
+  show table: it => context {
     in-table.update(true)
     html.frame(block(it, width: 40em))
     in-table.update(false)
   }
-  show stack: it => {
+  show stack: it => context {
     in-stack.update(true)
     html.frame(block(it, width: 45em))
     in-stack.update(false)
