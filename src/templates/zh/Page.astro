@@ -46,11 +46,11 @@ import Snowflakes from "@/components/inject/Snowflakes.astro";
 ---
 
 <Base title={title} metas={metas} lang={lang}>
-  <Snowflakes />
-  <div class="main overflow-inline-clip">
-    <slot />
-  </div>
-  <Footer source={source} />
+    {Astro.url.pathname === "/" && <Snowflakes />}
+    <div class="main overflow-inline-clip">
+        <slot />
+    </div>
+    <Footer source={source} />
 </Base>
 
 <style>
