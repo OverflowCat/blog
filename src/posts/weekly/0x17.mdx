@@ -1,0 +1,190 @@
+---
+title: "自新世界 #0x1a：六十四分之一的 Visual Studio"
+# date: 2026-01-12T17:50:31.254Z
+date: 2026-02-17T16:19:29.480Z
+desc: "微软说，Visual Studio 在具有 64 GB RAM 的 Windows 11 和具有 16 个核心或更高版本的 CPU 上运行最佳。"
+photo:
+  src: "https://remnote-user-data.s3.amazonaws.com/vNmLzj7i7HE58MneClDHkwZIKtqsayMGa7Q2H5E-jvxLfJ_gbvoNSlm8oXeZMEnB-jKpCJ9F4oiWLAZ2AnztXqedHlQf3cDsV4OfwzckDu9A6ld9uTwqlB0JleZtrO9B.jpeg"
+layout: "@/layouts/Default.astro"
+tags:
+  - Visual Studio
+  - MFC
+licence: CcBySa
+categories:
+  - 周报
+series: weekly
+math: typst
+noscript: true
+---
+
+微软说，
+
+> Visual Studio 在具有 64 GB RAM 的 Windows 11 和具有 16 个核心或更高版本的 CPU
+> 上运行最佳。它运行速度更快，并且比同一硬件上的 Visual Studio 2022 响应更快。
+
+官方的解释是，这是为了方便开发者有理由向公司争取到更好的硬件。
+
+我这台设备是工控机，4 GB 的内存，处理器则是 2020 年的[赛扬 N5095](https://www.intel.cn/content/www/cn/zh/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html)，性能比[绿镖](https://www.bilibili.com/video/BV1wP411G7ox/)上的还差些，只有
+4 核。因此，这是推荐配置的 $1/16$。自然，不用再乘上
+$frac("Windows 10", "Windows 11")$，因为后者反而更像是负优化——而且也确实是的，因为这台机器看起来比我的笔记本更不拖泥带水。
+
+这个设备定期读取串口，测量数据，然后显示在界面里。我的主要任务是修复这个设备上专用的陈年 MFC 程序无法长时间运行的问题。
+具体来说，在两三天后，程序会先弹出一个有程序名称的、空白的、``MsgBox``
+大小的窗体，然后点确定就会 crash。一看到这个问题，我就想是内存泄露，虽然这么说可能是
+hindsight。
+
+代码自然是 GBK 的，甚至没有 formatter
+的痕迹。我检查了一遍代码，没有任何在异常时弹窗的代码，即这个弹窗是 MFC 自己画的。代码中使用了
+Windows 的临界区 `CRITICAL_SECTION`，是 Windows 的用户态 mutex，不过这些部分都没什么问题。让
+Claude 审了几遍，只查出来几个无关痛痒的问题，比如判断 sleep 的 int
+可能会溢出，但这个只会导致某一轮测量的间隔缩短。
+
+## x32dbg 调试
+
+这个程序需要读串口，还用了厂家提供的 .h + 闭源 .dll，因此我需要在生产环境中调试。
+
+由于一开始实在是不想折腾开发环境，于是我在现场环境中，先是安装了 x32dbg
+企图找到点什么线索。然后成功捕获到一次异常。异常发生时，调试器停在了 
+`RaiseException` 和 `_CxxThrowException` 上，同时还有 
+`ERROR_NOT_ENOUGH_MEMORY` 和 `STATUS_NO_MEMORY`。这说明程序是在某次内存分配失败之后，通过 C++ 异常机制被抛了出来。
+
+- 工作集（内存）：5,324 K
+- 峰值工作集：753,552 K
+- 提交大小：1,857,512 K
+
+32 位进程默认用户态地址空间通常只有 2GB，Commit size 1.77GB 对 32 位进程来说很危险了。
+
+![](https://remnote-user-data.s3.amazonaws.com/wKdfooNcYeE29XZsLioxLwAUKzIHJvNA989mkq-uHGli_XDHguDf6jxxmc075Hw_rAXytZy-xOzxDQxJKDJ9biH57LssAKEakeQrNzKuXqpBglUtuCdehP1z3NaMqdkH.png)
+
+### Registers
+
+
+寄存器状态转储中，关键的是：
+
+```
+...
+EIP : 75670F62     kernelbase.75670F62
+EFLAGS : 00000212
+...
+EBP : 07ECBA3C
+ESP : 07ECB9E0
+...
+LastError : 00000008 (ERROR_NOT_ENOUGH_MEMORY)
+LastStatus : C0000017 (STATUS_NO_MEMORY)
+...
+```
+
+### Log
+
+```
+线程 1596 已创建，入口：wer.6C853F70，参数：2DB43178
+线程 1596 退出
+EXCEPTION_DEBUG_INFO:
+           dwFirstChance: 1
+           ExceptionCode: E06D7363 (CPP_EH_EXCEPTION)
+          ExceptionFlags: 00000001
+        ExceptionAddress: kernelbase.75670F62
+        NumberParameters: 3
+ExceptionInformation[00]: 19930520
+ExceptionInformation[01]: 07ECBA84
+ExceptionInformation[02]: mscorwks.6FA04588
+第一次异常于 75670F62 (E06D7363, CPP_EH_EXCEPTION)！
+```
+
+### Call Stack
+
+栈回溯中可以看到——
+
+```
+线程 ID     地址       返回到      返回自      大小  方    注释
+2528
+          07ECBA40 74BA8E89 75670F62 38  系统模块 kernelbase.RaiseException+62
+          07ECBA78 6F7C7550 74BA8E89 50  系统模块 msvcr80._CxxThrowException+46
+          07ECBAC8 6F757C46 6F7C7550 30  系统模块 mscorwks.LogHelp_NoGuiOnAssert+24D
+          07ECBAF8 6F5BF2AE 6F757C46 68  系统模块 mscorwks.LogHelp_TerminateOnAssert+3F32
+          07ECBB60 76F46F5C 6F5BF2AE EC  系统模块 mscorwks.StrongNameErrorInfo+7DCA
+          07ECBC4C 6EFFB1EB 76F46F5C C4  系统模块 ntdll.RtlAllocateHeap+109C
+          07ECBD10 007D4987 6EFFB1EB 4   用户模块 mscorlib.ni.6EFFB1EB
+          07ECBD14 007DE6EA 007D4987 4   用户模块 [数据删除]e.007D4987
+          07ECBD18 007DE6F4 007DE6EA 4   用户模块 [数据删除]e.007DE6EA
+          07ECBD1C 00000000 007DE6F4     用户模块 [数据删除]e.007DE6F4
+604 - 主线程
+          006FF5BC 6FD1E53E 74D8106C 48  系统模块 win32u.NtUserGetMessage+C
+          006FF604 6FCFB9A4 6FD1E53E 4C  系统模块 mfc90u.Ordinal#1161+1A
+          006FF650 007D4578 6FCFB9A4 4B8 用户模块 mfc90u.Ordinal#2208+12A
+          006FFB08 6FCEAEC6 007D4578 14  系统模块 [数据删除]e.007D4578
+```
+
+栈里出现了 mscorwks 和 mscorlib，看着像是 .NET CLR 参与了调用。主线程停在消息循环中，说明 crash 并不是 UI 逻辑主动触发。
+
+## 配置开发环境
+
+为了调试和修复这个问题，我需要在工控机上配置一个开发环境。机上已经有一份
+VS 2008，惟点开后提示已经过期。从互联网档案馆上
+[VisualStudio2008_Collection](https://archive.org/details/VisualStudio2008_Collection)
+这个 item 里下载了一份 Visual Studio® 2008 Standard Edition。安装的时候，为了节省空间，我只勾选了
+C++ MFC 部分。然而，正是这个选择让我没有办法正常编译程序——生成时会提示找不到
+`cl.exe`。查找了几天，才发现是因为**由于 bug 还要勾选 VC# 才能装上**：
+
+![微软怎么这么坏啊](https://remnote-user-data.s3.amazonaws.com/V2BrIRASVEbzl6KcYujRlSOYrzfoQ9TaqRy6LMJilRz-MzTBABc1CuOModw_c-kgVAK7UC9LM0w161oicU-hIeO3ywbroc_ZpNBki4xVt15iLF547SWNSo8gvot6hOZ0.webp)
+
+<details>
+<summary class="text-sm inline-block">
+StackOverflow 问题 [error PRJ0003 : Error spawning 'cl.exe'](https://stackoverflow.com/a/2252941)，CC BY-SA 2.5，有
+Cloudflare CAPTHCA，不建议人类和 agent 访问。
+</summary>
+
+> There is a bug in the Visual Studio 2008 Standard Edition installer.
+> It does not install cl.exe if you only install Visual C++ but not Visual C#.
+> To work around this you have to install Visual C# even if you do not need this.
+
+</details>
+
+## 查找纰漏
+
+在 VS 上装了 wakatime 和 Github Copilot 扩展，虽然 Copilot
+也不是很好用，没有 agent 模式。如果想要 apply 变更，只能手动点
+diff 上的按钮，它的方法是让 LLM 生成一个编辑好的版本（这个是和 VS
+Code 上的一致的）。不过，值得赞扬的是，其界面都使用了原生控件开发。
+
+初步检查了一遍代码，又发现了一些可能导致内存泄露的地方。
+比如，IP 地址只给了个 `char[13]`，正好够存 `"192.168.1.xx\n"`，多了都不行——配置是可以经用户输入改的。
+
+改动后，我把程序的一些时间间隔之类的参数设置为很短的几秒，这样可以在正常调用设备库来
+I/O 的情况下加快内存占用的复现。但是，过程中经常会弹窗停住，似乎是错误地 drop
+了某些 MFC 的资源，会在 Debug 下触发内部的断点，非常烦人——我并不想调试这些可忽略的错误。
+之后的两三天都在尝试避免这个问题。最后发现，将 target 的 Debug 改成 Release
+即可，同时并不影响正常的内存监控。
+
+## 内存快照
+
+开始运行后，右侧的 panel 里可以打开——，抓取快照，后面括号里的内容是与上一个快照相比的 diff。如果是第一行会变成 `（不可用）`，并不是抓取失败的意思。
+
+VS 这个诊断面板不知道是怎么搞的，内存那个图标在我点开后就会变成空白，但鼠标:yue[忽]{m="hover"}上去还是有值。
+
+## 罪魁祸首
+
+这个 `GetSpectrumData`。
+
+这个函数并没有要求我们传入一个 `char*`，所以其字符串显然是自行分配的，而我们每次将这个指针保存，读取解析后，在下一个循环又用新的返回值覆盖了上一个指针而没有 free。
+
+![](https://remnote-user-data.s3.amazonaws.com/VwWFgnJdnwl5WDrjaDmxkzk3oPJKX4-PPaJQwlmdq8s1W5GT5AqO0KnI8ZexstmpufbSynJTWmdAjZFPlEINtTQpHGqFRwF7pGYS9rNXRHFf5BXggwlegFmAkGOQxgOt.png)
+
+跑了一周，不得问题。不过，弹出了一个 MsgBox，如下：
+
+<figure>
+```
+---------------------------
+BackgroundDownload.exe - 应用程序错误
+---------------------------
+应用程序发生异常 未知的软件异常 (0xe0434352)，位置为 0x00007FFACC1EB699。
+
+
+---------------------------
+确定   取消   
+---------------------------
+```
+<figcaption>微软怎么这么坏啊x2</figcaption>
+</figure>
+
+吓我一跳，还以为又坏脱；查了查发现是 VS Installer 的问题。也许 VS 真的需要 64 GB RAM 才能正常运行吧。

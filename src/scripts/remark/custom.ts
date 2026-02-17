@@ -19,11 +19,12 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 				let props = hast.properties;
 				switch (name) {
 					case "j":
+					case "yue":
 						if (props) {
 							name = "abbr";
 							props = {
 								title: props.m || props.e || props.p,
-								lang: "zh-juai",
+								lang: name === "j" ? "zh-juai" : "yue",
 							};
 						}
 						break;
@@ -93,8 +94,10 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							name = "span";
 						} else if (name.endsWith("wiki")) {
 							const wikilang = name.slice(0, -4);
-							if (node.children.length === 1 &&
-								node.children[0].type === "text") {
+							if (
+								node.children.length === 1 &&
+								node.children[0].type === "text"
+							) {
 								const term = node.children[0].value.trim();
 								name = "a";
 								props = {
