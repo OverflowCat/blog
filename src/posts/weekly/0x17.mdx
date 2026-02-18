@@ -158,15 +158,14 @@ I/O 的情况下加快内存占用的复现。但是，过程中经常会弹窗�
 
 ## 内存快照
 
-开始运行后，右侧的 panel 里可以打开——，抓取快照，后面括号里的内容是与上一个快照相比的 diff。如果是第一行会变成 `（不可用）`，并不是抓取失败的意思。
+开始运行后，右侧的 panel 里可以打开诊断工具，抓取快照，后面括号里的内容是与上一个快照相比的
+diff。如果是第一行会变成 `（不可用）`，并不是抓取失败的意思。
 
 VS 这个诊断面板不知道是怎么搞的，内存那个图标在我点开后就会变成空白，但鼠标:yue[忽]{m="hover"}上去还是有值。
 
 ## 罪魁祸首
 
-这个 `GetSpectrumData`。
-
-这个函数并没有要求我们传入一个 `char*`，所以其字符串显然是自行分配的，而我们每次将这个指针保存，读取解析后，在下一个循环又用新的返回值覆盖了上一个指针而没有 free。
+这个 `GetSpectrumData` 函数并没有要求我们传入一个 `char*`，所以其字符串显然是自行分配的，而我们每次将这个指针保存，读取解析后，在下一个循环又用新的返回值覆盖了上一个指针而没有 free。
 
 ![](https://remnote-user-data.s3.amazonaws.com/VwWFgnJdnwl5WDrjaDmxkzk3oPJKX4-PPaJQwlmdq8s1W5GT5AqO0KnI8ZexstmpufbSynJTWmdAjZFPlEINtTQpHGqFRwF7pGYS9rNXRHFf5BXggwlegFmAkGOQxgOt.png)
 
