@@ -116,7 +116,7 @@
     "npm-check-updates": "^19.1.2",
     "rehype-pretty-code": "^0.14.1",
     "rehype-twemoji": "^0.0.6",
-    "rollup": "^4.45.0",
+    "rollup": "^4.59.0",
     "sass": "^1.94.2",
     "shiki": "^3.15.0",
     "stylelint": "^16.26.1",
