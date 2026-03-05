@@ -35,7 +35,7 @@
   buoofnsif yeenhua dseef wuif tsasng.
 
   Yocmieefn qixying mees suixgoc,
-  bingxing dsifkexu dufi Jing lasng.
+  bingxing dsifkexu dufi-Jing lasng.
 
   Duoofntsasng moofnglixi genyueesn liox,
   _Bac Mifng_ qisng dsoong yueefnhefn tsasng.
