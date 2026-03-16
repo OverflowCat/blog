@@ -11,6 +11,8 @@ export default (image: SchemaContext['image']) => z.object({
     }).optional(),
     hide: z
         .boolean()
+        /// Only hide the image in ArticleList
+        .or(z.literal("list"))
         .optional()
         .transform((x) => (x === undefined ? false : x)),
     list: z.boolean().optional(),

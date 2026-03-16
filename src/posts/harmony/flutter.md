@@ -1,10 +1,12 @@
 ---
-title: 在鸿蒙上运行 Flutter
+title: 惊鸿一瞥：如何在鸿蒙上运行 Flutter Hello World
 # date: 2026-03-12T09:19:09.690Z
 date: "2026-03-16T09:52:58.704Z"
 photo:
   src: https://remnote-user-data.s3.amazonaws.com/w1UBINtz0Ex4opzd6p3O_aPdnSYqeyFK8dKvXloJg6dgr6AFtGAtHB7C9eHg5poAyCs75TSzOeKzzo8qGefkpBXuJ43Efmnh2TihkSOC3ry6IhdMPzO-mJlU37l8ivNT.jpeg
+  hide: list
 noscript: true
+series: harmony
 licence: false
 layout: "@/layouts/Default.astro"
 # series: harmony
@@ -31,7 +33,8 @@ math: mathjax
 > export PATH=$TOOL_HOME/tools/node/bin:$PATH # command-line-tools/tool/node/bin
 > ```
 
-但是，注意这个 `sdk` 不是你在 DevEco Studio 里手动下载的 ……，而是 DevEco 自带的。在 Windows 上，你可以使用下面的：
+但是，注意这个 `sdk` 不是你在 DevEco Studio 里手动下载的有版本号 15、18、21
+之类的那个，而是 DevEco 自带的。在 Windows 上，你可以使用下面的：
 
 ```pwsh
 $env:TOOL_HOME = "C:\Program Files\Huawei\DevEco Studio"

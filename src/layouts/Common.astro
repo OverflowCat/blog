@@ -47,7 +47,7 @@ if (!frontmatter) {
 const { date } = frontmatter;
 const cats = arrify(frontmatter.categories);
 const tags = arrify(frontmatter.tags);
-const cover = frontmatter.photo?.hide ? undefined : frontmatter.photo;
+const cover = frontmatter.photo?.hide === true ? undefined : frontmatter.photo;
 const licence = frontmatter.licence ?? "CcByNc";
 
 import "@/styles/article.less";
