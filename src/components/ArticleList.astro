@@ -42,15 +42,17 @@ if (type && name) {
 }
 
 let prev_year = 0;
-const _posts = posts.map((post) => {
-  const year = post.data.date.getUTCFullYear();
-  const isAnotherYear = year !== prev_year;
-  if (isAnotherYear) prev_year = year;
-  return {
-    ...post,
-    isAnotherYear,
-  };
-});
+const _posts = posts
+	.filter((post) => post.data.visibility !== "unlisted")
+	.map((post) => {
+		const year = post.data.date.getUTCFullYear();
+		const isAnotherYear = year !== prev_year;
+		if (isAnotherYear) prev_year = year;
+		return {
+			...post,
+			isAnotherYear,
+		};
+	});
 ---
 
 <PageWithSidebar title={title} bar={bar}>
