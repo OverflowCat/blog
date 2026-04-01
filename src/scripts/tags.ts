@@ -51,6 +51,7 @@ export const CAT_MAP = {
 	'动态列表': "list",
 	'咬文嚼字': "word",
 	'题隙碎笔': "gaokao",
+	"日常": "daily",
 } as Record<string, string>;
 
 export function getCatSlug(cat: string) {
