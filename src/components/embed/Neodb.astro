@@ -1,4 +1,5 @@
 ---
+/** biome-ignore-all lint/correctness/noInnerDeclarations: <explanation> */
 export type Props = {
     post?: string | bigint;
     item: string;
@@ -8,9 +9,23 @@ const { post, item } = Astro.props;
 import type { Game, Movie, NeoItem } from "@/scripts/schema/neodb";
 import { getEntry } from "astro:content";
 
-const entry = await getEntry("neodb", item);
+// console.log("Loading NeoDB entry:", await getEntries("neodb"));
+// process.exit(0);
+const slug = /* item.split("/")?.at(-1) ?? */ item;
+let entry = await getEntry("neodb", slug);
 if (!entry) {
-    throw new Error("Entry not found");
+    console.warn(`Neodb entry not found: ${slug}`);
+    entry = {
+        data: {
+            id: slug,
+            display_title: "未知条目",
+            description: "",
+            rating: 0,
+            category: "unknown",
+            cover_image_url: "",
+            localized_title: [],
+        } as NeoItem,
+    };
 }
 const data = entry.data as NeoItem;
 const {

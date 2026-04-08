@@ -18,12 +18,12 @@ const blogCollection = defineCollection({
 });
 
 const dialCollection = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/dial/" }),
   schema: () => dialData,
 });
 
 const neodbCollection = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/neodb/" }),
   schema: () => neoSchema,
 });
 
