@@ -1,7 +1,8 @@
-import { z, type SchemaContext } from "astro:content";
+import { z } from "astro/zod";
 import { ICON_PACKS_SET } from "../icons";
 import photo from "./photo";
 import { decoration } from "../decoration";
+import type { SchemaContext } from "astro:content";
 
 // 2. Define a `type` and `schema` for each collection
 function transform2arr(val: null | undefined | string | string[]) {

@@ -1,4 +1,4 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 export const commentsSchema = z.object({
   id: z.string(),

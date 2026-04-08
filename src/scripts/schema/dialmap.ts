@@ -1,4 +1,4 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 export const dialData = z.object({
     /** Mandarin formal form */
