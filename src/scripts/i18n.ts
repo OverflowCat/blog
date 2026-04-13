@@ -4,24 +4,51 @@ const data = {
       "en": "Comments",
       "zh": "评论",
       "juai": "Píngluèn",
+      "mnc": "ᠯᡝᠣᠯᡝᠨ",
     },
     "nickname": {
       "en": "Nickname",
       "zh": "昵称",
       "juai": "Lĩtsen",
+      "mnc": "ᡤᡝᠪᡠ",
+    },
+    "email": {
+      "en": "Email",
+      "zh": "邮箱",
+      "juai": "邮箱",
+      "mnc": "Email",
+    },
+    "email_placeholder": {
+      "en": "Will be publicly displayed",
+      "zh": "公开显示",
+      "juai": "公开显示",
+      "mnc": "X",
     },
     "homepage_url": {
       "en": "Homepage URL",
       "zh": "主页链接",
       "juai": "Hôngpềji liàenjic",
+      "mnc": "Homepage ᠪᡝ ᡥᠣᠯᠪᠣᠪᡠᠮᠪᡳ"
+    },
+    "message": {
+      "en": "Message",
+      "zh": "留言",
+      "juai": "Luìyóng",
+      "mnc": "ᠪᠠᡴᡨᠠᠮᠪᡠᠨ",
     },
     "placeholder": {
       "en": "(You can use Markdown and any HTML)",
       "zh": "（可以使用 Markdown 和任意 HTML）",
       "juai": "（可以yồng Markdown gen 任意 HTML）",
+      "mnc": "(ᠵᠠᡳ ᠵᠠᡳ Markdown᠈ HTML ᠪᠠᡳᡨᠠᠯᠠᠪᡠᠴᡳ ᠣᠮᠪᡳ)",
+    },
+    "submit": {
+      "en": "Submit",
+      "zh": "发送",
+      "juai": "发出去",
+      "mnc": "ᡠᠩᡤᡳᠮᠪᡳ",
     }
   }
-
 }
 
 // Helper type to check if an object's values are all strings (the language codes)

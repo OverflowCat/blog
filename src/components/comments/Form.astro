@@ -10,14 +10,17 @@ import { _t } from "@/scripts/i18n";
 const t = _t(Astro.props.lang);
 
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
-const placeholder = `${pick([
+let placeholder = t("comments.placeholder");
+if (Astro.props.lang === "zh") {
+  placeholder = `${pick([
   "请洒潘江，各倾陆海云尔…",
   "矮纸斜行闲作草，晴窗细乳戏分茶…",
   "此意在人间，试听徽外三两弦…",
   "给主人留下些什么吧～",
 ])}
 
-${t("comments.placeholder")}`;
+${placeholder}`;
+}
 ---
 
 <form
@@ -50,20 +53,21 @@ ${t("comments.placeholder")}`;
 
   <div class="form-group">
     <label for="user[email]"
-      ><span class="h">Email</span><span class="vert">邮箱</span>
+      ><!-- <span class="h">Email</span><span class="vert">邮箱</span> -->
+      {t("comments.email")}
     </label>
     <input
       type="email"
       id="user[email]"
       name="user[email]"
       class="mono"
-      placeholder="公开显示"
+      placeholder={t("comments.email_placeholder")}
     />
     <div class="hidden text-red-500 bg-yellow-200 text-end" id="dont-fill-warning">请勿填写，会被当作 spam！</div>
   </div>
 
   <div class="form-group">
-    <label for="message">留言 *</label>
+    <label for="message">{t("comments.message")} *</label>
     <textarea
       name="message"
       id="message"
@@ -80,7 +84,7 @@ ${t("comments.placeholder")}`;
     <input type="hidden" name="slug" value={slug} />
   </div>
 
-  <button type="submit" class="form-button">发送</button>
+  <button type="submit" class="form-button">{t("comments.submit")}</button>
   <span class="info">
     评论将在审核后显示，阁下可以在本博客的 GitHub 仓库的 <a
       href="https://github.com/OverflowCat/blog/pulls/app%2Foverflowcat"
