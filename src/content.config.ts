@@ -23,7 +23,11 @@ const dialCollection = defineCollection({
 });
 
 const neodbCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/neodb/" }),
+  loader: glob({
+    pattern: "**/[^_]*.json",
+    base: "./src/content/neodb/",
+    generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+  }),
   schema: () => neoSchema,
 });
 
