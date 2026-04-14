@@ -42,9 +42,10 @@ interface Comment {
 
 interface CarbonCommentItemProps {
 	comment: Comment;
+	lang: string;
 }
 
-function CarbonCommentItem({ comment }: CarbonCommentItemProps) {
+function CarbonCommentItem({ comment, lang }: CarbonCommentItemProps) {
 	const { data } = comment;
 	const message = data.message ?? comment.rendered?.html;
 
@@ -133,7 +134,7 @@ function CarbonCommentItem({ comment }: CarbonCommentItemProps) {
 					>
 						<Stack gap={2}>
 							<Tag renderIcon={Reply}>{t("comments.reply")}</Tag>
-							<CarbonCommentItem comment={reply} />
+							<CarbonCommentItem comment={reply} lang={lang} />
 						</Stack>
 					</div>
 				)}
@@ -186,7 +187,7 @@ export default function CarbonComments({
 						{comments.length >= 1 && (
 							<Stack gap={5}>
 								{comments.map((comment) => (
-									<CarbonCommentItem key={comment.id} comment={comment} />
+									<CarbonCommentItem key={comment.id} comment={comment} lang={lang} />
 								))}
 							</Stack>
 						)}
