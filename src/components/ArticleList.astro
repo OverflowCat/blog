@@ -43,7 +43,7 @@ if (type && name) {
 
 let prev_year = 0;
 const _posts = posts
-	.filter((post) => post.data.visibility !== "unlisted")
+	.filter((post) => (post.data.visibility !== "unlisted" || Astro.url.pathname !== "/"))
 	.map((post) => {
 		const year = post.data.date.getUTCFullYear();
 		const isAnotherYear = year !== prev_year;
