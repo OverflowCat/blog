@@ -10,17 +10,9 @@ import { _t } from "@/scripts/i18n";
 const t = _t(Astro.props.lang);
 
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, "");
-let placeholder = t("comments.placeholder");
-if (Astro.props.lang === "zh") {
-  placeholder = `${pick([
-  "请洒潘江，各倾陆海云尔…",
-  "矮纸斜行闲作草，晴窗细乳戏分茶…",
-  "此意在人间，试听徽外三两弦…",
-  "给主人留下些什么吧～",
-])}
+const placeholder = `${pick(t("comments.placeholders"))}
 
-${placeholder}`;
-}
+${t("comments.format_hint")}`;
 ---
 
 <form
@@ -46,7 +38,7 @@ ${placeholder}`;
       id="user[url]"
       name="user[url]"
       class="mono"
-      placeholder="你的个人主页、博客、社交媒体等的 URL"
+      placeholder={t("comments.homepage_placeholder")}
       required
     />
   </div>
@@ -63,7 +55,12 @@ ${placeholder}`;
       class="mono"
       placeholder={t("comments.email_placeholder")}
     />
-    <div class="hidden text-red-500 bg-yellow-200 text-end" id="dont-fill-warning">请勿填写，会被当作 spam！</div>
+    <div
+      class="hidden text-red-500 bg-yellow-200 text-end"
+      id="dont-fill-warning"
+    >
+      请勿填写，会被当作 spam！
+    </div>
   </div>
 
   <div class="form-group">
@@ -160,4 +157,3 @@ ${placeholder}`;
     }
   }
 </style>
-

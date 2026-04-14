@@ -18,9 +18,10 @@ import {
 	AILabel,
 	AILabelContent,
 } from "@carbon/react";
-import { User, Email, Link, Chat, Reply } from "@carbon/icons-react";
+import { User, Link, Chat, Reply } from "@carbon/icons-react";
 import "./CarbonComments.scss";
 import nameGen from "@/scripts/name-gen";
+import { _t } from "@/scripts/i18n";
 
 interface Comment {
 	id: string;
@@ -56,13 +57,14 @@ function CarbonCommentItem({ comment }: CarbonCommentItemProps) {
 		}
 	}
 
+	const t = _t(lang);
 	const reply = data.reply
 		? {
 				...comment,
 				data: {
 					...data,
 					id: `${comment.id}r`,
-					name: "猫猫",
+					name: t("comments.author_name"),
 					message: data.reply,
 				},
 			}
@@ -130,7 +132,7 @@ function CarbonCommentItem({ comment }: CarbonCommentItemProps) {
 						}}
 					>
 						<Stack gap={2}>
-							<Tag renderIcon={Reply}>回复</Tag>
+							<Tag renderIcon={Reply}>{t("comments.reply")}</Tag>
 							<CarbonCommentItem comment={reply} />
 						</Stack>
 					</div>
@@ -160,23 +162,10 @@ export default function CarbonComments({
 	});
 	const [showWarning, setShowWarning] = useState(false);
 
-	const placeholders = [
-		"请洒潘江，各倾陆海云尔…",
-		"矮纸斜行闲作草，晴窗细乳戏分茶…",
-		"此意在人间，试听徽外三两弦…",
-		"给主人留下些什么吧～",
-	];
+	const t = _t(lang);
+	const placeholders = t("comments.placeholders");
 	const placeholder =
 		placeholders[Math.floor(Math.random() * placeholders.length)];
-
-	const t = {
-		title: lang === "en" ? "Comments" : "评论",
-		nickname: lang === "en" ? "Nickname" : "昵称",
-		homepage_url: lang === "en" ? "Homepage URL" : "主页 URL",
-		message: lang === "en" ? "Message" : "留言",
-		submit: lang === "en" ? "Submit" : "发送",
-		writeComment: lang === "en" ? "Write a Comment" : "写评论",
-	};
 
 	return (
 		<>
@@ -191,7 +180,7 @@ export default function CarbonComments({
 								margin: 0,
 							}}
 						>
-							{t.title}
+							{t("comments.title")}
 						</h2>
 
 						{comments.length >= 1 && (
@@ -204,7 +193,7 @@ export default function CarbonComments({
 
 						<div style={{ textAlign: "center" }}>
 							<Button kind="primary" onClick={() => setIsFormOpen(true)}>
-								{t.writeComment}
+								{t("comments.write_comment")}
 							</Button>
 						</div>
 					</Stack>
@@ -216,7 +205,7 @@ export default function CarbonComments({
 				onClose={() => setIsFormOpen(false)}
 				preventCloseOnClickOutside
 			>
-				<ModalHeader title={t.writeComment} />
+				<ModalHeader title={t("comments.write_comment")} />
 				<ModalBody>
 					<form
 						action="https://gudugada.xinshijiededa.men/comment"
@@ -226,7 +215,7 @@ export default function CarbonComments({
 						<TextInput
 							id="user-name"
 							name="user[name]"
-							labelText={`${t.nickname} *`}
+							labelText={`${t("comments.nickname")} *`}
 							placeholder={nameGen()}
 							value={formData.name}
 							onChange={(e) =>
@@ -234,7 +223,7 @@ export default function CarbonComments({
 							}
 							decorator={
 								<AILabel className="ai-label-container">
-									<AILabelContent>随机生成的</AILabelContent>
+									<AILabelContent>{t("comments.randomly_generated")}</AILabelContent>
 								</AILabel>
 							}
 							required
@@ -243,8 +232,8 @@ export default function CarbonComments({
 						<TextInput
 							id="user-url"
 							name="user[url]"
-							labelText={`${t.homepage_url} *`}
-							placeholder="你的个人主页、博客、社交媒体等的 URL"
+							labelText={`${t("comments.homepage_url")} *`}
+							placeholder={t("comments.homepage_placeholder")}
 							value={formData.url}
 							onChange={(e) =>
 								setFormData({ ...formData, url: e.target.value })
@@ -255,8 +244,8 @@ export default function CarbonComments({
 						<TextInput
 							id="user-email"
 							name="user[email]"
-							labelText="Email / 邮箱"
-							placeholder="公开显示"
+							labelText={`${t("comments.email")} / ${t("comments.email_placeholder")}`}
+							placeholder={t("comments.email_placeholder")}
 							type="email"
 							value={formData.email}
 							onChange={(e) =>
@@ -269,8 +258,8 @@ export default function CarbonComments({
 						{showWarning && (
 							<InlineNotification
 								kind="warning"
-								title="注意"
-								subtitle="请勿填写，会被当作 spam！"
+								title={t("comments.email_warning_title")}
+								subtitle={t("comments.email_warning_subtitle")}
 								lowContrast
 								hideCloseButton
 							/>
@@ -279,8 +268,8 @@ export default function CarbonComments({
 						<TextArea
 							id="message"
 							name="message"
-							labelText={`${t.message} *`}
-							placeholder={`${placeholder}\n\nMarkdown 语法可用。`}
+							labelText={`${t("comments.message")} *`}
+							placeholder={`${placeholder}\n\n${t("comments.format_hint")}`}
 							rows={6}
 							value={formData.message}
 							onChange={(e) =>
@@ -293,27 +282,27 @@ export default function CarbonComments({
 
 						<div className="form-actions">
 							<Button type="submit" kind="primary">
-								{t.submit}
+								{t("comments.submit")}
 							</Button>
 							<Button
 								type="button"
 								kind="secondary"
 								onClick={() => setIsFormOpen(false)}
 							>
-								取消
+								{t("comments.cancel")}
 							</Button>
 						</div>
 
 						<p className="form-info">
-							评论将在审核后显示，阁下可以在本博客的 Github 仓库的{" "}
+							{t("comments.moderation_notice")}{" "}
 							<a
 								href="https://github.com/OverflowCat/blog/pulls/app%2Foverflowcat"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								拉取请求列表
+								{t("comments.moderation_notice_link")}
 							</a>{" "}
-							中查看。提交成功后会自动跳转。
+							{t("comments.moderation_notice_end")}
 						</p>
 					</form>
 				</ModalBody>
