@@ -42,11 +42,11 @@ const metas = {
 import Base from "./Base.astro";
 import Footer from "../zh/Footer.astro";
 import { genOpenGraphMetas, type OpenGraphData } from "@/scripts/open-graph";
-import Snowflakes from "@/components/inject/Snowflakes.astro";
+// import Snowflakes from "@/components/inject/Snowflakes.astro";
 ---
 
 <Base title={title} metas={metas} lang={lang}>
-    {Astro.url.pathname === "/" && <Snowflakes />}
+    <!-- {Astro.url.pathname === "/" && <Snowflakes />} -->
     <div class="main overflow-inline-clip">
         <slot />
     </div>

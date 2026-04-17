@@ -25,11 +25,11 @@ import Mode from "@/components/Mode.astro";
 // console.log(Astro.url.toString(), Astro.locals);
 
 const items = [
-  ["文章", "Home", "/", "icon-pencil"],
-  ["归档", "Archives", "/archives", "icon-archive"],
+  ["文章", "Home", "/", "icon-pencil", "不含日常"],
+  ["归档", "Archives", "/archives", "icon-archive", "包含所有文章"],
   ["友链", "Friends", "/friends", "icon-link"],
-  ["订阅", "RSS", "/atom.xml", "icon-rss"],
-  ["关于", "About", "/about", "icon-frown-o"],
+  ["订阅", "RSS", "/atom.xml", "icon-rss", "RSS"],
+  ["关于", "About", "/about", "icon-frown-o", "自介和本站介绍"],
 ];
 let { index, theme, lang, mode, decoration, icons, logo } = Astro.props;
 if (!lang) lang = "zh-Hans";
@@ -68,6 +68,7 @@ assert(slogan, "slogan is undefined");
               href={item[2]}
               data-replace={index === i ? "本页" : item[0]}
               class={index === i ? "current" : ""}
+              title={item.at(4) ?? item[0]}
             >
               <span>{item[0]}</span>
             </a>
@@ -93,12 +94,11 @@ assert(slogan, "slogan is undefined");
   nav#sticky {
     min-inline-size: 24rem;
     max-inline-size: 36rem;
-    border-radius: 2em;
-    @apply z-1000 m-auto sticky min-block-10 inset-bs-2 inset-is-0 border-solid border-2 border-gray-300;
+    @apply z-1000 m-auto min-block-10 inset-bs-2 inset-is-0; // border-rounded-2em border-solid border-2 border-gray-300
     align-items: space-between;
-    backdrop-filter: blur(
-      15px
-    ); // fallback for browsers not supporting scroll-timeline
+    // backdrop-filter: blur(
+      // 15px
+    // ); // fallback for browsers not supporting scroll-timeline
     .logo {
       #vert:target & {
         @apply block-7 m-6px;
@@ -186,7 +186,7 @@ assert(slogan, "slogan is undefined");
     }
   }
 
-  /*
+  
   li:has(a:is(:hover, :focus-visible)),
   ul:not(:has(a:is(:hover, :focus-visible))) a.current {
     anchor-name: --indicator;
@@ -202,12 +202,15 @@ assert(slogan, "slogan is undefined");
     block-size: anchor(--indicator);
     inline-size: anchor-size(--indicator);
   }
- */
+  ul:hover::before {
+    background-color: #dd2f3eDD;
+  }
+
   @supports (scroll-timeline-name: --page-timeline) and
     (container-type: inline-size) and (not (-webkit-touch-callout: none)) {
     nav#sticky {
       backdrop-filter: none; // overrides the fallback
-      @apply pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
+      @apply sticky pbe-2 inset-bs-0 min-inline-unset max-inline-unset inline-full border-none rounded-none;
     }
     .logo.vert-block {
       display: block;
@@ -261,10 +264,10 @@ assert(slogan, "slogan is undefined");
   }
   @container html (max-inline-size: 520px) {
     #small-logo,
-    #nav-1 {
-      // hide when screen is too narrow
-      display: none;
-    }
+    // #nav-1 {
+    //   // hide when screen is too narrow
+    //   display: none;
+    // }
     a {
       padding-inline-start: 0.5em;
       padding-inline-end: 0.5em;
