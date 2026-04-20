@@ -1,0 +1,419 @@
+---
+export interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+import type { CollectionEntry } from "astro:content";
+import { formatPostDate } from "@/scripts/date";
+import { Picture } from "astro:assets";
+import Icon from "@/components/Icon.astro";
+import Paper from "@/components/Paper.astro";
+import { getIconName } from "@/scripts/icons";
+import { crc32base } from "@/scripts/serendipity";
+import { getCatSlug } from "@/scripts/tags";
+import "@/styles/title.less";
+import "@/styles/icon.less";
+
+let { post } = Astro.props;
+const { data } = post;
+const { photo } = data;
+
+let title = data.title;
+let seriesTitle: string | undefined;
+if (data.series) {
+	const [series, main] = title.split("：");
+	if (!main || !series)
+		throw new Error("Invalid title format. Expected 'Series: Main Title'.");
+	seriesTitle = series;
+	title = main;
+}
+
+let card = data.card;
+let cols = 1,
+	rows = 1;
+switch (card) {
+    case "mini":
+        cols = 1;
+        rows = 1;
+        break;
+	case "large":
+		cols = 2;
+        rows = 2;
+		break;
+	case "tall":
+	case "portrait":
+		rows = 2;
+		break;
+	case "wide":
+	case "landscape":
+		cols = 2;
+		break;
+	default:
+		if (data.lang === "mnc") rows = 2;
+		else cols = data.photo && data.photo.hide !== true ? 2 : 1;
+}
+const categories = data.categories ?? [];
+const tags = data.tags ?? [];
+const icon = getIconName(post);
+const primaryCategory = categories[0];
+const infoChips = [
+	...tags.slice(0, 4).map((tag) => ({
+		href: `/tags/${tag}/`,
+		label: tag,
+		kind: "tag",
+	})),
+].slice(0, 4);
+const hasCover = !!photo && photo.hide !== true && (!!photo.src || !!photo.img);
+const articleHref = `/${post.id}/`;
+const cardClasses = [
+	"matrix-card",
+	hasCover ? "has-cover" : "no-cover",
+	rows === 2 ? "card-h-2" : "card-h-1",
+	cols === 2 ? "card-w-2" : "card-w-1",
+	data.lang === "mnc" ? "write-vertical-left" : "",
+];
+---
+
+<Paper
+    classes={cardClasses}
+    style={`grid-column: span ${cols}; grid-row: span ${rows};`}
+>
+    {
+        hasCover && (
+            <a
+                class="cover-link"
+                href={articleHref}
+                aria-hidden="true"
+                tabindex="-1"
+            >
+                {photo && photo.src && photo.hide !== true && (
+                    <img
+                        class="cover-image"
+                        loading="lazy"
+                        transition:name={crc32base(photo.src)}
+                        transition:animate="initial"
+                        width={
+                            photo.aspect
+                                ? photo.aspect.split(":")[0]
+                                : undefined
+                        }
+                        height={
+                            photo.aspect
+                                ? photo.aspect.split(":")[1]
+                                : undefined
+                        }
+                        src={photo.src}
+                        alt={photo.alt ? photo.alt : data.title}
+                    />
+                )}
+                {photo?.img && photo.hide !== true && (
+                    <Picture
+                        class="cover-image"
+                        transition:name={crc32base(photo.img.src)}
+                        src={photo.img}
+                        alt={photo.alt ? photo.alt : data.title}
+                        formats={["avif", "webp", "jpg"]}
+                    />
+                )}
+            </a>
+        )
+    }
+    <div class="card-inner">
+        <div class="card-head">
+            <span class="icon title-icon card-icon float-start">
+                {icon && <Icon name={icon} />}
+            </span>
+            <div class="top-tags">
+                {
+                    primaryCategory && (
+                        <span class="pill pill-category">
+                            {primaryCategory}
+                        </span>
+                    )
+                }
+            </div>
+        </div>
+        <div class="card-body">
+            {seriesTitle && <p class="eyebrow">{seriesTitle}</p>}
+            <h3 lang={data.lang}>
+                <a
+                    class="title-link decoration-none hover:decoration-initial"
+                    transition:name={post.id}
+                    href={articleHref}>{title}</a
+                >
+            </h3>
+            {data.desc && <p class="desc">{data.desc}</p>}
+        </div>
+        <div class="card-foot">
+            {
+                false && (
+                    <div class="meta-cluster flex flex-col gap-3">
+                        <time
+                            class="title-date"
+                            datetime={data.date?.toISOString() || ""}
+                            set:html={formatPostDate(data.date)}
+                        />
+                        {infoChips.length > 0 && (
+                            <div class="chip-row">
+                                {infoChips.map((chip) => (
+                                    <a
+                                        class={`chip chip-${chip.kind}`}
+                                        href={chip.href}
+                                    >
+                                        {chip.label}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                <a
+                    class="arrow-link"
+                    href={articleHref}
+                    aria-label={`阅读 ${data.title}`}
+                >
+                    <span aria-hidden="true">→</span>
+                </a>
+                )
+            }
+        </div>
+    </div>
+</Paper>
+
+<style lang="less">
+    .matrix-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        block-size: 100%;
+        min-block-size: 0;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        background: var(--paper-bg);
+    }
+
+    .cover-link {
+        display: block;
+        flex: 0 0 42%;
+        overflow: hidden;
+        border-block-end: 1px solid var(--border-color);
+        background:
+            linear-gradient(180deg, rgb(0 0 0 / 0.03), transparent),
+            var(--bg-accent);
+    }
+
+    .cover-image {
+        display: block;
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+        transition: transform 240ms ease;
+    }
+
+    .card-inner {
+        display: flex;
+        flex: 1;
+        min-block-size: 0;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.05rem;
+        overflow: hidden;
+    }
+
+    .card-head,
+    .card-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.9rem;
+    }
+
+    .card-icon {
+        color: var(--text-secondary);
+        font-size: 1.15rem;
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: 1.2em;
+        min-block-size: 1.2em;
+    }
+
+    .top-tags,
+    .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        justify-content: flex-end;
+    }
+
+    .pill,
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--border-color);
+        padding: 0.22rem 0.6rem;
+        font-size: 0.74rem;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+    }
+
+    .pill {
+        background: var(--bg-accent);
+        text-transform: uppercase;
+    }
+
+    .pill-series {
+        border-color: color-mix(in srgb, #2d6a8e 35%, var(--border-color));
+        color: #2d6a8e;
+    }
+
+    .pill-category {
+        color: var(--text-secondary);
+    }
+
+    .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    .eyebrow {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: clamp(1.05rem, 0.98rem + 0.55vw, 1.5rem);
+        line-height: 1.15;
+        text-wrap: balance;
+    }
+
+    .title-link {
+        margin-inline: 0;
+    }
+
+    .desc {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        line-height: 1.7;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .title-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .chip {
+        color: var(--text-secondary);
+        background: color-mix(in srgb, var(--paper-bg) 78%, var(--bg-accent));
+    }
+
+    .chip-category {
+        border-color: var(--border-color);
+    }
+
+    .chip-tag {
+        border-color: color-mix(in srgb, #3c738a 25%, var(--border-color));
+    }
+
+    .arrow-link,
+    .arrow-link:visited {
+        display: inline-grid;
+        place-items: center;
+        align-self: flex-end;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-accent);
+        color: var(--text-color);
+        font-size: 1.3rem;
+        text-decoration: none;
+        transition:
+            transform 180ms ease,
+            background-color 180ms ease;
+    }
+
+    .matrix-card:hover .cover-image {
+        transform: scale(1.03);
+    }
+
+    .matrix-card:hover .arrow-link {
+        transform: translateX(3px);
+        background: var(--bg-secondary-hover);
+    }
+
+    .card-h-2 .desc {
+        -webkit-line-clamp: 5;
+    }
+
+    .card-h-2 .cover-link {
+        flex-basis: 50%;
+    }
+
+    .card-w-2.has-cover {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .card-w-2.has-cover .cover-link {
+        block-size: 100%;
+        border-inline-end: 1px solid var(--border-color);
+        border-block-end: none;
+    }
+
+    .card-w-2.has-cover .cover-image {
+        block-size: 100%;
+    }
+
+    .no-cover .card-inner {
+        border-block-start: 3px solid
+            color-mix(in srgb, var(--accent-color) 12%, transparent);
+    }
+
+    @media (max-width: 900px) {
+        .card-w-2.has-cover {
+            grid-template-columns: 1fr;
+        }
+
+        .card-w-2.has-cover .cover-link {
+            border-inline-end: none;
+            border-block-end: 1px solid var(--border-color);
+            block-size: auto;
+            flex-basis: 42%;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .matrix-card {
+            block-size: auto;
+        }
+
+        .card-inner {
+            padding: 1rem;
+        }
+
+        .cover-link,
+        .card-h-2 .cover-link {
+            flex-basis: auto;
+            block-size: 10rem;
+        }
+
+        .desc {
+            -webkit-line-clamp: 2;
+        }
+    }
+</style>

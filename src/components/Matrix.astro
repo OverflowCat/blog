@@ -1,0 +1,207 @@
+---
+import PageWithSidebarNew from "@/templates/PageWithSidebarNew.astro";
+import FreeformCard from "@/components/FreeformCard.astro";
+import { getBlogPosts } from "@/scripts/post";
+import CommentList from "@/components/CommentList.astro";
+import Paper from "./Paper.astro";
+import CatCloud from "./sidebar/CatCloud.astro";
+import TagCloud from "./sidebar/TagCloud.astro";
+
+export interface Props {
+    type?: "tag" | "category";
+    name?: string;
+    simple?: boolean;
+    year?: boolean;
+    title: string;
+    bar?: {
+        index?: number;
+        theme?: "light" | "dark" | "auto" | "transparent";
+    };
+}
+
+let posts = (await getBlogPosts()).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const { type, name, title, bar } = Astro.props;
+
+const year = Astro.props.year !== false;
+
+if (type && name) {
+    posts = posts.filter((post) => {
+        const { tags, categories } = post.data;
+        if (type === "tag") {
+            return tags?.includes(name);
+        }
+        if (type === "category") {
+            return categories?.includes(name);
+        }
+        return false;
+    });
+}
+
+let prev_year = 0;
+const _posts = posts
+    .filter(
+        (post) =>
+            post.data.visibility !== "unlisted" || Astro.url.pathname !== "/",
+    )
+    .map((post, index) => {
+        const currentYear = post.data.date.getUTCFullYear();
+        const isAnotherYear = currentYear !== prev_year;
+        if (isAnotherYear) prev_year = currentYear;
+
+        const hasCover = !!post.data.photo && post.data.photo.hide !== true;
+        const pattern = [
+            { cols: 1 as const, rows: 2 as const },
+            { cols: 2 as const, rows: 1 as const },
+            { cols: 2 as const, rows: 1 as const },
+            { cols: 1 as const, rows: 2 as const },
+            { cols: 2 as const, rows: 1 as const },
+            { cols: 1 as const, rows: 2 as const },
+        ][index % 6];
+
+        return {
+            ...post,
+            isAnotherYear,
+            cols: hasCover ? pattern.cols : 1,
+            rows: hasCover ? pattern.rows : 1,
+        };
+    });
+---
+
+<PageWithSidebarNew title={title} bar={bar}>
+    <section class="matrix-shell">
+        <div class="matrix-grid">
+            {
+                _posts.map((post) => (
+                    <>
+                        {/* {year && post.isAnotherYear && (
+                            <h2 class="matrix-year">
+                                {post.data.date.getUTCFullYear()}
+                            </h2>
+                        )} */}
+                        <FreeformCard
+                            post={post}
+                            cols={post.cols}
+                            rows={post.rows}
+                        />
+                    </>
+                ))
+            }
+        </div>
+        <div id="end-info">嗯…！目前共计 {posts.length} 篇日志。继续努力。</div>
+        {
+            type && (
+                <>
+                    <h3
+                        class="text-align-center m-2"
+                        transition:name="tag-title"
+                    >
+                        标签
+                    </h3>
+                    <TagCloud />
+                    <h3
+                        class="text-align-center m-2"
+                        transition:name="cat-title"
+                    >
+                        分类
+                    </h3>
+                    <CatCloud />
+                </>
+            )
+        }
+    </section>
+    {
+        !type && (
+            <Fragment slot="sidebar">
+                <Paper padding>
+                    <h3 class="text-align-center m-2">评论</h3>
+                    <CommentList />
+                </Paper>
+                <Paper padding={true}>
+                    <h3
+                        class="text-align-center m-2"
+                        transition:name="tag-title"
+                    >
+                        标签
+                    </h3>
+                    <TagCloud />
+                    <h3
+                        class="text-align-center m-2"
+                        transition:name="cat-title"
+                    >
+                        分类
+                    </h3>
+                    <CatCloud />
+                </Paper>
+            </Fragment>
+        )
+    }
+</PageWithSidebarNew>
+
+<style>
+    h2 {
+        margin-block-start: 1rem;
+        margin-block-end: 1rem;
+    }
+
+    .matrix-shell {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .matrix-grid {
+        display: grid;
+        grid-auto-flow: dense;
+        grid-auto-rows: 13rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .matrix-year {
+        grid-column: 1 / -1;
+        margin-inline-start: 0.25rem;
+        margin-inline-end: 0;
+        block-size: auto;
+    }
+
+    #end-info {
+        text-align: center;
+        color: gray;
+        font-size: 0.8rem;
+        margin: 1rem;
+    }
+
+    @media (max-width: 1100px) {
+        .matrix-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 820px) {
+        .matrix-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 560px) {
+        .matrix-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .matrix-grid > * {
+            inline-size: 100% !important;
+            min-inline-size: 0;
+        }
+
+        .matrix-grid > .paper {
+            block-size: auto !important;
+            grid-column: auto !important;
+            grid-row: auto !important;
+            flex: 0 0 auto;
+        }
+    }
+</style>
