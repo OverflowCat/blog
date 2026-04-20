@@ -1,5 +1,5 @@
 ---
-import PageWithSidebarNew from "@/templates/PageWithSidebarNew.astro";
+import PageWithFootbar from "@/templates/PageWithFootbar.astro";
 import FreeformCard from "@/components/FreeformCard.astro";
 import { getBlogPosts } from "@/scripts/post";
 import CommentList from "@/components/CommentList.astro";
@@ -23,9 +23,7 @@ let posts = (await getBlogPosts()).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const { type, name, title, bar } = Astro.props;
-
-const year = Astro.props.year !== false;
+const { type = false, name = false, title, bar } = Astro.props;
 
 if (type && name) {
     posts = posts.filter((post) => {
@@ -46,31 +44,19 @@ const _posts = posts
         (post) =>
             post.data.visibility !== "unlisted" || Astro.url.pathname !== "/",
     )
-    .map((post, index) => {
+    .map((post) => {
         const currentYear = post.data.date.getUTCFullYear();
         const isAnotherYear = currentYear !== prev_year;
         if (isAnotherYear) prev_year = currentYear;
 
-        const hasCover = !!post.data.photo && post.data.photo.hide !== true;
-        const pattern = [
-            { cols: 1 as const, rows: 2 as const },
-            { cols: 2 as const, rows: 1 as const },
-            { cols: 2 as const, rows: 1 as const },
-            { cols: 1 as const, rows: 2 as const },
-            { cols: 2 as const, rows: 1 as const },
-            { cols: 1 as const, rows: 2 as const },
-        ][index % 6];
-
         return {
             ...post,
             isAnotherYear,
-            cols: hasCover ? pattern.cols : 1,
-            rows: hasCover ? pattern.rows : 1,
         };
     });
 ---
 
-<PageWithSidebarNew title={title} bar={bar}>
+<PageWithFootbar title={title} bar={bar}>
     <section class="matrix-shell">
         <div class="matrix-grid">
             {
@@ -83,8 +69,6 @@ const _posts = posts
                         )} */}
                         <FreeformCard
                             post={post}
-                            cols={post.cols}
-                            rows={post.rows}
                         />
                     </>
                 ))
@@ -114,7 +98,7 @@ const _posts = posts
     </section>
     {
         !type && (
-            <Fragment slot="sidebar">
+            <Fragment slot="footbar">
                 <Paper padding>
                     <h3 class="text-align-center m-2">评论</h3>
                     <CommentList />
@@ -138,7 +122,7 @@ const _posts = posts
             </Fragment>
         )
     }
-</PageWithSidebarNew>
+</PageWithFootbar>
 
 <style>
     h2 {
@@ -154,7 +138,7 @@ const _posts = posts
     .matrix-grid {
         display: grid;
         grid-auto-flow: dense;
-        grid-auto-rows: 13rem;
+        grid-auto-rows: 18rem;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1rem;
     }

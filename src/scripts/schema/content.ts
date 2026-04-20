@@ -60,14 +60,15 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 			series: SERIES_TYPE,
 			photo: photo(ctx.image).optional(),
 			date: z.coerce.date(),
-			card: z.union([
-				z.literal("mini"), // 1x1
-				z.literal("tall"), // 1x2
-				z.literal("portrait"), // 1x2
-				z.literal("wide"), // 2x1
-				z.literal("landscape"), // 2x1, image only
-				z.literal("large"), // 2x2
-			]),
+			// card: z.union([
+			// 	z.literal("mini"), // 1x1
+			// 	z.literal("tall"), // 1x2
+			// 	z.literal("portrait"), // 1x2
+			// 	z.literal("wide"), // 2x1
+			// 	z.literal("landscape"), // 2x1, image only
+			// 	z.literal("large"), // 2x2
+			// ]).optional(),
+			card: z.string().optional(),
 			draft: z
 				.boolean()
 				.optional()

@@ -3,6 +3,7 @@ title: 卡脖子的艺术
 date: 2025-06-21T13:06:42.460Z
 desc: 我要扼住别人的咽喉，使其不能使我完全屈服。
 noscript: true
+card: tall
 licence: CcBySa
 photo:
   src: https://tong.xinshijiededa.men/bozi/cat-dog-collars.jpg
