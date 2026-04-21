@@ -1,0 +1,110 @@
+---
+title: CSS 实现多语言对译高亮
+date: 2026-04-21T16:00:10.477Z
+photo:
+  src: https://remnote-user-data.s3.amazonaws.com/SvJUw0vk5SXjQV1Im2WT7kIYAAx2OfhsjEgqb3styDzEYd8yX2zuQf4_vbbOEtR1vtChgVEBsimbocOrSv4xBYFjphRB4aWJj5oD0-E7ITcL7ztMqt8HLBE61RDuwoou.jpeg
+noscript: true
+licence: CcBySa
+layout: "@/layouts/Default.astro"
+tags:
+  - CSS
+categories: []
+---
+
+在前端，常常需要显示不同语言对译的情况。例如，本站的满－和－汉对译。如何不使用JavaScript而能实现猫屎（鼠标）忽（hover）在一种语言的一部分，另一种语言的一部分也高亮（反白）呢？这个需求可以简化成高亮一个元素，对应的几个元素也高亮。你可以看看下面的例子：
+
+import ManchuSyntax from "@/components/ManchuSyntax.astro";
+import { vocabulary, parts } from "@/posts/si-injeci-hon-saikan/vocab.ts";
+
+<ManchuSyntax vocab={vocabulary} lines={parts[1]} />
+
+CSS的选择器只能向下向后选择，除非是使用 `:has(){:css}`。选择相邻的同级元素用 `+{:css}`；选择同层级的后继元素用 `~{:css}`。
+
+注意由于自然语言的语法，每一行第n个词的顺序可能不是递增的。所以每个词以相应的 class （`word-${index}{:js}`）标记。
+
+设有三个 `div.hl-line{:css}` A、B、C，里面有最多 n 个相应的 ``span``，如下：
+
+```html
+<section class="parent">
+    ...
+    <div class="hl-line">
+        <span class="word-0">...</span>
+        <span class="word-1">...</span>
+        <span class="word-2">...</span>
+        <span class="word-3">...</span>
+        <span class="word-4">...</span>
+        ...
+        <span class="word-n">...</span>
+    </div>
+    <div class="hl-line">
+        <span class="word-6">...</span>
+        <span class="word-5">...</span>
+        <span class="word-3">...</span>
+        ...
+    </div>
+    <div class="hl-line">
+        <span class="word-2">...</span>
+        <span class="word-4">...</span>
+        <span class="word-2">...</span>
+        ...
+    </div>
+    ...
+</section>
+```
+
+那么我们的这个问题可以切分成：
+- 鼠标悬浮在 ``div`` A 的第 ````n```` 个 ``span`` 上时，后面两个 ``div`` 的第 ````n```` 个词高亮；
+- 鼠标悬浮在 ``div`` C 的第 ````n```` 个 ``span`` 上时，前面两个 ``div`` 的第 ````n```` 个词高亮；
+- 鼠标悬浮在当前 ``div`` 的第 ````n```` 个 ``span`` 的一部分上时，当前 ``div`` 的所有同 `index` 的 ``div`` 高亮；（如示例中「把……吹散」）
+- 鼠标当前悬浮的 ``span`` 高亮。（这个被上一个需求覆盖了）
+
+于是有 CSS：
+
+```css
+/* 当前悬浮的 span */
+div.hl-line>span:hover,
+/* 鼠标悬浮在 div A 的第 n 个 span 上时，后面两个 div 的第 n 个词高亮 */
+div.hl-line:has(.word-0:hover) > .word-0,
+div.hl-line:has(.word-1:hover) > .word-1,
+div.hl-line:has(.word-2:hover) > .word-2,
+div.hl-line:has(.word-3:hover) > .word-3,
+div.hl-line:has(.word-4:hover) > .word-4,
+div.hl-line:has(.word-5:hover) > .word-5,
+div.hl-line:has(.word-6:hover) > .word-6,
+/* 鼠标悬浮在 div C 的第 n 个 span 上时，前面两个 div 的第 n 个词高亮 */
+div.hl-line:has(.word-0:hover) ~ div.hl-line>.word-0,
+div.hl-line:has(.word-1:hover) ~ div.hl-line>.word-1,
+div.hl-line:has(.word-2:hover) ~ div.hl-line>.word-2,
+div.hl-line:has(.word-3:hover) ~ div.hl-line>.word-3,
+div.hl-line:has(.word-4:hover) ~ div.hl-line>.word-4,
+div.hl-line:has(.word-5:hover) ~ div.hl-line>.word-5,
+div.hl-line:has(.word-6:hover) ~ div.hl-line>.word-6,
+/* 鼠标悬浮在当前 div 的第 n 个 span 的一部分上时，当前 div 的所有同 index 的 div 高亮 */
+div.hl-line:has(~ div.hl-line>.word-0:hover)>.word-0,
+div.hl-line:has(~ div.hl-line>.word-1:hover)>.word-1,
+div.hl-line:has(~ div.hl-line>.word-2:hover)>.word-2,
+div.hl-line:has(~ div.hl-line>.word-3:hover)>.word-3,
+div.hl-line:has(~ div.hl-line>.word-4:hover)>.word-4,
+div.hl-line:has(~ div.hl-line>.word-5:hover)>.word-5,
+div.hl-line:has(~ div.hl-line>.word-6:hover)>.word-6
+{
+    background-color: #ffff00;
+}
+```
+
+你可以使用一些 CSS 预处理器来简化这个重复的代码：
+
+```scss
+$max-words: 6;
+div.hl-line>span:hover,
+@for $i from 0 through $max-words {
+    div.hl-line:has(.word-#{$i}:hover) > .word-
+    div.hl-line:has(.word-#{$i}:hover) ~ div.hl-line>.word-#{$i},
+    div.hl-line:has(~ div.hl-line>.word-#{$i}:hover)
+    {
+        .word-#{$i} {
+            background-color: #ffff0080;
+        }
+    }
+}
+```

@@ -1,0 +1,105 @@
+export const vocabulary = {
+  "-i": "の",
+  adali: "らしい",
+  aga: "雨",
+  akacun: "心配事",
+  angga: "口",
+  ba: "ところ",
+  be: "を",
+  "bi/ki": "い/たい",
+  cira: "結びが固い",
+  de: "で",
+  dekderhvn: "鴎",
+  edun: "風",
+  eiten: "一切の",
+  elden: "光",
+  emgi: "と共に",
+  erin: "時",
+  faitan: "眉",
+  forgon: "時季",
+  gese: "らしい",
+  geterembumbi: "一掃する",
+  goro: "遠方の",
+  gulhun: "全",
+  hon: "甚だ",
+  "ilha/-i": "花の",
+  "inje/ci": "笑v",
+  "inje/re": "笑",
+  jai: "及び",
+  jalan: "世界",
+  juwari: "夏",
+  nasacun: "嘆き",
+  "niru/me": "描/き",
+  niyengniyeri: "春",
+  okini: "に関係なく",
+  saikan: "美しい",
+  si: "あなた",
+  "si/ni": "あなたの",
+  tugi: "雲",
+  "tuwa/na/ki": "見に/行き/たい",
+};
+
+export const parts = [
+  `
+goro ba de tuwanaki
+1遠い2所3に4行きたい
+4想去1远2方0的山川
+
+dekderhvn be tuwanaki
+1カモメ2を3見に行きたい
+4想去0海边4看1海鸥
+
+aga edun okini
+1困2難3にもかかわらず
+3不管1风2雨3有多少
+// 3どんなに1困2難3があっても
+
+sini emgi biki
+1あなたと2一緒に3いたい
+3有1你0就3足够
+// 1あなたと2一緒に3いれば十分です
+
+sini angga hon saikan
+1あなたの2唇0は3とても4美しい
+0喜欢看1你的2嘴0角
+
+sini faitan hon saikan
+1あなたの2眉0は3とても4美しい
+0喜欢看1你的2眉0梢
+
+sini injere cira tugi adali
+1あなたの2笑3顔0は4雲5のよう
+0白4云0挂在那蓝天，5像1你的2微笑
+`,
+
+  `
+si injeci hon saikan
+1あなた0が2笑うとき0は3とても4美しい
+1你2笑起来3真4好看
+
+niyengniyeri ilha-i gese
+1春0の2花の3ように
+3像1春天0的2花3一样
+
+eiten akacun jai, eiten nasacun geterembumbi
+1すべての2悩み3や4すべての5悲しみ0を6払いのける
+6把1所有的2烦恼4所有的5忧愁6统统都吹散
+
+si injeci hon saikan
+1あなた0が2笑うとき0は3とても4美しい
+1你2笑起来3真4好看
+
+juwari elden -i gese
+1夏0の2光3の4ように
+4像1夏天的0阳2光
+`,
+
+  `
+gulhun jalan -i erin forgon
+1全2世界3の4時5間0は
+1整个2世界0全部3的4时5光
+
+nirume saikan
+1美しく2描かれる
+1美得0像2画0卷`,
+];
