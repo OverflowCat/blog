@@ -11,15 +11,13 @@ let cc;
 
 const customDict = [
     ['扩展字', '擴充字'],
+    ['扩展', '擴充'],
 ];
 
-
 export default function getCC() {
-    // cc ||= OpenCC.Converter({ from: "cn", to: "twp" }) as (s: string) => string;
-    OpenCC.Locale.to.twp[1] = OpenCC.Locale.to.twp[1].replace('擴展 擴充套件', '擴展 擴充');
     cc ||= OpenCC.ConverterFactory(
-        OpenCC.Locale.from.cn,                   // 中国大陆 => OpenCC 标准
-        OpenCC.Locale.to.twp // OpenCC 标准 => 台湾+自订
+        OpenCC.Locale.from.cn,
+        OpenCC.Locale.to.twp.concat([customDict])
     );
     return cc;
 }
