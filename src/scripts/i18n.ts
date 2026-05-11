@@ -5,114 +5,133 @@ const data = {
       "zh": "评论",
       "juai": "Píngluèn",
       "mnc": "ᠯᡝᠣᠯᡝᠨ",
+      "ja": "コメント",
     },
     "nickname": {
       "en": "Nickname",
       "zh": "昵称",
       "juai": "Lĩtsen",
       "mnc": "ᡤᡝᠪᡠ",
+      "ja": "ニックネーム",
     },
     "email": {
       "en": "Email",
       "zh": "邮箱",
       "juai": "邮箱",
       "mnc": "Email",
+      "ja": "メール",
     },
     "email_placeholder": {
       "en": "Will be publicly displayed",
       "zh": "公开显示",
       "juai": "公开显示",
       "mnc": "X",
+      "ja": "公開表示",
     },
     "homepage_url": {
       "en": "Homepage URL",
       "zh": "主页链接",
       "juai": "Hôngpềji liàenjic",
-      "mnc": "Homepage ᠪᡝ ᡥᠣᠯᠪᠣᠪᡠᠮᠪᡳ"
+      "mnc": "Homepage ᠪᡝ ᡥᠣᠯᠪᠣᠪᡠᠮᠪᡳ",
+      "ja": "ホームページURL",
     },
     "homepage_placeholder": {
       "en": "Your personal homepage, blog, or social media URL",
       "zh": "你的个人主页、博客、社交媒体等的 URL",
       "juai": "你的个人主页、博客、社交媒体等的 URL",
       "mnc": "Your personal homepage, blog, or social media URL",
+      "ja": "個人ホームページ、ブログ、SNSなどのURL",
     },
     "message": {
       "en": "Message",
       "zh": "留言",
       "juai": "Luìyóng",
       "mnc": "ᠪᠠᡴᡨᠠᠮᠪᡠᠨ",
+      "ja": "メッセージ",
     },
     "format_hint": {
       "en": "(You can use Markdown and any HTML)",
       "zh": "（可以使用 Markdown 和任意 HTML）",
       "juai": "（可以yồng Markdown gen 任意 HTML）",
       "mnc": "(ᠵᠠᡳ ᠵᠠᡳ Markdown᠈ HTML ᠪᠠᡳᡨᠠᠯᠠᠪᡠᠴᡳ ᠣᠮᠪᡳ)",
+      "ja": "（MarkdownとHTMLが使えます）",
     },
     "submit": {
       "en": "Submit",
       "zh": "发送",
       "juai": "发出去",
       "mnc": "ᡠᠩᡤᡳᠮᠪᡳ",
+      "ja": "送信",
     },
     "write_comment": {
       "en": "Write a Comment",
       "zh": "写评论",
       "juai": "写评论",
       "mnc": "Write a Comment",
+      "ja": "コメントを書く",
     },
     "cancel": {
       "en": "Cancel",
       "zh": "取消",
       "juai": "取消",
       "mnc": "ᠠᡵᡤᡳᠶᠠᠮᠪᡳ", // argiyambi
+      "ja": "キャンセル",
     },
     "reply": {
       "en": "Reply",
       "zh": "回复",
       "juai": "回复",
       "mnc": "ᠯᡝᠣᠯᡝᠨ", // TODO
+      "ja": "返信",
     },
     "author_name": {
       "en": "Cat",
       "zh": "猫猫",
       "juai": "猫猫",
       "mnc": "ᡴᡝᠰᡳᡴᡝ",
+      "ja": "猫猫",
     },
     "randomly_generated": {
       "en": "Randomly generated",
       "zh": "随机生成的",
       "juai": "随机生成的",
       "mnc": "",
+      "ja": "ランダム生成",
     },
     "email_warning_title": {
       "en": "Notice",
       "zh": "注意",
       "juai": "注意",
       "mnc": "ᠣᠯᡥᠣᡧᠣᡵᠠᡴᡡᠴᡳ ᠣᠵᠣᡵᠠᡴᡡ",
+      "ja": "注意",
     },
     "email_warning_subtitle": {
       "en": "Please leave empty, will be treated as spam!",
       "zh": "请勿填写，会被当作 spam！",
       "juai": "请勿填写，会被当作 spam！",
       "mnc": "ᡠᠮᡝ E-mail ᠨᠣᠩᡤᡳᠮᡝ ᠠᡵᠠᡵᠠᡴᡡ!",
+      "ja": "記入しないでください。スパムとして扱われます！",
     },
     "moderation_notice": {
       "en": "Comments will be displayed after moderation. You can view them in the",
       "zh": "评论将在审核后显示，阁下可以在本博客的 Github 仓库的",
       "juai": "评论将在审核后显示，阁下可以在本博客的 Github 仓库的",
       "mnc": "ᠯᡝᠣᠯᡝᠨ ᡴᡳᠮᠴᡳᡵᡝ ᠪᡝ ᠪᠠᡳᠪᡠᠮᠪᡳ᠉ ᡤᡳᡨ ᡥᠠᠪ ‍ᡳ",
+      "ja": "コメントは承認後に表示されます。",
     },
     "moderation_notice_link": {
       "en": "Pull Request list",
       "zh": "拉取请求列表",
       "juai": "拉取请求列表",
       "mnc": "Pull Request ‍ᡳ ᡤᡝᡨᡠᡴᡝᠨ ᠠᡶᠠᡥᠠ",
+      "ja": "Pull Requestリスト",
     },
     "moderation_notice_end": {
       "en": "of this blog's Github repository. Will redirect automatically after successful submission.",
       "zh": "中查看。提交成功后会自动跳转。",
       "juai": "中查看。提交成功后会自动跳转。",
       "mnc": "ᡩᡝ ᠪᠠᡳᠴᠠᠨᠠᠮᠪᡳ᠉", // TODO
+      "ja": "で確認できます。送信成功後に自動リダイレクトします。",
     },
     "placeholders": {
       "en": [
@@ -135,6 +154,12 @@ const data = {
       ],
       "mnc": [
         "ᡶᡳ ᠨᡳᡴᡝᠪᡠᠴᡳᠨᠠ!", // 执笔/挥毫吧
+      ],
+      "ja": [
+        "ここに感想をどうぞ…",
+        "あなたの思いを世界にシェア…",
+        "どう思いますか？",
+        "ホストにメッセージを残してね～"
       ],
     },
   }
