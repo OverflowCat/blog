@@ -97,6 +97,8 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 					z.literal("en"),
 					// 日本語
 					z.literal("ja"),
+					// 壮语
+					z.literal("za"),
 				])
 				.optional(),
 			math: z.optional(

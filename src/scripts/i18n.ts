@@ -6,6 +6,7 @@ const data = {
       "juai": "Píngluèn",
       "mnc": "ᠯᡝᠣᠯᡝᠨ",
       "ja": "コメント",
+      "za": "Bingzlwnh",
     },
     "nickname": {
       "en": "Nickname",
@@ -13,6 +14,7 @@ const data = {
       "juai": "Lĩtsen",
       "mnc": "ᡤᡝᠪᡠ",
       "ja": "ニックネーム",
+      "za": "Mingzcoh",
     },
     "email": {
       "en": "Email",
@@ -20,6 +22,7 @@ const data = {
       "juai": "邮箱",
       "mnc": "Email",
       "ja": "メール",
+      "za": "E-mail (gimq dienz! don't fill this!)",
     },
     "email_placeholder": {
       "en": "Will be publicly displayed",
@@ -27,6 +30,7 @@ const data = {
       "juai": "公开显示",
       "mnc": "X",
       "ja": "公開表示",
+      "za": "Mingzdajmingz baijok",
     },
     "homepage_url": {
       "en": "Homepage URL",
@@ -34,6 +38,7 @@ const data = {
       "juai": "Hôngpềji liàenjic",
       "mnc": "Homepage ᠪᡝ ᡥᠣᠯᠪᠣᠪᡠᠮᠪᡳ",
       "ja": "ホームページURL",
+      "za": "URL yieb cawj",
     },
     "homepage_placeholder": {
       "en": "Your personal homepage, blog, or social media URL",
@@ -41,6 +46,7 @@ const data = {
       "juai": "你的个人主页、博客、社交媒体等的 URL",
       "mnc": "Your personal homepage, blog, or social media URL",
       "ja": "個人ホームページ、ブログ、SNSなどのURL",
+      "za": "Bonjfaenh vangjyieb, Blog caeuq SNS",
     },
     "message": {
       "en": "Message",
@@ -48,6 +54,7 @@ const data = {
       "juai": "Luìyóng",
       "mnc": "ᠪᠠᡴᡨᠠᠮᠪᡠᠨ",
       "ja": "メッセージ",
+      "za": "Saw bingzlwnh",
     },
     "format_hint": {
       "en": "(You can use Markdown and any HTML)",
@@ -55,6 +62,7 @@ const data = {
       "juai": "（可以yồng Markdown gen 任意 HTML）",
       "mnc": "(ᠵᠠᡳ ᠵᠠᡳ Markdown᠈ HTML ᠪᠠᡳᡨᠠᠯᠠᠪᡠᠴᡳ ᠣᠮᠪᡳ)",
       "ja": "（MarkdownとHTMLが使えます）",
+      "za": "",
     },
     "submit": {
       "en": "Submit",
@@ -62,6 +70,7 @@ const data = {
       "juai": "发出去",
       "mnc": "ᡠᠩᡤᡳᠮᠪᡳ",
       "ja": "送信",
+      "za": "Daezgyau",
     },
     "write_comment": {
       "en": "Write a Comment",
@@ -83,6 +92,7 @@ const data = {
       "juai": "回复",
       "mnc": "ᠯᡝᠣᠯᡝᠨ", // TODO
       "ja": "返信",
+      "za": "Hoiz",
     },
     "author_name": {
       "en": "Cat",
@@ -106,11 +116,12 @@ const data = {
       "ja": "注意",
     },
     "email_warning_subtitle": {
-      "en": "Please leave empty, will be treated as spam!",
+      "en": "Please leave this empty as this is a spam filter XD",
       "zh": "请勿填写，会被当作 spam！",
       "juai": "请勿填写，会被当作 spam！",
       "mnc": "ᡠᠮᡝ E-mail ᠨᠣᠩᡤᡳᠮᡝ ᠠᡵᠠᡵᠠᡴᡡ!",
       "ja": "記入しないでください。スパムとして扱われます！",
+      "za": "Please leave this empty as this is a spam filter",
     },
     "moderation_notice": {
       "en": "Comments will be displayed after moderation. You can view them in the",

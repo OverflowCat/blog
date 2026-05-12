@@ -13,7 +13,7 @@ let { title, og, source, lang } = Astro.props;
 // keep: en, mnc, ja, zh-*. else resolve to zh
 if (
   !lang ||
-  (!["en", "mnc", "ja", "zh-*"].includes(lang) && !/zh-/.test(lang))
+  (!["en", "mnc", "ja", "zh-*", "za"].includes(lang) && !/zh-/.test(lang))
 ) {
   lang = "zh";
 }
