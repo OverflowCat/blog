@@ -1,0 +1,47 @@
+---
+// import { toHyphenation } from "sawcuengh";
+import { parseSawndip } from "@/scripts/za-parser";
+export interface ZaProps {
+  l?: string;
+  h: string;
+}
+const { l, h } = Astro.props;
+// const hyphenated = toHyphenation(l);
+const parsed = parseSawndip(h);
+
+// console.log(JSON.stringify(hyphenated));
+console.log(JSON.stringify(parsed));
+---
+
+{
+  parsed.map((w) =>
+    typeof w === "string" ? (
+      w
+    ) : (
+      <span class="sawndip w" data-etym={w.bor}>
+        {w.zi.map((z) =>
+          z.bor ? <span class="sawndip z" data-etym={z.bor}>{z.char}</span> : z.char,
+        )}
+      </span>
+    ),
+  )
+}
+
+<style>
+  @import url("https://cdn-font.hyperos.mi.com/font/css?family=MiSans_L3:400:Uncommon&display=swap");
+  span[data-etym="old"] {
+    color: brown;
+  }
+  span[data-etym="new"] {
+    color: rgb(7, 77, 152);
+  }
+  span[data-etym^="p"] {
+    color: rgb(1, 86, 42);
+    /* under dot */
+    text-emphasis: "°";
+    text-emphasis-position: under;
+  }
+  .sawndip {
+    font-family: "MiSans L3", MiSans, "Noto Sans CJK SC", "Plangothic", sans-serif;
+  }
+</style>
