@@ -119,6 +119,40 @@ const slogan = [
 	// 	"zh-Hans": "他们已经在用我填充这个世界，而我却还是你心里的一条狭路",
 	// 	de: "Sie füllen die Welt schon mit mir, und ich bleib dir ein Hohlweg im Herzen",
 	// },
+	{
+		"zh-Hans": [
+			"生命短暂而这世界至少一半坏透了",
+			"好骨架",
+			"玛吉·史密斯",
+		],
+		"zh-Hant": [
+			"生命短暫而這世界至少一半壞透了",
+			"好骨架",
+			"瑪吉·史密斯",
+		],
+		en: [
+			"Life is short and the world is at least half terrible",
+			"Good Bones",
+			"Maggie Smith",
+		],
+	},
+	{
+		"zh-Hans": [
+			"我们的整个世界已经死了，它再也伤不到你",
+			"不是马",
+			"娜塔丽·夏佩罗",
+		],
+		"zh-Hant": [
+			"我們的整個世界已經死了，它再也傷不到你",
+			"不是馬",
+			"娜塔麗·夏佩羅",
+		],
+		en: [
+			"Our whole world is dead and so can do you no harm",
+			"Not Horses",
+			"Natalie Shapero",
+		],
+	},
 ];
 
 const hitokoto = ["我觉得我的难过是因为热爱生活"];
