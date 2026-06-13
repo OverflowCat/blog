@@ -4,7 +4,7 @@
   "version": "2.26.6",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": "24"
   },
   "scripts": {
     "new": "node cli/write.js",
