@@ -32,7 +32,7 @@
     "7.css": "^0.21.1",
     "98.css": "^0.1.21",
     "@astrojs/markdown-remark": "7.2.0",
-    "@astrojs/mdx": "6.0.2",
+    "@astrojs/mdx": "6.0.3",
     "@astrojs/prism": "4.0.2",
     "@astrojs/react": "^5.0.7",
     "@astrojs/sitemap": "^3.7.3",
@@ -54,7 +54,7 @@
     "@shikijs/twoslash": "^4.0.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "6.4.4",
+    "astro": "6.4.8",
     "astro-remote": "^0.3.4",
     "astro-typst": "0.12.3",
     "bilibili-bv-av-convert": "^1.0.0",
@@ -112,9 +112,9 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/node": "^25.6.0",
-    "@unocss/astro": "^66.7.0",
-    "@unocss/preset-icons": "^66.7.0",
-    "@unocss/transformer-directives": "^66.6.8",
+    "@unocss/astro": "^66.7.2",
+    "@unocss/preset-icons": "^66.7.2",
+    "@unocss/transformer-directives": "^66.7.2",
     "npm-check-updates": "^22.1.1",
     "rehype-pretty-code": "^0.14.3",
     "rehype-twemoji": "^0.0.6",
@@ -129,6 +129,6 @@
     "stylelint-use-logical": "^2.1.3",
     "twoslash": "^0.3.8",
     "typescript": "^6.0.3",
-    "unocss": "^66.6.8"
+    "unocss": "^66.7.2"
   }
 }
