@@ -81,6 +81,10 @@ function xhtmlify(s: string, link: string): string {
   $(".info").remove();
   // $("svg.typst-doc path").remove();
   $(".rss-hide").remove();
+  $("img[data-twemoji]").each((_i, el) => {
+    const $el = $(el);
+    $el.replaceWith($el.attr("alt") ?? "");
+  });
   // const stylesheets = $("link[rel=stylesheet]");
   // const body = $("body").html();
   // html = `<div id="atom-xml-wrapper">${body}</div>`;
