@@ -24,6 +24,9 @@ if (data.series) {
 		throw new Error("Invalid title format. Expected 'Series: Main Title'.");
 	seriesTitle = series;
 	title = main;
+} else if (title.includes(" / ")) {
+    seriesTitle = title.split(" / ")[0];
+    title = title.split(" / ")[1];
 }
 
 let card = data.card;
