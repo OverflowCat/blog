@@ -7,7 +7,7 @@ import rehypeAutolinkHeadings from "./src/scripts/rehype/anchor.ts";
 // frameworks
 
 import mdx from "@astrojs/mdx";
-
+import { unified } from '@astrojs/markdown-remark';
 import remarkCjk from "remark-cjk-friendly";
 import remarkCjkGfm from "remark-cjk-friendly-gfm-strikethrough";
 
@@ -81,7 +81,7 @@ export default defineConfig({
 		},
 	},
 	markdown: {
-		smartypants: false,
+	  process: unified(),
 		remarkRehype: {
 			footnoteLabel: "---",
 			footnoteBackLabel: "返回内容",

@@ -1,3 +1,4 @@
+minimumReleaseAge: 0
 allowBuilds:
   '@carbon/colors': true
   '@carbon/feature-flags': true
@@ -23,3 +24,63 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   sharp: true
+minimumReleaseAgeExclude:
+  - '@biomejs/biome@2.5.1'
+  - '@biomejs/cli-darwin-arm64@2.5.1'
+  - '@biomejs/cli-darwin-x64@2.5.1'
+  - '@biomejs/cli-linux-arm64-musl@2.5.1'
+  - '@biomejs/cli-linux-arm64@2.5.1'
+  - '@biomejs/cli-linux-x64-musl@2.5.1'
+  - '@biomejs/cli-linux-x64@2.5.1'
+  - '@biomejs/cli-win32-arm64@2.5.1'
+  - '@biomejs/cli-win32-x64@2.5.1'
+  - astro@7.0.1
+  - less@4.6.7
+  - '@iconify/json@2.2.493'
+  - '@unocss/astro@66.7.4'
+  - '@unocss/config@66.7.4'
+  - '@unocss/core@66.7.4'
+  - '@unocss/inspector@66.7.4'
+  - '@unocss/reset@66.7.4'
+  - '@unocss/rule-utils@66.7.4'
+  - '@unocss/vite@66.7.4'
+  - opencc-js@1.3.2
+  - '@unocss/cli@66.7.4'
+  - '@unocss/extractor-arbitrary-variants@66.7.4'
+  - '@unocss/preset-attributify@66.7.4'
+  - '@unocss/preset-icons@66.7.4'
+  - '@unocss/preset-mini@66.7.4'
+  - '@unocss/preset-tagify@66.7.4'
+  - '@unocss/preset-typography@66.7.4'
+  - '@unocss/preset-uno@66.7.4'
+  - '@unocss/preset-web-fonts@66.7.4'
+  - '@unocss/preset-wind3@66.7.4'
+  - '@unocss/preset-wind4@66.7.4'
+  - '@unocss/preset-wind@66.7.4'
+  - '@unocss/transformer-attributify-jsx@66.7.4'
+  - '@unocss/transformer-compile-class@66.7.4'
+  - '@unocss/transformer-directives@66.7.4'
+  - '@unocss/transformer-variant-group@66.7.4'
+  - npm-check-updates@22.2.9
+  - unocss@66.7.4
+  - '@biomejs/biome@2.5.2'
+  - '@biomejs/cli-darwin-arm64@2.5.2'
+  - '@biomejs/cli-darwin-x64@2.5.2'
+  - '@biomejs/cli-linux-arm64-musl@2.5.2'
+  - '@biomejs/cli-linux-arm64@2.5.2'
+  - '@biomejs/cli-linux-x64-musl@2.5.2'
+  - '@biomejs/cli-linux-x64@2.5.2'
+  - '@biomejs/cli-win32-arm64@2.5.2'
+  - '@biomejs/cli-win32-x64@2.5.2'
+  - '@carbon/colors@11.53.0'
+  - '@carbon/feature-flags@1.4.0'
+  - '@carbon/grid@11.57.0'
+  - '@carbon/icon-helpers@10.77.0'
+  - '@carbon/icons-react@11.83.0'
+  - '@carbon/layout@11.54.0'
+  - '@carbon/motion@11.47.0'
+  - '@carbon/react@1.111.0'
+  - '@carbon/styles@1.110.0'
+  - '@carbon/themes@11.76.0'
+  - '@carbon/type@11.62.0'
+  - '@carbon/utilities@0.21.0'
