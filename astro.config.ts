@@ -59,6 +59,12 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		css: {
+			transformer: "postcss",
+		},
+		build: {
+			cssMinify: "esbuild",
+		},
 		server: {
 			hmr: {
 				timeout: 3000,
