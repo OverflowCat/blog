@@ -77,7 +77,7 @@ export default defineConfig({
 				"astro-icon",
 			],
 			noExternal: [
-				"7.css",
+				// "7.css",
 				"xp.css",
 				"98.css",
 				"plex-sans-sc-cdn",

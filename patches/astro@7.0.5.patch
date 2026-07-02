@@ -1,0 +1,26 @@
+diff --git a/dist/vite-plugin-config-alias/index.js b/dist/vite-plugin-config-alias/index.js
+index e6cf6cc5a18d941c518d016f00f1c80e3d67813a..055c8bd8c28e45a0616f304744652afb6003fbd2 100644
+--- a/dist/vite-plugin-config-alias/index.js
++++ b/dist/vite-plugin-config-alias/index.js
+@@ -35,7 +35,12 @@ function resolveWithAlias(id, configAlias) {
+   for (const alias of configAlias) {
+     if (alias.find.test(id)) {
+       const updatedId = id.replace(alias.find, alias.replacement);
+-      const stats = fs.statSync(updatedId, { throwIfNoEntry: false });
++      let stats;
++      try {
++        stats = fs.statSync(updatedId, { throwIfNoEntry: false });
++      } catch {
++        continue;
++      }
+       if (stats && stats.isFile()) {
+         return normalizePath(updatedId);
+       }
+@@ -68,6 +73,7 @@ function configAliasVitePlugin({
+           let hasReplacement = false;
+           const replaceAliases = (match, importId) => {
+             if (!importId) return match;
++            if (/^(?:data:|https?:|\/\/|#)/.test(importId)) return match;
+             const resolved = resolveWithAlias(importId, configAlias);
+             if (resolved) {
+               hasReplacement = true;

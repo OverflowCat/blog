@@ -84,3 +84,5 @@ minimumReleaseAgeExclude:
   - '@carbon/themes@11.76.0'
   - '@carbon/type@11.62.0'
   - '@carbon/utilities@0.21.0'
+patchedDependencies:
+  astro@7.0.5: patches/astro@7.0.5.patch
