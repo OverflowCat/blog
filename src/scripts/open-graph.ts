@@ -2,6 +2,7 @@ export interface OpenGraphData {
   title: string;
   description: string;
   image?: string;
+  video?: string;
   url: string;
   type?: string;
 }
@@ -12,7 +13,12 @@ export function genOpenGraphMetas(data: OpenGraphData, site: URL) {
     ogImage = data.image;
     if (ogImage.startsWith("/")) ogImage = site + data.image;
   }
-  return {
+  let ogVideo = "";
+  if (data.video) {
+    ogVideo = data.video;
+    if (ogVideo.startsWith("/")) ogVideo = site + data.video;
+  }
+  const metas: Record<string, string> = {
     "og:title": data.title,
     "og:description": data.description,
     "og:image": ogImage,
@@ -24,4 +30,9 @@ export function genOpenGraphMetas(data: OpenGraphData, site: URL) {
     "twitter:description": data.description,
     "twitter:image": data.image ?? "",
   };
+  if (ogVideo) {
+    metas["og:video"] = ogVideo;
+    metas["og:video:url"] = ogVideo;
+  }
+  return metas;
 }
