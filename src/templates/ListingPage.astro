@@ -1,0 +1,57 @@
+---
+import type { OpenGraphData } from "@/scripts/open-graph";
+import Bar from "@templates/Bar.astro";
+import Page from "@templates/zh/Page.astro";
+
+export interface Props {
+  title: string;
+  active?: "home" | "archives";
+  og?: OpenGraphData;
+}
+
+const { title, active, og } = Astro.props;
+const navIndex = active === "home" ? 0 : active === "archives" ? 1 : undefined;
+Astro.locals.noscript = true;
+---
+
+<Page title={title} og={og} lang="zh-Hans">
+  <div class="editorial-page">
+    <Bar
+      index={navIndex}
+      lang="zh-Hans"
+      mode={{ theme: true, hant: false, vert: true }}
+    />
+    <main id="main-content">
+      <slot />
+    </main>
+  </div>
+</Page>
+
+<style is:global>
+  body {
+    background: light-dark(#ebe8e1, #171717);
+    color: light-dark(#111, #f2f0eb);
+    font-family:
+      "IBM Plex Sans", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
+      system-ui, sans-serif;
+  }
+
+  .main {
+    overflow: visible;
+  }
+
+  .editorial-page {
+    min-block-size: 100svh;
+  }
+
+  body footer {
+    margin-block-start: 4rem;
+    border-block-start: 1px solid light-dark(#c8c3b8, #393939);
+    padding-block-start: 2rem;
+    color: light-dark(#57534d, #aaa);
+  }
+
+  body footer a {
+    color: inherit;
+  }
+</style>

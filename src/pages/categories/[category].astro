@@ -1,6 +1,6 @@
 ---
 import { getCatSlug, getCatsInfo } from "@/scripts/tags";
-import ArticleList from "@/components/ArticleList.astro";
+import EditorialArticleList from "@/components/listing/EditorialArticleList.astro";
 
 export async function getStaticPaths() {
     const categories = Array.from(getCatsInfo()).map(
@@ -17,9 +17,8 @@ const { category } = Astro.params;
 const { category: catName } = Astro.props;
 ---
 
-<ArticleList
+<EditorialArticleList
     type="category"
     name={catName}
-    simple={false}
     title={`分类：${catName}`}
 />

@@ -1,0 +1,159 @@
+---
+import { getAllComments } from "@/scripts/comments";
+import { getBlogPosts } from "@/scripts/post";
+
+const comments = getAllComments().slice(0, 7);
+const posts = await getBlogPosts();
+const titleBySlug = new Map(posts.map((post) => [post.id, post.data.title]));
+
+function getPostTitle(commentId: string) {
+  const slug = commentId.split("/").slice(0, -1).join("/");
+  return titleBySlug.get(slug) ?? "文章";
+}
+---
+
+<section class="comments-card" aria-labelledby="editorial-comments-title">
+  <header>
+    <h2 id="editorial-comments-title">最新评论</h2>
+    <span>{comments.length}</span>
+  </header>
+  <ol>
+    {
+      comments.map((comment) => (
+        <li>
+          <div class="comment-meta">
+            <strong>{comment.data.name}</strong>
+            <time datetime={comment.data.date.toISOString()}>
+              {comment.data.date.getUTCMonth() + 1}.{comment.data.date.getUTCDate()}
+            </time>
+          </div>
+          <div class="comment-excerpt" set:html={comment.rendered?.html ?? "……"} />
+          <a href={`${comment.slug}/#comment-${comment.data.id}`}>
+            {getPostTitle(comment.id)} <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .comments-card {
+    margin: clamp(1rem, 2vw, 2rem) 0 0;
+    padding: 1.25rem;
+    background: light-dark(#111, #eeeae1);
+    color: light-dark(#fff, #111);
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block-end: 0.9rem;
+    border-block-end: 2px solid currentColor;
+  }
+
+  h2 {
+    margin: 0;
+    color: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  header span {
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding-block: 0.9rem;
+    border-block-end: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  }
+
+  li:last-child {
+    padding-block-end: 0;
+    border-block-end: 0;
+  }
+
+  .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .comment-meta time {
+    flex: none;
+    opacity: 0.58;
+  }
+
+  .comment-excerpt {
+    display: -webkit-box;
+    margin-block: 0.4rem;
+    overflow: hidden;
+    opacity: 0.72;
+    font-size: 1rem;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .comment-excerpt :global(*) {
+    display: inline;
+    margin: 0;
+  }
+
+  .comment-excerpt :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 1px;
+  }
+
+  .comment-excerpt :global(a:hover),
+  .comment-excerpt :global(a:focus-visible) {
+    text-decoration-thickness: 2px;
+  }
+
+  .comment-excerpt :global(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    opacity: 0.9;
+  }
+
+  .comment-excerpt :global(strong),
+  .comment-excerpt :global(em) {
+    font-weight: 700;
+  }
+
+  li > a {
+    display: block;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  li > a:hover,
+  li > a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 900px) {
+    .comments-card {
+      margin: 0;
+      align-self: stretch;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import "@/styles/manchu.less";
+import "@fontsource/noto-sans-mongolian";
+
+const avatar = "https://tong.xinshijiededa.men/avatar/xmas-2025-avatar.svg";
+---
+
+<div
+  class="site-author write-vertical-left"
+  itemprop="author"
+  itemtype="http://schema.org/Person"
+>
+  <div id="site-author-image">
+    <img
+      src={avatar}
+      alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
+      class="site-author-image"
+      itemprop="avatar"
+    />
+  </div>
+  <p
+    class="site-author-name write-vertical-left vertical-mid"
+    itemprop="name"
+    lang="mnc"
+  >
+    ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh">猫</span>
+  </p>
+  <div class="site-description" itemprop="description">猫猫的博客</div>
+</div>
+
+<style>
+  .site-author,
+  .site-author-name {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .site-author {
+    margin-block: 15px;
+    padding-inline-start: 7px;
+  }
+
+  .site-author-name {
+    margin: 0 10px 0 12px;
+    color: var(--text-secondary);
+    font-weight: 700;
+  }
+
+  .site-description {
+    margin: 0;
+    color: #555;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .site-author-image {
+    inline-size: 120px;
+    block-size: 120px;
+    border: 1px solid #eee;
+    user-select: none;
+    transform: scaleX(-1);
+    transition: transform 1s ease-out;
+  }
+
+  #site-author-image {
+    inline-size: 126px;
+    block-size: 126px;
+    margin: 0;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-author-image:hover {
+    transform: scaleX(1);
+  }
+</style>
