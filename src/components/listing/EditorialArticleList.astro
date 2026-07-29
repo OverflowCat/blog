@@ -1,0 +1,134 @@
+---
+import EditorialArticleCard from "@/components/listing/EditorialArticleCard.astro";
+import EditorialComments from "@/components/listing/EditorialComments.astro";
+import EditorialSidebar from "@/components/listing/EditorialSidebar.astro";
+import { getBlogPosts } from "@/scripts/post";
+import ListingPage from "@/templates/ListingPage.astro";
+
+export interface Props {
+  type?: "tag" | "category";
+  name?: string;
+  title: string;
+  active?: "home" | "archives";
+}
+
+let posts = await getBlogPosts();
+const { type, name, title, active } = Astro.props;
+
+if (type && name) {
+  posts = posts.filter((post) => {
+    if (type === "tag") return post.data.tags?.includes(name);
+    return post.data.categories?.includes(name);
+  });
+}
+
+if (active === "home") {
+  posts = posts.filter((post) => post.data.visibility !== "unlisted");
+}
+
+const listLabel = title || "文章列表";
+---
+
+<ListingPage title={title} active={active}>
+  <div class:list={["listing-layout", { "has-sidebar": active === "home" }]}>
+    {
+      active === "home" && (
+        <div class="home-rail">
+          <EditorialSidebar />
+          <EditorialComments />
+        </div>
+      )
+    }
+    <div class="listing-stream">
+      <section class="article-grid" aria-label={listLabel}>
+        {posts.map((post, index) => <EditorialArticleCard post={post} index={index} />)}
+      </section>
+
+      <footer class="list-end">
+        <p>总计 {posts.length} 篇文章。</p>
+      </footer>
+    </div>
+  </div>
+</ListingPage>
+
+<style>
+  .listing-layout.has-sidebar {
+    display: grid;
+    grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .listing-stream {
+    min-inline-size: 0;
+    container-name: article-list;
+    container-type: inline-size;
+  }
+
+  .home-rail {
+    min-inline-size: 0;
+    border-inline-end: 1px solid light-dark(#c8c3b8, #393939);
+  }
+
+  .article-grid {
+    padding-block-start: clamp(1rem, 2vw, 2rem);
+    padding-inline: clamp(0.5rem, 2vw, 2rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .list-end {
+    margin: clamp(3rem, 7vw, 7rem) clamp(1rem, 3vw, 3rem) 0;
+    padding-block-start: 1.5rem;
+    border-block-start: 2px solid currentColor;
+  }
+
+  .list-end p {
+    margin: 0;
+    color: currentColor;
+    opacity: 0.66;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 580px) {
+    .article-grid {
+      padding-inline: 0.75rem;
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .listing-layout.has-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .listing-stream {
+      order: 1;
+      inline-size: 100%;
+    }
+
+    .home-rail {
+      order: 2;
+      inline-size: 100%;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      padding: clamp(1rem, 3vw, 2rem);
+      border-inline-end: 0;
+      border-block-start: 1px solid light-dark(#c8c3b8, #393939);
+    }
+  }
+
+  @media (max-width: 580px) {
+    .home-rail {
+      grid-template-columns: minmax(0, 1fr);
+      padding-inline: 0.75rem;
+    }
+  }
+</style>

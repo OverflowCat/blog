@@ -1,10 +1,7 @@
 ---
 import Paper from "../Paper.astro";
+import AuthorInfo from "./AuthorInfo.astro";
 import OtherPlatfromItem from "./OtherPlatfromItem.astro";
-import "@/styles/manchu.less";
-import "@fontsource/noto-sans-mongolian";
-// import avatar from "@/assets/avatar.png";
-const avatar = "https://tong.xinshijiededa.men/avatar/xmas-2025-avatar.svg";
 import Search from "./Search.astro";
 ---
 
@@ -15,27 +12,7 @@ import Search from "./Search.astro";
     } /* prevent CLS */
   </style>
   <Paper padding={true} transitionName="aside-block">
-    <div
-      class="site-author write-vertical-left"
-      itemprop="author"
-      itemtype="http://schema.org/Person"
-    >
-      <div id="site-author-image">
-        <!-- <Picture
-          loading="eager"
-          class="site-author-image"
-          itemprop="avatar"
-          alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"
-          src={avatar}
-          formats={["avif", "webp", "png"]}
-        /> -->
-        <img src={avatar} alt="ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫" class="site-author-image" itemprop="avatar" />
-      </div>
-      <p class="site-author-name write-vertical-left vertical-mid" itemprop="name" lang="mnc">
-        ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ <span lang="zh">猫</span>
-      </p>
-      <div class="site-description" itemprop="description">猫猫的博客</div>
-    </div>
+    <AuthorInfo />
     <div class="other-platforms inline-full m-auto m-block-1.5 grid">
       <OtherPlatfromItem
         href="https://github.com/OverflowCat"
@@ -99,47 +76,5 @@ import Search from "./Search.astro";
   .other-platforms {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2px;
-  }
-  .site-author,
-  .site-author-name {
-    text-align: center;
-    vertical-align: middle;
-  }
-  .site-author {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-left: 7px;
-  }
-  .site-author-name {
-    color: var(--text-secondary);
-    font-weight: 700;
-    margin: 0px 10px 0px 12px;
-  }
-  .site-description {
-    color: #555;
-    font-weight: 500;
-    font-size: 0.8rem;
-    margin: 0;
-  }
-  .site-author-image {
-    user-select: none;
-    border: 1px solid #eee;
-    width: 120px;
-    height: 120px;
-    /* border-radius: 50%; */
-    transform: scaleX(-1);
-    transition: transform 1s ease-out;
-  }
-  #site-author-image {
-    display: flex;
-    justify-content: center;
-    width: 126px;
-    height: 126px;
-    padding: 6px;
-    margin: 0px;
-  }
-  .site-author-image:hover {
-    /* transform: rotateZ(360deg); */
-    transform: scaleX(1);
   }
 </style>

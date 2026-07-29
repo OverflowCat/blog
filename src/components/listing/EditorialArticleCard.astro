@@ -1,0 +1,406 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "astro:assets";
+import { getCatSlug } from "@/scripts/tags";
+import "@/styles/manchu.less";
+import "@fontsource/noto-sans-mongolian";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  index: number;
+}
+
+const { post, index } = Astro.props;
+const { data } = post;
+const photo = data.photo;
+const hasPhoto = Boolean(
+  photo &&
+    photo.hide !== true &&
+    photo.hide !== "list" &&
+    photo.list !== false &&
+    (photo.src || photo.img),
+);
+
+const declared = data.card;
+let variant = declared === "landscape" ? "wide" : declared;
+if (!variant || !["mini", "tall", "wide"].includes(variant)) {
+  if (hasPhoto && index % 9 === 0) variant = "wide";
+  else if (hasPhoto && index % 7 === 0) variant = "tall";
+  else variant = hasPhoto ? "standard" : "text";
+}
+
+const tone =
+  Array.from(post.id).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 4;
+const categories = data.categories ?? [];
+const dateLabel = new Intl.DateTimeFormat("zh-CN", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(data.date);
+const isDaily = post.id.startsWith("daily/");
+const dailySeparator = isDaily ? data.title.indexOf(" / ") : -1;
+const dailyDate =
+  dailySeparator >= 0 ? data.title.slice(0, dailySeparator) : undefined;
+const displayTitle =
+  dailySeparator >= 0 ? data.title.slice(dailySeparator + 3) : data.title;
+---
+
+<article
+  class:list={[
+    "editorial-card",
+    `variant-${variant}`,
+    `tone-${tone}`,
+    { "lang-mnc": data.lang === "mnc" },
+    { "has-photo": hasPhoto },
+  ]}
+  lang={data.lang === "mnc" ? undefined : data.lang}
+>
+  <a href={`/${post.id}/`} transition:name={post.id} transition:animate="initial">
+    {
+      hasPhoto && photo && (
+        <div class="card-image">
+          {photo.img ? (
+            <Picture
+              src={photo.img}
+              alt={photo.alt ?? data.title}
+              widths={[480, 800, 1200]}
+              sizes={
+                variant === "wide"
+                  ? "(max-width: 580px) 100vw, 50vw"
+                  : "(max-width: 580px) 100vw, 25vw"
+              }
+              formats={["avif", "webp", "jpg"]}
+              loading={index < 6 ? "eager" : "lazy"}
+            />
+          ) : (
+            <img
+              src={photo.src}
+              alt={photo.alt ?? data.title}
+              loading={index < 6 ? "eager" : "lazy"}
+              fetchpriority={index < 3 ? "high" : "auto"}
+            />
+          )}
+        </div>
+      )
+    }
+    <div class="card-copy">
+      <div class="card-kicker" lang={data.lang === "mnc" ? "zh" : undefined}>
+        {categories.length > 0 ? <span>{categories[0]}</span> : <span>文章</span>}
+        <time datetime={dailyDate ?? data.date.toISOString()}>
+          {dailyDate ?? dateLabel}
+        </time>
+      </div>
+      <h2 lang={data.lang}>{displayTitle}</h2>
+      {
+        data.desc && (
+          <p lang={data.lang === "mnc" ? "zh" : undefined}>{data.desc}</p>
+        )
+      }
+      <span
+        class="read-more"
+        lang={data.lang === "mnc" ? "zh" : undefined}
+        aria-hidden="true"
+      >
+        阅读全文 <span>→</span>
+      </span>
+    </div>
+  </a>
+  {
+    categories[0] && (
+      <a
+        class="category-link"
+        href={`/categories/${getCatSlug(categories[0])}/`}
+        aria-label={`查看分类：${categories[0]}`}
+        lang={data.lang === "mnc" ? "zh" : undefined}
+      >
+        {categories[0]}
+      </a>
+    )
+  }
+</article>
+
+<style>
+  .editorial-card {
+    position: relative;
+    flex: 0 0 100%;
+    min-inline-size: 0;
+    border: 0;
+    border-radius: 0;
+    background: light-dark(#fff, #242424);
+    color: light-dark(#111, #f4f1eb);
+    overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 360px;
+  }
+
+  .lang-mnc .card-copy {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .lang-mnc h2 {
+    flex: 1;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+    writing-mode: vertical-lr;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "vert" 1;
+    text-orientation: sideways;
+  }
+
+  .lang-mnc .card-kicker,
+  .lang-mnc .read-more {
+    writing-mode: horizontal-tb;
+  }
+
+  .editorial-card > a:first-child {
+    min-block-size: 100%;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .variant-wide {
+    flex-basis: 100%;
+  }
+
+  .variant-wide > a:first-child {
+    flex-direction: row;
+  }
+
+  .variant-wide .card-image,
+  .variant-wide .card-copy {
+    inline-size: 50%;
+  }
+
+  .variant-mini {
+    min-block-size: 13rem;
+  }
+
+  .variant-mini .card-image,
+  .variant-mini p {
+    display: none;
+  }
+
+  .variant-mini h2 {
+    font-size: clamp(1.15rem, 1.6vw, 1.55rem);
+  }
+
+  .variant-tall .card-image {
+    aspect-ratio: 3 / 4;
+  }
+
+  .variant-text {
+    min-block-size: 20rem;
+  }
+
+  .variant-text .card-copy,
+  .variant-mini .card-copy {
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .tone-1:not(.has-photo),
+  .tone-1.variant-mini {
+    background: light-dark(#f2d056, #d3b440);
+    color: #111;
+  }
+
+  .tone-2:not(.has-photo),
+  .tone-2.variant-mini {
+    background: light-dark(#111, #eeeae1);
+    color: light-dark(#fff, #111);
+  }
+
+  .tone-3:not(.has-photo),
+  .tone-3.variant-mini {
+    background: light-dark(#d94a38, #a83b30);
+    color: #fff;
+  }
+
+  .card-image {
+    position: relative;
+    flex: none;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .card-image :global(picture),
+  .card-image :global(img) {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  .card-image :global(img) {
+    object-fit: cover;
+    transition: transform 350ms ease;
+  }
+
+  .editorial-card:hover .card-image :global(img) {
+    transform: scale(1.025);
+  }
+
+  .card-copy {
+    min-inline-size: 0;
+    padding: clamp(1rem, 1.6vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-kicker {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: currentColor;
+    opacity: 0.66;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .card-kicker span {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-kicker time {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  h2 {
+    margin-block: 0.8rem 0;
+    color: inherit;
+    font-size: clamp(1.25rem, 1.8vw, 1.85rem);
+    font-weight: 750;
+    line-height: 1.2;
+    text-align: start;
+    overflow-wrap: anywhere;
+  }
+
+  .variant-wide h2 {
+    font-size: clamp(1.6rem, 2.35vw, 2.5rem);
+  }
+
+  p {
+    margin-block-start: 0.8rem;
+    color: currentColor;
+    opacity: 0.7;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .read-more {
+    margin-block-start: auto;
+    padding-block-start: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 750;
+  }
+
+  .read-more span {
+    display: inline-block;
+    transition: transform 150ms ease;
+  }
+
+  .editorial-card:hover .read-more span {
+    transform: translateX(0.25rem);
+  }
+
+  .category-link {
+    position: absolute;
+    inset-block-start: 0.65rem;
+    inset-inline-start: 0.65rem;
+    max-inline-size: calc(100% - 1.3rem);
+    border-radius: 0;
+    padding: 0.35rem 0.5rem;
+    overflow: hidden;
+    background: #111d;
+    color: #fff;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.68rem;
+    font-weight: 750;
+    line-height: 1;
+  }
+
+  .editorial-card:not(.has-photo) .category-link,
+  .variant-mini .category-link {
+    display: none;
+  }
+
+  @container article-list (min-width: 581px) {
+    .editorial-card {
+      flex-basis: calc(50% - 0.5rem);
+    }
+
+    .variant-wide {
+      flex-basis: 100%;
+    }
+  }
+
+  @container article-list (min-width: 769px) {
+    .editorial-card {
+      flex-basis: calc(33.333% - 0.667rem);
+    }
+
+    .variant-wide {
+      flex-basis: calc(66.667% - 0.333rem);
+    }
+  }
+
+  @container article-list (min-width: 1280px) {
+    .editorial-card {
+      flex-basis: calc(25% - 0.75rem);
+    }
+
+    .variant-wide {
+      flex-basis: calc(50% - 0.5rem);
+    }
+  }
+
+  @container article-list (min-width: 1700px) {
+    .editorial-card {
+      flex-basis: calc(20% - 0.8rem);
+    }
+
+    .variant-wide {
+      flex-basis: calc(40% - 0.6rem);
+    }
+  }
+
+  @container article-list (max-width: 580px) {
+    .variant-wide > a:first-child {
+      display: block;
+    }
+
+    .variant-wide .card-image,
+    .variant-wide .card-copy {
+      inline-size: 100%;
+    }
+
+    .variant-wide h2 {
+      font-size: 1.65rem;
+    }
+
+    .variant-text {
+      min-block-size: 16rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-image :global(img),
+    .read-more span {
+      transition: none;
+    }
+  }
+</style>
