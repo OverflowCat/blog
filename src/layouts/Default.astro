@@ -1,12 +1,23 @@
 ---
 import "@/styles/icon.less";
+import "@/styles/article.less";
 import Comments from "@/components/comments/Comments.astro";
+import LicenceBox from "@/components/licences/LicenceBox.astro";
 import Common from "./Common.astro";
 import "@shikijs/twoslash/style-rich.css";
 const { frontmatter } = Astro.props;
 import Bar from "@/templates/Bar.astro";
 import "@/styles/form.less";
 import type { Frontmatter } from "@/types";
+import { getEntry } from "astro:content";
+import { resolvePostId } from "@/scripts/post";
+import { getCatsInfo, getTagsInfo, getCatSlug } from "@/scripts/tags";
+import { Picture } from "astro:assets";
+
+function arrify<T>(x: T | T[]): T[] {
+  return Array.isArray(x) ? x : [x];
+}
+
 const classes = frontmatter?.resizable !== false ? ["resizable"] : [];
 export type Props = {
 	frontmatter?: Frontmatter;
@@ -14,6 +25,26 @@ export type Props = {
 	file: string;
 	url: string;
 };
+
+// 新版刊头所需的文章数据；与 Common.astro 一样以条目数据为准
+const showHeader = Boolean(frontmatter && Astro.props.url !== "/about");
+const id = resolvePostId(Astro.props.url ?? Astro.props.file ?? Astro.url.pathname);
+const entry = showHeader ? (await getEntry("blog", id))?.data : undefined;
+if (showHeader && !entry) {
+  throw new Error(`Post ${id} not found.`);
+}
+const cats = entry ? arrify(entry.categories) : [];
+const tags = entry ? arrify(entry.tags) : [];
+const cover = entry?.photo?.hide === true ? undefined : entry?.photo;
+const licence = entry?.licence ?? "CcByNc";
+const dateLabel = entry
+  ? new Intl.DateTimeFormat("zh-CN", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(entry.date)
+  : "";
+const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
 ---
 
 {Astro.locals.renderer === 'rss' ?
@@ -26,10 +57,11 @@ export type Props = {
     --bg-tag: light-dark(#e3ded1, #2e2e2e);
     --bg-tag-hover: light-dark(#d8d2c1, #3a3a3a);
     --bg-tag-active: light-dark(#cbc4af, #454545);
+    --accent-yellow: light-dark(#f2d056, #d3b440);
   }
 
   body {
-    background: light-dark(#ebe8e1, #171717);
+    background: light-dark(#f2f2f2, #171717);
     color: light-dark(#111, #f2f0eb);
     font-family:
       "IBM Plex Sans", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
@@ -57,20 +89,127 @@ export type Props = {
     }
   }
 
-  .article-card > h1 {
-    margin-block: 1rem 0;
-    font-family: inherit;
-    font-size: clamp(1.7rem, 1rem + 2.6vw, 2.6rem);
-    font-weight: 750;
+  /* === 刊头 === */
+
+  .article-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem 2.5rem;
+    padding-block-end: 1.25rem;
+    border-block-end: 2px solid currentColor;
+  }
+
+  @container html (min-inline-size: 760px) {
+    html:not(#vert:target) .article-head {
+      grid-template-columns: minmax(0, 1fr) 11.5rem;
+      align-items: end;
+    }
+
+    html:not(#vert:target) .article-head .head-kicker {
+      grid-column: 1 / -1;
+    }
+
+    html:not(#vert:target) .article-head .head-meta {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+    }
+  }
+
+  .head-kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
     line-height: 1.25;
+  }
+
+  .head-kicker .kicker-cat {
+    min-inline-size: 0;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0.66;
+  }
+
+  .head-kicker time {
+    flex: none;
+    white-space: nowrap;
+    opacity: 0.66;
+  }
+
+  .article-head h1 {
+    margin: 0;
+    font-family: inherit;
+    font-size: clamp(1.9rem, 1rem + 3.2vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
     text-align: start;
     overflow-wrap: anywhere;
   }
 
-  .article-card .info {
-    padding-block-end: 1rem;
-    border-block-end: 1px solid light-dark(#c8c3b8, #393939);
+  .standfirst {
+    margin: 0;
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+    line-height: 1.6;
+    opacity: 0.75;
     text-align: start;
+  }
+
+  .head-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .meta-label {
+    flex: none;
+    font-weight: 700;
+    opacity: 0.55;
+  }
+
+  .meta-values {
+    min-inline-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.5rem;
+  }
+
+  .head-meta a {
+    padding-inline: 0.15rem;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .head-meta a sup {
+    opacity: 0.55;
+    font-weight: 400;
+  }
+
+  .head-meta a:hover,
+  .head-meta a:focus-visible,
+  .head-kicker a:hover,
+  .head-kicker a:focus-visible {
+    background: var(--accent-yellow);
+    color: #111;
+    opacity: 1;
+  }
+
+  /* === 封面 === */
+
+  .article-card .cover {
+    position: relative;
   }
 
   .article-card .cover:first-child {
@@ -81,6 +220,41 @@ export type Props = {
   .article-card .cover #cover {
     border-radius: 0;
   }
+
+  .cover-cat {
+    position: absolute;
+    inset-block-start: 0.65rem;
+    inset-inline-start: 0.65rem;
+    max-inline-size: calc(100% - 1.3rem);
+    padding: 0.35rem 0.5rem;
+    overflow: hidden;
+    background: #111d;
+    color: #fff;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.68rem;
+    font-weight: 750;
+    line-height: 1;
+  }
+
+  /* === 正文黄色强调 === */
+
+  .article-card ::selection {
+    background: var(--accent-yellow);
+    color: #111;
+  }
+
+  .article-card article#post h2 {
+    border-inline-start: 0.35rem solid var(--accent-yellow);
+    padding-inline-start: 0.6rem;
+  }
+
+  .article-card article#post blockquote {
+    border-inline-start-color: var(--accent-yellow);
+  }
+
+  /* === 评论区 === */
 
   section#comments {
     margin-block: 1rem;
@@ -127,10 +301,89 @@ export type Props = {
     transition:animate="initial"
   >
   {
-    (frontmatter && Astro.props.url !== "/about") ?
-    <Common layoutProps={Astro.props}>
+    entry ? (
+      <>
+        {cover && (
+          <figure class="cover">
+            {cover.img !== undefined ? (
+              <Picture
+                id="cover"
+                src={cover.img}
+                alt={cover.alt ?? ""}
+                formats={["avif", "webp", "jpg"]}
+              />
+            ) : (
+              <img id="cover" src={cover.src} alt={cover.alt} />
+            )}
+            {cats[0] && (
+              <a
+                class="cover-cat"
+                href={`/categories/${getCatSlug(cats[0])}/`}
+                aria-label={`查看分类：${cats[0]}`}
+                lang={mncFallback}
+              >
+                {cats[0]}
+              </a>
+            )}
+            {cover.caption && <figcaption set:html={cover.caption} />}
+          </figure>
+        )}
+        <header class="article-head">
+          <div class="head-kicker" lang={mncFallback}>
+            {cats[0] ? (
+              <a class="kicker-cat" href={`/categories/${getCatSlug(cats[0])}/`}>
+                {cats[0]}
+              </a>
+            ) : (
+              <span class="kicker-cat">文章</span>
+            )}
+            <time datetime={entry.date as unknown as string}>{dateLabel}</time>
+          </div>
+          {!entry.hide_title && (
+            <h1
+              lang={entry.lang}
+              transition:name={id}
+              transition:animate="initial"
+              set:text={entry.title}
+              style={`view-transition-name: ${id}`}
+            />
+          )}
+          {entry.desc && <p class="standfirst" lang={mncFallback}>{entry.desc}</p>}
+          <aside class="head-meta" lang={mncFallback}>
+            {!!cats.length && (
+              <div class="meta-row">
+                <span class="meta-label">分类</span>
+                <span class="meta-values">
+                  {cats.map((cat) => (
+                    <a href={`/categories/${getCatSlug(cat)}/`}>
+                      {cat} <sup>{getCatsInfo().get(cat)}</sup>
+                    </a>
+                  ))}
+                </span>
+              </div>
+            )}
+            {!!tags.length && (
+              <div class="meta-row">
+                <span class="meta-label">标签</span>
+                <span class="meta-values">
+                  {tags.map((tag) => (
+                    <a href={`/tags/${tag}/`}>
+                      {tag} <sup>{getTagsInfo().get(tag)}</sup>
+                    </a>
+                  ))}
+                </span>
+              </div>
+            )}
+          </aside>
+        </header>
+        <article id="post">
+          <slot />
+          <LicenceBox parts={licence} />
+        </article>
+      </>
+    ) : (
       <slot />
-    </Common> : <slot />
+    )
   }
   </div>
 
