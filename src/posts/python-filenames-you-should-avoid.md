@@ -3,6 +3,7 @@ title: 你不应该使用的 Python 文件名
 desc: 最末的结论是，你不应该使用以下名称作为 Python 代码的文件/模块名
 date: 2023-01-16 14:58:08
 categories: Python
+tags: Python
 icon: "gravity-ui:logo-python"
 layout: "@/layouts/Default.astro"
 noscript: true
