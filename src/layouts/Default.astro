@@ -1,8 +1,6 @@
 ---
-import Paper from "@/components/Paper.astro";
 import "@/styles/icon.less";
 import Comments from "@/components/comments/Comments.astro";
-// import "@/styles/snowy.css";
 import Common from "./Common.astro";
 import "@shikijs/twoslash/style-rich.css";
 const { frontmatter } = Astro.props;
@@ -16,7 +14,6 @@ export type Props = {
 	file: string;
 	url: string;
 };
-
 ---
 
 {Astro.locals.renderer === 'rss' ?
@@ -25,13 +22,31 @@ export type Props = {
 :
 <style is:global is:inline>
   :root {
-    color-scheme: light;
+    --text-tag: light-dark(#111, #f2f0eb);
+    --bg-tag: light-dark(#e3ded1, #2e2e2e);
+    --bg-tag-hover: light-dark(#d8d2c1, #3a3a3a);
+    --bg-tag-active: light-dark(#cbc4af, #454545);
   }
-  .paper {
-    margin: auto;
-    inline-size: 1024px;
-    max-inline-size: calc(100dvi - 2em);
+
+  body {
+    background: light-dark(#ebe8e1, #171717);
+    color: light-dark(#111, #f2f0eb);
+    font-family:
+      "IBM Plex Sans", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
+      system-ui, sans-serif;
+  }
+
+  .article-card {
+    margin-inline: auto;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    inline-size: 64rem;
+    max-inline-size: calc(100dvi - 2rem);
     min-inline-size: 320px;
+    background: light-dark(#fff, #242424);
+  }
+
+  .article-card.no-paper {
+    background: transparent;
   }
 
   @container html (max-inline-size: 560px) {
@@ -42,36 +57,87 @@ export type Props = {
     }
   }
 
+  .article-card > h1 {
+    margin-block: 1rem 0;
+    font-family: inherit;
+    font-size: clamp(1.7rem, 1rem + 2.6vw, 2.6rem);
+    font-weight: 750;
+    line-height: 1.25;
+    text-align: start;
+    overflow-wrap: anywhere;
+  }
+
+  .article-card .info {
+    padding-block-end: 1rem;
+    border-block-end: 1px solid light-dark(#c8c3b8, #393939);
+    text-align: start;
+  }
+
+  .article-card .cover:first-child {
+    margin-block-start: calc(-1 * clamp(1.25rem, 3vw, 2.5rem));
+    margin-inline: calc(-1 * clamp(1.25rem, 3vw, 2.5rem));
+  }
+
+  .article-card .cover #cover {
+    border-radius: 0;
+  }
+
   section#comments {
-    margin-block: 1em;
+    margin-block: 1rem;
+  }
+
+  .comments-card h2 {
+    margin: 0;
+    padding-block-end: 0.75rem;
+    border-block-end: 2px solid currentColor;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: start;
+  }
+
+  body footer {
+    margin-block-start: 4rem;
+    border-block-start: 1px solid light-dark(#c8c3b8, #393939);
+    padding-block-start: 2rem;
+    color: light-dark(#57534d, #aaa);
+  }
+
+  body footer a {
+    color: inherit;
   }
 </style>
 
 <Bar
-  lang="zh-Hans" 
+  lang="zh-Hans"
   decoration={frontmatter?.decoration}
   mode={{
   hant: frontmatter?.hant,
   vert: frontmatter?.vert,
   theme: frontmatter?.theme as "auto" | boolean | undefined,
 }} />
-<Paper
-  transitionName="main"
-  padding={true}
-  paper={frontmatter?.paper ?? true}
-  classes={classes}
->
-{
-  (frontmatter && Astro.props.url !== "/about") ?
-  <Common layoutProps={Astro.props}>
-    <slot />
-  </Common> : <slot />
-}
-</Paper>
+<main class="article-shell" id="main-content">
+  <div
+    class:list={[
+      "article-card",
+      ...classes,
+      { "no-paper": frontmatter?.paper === false },
+    ]}
+    transition:name="main"
+    transition:animate="initial"
+  >
+  {
+    (frontmatter && Astro.props.url !== "/about") ?
+    <Common layoutProps={Astro.props}>
+      <slot />
+    </Common> : <slot />
+  }
+  </div>
 
-<section id="comments">
-  <Paper padding={true} paper={true} classes={classes}>
-    <Comments lang={frontmatter.lang} />
-  </Paper>
-</section>
+  <section id="comments">
+    <div class:list={["article-card", "comments-card", ...classes]}>
+      <Comments lang={frontmatter.lang} />
+    </div>
+  </section>
+</main>
 }
