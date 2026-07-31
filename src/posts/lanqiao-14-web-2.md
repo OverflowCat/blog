@@ -8,6 +8,7 @@ date: 2022-11-26 22:32:32
 card: mini
 tags:
 - 蓝桥杯
+- JavaScript
 categories:
 - 页面仔的自我修养
 - 题解

@@ -12,6 +12,7 @@ layout: "@/layouts/Default.astro"
 # series: harmony
 tags:
   - Flutter
+  - 鸿蒙
 ext: md
 math: mathjax
 ---
