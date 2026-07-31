@@ -1,0 +1,77 @@
+---
+import Paper from "@/components/Paper.astro";
+import "@/styles/icon.less";
+import Comments from "@/components/comments/Comments.astro";
+// import "@/styles/snowy.css";
+import Common from "./Common.astro";
+import "@shikijs/twoslash/style-rich.css";
+const { frontmatter } = Astro.props;
+import Bar from "@/templates/Bar.astro";
+import "@/styles/form.less";
+import type { Frontmatter } from "@/types";
+const classes = frontmatter?.resizable !== false ? ["resizable"] : [];
+export type Props = {
+	frontmatter?: Frontmatter;
+	content?: Frontmatter;
+	file: string;
+	url: string;
+};
+
+---
+
+{Astro.locals.renderer === 'rss' ?
+  <Common layoutProps={Astro.props}></Common>
+  <slot />
+:
+<style is:global is:inline>
+  :root {
+    color-scheme: light;
+  }
+  .paper {
+    margin: auto;
+    inline-size: 1024px;
+    max-inline-size: calc(100dvi - 2em);
+    min-inline-size: 320px;
+  }
+
+  @container html (max-inline-size: 560px) {
+    .resizable {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 100%;
+    }
+  }
+
+  section#comments {
+    margin-block: 1em;
+  }
+</style>
+
+<Bar
+  lang="zh-Hans" 
+  decoration={frontmatter?.decoration}
+  mode={{
+  hant: frontmatter?.hant,
+  vert: frontmatter?.vert,
+  theme: frontmatter?.theme as "auto" | boolean | undefined,
+}} />
+<Paper
+  transitionName="main"
+  padding={true}
+  paper={frontmatter?.paper ?? true}
+  classes={classes}
+>
+{
+  (frontmatter && Astro.props.url !== "/about") ?
+  <Common layoutProps={Astro.props}>
+    <slot />
+  </Common> : <slot />
+}
+</Paper>
+
+<section id="comments">
+  <Paper padding={true} paper={true} classes={classes}>
+    <Comments lang={frontmatter.lang} />
+  </Paper>
+</section>
+}
