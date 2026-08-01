@@ -60,6 +60,7 @@ assert(slogan, "slogan is undefined");
         items.map(async (item, i) => (
           <li
             id={`nav-${i}`}
+            class:list={{ "subscription-link": item[2] === "/atom.xml" }}
             transition:name={`navbar-${i}`}
             transition:animate="initial"
           >
@@ -107,7 +108,10 @@ assert(slogan, "slogan is undefined");
     }
   }
   nav#sticky {
-    min-inline-size: 24rem;
+    container-name: navbar;
+    container-type: inline-size;
+    inline-size: 100%;
+    min-inline-size: 0;
     max-inline-size: 36rem;
     @apply z-1000 m-auto min-block-10 inset-bs-2 inset-is-0; // border-rounded-2em border-solid border-2 border-gray-300
     align-items: space-between;
@@ -269,7 +273,7 @@ assert(slogan, "slogan is undefined");
       }
     }
   }
-  @container html (max-inline-size: 768px) {
+  @container navbar (max-inline-size: 768px) {
     .separator {
       display: none;
     }
@@ -277,15 +281,18 @@ assert(slogan, "slogan is undefined");
       @apply min-inline-0;
     }
   }
-  @container html (max-inline-size: 520px) {
-    #small-logo,
-    // #nav-1 {
-    //   // hide when screen is too narrow
-    //   display: none;
-    // }
+  @container navbar (max-inline-size: 520px) {
+    #small-logo {
+      display: none;
+    }
     a {
       padding-inline-start: 0.5em;
       padding-inline-end: 0.5em;
+    }
+  }
+  @container navbar (max-inline-size: 400px) {
+    .subscription-link {
+      display: none;
     }
   }
 </style>
