@@ -1,6 +1,7 @@
 ---
 import { getAllComments } from "@/scripts/comments";
 import { getBlogPosts } from "@/scripts/post";
+import SidebarHeading from "@/components/sidebar/SidebarHeading.astro";
 
 const comments = getAllComments().slice(0, 7);
 const posts = await getBlogPosts();
@@ -13,9 +14,11 @@ function getPostTitle(commentId: string) {
 ---
 
 <section class="comments-card" aria-labelledby="editorial-comments-title">
-  <header>
-    <h2 id="editorial-comments-title">摆龙<mark>门</mark>阵</h2>
-  </header>
+  <SidebarHeading
+    id="editorial-comments-title"
+    prefix="摆龙"
+    suffix="阵"
+  />
   <ol>
     {
       comments.map((comment) => (
@@ -44,25 +47,9 @@ function getPostTitle(commentId: string) {
     color: light-dark(#fff, #111);
   }
 
-  header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
+  .comments-card > :global(.sidebar-heading) {
     padding-block-end: 0.9rem;
     border-block-end: 2px solid currentColor;
-  }
-
-  h2 {
-    margin: 0;
-    color: inherit;
-    font-size: 1.1rem;
-    font-weight: 800;
-  }
-
-  header span {
-    opacity: 0.6;
-    font-size: 0.9rem;
   }
 
   ol {

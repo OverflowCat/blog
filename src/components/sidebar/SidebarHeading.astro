@@ -1,0 +1,26 @@
+---
+export interface Props {
+  id?: string;
+  prefix: string;
+  suffix: string;
+}
+
+const { id, prefix, suffix } = Astro.props;
+---
+
+<h3 id={id} class="sidebar-heading">{prefix}<mark>门</mark>{suffix}</h3>
+
+<style lang="less">
+  .sidebar-heading {
+    margin: 0;
+    color: inherit;
+    font-size: 1.15rem;
+    font-weight: 750;
+    line-height: 1.3;
+  }
+
+  mark {
+    background: none;
+    color: #dd2f3e;
+  }
+</style>

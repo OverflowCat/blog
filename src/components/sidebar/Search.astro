@@ -1,8 +1,9 @@
 ---
 import "@/styles/form.less";
+import SidebarHeading from "./SidebarHeading.astro";
 ---
 
-<h4 class="sidebar-tags-title">得<mark>门</mark>而入</h4>
+<SidebarHeading id="sidebar-search-title" prefix="得" suffix="而入" />
 <form action="https://neo-uglysearch.vercel.app/search" method="get" class="m-2">
   <input type="hidden" name="author" value='"ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫"'>
   <div class="form-group">

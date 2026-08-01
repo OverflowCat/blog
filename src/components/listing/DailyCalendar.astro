@@ -1,6 +1,6 @@
 ---
-import Icon from "@/components/Icon.astro";
 import { getBlogPosts } from "@/scripts/post";
+import SidebarHeading from "@/components/sidebar/SidebarHeading.astro";
 
 const dailyPosts = (await getBlogPosts())
   .filter((post) => post.id.startsWith("daily/"))
@@ -27,7 +27,11 @@ const dailyPosts = (await getBlogPosts())
 
 <section class="daily-calendar" aria-labelledby="daily-calendar-title">
   <header>
-    <h2 id="daily-calendar-title">开<mark>门</mark>见山</h2>
+    <SidebarHeading
+      id="daily-calendar-title"
+      prefix="开"
+      suffix="见山"
+    />
     <a href="/categories/daily/">日常</a>
   </header>
   <ol>
@@ -49,11 +53,12 @@ const dailyPosts = (await getBlogPosts())
     border-block-start: 1px solid light-dark(#c8c3b8, #393939);
   }
 
-  h2 {
-    color: inherit;
-    font-size: 1.15rem;
-    font-weight: 750;
-    line-height: 1.3;
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: 0.75rem;
   }
 
   header > a {
