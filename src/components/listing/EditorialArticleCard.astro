@@ -23,10 +23,14 @@ const hasPhoto = Boolean(
 
 const declared = data.card;
 let variant = declared === "landscape" ? "wide" : declared;
-if (!variant || !["mini", "tall", "wide"].includes(variant)) {
-  if (hasPhoto && index % 9 === 0) variant = "wide";
-  else if (hasPhoto && index % 7 === 0) variant = "tall";
-  else variant = hasPhoto ? "standard" : "text";
+if (hasPhoto) {
+  if (variant === "wide" || variant === "tall") {
+    // keep declared
+  } else if (index % 9 === 0) variant = "wide";
+  else if (index % 7 === 0) variant = "tall";
+  else variant = "standard";
+} else {
+  if (!variant || !["mini", "text"].includes(variant)) variant = "text";
 }
 
 const tone =
@@ -54,6 +58,7 @@ const displayTitle =
     { "has-photo": hasPhoto },
   ]}
   lang={data.lang === "mnc" ? undefined : data.lang}
+  style={`grid-column: span ${variant === "wide" || variant === "standard" ? 2 : 1}; grid-row: span ${variant === "tall" ? 2 : 1};`}
 >
   <a href={`/${post.id}/`} transition:name={post.id} transition:animate="initial">
     {
@@ -122,11 +127,12 @@ const displayTitle =
 <style>
   .editorial-card {
     position: relative;
-    flex: 0 0 100%;
+    block-size: 100%;
+    min-block-size: 0;
     min-inline-size: 0;
-    border: 0;
+    border: 1px solid #111;
     border-radius: 0;
-    background: light-dark(#fff, #242424);
+    background: transparent;
     color: light-dark(#111, #f4f1eb);
     overflow: hidden;
     content-visibility: auto;
@@ -154,28 +160,24 @@ const displayTitle =
   }
 
   .editorial-card > a:first-child {
-    min-block-size: 100%;
-    display: flex;
-    flex-direction: column;
+    block-size: 100%;
+    display: grid;
+    grid-template-rows: 42% 1fr;
     color: inherit;
     text-decoration: none;
   }
 
-  .variant-wide {
-    flex-basis: 100%;
+  .variant-tall > a:first-child {
+    grid-template-rows: 50% 1fr;
   }
 
   .variant-wide > a:first-child {
-    flex-direction: row;
-  }
-
-  .variant-wide .card-image,
-  .variant-wide .card-copy {
-    inline-size: 50%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.9fr 1.1fr;
   }
 
   .variant-mini {
-    min-block-size: 13rem;
+    min-block-size: 10rem;
   }
 
   .variant-mini .card-image,
@@ -187,12 +189,8 @@ const displayTitle =
     font-size: clamp(1.15rem, 1.6vw, 1.55rem);
   }
 
-  .variant-tall .card-image {
-    aspect-ratio: 3 / 4;
-  }
-
   .variant-text {
-    min-block-size: 20rem;
+    min-block-size: 13rem;
   }
 
   .variant-text .card-copy,
@@ -203,26 +201,22 @@ const displayTitle =
 
   .tone-1:not(.has-photo),
   .tone-1.variant-mini {
-    background: light-dark(#f2d056, #d3b440);
-    color: #111;
+    color: light-dark(#111, #f4f1eb);
   }
 
   .tone-2:not(.has-photo),
   .tone-2.variant-mini {
-    background: light-dark(#111, #eeeae1);
-    color: light-dark(#fff, #111);
+    color: light-dark(#111, #f4f1eb);
   }
 
   .tone-3:not(.has-photo),
   .tone-3.variant-mini {
-    background: light-dark(#d94a38, #a83b30);
-    color: #fff;
+    color: light-dark(#111, #f4f1eb);
   }
 
   .card-image {
     position: relative;
-    flex: none;
-    aspect-ratio: 4 / 3;
+    min-block-size: 0;
     overflow: hidden;
     background: #111;
   }
@@ -244,10 +238,14 @@ const displayTitle =
   }
 
   .card-copy {
+    min-block-size: 0;
     min-inline-size: 0;
-    padding: clamp(1rem, 1.6vw, 1.5rem);
+    padding: clamp(0.75rem, 1.2vw, 1.15rem);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: hidden;
   }
 
   .card-kicker {
@@ -274,7 +272,7 @@ const displayTitle =
   }
 
   h2 {
-    margin-block: 0.8rem 0;
+    margin-block: 0.5rem 0;
     color: inherit;
     font-size: clamp(1.25rem, 1.8vw, 1.85rem);
     font-weight: 750;
@@ -288,7 +286,7 @@ const displayTitle =
   }
 
   p {
-    margin-block-start: 0.8rem;
+    margin-block-start: 0.5rem;
     color: currentColor;
     opacity: 0.7;
     font-size: 0.9rem;
@@ -301,7 +299,7 @@ const displayTitle =
 
   .read-more {
     margin-block-start: auto;
-    padding-block-start: 1.5rem;
+    padding-block-start: 1rem;
     font-size: 0.8rem;
     font-weight: 750;
   }
@@ -338,62 +336,14 @@ const displayTitle =
     display: none;
   }
 
-  @container article-list (min-width: 581px) {
-    .editorial-card {
-      flex-basis: calc(50% - 0.5rem);
-    }
-
-    .variant-wide {
-      flex-basis: 100%;
-    }
-  }
-
-  @container article-list (min-width: 769px) {
-    .editorial-card {
-      flex-basis: calc(33.333% - 0.667rem);
-    }
-
-    .variant-wide {
-      flex-basis: calc(66.667% - 0.333rem);
-    }
-  }
-
-  @container article-list (min-width: 1280px) {
-    .editorial-card {
-      flex-basis: calc(25% - 0.75rem);
-    }
-
-    .variant-wide {
-      flex-basis: calc(50% - 0.5rem);
-    }
-  }
-
-  @container article-list (min-width: 1700px) {
-    .editorial-card {
-      flex-basis: calc(20% - 0.8rem);
-    }
-
-    .variant-wide {
-      flex-basis: calc(40% - 0.6rem);
-    }
-  }
-
-  @container article-list (max-width: 580px) {
+  @container article-list (inline-size <= 580px) {
     .variant-wide > a:first-child {
-      display: block;
-    }
-
-    .variant-wide .card-image,
-    .variant-wide .card-copy {
-      inline-size: 100%;
+      grid-template-columns: none;
+      grid-template-rows: 10rem 1fr;
     }
 
     .variant-wide h2 {
       font-size: 1.65rem;
-    }
-
-    .variant-text {
-      min-block-size: 16rem;
     }
   }
 
