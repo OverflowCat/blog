@@ -213,6 +213,11 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     text-decoration: none;
   }
 
+  .editorial-card:not(.has-photo) > a:first-child,
+  .variant-mini > a:first-child {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
   .variant-tall > a:first-child {
     grid-template-rows: 50% 1fr;
   }
