@@ -37,7 +37,7 @@ const socialLinks = [
   </section>
 
   <section class="sidebar-section" aria-labelledby="sidebar-categories-title">
-    <h2 id="sidebar-categories-title">分类</h2>
+    <h2 id="sidebar-categories-title">分<mark>门</mark>别类</h2>
     <ul class="category-list">
       {
         categories.map(([category, count]) => (
@@ -53,7 +53,7 @@ const socialLinks = [
   </section>
 
   <section class="sidebar-section" aria-labelledby="sidebar-tags-title">
-    <h2 id="sidebar-tags-title">标签</h2>
+    <h2 id="sidebar-tags-title">五花八<mark>门</mark></h2>
     <div class="tag-list">
       {
         tags.map(([tag, count]) => (
@@ -228,4 +228,10 @@ const socialLinks = [
       padding-inline: 0;
     }
   }
+</style>
+<style is:global>
+mark {
+  background: none;
+  color: #dd2f3e;
+}
 </style>

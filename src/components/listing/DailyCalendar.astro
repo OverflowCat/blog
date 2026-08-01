@@ -27,11 +27,8 @@ const dailyPosts = (await getBlogPosts())
 
 <section class="daily-calendar" aria-labelledby="daily-calendar-title">
   <header>
-    <h2 id="daily-calendar-title">
-      <Icon name="mdi:calendar-month-outline" />
-      <span>日常</span>
-    </h2>
-    <a href="/categories/daily/">全部</a>
+    <h2 id="daily-calendar-title">开<mark>门</mark>见山</h2>
+    <a href="/categories/daily/">日常</a>
   </header>
   <ol>
     {
@@ -52,19 +49,7 @@ const dailyPosts = (await getBlogPosts())
     border-block-start: 1px solid light-dark(#c8c3b8, #393939);
   }
 
-  header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-block-end: 0.75rem;
-  }
-
   h2 {
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
     color: inherit;
     font-size: 1.15rem;
     font-weight: 750;
