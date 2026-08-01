@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Picture } from "astro:assets";
+import Icon from "@/components/Icon.astro";
 import { getCatSlug } from "@/scripts/tags";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
@@ -13,6 +14,7 @@ export interface Props {
 const { post, index } = Astro.props;
 const { data } = post;
 const photo = data.photo;
+const icon = data.icon;
 const hasPhoto = Boolean(
   photo &&
     photo.hide !== true &&
@@ -47,6 +49,7 @@ const dailyDate =
   dailySeparator >= 0 ? data.title.slice(0, dailySeparator) : undefined;
 const displayTitle =
   dailySeparator >= 0 ? data.title.slice(dailySeparator + 3) : data.title;
+const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard");
 ---
 
 <article
@@ -54,11 +57,12 @@ const displayTitle =
     "editorial-card",
     `variant-${variant}`,
     `tone-${tone}`,
+    { "has-intro": index < 12 },
     { "lang-mnc": data.lang === "mnc" },
     { "has-photo": hasPhoto },
   ]}
   lang={data.lang === "mnc" ? undefined : data.lang}
-  style={`grid-column: span ${variant === "wide" || variant === "standard" ? 2 : 1}; grid-row: span ${variant === "tall" ? 2 : 1};`}
+  style={`--card-order: ${Math.min(index, 10)}; grid-column: span ${variant === "wide" || variant === "standard" ? 2 : 1}; grid-row: span ${variant === "tall" ? 2 : 1};`}
 >
   <a href={`/${post.id}/`} transition:name={post.id} transition:animate="initial">
     {
@@ -85,29 +89,54 @@ const displayTitle =
               fetchpriority={index < 3 ? "high" : "auto"}
             />
           )}
+          {isOverlayCard && (
+            <div class="image-meta" lang={data.lang === "mnc" ? "zh" : undefined}>
+              <time datetime={dailyDate ?? data.date.toISOString()}>
+                {dailyDate ?? dateLabel}
+              </time>
+              {icon && (
+                <span class="image-icon" aria-hidden="true">
+                  <Icon name={icon} />
+                </span>
+              )}
+            </div>
+          )}
+          {
+            icon && variant !== "mini" && !isOverlayCard && (
+              <span class="image-icon" aria-hidden="true">
+                <Icon name={icon} />
+              </span>
+            )
+          }
         </div>
       )
     }
     <div class="card-copy">
-      <div class="card-kicker" lang={data.lang === "mnc" ? "zh" : undefined}>
-        {categories.length > 0 ? <span>{categories[0]}</span> : <span>文章</span>}
-        <time datetime={dailyDate ?? data.date.toISOString()}>
-          {dailyDate ?? dateLabel}
-        </time>
-      </div>
+      {!isOverlayCard && (
+        <div class="card-kicker" lang={data.lang === "mnc" ? "zh" : undefined}>
+          {
+            (!hasPhoto || variant === "mini") && (
+              <span>{categories.length > 0 ? categories[0] : "文章"}</span>
+            )
+          }
+          <time datetime={dailyDate ?? data.date.toISOString()}>
+            {dailyDate ?? dateLabel}
+          </time>
+        </div>
+      )}
+      {
+        icon && (!hasPhoto || variant === "mini") && (
+          <span class="card-icon" aria-hidden="true">
+            <Icon name={icon} />
+          </span>
+        )
+      }
       <h2 lang={data.lang}>{displayTitle}</h2>
       {
         data.desc && (
           <p lang={data.lang === "mnc" ? "zh" : undefined}>{data.desc}</p>
         )
       }
-      <span
-        class="read-more"
-        lang={data.lang === "mnc" ? "zh" : undefined}
-        aria-hidden="true"
-      >
-        阅读全文 <span>→</span>
-      </span>
     </div>
   </a>
   {
@@ -126,17 +155,49 @@ const displayTitle =
 
 <style>
   .editorial-card {
+    --card-border: light-dark(#171717, #55524d);
+    --card-accent: light-dark(#c92b38, #ef5360);
+
     position: relative;
     block-size: 100%;
     min-block-size: 0;
     min-inline-size: 0;
-    border: 1px solid #111;
+    border: 1px solid var(--card-border);
     border-radius: 0;
-    background: transparent;
+    background: light-dark(#f7f6f2, #202020);
     color: light-dark(#111, #f4f1eb);
     overflow: hidden;
     content-visibility: auto;
     contain-intrinsic-size: auto 360px;
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .editorial-card::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    border: 3px solid var(--card-accent);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.985);
+    transition:
+      opacity 180ms ease,
+      transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .editorial-card:hover,
+  .editorial-card:focus-within {
+    background: light-dark(#fff, #272727);
+    border-color: var(--card-accent);
+  }
+
+  .editorial-card:hover::after,
+  .editorial-card:focus-within::after {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .lang-mnc .card-copy {
@@ -154,8 +215,7 @@ const displayTitle =
     text-orientation: sideways;
   }
 
-  .lang-mnc .card-kicker,
-  .lang-mnc .read-more {
+  .lang-mnc .card-kicker {
     writing-mode: horizontal-tb;
   }
 
@@ -171,9 +231,45 @@ const displayTitle =
     grid-template-rows: 50% 1fr;
   }
 
-  .variant-wide > a:first-child {
-    grid-template-rows: 1fr;
-    grid-template-columns: 0.9fr 1.1fr;
+  .variant-wide > a:first-child,
+  .variant-standard > a:first-child {
+    position: relative;
+    display: block;
+    isolation: isolate;
+  }
+
+  .variant-wide .card-image,
+  .variant-standard .card-image {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+  }
+
+  .variant-wide .card-image::after,
+  .variant-standard .card-image::after {
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.02) 25%,
+      rgb(0 0 0 / 0.38) 62%,
+      rgb(0 0 0 / 0.72) 100%
+    );
+    opacity: 1;
+  }
+
+  .variant-wide .card-copy,
+  .variant-standard .card-copy {
+    position: absolute;
+    z-index: 2;
+    inset-inline: 0;
+    inset-block-end: 0;
+    min-block-size: 0;
+    padding: clamp(0.8rem, 1.2vw, 1.1rem) clamp(1rem, 2vw, 1.5rem);
+    justify-content: flex-end;
+    gap: 0.35rem;
+    background: light-dark(rgb(255 255 255 / 0.7), rgb(33 33 33 / 0.6));
+    color: light-dark(#111, #fff);
+    backdrop-filter: blur(8px) saturate(0.82);
+    -webkit-backdrop-filter: blur(8px) saturate(0.82);
   }
 
   .variant-mini {
@@ -186,7 +282,7 @@ const displayTitle =
   }
 
   .variant-mini h2 {
-    font-size: clamp(1.15rem, 1.6vw, 1.55rem);
+    font-size: 1.35rem;
   }
 
   .variant-text {
@@ -196,22 +292,23 @@ const displayTitle =
   .variant-text .card-copy,
   .variant-mini .card-copy {
     flex: 1;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
-  .tone-1:not(.has-photo),
-  .tone-1.variant-mini {
-    color: light-dark(#111, #f4f1eb);
+  .tone-0 {
+    --card-accent: light-dark(#385f83, #74a4d1);
   }
 
-  .tone-2:not(.has-photo),
-  .tone-2.variant-mini {
-    color: light-dark(#111, #f4f1eb);
+  .tone-1 {
+    --card-accent: light-dark(#a12632, #ef5360);
   }
 
-  .tone-3:not(.has-photo),
-  .tone-3.variant-mini {
-    color: light-dark(#111, #f4f1eb);
+  .tone-2 {
+    --card-accent: light-dark(#08756d, #58c5ba);
+  }
+
+  .tone-3 {
+    --card-accent: light-dark(#896400, #e3be54);
   }
 
   .card-image {
@@ -219,6 +316,63 @@ const displayTitle =
     min-block-size: 0;
     overflow: hidden;
     background: #111;
+  }
+
+  .card-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 55%, rgb(0 0 0 / 0.32));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 320ms ease;
+  }
+
+  .image-icon {
+    position: absolute;
+    z-index: 1;
+    inset-inline-end: 0.75rem;
+    inset-block-end: 0.75rem;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 0.8);
+    background: rgb(17 17 17 / 0.82);
+    color: #fff;
+    font-size: 1.35rem;
+    backdrop-filter: blur(8px);
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .image-meta {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: 0.65rem;
+    inset-inline-end: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #fff;
+  }
+
+  .image-meta time {
+    border: 1px solid rgb(255 255 255 / 0.72);
+    padding: 0.35rem 0.5rem;
+    background: rgb(17 17 17 / 0.78);
+    font-size: 0.68rem;
+    font-weight: 750;
+    line-height: 1;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .image-meta .image-icon {
+    position: static;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    font-size: 1rem;
   }
 
   .card-image :global(picture),
@@ -230,11 +384,16 @@ const displayTitle =
 
   .card-image :global(img) {
     object-fit: cover;
-    transition: transform 350ms ease;
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .editorial-card:hover .card-image :global(img) {
-    transform: scale(1.025);
+    transform: scale(1.055);
+  }
+
+  .editorial-card:hover .card-image::after,
+  .editorial-card:focus-within .card-image::after {
+    opacity: 1;
   }
 
   .card-copy {
@@ -243,12 +402,38 @@ const displayTitle =
     padding: clamp(0.75rem, 1.2vw, 1.15rem);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 0.75rem;
     overflow: hidden;
   }
 
+  .card-icon {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    flex: none;
+    display: grid;
+    place-items: center;
+    margin-block-start: 0.25rem;
+    border: 1px solid currentColor;
+    color: currentColor;
+    font-size: 1.45rem;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .editorial-card:hover .card-icon,
+  .editorial-card:focus-within .card-icon,
+  .editorial-card:hover .image-icon,
+  .editorial-card:focus-within .image-icon {
+    background: light-dark(#111, #f4f1eb);
+    color: light-dark(#fff, #171717);
+    transform: rotate(-7deg) scale(1.08);
+  }
+
   .card-kicker {
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     gap: 0.75rem;
@@ -272,20 +457,45 @@ const displayTitle =
   }
 
   h2 {
+    flex-shrink: 0;
     margin-block: 0.5rem 0;
     color: inherit;
-    font-size: clamp(1.25rem, 1.8vw, 1.85rem);
+    font-size: 1.55rem;
     font-weight: 750;
     line-height: 1.2;
     text-align: start;
     overflow-wrap: anywhere;
+    transition:
+      color 180ms ease,
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .variant-wide h2 {
-    font-size: clamp(1.6rem, 2.35vw, 2.5rem);
+    font-size: 2.25rem;
+  }
+
+  .variant-wide p,
+  .variant-standard p {
+    margin-block-start: 0.15rem;
+    opacity: 0.82;
+    -webkit-line-clamp: 2;
+  }
+
+  .editorial-card:hover h2,
+  .editorial-card:focus-within h2 {
+    color: var(--card-accent);
+    transform: translateY(-0.12rem);
+  }
+
+  .variant-wide:hover h2,
+  .variant-wide:focus-within h2,
+  .variant-standard:hover h2,
+  .variant-standard:focus-within h2 {
+    color: light-dark(#111, #fff);
   }
 
   p {
+    flex-shrink: 0;
     margin-block-start: 0.5rem;
     color: currentColor;
     opacity: 0.7;
@@ -297,24 +507,9 @@ const displayTitle =
     -webkit-line-clamp: 3;
   }
 
-  .read-more {
-    margin-block-start: auto;
-    padding-block-start: 1rem;
-    font-size: 0.8rem;
-    font-weight: 750;
-  }
-
-  .read-more span {
-    display: inline-block;
-    transition: transform 150ms ease;
-  }
-
-  .editorial-card:hover .read-more span {
-    transform: translateX(0.25rem);
-  }
-
   .category-link {
     position: absolute;
+    z-index: 4;
     inset-block-start: 0.65rem;
     inset-inline-start: 0.65rem;
     max-inline-size: calc(100% - 1.3rem);
@@ -337,20 +532,58 @@ const displayTitle =
   }
 
   @container article-list (inline-size <= 580px) {
-    .variant-wide > a:first-child {
-      grid-template-columns: none;
-      grid-template-rows: 10rem 1fr;
+    .editorial-card {
+      block-size: auto;
+      min-block-size: 18rem;
+    }
+
+    .variant-mini {
+      min-block-size: 12rem;
+    }
+
+    .variant-tall {
+      min-block-size: 30rem;
     }
 
     .variant-wide h2 {
       font-size: 1.65rem;
     }
+
+    .variant-wide .card-copy,
+    .variant-standard .card-copy {
+      padding: 0.8rem 1rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .editorial-card,
+    .editorial-card::after,
     .card-image :global(img),
-    .read-more span {
+    .card-image::after,
+    .card-icon,
+    .image-icon,
+    h2 {
+      animation: none;
       transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .editorial-card.has-intro {
+      animation: card-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--card-order) * 38ms);
+    }
+  }
+
+  @keyframes card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.85rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>

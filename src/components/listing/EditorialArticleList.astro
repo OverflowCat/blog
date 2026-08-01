@@ -74,9 +74,9 @@ const listLabel = title || "文章列表";
     padding-inline: clamp(0.5rem, 2vw, 2rem);
     display: grid;
     grid-auto-flow: dense;
-    grid-auto-rows: 18rem;
+    grid-auto-rows: 20rem;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
+    gap: clamp(0.75rem, 1.25vw, 1.1rem);
   }
 
   .list-end {
@@ -94,13 +94,7 @@ const listLabel = title || "文章列表";
     line-height: 1.5;
   }
 
-  @container article-list (inline-size <= 1100px) {
-    .article-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  @container article-list (inline-size <= 820px) {
+  @container article-list (inline-size <= 980px) {
     .article-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
