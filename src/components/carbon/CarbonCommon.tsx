@@ -4,6 +4,7 @@
 import { Tag, Grid, Column, Stack } from "@carbon/react";
 import { Calendar, Folder, Tag as TagIcon } from "@carbon/icons-react";
 import "./CarbonCommon.scss";
+import type { ImageObject } from "@/scripts/schema/photo";
 
 interface CarbonCommonProps {
 	frontmatter: {
@@ -12,12 +13,7 @@ interface CarbonCommonProps {
 		categories?: string | string[];
 		tags?: string | string[];
 		hide_title?: boolean;
-		photo?: {
-			src?: string;
-			alt?: string;
-			caption?: string;
-			hide?: boolean;
-		};
+		photo?: ImageObject;
 	};
 	children: React.ReactNode;
 	postId?: string;
@@ -35,7 +31,9 @@ export default function CarbonCommon({
 }: CarbonCommonProps) {
 	const cats = arrify(frontmatter.categories);
 	const tags = arrify(frontmatter.tags);
-	const cover = frontmatter.photo?.hide ? undefined : frontmatter.photo;
+	// Carbon layout renders `photo` as the cover (src-only `<img>` by design —
+	// no `<Picture>`/astro:assets pulled into this React island).
+	const cover = frontmatter.photo;
 
 	const getCatSlug = (cat: string) => cat.toLowerCase().replace(/\s+/g, "-");
 

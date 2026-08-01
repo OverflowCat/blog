@@ -1,10 +1,9 @@
 ---
 title: 小程序平台一览
 date: 2025-01-20T17:39:43.688Z
-photo:
+og:
   src: "/og/mini-apps.png"
   alt: 小程序平台一览
-  hide: true
 noscript: true
 licence: CcBySa
 desc: 仙之人兮列如麻。

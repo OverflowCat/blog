@@ -5,9 +5,10 @@ export interface Props {
 
 import type { CollectionEntry } from "astro:content";
 import { formatPostDate } from "../scripts/date";
-import { Picture } from "astro:assets";
+import PhotoImage from "@/components/PhotoImage.astro";
 import Icon from "@/components/Icon.astro";
 import { getIconName } from "@/scripts/icons";
+import { resolveThumb } from "@/scripts/photo-resolve";
 import { crc32base } from "@/scripts/serendipity";
 import "@/styles/title.less";
 import "@/styles/icon.less";
@@ -18,7 +19,14 @@ function htmlEscape(str: string) {
 
 const { post } = Astro.props;
 const { data } = post;
-const { photo } = data;
+const thumb = resolveThumb(data);
+const thumbTransition = thumb
+	? thumb.src
+		? crc32base(thumb.src)
+		: thumb.img
+			? crc32base(thumb.img.src)
+			: undefined
+	: undefined;
 let title = data.title;
 if (data.series) {
 	const [series, main] = title.split("：");
@@ -84,32 +92,15 @@ if (data.series) {
       </blockquote>
     </td>
     {
-      photo && photo.src && !photo.hide && photo.list !== false && (
+      thumb && (thumb.src || thumb.img) && (
         <td class="title-img">
-          <img
+          <PhotoImage
+            image={thumb}
             class="title-img"
+            title={data.title}
             loading="lazy"
-            transition:name={crc32base(
-              typeof photo === "string" ? photo : photo?.src
-            )}
-            transition:animate="initial"
-            width={photo.aspect ? photo.aspect.split(":")[0] : ""}
-            height={photo.aspect ? photo.aspect.split(":")[1] : ""}
-            src={photo.src}
-            alt={photo.alt ? photo.alt : data.title}
-          />
-        </td>
-      )
-    }
-    {
-      photo?.img  && !photo.hide && (
-        <td class="title-img">
-          <Picture
-            class="title-img"
-            transition:name={crc32base(photo.img.src)}
-            src={photo.img}
-            alt={photo.alt ? photo.alt : data.title}
-            formats={["avif", "webp", "jpg"]}
+            transitionName={thumbTransition}
+            transitionAnimate="initial"
           />
         </td>
       )

@@ -4,17 +4,25 @@ export interface Props {
 }
 
 import type { CollectionEntry } from "astro:content";
-import { Picture } from "astro:assets";
+import PhotoImage from "@/components/PhotoImage.astro";
 import Icon from "@/components/Icon.astro";
 import Paper from "@/components/Paper.astro";
 import { getIconName } from "@/scripts/icons";
+import { resolveThumb } from "@/scripts/photo-resolve";
 import { crc32base } from "@/scripts/serendipity";
 import "@/styles/title.less";
 import "@/styles/icon.less";
 
 let { post } = Astro.props;
 const { data } = post;
-const { photo } = data;
+const photo = resolveThumb(data);
+const photoTransition = photo
+	? photo.src
+		? crc32base(photo.src)
+		: photo.img
+			? crc32base(photo.img.src)
+			: undefined
+	: undefined;
 
 let title = data.title;
 let seriesTitle: string | undefined;
@@ -53,7 +61,7 @@ switch (card) {
 		break;
 	default:
 		if (data.lang === "mnc") rows = 2;
-		else cols = data.photo && data.photo.hide !== true ? 2 : 1;
+		else cols = photo ? 2 : 1;
 		break;
 }
 const imageOnly = card === "portrait" || card === "landscape";
@@ -62,7 +70,7 @@ const tags = data.tags ?? [];
 const footTags = tags.slice(0, 3);
 const icon = getIconName(post);
 const primaryCategory = categories[0];
-const hasCover = !!photo && photo.hide !== true && (!!photo.src || !!photo.img);
+const hasCover = !!photo && (!!photo.src || !!photo.img);
 const isImageOnlyCard = imageOnly && hasCover;
 const articleHref = `/${post.id}/`;
 const cardClasses = [
@@ -81,25 +89,14 @@ const cardClasses = [
 >
     {isImageOnlyCard ? (
         <a class="image-only-link" href={articleHref} aria-label={`阅读 ${data.title}`}>
-            {photo && photo.src && photo.hide !== true && (
-                <img
+            {photo && (
+                <PhotoImage
+                    image={photo}
                     class="cover-image"
+                    title={data.title}
                     loading="lazy"
-                    transition:name={crc32base(photo.src)}
-                    transition:animate="initial"
-                    width={photo.aspect ? photo.aspect.split(":")[0] : undefined}
-                    height={photo.aspect ? photo.aspect.split(":")[1] : undefined}
-                    src={photo.src}
-                    alt={photo.alt ? photo.alt : data.title}
-                />
-            )}
-            {photo?.img && photo.hide !== true && (
-                <Picture
-                    class="cover-image"
-                    transition:name={crc32base(photo.img.src)}
-                    src={photo.img}
-                    alt={photo.alt ? photo.alt : data.title}
-                    formats={["avif", "webp", "jpg"]}
+                    transitionName={photoTransition}
+                    transitionAnimate="initial"
                 />
             )}
         </a>
@@ -112,33 +109,14 @@ const cardClasses = [
                 aria-hidden="true"
                 tabindex="-1"
             >
-                {photo && photo.src && photo.hide !== true && (
-                    <img
+                {photo && (
+                    <PhotoImage
+                        image={photo}
                         class="cover-image"
+                        title={data.title}
                         loading="lazy"
-                        transition:name={crc32base(photo.src)}
-                        transition:animate="initial"
-                        width={
-                            photo.aspect
-                                ? photo.aspect.split(":")[0]
-                                : undefined
-                        }
-                        height={
-                            photo.aspect
-                                ? photo.aspect.split(":")[1]
-                                : undefined
-                        }
-                        src={photo.src}
-                        alt={photo.alt ? photo.alt : data.title}
-                    />
-                )}
-                {photo?.img && photo.hide !== true && (
-                    <Picture
-                        class="cover-image"
-                        transition:name={crc32base(photo.img.src)}
-                        src={photo.img}
-                        alt={photo.alt ? photo.alt : data.title}
-                        formats={["avif", "webp", "jpg"]}
+                        transitionName={photoTransition}
+                        transitionAnimate="initial"
                     />
                 )}
             </a>

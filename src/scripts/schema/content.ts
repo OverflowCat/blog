@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
 import { ICON_PACKS_SET } from "../icons";
-import photo from "./photo";
+import imageObject from "./photo";
 import { decoration } from "../decoration";
 import type { SchemaContext } from "astro:content";
 
@@ -58,7 +58,12 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 			categories: TAG_TYPE,
 			tags: TAG_TYPE,
 			series: SERIES_TYPE,
-			photo: photo(ctx.image).optional(),
+			photo: imageObject(ctx.image).optional(),
+			// Open Graph image override. Omit → fall back to `photo`;
+			// `false` → suppress the OG image even if `photo` is set.
+			og: z.union([imageObject(ctx.image), z.literal(false)]).optional(),
+			// List-card thumbnail override. Same cascade semantics as `og`.
+			thumb: z.union([imageObject(ctx.image), z.literal(false)]).optional(),
 			date: z.coerce.date(),
 			// card: z.union([
 			// 	z.literal("mini"), // 1x1

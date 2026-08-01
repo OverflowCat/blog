@@ -4,7 +4,7 @@ title: 惊鸿一瞥：如何在鸿蒙上运行 Flutter Hello World
 date: "2026-03-16T09:52:58.704Z"
 photo:
   src: https://remnote-user-data.s3.amazonaws.com/w1UBINtz0Ex4opzd6p3O_aPdnSYqeyFK8dKvXloJg6dgr6AFtGAtHB7C9eHg5poAyCs75TSzOeKzzo8qGefkpBXuJ43Efmnh2TihkSOC3ry6IhdMPzO-mJlU37l8ivNT.jpeg
-  hide: list
+thumb: false
 noscript: true
 series: harmony
 licence: false

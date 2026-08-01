@@ -8,6 +8,7 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 import { getEntry } from "astro:content";
 import getCC from "@/scripts/cc";
 import { getImage } from "astro:assets";
+import { resolveOg } from "@/scripts/photo-resolve";
 import { render } from "astro:content";
 import "@/styles/manchu.less";
 
@@ -56,10 +57,11 @@ const metas: { [key: string]: string } = post.data.categories?.includes(
   : {
       "theme-color": "#111",
     };
-let image = post.data.photo?.src;
-if (post.data.photo?.img) {
+const ogImage = resolveOg(post.data);
+let image = ogImage?.src;
+if (ogImage?.img) {
   const got = await getImage({
-    src: post.data.photo.img,
+    src: ogImage.img,
   });
   image = got.src;
 }

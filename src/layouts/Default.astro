@@ -12,7 +12,8 @@ import type { Frontmatter } from "@/types";
 import { getEntry } from "astro:content";
 import { resolvePostId } from "@/scripts/post";
 import { getCatsInfo, getTagsInfo, getCatSlug } from "@/scripts/tags";
-import { Picture } from "astro:assets";
+import PhotoImage from "@/components/PhotoImage.astro";
+import { resolveCover } from "@/scripts/photo-resolve";
 
 function arrify<T>(x: T | T[]): T[] {
   return Array.isArray(x) ? x : [x];
@@ -35,7 +36,7 @@ if (showHeader && !entry) {
 }
 const cats = entry ? arrify(entry.categories) : [];
 const tags = entry ? arrify(entry.tags) : [];
-const cover = entry?.photo?.hide === true ? undefined : entry?.photo;
+const cover = entry ? resolveCover(entry) : undefined;
 const licence = entry?.licence ?? "CcByNc";
 const dateLabel = entry
   ? new Intl.DateTimeFormat("zh-CN", {
@@ -305,16 +306,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
       <>
         {cover && (
           <figure class="cover">
-            {cover.img !== undefined ? (
-              <Picture
-                id="cover"
-                src={cover.img}
-                alt={cover.alt ?? ""}
-                formats={["avif", "webp", "jpg"]}
-              />
-            ) : (
-              <img id="cover" src={cover.src} alt={cover.alt} />
-            )}
+            <PhotoImage image={cover} id="cover" />
             {cats[0] && (
               <a
                 class="cover-cat"

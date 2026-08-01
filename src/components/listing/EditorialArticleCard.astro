@@ -1,8 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Picture } from "astro:assets";
+import PhotoImage from "@/components/PhotoImage.astro";
 import Icon from "@/components/Icon.astro";
 import { getCatSlug } from "@/scripts/tags";
+import { resolveThumb } from "@/scripts/photo-resolve";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
 
@@ -13,15 +14,9 @@ export interface Props {
 
 const { post, index } = Astro.props;
 const { data } = post;
-const photo = data.photo;
+const photo = resolveThumb(data);
 const icon = data.icon;
-const hasPhoto = Boolean(
-  photo &&
-    photo.hide !== true &&
-    photo.hide !== "list" &&
-    photo.list !== false &&
-    (photo.src || photo.img),
-);
+const hasPhoto = Boolean(photo && (photo.src || photo.img));
 
 const declared = data.card;
 let variant = declared === "landscape" ? "wide" : declared;
@@ -68,27 +63,18 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     {
       hasPhoto && photo && (
         <div class="card-image">
-          {photo.img ? (
-            <Picture
-              src={photo.img}
-              alt={photo.alt ?? data.title}
-              widths={[480, 800, 1200]}
-              sizes={
-                variant === "wide"
-                  ? "(max-width: 580px) 100vw, 50vw"
-                  : "(max-width: 580px) 100vw, 25vw"
-              }
-              formats={["avif", "webp", "jpg"]}
-              loading={index < 6 ? "eager" : "lazy"}
-            />
-          ) : (
-            <img
-              src={photo.src}
-              alt={photo.alt ?? data.title}
-              loading={index < 6 ? "eager" : "lazy"}
-              fetchpriority={index < 3 ? "high" : "auto"}
-            />
-          )}
+          <PhotoImage
+            image={photo}
+            title={data.title}
+            widths={[480, 800, 1200]}
+            sizes={
+              variant === "wide"
+                ? "(max-width: 580px) 100vw, 50vw"
+                : "(max-width: 580px) 100vw, 25vw"
+            }
+            loading={index < 6 ? "eager" : "lazy"}
+            fetchpriority={index < 3 ? "high" : "auto"}
+          />
           {isOverlayCard && (
             <div class="image-meta" lang={data.lang === "mnc" ? "zh" : undefined}>
               <time datetime={dailyDate ?? data.date.toISOString()}>

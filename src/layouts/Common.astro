@@ -47,27 +47,19 @@ if (!frontmatter) {
 const { date } = frontmatter;
 const cats = arrify(frontmatter.categories);
 const tags = arrify(frontmatter.tags);
-const cover = frontmatter.photo?.hide === true ? undefined : frontmatter.photo;
+const cover = resolveCover(frontmatter);
 const licence = frontmatter.licence ?? "CcByNc";
 
 import "@/styles/article.less";
-import { Picture } from "astro:assets";
+import PhotoImage from "@/components/PhotoImage.astro";
+import { resolveCover } from "@/scripts/photo-resolve";
 import { getCatSlug } from "@/scripts/tags";
 ---
 
 {
   cover && (
     <figure class="cover">
-      {cover.img !== undefined ? (
-        <Picture
-          id="cover"
-          src={cover.img}
-          alt={cover.alt ?? ""}
-          formats={["avif", "webp", "jpg"]}
-        />
-      ) : (
-        <img id="cover" src={cover.src} alt={cover.alt} />
-      )}
+      <PhotoImage image={cover} id="cover" />
       {cover.caption && <figcaption set:html={cover.caption} />}
     </figure>
   )

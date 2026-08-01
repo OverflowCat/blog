@@ -1,0 +1,75 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageObject } from "@/scripts/schema/photo";
+
+/**
+ * Renders a resolved image object (`src` remote URL → plain `<img>`;
+ * `img` local asset → optimized `<Picture>`), centralizing the duplicated
+ * fork that previously appeared in every cover/card consumer.
+ *
+ * `alt` falls back to `title` then to "" (matches design.md: "alt 优先使用
+ * frontmatter 的 alt，缺失时回退到文章标题").
+ */
+interface Props {
+	image: ImageObject;
+	title?: string;
+	class?: string;
+	id?: string;
+	widths?: number[];
+	sizes?: string;
+	formats?: string[];
+	loading?: "lazy" | "eager";
+	fetchpriority?: "high" | "auto" | "low";
+	transitionName?: string;
+	transitionAnimate?: "initial" | "slide" | "fade" | "none";
+}
+
+const {
+	image,
+	title,
+	class: className,
+	id,
+	widths,
+	sizes,
+	formats = ["avif", "webp", "jpg"],
+	loading,
+	fetchpriority,
+	transitionName,
+	transitionAnimate,
+} = Astro.props;
+
+const alt = image.alt || title || "";
+const aspectParts = image.aspect?.split(":");
+const width = aspectParts?.[0];
+const height = aspectParts?.[1];
+---
+
+{image.img ? (
+	<Picture
+		class={className}
+		id={id}
+		src={image.img}
+		alt={alt}
+		widths={widths}
+		sizes={sizes}
+		formats={formats}
+		loading={loading}
+		fetchpriority={fetchpriority}
+		transition:name={transitionName}
+		transition:animate={transitionAnimate}
+	/>
+) : (
+	<img
+		class={className}
+		id={id}
+		src={image.src}
+		alt={alt}
+		width={width}
+		height={height}
+		loading={loading}
+		fetchpriority={fetchpriority}
+		transition:name={transitionName}
+		transition:animate={transitionAnimate}
+	/>
+)
+}
