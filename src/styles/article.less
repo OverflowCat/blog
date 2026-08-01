@@ -267,6 +267,18 @@ figure:has([data-tall-image]) img {
   max-height: 500px;
 }
 
+article#post > * {
+  &::selection {
+    color: #111;
+  }
+  &:nth-child(6n+1)::selection { background: light-dark(#f4a8a0, #c8544a); } // 红
+  &:nth-child(6n+2)::selection { background: light-dark(#f4c79e, #d68a4e); } // 橙
+  &:nth-child(6n+3)::selection { background: light-dark(#f0dca0, #d4b94e); } // 黄
+  &:nth-child(6n+4)::selection { background: light-dark(#b8d99e, #6fa862); } // 绿
+  &:nth-child(6n+5)::selection { background: light-dark(#a8cde0, #4a8db0); } // 蓝
+  &:nth-child(6n+6)::selection { background: light-dark(#d0b8e0, #9c6db0); } // 紫
+}
+
 // .katex {
 //   font-display: swap;
 // }

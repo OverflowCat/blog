@@ -242,7 +242,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
   /* === 正文黄色强调 === */
 
   .article-card ::selection {
-    background: var(--accent-yellow);
+    background: light-dark(color-mix(in srgb, var(--accent-yellow), white 35%), var(--accent-yellow));
     color: #111;
   }
 
