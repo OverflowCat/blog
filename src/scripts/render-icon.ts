@@ -33,10 +33,10 @@ function loadIconSet(prefix: string) {
 async function loadIcon(prefix: string, name: string) {
 	if (prefix) return getIconData(await loadIconSet(prefix), name);
 
-	const source = await readFile(
-		new URL(`../icons/${name}.svg`, import.meta.url),
-		"utf8",
-	);
+	// Resolve against the project root (CWD), not import.meta.url: during
+	// prerender import.meta.url points into dist/.prerender/chunks and the SVG
+	// is never copied there. Astro builds always run with CWD = project root.
+	const source = await readFile(`src/icons/${name}.svg`, "utf8");
 	return {
 		body: source,
 		width: Number.parseInt(
