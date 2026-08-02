@@ -53,7 +53,7 @@ jobs:
         with:
           # path: . # The root location of your Astro project inside the repository. (optional)
           node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-          package-manager: pnpm@11 # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+          # package-manager is intentionally unset: pnpm/action-setup reads the version from package.json's "packageManager" field (pnpm@11.5.0). Setting it here too causes "Multiple versions of pnpm specified".
   deploy:
     needs: build
     runs-on: ubuntu-latest

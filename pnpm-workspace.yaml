@@ -1,3 +1,6 @@
+packages:
+  - "."
+
 minimumReleaseAge: 0
 allowBuilds:
   '@carbon/colors': true
