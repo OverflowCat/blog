@@ -33,17 +33,26 @@ if (hasPhoto) {
 const tone =
   Array.from(post.id).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 4;
 const categories = data.categories ?? [];
-const dateLabel = new Intl.DateTimeFormat("zh-CN", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-}).format(data.date);
+const dateFormatter = new Intl.DateTimeFormat("zh-CN", { dateStyle: "long" });
+const dateLabel = dateFormatter.format(data.date);
 const isDaily = post.id.startsWith("daily/");
 const dailySeparator = isDaily ? data.title.indexOf(" / ") : -1;
 const dailyDate =
   dailySeparator >= 0 ? data.title.slice(0, dailySeparator) : undefined;
-const displayTitle =
+const dailyDateLabel = dailyDate
+  ? dateFormatter.format(new Date(`${dailyDate}T00:00:00`))
+  : undefined;
+let displayTitle =
   dailySeparator >= 0 ? data.title.slice(dailySeparator + 3) : data.title;
+let seriesTitle: string | undefined;
+if (data.series) {
+  const seriesSeparator = displayTitle.indexOf("：");
+  if (seriesSeparator < 1 || seriesSeparator === displayTitle.length - 1) {
+    throw new Error("Invalid title format. Expected 'Series：Main Title'.");
+  }
+  seriesTitle = displayTitle.slice(0, seriesSeparator);
+  displayTitle = displayTitle.slice(seriesSeparator + 1);
+}
 const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard");
 ---
 
@@ -78,7 +87,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
           {isOverlayCard && (
             <div class="image-meta" lang={data.lang === "mnc" ? "zh" : undefined}>
               <time datetime={dailyDate ?? data.date.toISOString()}>
-                {dailyDate ?? dateLabel}
+                {dailyDateLabel ?? dateLabel}
               </time>
               {icon && (
                 <span class="image-icon" aria-hidden="true">
@@ -106,7 +115,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
             )
           }
           <time datetime={dailyDate ?? data.date.toISOString()}>
-            {dailyDate ?? dateLabel}
+            {dailyDateLabel ?? dateLabel}
           </time>
         </div>
       )}
@@ -117,10 +126,32 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
           </span>
         )
       }
-      <h2 lang={data.lang}>{displayTitle}</h2>
+      <h2 lang={data.lang}>
+        {
+          seriesTitle && (
+            <span
+              class:list={[
+                "series-name",
+                data.series === "harmony"
+                  ? "series-name-harmony"
+                  : "series-name-default",
+              ]}
+            >
+              {seriesTitle}
+            </span>
+          )
+        }
+        {seriesTitle && " "}
+        <span>{displayTitle}</span>
+      </h2>
       {
         data.desc && (
-          <p lang={data.lang === "mnc" ? "zh" : undefined}>{data.desc}</p>
+          <p
+            class:list={{ "write-vertical-right": data.lang === "mnc" }}
+            lang={data.lang === "mnc" ? "zh" : undefined}
+          >
+            {data.desc}
+          </p>
         )
       }
     </div>
@@ -188,11 +219,14 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
 
   .lang-mnc .card-copy {
     flex: 1;
+    min-width: 0;
     min-height: 0;
+    writing-mode: vertical-lr;
   }
 
   .lang-mnc h2 {
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     min-height: 0;
     max-height: 100%;
     overflow: hidden;
@@ -201,8 +235,52 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     text-orientation: sideways;
   }
 
-  .lang-mnc .card-kicker {
-    writing-mode: horizontal-tb;
+  .lang-mnc .card-copy > p {
+    display: block;
+    flex-shrink: 1;
+    min-width: 0;
+    min-height: 0;
+    max-width: 45%;
+    max-height: 100%;
+    text-orientation: mixed;
+    -webkit-line-clamp: unset;
+  }
+
+  .lang-mnc.variant-mini .card-copy > p {
+    display: none;
+  }
+
+  .series-name {
+    display: inline-block;
+    margin-inline-end: 0.4em;
+    border: 1px solid;
+    border-radius: 0.375rem;
+    padding-block: 0.15em;
+    padding-inline: 0.45em;
+    font-size: 0.78em;
+    font-weight: 700;
+    line-height: 1.25;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      text-shadow 180ms ease;
+  }
+
+  .series-name-harmony {
+    border-color: light-dark(rgb(220 38 38 / 0.16), rgb(248 113 113 / 0.35));
+    background: light-dark(rgb(254 242 242 / 0.8), rgb(69 10 10 / 0.72));
+    color: light-dark(#dc2626, #fca5a5);
+  }
+
+  .series-name-default {
+    border-color: light-dark(rgb(22 163 74 / 0.22), rgb(74 222 128 / 0.34));
+    background: light-dark(rgb(240 253 244 / 0.8), rgb(5 46 22 / 0.72));
+    color: light-dark(#15803d, #86efac);
+  }
+
+  .editorial-card:hover .series-name,
+  .editorial-card:focus-within .series-name {
+    text-shadow: 0 1px 4px currentColor;
   }
 
   .editorial-card > a:first-child {
@@ -430,7 +508,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     gap: 0.75rem;
     color: currentColor;
     opacity: 0.66;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.25;
   }
