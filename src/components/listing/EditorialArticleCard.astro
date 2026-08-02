@@ -261,34 +261,22 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
   .series-name {
     display: inline-block;
     margin-inline-end: 0.4em;
-    border: 1px solid;
-    border-radius: 0.375rem;
     padding-block: 0.15em;
     padding-inline: 0.45em;
     font-size: 0.78em;
-    font-weight: 700;
+    font-weight: 750;
     line-height: 1.25;
-    transition:
-      color 180ms ease,
-      background-color 180ms ease,
-      text-shadow 180ms ease;
+    white-space: nowrap;
   }
 
   .series-name-harmony {
-    border-color: light-dark(rgb(220 38 38 / 0.16), rgb(248 113 113 / 0.35));
-    background: light-dark(rgb(254 242 242 / 0.8), rgb(69 10 10 / 0.72));
-    color: light-dark(#dc2626, #fca5a5);
+    background: light-dark(#c92b38, #ef5360);
+    color: light-dark(#fff, #171717);
   }
 
   .series-name-default {
-    border-color: light-dark(rgb(22 163 74 / 0.22), rgb(74 222 128 / 0.34));
-    background: light-dark(rgb(240 253 244 / 0.8), rgb(5 46 22 / 0.72));
-    color: light-dark(#15803d, #86efac);
-  }
-
-  .editorial-card:hover .series-name,
-  .editorial-card:focus-within .series-name {
-    text-shadow: 0 1px 4px currentColor;
+    background: light-dark(#171717, #f4f1eb);
+    color: light-dark(#f7f6f2, #171717);
   }
 
   .editorial-card > a:first-child {
