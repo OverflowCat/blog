@@ -36,8 +36,6 @@ export const ICON_PACKS = [
   "tabler",
 ] as const;
 
-export const ICON_PACKS_SET = new Set(ICON_PACKS) as Set<string>;
-
 export type IconSet = typeof ICON_PACKS[number];
 export type IconName = `${IconSet}:${string}` | `harmony-${string}`;
 export type AtomIconName = `i-${IconSet}:${string}`;

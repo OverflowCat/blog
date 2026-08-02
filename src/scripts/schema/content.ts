@@ -1,5 +1,4 @@
 import { z } from "astro/zod";
-import { ICON_PACKS_SET } from "../icons";
 import imageObject from "./photo";
 import { decoration } from "../decoration";
 import type { SchemaContext } from "astro:content";
@@ -82,13 +81,7 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 				.union([z.literal("public"), z.literal("unlisted")])
 				.optional(),
 			desc: z.string().optional(),
-			icon: z
-				.string()
-				.refine(
-					(x: string) =>
-						!x.includes(":") || ICON_PACKS_SET.has(x.split(":")[0]),
-				)
-				.optional(),
+			icon: z.string().optional(),
 			decoration: decoration.optional(),
 			lang: z
 				.union([
