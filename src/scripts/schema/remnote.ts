@@ -1,4 +1,4 @@
-import { z } from "astro:schema";
+import { z } from "astro/zod";
 import fs from "fs/promises";
 
 type Rem = {
