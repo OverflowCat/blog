@@ -1,0 +1,81 @@
+---
+import Icon from "@/components/Icon.astro";
+
+export interface Props {
+	emoji?: string;
+	icon?: string;
+	quote?: boolean;
+	scale?: number;
+}
+
+const { emoji = "🍓", icon, quote = true, scale = 1.6 } = Astro.props;
+const isImage = /^(https?:|\/|data:)/i.test(emoji);
+
+// paint(x, y, sizeIndex, opacity); sizeIndex 0/1/2 -> 12/16/20 px.
+// x is measured from the right edge; quote mode adds 12 to x.
+const sizes = [12, 16, 20];
+const base: [number, number, number, number][] = [
+	[28, 4, 2, 0.32],
+	[51, 15, 1, 0.32],
+	[64, -2, 0, 0.28],
+	[87, 11, 1, 0.24],
+	[125, -2, 2, 0.16],
+	[28, 31, 1, 0.24],
+	[72, 33, 2, 0.2],
+	[46, 52, 1, 0.24],
+	[24, 55, 2, 0.18],
+];
+const quoteOnly: [number, number, number, number][] = [
+	[4, 23, 1, 0.28],
+	[0, 48, 0, 0.24],
+];
+const points = quote ? [...base, ...quoteOnly] : base;
+const isQuoteOnly = (point: [number, number, number]) =>
+	quoteOnly.some(
+		([x, y, size]) => x === point[0] && y === point[1] && size === point[2],
+	);
+---
+
+<div class="tgbg__pattern" aria-hidden="true">
+	{
+		points.map(([x, y, size, opacity], index) => (
+			<span
+				class="tgbg__emoji"
+				data-x={x}
+				data-quote-only={isQuoteOnly([x, y, size]) ? "" : null}
+				style={`right:${(x + (quote ? 12 : 0)) * scale}px;top:${y * scale}px;font-size:${sizes[size] * scale}px;opacity:${opacity};--tgbg-spread-x:${Math.round((70 - x) * 0.28)}px;--tgbg-spread-y:${Math.round((y - 25) * 0.34)}px;--tgbg-rotate:${((index % 5) - 2) * 2.5}deg;--tgbg-delay:${(index % 4) * 24}ms;--tgbg-duration:${420 + (index % 3) * 80}ms`}
+			>
+				{icon ? (
+					<Icon name={icon} />
+				) : isImage ? (
+					<img class="tgbg__img" src={emoji} alt="" />
+				) : (
+					emoji
+				)}
+			</span>
+		))
+	}
+</div>
+
+<style>
+	.tgbg__pattern {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.tgbg__emoji {
+		position: absolute;
+		line-height: 1;
+		user-select: none;
+		filter: saturate(0.9);
+	}
+
+	.tgbg__emoji :global(svg),
+	.tgbg__emoji :global(.tgbg__img) {
+		display: block;
+		width: 1em;
+		height: 1em;
+		object-fit: contain;
+	}
+</style>

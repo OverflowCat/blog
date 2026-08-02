@@ -1,5 +1,6 @@
 ---
 title: 期中
+icon: "mdi:file-document-edit-outline"
 date: 2020-11-13T23:08:00+08:00
 noscript: true
 layout: "@/layouts/Default.astro"

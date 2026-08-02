@@ -1,5 +1,6 @@
 ---
 title: 在 Tauri 中实现鼠标穿透和透明窗口
+icon: "mdi:window-restore"
 date: 2022-12-29 21:18:34
 tags: Tauri
 categories: 页面仔的自我修养

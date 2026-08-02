@@ -1,5 +1,6 @@
 ---
 title: 截面的几何性质
+icon: "mdi:shape-outline"
 date: 2022-11-19 16:59:30
 tags: ["材料力学"]
 categories:

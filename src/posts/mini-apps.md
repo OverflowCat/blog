@@ -1,5 +1,6 @@
 ---
 title: 小程序平台一览
+icon: "ri:mini-program-line"
 date: 2025-01-20T17:39:43.688Z
 og:
   src: "/og/mini-apps.png"

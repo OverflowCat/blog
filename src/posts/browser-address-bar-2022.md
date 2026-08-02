@@ -1,5 +1,6 @@
 ---
 title: 我的浏览器地址栏中的 A – Z（2022）
+icon: "mdi:web"
 date: 2023-01-13 15:24:41
 layout: "@/layouts/Default.astro"
 noscript: true

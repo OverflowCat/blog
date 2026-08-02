@@ -1,5 +1,6 @@
 ---
 title: 拉普拉斯变换速查表
+icon: "mdi:function-variant"
 date: 2022-12-16T22:16:47.000Z
 categories: 动态列表
 tags:

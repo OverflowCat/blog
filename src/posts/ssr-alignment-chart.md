@@ -1,5 +1,6 @@
 ---
 title: 服务端渲染阵营九宫格
+icon: "mdi:grid-large"
 date: 2023-04-09 01:50:00
 og:
   src: https://user-images.githubusercontent.com/20166026/230737062-897858da-a1c4-4fc4-a0a2-cdd59dda3369.png # https://user-images.githubusercontent.com/20166026/230736978-8ee7171a-a6b3-4417-bcf0-729005e23aa8.png

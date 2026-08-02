@@ -1,5 +1,6 @@
 ---
 title: 「是的，我很好」
+icon: "ic:round-translate"
 date: 2022-11-18 22:49:48
 tags:
 - 多邻国

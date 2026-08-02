@@ -8,6 +8,7 @@
     //   hide: true,
     //   list: false,
     // ),
+    icon: "icon-park-outline:chart-histogram",
     noscript: true,
     licence: false,
     tags: "数字图像处理",

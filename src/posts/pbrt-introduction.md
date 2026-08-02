@@ -1,5 +1,6 @@
 ---
 title: PBRT 笔记：1. 绪论
+icon: "mdi:ray-start-end"
 date: 2023-01-15 03:33:40
 tags:
   - 光线追踪

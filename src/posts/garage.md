@@ -1,5 +1,6 @@
 ---
 title: 熟词生义
+icon: "mdi:book-alphabet"
 date: 2020-10-23 00:02:59
 tags: 英语
 categories: 题隙碎笔

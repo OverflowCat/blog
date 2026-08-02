@@ -10,6 +10,7 @@
     //   hide: true,
     //   list: false,
     // ),
+    icon: "material-symbols:tv-outline",
     noscript: true,
     licence: false,
     tags: "数字图像处理",

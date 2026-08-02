@@ -1,5 +1,6 @@
 ---
 title: 惊鸿一瞥：如何在鸿蒙上运行 Flutter Hello World
+icon: "simple-icons:flutter"
 # date: 2026-03-12T09:19:09.690Z
 date: "2026-03-16T09:52:58.704Z"
 photo:

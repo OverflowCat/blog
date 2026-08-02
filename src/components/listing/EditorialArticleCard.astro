@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import PhotoImage from "@/components/PhotoImage.astro";
 import Icon from "@/components/Icon.astro";
+import TelegramBackgroundPattern from "@/components/TelegramBackgroundPattern.astro";
 import { getCatSlug } from "@/scripts/tags";
 import { resolveThumb } from "@/scripts/photo-resolve";
 import "@/styles/manchu.less";
@@ -70,6 +71,13 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
 >
   <a href={`/${post.id}/`} transition:name={post.id} transition:animate="initial">
     {
+      !hasPhoto && icon && (
+        <div class="card-background-pattern">
+          <TelegramBackgroundPattern icon={icon} scale={2.2} />
+        </div>
+      )
+    }
+    {
       hasPhoto && photo && (
         <div class="card-image">
           <PhotoImage
@@ -120,7 +128,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
         </div>
       )}
       {
-        icon && (!hasPhoto || variant === "mini") && (
+        icon && hasPhoto && variant === "mini" && (
           <span class="card-icon" aria-hidden="true">
             <Icon name={icon} />
           </span>
@@ -293,7 +301,53 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
 
   .editorial-card:not(.has-photo) > a:first-child,
   .variant-mini > a:first-child {
+    position: relative;
     grid-template-rows: minmax(0, 1fr);
+  }
+
+  .card-background-pattern {
+    position: absolute;
+    z-index: 0;
+    inset-block: auto 0;
+    inset-inline: auto 0;
+    inline-size: min(100%, 21rem);
+    block-size: 10rem;
+    color: var(--card-accent);
+    opacity: 0.3;
+    pointer-events: none;
+    filter: saturate(0.85);
+    transition:
+      opacity 360ms ease,
+      filter 440ms ease;
+  }
+
+  .card-background-pattern :global(.tgbg__emoji) {
+    transform: translate3d(0, 0, 0) rotate(0) scale(0.96);
+    transition: transform var(--tgbg-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0ms;
+  }
+
+  .editorial-card:hover > a:first-child > .card-background-pattern,
+  .editorial-card:focus-within > a:first-child > .card-background-pattern {
+    opacity: 0.52;
+    filter: saturate(1.25);
+  }
+
+  .editorial-card:hover
+    > a:first-child
+    > .card-background-pattern
+    :global(.tgbg__emoji),
+  .editorial-card:focus-within
+    > a:first-child
+    > .card-background-pattern
+    :global(.tgbg__emoji) {
+    transform: translate3d(
+        var(--tgbg-spread-x),
+        var(--tgbg-spread-y),
+        0
+      )
+      rotate(var(--tgbg-rotate)) scale(1.06);
+    transition-delay: var(--tgbg-delay);
   }
 
   .variant-tall > a:first-child {
@@ -466,6 +520,8 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
   }
 
   .card-copy {
+    position: relative;
+    z-index: 1;
     min-block-size: 0;
     min-inline-size: 0;
     padding: clamp(0.75rem, 1.2vw, 1.15rem);
@@ -629,6 +685,8 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     .editorial-card::after,
     .card-image :global(img),
     .card-image::after,
+    .card-background-pattern,
+    .card-background-pattern :global(.tgbg__emoji),
     .card-icon,
     .image-icon,
     h2 {
