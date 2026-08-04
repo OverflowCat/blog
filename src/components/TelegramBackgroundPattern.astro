@@ -62,6 +62,18 @@ const isQuoteOnly = (point: [number, number, number]) =>
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
+		animation: reveal linear both;
+		animation-timeline: --tgbg-pattern;
+	}
+
+	@keyframes reveal {
+		from {
+			transform: translateY(-72px);
+		}
+
+		to {
+			transform: translateY(36px);
+		}
 	}
 
 	.tgbg__emoji {
@@ -77,5 +89,15 @@ const isQuoteOnly = (point: [number, number, number]) =>
 		width: 1em;
 		height: 1em;
 		object-fit: contain;
+	}
+
+	:global(html#vert:target) .tgbg__pattern {
+		animation: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tgbg__pattern {
+			animation: none;
+		}
 	}
 </style>

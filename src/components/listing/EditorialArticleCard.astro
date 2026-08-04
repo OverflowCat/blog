@@ -192,6 +192,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     background: light-dark(#f7f6f2, #202020);
     color: light-dark(#111, #f4f1eb);
     overflow: hidden;
+    view-timeline: --tgbg-pattern block;
     content-visibility: auto;
     contain-intrinsic-size: auto 360px;
     transition:
@@ -648,6 +649,10 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
     .editorial-card {
       block-size: auto;
       min-block-size: 18rem;
+    }
+
+    .editorial-card > a:first-child {
+      min-block-size: inherit;
     }
 
     .variant-mini {
