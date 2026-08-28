@@ -1,4 +1,30 @@
 const data = {
+  "common": {
+    "article": {
+      "en": "Article",
+      "zh": "文章",
+      "juai": "文章",
+      "mnc": "ᠪᡳᡨᡥᡝ",
+      "ja": "記事",
+      "za": "Faenzcieng",
+    },
+    "category": {
+      "en": "Category",
+      "zh": "分类",
+      "juai": "分類",
+      "mnc": "ᡥᠠᠴᡳᠨ",
+      "ja": "カテゴリー",
+      "za": "Faendingz",
+    },
+    "tag": {
+      "en": "Tags",
+      "zh": "标签",
+      "juai": "標籤",
+      "mnc": "ᡨᡝᠮᡤᡝᡨᡠ",
+      "ja": "タグ",
+      "za": "Biuciem",
+    },
+  },
   "comments": {
     "title": {
       "en": "Comments",
@@ -172,9 +198,16 @@ const data = {
         "どう思いますか？",
         "ホストにメッセージを残してね～"
       ],
+      "za": [],
     },
   }
 }
+
+const languageAliases: Record<string, string> = {
+  cmn: "zh",
+  "zh-Hans": "zh",
+  "zh-Hant": "zh",
+};
 
 // Helper type to check if an object is a language container.
 type IsLanguageContainer<T> =
@@ -224,11 +257,17 @@ export function _t(lang: string) {
     }
 
     // 'result' is now the language container (e.g., { en: 'Home', fr: 'Accueil' })
-    if (typeof result === "object" && result !== null && lang in result) {
-      return (result as Record<string, TranslationValue<K>>)[lang];
+    if (typeof result === "object" && result !== null) {
+      const translations = result as Record<string, TranslationValue<K>>;
+      const candidates = [lang, languageAliases[lang], "zh"];
+      for (const candidate of candidates) {
+        if (candidate && candidate in translations) {
+          return translations[candidate];
+        }
+      }
     }
 
-    // Fallback: If the specific language is not found, return the key
+    // Fallback: keep the key visible when the default translation is missing.
     return key as TranslationValue<K>;
   }
 }

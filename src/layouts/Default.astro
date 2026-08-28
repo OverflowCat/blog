@@ -14,6 +14,7 @@ import { resolvePostId } from "@/scripts/post";
 import { getCatsInfo, getTagsInfo, getCatSlug } from "@/scripts/tags";
 import PhotoImage from "@/components/PhotoImage.astro";
 import { resolveCover } from "@/scripts/photo-resolve";
+import { _t } from "@/scripts/i18n";
 
 function arrify<T>(x: T | T[]): T[] {
   return Array.isArray(x) ? x : [x];
@@ -46,6 +47,7 @@ const dateLabel = entry
     }).format(entry.date)
   : "";
 const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
+const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
 ---
 
 {Astro.locals.renderer === 'rss' ?
@@ -311,7 +313,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
               <a
                 class="cover-cat"
                 href={`/categories/${getCatSlug(cats[0])}/`}
-                aria-label={`查看分类：${cats[0]}`}
+                aria-label={`${t("common.category")}: ${cats[0]}`}
                 lang={mncFallback}
               >
                 {cats[0]}
@@ -327,7 +329,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
                 {cats[0]}
               </a>
             ) : (
-              <span class="kicker-cat">文章</span>
+              <span class="kicker-cat">{t("common.article")}</span>
             )}
             <time datetime={entry.date as unknown as string}>{dateLabel}</time>
           </div>
@@ -344,7 +346,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
           <aside class="head-meta" lang={mncFallback}>
             {!!cats.length && (
               <div class="meta-row">
-                <span class="meta-label">分类</span>
+                <span class="meta-label">{t("common.category")}</span>
                 <span class="meta-values">
                   {cats.map((cat) => (
                     <a href={`/categories/${getCatSlug(cat)}/`}>
@@ -356,7 +358,7 @@ const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
             )}
             {!!tags.length && (
               <div class="meta-row">
-                <span class="meta-label">标签</span>
+                <span class="meta-label">{t("common.tag")}</span>
                 <span class="meta-values">
                   {tags.map((tag) => (
                     <a href={`/tags/${tag}/`}>

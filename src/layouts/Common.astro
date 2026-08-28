@@ -6,6 +6,7 @@ import type { IconName } from "@/scripts/icons";
 import Icon from "@/components/Icon.astro";
 import { getEntry } from "astro:content";
 import { getCatsInfo, getTagsInfo } from "@/scripts/tags";
+import { _t } from "@/scripts/i18n";
 export interface Props {
   layoutProps: {
     url?: string;
@@ -49,6 +50,7 @@ const cats = arrify(frontmatter.categories);
 const tags = arrify(frontmatter.tags);
 const cover = resolveCover(frontmatter);
 const licence = frontmatter.licence ?? "CcByNc";
+const t = _t(frontmatter.lang ?? "cmn");
 
 import "@/styles/article.less";
 import PhotoImage from "@/components/PhotoImage.astro";
@@ -89,7 +91,7 @@ import { getCatSlug } from "@/scripts/tags";
       <div>
         {/* <div class:list={[icons.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div> */}
         <Icon name={icons.category} class="icon" />
-        分类：
+        {t("common.category")}：
         {cats.map((cat) => (
           <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
             {cat} <sup>{getCatsInfo().get(cat)}</sup>
@@ -103,7 +105,7 @@ import { getCatSlug } from "@/scripts/tags";
       <div>
         {/* <div class:list={[icons.tag ?? 'i-pixelarticons:label', 'icon']}></div> */}
         <Icon name={icons.tag} class="icon" />
-        标签：
+        {t("common.tag")}：
         {tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>
             {tag} <sup>{getTagsInfo().get(tag)}</sup>

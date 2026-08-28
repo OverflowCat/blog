@@ -7,6 +7,7 @@ import { getCatSlug } from "@/scripts/tags";
 import { resolveThumb } from "@/scripts/photo-resolve";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
+import { _t } from "@/scripts/i18n";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -15,6 +16,7 @@ export interface Props {
 
 const { post, index } = Astro.props;
 const { data } = post;
+const t = _t(data.lang ?? "cmn");
 const photo = resolveThumb(data);
 const icon = data.icon;
 const hasPhoto = Boolean(photo && (photo.src || photo.img));
@@ -119,7 +121,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
         <div class="card-kicker" lang={data.lang === "mnc" ? "zh" : undefined}>
           {
             (!hasPhoto || variant === "mini") && (
-              <span>{categories.length > 0 ? categories[0] : "文章"}</span>
+              <span>{categories.length > 0 ? categories[0] : t("common.article")}</span>
             )
           }
           <time datetime={dailyDate ?? data.date.toISOString()}>
@@ -169,7 +171,7 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
       <a
         class="category-link"
         href={`/categories/${getCatSlug(categories[0])}/`}
-        aria-label={`查看分类：${categories[0]}`}
+        aria-label={`${t("common.category")}: ${categories[0]}`}
         lang={data.lang === "mnc" ? "zh" : undefined}
       >
         {categories[0]}

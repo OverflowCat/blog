@@ -5,6 +5,7 @@ import { Tag, Grid, Column, Stack } from "@carbon/react";
 import { Calendar, Folder, Tag as TagIcon } from "@carbon/icons-react";
 import "./CarbonCommon.scss";
 import type { ImageObject } from "@/scripts/schema/photo";
+import { _t } from "@/scripts/i18n";
 
 interface CarbonCommonProps {
 	frontmatter: {
@@ -17,6 +18,7 @@ interface CarbonCommonProps {
 	};
 	children: React.ReactNode;
 	postId?: string;
+	lang?: string;
 }
 
 function arrify<T>(x: T | T[] | undefined): T[] {
@@ -28,7 +30,9 @@ export default function CarbonCommon({
 	frontmatter,
 	children,
 	postId,
+	lang = "cmn",
 }: CarbonCommonProps) {
+	const t = _t(lang);
 	const cats = arrify(frontmatter.categories);
 	const tags = arrify(frontmatter.tags);
 	// Carbon layout renders `photo` as the cover (src-only `<img>` by design —
@@ -84,7 +88,7 @@ export default function CarbonCommon({
 						{cats.length > 0 && (
 							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
 								<Folder size={16} />
-								<span style={{ fontSize: "0.875rem" }}>分类：</span>
+							<span style={{ fontSize: "0.875rem" }}>{t("common.category")}：</span>
 								{cats.map((cat) => (
 									<a key={cat} href={`/categories/${getCatSlug(cat)}/`} style={{ textDecoration: "none" }}>
 										<Tag type="blue" size="sm">
@@ -98,7 +102,7 @@ export default function CarbonCommon({
 						{tags.length > 0 && (
 							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
 								<TagIcon size={16} />
-								<span style={{ fontSize: "0.875rem" }}>标签：</span>
+								<span style={{ fontSize: "0.875rem" }}>{t("common.tag")}：</span>
 								{tags.map((tag) => (
 									<a key={tag} href={`/tags/${tag}/`} style={{ textDecoration: "none" }}>
 										<Tag type="purple" size="sm">

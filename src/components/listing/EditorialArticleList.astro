@@ -4,16 +4,19 @@ import EditorialComments from "@/components/listing/EditorialComments.astro";
 import EditorialSidebar from "@/components/listing/EditorialSidebar.astro";
 import { getBlogPosts } from "@/scripts/post";
 import ListingPage from "@/templates/ListingPage.astro";
+import { _t } from "@/scripts/i18n";
 
 export interface Props {
   type?: "tag" | "category";
   name?: string;
   title: string;
   active?: "home" | "archives";
+  lang?: string;
 }
 
 let posts = await getBlogPosts();
-const { type, name, title, active } = Astro.props;
+const { type, name, title, active, lang = "cmn" } = Astro.props;
+const t = _t(lang);
 
 if (type && name) {
   posts = posts.filter((post) => {
@@ -26,7 +29,7 @@ if (active === "home") {
   posts = posts.filter((post) => post.data.visibility !== "unlisted");
 }
 
-const listLabel = title || "文章列表";
+const listLabel = title || t("common.article");
 ---
 
 <ListingPage title={title} active={active}>
@@ -34,7 +37,7 @@ const listLabel = title || "文章列表";
     {
       active === "home" && (
         <div class="home-rail">
-          <EditorialSidebar />
+          <EditorialSidebar lang={lang} />
           <EditorialComments />
         </div>
       )

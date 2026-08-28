@@ -63,6 +63,7 @@ export default function CarbonLayout({
 									<CarbonCommon
 										frontmatter={frontmatter}
 										postId={postId}
+										lang={frontmatter.lang ?? "cmn"}
 									>
 										{children}
 									</CarbonCommon>
@@ -83,9 +84,10 @@ export default function CarbonLayout({
 						classes={classes}
 					>
 						{showCommon && frontmatter && url !== "/about" ? (
-							<CarbonCommon
-								frontmatter={frontmatter}
-								postId={postId}
+								<CarbonCommon
+									frontmatter={frontmatter}
+									postId={postId}
+									lang={frontmatter.lang ?? "cmn"}
 							>
 								{children}
 							</CarbonCommon>

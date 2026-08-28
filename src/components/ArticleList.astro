@@ -7,6 +7,7 @@ import CommentList from "@/components/CommentList.astro";
 import Paper from "./Paper.astro";
 import CatCloud from "./sidebar/CatCloud.astro";
 import TagCloud from "./sidebar/TagCloud.astro";
+import { _t } from "@/scripts/i18n";
 
 export interface Props {
   type?: "tag" | "category";
@@ -27,6 +28,7 @@ let posts = (await getBlogPosts()).sort(
 const { type, name, simple, title, bar } = Astro.props;
 
 const year = Astro.props.year !== false;
+const t = _t("cmn");
 
 if (type && name) {
   posts = posts.filter((post) => {
@@ -80,9 +82,9 @@ const _posts = posts
     {
       type && (
         <>
-          <h3 class="text-align-center m-2" transition:name="tag-title">标签</h3>
+          <h3 class="text-align-center m-2" transition:name="tag-title">{t("common.tag")}</h3>
           <TagCloud />
-          <h3 class="text-align-center m-2" transition:name="cat-title">分类</h3>
+          <h3 class="text-align-center m-2" transition:name="cat-title">{t("common.category")}</h3>
           <CatCloud />
         </>
       )
@@ -96,9 +98,9 @@ const _posts = posts
           <CommentList />
         </Paper>
         <Paper padding={true}>
-          <h3 class="text-align-center m-2" transition:name="tag-title">标签</h3>
+          <h3 class="text-align-center m-2" transition:name="tag-title">{t("common.tag")}</h3>
           <TagCloud />
-          <h3 class="text-align-center m-2" transition:name="cat-title">分类</h3>
+          <h3 class="text-align-center m-2" transition:name="cat-title">{t("common.category")}</h3>
           <CatCloud />
         </Paper>
       </Fragment>

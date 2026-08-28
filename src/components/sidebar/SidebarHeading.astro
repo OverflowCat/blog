@@ -1,14 +1,17 @@
 ---
 export interface Props {
   id?: string;
-  prefix: string;
-  suffix: string;
+  prefix?: string;
+  suffix?: string;
+  text?: string;
 }
 
-const { id, prefix, suffix } = Astro.props;
+const { id, prefix, suffix, text } = Astro.props;
 ---
 
-<h3 id={id} class="sidebar-heading">{prefix}<mark>门</mark>{suffix}</h3>
+<h3 id={id} class="sidebar-heading">
+  {text ?? <>{prefix}<mark>门</mark>{suffix}</>}
+</h3>
 
 <style lang="less">
   .sidebar-heading {

@@ -1,6 +1,7 @@
 ---
 import { getTagsInfo } from "@/scripts/tags";
 import EditorialArticleList from "@/components/listing/EditorialArticleList.astro";
+import { _t } from "@/scripts/i18n";
 
 export async function getStaticPaths() {
     const tags = Array.from(await getTagsInfo()).map(([tag, _count]) => tag);
@@ -15,6 +16,12 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
+const t = _t("cmn");
 ---
 
-<EditorialArticleList type="tag" name={tag} title={`标签：${tag}`} />
+<EditorialArticleList
+    type="tag"
+    name={tag}
+    title={`${t("common.tag")}：${tag}`}
+    lang="cmn"
+/>

@@ -5,6 +5,13 @@ import AuthorInfo from "@/components/sidebar/AuthorInfo.astro";
 import Search from "@/components/sidebar/Search.astro";
 import SidebarHeading from "@/components/sidebar/SidebarHeading.astro";
 import { getCatsInfo, getCatSlug, getTagsInfo } from "@/scripts/tags";
+import { _t } from "@/scripts/i18n";
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = "cmn" } = Astro.props;
 
 const categories = Array.from(getCatsInfo())
   .sort((a, b) => b[1] - a[1]);
@@ -16,6 +23,7 @@ const socialLinks = [
   { href: "mailto:overflowcat+blog@gmail.com", icon: "mdi:email", label: "邮件" },
   { href: "/atom.xml", icon: "mdi:rss", label: "RSS" },
 ];
+const t = _t(lang);
 ---
 
 <aside class="editorial-sidebar" aria-label="站点信息与内容导航">
@@ -40,8 +48,7 @@ const socialLinks = [
   <section class="sidebar-section" aria-labelledby="sidebar-categories-title">
     <SidebarHeading
       id="sidebar-categories-title"
-      prefix="分"
-      suffix="别类"
+      text={t("common.category")}
     />
     <ul class="category-list">
       {
@@ -58,7 +65,7 @@ const socialLinks = [
   </section>
 
   <section class="sidebar-section" aria-labelledby="sidebar-tags-title">
-    <SidebarHeading id="sidebar-tags-title" prefix="五花八" suffix="" />
+    <SidebarHeading id="sidebar-tags-title" text={t("common.tag")} />
     <div class="tag-list">
       {
         tags.map(([tag, count]) => (
