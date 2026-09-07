@@ -200,8 +200,22 @@ export const taxonomyData = {
 			},
 			slug: "maimai",
 		},
+		taiko: {
+			t: {
+				cmn: "太鼓达人",
+				en: "Taiko no Tatsujin",
+			},
+			slug: "taiko",
+		},
+		e5: {
+			t: {
+				cmn: "E舞成名",
+			}
+		},
 		数字图像处理: {
-			t: {},
+			t: {
+				en: "Digital Image Processing",
+			},
 		},
 		数学: {
 			t: {},
@@ -213,7 +227,9 @@ export const taxonomyData = {
 			t: {},
 		},
 		微信: {
-			t: {},
+			t: {
+				en: "WeChat",
+			},
 		},
 		误差理论: {
 			t: {},
@@ -236,6 +252,8 @@ export const taxonomyData = {
 		越南語: {
 			t: {
 				juai: "越南語",
+				en: "Vietnamese",
+				ja: "ベトナム語",
 			},
 		},
 		制导与控制基础: {
