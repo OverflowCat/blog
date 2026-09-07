@@ -3,15 +3,15 @@ import type { CollectionEntry } from "astro:content";
 import PhotoImage from "@/components/PhotoImage.astro";
 import Icon from "@/components/Icon.astro";
 import TelegramBackgroundPattern from "@/components/TelegramBackgroundPattern.astro";
-import { getCatSlug } from "@/scripts/tags";
+import { getCatLabel, getCatSlug } from "@/scripts/tags";
 import { resolveThumb } from "@/scripts/photo-resolve";
 import "@/styles/manchu.less";
 import "@fontsource/noto-sans-mongolian";
 import { _t } from "@/scripts/i18n";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
-  index: number;
+	post: CollectionEntry<"blog">;
+	index: number;
 }
 
 const { post, index } = Astro.props;
@@ -24,39 +24,40 @@ const hasPhoto = Boolean(photo && (photo.src || photo.img));
 const declared = data.card;
 let variant = declared === "landscape" ? "wide" : declared;
 if (hasPhoto) {
-  if (variant === "wide" || variant === "tall") {
-    // keep declared
-  } else if (index % 9 === 0) variant = "wide";
-  else if (index % 7 === 0) variant = "tall";
-  else variant = "standard";
+	if (variant === "wide" || variant === "tall") {
+		// keep declared
+	} else if (index % 9 === 0) variant = "wide";
+	else if (index % 7 === 0) variant = "tall";
+	else variant = "standard";
 } else {
-  if (!variant || !["mini", "text"].includes(variant)) variant = "text";
+	if (!variant || !["mini", "text"].includes(variant)) variant = "text";
 }
 
 const tone =
-  Array.from(post.id).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 4;
+	Array.from(post.id).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 4;
 const categories = data.categories ?? [];
 const dateFormatter = new Intl.DateTimeFormat("zh-CN", { dateStyle: "long" });
 const dateLabel = dateFormatter.format(data.date);
 const isDaily = post.id.startsWith("daily/");
 const dailySeparator = isDaily ? data.title.indexOf(" / ") : -1;
 const dailyDate =
-  dailySeparator >= 0 ? data.title.slice(0, dailySeparator) : undefined;
+	dailySeparator >= 0 ? data.title.slice(0, dailySeparator) : undefined;
 const dailyDateLabel = dailyDate
-  ? dateFormatter.format(new Date(`${dailyDate}T00:00:00`))
-  : undefined;
+	? dateFormatter.format(new Date(`${dailyDate}T00:00:00`))
+	: undefined;
 let displayTitle =
-  dailySeparator >= 0 ? data.title.slice(dailySeparator + 3) : data.title;
+	dailySeparator >= 0 ? data.title.slice(dailySeparator + 3) : data.title;
 let seriesTitle: string | undefined;
 if (data.series) {
-  const seriesSeparator = displayTitle.indexOf("：");
-  if (seriesSeparator < 1 || seriesSeparator === displayTitle.length - 1) {
-    throw new Error("Invalid title format. Expected 'Series：Main Title'.");
-  }
-  seriesTitle = displayTitle.slice(0, seriesSeparator);
-  displayTitle = displayTitle.slice(seriesSeparator + 1);
+	const seriesSeparator = displayTitle.indexOf("：");
+	if (seriesSeparator < 1 || seriesSeparator === displayTitle.length - 1) {
+		throw new Error("Invalid title format. Expected 'Series：Main Title'.");
+	}
+	seriesTitle = displayTitle.slice(0, seriesSeparator);
+	displayTitle = displayTitle.slice(seriesSeparator + 1);
 }
-const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard");
+const isOverlayCard =
+	hasPhoto && (variant === "wide" || variant === "standard");
 ---
 
 <article
@@ -121,7 +122,11 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
         <div class="card-kicker" lang={data.lang === "mnc" ? "zh" : undefined}>
           {
             (!hasPhoto || variant === "mini") && (
-              <span>{categories.length > 0 ? categories[0] : t("common.article")}</span>
+              <span>
+                {categories.length > 0
+                  ? getCatLabel(categories[0], data.lang ?? "cmn")
+                  : t("common.article")}
+              </span>
             )
           }
           <time datetime={dailyDate ?? data.date.toISOString()}>
@@ -171,10 +176,10 @@ const isOverlayCard = hasPhoto && (variant === "wide" || variant === "standard")
       <a
         class="category-link"
         href={`/categories/${getCatSlug(categories[0])}/`}
-        aria-label={`${t("common.category")}: ${categories[0]}`}
+        aria-label={`${t("common.category")}: ${getCatLabel(categories[0], data.lang ?? "cmn")}`}
         lang={data.lang === "mnc" ? "zh" : undefined}
       >
-        {categories[0]}
+        {getCatLabel(categories[0], data.lang ?? "cmn")}
       </a>
     )
   }

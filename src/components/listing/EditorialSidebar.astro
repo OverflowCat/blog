@@ -4,24 +4,37 @@ import DailyCalendar from "@/components/listing/DailyCalendar.astro";
 import AuthorInfo from "@/components/sidebar/AuthorInfo.astro";
 import Search from "@/components/sidebar/Search.astro";
 import SidebarHeading from "@/components/sidebar/SidebarHeading.astro";
-import { getCatsInfo, getCatSlug, getTagsInfo } from "@/scripts/tags";
+import {
+	getCatLabel,
+	getCatsInfo,
+	getCatSlug,
+	getTagLabel,
+	getTagSlug,
+	getTagsInfo,
+} from "@/scripts/tags";
 import { _t } from "@/scripts/i18n";
 
 export interface Props {
-  lang?: string;
+	lang?: string;
 }
 
 const { lang = "cmn" } = Astro.props;
 
-const categories = Array.from(getCatsInfo())
-  .sort((a, b) => b[1] - a[1]);
-const tags = Array.from(getTagsInfo())
-  .sort((a, b) => b[1] - a[1]);
+const categories = Array.from(getCatsInfo()).sort((a, b) => b[1] - a[1]);
+const tags = Array.from(getTagsInfo()).sort((a, b) => b[1] - a[1]);
 const socialLinks = [
-  { href: "https://github.com/OverflowCat", icon: "ri:github-fill", label: "GitHub" },
-  { href: "https://t.me/OverflowCat", icon: "mdi:telegram", label: "Telegram" },
-  { href: "mailto:overflowcat+blog@gmail.com", icon: "mdi:email", label: "邮件" },
-  { href: "/atom.xml", icon: "mdi:rss", label: "RSS" },
+	{
+		href: "https://github.com/OverflowCat",
+		icon: "ri:github-fill",
+		label: "GitHub",
+	},
+	{ href: "https://t.me/OverflowCat", icon: "mdi:telegram", label: "Telegram" },
+	{
+		href: "mailto:overflowcat+blog@gmail.com",
+		icon: "mdi:email",
+		label: "邮件",
+	},
+	{ href: "/atom.xml", icon: "mdi:rss", label: "RSS" },
 ];
 const t = _t(lang);
 ---
@@ -55,7 +68,7 @@ const t = _t(lang);
         categories.map(([category, count]) => (
           <li>
             <a href={`/categories/${getCatSlug(category)}/`}>
-              <span>{category}</span>
+              <span>{getCatLabel(category, lang)}</span>
               <small>{count}</small>
             </a>
           </li>
@@ -69,8 +82,8 @@ const t = _t(lang);
     <div class="tag-list">
       {
         tags.map(([tag, count]) => (
-          <a href={`/tags/${tag}/`}>
-            {tag}<small>{count}</small>
+          <a href={`/tags/${getTagSlug(tag)}/`}>
+            {getTagLabel(tag, lang)}<small>{count}</small>
           </a>
         ))
       }

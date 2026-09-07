@@ -5,37 +5,44 @@ import LicenceBox from "@/components/licences/LicenceBox.astro";
 import type { IconName } from "@/scripts/icons";
 import Icon from "@/components/Icon.astro";
 import { getEntry } from "astro:content";
-import { getCatsInfo, getTagsInfo } from "@/scripts/tags";
+import {
+	getCatLabel,
+	getCatsInfo,
+	getCatSlug,
+	getTagLabel,
+	getTagSlug,
+	getTagsInfo,
+} from "@/scripts/tags";
 import { _t } from "@/scripts/i18n";
 export interface Props {
-  layoutProps: {
-    url?: string;
-    file?: string;
-    frontmatter?: Frontmatter;
-  };
-  icons?: {
-    calendar: IconName;
-    category: IconName;
-    tag: IconName;
-  };
+	layoutProps: {
+		url?: string;
+		file?: string;
+		frontmatter?: Frontmatter;
+	};
+	icons?: {
+		calendar: IconName;
+		category: IconName;
+		tag: IconName;
+	};
 }
 function arrify<T>(x: T | T[]): T[] {
-  return Array.isArray(x) ? x : [x];
+	return Array.isArray(x) ? x : [x];
 }
 
 let { icons, layoutProps } = Astro.props;
 if (String(layoutProps.frontmatter?.categories).includes("惊鸿一瞥")) {
-  icons = {
-    calendar: "harmony-calendar-badge-clock",
-    category: "harmony-folder-badge-plus",
-    tag: "harmony-label",
-  };
+	icons = {
+		calendar: "harmony-calendar-badge-clock",
+		category: "harmony-folder-badge-plus",
+		tag: "harmony-label",
+	};
 } else if (!icons) {
-  icons = {
-    calendar: "mdi:date-range",
-    category: "pixelarticons:folder-plus",
-    tag: "pixelarticons:label",
-  };
+	icons = {
+		calendar: "mdi:date-range",
+		category: "pixelarticons:folder-plus",
+		tag: "pixelarticons:label",
+	};
 }
 const { url, file } = layoutProps;
 import { resolvePostId } from "@/scripts/post";
@@ -43,7 +50,7 @@ const id = resolvePostId(url ?? file ?? Astro.url.pathname);
 
 const frontmatter = (await getEntry("blog", id))?.data;
 if (!frontmatter) {
-  throw new Error(`Post ${id} not found.`);
+	throw new Error(`Post ${id} not found.`);
 }
 const { date } = frontmatter;
 const cats = arrify(frontmatter.categories);
@@ -55,7 +62,6 @@ const t = _t(frontmatter.lang ?? "cmn");
 import "@/styles/article.less";
 import PhotoImage from "@/components/PhotoImage.astro";
 import { resolveCover } from "@/scripts/photo-resolve";
-import { getCatSlug } from "@/scripts/tags";
 ---
 
 {
@@ -94,7 +100,7 @@ import { getCatSlug } from "@/scripts/tags";
         {t("common.category")}：
         {cats.map((cat) => (
           <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
-            {cat} <sup>{getCatsInfo().get(cat)}</sup>
+            {getCatLabel(cat, frontmatter.lang ?? "cmn")} <sup>{getCatsInfo().get(cat)}</sup>
           </a>
         ))}
       </div>
@@ -107,8 +113,8 @@ import { getCatSlug } from "@/scripts/tags";
         <Icon name={icons.tag} class="icon" />
         {t("common.tag")}：
         {tags.map((tag) => (
-          <a class="tag" href={`/tags/${tag}/`}>
-            {tag} <sup>{getTagsInfo().get(tag)}</sup>
+          <a class="tag" href={`/tags/${getTagSlug(tag)}/`}>
+            {getTagLabel(tag, frontmatter.lang ?? "cmn")} <sup>{getTagsInfo().get(tag)}</sup>
           </a>
         ))}
       </div>

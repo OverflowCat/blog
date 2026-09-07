@@ -10,6 +10,7 @@ import Paper from "@/components/Paper.astro";
 import { getIconName } from "@/scripts/icons";
 import { resolveThumb } from "@/scripts/photo-resolve";
 import { crc32base } from "@/scripts/serendipity";
+import { getCatLabel, getTagLabel, getTagSlug } from "@/scripts/tags";
 import "@/styles/title.less";
 import "@/styles/icon.less";
 
@@ -33,8 +34,8 @@ if (data.series) {
 	seriesTitle = series;
 	title = main;
 } else if (title.includes(" / ")) {
-    seriesTitle = title.split(" / ")[0];
-    title = title.split(" / ")[1];
+	seriesTitle = title.split(" / ")[0];
+	title = title.split(" / ")[1];
 }
 
 let card = data.card;
@@ -130,7 +131,7 @@ const cardClasses = [
                 {
                     primaryCategory && (
                         <span class="pill pill-category">
-                            {primaryCategory}
+                            {getCatLabel(primaryCategory, data.lang ?? "cmn")}
                         </span>
                     )
                 }
@@ -149,7 +150,9 @@ const cardClasses = [
             {footTags.length > 0 && !primaryCategory && <div class="card-foot">
                 <div class="foot-tags">
                     {footTags.map((tag) => (
-                        <a class="foot-tag" href={`/tags/${tag}`}>{tag}</a>
+                        <a class="foot-tag" href={`/tags/${getTagSlug(tag)}`}>
+                            {getTagLabel(tag, data.lang ?? "cmn")}
+                        </a>
                     ))}
                 </div>
             <a

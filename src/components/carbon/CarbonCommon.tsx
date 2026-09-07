@@ -6,6 +6,12 @@ import { Calendar, Folder, Tag as TagIcon } from "@carbon/icons-react";
 import "./CarbonCommon.scss";
 import type { ImageObject } from "@/scripts/schema/photo";
 import { _t } from "@/scripts/i18n";
+import {
+	getCatLabel,
+	getCatSlug,
+	getTagLabel,
+	getTagSlug,
+} from "@/scripts/taxonomy-data";
 
 interface CarbonCommonProps {
 	frontmatter: {
@@ -38,8 +44,6 @@ export default function CarbonCommon({
 	// Carbon layout renders `photo` as the cover (src-only `<img>` by design —
 	// no `<Picture>`/astro:assets pulled into this React island).
 	const cover = frontmatter.photo;
-
-	const getCatSlug = (cat: string) => cat.toLowerCase().replace(/\s+/g, "-");
 
 	return (
 		<Grid fullWidth narrow>
@@ -74,7 +78,9 @@ export default function CarbonCommon({
 					)}
 
 					<Stack gap={4} className="info-section">
-						<div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+						<div
+							style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+						>
 							<Calendar size={16} />
 							<span style={{ fontSize: "0.875rem" }}>日期：</span>
 							<time
@@ -86,13 +92,26 @@ export default function CarbonCommon({
 						</div>
 
 						{cats.length > 0 && (
-							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+							<div
+								style={{
+									display: "flex",
+									alignItems: "center",
+									gap: "0.5rem",
+									flexWrap: "wrap",
+								}}
+							>
 								<Folder size={16} />
-							<span style={{ fontSize: "0.875rem" }}>{t("common.category")}：</span>
+								<span style={{ fontSize: "0.875rem" }}>
+									{t("common.category")}：
+								</span>
 								{cats.map((cat) => (
-									<a key={cat} href={`/categories/${getCatSlug(cat)}/`} style={{ textDecoration: "none" }}>
+									<a
+										key={cat}
+										href={`/categories/${getCatSlug(cat)}/`}
+										style={{ textDecoration: "none" }}
+									>
 										<Tag type="blue" size="sm">
-											{cat}
+											{getCatLabel(cat, lang)}
 										</Tag>
 									</a>
 								))}
@@ -100,13 +119,26 @@ export default function CarbonCommon({
 						)}
 
 						{tags.length > 0 && (
-							<div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+							<div
+								style={{
+									display: "flex",
+									alignItems: "center",
+									gap: "0.5rem",
+									flexWrap: "wrap",
+								}}
+							>
 								<TagIcon size={16} />
-								<span style={{ fontSize: "0.875rem" }}>{t("common.tag")}：</span>
+								<span style={{ fontSize: "0.875rem" }}>
+									{t("common.tag")}：
+								</span>
 								{tags.map((tag) => (
-									<a key={tag} href={`/tags/${tag}/`} style={{ textDecoration: "none" }}>
+									<a
+										key={tag}
+										href={`/tags/${getTagSlug(tag)}/`}
+										style={{ textDecoration: "none" }}
+									>
 										<Tag type="purple" size="sm">
-											{tag}
+											{getTagLabel(tag, lang)}
 										</Tag>
 									</a>
 								))}

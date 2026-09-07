@@ -11,13 +11,20 @@ import "@/styles/form.less";
 import type { Frontmatter } from "@/types";
 import { getEntry } from "astro:content";
 import { resolvePostId } from "@/scripts/post";
-import { getCatsInfo, getTagsInfo, getCatSlug } from "@/scripts/tags";
+import {
+	getCatLabel,
+	getCatsInfo,
+	getCatSlug,
+	getTagLabel,
+	getTagSlug,
+	getTagsInfo,
+} from "@/scripts/tags";
 import PhotoImage from "@/components/PhotoImage.astro";
 import { resolveCover } from "@/scripts/photo-resolve";
 import { _t } from "@/scripts/i18n";
 
 function arrify<T>(x: T | T[]): T[] {
-  return Array.isArray(x) ? x : [x];
+	return Array.isArray(x) ? x : [x];
 }
 
 const classes = frontmatter?.resizable !== false ? ["resizable"] : [];
@@ -30,24 +37,27 @@ export type Props = {
 
 // 新版刊头所需的文章数据；与 Common.astro 一样以条目数据为准
 const showHeader = Boolean(frontmatter && Astro.props.url !== "/about");
-const id = resolvePostId(Astro.props.url ?? Astro.props.file ?? Astro.url.pathname);
+const id = resolvePostId(
+	Astro.props.url ?? Astro.props.file ?? Astro.url.pathname,
+);
 const entry = showHeader ? (await getEntry("blog", id))?.data : undefined;
 if (showHeader && !entry) {
-  throw new Error(`Post ${id} not found.`);
+	throw new Error(`Post ${id} not found.`);
 }
 const cats = entry ? arrify(entry.categories) : [];
 const tags = entry ? arrify(entry.tags) : [];
 const cover = entry ? resolveCover(entry) : undefined;
 const licence = entry?.licence ?? "CcByNc";
 const dateLabel = entry
-  ? new Intl.DateTimeFormat("zh-CN", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(entry.date)
-  : "";
+	? new Intl.DateTimeFormat("zh-CN", {
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+		}).format(entry.date)
+	: "";
 const mncFallback = entry?.lang === "mnc" ? "zh" : undefined;
-const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
+const taxonomyLang = entry?.lang ?? frontmatter?.lang ?? "cmn";
+const t = _t(taxonomyLang);
 ---
 
 {Astro.locals.renderer === 'rss' ?
@@ -313,10 +323,10 @@ const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
               <a
                 class="cover-cat"
                 href={`/categories/${getCatSlug(cats[0])}/`}
-                aria-label={`${t("common.category")}: ${cats[0]}`}
+                aria-label={`${t("common.category")}: ${getCatLabel(cats[0], taxonomyLang)}`}
                 lang={mncFallback}
               >
-                {cats[0]}
+                {getCatLabel(cats[0], taxonomyLang)}
               </a>
             )}
             {cover.caption && <figcaption set:html={cover.caption} />}
@@ -326,7 +336,7 @@ const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
           <div class="head-kicker" lang={mncFallback}>
             {cats[0] ? (
               <a class="kicker-cat" href={`/categories/${getCatSlug(cats[0])}/`}>
-                {cats[0]}
+                {getCatLabel(cats[0], taxonomyLang)}
               </a>
             ) : (
               <span class="kicker-cat">{t("common.article")}</span>
@@ -350,7 +360,7 @@ const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
                 <span class="meta-values">
                   {cats.map((cat) => (
                     <a href={`/categories/${getCatSlug(cat)}/`}>
-                      {cat} <sup>{getCatsInfo().get(cat)}</sup>
+                      {getCatLabel(cat, taxonomyLang)} <sup>{getCatsInfo().get(cat)}</sup>
                     </a>
                   ))}
                 </span>
@@ -361,8 +371,8 @@ const t = _t(entry?.lang ?? frontmatter?.lang ?? "cmn");
                 <span class="meta-label">{t("common.tag")}</span>
                 <span class="meta-values">
                   {tags.map((tag) => (
-                    <a href={`/tags/${tag}/`}>
-                      {tag} <sup>{getTagsInfo().get(tag)}</sup>
+                    <a href={`/tags/${getTagSlug(tag)}/`}>
+                      {getTagLabel(tag, taxonomyLang)} <sup>{getTagsInfo().get(tag)}</sup>
                     </a>
                   ))}
                 </span>

@@ -1,24 +1,30 @@
 ---
-import { getTagsInfo } from "@/scripts/tags";
+import { getTagLabel, getTagSlug, getTagsInfo } from "@/scripts/tags";
 import "@/styles/tag-cloud.less";
 
+export interface Props {
+	lang?: string;
+}
+
+const { lang = "cmn" } = Astro.props;
+
 function generateRandomColor() {
-  const MAX_RGB_VALUE = 115;
-  const MIN_RGB_VALUE = 40;
-  const [r, g, b] = ["r", "g", "b"].map(
-    () =>
-      Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
-      MIN_RGB_VALUE,
-  );
-  return `rgb(${r}, ${g}, ${b})`;
+	const MAX_RGB_VALUE = 115;
+	const MIN_RGB_VALUE = 40;
+	const [r, g, b] = ["r", "g", "b"].map(
+		() =>
+			Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
+			MIN_RGB_VALUE,
+	);
+	return `rgb(${r}, ${g}, ${b})`;
 }
 ---
 
 <div class="tag-cloud" id="tag-cloud">
   {
     Array.from(getTagsInfo()).map(([k, v]) => (
-      <a href={`/tags/${k}`} style={`color: ${generateRandomColor()}`}>
-        {k + (v > 1 ? `(${v})` : "")}
+      <a href={`/tags/${getTagSlug(k)}`} style={`color: ${generateRandomColor()}`}>
+        {getTagLabel(k, lang) + (v > 1 ? `(${v})` : "")}
       </a>
     ))
   }

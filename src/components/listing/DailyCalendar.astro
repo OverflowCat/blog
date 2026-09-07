@@ -1,28 +1,27 @@
 ---
 import { getBlogPosts } from "@/scripts/post";
 import SidebarHeading from "@/components/sidebar/SidebarHeading.astro";
+import { getCatLabel, getCatSlug } from "@/scripts/tags";
 
 const dailyPosts = (await getBlogPosts())
-  .filter((post) => post.id.startsWith("daily/"))
-  .map((post) => {
-    const separator = post.data.title.indexOf(" / ");
-    const date =
-      separator >= 0
-        ? post.data.title.slice(0, separator)
-        : post.data.date.toISOString().slice(0, 10);
+	.filter((post) => post.id.startsWith("daily/"))
+	.map((post) => {
+		const separator = post.data.title.indexOf(" / ");
+		const date =
+			separator >= 0
+				? post.data.title.slice(0, separator)
+				: post.data.date.toISOString().slice(0, 10);
 
-    return {
-      href: `/${post.id}/`,
-      title:
-        separator >= 0
-          ? post.data.title.slice(separator + 3)
-          : post.data.title,
-      date,
-      shortDate: date.slice(5),
-    };
-  })
-  .sort((a, b) => b.date.localeCompare(a.date))
-  .slice(0, 12);
+		return {
+			href: `/${post.id}/`,
+			title:
+				separator >= 0 ? post.data.title.slice(separator + 3) : post.data.title,
+			date,
+			shortDate: date.slice(5),
+		};
+	})
+	.sort((a, b) => b.date.localeCompare(a.date))
+	.slice(0, 12);
 ---
 
 <section class="daily-calendar" aria-labelledby="daily-calendar-title">
@@ -32,7 +31,7 @@ const dailyPosts = (await getBlogPosts())
       prefix="开"
       suffix="见山"
     />
-    <a href="/categories/daily/">日常</a>
+    <a href={`/categories/${getCatSlug("日常")}/`}>{getCatLabel("日常")}</a>
   </header>
   <ol>
     {

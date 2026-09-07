@@ -1,16 +1,22 @@
 ---
-import { getCatsInfo, getCatSlug } from "@/scripts/tags";
+import { getCatLabel, getCatsInfo, getCatSlug } from "@/scripts/tags";
 import "@/styles/tag-cloud.less";
 
+export interface Props {
+	lang?: string;
+}
+
+const { lang = "cmn" } = Astro.props;
+
 function generateRandomColor() {
-  const MAX_RGB_VALUE = 135;
-  const MIN_RGB_VALUE = 35;
-  const [r, g, b] = ["r", "g", "b"].map(
-    () =>
-      Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
-      MIN_RGB_VALUE
-  );
-  return `rgb(${r}, ${g}, ${b})`;
+	const MAX_RGB_VALUE = 135;
+	const MIN_RGB_VALUE = 35;
+	const [r, g, b] = ["r", "g", "b"].map(
+		() =>
+			Math.floor(Math.random() * (MAX_RGB_VALUE - MIN_RGB_VALUE)) +
+			MIN_RGB_VALUE,
+	);
+	return `rgb(${r}, ${g}, ${b})`;
 }
 ---
 
@@ -24,7 +30,7 @@ function generateRandomColor() {
           1.8 * v + 13 - k.length / 3
         )}px; color: ${generateRandomColor()}`}
       >
-        {k}<sup>{v}</sup>
+        {getCatLabel(k, lang)}<sup>{v}</sup>
       </a>
     ))
   }

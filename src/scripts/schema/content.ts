@@ -1,22 +1,29 @@
-import { z } from "astro/zod";
-import imageObject from "./photo";
-import { decoration } from "../decoration";
 import type { SchemaContext } from "astro:content";
+import { z } from "astro/zod";
+import taxonomyData, { type Category, type Tag } from "@/scripts/taxonomy-data";
+import { decoration } from "../decoration";
+import imageObject from "./photo";
 
 // 2. Define a `type` and `schema` for each collection
-function transform2arr(val: null | undefined | string | string[]) {
-	if (!val) {
-		return [];
-	}
-	if (typeof val === "string") {
-		return [val];
-	}
-	return val;
-}
-const TAG_TYPE = z
-	.union([z.string(), z.array(z.string())])
+const CATEGORY_VALUE_TYPE = z.enum(
+	Object.keys(taxonomyData.categories) as [Category, ...Category[]],
+);
+const TAG_VALUE_TYPE = z.enum(
+	Object.keys(taxonomyData.tags) as [Tag, ...Tag[]],
+);
+
+const CATEGORY_TYPE = z
+	.union([CATEGORY_VALUE_TYPE, z.array(CATEGORY_VALUE_TYPE)])
 	.nullish()
-	.transform(transform2arr);
+	.transform((value) =>
+		value == null ? [] : Array.isArray(value) ? value : [value],
+	);
+const TAG_TYPE = z
+	.union([TAG_VALUE_TYPE, z.array(TAG_VALUE_TYPE)])
+	.nullish()
+	.transform((value) =>
+		value == null ? [] : Array.isArray(value) ? value : [value],
+	);
 
 const SERIES_TYPE = z
 	.union([z.literal("weekly"), z.literal("harmony"), z.literal("六不答對")])
@@ -54,7 +61,7 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 	z
 		.object({
 			title: z.string(),
-			categories: TAG_TYPE,
+			categories: CATEGORY_TYPE,
 			tags: TAG_TYPE,
 			series: SERIES_TYPE,
 			photo: imageObject(ctx.image).optional(),
