@@ -265,6 +265,9 @@ export const taxonomyData = {
 		AST: {
 			t: {},
 		},
+		ADHD: {
+			slug: "adhd",
+		},
 		Astro: {
 			t: {},
 		},
