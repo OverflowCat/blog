@@ -162,7 +162,7 @@ yungh(用) uk(脑) haenx(的) hix(也) miz(有) #strong[daimaj]\(代码)
 dingjlawh(代替).
 ]
 
-往后读了读，哎呀还有鸿蒙：
+哦，还有蓝色大肥鱼。往后读了读，哎呀还有鸿蒙：
 
 #doiq-hoiz[
 ……
@@ -221,7 +221,7 @@ marker]、用中文标点，好在没有像
 <telephone>
 《著作选读》的版权页就是这么写的。壮文文学作品中也大量出现
 #qza[dwk denva] （打电话）、#qza[ciep denva] （接电话）这样的实际搭配。`va`
-对应音节 `hua`，例如「华为」名称是 #qza[*Vaz*#"veiz"]。
+对应音节 `hua` 或 `wa`，例如「华为」名称是 #qza[*Vaz*#"veiz"]。
 
 == 总结
 
@@ -238,6 +238,8 @@ marker]、用中文标点，好在没有像
 - `footnote` → #qza[Gejnaeuz]
 - `email` → #qza[E-mail]
 - `telephone` → #qza[Denva]
+
+其中 `Doz`、`Biuj`、`Ciet`、`Moegloeg`、`Daihmax`、`yieb`、`E-mail` 和 `Denva` 都能找到比较明确的依据；`Daengjsik` 缺少使用例；`Vwnzyen Doiqciuq` 目前只有壮文维基百科在用，因为似乎也没有壮文的论文，这一点不如维语和哈语了；`Gejnaeuz` 则是因为没有相关的排版习惯。
 
 PR 等了两周的时间，最终是合并了。不过，牢劳说没有办法 review：
 

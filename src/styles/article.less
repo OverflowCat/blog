@@ -37,10 +37,9 @@ article#post>h6, article#post>*>h6 {
 
 article#post, article#post>astro-slot {
   &, &>p {
-    font-family: var(--font-sans, "Noto Sans",
-    "Noto Sans CJK SC", "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
+    font-family: var(--font-sans, "HarmonyOS Sans SC", "Mi Sans", "PingFang SC",
     "Plangothic P1", "Plangothic P2",
-    "Open Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
+    "Open Sans", "Noto Sans CJK SC", "Noto Sans", "Helvetica Neue", Helvetica, Arial, system-ui);
     font-size: 1.13rem;
     text-align: start;
     line-height: 175%;
@@ -55,9 +54,16 @@ article#post, article#post>astro-slot {
   @import "a.less";
 
   [lang="en"],
-  [lang="no"],
-  [lang="de"],
-  [lang="es"] {
+  [lang="za"],
+  [lang^="n"],
+  [lang^="d"],
+  [lang^="e"],
+  [lang^="f"]
+  [lang^="g"]
+  [lang^="h"]
+  [lang^="i"]
+  [lang^="k"]
+  {
     font-family: var(--font-sans-en);
   }
 

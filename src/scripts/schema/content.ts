@@ -119,8 +119,7 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 				z.array(LICENCE_PART),
 				z.string().nullable(),
 				z.literal(false),
-				z.undefined(),
-			]),
+			]).optional(),
 			paper: z.boolean().default(true),
 			ext: z
 				.union([z.literal("md"), z.literal("mdx"), z.literal("typ")])
