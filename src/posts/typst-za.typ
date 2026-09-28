@@ -185,15 +185,13 @@ boiz(还) mbat(一) gienz(拳) hawj(给) de(它).
 
 说到 DeepSeek，标准化词汇又是不得不品鉴的一环。标准化委员会总是喜欢在借汉和自己仿译之前走极端。就在同一份文件中，列出了
 
-#figure(
-  align(center)[#table(
+#table(
     columns: 3,
     align: (auto,auto,auto,),
     table.header([序号], [汉文], [壮文],),
     table.hline(),
     [96], [深度求索(DeepSeek)], za[Ndaemra],
     [97], [深度推理模型], za[aen vunq ndaemra],
-  )]
 )
 
 #qza("vunq") 是「模」的意思，#qza("aen") 是量词。显然，正常人不知道也不会使用这个翻译。按照这样，#qza("vunq ndaemra") 到底是「深度推理模型」还是「深度求索模型」？只能通过大小写区分了。
