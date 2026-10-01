@@ -8,6 +8,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
+# A newer push supersedes an older build for the same ref.
+concurrency:
+  group: pages-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 # Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
@@ -20,40 +25,90 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install all fonts (concurrent)
+      - name: Update APT metadata
+        id: apt-metadata
+        shell: bash
         run: |
+          set -euo pipefail
           sudo add-apt-repository universe -y
           sudo apt-get update
+          apt_key="$(apt-cache policy fonts-noto-cjk-extra fonts-lmodern \
+            | awk '/Candidate:/ { print $2 }' | paste -sd '-' -)"
+          apt_key="$(printf '%s' "${apt_key:-unknown}" | tr -c '[:alnum:]._+-' '_')"
+          echo "key=$apt_key" >> "$GITHUB_OUTPUT"
+      - name: Cache font archives
+        uses: actions/cache@v4
+        with:
+          # The runner is ephemeral, so cache the downloaded files rather than
+          # /usr/share/fonts (which is recreated on every run).
+          path: ${{ runner.temp }}/font-cache
+          # Bump v1 when a remote font source or version changes.
+          key: ${{ runner.os }}-fonts-v1-ibm-plex-sans-sc-1.1.0-harmonyos
+          restore-keys: |
+            ${{ runner.os }}-fonts-v1-
+      - name: Cache APT archives
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/apt-archives
+          key: ${{ runner.os }}-apt-fonts-${{ steps.apt-metadata.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-apt-fonts-
+      - name: Install fonts
+        env:
+          FONT_CACHE_DIR: ${{ runner.temp }}/font-cache
+          APT_ARCHIVE_DIR: ${{ runner.temp }}/apt-archives
+        shell: bash
+        run: |
+          set -euo pipefail
 
-          # APT 装系统包
-          sudo apt-get install -y fonts-noto-cjk-extra fonts-lmodern &
+          mkdir -p "$FONT_CACHE_DIR/ibm-plex" "$FONT_CACHE_DIR/harmonyos" "$APT_ARCHIVE_DIR"
 
-          # IBM Plex
-          (
-            curl -L https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip -o ibm-plex-sans-sc.zip
-            unzip ibm-plex-sans-sc.zip -d ./fonts
-            sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
-            find ./fonts/ibm-plex-sans-sc/fonts/complete/ttf -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/ibm-plex/ \;
-          ) &
+          # Download these only when the Actions cache does not contain them.
+          if [[ ! -f "$FONT_CACHE_DIR/ibm-plex/.complete" ]]; then
+            tmp_dir="$(mktemp -d)"
+            trap 'rm -rf "$tmp_dir"' EXIT
+            curl --fail --location --retry 3 --retry-all-errors \
+              'https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%401.1.0/ibm-plex-sans-sc.zip' \
+              --output "$tmp_dir/ibm-plex-sans-sc.zip"
+            unzip -q "$tmp_dir/ibm-plex-sans-sc.zip" -d "$tmp_dir/ibm-plex"
+            find "$tmp_dir/ibm-plex/ibm-plex-sans-sc/fonts/complete/ttf" \
+              -type f -name '*.ttf' -exec cp {} "$FONT_CACHE_DIR/ibm-plex/" \;
+            touch "$FONT_CACHE_DIR/ibm-plex/.complete"
+          fi
 
-          # HarmonyOS Sans
-          (
-            git clone --depth=1 https://gitcode.com/lijuan124/utils_system_resources.git
-            cd utils_system_resources/fonts
-            sudo mkdir -p /usr/share/fonts/truetype/harmonyos
-            find . -name "*.ttf" -exec sudo cp {} /usr/share/fonts/truetype/harmonyos/ \;
-          ) &
+          if [[ ! -f "$FONT_CACHE_DIR/harmonyos/.complete" ]]; then
+            tmp_dir="$(mktemp -d)"
+            trap 'rm -rf "$tmp_dir"' EXIT
+            git clone --depth=1 https://gitcode.com/lijuan124/utils_system_resources.git "$tmp_dir/utils_system_resources"
+            find "$tmp_dir/utils_system_resources/fonts" \
+              -type f -name '*.ttf' -exec cp {} "$FONT_CACHE_DIR/harmonyos/" \;
+            touch "$FONT_CACHE_DIR/harmonyos/.complete"
+          fi
 
-          wait            # 等三条后台任务全部结束
-          sudo fc-cache -f -v
-          fc-list | grep -i "IBM Plex"
-          fc-list | grep -i "Harmony"
+          # Keep APT's downloaded .deb files in the cache. The package install
+          # still runs to register the files on this fresh runner, but avoids
+          # downloading unchanged packages on subsequent runs.
+          sudo apt-get -o Dir::Cache::archives="$APT_ARCHIVE_DIR" \
+            install -y --no-install-recommends fonts-noto-cjk-extra fonts-lmodern
+          # actions/cache runs as the runner user when it saves the cache.
+          sudo chmod -R a+rX "$APT_ARCHIVE_DIR"
+
+          sudo install -d /usr/local/share/fonts/ibm-plex /usr/local/share/fonts/harmonyos
+          find "$FONT_CACHE_DIR/ibm-plex" -type f -name '*.ttf' \
+            -exec sudo install -m 0644 {} /usr/local/share/fonts/ibm-plex/ \;
+          find "$FONT_CACHE_DIR/harmonyos" -type f -name '*.ttf' \
+            -exec sudo install -m 0644 {} /usr/local/share/fonts/harmonyos/ \;
+
+          sudo fc-cache -f
+          fc-list | grep -qi 'IBM Plex'
+          fc-list | grep -qi 'Harmony'
       - name: Install, build, and upload my site
-        uses: withastro/action@v4
+        uses: withastro/action@v5
         with:
           # path: . # The root location of your Astro project inside the repository. (optional)
           node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-          # package-manager is intentionally unset: pnpm/action-setup reads the version from package.json's "packageManager" field (pnpm@11.5.0). Setting it here too causes "Multiple versions of pnpm specified".
+          cache: true # Reuse Astro's processed asset cache between builds.
+          # package-manager is intentionally unset: pnpm/action-setup reads the version from package.json's "packageManager" field (pnpm@12.8.0). Setting it here too causes "Multiple versions of pnpm specified".
   deploy:
     needs: build
     runs-on: ubuntu-latest
