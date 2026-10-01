@@ -39,6 +39,12 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							lang: "mnc",
 						};
 						break;
+					case "sjo": // Xibe
+						name = "span";
+						props = {
+							lang: "sjo",
+						};
+						break;
 					case "mv": // Manchu and vertical
 						name = "span";
 						props = {

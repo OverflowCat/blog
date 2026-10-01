@@ -256,7 +256,8 @@ span.h+span.vert {
 }
 
 #vert:target span.h,
-[lang="mnc"] span.h {
+[lang="mnc"] span.h,
+[lang="sjo"] span.h {
   display: none;
 
   &+span.vert {
@@ -265,7 +266,8 @@ span.h+span.vert {
 }
 
 #vert:target .vert-hide,
-html[lang="mnc"] .vert-hide {
+html[lang="mnc"] .vert-hide,
+html[lang="sjo"] .vert-hide {
   display: none;
 }
 
@@ -285,7 +287,8 @@ html[lang="mnc"] .vert-hide {
   }
 }
 
-html[lang="mnc"] {
+html[lang="mnc"],
+html[lang="sjo"] {
   writing-mode: vertical-lr;
   font-feature-settings: "vert" on;
   max-inline-size: 100dvi;
@@ -307,7 +310,8 @@ html[lang="mnc"] {
   }
 
   .write-vertical-left,
-  html[lang="mnc"] {
+  html[lang="mnc"],
+  html[lang="sjo"] {
     writing-mode: tb-lr;
   }
 
