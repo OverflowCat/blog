@@ -4,6 +4,8 @@ import { h } from "hastscript";
 import type { RemarkPlugin } from "@astrojs/markdown-remark";
 import type { Image, Paragraph } from "mdast";
 const langsSet = new Set(["zh", "de", "es", "en", "fr", "vi", "bo"]);
+const SHOULD_BE_ITALIC = /^[^\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}\p{scx=Hangul}\p{scx=Arabic}\p{scx=Hebrew}\p{scx=Devanagari}\p{scx=Tibetan}\p{scx=Ethiopic}]*$/u;
+
 export const myRemarkPlugin: RemarkPlugin = () => {
 	return (tree, file) => {
 		visit(tree, (node) => {
@@ -28,11 +30,20 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 							};
 						}
 						break;
-					// biome-ignore lint/suspicious/noFallthroughSwitchClause: fallthrough is intended
+					case "i":
+					case "em":
+						if  (
+							node.children.length === 1 &&
+							node.children[0].type === "text" && SHOULD_BE_ITALIC.test(node.children[0].value)
+						) {
+							props = {lang: "en"};
+						}
+					    break;
 					case "m": // Möllendorff
 						for (const child of node.children) {
 							if (child.type === "text") child.value = manjuify(child.value);
 						}
+						break;
 					case "mnc": // Manchu
 						name = "span";
 						props = {
@@ -83,6 +94,17 @@ export const myRemarkPlugin: RemarkPlugin = () => {
 									wikidataId,
 								),
 							];
+						}
+						break;
+					case "a":
+						// turn BV.... to bilibili link
+						if (node.children.length === 1 &&
+							node.children[0].type === "text" &&
+							/^[AB]V/gi.test(node.children[0].value.trim())
+						) {
+							name = "a";
+							const bvid = node.children[0].value.trim();
+							props = {target:  "_blank", href: `https://www.bilibili.com/video/${bvid}`};
 						}
 						break;
 					case "yoko":
