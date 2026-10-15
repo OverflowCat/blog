@@ -13,9 +13,10 @@ photo:
       A sinusoidal electromagnetic wave propagating along the positive z-axis, showing the electric field (blue) and magnetic field (red) vectors.
     </details>
 thumb: false
-categories: 光学
+categories:
 tags:
-  - "笔记"
+- 光学
+- 笔记
 icon: "ri:camera-lens-line"
 layout: "@/layouts/Default.astro"
 noscript: true

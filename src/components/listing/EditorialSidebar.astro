@@ -58,11 +58,13 @@ const t = _t(lang);
     <DailyCalendar />
   </section>
 
+  <SidebarHeading
+    id="sidebar-categories-title"
+    prefix="分"
+    suffix="别类"
+  />
   <section class="sidebar-section" aria-labelledby="sidebar-categories-title">
-    <SidebarHeading
-      id="sidebar-categories-title"
-      text={t("common.category")}
-    />
+    <h4>分类</h4>
     <ul class="category-list">
       {
         categories.map(([category, count]) => (
@@ -76,9 +78,9 @@ const t = _t(lang);
       }
     </ul>
   </section>
-
+  
   <section class="sidebar-section" aria-labelledby="sidebar-tags-title">
-    <SidebarHeading id="sidebar-tags-title" text={t("common.tag")} />
+    <h4>{t("common.tag")}</h4>
     <div class="tag-list">
       {
         tags.map(([tag, count]) => (
