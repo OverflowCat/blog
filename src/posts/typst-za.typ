@@ -88,7 +88,7 @@ Typst 有堆为 PDF 里的元素提供的本地化的 txt，只有很少的几�
 - 另外，《广西民族报》#link("https://www.guangximinzubao.cn/szbzw/html/2022-05/18/content_43635.htm")[介绍《广西通志·民族志》]时，说该书使用了 #qza[doz､ biuj] 等体裁形式：
   #quote(block: true)[
     Bouh saw neix yungh ceiq､
-    lwnh、geiq、cienz、#strong[doz]､ #strong[biuj]、loeg daengj dijcaiz,
+    lwnh､ geiq､ cienz､ #strong[doz]､ #strong[biuj]､ loeg daengj dijcaiz,
     bienraiz cujyau dwg yungh ceiq.
   ]
 
@@ -190,7 +190,7 @@ boiz(还) mbat(一) gienz(拳) hawj(给) de(它).
     align: (auto,auto,auto,),
     table.header([序号], [汉文], [壮文],),
     table.hline(),
-    [96], [深度求索(DeepSeek)], za[Ndaemra],
+    [96], [深度求索(DeepSeek)], za(link("https://en.wiktionary.org/wiki/Ndaemra")[Ndaemra]),
     [97], [深度推理模型], za[aen vunq ndaemra],
 )
 

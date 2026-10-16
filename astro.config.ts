@@ -61,6 +61,12 @@ export default defineConfig({
 	vite: {
 		css: {
 			transformer: "postcss",
+			preprocessorOptions: {
+				scss: {
+					// Carbon uses deprecated Sass syntax; keep warnings for our own styles.
+					quietDeps: true,
+				},
+			},
 		},
 		build: {
 			cssMinify: "esbuild",
