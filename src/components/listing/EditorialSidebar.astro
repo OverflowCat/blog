@@ -92,9 +92,35 @@ const t = _t(lang);
     </div>
   </section>
 
+  <section class="sidebar-section" aria-labelledby="sidebar-tags-title">
+    <SidebarHeading
+      id="sidebar-work-title"
+      prefix="旁"
+      suffix="左道"
+    />
+    <a href="https://github.com/OverflowCat/chiandiau">
+      <img class="banner" src="https://remnote-user-data.s3.amazonaws.com/210oTOe1C6bxnVJ9TN9HaMFJP12AcHF2kzCaJeFS_Zf7N-KrCaf21or4F9Z0xc3Gboh5Ae0hq6ma0JXem3m9WRwKqFPuGDDr01jic4-3frAgbev2rJnTWzEG4wfJJ7y1.png" alt="排版有腔调">
+    </a>
+  </section>
+
 </aside>
 
 <style>
+  .banner {
+    margin: auto;
+    inline-size: 100%;
+    box-shadow: none;
+    transition:
+    box-shadow 180ms ease,
+    backdrop-filter 100ms ease;
+  }
+
+  .banner:hover {
+    box-shadow:
+    0 9.2px 20.7px rgba(0, 0, 0, 0.13579), /* Ambient shadow: 大范围柔和阴影 */
+    0 1.725px 5.175px rgba(0, 0, 0, 0.11411); /* Contact shadow: 小范围贴合阴影 */
+  }
+
   .editorial-sidebar {
     min-inline-size: 0;
     padding: clamp(1rem, 2vw, 2rem);
