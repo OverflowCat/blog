@@ -21,9 +21,15 @@ const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 const rssFooterXml = "</feed>";
 
+// Full HTML for every post makes /feed/ a multi-GB render (and OOMs this host).
+// Keep the complete archive as title/link/summary entries, but only expand
+// body HTML for the most recent posts.
+const FULL_CONTENT_LIMIT = 40;
+
+// getBlogPosts() is already sorted newest-first.
 const posts = await getBlogPosts();
-let items = await Promise.all(
-  posts.map(async (post) => {
+const items = await Promise.all(
+  posts.map(async (post, i) => {
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const url = new URL(Astro.site!);
     url.pathname = post.id;
@@ -34,15 +40,14 @@ let items = await Promise.all(
       pubDate: post.data.date,
       desc: post.data.desc ?? "",
       link,
-      content: await render(post),
+      content: i < FULL_CONTENT_LIMIT ? await render(post) : null,
     };
   })
 );
-items = items.sort((a, b) => {
-  return b.pubDate.valueOf() - a.pubDate.valueOf();
-});
 
 // id: Its content MUST be an IRI, as defined by [RFC3987].
+// Entries past FULL_CONTENT_LIMIT omit <content> so readers that fetch
+// the article themselves (or use <summary>) can still handle the item.
 const result = items.map((post) => ({
   // TODO: atom:rights
   start: `
@@ -53,8 +58,7 @@ const result = items.map((post) => ({
 <summary>${post.desc || "by 新世界的大门"}</summary>
 <published>${post.pubDate.toISOString()}</published>
 <updated>${post.pubDate.toISOString()}</updated>
-<author><name>ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</name></author>
-<content type="html">`,
+<author><name>ᡥᠠᡳᡤᡳᠶᠠ ᡥᠠᠯᠠ·ᠨᡝᡴᠣ 猫</name></author>`,
   content: post.content,
   link: post.link,
 }));
@@ -105,10 +109,16 @@ function xhtmlify(s: string, link: string): string {
   result.map(({ start, content, link }) => (
     <>
       <Fragment set:html={start} />
-      <SlotRenderer callback={(s) => xhtmlify(s, link)}>
-        <content.Content />
-      </SlotRenderer>
-      <Fragment set:html={`</content></entry>`} />
+      {content ? (
+        <>
+          <Fragment set:html={`<content type="html">`} />
+          <SlotRenderer callback={(s) => xhtmlify(s, link)}>
+            <content.Content />
+          </SlotRenderer>
+          <Fragment set:html={`</content>`} />
+        </>
+      ) : null}
+      <Fragment set:html={`</entry>`} />
     </>
   ))
 }

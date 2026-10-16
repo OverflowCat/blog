@@ -73,58 +73,64 @@ import { resolveCover } from "@/scripts/photo-resolve";
   )
 }
 {
-  !frontmatter.hide_title && (
-    <h1
-      transition:name={id}
-      transition:animate="initial"
-      set:text={frontmatter.title}
-      style={`view-transition-name: ${id}`}
-    />
+  Astro.locals.renderer === "rss" ? (
+    // Feed strips h1/.info/LicenceBox in xhtmlify — skip building them.
+    <article id="post">
+      <slot />
+    </article>
+  ) : (
+    <>
+      {!frontmatter.hide_title && (
+        <h1
+          transition:name={id}
+          transition:animate="initial"
+          set:text={frontmatter.title}
+          style={`view-transition-name: ${id}`}
+        />
+      )}
+      <div class="info">
+        <div>
+          <Icon name={icons.calendar} class="icon" />
+          日期：
+          <time
+            datetime={date as unknown as string}
+            set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
+          />
+        </div>
+        {
+          !!cats.length && (
+            <div>
+              <Icon name={icons.category} class="icon" />
+              {t("common.category")}：
+              {cats.map((cat) => (
+                <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
+                  {getCatLabel(cat, frontmatter.lang ?? "cmn")} <sup>{getCatsInfo().get(cat)}</sup>
+                </a>
+              ))}
+            </div>
+          )
+        }
+        {
+          !!tags.length && (
+            <div>
+              <Icon name={icons.tag} class="icon" />
+              {t("common.tag")}：
+              {tags.map((tag) => (
+                <a class="tag" href={`/tags/${getTagSlug(tag)}/`}>
+                  {getTagLabel(tag, frontmatter.lang ?? "cmn")} <sup>{getTagsInfo().get(tag)}</sup>
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      <article id="post">
+        <slot />
+        <LicenceBox parts={licence} />
+      </article>
+    </>
   )
 }
-<div class="info">
-  <div>
-    <!-- <div class:list={[icons.calendar ?? 'i-mdi:date-range', 'icon']}></div> -->
-    <Icon name={icons.calendar} class="icon" />
-    日期：
-    <time
-      datetime={date as unknown as string}
-      set:text={new Date(frontmatter.date).toLocaleDateString("zh")}
-    />
-  </div>
-  {
-    !!cats.length && (
-      <div>
-        {/* <div class:list={[icons.category ?? 'i-pixelarticons:folder-plus', 'icon']}></div> */}
-        <Icon name={icons.category} class="icon" />
-        {t("common.category")}：
-        {cats.map((cat) => (
-          <a class="cat" href={`/categories/${getCatSlug(cat)}/`}>
-            {getCatLabel(cat, frontmatter.lang ?? "cmn")} <sup>{getCatsInfo().get(cat)}</sup>
-          </a>
-        ))}
-      </div>
-    )
-  }
-  {
-    !!tags.length && (
-      <div>
-        {/* <div class:list={[icons.tag ?? 'i-pixelarticons:label', 'icon']}></div> */}
-        <Icon name={icons.tag} class="icon" />
-        {t("common.tag")}：
-        {tags.map((tag) => (
-          <a class="tag" href={`/tags/${getTagSlug(tag)}/`}>
-            {getTagLabel(tag, frontmatter.lang ?? "cmn")} <sup>{getTagsInfo().get(tag)}</sup>
-          </a>
-        ))}
-      </div>
-    )
-  }
-</div>
-<article id="post">
-  <slot />
-  <LicenceBox parts={licence} />
-</article>
 
 <style is:global lang="less">
   .icon {

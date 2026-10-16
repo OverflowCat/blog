@@ -31,7 +31,7 @@ const {
 	id,
 	widths,
 	sizes,
-	formats = ["avif", "webp", "jpg"],
+	formats = ["webp", "jpg"],
 	loading,
 	fetchpriority,
 	transitionName,
@@ -42,9 +42,13 @@ const alt = image.alt || title || "";
 const aspectParts = image.aspect?.split(":");
 const width = aspectParts?.[0];
 const height = aspectParts?.[1];
+
+// RSS/feed renders every post on one page — skip sharp so the build does not OOM.
+const isRss = Astro.locals.renderer === "rss";
+const plainSrc = image.img ? image.img.src : (image.src ?? "");
 ---
 
-{image.img ? (
+{image.img && !isRss ? (
 	<Picture
 		class={className}
 		id={id}
@@ -62,7 +66,7 @@ const height = aspectParts?.[1];
 	<img
 		class={className}
 		id={id}
-		src={image.src}
+		src={plainSrc}
 		alt={alt}
 		width={width}
 		height={height}
@@ -71,5 +75,4 @@ const height = aspectParts?.[1];
 		transition:name={transitionName}
 		transition:animate={transitionAnimate}
 	/>
-)
-}
+)}
