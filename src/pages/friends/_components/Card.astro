@@ -15,165 +15,285 @@ export interface Props {
 }
 
 const { id, link, title, avatar, desc, feed, script, dir } = Astro.props;
-const href = `https://${link}`;
+const href = /^https?:\/\//i.test(link) ? link : `https://${link}`;
+const hasComment = Astro.slots.has("default");
 
 import { collect } from "@/scripts/opml-store";
 
 feed &&
-	collect({ title, href: `https://${href}`, url: feed, desc: desc ?? "" });
+	collect({ title, href, url: feed, desc: desc ?? "" });
 ---
 
-<li class="link-card drop-shadow-sm" id={id}>
-  <a href={href}>
-    <div class="grid-container" dir={dir === "rtl" ? "rtl" : undefined}>
-      <div class="title">
-        <h2 class={dir === "rtl" ? "text-right" : undefined}>{title}</h2>
-      </div>
-      <img class="avatar" loading="lazy" src={avatar} />
-      <div class="link">
-        <p id="link">
-          <code>{link}</code>
-          {feed && <i class="inline-block has-feed" />}
-          {script && <i class="inline-block require-js" />}
-        </p>
-      </div>
-      <div class="main">
-        {
-          desc ? (
-            <>
-              <blockquote class="quote" set:html={desc} />
-              <div class="comment-both">
-                <slot />
-              </div>
-            </>
-          ) : (
-            <div class="comment">
-              <slot />
-            </div>
-          )
-        }
-      </div>
+<li class="link-card" id={id}>
+  <a href={href} dir={dir}>
+    <div class="card-heading">
+      <img class="avatar" loading="lazy" decoding="async" src={avatar} alt="" width="54" height="54" />
+      <h2>{title}</h2>
+      <span class="visit-arrow" aria-hidden="true">↗</span>
     </div>
+    <div class="card-kicker">
+      <span class="site-address">{link.replace(/^https?:\/\//i, "")}</span>
+      <span class="site-features">
+        {feed && <i class="has-feed" role="img" aria-label="提供 RSS 订阅" title="提供 RSS 订阅" />}
+        {script && <i class="require-js" role="img" aria-label="需要 JavaScript" title="需要 JavaScript" />}
+      </span>
+    </div>
+    {desc && <blockquote class="quote" set:html={desc} />}
+    {hasComment && <div class="comment"><slot /></div>}
   </a>
 </li>
+
 <style>
-  .has-feed {
-    @apply i-mdi:rss opacity-70 vertical-mid;
-  }
-  .require-js {
-    @apply opacity-0 i-ic:round-javascript;
-  }
-  .link-card:hover .require-js {
-    transform: scale(2) translateY(40%);
-    opacity: 0.7;
-    transition: opacity 0.6s;
-  }
   .link-card {
-    text-align: start;
+    --card-border: light-dark(#171717, #55524d);
+    --card-accent: light-dark(#385f83, #74a4d1);
+
+    position: relative;
+    isolation: isolate;
     display: flex;
-    padding: 2.5px;
-    background-color: white;
-    background-image: var(--accent-gradient);
-    background-size: 400%;
-    border-radius: 0.5rem;
-    background-position: 100%;
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    min-inline-size: 0;
+    border: 1px solid var(--card-border);
+    background: light-dark(#f7f6f2, #202020);
+    color: light-dark(#111, #f4f1eb);
+    list-style: none;
+    text-align: start;
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease,
+      box-shadow 280ms ease,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-card:nth-child(4n + 2) {
+    --card-accent: light-dark(#a12632, #ef5360);
+  }
+
+  .link-card:nth-child(4n + 3) {
+    --card-accent: light-dark(#08756d, #58c5ba);
+  }
+
+  .link-card:nth-child(4n) {
+    --card-accent: light-dark(#896400, #e3be54);
+  }
+
+  .link-card::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 35%,
+      color-mix(in srgb, var(--card-accent) 16%, transparent) 50%,
+      transparent 65%
+    );
+    background-size: 300% 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .link-card::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border: 3px solid var(--card-accent);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.985);
+    transition:
+      opacity 180ms ease,
+      transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .link-card:is(:hover, :focus-within) {
+    z-index: 1;
+    background: light-dark(#fff, #272727);
+    border-color: var(--card-accent);
+    box-shadow:
+      5px 6px 0 color-mix(in srgb, var(--card-accent) 28%, transparent),
+      0 14px 28px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.3));
+    /* Keep transform independent of the view timeline's translate property. */
+    transform: translateY(-4px);
+  }
+
+  .link-card:is(:hover, :focus-within)::before {
+    animation: card-sheen 750ms ease-out both;
+  }
+
+  .link-card:is(:hover, :focus-within)::after {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .link-card > a {
-    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: 13rem;
+    padding: clamp(0.85rem, 1.5vw, 1.25rem);
+    color: inherit;
     text-decoration: none;
-    line-height: 1.4;
-    padding: 1rem 1.3rem;
-    border-radius: 0.35rem;
-    color: #111;
-    background-color: white;
-    opacity: 0.8;
+    overflow-wrap: anywhere;
   }
-  h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  .link-card > a:focus-visible {
+    outline: 2px solid var(--card-accent);
+    outline-offset: 4px;
   }
-  p {
-    margin-block-start: 0.5rem;
-    margin-block-end: 0;
-    color: #444;
-  }
-  .link-card:is(:hover, :focus-within) {
-    background-position: 0;
-  }
-  .link-card:is(:hover, :focus-within) h2 {
-    color: var(--accent);
-  }
-  img.avatar {
-    height: 54px;
-    width: 54px;
-    border-radius: 50%;
-    border: solid #44444466 1px;
-  }
-  .title {
-    grid-area: title;
+
+  .card-heading {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .avatar {
-    grid-area: avatar;
+    inline-size: 54px;
+    block-size: 54px;
+    object-fit: cover;
+    border: 0;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-card:is(:hover, :focus-within) .avatar {
+    transform: rotate(-7deg) scale(1.08);
+  }
+
+  h2 {
+    margin: 0;
+    color: inherit;
+    font-size: 1.55rem;
+    font-weight: 750;
+    line-height: 1.2;
+    text-align: start;
+    transition:
+      color 180ms ease,
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-card:is(:hover, :focus-within) h2 {
+    color: var(--card-accent);
+    transform: translateY(-0.12rem);
+  }
+
+  .visit-arrow {
+    align-self: start;
+    color: var(--card-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-card:is(:hover, :focus-within) .visit-arrow {
+    transform: translate(3px, -3px) scale(1.15);
+  }
+
+  .card-kicker {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    opacity: 0.66;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.4;
+    transition: opacity 220ms ease;
+  }
+
+  .link-card:is(:hover, :focus-within) .card-kicker {
+    opacity: 1;
+  }
+
+  .site-address {
+    min-inline-size: 0;
+    font-family: var(--font-mono, ui-monospace, monospace);
+  }
+
+  .site-features {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .has-feed {
+    @apply i-mdi:rss;
+  }
+
+  .require-js {
+    @apply i-ic:round-javascript;
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+
+  .link-card:is(:hover, :focus-within) .require-js {
+    transform: scale(2) translateY(40%);
+    opacity: 0.7;
   }
 
   .quote {
-    text-align: start;
-    margin: 0rem;
-    background: #f9f9f9;
-    border-inline-start: 8px solid #ccc;
+    margin: 0;
+    background: light-dark(#f9f9f9, #272727);
+    border-inline-start: 8px solid light-dark(#ccc, #55524d);
     padding-block: 0.2em;
     padding-inline: 6px;
-    /* quotes: "\201C""\201D""\2018""\2019"; */
+    text-align: start;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    white-space: pre-line;
   }
 
-  div.comment-both {
-    margin-block-start: 4px;
+  .comment {
+    margin-block-start: auto;
+    border-block-start: 1px solid light-dark(#c8c3b8, #393939);
+    padding-block-start: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
   }
 
-  div.comment {
-    margin-block-start: 16px;
+  @keyframes card-sheen {
+    from {
+      background-position: 100% 0;
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    to {
+      background-position: 0% 0;
+      opacity: 0;
+    }
   }
 
-  div.main {
-    grid-area: main;
-    line-height: 1.8em;
-    margin: 0.5em 6px;
-  }
+  @media (prefers-reduced-motion: reduce) {
+    .link-card,
+    .link-card::after,
+    .avatar,
+    .visit-arrow,
+    .card-kicker,
+    .require-js,
+    h2 {
+      transition: none;
+      transform: none;
+    }
 
-  .link {
-    grid-area: link;
-  }
+    .link-card:is(:hover, :focus-within),
+    .link-card:is(:hover, :focus-within) .avatar,
+    .link-card:is(:hover, :focus-within) .visit-arrow,
+    .link-card:is(:hover, :focus-within) h2,
+    .link-card:is(:hover, :focus-within) .require-js {
+      transform: none;
+    }
 
-  .grid-container {
-    display: grid;
-    grid-template-areas:
-      "title title title title avatar"
-      "link  link  link  link  avatar"
-      "main main main main main"
-      "main main main main main"
-      "main main main main main";
-    gap: 0.35rem;
-    padding: 0.1rem;
-    justify-content: space-between;
-  }
-
-  code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    /* color: rgb(var(--accent)); */
-    color: var(--accent);
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-</style>
-
-<style is:raw>
-  a {
-    border-bottom: none !important;
+    .link-card:is(:hover, :focus-within)::before {
+      animation: none;
+    }
   }
 </style>

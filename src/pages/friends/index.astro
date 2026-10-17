@@ -33,9 +33,9 @@ Astro.locals.noscript = true;
     index={2}
     mode={{ hant: false, vert: false, theme: false }}
   />
-  <h1 class="mbs-5">猫猫的<span class="text-gradient">朋友们</span></h1>
+  <h1 class="mbs-5">猫猫的<span class="friends-accent">朋友们</span></h1>
   <p class="info">可爱喵！以下友链按添加的时间顺序排列。</p>
-  <ul role="list" class="link-card-grid">
+  <ul role="list" class="friends link-card-grid" aria-label="朋友们的博客">
     <Card
       link="blog.hongdou.dev"
       title="红豆的猫窝"
@@ -45,9 +45,7 @@ Astro.locals.noscript = true;
       <del>
         <Color color="rgb(245, 169, 184)">粉</Color><Color
           color="rgb(91, 206, 250)"
-        >
-          蓝
-        </Color><Stroke><Color color="#FFF">白</Color></Stroke></del
+        >蓝</Color><Stroke><Color color="#FFF">白</Color></Stroke></del
       ><Color color="red">红</Color>豆豆
     </Card>
     <Card
@@ -185,13 +183,7 @@ Astro.locals.noscript = true;
       feed="https://sakurame.eu.org/atom.xml"
       desc="一个专注于技术和思考分享的博客"
       script={true}
-    >
-      <style is:inline>
-        .link-card#sakura code {
-          background-color: #d6ecf0;
-        }
-      </style>
-    </Card>
+    />
     <Card
       link="blog.nyaasu.top"
       title="Nyaasu 研究所"
@@ -219,7 +211,7 @@ Astro.locals.noscript = true;
       avatar="//avatars.githubusercontent.com/u/30341059?v=4"
       feed="https://blog.othing.xyz/feed/"
       desc="木有"
-    />
+    >桥水引导人民</Card>
     <Card
       link="axi404.top"
       title="Axi's Blog"
@@ -278,7 +270,7 @@ Astro.locals.noscript = true;
     <p class="info line-height-loose">
       你可以使用此 <a
         id="opml"
-        class="rounded bg-amber text-black p-2 m-inline-2 decoration-none"
+        class="p-2 m-inline-2 decoration-none"
         href="/friends.opml">OPML 文件</a
       >订阅所有友链（以及本博客）的 RSS 源，以便在你的阅读器中查看最新文章。
     </p>
@@ -308,7 +300,7 @@ Astro.locals.noscript = true;
         alt="code"
       />
     </li>
-    <li style="font-size: 250%; font-weight: 500; margin: auto; color: #444">
+    <li style="font-size: 250%; font-weight: 500; margin: auto">
       which<br />renders as
     </li>
     <Card
@@ -325,17 +317,12 @@ Astro.locals.noscript = true;
 </Layout>
 
 <style is:global>
-  li {
-    list-style: none;
-  }
   :root {
-    --accent: #8447ee;
-    --accent-gradient: linear-gradient(
-      45deg,
-      var(--accent),
-      #da62c4 30%,
-      white 60%
-    );
+    --friends-accent: light-dark(#a12632, #ef5360);
+  }
+  body {
+    background: light-dark(#f2f2f2, #171717);
+    color: light-dark(#111, #f2f0eb);
   }
 </style>
 <style lang="less">
@@ -346,35 +333,56 @@ Astro.locals.noscript = true;
     font-size: 2rem;
     font-weight: 800;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
+  .friends-accent {
+    color: var(--friends-accent);
   }
   .info {
-    @apply mb-4 p-4 rounded-md;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
+    @apply mb-4 p-4;
+    border: 1px solid light-dark(#c8c3b8, #393939);
+    background: light-dark(#f7f6f2, #202020);
     strong {
-      color: var(--accent);
+      color: var(--friends-accent);
     }
   }
   #opml {
-    color: white;
-    background-image: var(--accent-gradient);
-    background-size: 400%;
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    &:hover {
-      background-position: 15%;
-    }
-    &:focus {
-      background-position: 35%;
+    color: light-dark(#fff, #171717);
+    background: var(--friends-accent);
+    &:is(:hover, :focus-visible) {
+      outline: 2px solid var(--friends-accent);
+      outline-offset: 3px;
     }
   }
   .link-card-grid {
-    @apply grid gap-4 justify-center p-0;
-    grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 28px 25px;
+    padding: 0;
+    margin-block: 1.75rem 3rem;
+    list-style: none;
+  }
+  .friends {
+    --sweep: clamp(58px, 25vw, 280px);
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .friends {
+        padding-inline-end: calc(var(--sweep) + 15px);
+      }
+      /* Grid stretches each row to equal height, so its cards share view progress
+         even when the viewport changes the column count. */
+      .friends > :global(.link-card) {
+        animation: viewport-diagonal 1s linear both;
+        animation-timeline: view(block 0px);
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+  @keyframes viewport-diagonal {
+    from {
+      translate: var(--sweep) 0;
+    }
+    to {
+      translate: 0 0;
+    }
   }
 </style>
