@@ -20,6 +20,8 @@
     "start": "astro dev",
     "s": "astro dev",
     "build": "astro build && node cli/atom.js",
+    "build:timings": "astro build --timings && node cli/atom.js",
+    "test:build-performance": "node --test cli/build-performance.test.mjs",
     "b": "astro build && node cli/atom.js",
     "bf": "astro build -- --force && node cli/atom.js",
     "bfv": "astro build -- --force --verbose && node cli/atom.js",
