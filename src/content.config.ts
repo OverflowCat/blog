@@ -13,7 +13,12 @@ const postDir = "./src/posts/";
 if (!fs.existsSync(postDir))
   console.error(`Directory ${postDir} does not exist`);
 const blogCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.(md|mdx|typ)", base: postDir }),
+  loader: glob({
+    pattern: "**/[^_]*.(md|mdx|typ)",
+    base: postDir,
+    // Compile posts on demand in dev; production keeps the content cache.
+    deferRender: import.meta.env.DEV,
+  }),
   schema: postSchemaGen,
 });
 
