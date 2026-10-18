@@ -1,6 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { locate } from "@iconify/json";
-import { getIconData, iconToHTML, iconToSVG } from "@iconify/utils";
+import { getIconData } from "@iconify/utils/lib/icon-set/get-icon";
+import { iconToSVG } from "@iconify/utils/lib/svg/build";
+import { iconToHTML } from "@iconify/utils/lib/svg/html";
 
 type IconSet = Parameters<typeof getIconData>[0];
 
