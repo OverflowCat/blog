@@ -1,1 +1,36 @@
-@use '@carbon/react';
+// Keep Carbon's foundations and the component styles used by Carbon.tsx and
+// src/components/carbon. Add a module here when introducing a new component.
+@use '@carbon/react/scss/config';
+@use '@carbon/react/scss/spacing';
+@use '@carbon/react/scss/border-radius';
+@use '@carbon/react/scss/colors';
+@use '@carbon/react/scss/motion';
+@use '@carbon/react/scss/type';
+@use '@carbon/react/scss/themes';
+@use '@carbon/react/scss/theme';
+@use '@carbon/react/scss/reset';
+@use '@carbon/react/scss/fonts';
+@use '@carbon/react/scss/grid';
+@use '@carbon/react/scss/layer';
+@use '@carbon/react/scss/layout';
+@use '@carbon/react/scss/zone';
+
+@use '@carbon/react/scss/components/ai-label';
+@use '@carbon/react/scss/components/button';
+@use '@carbon/react/scss/components/form';
+@use '@carbon/react/scss/components/link';
+@use '@carbon/react/scss/components/list';
+@use '@carbon/react/scss/components/loading';
+@use '@carbon/react/scss/components/modal';
+@use '@carbon/react/scss/components/notification';
+@use '@carbon/react/scss/components/popover';
+@use '@carbon/react/scss/components/skeleton-styles';
+@use '@carbon/react/scss/components/stack';
+@use '@carbon/react/scss/components/tag';
+@use '@carbon/react/scss/components/text-area';
+@use '@carbon/react/scss/components/text-input';
+@use '@carbon/react/scss/components/tile';
+@use '@carbon/react/scss/components/toggletip';
+@use '@carbon/react/scss/components/tooltip';
+@use '@carbon/react/scss/components/treeview';
+@use '@carbon/react/scss/components/ui-shell';
