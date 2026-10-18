@@ -6,7 +6,7 @@ import SlotRenderer from "@/components/SlotRenderer.astro";
 
 // import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import { getEntry } from "astro:content";
-import getCC from "@/scripts/cc";
+import { convertToHant } from "@/scripts/cc";
 import { getImage } from "astro:assets";
 import { resolveOg } from "@/scripts/photo-resolve";
 import { render } from "astro:content";
@@ -93,11 +93,7 @@ Astro.locals.noscript = post.data.noscript;
   {
     isHant ? (
       <SlotRenderer
-        callback={(s) => {
-          let res = getCC()(s);
-          res = res.replaceAll(` lang="zh-Hans"`, ` lang="zh-Hant"`);
-          return res;
-        }}
+        callback={(s) => convertToHant(s, content.remarkPluginFrontmatter.hantReplacements)}
       >
         <content.Content />
       </SlotRenderer>

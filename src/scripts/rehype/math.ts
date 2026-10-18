@@ -1,15 +1,29 @@
-// math
-import rehypeMathRenderer from "rehype-mathjax/chtml";
-import rehypeKatex from 'rehype-katex'
-// typst
-// @ts-ignore
-import rehypeTypst from "@myriaddreamin/rehype-typst";
+import type rehypeMathRenderer from "rehype-mathjax/chtml";
+import { EXIT, visit } from "unist-util-visit";
+import { createRequire } from "node:module";
 
-import type * as hast from "hast";
+// Astro closes its config module runner before invoking these plugins. Native
+// require keeps renderer loading lazy without using that closed Vite runner.
+const require = createRequire(import.meta.url);
+
 import type { RehypePlugin } from "@astrojs/markdown-remark";
-import type { Frontmatter } from "@/types";
 
-const rehypeMultiMath: RehypePlugin = () => {
+async function loadRenderer(mathType: string) {
+	if (mathType === "katex")
+		return (require("rehype-katex") as typeof import("rehype-katex")).default();
+	// rehype-typst does not ship declarations; it follows the same transformer API.
+	if (mathType === "typst")
+		return (
+			require("@myriaddreamin/rehype-typst") as {
+				default: () => (
+					tree: import("hast").Root,
+					file: unknown,
+				) => Promise<void>;
+			}
+		).default();
+	if (mathType !== "mathjax") return;
+	const { default: rehypeMathRenderer } =
+		require("rehype-mathjax/chtml") as typeof import("rehype-mathjax/chtml");
 	// init mathjax
 	const rehypeMathHook = rehypeMathRenderer({
 		chtml: {
@@ -29,29 +43,39 @@ const rehypeMultiMath: RehypePlugin = () => {
 			},
 		},
 	} satisfies Parameters<typeof rehypeMathRenderer>[0]);
-	// init katex
-	const rehypeKatexHook = rehypeKatex();
-	// init typst
-	const rehypeTypstHook = rehypeTypst();
+	return rehypeMathHook;
+}
 
-	return (tree: hast.Root, vfile: object) => {
-		// @ts-ignore
-		const frontmatter = (vfile.data.astro as { frontmatter: Frontmatter })?.frontmatter;
-		const mathType = frontmatter?.math ?? "mathjax";
-		switch (mathType) {
-			case "mathjax":
-				// @ts-ignore
-				return rehypeMathHook(tree, vfile);
-			case "typst":
-				// @ts-ignore
-				return rehypeTypstHook(tree, vfile);
-			case "katex":
-				// @ts-ignore
-				return rehypeKatexHook(tree, vfile);
-			default:
-				// handle default case here
-				break;
+const rehypeMultiMath: RehypePlugin = () => {
+	const renderers = new Map<string, ReturnType<typeof loadRenderer>>();
+	return async (tree, file) => {
+		let hasMath = false;
+		visit(tree, "element", (node) => {
+			const classes = node.properties.className;
+			if (
+				Array.isArray(classes) &&
+				classes.some(
+					(name) =>
+						name === "language-math" ||
+						name === "math-display" ||
+						name === "math-inline",
+				)
+			) {
+				hasMath = true;
+				return EXIT;
+			}
+		});
+		// MathJax constructs a document even for trees with no formulae.
+		if (!hasMath) return;
+		const type = file.data.astro?.frontmatter?.math ?? "mathjax";
+		let pending = renderers.get(type);
+		if (!pending) {
+			pending = loadRenderer(type);
+			renderers.set(type, pending);
+			pending.catch(() => renderers.delete(type));
 		}
+		const render = await pending;
+		await render?.(tree, file);
 	};
 };
 

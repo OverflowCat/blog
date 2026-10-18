@@ -1,78 +1,37 @@
 import rehypeMultiMath from "./math.ts";
+import rehypeChinese from "./cc.ts";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypePrettyCode, { type Options } from "rehype-pretty-code";
-import { transformerTwoslash } from '@shikijs/twoslash';
-import { rehypeTwemoji, type RehypeTwemojiOptions } from 'rehype-twemoji'
-import { getSingletonHighlighter } from "shiki";
-import { shikiGitDiff } from "shiki-git-diff";
-import CangjieLanguage from "./cangjie.tmLanguage.json";
-export const myLangs = {
-	langs: [CangjieLanguage],
-	langAlias: {
-		cj: "cangjie",
-	},
-};
+import { rehypeTwemoji, type RehypeTwemojiOptions } from "rehype-twemoji";
+import type { RehypePlugin } from "@astrojs/markdown-remark";
+import { EXIT, visit } from "unist-util-visit";
+import prettyCode from "./pretty-code.ts";
 
-type PrettyCodeNodePositionPoint = {
-    line: number;
-    column: number;
-    offset: number;
-};
-interface PrettyCodeNode {
-    type: string;
-    tagName: string;
-    properties: {
-        className: string[] | undefined;
-        "data-line": "";
-    };
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    children: any[];
-    position: {
-        start: PrettyCodeNodePositionPoint;
-        end: PrettyCodeNodePositionPoint;
-    };
-}
-
-const prettyCodeOptions: Options = {
-    theme: "snazzy-light",
-    keepBackground: false,
-    transformers: [
-        transformerTwoslash(),
-        shikiGitDiff({
-            // @ts-expect-error: hidden type
-            condition: ctx => /\bdiff\b/.test(ctx?.options?.meta?.__raw),
-        }),
-    ],
-    getHighlighter: (options) => getSingletonHighlighter({
-        ...options,
-        ...myLangs,
-    }),
-    onVisitLine(node) {
-        if (node.children.length === 0) {
-            node.children = [{
-                type: "text",
-                value: " "
-            }];
-        }
-    },
-    onVisitHighlightedLine(node) {
-        // node.properties.className?.push("highlighted");
-        if (node.properties.className === undefined) node.properties.className = [];
-        node.properties.className.push("highlighted");
-    },
-    onVisitHighlightedChars(node) {
-        node.properties.className = ["word"];
-    },
-    tokensMap: {}
+const rehypeCode: RehypePlugin = () => {
+	let renderer: ReturnType<typeof prettyCode> | undefined;
+	return async (tree, file) => {
+		let hasCode = false;
+		visit(tree, "element", (node) => {
+			if (node.tagName === "code") {
+				hasCode = true;
+				return EXIT;
+			}
+		});
+		if (!hasCode) return;
+		renderer ??= prettyCode();
+		if (renderer) await renderer(tree, file, () => {});
+	};
 };
 
 export const rehypePipe = [
-    rehypeMultiMath,
-    [rehypeExternalLinks, {
-        rel: [],
-        target: "_blank"
-    }],
-    // @ts-ignore
-    [rehypePrettyCode, prettyCodeOptions],
-    [rehypeTwemoji, {} as RehypeTwemojiOptions],
-]
+	rehypeChinese,
+	rehypeMultiMath,
+	[
+		rehypeExternalLinks,
+		{
+			rel: [],
+			target: "_blank",
+		},
+	],
+	rehypeCode,
+	[rehypeTwemoji, {} as RehypeTwemojiOptions],
+];
