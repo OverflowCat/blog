@@ -18,6 +18,7 @@ const blogCollection = defineCollection({
     base: postDir,
     // Compile posts on demand in dev; production keeps the content cache.
     deferRender: import.meta.env.DEV,
+    retainBody: false,
   }),
   schema: postSchemaGen,
 });
@@ -37,7 +38,7 @@ const neodbCollection = defineCollection({
 });
 
 const commentsCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/comments/" }),
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/comments/", retainBody: false }),
   schema: () => commentsSchema,
 });
 
