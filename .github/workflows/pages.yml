@@ -95,13 +95,64 @@ jobs:
           grep -i 'Harmony' <<< "$fonts" > /dev/null
           grep -i 'Noto Sans CJK' <<< "$fonts" > /dev/null
           grep -Ei 'Latin Modern|LM (Roman|Sans|Mono)' <<< "$fonts" > /dev/null
-      - name: Install, build, and upload my site
-        uses: withastro/action@v5
+      # Keep setup explicit: withastro/action always reinstalls pnpm internally.
+      - name: Read pnpm version
+        id: pnpm-version
+        shell: bash
+        run: echo "version=$(jq -r '.packageManager | sub("^pnpm@"; "")' package.json)" >> "$GITHUB_OUTPUT"
+      - name: Cache pnpm installation
+        id: pnpm-installation
+        uses: actions/cache@v4
         with:
-          # path: . # The root location of your Astro project inside the repository. (optional)
-          node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-          cache: true # Reuse Astro's processed asset cache between builds.
-          # package-manager is intentionally unset: pnpm/action-setup reads the version from package.json's "packageManager" field (pnpm@12.8.0). Setting it here too causes "Multiple versions of pnpm specified".
+          path: ~/setup-pnpm
+          key: ${{ runner.os }}-${{ runner.arch }}-pnpm-installation-v1-${{ steps.pnpm-version.outputs.version }}
+      - name: Setup PNPM
+        if: steps.pnpm-installation.outputs.cache-hit != 'true'
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
+        with:
+          # Read the version from package.json so there is only one source.
+          dest: ~/setup-pnpm
+      - name: Activate pnpm
+        shell: bash
+        run: |
+          echo "$HOME/setup-pnpm/node_modules/.bin" >> "$GITHUB_PATH"
+          echo "PNPM_HOME=$HOME/setup-pnpm/node_modules/.bin" >> "$GITHUB_ENV"
+      - name: Setup Node
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install
+      - name: Restore Astro cache
+        id: astro-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: node_modules/.astro
+          key: astro-cache-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            astro-cache-${{ runner.os }}-
+      - name: Build site
+        run: pnpm run build
+      - name: Save Astro cache
+        if: steps.astro-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: node_modules/.astro
+          key: ${{ steps.astro-cache.outputs.cache-primary-key }}
+      - name: Archive Pages artifact
+        # Preserve hidden files, matching withastro/action (e.g. .well-known).
+        run: >-
+          tar --dereference --hard-dereference --directory dist
+          --exclude=.git --exclude=.github -cf "$RUNNER_TEMP/artifact.tar" .
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
   deploy:
     needs: build
     runs-on: ubuntu-latest
