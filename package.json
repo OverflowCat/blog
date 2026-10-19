@@ -6,7 +6,7 @@
   "engines": {
     "node": "24"
   },
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.14.0",
   "scripts": {
     "new": "node cli/write.js",
     "date": "node cli/date.js",
@@ -21,7 +21,7 @@
     "s": "astro dev",
     "build": "astro build && node cli/atom.js",
     "build:timings": "astro build --timings && node cli/atom.js",
-    "test:build-performance": "node --test cli/build-performance.test.mjs cli/twoslash.test.mjs",
+    "test:build-performance": "node --test cli/build-performance.test.mjs cli/twoslash.test.mjs cli/sass.test.mjs",
     "b": "astro build && node cli/atom.js",
     "bf": "astro build -- --force && node cli/atom.js",
     "bfv": "astro build -- --force --verbose && node cli/atom.js",
@@ -108,7 +108,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
-    "@iconify/json": "^2.2.543",
+    "@iconify/json": "^2.2.545",
     "@iconify/utils": "^3.1.7",
     "@types/hast": "^3.0.5",
     "@types/jsdom": "^30.0.0",
@@ -122,8 +122,9 @@
     "npm-check-updates": "^23.1.1",
     "rehype-pretty-code": "^0.14.5",
     "rehype-twemoji": "^0.0.6",
-    "rollup": "^4.64.7",
+    "rollup": "^4.64.10",
     "sass": "^1.105.2",
+    "sass-embedded": "1.105.2",
     "shiki": "^4.5.0",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
