@@ -1,6 +1,10 @@
 #metadata(
   (
     title: "为 Typst 添加壮文本地化",
+    og: (
+      src: "https://remnote-user-data.s3.amazonaws.com/RuBPQ4qj7A5N3dZDtiBHjhcNxcPgrCr3CFIjQU_BorQbvsL5Fx7m5wh4dDSdF37ASsZEwQdD2NK-VxHsXWaxdHmyHlcj5Z2bOUDtg5oXmrkpfP8IJG2FTX_GxGkTMZft.png",
+      aspect: "1200:630",
+    ),
     date: "2026-09-23T11:17:49.408Z",
     noscript: true,
     licence: false,
