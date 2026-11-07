@@ -94,6 +94,8 @@ export const postSchemaGen = (ctx: SchemaContext) =>
 				.union([
 					// 汉语
 					z.literal("cmn"),
+					// 文言
+					z.literal("lzh"),
 					// 淮语
 					z.literal("juai"),
 					// 满语
